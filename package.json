@@ -1,0 +1,14 @@
+{
+  "name": "nelkedata",
+  "version": "1.0.0",
+  "description": "Builds a sortable workbook of the game data of Nelke & the Legendary Alchemists",
+  "private": true,
+  "scripts": {
+    "build": "node tools/build.js"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}

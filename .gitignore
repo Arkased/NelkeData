@@ -1,0 +1,5 @@
+node_modules/
+# Game files extracted from the Steam install.
+extracted/
+# Build output: game data and game icons.
+output/
