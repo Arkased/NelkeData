@@ -1,6 +1,6 @@
 # NelkeData
 
-This project makes a workbook of the game data of *Nelke & the Legendary Alchemists*. The data comes from the files of the Steam install of the game. The workbook has 5 sheets: Items, Recipes, Zones, Monsters and Characters.
+A quick vibecoded project to export game data from *Nelke & the Legendary Alchemists*. The data comes from the files of the Steam install of the game. The workbook has 5 sheets: Items, Recipes, Zones, Monsters and Characters.
 
 ## Develop
 
