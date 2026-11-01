@@ -2,6 +2,8 @@
 
 A quick vibecoded project to export game data from *Nelke & the Legendary Alchemists*. The data comes from the files of the Steam install of the game. The workbook has 5 sheets: Items, Recipes, Zones, Monsters and Characters.
 
+**[View the spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2wFs-yRAs38QgU2oqgapDcXku5AX1chF_R2Y31K7TneFiW0tOvSku27KYreOKFAXzDeDx4ZU1PG1F/pubhtml)**
+
 ## Develop
 
 Do these steps to make the workbook again:
