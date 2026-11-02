@@ -3,3 +3,6 @@ node_modules/
 extracted/
 # Build output: game data and game icons.
 output/
+# Compiled output of tsc -b.
+dist/
+*.tsbuildinfo

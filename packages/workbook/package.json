@@ -1,0 +1,14 @@
+{
+  "name": "@nelke/workbook",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@nelke/extract": "1.0.0",
+    "exceljs": "4.4.0",
+    "zod": "4.6.7"
+  }
+}

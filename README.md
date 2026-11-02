@@ -15,17 +15,34 @@ Do these steps to make the workbook again:
 2. Extract the game data XML and the icon textures from the game archives:
    ```
    GAME="C:/Program Files (x86)/Steam/steamapps/common/Nelke and the Legendary Alchemists Ateliers of the New World/Data"
-   node tools/pak.js extract "$GAME/PACK01.PAK" extracted "^.saves.[^.]*\.xml$"
-   node tools/pak.js extract "$GAME/PACK00_01.PAK" extracted "item_l_[0-9]+\.g1t|npc_faceicon[0-9]+\.g1t|monster_faceicon[0-9]+\.g1t"
+   npm run extract -- extract "$GAME/PACK01.PAK" extracted "^.saves.[^.]*\.xml$"
+   npm run extract -- extract "$GAME/PACK00_01.PAK" extracted "item_l_[0-9]+\.g1t|npc_faceicon[0-9]+\.g1t|monster_faceicon[0-9]+\.g1t"
    ```
 3. Build the workbook:
    ```
-   node tools/build.js
+   npm run workbook
    ```
+   The command takes 2 optional arguments, `[extractedDir] [outFile]`. They default to `extracted/` and `output/nelke_data.xlsx`.
 
 The output is `output/nelke_data.xlsx` and the icon folder `output/icons/`.
 
-The build prints a warning for each column that has 1 value only, and for each column that is the same as another column. Remove such a column from `tools/build.js`.
+The build prints a warning for each column that has 1 value only, and for each column that is the same as another column. Remove such a column from the column lists in `packages/workbook/src/`.
+
+Check the code with:
+
+```
+npm run check
+```
+
+It runs the typecheck (`tsc -b`), the lint (ESLint), the format check (Prettier) and the tests (Vitest), in this order.
+
+To prove that a change leaves the workbook as it was, build a baseline workbook before the change and a new one after it. Then compare them:
+
+```
+npx tsx scripts/compare-workbooks.ts baseline/nelke_data.xlsx new/nelke_data.xlsx
+```
+
+The script compares the cell values sheet by sheet and the icon file names. It exits with 1 on a difference.
 
 ## Import to Google Sheets
 
