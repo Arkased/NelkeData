@@ -13,9 +13,10 @@ Status: draft. It needs the approval of the owner.
 | Same data | Each value on the site is the same as the value in the workbook. | The site and the workbook read the same files of `data/`. A test compares a sample of rows. |
 | Links | Each mention of an entity that has a page is a link to that page. A mention of an entity with no page is plain text. | A build check finds each internal link, and fails when a link has no target. |
 | Stable URLs | The URL of a page comes from the English name of its entity. It does not change between builds while the name does not change. When 2 entities have the same name, each URL is still unique. | A test builds the URLs 2 times and compares them. A test makes sure that all URLs are unique. |
-| Search | Each list page has a text box. The list shows only the rows whose English or Japanese name contains the text. The filter does not reload the page. | A UI test types a name and finds the row. |
-| Sort | Each column of a list page sorts the list when you select its header. A second selection reverses the order. | A UI test. |
-| Narrow screens | At a width of 360 px, the page has no horizontal scroll. A wide table scrolls inside its own box. | A UI test at 360 px. |
+| Tiles and modal | A list page shows its entities as a grid of tiles, like Barrel Wisdom. A click on a tile opens the detail of the entity in a modal, and the URL changes to the URL of the entity. Back closes the modal. Each entity also has its own page for a direct visit. | A UI test opens a tile, checks the URL, and goes back. |
+| Search | Each list page has a text box. The list shows only the tiles whose English or Japanese name contains the text. The filter does not reload the page. | A UI test types a name and finds the tile. |
+| Sort | Each list page has a sort menu with the sort keys of its category, and a button that reverses the order. | A UI test. |
+| Narrow screens | At a width of 360 px, the page has no horizontal scroll. A wide table or a research tree scrolls inside its own box. | A UI test at 360 px. |
 | Icons | Each item, recipe, monster and character shows its game icon when the game has one. | A UI test finds the icon of 1 item. |
 
 ## Items (priority 1)
@@ -34,7 +35,14 @@ Status: draft. It needs the approval of the owner.
 | --- | --- | --- |
 | Recipe list | 1 page lists all recipes (169 at present) with the icon, item, category, rank, price, synthesis cost, added value and added value per synthesis cost. Filters for category and sub-category. | A UI test. |
 | Recipe page | 1 page for each recipe. It shows all the columns of the Recipes sheet of the workbook. Each material is a link to its item, with its quantity. The item that the recipe makes is a link. | A UI test of 1 recipe. |
-| Unlock | The recipe page shows how the recipe unlocks: the recipe set, the teacher (link) and the friendship level, the research and its prerequisites, and the story event. | A UI test. |
+| Unlock | The recipe page shows how the recipe unlocks: the recipe set, the teacher (link) and the friendship level, the research (link) and its prerequisites, and the story event. | A UI test. |
+
+## Research (priority 2)
+
+| Name | Contract | Proof |
+| --- | --- | --- |
+| Research trees | 1 page shows the 4 research trees of the game, 1 tab each. Each tree has the layout of the game: the nodes in the columns and rows of the game data, with the lines between them. | A UI test finds 1 node in its column, and compares the page with a screenshot of the game by eye. |
+| Research detail | A click on a node opens the research in the modal. It shows the researchers, the duration, the money, the materials (links), the prerequisite research (links), and what it gives (the recipe set with recipe links, and the bonus). | A UI test. |
 
 ## Areas, Monsters and Characters (priority 2)
 

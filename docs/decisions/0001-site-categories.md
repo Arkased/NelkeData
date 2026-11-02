@@ -12,7 +12,9 @@ The workbook has 5 sheets: Items, Recipes, Zones, Monsters and Characters. The o
 
 The site has 1 category for each sheet: Items, Recipes, Areas (the Zones sheet), Monsters and Characters. Each category has a list page and 1 page for each entity.
 
-Items and Recipes come first. Areas, Monsters and Characters come after them. Pages for the other data (recipe sets, research, main tasks) have the lowest priority.
+Items and Recipes come first. Areas, Monsters, Characters and the research trees come after them. The research trees have the layout of the game. Pages for the other data (recipe sets, main tasks) have the lowest priority.
+
+A list page is a grid of tiles, and a tile opens its detail in a modal, like Barrel Wisdom. The owner confirms the page layouts before the build.
 
 Rejected options:
 
