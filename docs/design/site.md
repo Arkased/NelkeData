@@ -16,7 +16,7 @@ The site uses the UI parts of the game. The textures are in `20th_window.g1t` an
 | Section title | The brown header bars |
 | Grid cell | The icon frame of the game, and the selected frame |
 | Tab | The tabs with the category icons (crate, jar, leaf, hat, cauldron and others) |
-| Rank | The rank letters A+ to D |
+| Rank | A beige plate with the rank number. The game data has no rank letter for an item. |
 
 The prototype finds the game screen for each view and copies its layout.
 
@@ -53,7 +53,7 @@ The 6 categories, each with its game icon.
 
 ### Details
 
-Each detail is 1 game panel. The prototype composes each panel from the game parts, with the data that the requirements list for its category. A material is an icon slot with its quantity. A rank is a rank letter. An element is its icon with its value.
+Each detail is 1 game panel. The prototype composes each panel from the game parts, with the data that the requirements list for its category. A material is an icon slot with its quantity. An element is its icon with its value.
 
 ### Research tree page
 
