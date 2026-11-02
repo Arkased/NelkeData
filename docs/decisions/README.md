@@ -1,0 +1,37 @@
+# Decisions
+
+1 record for each decision. A record is for reference: the rule that it makes goes into the layer doc, `docs/code-standard.md`, a skill or `CLAUDE.md`.
+
+## Format
+
+The file is `docs/decisions/<NNNN>-<slug>.md`. `<NNNN>` is a 4-digit number: the highest number plus 1.
+
+```
+# <NNNN> <Title>
+
+Date: <yyyy-mm-dd>
+Decided by: owner | orchestrator
+Status: accepted | superseded by <NNNN>
+
+## Context
+
+The facts that made the decision necessary.
+
+## Decision
+
+What was decided, and the options that were rejected, with the reason for each.
+
+## Consequences
+
+Where the rule now lives, and what changed.
+```
+
+A decision that replaces an earlier one sets the status of the earlier record to `superseded by <NNNN>`.
+
+## Index
+
+| Number | Title | Status |
+| ------ | ----- | ------ |
+| [0001](0001-site-categories.md) | Categories of the website | accepted |
+| [0002](0002-stack.md) | Stack and package layout | accepted |
+| [0003](0003-data-in-git.md) | The generated data is in git | accepted |

@@ -1,0 +1,48 @@
+{
+  "github": {
+    "owner": "Arkased",
+    "repo": "NelkeData",
+    "boardId": "PVT_kwHOAauQSc4Bp49J"
+  },
+  "projectName": "NelkeData",
+  "backlog": {
+    "backend": "github"
+  },
+  "branches": {
+    "build": "main",
+    "release": "main"
+  },
+  "review": {
+    "maxRounds": 3,
+    "skillName": "review"
+  },
+  "agents": {
+    "lightTypes": [
+      "Explore",
+      "Plan",
+      "claude-code-guide",
+      "statusline-setup"
+    ]
+  },
+  "wiki": {
+    "name": null
+  },
+  "readGate": {
+    "codeFolders": [
+      "src",
+      "packages",
+      "tools",
+      "scripts",
+      "__tests__",
+      "dist",
+      ".claude/worktrees"
+    ]
+  },
+  "worktrees": {
+    "minAgeHours": 2
+  },
+  "processes": {
+    "minAgeMinutes": 2,
+    "serviceMarker": "/node_modules/nelkedata"
+  }
+}
