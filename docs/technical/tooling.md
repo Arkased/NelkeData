@@ -26,4 +26,4 @@ The files and commands of the tooling. The design is in [docs/design/tooling.md]
 | `npm run extract -- list <archive>` | Lists the files in a PAK archive. |
 | `npm run extract -- extract <archive> <out> <pattern>` | Extracts the files that match the pattern from a PAK archive. |
 | `npm run workbook -- [extractedDir] [outFile]` | Builds `output/nelke_data.xlsx` and `output/icons/`. |
-| `npx tsx scripts/compare-workbooks.ts <baseline.xlsx> <new.xlsx>` | Compares 2 workbooks cell by cell. Exits with 1 on a difference. |
+| `npx tsx scripts/compare-workbooks.ts <baseline.xlsx> <new.xlsx> [result.txt]` | Compares 2 workbooks cell by cell, and the icon file names. Writes the result to `result.txt`, by default `compare-<yyyymmdd-hhmmss>.txt` next to the new workbook. Exits with 1 on a difference. |

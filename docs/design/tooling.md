@@ -32,4 +32,4 @@ The packages come in 3 steps:
 
 ## Proof of no change
 
-`scripts/compare-workbooks.ts` compares 2 workbooks cell by cell, sheet by sheet. It prints each difference and exits with 1 when it finds one. Each change of the workbook code that keeps the requirements runs it against a baseline workbook. The baseline comes from the build before the change.
+`scripts/compare-workbooks.ts` compares 2 workbooks cell by cell, sheet by sheet, and the icon file names next to them. It prints each difference, writes the same text to a timestamped result file, and exits with 1 when it finds a difference. The issue of the change records the result in its Outcome. Each change of the workbook code that keeps the requirements runs it against a baseline workbook. The baseline comes from the build before the change.
