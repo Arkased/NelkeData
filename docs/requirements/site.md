@@ -2,7 +2,7 @@
 
 A static website for lookups of the game data of _Nelke & the Legendary Alchemists_. It is for players who want to find, for example, where to gather an item, what a recipe needs, or what a monster drops. The categories come from [decision 0001](../decisions/0001-site-categories.md).
 
-Status: draft. It needs the approval of the owner.
+Status: draft. The owner rejected the first layouts, and the structure of the pages is open in #2.
 
 ## General
 
@@ -16,8 +16,9 @@ Status: draft. It needs the approval of the owner.
 | Tiles and modal | A list page shows its entities as a grid of tiles, like Barrel Wisdom. A click on a tile opens the detail of the entity in a modal, and the URL changes to the URL of the entity. Back closes the modal. Each entity also has its own page for a direct visit. | A UI test opens a tile, checks the URL, and goes back. |
 | Search | Each list page has a text box. The list shows only the tiles whose English or Japanese name contains the text. The filter does not reload the page. | A UI test types a name and finds the tile. |
 | Sort | Each list page has a sort menu with the sort keys of its category, and a button that reverses the order. | A UI test. |
-| Narrow screens | At a width of 360 px, the page has no horizontal scroll. A wide table or a research tree scrolls inside its own box. | A UI test at 360 px. |
+| Any width | The layout adapts to the width of the window, at each width from 360 px (a small phone) up. The page has no horizontal scroll. Only a research tree scrolls horizontally, inside its own box. | UI tests at 360, 768, 1280 and 1920 px. |
 | Icons | Each item, recipe, monster and character shows its game icon when the game has one. | A UI test finds the icon of 1 item. |
+| Game UI | The panels, frames, header bars, tiles, tabs and buttons use the UI textures of the game ([decision 0004](../decisions/0004-game-ui-style.md)). A page for data that the game shows on a screen copies the layout of that screen. | The owner approves the prototype, and compares the site with the game by eye. |
 
 ## Items (priority 1)
 

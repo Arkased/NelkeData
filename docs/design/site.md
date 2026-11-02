@@ -2,7 +2,23 @@
 
 The page and UI layouts of the website. [The site requirements](../requirements/site.md) ask for this design. The list pattern comes from Barrel Wisdom: a grid of tiles, and a modal with the detail of the selected tile.
 
-Status: draft. It needs the approval of the owner.
+The owner approved the research tree layout. The other layouts and the visual style wait on the approval of the prototype (#11).
+
+## Visual style
+
+The site uses the UI parts of the game ([decision 0004](../decisions/0004-game-ui-style.md)). The textures are in `20th_window.g1t` and `20th_common.g1t`. The rectangle and the 9-slice borders of each part are in `extracted/saves/ui/gen_styles/uis_gen_20th_*.xml`.
+
+| Site part | Game part |
+| --- | --- |
+| Page background | A background of `20th_bg*.g1t` |
+| Panel, modal | The cream panels with corner ornaments |
+| Section title, modal head | The brown header bars and the gold name plates |
+| Tile | The cream plates with a border, and the yellow plate for the selected state |
+| Tab, filter button | The tabs and the category icons (material, leaf, jar, hat and others) |
+| Rank | The rank letters A+ to D |
+| Item detail | The notebook page |
+
+The prototype finds the game screen for each page and copies its layout.
 
 ## Shared parts
 
