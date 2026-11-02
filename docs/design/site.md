@@ -27,7 +27,7 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 
 | Part | Holds | Behavior |
 | --- | --- | --- |
-| Header | The site name, and the links to the 6 categories with their game icons. | Below 600 px, the links go into a menu button. |
+| Header | The site name, and the links to the 5 categories with their game icons. | Below 600 px, the links go into a menu button. |
 | Filters | 1 group of toggle buttons for each filter: the item category, and the shop. | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
 | Search box | A text box. | Each key filters the icons at once, on the English and the Japanese name. The text is in the URL. |
 | Icon grid | The game icons in the order of the game. The number of columns follows the width. | The name shows on hover and on focus. A click opens the modal. Each icon is a real link, so Ctrl+click opens the page of the entity in a new tab. |
@@ -39,9 +39,9 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 
 ### Home
 
-The 6 categories, each with its game icon.
+The 5 categories, each with its game icon: Items, Research, Areas, Monsters and Characters.
 
-### Category pages (Items, Recipes, Monsters, Characters)
+### Category pages (Items, Monsters, Characters)
 
 - **Blocks, in order:** Header. Search box and filters. Icon grid.
 - **Empty state:** The panel says "Nothing matches the search." It has a button that clears the search.
