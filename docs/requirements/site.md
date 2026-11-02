@@ -1,8 +1,8 @@
 # Website
 
-A static website for lookups of the game data of _Nelke & the Legendary Alchemists_. It is for players who want to find, for example, where to gather an item, what a recipe needs, or what a monster drops. The categories come from [decision 0001](../decisions/0001-site-categories.md).
+A static website for lookups of the game data of _Nelke & the Legendary Alchemists_. It is for players who want to find, for example, where to gather an item, what a recipe needs, or what a monster drops. The categories come from [decision 0001](../decisions/0001-site-categories.md). The look comes from [decision 0004](../decisions/0004-game-ui-style.md), and the structure of the pages from [decision 0005](../decisions/0005-icon-grids.md).
 
-Status: draft. The owner rejected the first layouts, and the structure of the pages is open in #2.
+Status: draft. The data that each detail shows waits on the owner (#2).
 
 ## General
 
@@ -10,45 +10,45 @@ Status: draft. The owner rejected the first layouts, and the structure of the pa
 | --- | --- | --- |
 | Host | The site is on GitHub Pages at `https://arkased.github.io/NelkeData/`. Each push to `main` that changes `data/` or `packages/site/` deploys it. | The run of the deploy workflow passes, and the home page loads. |
 | Static | The site is static files only. It needs no server and no database. | The build output is only HTML, CSS, JS and images. |
-| Same data | Each value on the site is the same as the value in the workbook. | The site and the workbook read the same files of `data/`. A test compares a sample of rows. |
+| Same data | Each value on the site is the same as the value in the workbook. The site shows only the data that helps a player. The workbook keeps all columns. | The site and the workbook read the same files of `data/`. A test compares a sample of entities. |
+| Game UI | The panels, frames, plates, tabs and buttons use the UI textures of the game. A page for data that the game shows on a screen copies the layout of that screen. | The owner approves the prototype, and compares the site with the game by eye. |
+| No spreadsheet look | No page shows rows of labels and values, or tables. A category is a grid of icons. A detail is a composed game panel: for example a name plate, a rank letter, element icons and material slots. | The owner approves the prototype. |
+| Icon grid and modal | A category page shows the game icons of its entities in a grid, in the order of the game. A click on an icon opens the detail in a modal, and the URL changes to the URL of the entity. Back closes the modal. Each entity also has its own page for a direct visit. | A UI test opens an icon, checks the URL, and goes back. |
+| Search | Each category page has a search box. The grid shows only the icons whose English or Japanese name contains the text. The search does not reload the page. | A UI test types a name and finds the icon. |
+| Tabs | Each category page has tabs for the categories of the game, with the game icons of those categories. A tab shows only its icons. | A UI test selects a tab. |
+| Names | The name of an entity shows when the pointer is on its icon, or when the icon has the focus. | A UI test. |
 | Links | Each mention of an entity that has a page is a link to that page. A mention of an entity with no page is plain text. | A build check finds each internal link, and fails when a link has no target. |
 | Stable URLs | The URL of a page comes from the English name of its entity. It does not change between builds while the name does not change. When 2 entities have the same name, each URL is still unique. | A test builds the URLs 2 times and compares them. A test makes sure that all URLs are unique. |
-| Tiles and modal | A list page shows its entities as a grid of tiles, like Barrel Wisdom. A click on a tile opens the detail of the entity in a modal, and the URL changes to the URL of the entity. Back closes the modal. Each entity also has its own page for a direct visit. | A UI test opens a tile, checks the URL, and goes back. |
-| Search | Each list page has a text box. The list shows only the tiles whose English or Japanese name contains the text. The filter does not reload the page. | A UI test types a name and finds the tile. |
-| Sort | Each list page has a sort menu with the sort keys of its category, and a button that reverses the order. | A UI test. |
 | Any width | The layout adapts to the width of the window, at each width from 360 px (a small phone) up. The page has no horizontal scroll. Only a research tree scrolls horizontally, inside its own box. | UI tests at 360, 768, 1280 and 1920 px. |
-| Icons | Each item, recipe, monster and character shows its game icon when the game has one. | A UI test finds the icon of 1 item. |
-| Game UI | The panels, frames, header bars, tiles, tabs and buttons use the UI textures of the game ([decision 0004](../decisions/0004-game-ui-style.md)). A page for data that the game shows on a screen copies the layout of that screen. | The owner approves the prototype, and compares the site with the game by eye. |
 
 ## Items (priority 1)
 
 | Name | Contract | Proof |
 | --- | --- | --- |
-| Item list | 1 page lists all items (305 at present) with the icon, name, category, sub-category, rank and price. Filters for category and sub-category. | A UI test. |
-| Item page | 1 page for each item. It shows all the columns of the Items sheet of the workbook. | A UI test of 1 item with each field. |
-| Gather data | The item page lists each spot where you can gather the item. Each row gives the area (link), the spot, the rate and the task after which the area opens. Special spots show the area. | A UI test of 1 gather item. |
-| Drops | The item page lists each monster (link) that drops the item, with the quantity and the rate. | A UI test. |
-| Recipe links | The item page links to the recipe that makes the item, and to each recipe that uses the item as a material. | A UI test of 1 material. |
+| Item grid | 1 page shows the icons of all items (305 at present). The tabs are the item categories of the game. | A UI test. |
+| Item detail | The detail shows the name, the description, the category, the rank, the price, the shops that sell the item, and the farm that grows it. | A UI test of 1 item with each kind of data. |
+| How to get | The detail shows each source of the item: the areas and spots where you gather it, with the rate and the task that opens the area; the monsters that drop it, with quantity and rate; the recipe that makes it. Each area, monster and recipe is a link. | A UI test of 1 gather item and 1 drop. |
+| Used in | The detail shows each recipe that uses the item as a material, with the quantity, as links. | A UI test of 1 material. |
 
 ## Recipes (priority 1)
 
 | Name | Contract | Proof |
 | --- | --- | --- |
-| Recipe list | 1 page lists all recipes (169 at present) with the icon, item, category, rank, price, synthesis cost, added value and added value per synthesis cost. Filters for category and sub-category. | A UI test. |
-| Recipe page | 1 page for each recipe. It shows all the columns of the Recipes sheet of the workbook. Each material is a link to its item, with its quantity. The item that the recipe makes is a link. | A UI test of 1 recipe. |
-| Unlock | The recipe page shows how the recipe unlocks: the recipe set, the teacher (link) and the friendship level, the research (link) and its prerequisites, and the story event. | A UI test. |
+| Recipe grid | 1 page shows the icons of all recipes (169 at present). The tabs are the item categories of the game. | A UI test. |
+| Recipe detail | The detail shows the item that the recipe makes (link), the materials as icon slots with quantities (links), and the synthesis cost. | A UI test of 1 recipe. |
+| Unlock | The detail shows how the recipe unlocks: the recipe set, the teacher (link) and the friendship level, the research (link), and the story event. | A UI test. |
 
 ## Research (priority 2)
 
 | Name | Contract | Proof |
 | --- | --- | --- |
-| Research trees | 1 page shows the 4 research trees of the game, 1 tab each. Each tree has the layout of the game: the nodes in the columns and rows of the game data, with the lines between them. | A UI test finds 1 node in its column, and compares the page with a screenshot of the game by eye. |
+| Research trees | 1 page shows the 4 research trees of the game, 1 tab each. Each tree has the layout of the game: the nodes in the columns and rows of the game data, with the lines between them. | A UI test finds 1 node in its column. The owner approved the layout. |
 | Research detail | A click on a node opens the research in the modal. It shows the researchers, the duration, the money, the materials (links), the prerequisite research (links), and what it gives (the recipe set with recipe links, and the bonus). | A UI test. |
 
 ## Areas, Monsters and Characters (priority 2)
 
 | Name | Contract | Proof |
 | --- | --- | --- |
-| Area pages | 1 list page of all areas, and 1 page for each area. The area page shows the data of the Zones sheet for each spot of the area: difficulty, gather items with rates (links), special spot items (links), monsters and bosses with levels (links). | A UI test. |
-| Monster pages | 1 list page with filters for type, and 1 page for each monster. The page shows all the columns of the Monsters sheet. Drops are links to items. The areas are links. | A UI test. |
-| Character pages | 1 list page with filters for type and source game, and 1 page for each character. The page shows all the columns of the Characters sheet. The recipe sets that the character teaches link to their recipes. | A UI test. |
+| Areas | 1 page shows all areas. The area detail shows each spot of the area: the difficulty, the gather items with rates (links), the special spot items (links), and the monsters and bosses with levels (links). | A UI test. |
+| Monsters | 1 page shows the icons of all monsters, with tabs for monsters and bosses. The detail shows the name, the description, the rank, the element DEF, the drops (links) and the areas with levels (links). | A UI test. |
+| Characters | 1 page shows the face icons of all characters, with tabs for the character types. The detail shows the name, the description, the source game, the aptitudes, the skills, the join event, and the recipe sets that the character teaches, with links to their recipes. | A UI test. |
