@@ -3,12 +3,29 @@
   "version": "1.0.0",
   "description": "Builds a sortable workbook of the game data of Nelke & the Legendary Alchemists",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "node tools/build.js"
+    "check": "tsc -b && eslint . && prettier --check . && vitest run",
+    "extract": "tsx packages/extract/src/cli.ts",
+    "workbook": "tsx packages/workbook/src/main.ts"
   },
   "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "exceljs": "^4.4.0"
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "26.6.6",
+    "eslint": "10.14.0",
+    "eslint-plugin-jsdoc": "63.3.3",
+    "exceljs": "4.4.0",
+    "prettier": "3.9.10",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.1",
+    "vitest": "5.1.0"
   }
 }
