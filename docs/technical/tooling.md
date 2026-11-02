@@ -23,6 +23,7 @@ The files and commands of the tooling. The design is in [docs/design/tooling.md]
 | Script | Does |
 | --- | --- |
 | `npm run check` | `tsc -b`, then `eslint .`, then `prettier --check .`, then `vitest run`. |
-| `npm run extract -- <archive> <out> <pattern>` | Extracts the files that match the pattern from a PAK archive. |
+| `npm run extract -- list <archive>` | Lists the files in a PAK archive. |
+| `npm run extract -- extract <archive> <out> <pattern>` | Extracts the files that match the pattern from a PAK archive. |
 | `npm run workbook -- [extractedDir] [outFile]` | Builds `output/nelke_data.xlsx` and `output/icons/`. |
 | `npx tsx scripts/compare-workbooks.ts <baseline.xlsx> <new.xlsx>` | Compares 2 workbooks cell by cell. Exits with 1 on a difference. |
