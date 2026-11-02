@@ -1,24 +1,25 @@
 # Website
 
-The page and UI layouts of the website. [The site requirements](../requirements/site.md) ask for this design. A category page is a grid of game icons, and an icon opens its detail in a modal ([decision 0005](../decisions/0005-icon-grids.md)). The look copies the UI of the game ([decision 0004](../decisions/0004-game-ui-style.md)).
+The page and UI layouts of the website. [The site requirements](../requirements/site.md) ask for this design. A category page is a grid of game icons, and an icon opens its detail in a modal ([decision 0005](../decisions/0005-icon-grids.md)). A clear view of the data comes first, and the game parts serve it ([decision 0007](../decisions/0007-clear-data-and-filters.md)).
 
 The owner approved the research tree layout. The other layouts wait on the approval of the prototype (#11).
 
 ## Visual style
 
-The site uses the UI parts of the game. The textures are in `20th_window.g1t` and `20th_common.g1t`. The rectangle and the 9-slice borders of each part are in `extracted/saves/ui/gen_styles/uis_gen_20th_*.xml`. CSS draws each part with `border-image`, so a part fits any size.
+The site uses the UI parts of the game where they make the data clear. The textures are in `20th_window.g1t` and `20th_common.g1t`. The rectangle and the 9-slice borders of each part are in `extracted/saves/ui/gen_styles/uis_gen_20th_*.xml`. CSS draws each part with `border-image`, so a part fits any size. Any other element is a plain element in the colors of the game.
 
-| Site part | Game part |
+| Site part | Look |
 | --- | --- |
 | Page background | A background of `20th_bg*.g1t` |
 | Panel, modal | The cream panels with corner ornaments |
 | Name of an entity | The gold name plates |
 | Section title | The brown header bars |
-| Grid cell | The icon frame of the game, and the selected frame |
-| Tab | The tabs with the category icons (crate, jar, leaf, hat, cauldron and others) |
-| Rank | A beige plate with the rank number. The game data has no rank letter for an item. |
+| Grid cell | The item icon with no extra frame, because the icons already have a margin. A plain highlight on hover and on focus. |
+| Friendship level | The heart icons of the game |
+| Filter | A plain toggle button with the game category icon or the shop name |
+| Value, calculation | Plain text in a clear layout, for example a sum with its operators |
 
-The prototype finds the game screen for each view and copies its layout.
+The spacing follows 1 scale of 4 px steps. Each panel has the same gutter on all sides.
 
 ## Shared parts
 
@@ -27,7 +28,7 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 | Part | Holds | Behavior |
 | --- | --- | --- |
 | Header | The site name, and the links to the 6 categories with their game icons. | Below 600 px, the links go into a menu button. |
-| Tabs | 1 tab for each category of the game, with its icon, and the tab "All". | A tab shows only its icons. The tab is in the URL. |
+| Filters | 1 group of toggle buttons for each filter: the item category, and the shop. | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
 | Search box | A text box. | Each key filters the icons at once, on the English and the Japanese name. The text is in the URL. |
 | Icon grid | The game icons in the order of the game. The number of columns follows the width. | The name shows on hover and on focus. A click opens the modal. Each icon is a real link, so Ctrl+click opens the page of the entity in a new tab. |
 | Modal | A game panel with the detail of the entity, and a close button. | 1. The URL changes to the URL of the entity. Back closes the modal. 2. A link inside the modal replaces its content. Back shows the content before it. 3. Esc, the close button and a click outside close it. The focus goes back to the icon. 4. On a narrow window, the modal fills the screen. |
@@ -42,7 +43,7 @@ The 6 categories, each with its game icon.
 
 ### Category pages (Items, Recipes, Monsters, Characters)
 
-- **Blocks, in order:** Header. Tabs and search box. Icon grid.
+- **Blocks, in order:** Header. Search box and filters. Icon grid.
 - **Empty state:** The panel says "Nothing matches the search." It has a button that clears the search.
 
 ### Areas page
