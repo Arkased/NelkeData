@@ -2,7 +2,7 @@
 
 A static website for lookups of the game data of _Nelke & the Legendary Alchemists_. It is for players who want to find, for example, where to gather an item, what a recipe needs, or what a monster drops. The categories come from [decision 0001](../decisions/0001-site-categories.md). The look comes from [decision 0004](../decisions/0004-game-ui-style.md), and the structure of the pages from [decision 0005](../decisions/0005-icon-grids.md).
 
-Status: draft. The data that each detail shows waits on the owner (#2).
+The owner accepted these requirements as a draft on 2026-11-02. The final approval waits on the HTML prototype (#11).
 
 ## General
 
@@ -26,7 +26,7 @@ Status: draft. The data that each detail shows waits on the owner (#2).
 | Name | Contract | Proof |
 | --- | --- | --- |
 | Item grid | 1 page shows the icons of all items (305 at present). The tabs are the item categories of the game. | A UI test. |
-| Item detail | The detail shows the name, the description, the category, the rank, the price, the shops that sell the item, and the farm that grows it. | A UI test of 1 item with each kind of data. |
+| Item detail | The detail shows the name, the description, the category, the rank, the price, the shops that sell the item, the farm that grows it, and the elements that the Reduce command gives for it. | A UI test of 1 item with each kind of data. |
 | How to get | The detail shows each source of the item: the areas and spots where you gather it, with the rate and the task that opens the area; the monsters that drop it, with quantity and rate; the recipe that makes it. Each area, monster and recipe is a link. | A UI test of 1 gather item and 1 drop. |
 | Used in | The detail shows each recipe that uses the item as a material, with the quantity, as links. | A UI test of 1 material. |
 
@@ -36,6 +36,7 @@ Status: draft. The data that each detail shows waits on the owner (#2).
 | --- | --- | --- |
 | Recipe grid | 1 page shows the icons of all recipes (169 at present). The tabs are the item categories of the game. | A UI test. |
 | Recipe detail | The detail shows the item that the recipe makes (link), the materials as icon slots with quantities (links), and the synthesis cost. | A UI test of 1 recipe. |
+| Recipe value | The detail shows the price of the result, the input cost, the added value, the added value per synthesis cost, and the materials that have no price. The formulas are the formulas of the workbook (`README.md`, section "Recipe value"). | A test compares the values with the workbook. |
 | Unlock | The detail shows how the recipe unlocks: the recipe set, the teacher (link) and the friendship level, the research (link), and the story event. | A UI test. |
 
 ## Research (priority 2)
@@ -49,6 +50,6 @@ Status: draft. The data that each detail shows waits on the owner (#2).
 
 | Name | Contract | Proof |
 | --- | --- | --- |
-| Areas | 1 page shows all areas. The area detail shows each spot of the area: the difficulty, the gather items with rates (links), the special spot items (links), and the monsters and bosses with levels (links). | A UI test. |
+| Areas | 1 page shows all areas, grouped under their top-level zones in the order of the game. The page is not an icon grid: each zone is 1 game panel that holds the names of its areas. The area detail shows each spot of the area: the difficulty, the gather items with rates (links), the special spot items (links), and the monsters and bosses with levels (links). | A UI test. |
 | Monsters | 1 page shows the icons of all monsters, with tabs for monsters and bosses. The detail shows the name, the description, the rank, the element DEF, the drops (links) and the areas with levels (links). | A UI test. |
-| Characters | 1 page shows the face icons of all characters, with tabs for the character types. The detail shows the name, the description, the source game, the aptitudes, the skills, the join event, and the recipe sets that the character teaches, with links to their recipes. | A UI test. |
+| Characters | 1 page shows the face icons of all characters, with tabs for the character types. The detail shows the name, the description, the source game, the aptitudes, the skills, the join conditions (the event, the town population and the turn), and the recipe sets that the character teaches, with links to their recipes. The meaning of the join turn is not confirmed, so the detail marks it as not confirmed. | A UI test. |

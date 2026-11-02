@@ -40,10 +40,16 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 
 The 6 categories, each with its game icon.
 
-### Category pages (Items, Recipes, Areas, Monsters, Characters)
+### Category pages (Items, Recipes, Monsters, Characters)
 
 - **Blocks, in order:** Header. Tabs and search box. Icon grid.
 - **Empty state:** The panel says "Nothing matches the search." It has a button that clears the search.
+
+### Areas page
+
+- **Blocks, in order:** Header. Search box. 1 game panel for each top-level zone, in the order of the game.
+- **Zone panel:** The name of the zone on a header bar, and the names of its areas on name plates. A click on an area opens its detail in the modal.
+- **Empty state:** The same as on a category page.
 
 ### Details
 

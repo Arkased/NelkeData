@@ -37,3 +37,4 @@ A decision that replaces an earlier one sets the status of the earlier record to
 | [0003](0003-data-in-git.md) | The generated data is in git | accepted |
 | [0004](0004-game-ui-style.md) | The site uses the UI of the game | accepted |
 | [0005](0005-icon-grids.md) | Icon grids, no spreadsheet look | accepted |
+| [0006](0006-areas-by-zone.md) | The areas page groups the areas by zone | accepted |
