@@ -1,11 +1,9 @@
 import { IconKind } from '@nelke/extract';
 import type { Game } from './game.js';
 import type { Item } from './items.js';
-import type { Recipe, Unlock } from './recipes.js';
+import { isEmptySlot, type Recipe, type Unlock } from './recipes.js';
 import { iconColumn, type Column } from './sheet.js';
 import { required, round } from './util.js';
-
-const NO_MATERIAL = 'ITEM_INVALID';
 
 /**
  * Builds the columns of the Recipes sheet.
@@ -25,8 +23,8 @@ export function recipeColumns(game: Game): Column<Recipe>[] {
         header: `Material ${n}`,
         width: 22,
         get: (r) => {
-          const id = slot(r)?.id;
-          return id === undefined || id === NO_MATERIAL ? '' : items.itemName(id);
+          const s = slot(r);
+          return s === undefined || isEmptySlot(s) ? '' : items.itemName(s.id);
         },
       },
       {
@@ -34,7 +32,7 @@ export function recipeColumns(game: Game): Column<Recipe>[] {
         width: 6,
         get: (r) => {
           const s = slot(r);
-          return s === undefined || s.id === NO_MATERIAL ? '' : s.num;
+          return s === undefined || isEmptySlot(s) ? '' : s.num;
         },
       },
     ];

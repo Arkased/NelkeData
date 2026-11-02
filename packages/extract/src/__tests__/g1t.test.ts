@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { decodeDxt, TextureFormat } from '../g1t.js';
+import { TextureFormat } from '../enums.js';
+import { decodeDxt } from '../g1t.js';
 
 function pixel(rgba: Buffer, index: number): number[] {
   return [...rgba.subarray(index * 4, index * 4 + 4)];

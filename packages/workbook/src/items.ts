@@ -1,15 +1,15 @@
 import { z } from 'zod';
 import { Element, ItemCategory, ShopFlag } from './enums.js';
 import { isPlaceholder } from './util.js';
-import type { ReadTable } from './xml.js';
+import { enumOrUnknown, type ReadTable } from './xml.js';
 
-const CATEGORY_NAMES = new Map<string, string>([
-  [ItemCategory.Material, 'Material'],
-  [ItemCategory.Construction, 'Construction'],
-  [ItemCategory.Merchandise, 'Merchandise'],
-  [ItemCategory.Element, 'Element'],
-  [ItemCategory.BattleItem, 'Battle Item'],
-]);
+const CATEGORY_NAMES: Record<ItemCategory, string> = {
+  [ItemCategory.Material]: 'Material',
+  [ItemCategory.Construction]: 'Construction',
+  [ItemCategory.Merchandise]: 'Merchandise',
+  [ItemCategory.Element]: 'Element',
+  [ItemCategory.BattleItem]: 'Battle Item',
+};
 
 /** The shops that sell items, in column order, with their names. */
 export const SHOPS: readonly [ShopFlag, string][] = [
@@ -27,7 +27,7 @@ const itemSchema = z
     ITEM_ID: z.string(),
     ITEM_NAME_LABEL_ID: z.string(),
     ITEM_DESCRIPTION_LABEL_ID: z.string(),
-    ITEM_CATEGORY_ID: z.string(),
+    ITEM_CATEGORY_ID: enumOrUnknown(ItemCategory),
     ITEM_SUB_CATEGORY_ID: z.string(),
     ITEM_RANK: z.string(),
     ITEM_SELLING_PRICE: z.string(),
@@ -108,7 +108,8 @@ export function loadItems(read: ReadTable, t: (label: string) => string): Items 
       const item = itemById.get(id);
       return item ? t(item.ITEM_NAME_LABEL_ID) : id;
     },
-    categoryOf: (i) => CATEGORY_NAMES.get(i.ITEM_CATEGORY_ID) ?? `Category ${i.ITEM_CATEGORY_ID}`,
+    categoryOf: (i) =>
+      typeof i.ITEM_CATEGORY_ID === 'string' ? CATEGORY_NAMES[i.ITEM_CATEGORY_ID] : `Category ${i.ITEM_CATEGORY_ID.unknown}`,
     subCategoryOf: (i) => subCategory.get(i.ITEM_SUB_CATEGORY_ID) ?? '',
     farm,
   };

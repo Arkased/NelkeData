@@ -1,5 +1,6 @@
 import { IconKind } from '@nelke/extract';
 import { ELEMENTS, STATS, type Character } from './characters.js';
+import { Stat } from './enums.js';
 import type { Game } from './game.js';
 import { iconColumn, type Column } from './sheet.js';
 import { range } from './util.js';
@@ -90,7 +91,7 @@ export function characterColumns(game: Game): Column<Character>[] {
     { header: 'Rank', width: 6, get: (c) => (c.CHARACTER_RANK_ID === NO_RANK ? '' : Number(c.CHARACTER_RANK_ID)) },
     { header: 'Aptitudes', width: 26, get: characters.aptitudesText },
     // CHM is 1 for every character, and the element DEF values are the same for every character.
-    ...STATS.filter(([, label]) => label !== 'CHM').map(([stat, label]): Column<Character> => ({
+    ...STATS.filter(([stat]) => stat !== Stat.Chr).map(([stat, label]): Column<Character> => ({
       header: label,
       width: 6,
       get: (c) => characters.baseStat(c, stat),

@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { CharacterCategory, Element, PlayType, Stat } from './enums.js';
 import type { Story } from './story.js';
 import { isPlaceholder, listFor } from './util.js';
-import { stringShape, type ReadTable } from './xml.js';
+import { enumOrUnknown, stringShape, type ReadTable } from './xml.js';
 
 const NO_SKILL = 'SKILL_INVALID';
 const NO_APTITUDE = 'PREPARATION_APTITUDE_INVALID';
@@ -23,29 +23,27 @@ export const STATS: readonly [Stat, string][] = [
 /** The elements of btl_chara element_1..4, in order. element_0 is "no element" and is always 0. */
 export const ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
 
-const CHARACTER_TYPES = new Map<string, string>([
-  [CharacterCategory.MainA, 'Main'],
-  [CharacterCategory.MainB, 'Main'],
-  [CharacterCategory.Alchemist, 'Alchemist'],
-  [CharacterCategory.Townsfolk, 'Townsfolk'],
-  [CharacterCategory.Story, 'Story'],
-  [CharacterCategory.Fairy, 'Fairy'],
-  [CharacterCategory.Monster, 'Monster'],
-  [CharacterCategory.Boss, 'Boss'],
-]);
+const CHARACTER_TYPES: Record<CharacterCategory, string> = {
+  [CharacterCategory.MainA]: 'Main',
+  [CharacterCategory.MainB]: 'Main',
+  [CharacterCategory.Alchemist]: 'Alchemist',
+  [CharacterCategory.Townsfolk]: 'Townsfolk',
+  [CharacterCategory.Story]: 'Story',
+  [CharacterCategory.Fairy]: 'Fairy',
+  [CharacterCategory.Monster]: 'Monster',
+  [CharacterCategory.Boss]: 'Boss',
+};
 
-const PLAY_TYPE_NAMES = new Map<string, string>([
-  [PlayType.Attacker, 'Attacker'],
-  [PlayType.Supporter, 'Supporter'],
-]);
-
-const MONSTER_CATEGORIES: readonly string[] = [CharacterCategory.Monster, CharacterCategory.Boss];
+const PLAY_TYPE_NAMES: Record<PlayType, string> = {
+  [PlayType.Attacker]: 'Attacker',
+  [PlayType.Supporter]: 'Supporter',
+};
 
 const characterSchema = z
   .object({
     CHARACTER_ID: z.string(),
     CHARACTER_NAME_LABEL_ID: z.string(),
-    CHARACTER_CATEGORY_ID: z.string(),
+    CHARACTER_CATEGORY_ID: enumOrUnknown(CharacterCategory),
     BTL_CHARACTER_ID: z.string(),
     PARA_ARCHETYPE_ID: z.string(),
     PARA_GROWTYPE_ID: z.string(),
@@ -89,7 +87,8 @@ const battleSchema = z
   .object({
     BTL_CHARACTER_ID: z.string(),
     CHARACTER_ID: text,
-    BTL_PLAY_TYPE_ID: text,
+    // An unknown role reads as no role.
+    BTL_PLAY_TYPE_ID: z.enum(PlayType).optional().catch(undefined),
     battle_exp: count,
     element_1: count,
     element_2: count,
@@ -194,7 +193,8 @@ export function loadCharacters(read: ReadTable, t: (label: string) => string, ev
     ]),
   );
 
-  const isMonster = (c: Character): boolean => MONSTER_CATEGORIES.includes(c.CHARACTER_CATEGORY_ID);
+  const isMonster = (c: Character): boolean =>
+    c.CHARACTER_CATEGORY_ID === CharacterCategory.Monster || c.CHARACTER_CATEGORY_ID === CharacterCategory.Boss;
   const battleOf = (c: Character): Battle | undefined => battleById.get(c.BTL_CHARACTER_ID);
   const dropsOf = (b: Battle): Drop[] => b.drops.filter((d) => d.id && d.id !== NO_DROP);
   const skillName = (id: string): string => skill.get(id) ?? '';
@@ -212,8 +212,14 @@ export function loadCharacters(read: ReadTable, t: (label: string) => string, ev
     isMonster,
     battleOf,
     nameOfBattleId: (id) => characterName.get(battleById.get(id)?.CHARACTER_ID ?? '') ?? id,
-    typeOf: (c) => CHARACTER_TYPES.get(c.CHARACTER_CATEGORY_ID) ?? `Category ${c.CHARACTER_CATEGORY_ID}`,
-    playRoleOf: (c) => PLAY_TYPE_NAMES.get(battleOf(c)?.BTL_PLAY_TYPE_ID ?? '') ?? '',
+    typeOf: (c) =>
+      typeof c.CHARACTER_CATEGORY_ID === 'string'
+        ? CHARACTER_TYPES[c.CHARACTER_CATEGORY_ID]
+        : `Category ${c.CHARACTER_CATEGORY_ID.unknown}`,
+    playRoleOf: (c) => {
+      const role = battleOf(c)?.BTL_PLAY_TYPE_ID;
+      return role === undefined ? '' : PLAY_TYPE_NAMES[role];
+    },
     baseStat: (c, stat) => Number(archetype.get(c.PARA_ARCHETYPE_ID)?.[archetypeKey(stat)] ?? 0),
     growthText: (c) => {
       const g = growtype.get(c.PARA_GROWTYPE_ID);

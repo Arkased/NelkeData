@@ -1,10 +1,8 @@
 import { z } from 'zod';
 import { EncounterSymbol } from './enums.js';
 import type { Story } from './story.js';
-import { listFor, range, required } from './util.js';
+import { getOrCreate, listFor, range, required } from './util.js';
 import type { ReadTable } from './xml.js';
-
-const BOSS_SYMBOL: string = EncounterSymbol.Boss;
 
 const areaSchema = z
   .object({
@@ -34,7 +32,8 @@ const uniqueCollectSchema = z.object({ AREA_TAG: z.string(), ITEM_TAG: z.string(
 const groupSchema = z
   .object({
     ENCOUNT_TABLE: z.string(),
-    ENCOUNT_SYMBOL_TYPE: z.string(),
+    // An unknown group type reads as a normal group.
+    ENCOUNT_SYMBOL_TYPE: z.enum(EncounterSymbol).catch(EncounterSymbol.Normal),
     AREA_TAG: z.string(),
     // A group with fewer than 3 monsters leaves the other slots out.
     MONSTER_00: z.string().default(''),
@@ -80,6 +79,19 @@ export interface Collect {
   RATE: string;
 }
 
+/** The places where an item is gathered. */
+interface Gather {
+  texts: string[];
+  /** The lowest main task number that opens one of the places. */
+  task: number;
+}
+
+/** The levels at which a monster appears in a list of encounters. */
+interface Appearance {
+  lvs: number[];
+  reqLv: number;
+}
+
 type EncounterGroup = z.output<typeof groupSchema>;
 
 /** An encounter group at a spot, with the area level that it needs. */
@@ -97,7 +109,7 @@ export interface Zones {
   /** Maps an area id to the item ids of its special spots. */
   uniqueByArea: Map<string, string[]>;
   /** Maps an item id to the texts of its gather places and the lowest main task number that opens one. */
-  gather: Map<string, { texts: string[]; task: number }>;
+  gather: Map<string, Gather>;
   /** Maps a spot id to its encounters. */
   encountersBySpot: Map<string, Encounter[]>;
   /** Maps a battle character id to the levels at which it appears, by area name. */
@@ -136,13 +148,9 @@ export function loadZones(read: ReadTable, t: (label: string) => string, story: 
 
   const collectBySpot = new Map<string, Collect[]>();
   const uniqueByArea = new Map<string, string[]>();
-  const gather = new Map<string, { texts: string[]; task: number }>();
+  const gather = new Map<string, Gather>();
   const addGather = (id: string, text: string, task: number): void => {
-    let g = gather.get(id);
-    if (!g) {
-      g = { texts: [], task };
-      gather.set(id, g);
-    }
+    const g = getOrCreate(gather, id, () => ({ texts: [], task }));
     if (!g.texts.includes(text)) g.texts.push(text);
     g.task = Math.min(g.task, task);
   };
@@ -167,15 +175,11 @@ export function loadZones(read: ReadTable, t: (label: string) => string, story: 
     if (group) list.push({ group, reqLv: Number(e.REQ_LV) });
   }
   const monstersText = (encounters: readonly Encounter[]): string => {
-    const byName = new Map<string, { lvs: number[]; reqLv: number }>();
+    const byName = new Map<string, Appearance>();
     for (const { group, reqLv } of encounters) {
       for (const m of group.members) {
         const name = nameOfBattleId(m.id);
-        let entry = byName.get(name);
-        if (!entry) {
-          entry = { lvs: [], reqLv };
-          byName.set(name, entry);
-        }
+        const entry = getOrCreate(byName, name, () => ({ lvs: [], reqLv }));
         entry.lvs.push(m.lv);
         entry.reqLv = Math.min(entry.reqLv, reqLv);
       }
@@ -188,12 +192,10 @@ export function loadZones(read: ReadTable, t: (label: string) => string, story: 
     const a = areaByPrefix.get(g.AREA_TAG.slice(0, 4));
     if (!a) continue;
     for (const m of g.members) {
-      let byArea = habitat.get(m.id);
-      if (!byArea) {
-        byArea = new Map();
-        habitat.set(m.id, byArea);
-      }
-      listFor(byArea, a.name).push(m.lv);
+      listFor(
+        getOrCreate(habitat, m.id, () => new Map<string, number[]>()),
+        a.name,
+      ).push(m.lv);
     }
   }
 
@@ -204,7 +206,7 @@ export function loadZones(read: ReadTable, t: (label: string) => string, story: 
     gather,
     encountersBySpot,
     habitat,
-    isBossGroup: (g) => g.ENCOUNT_SYMBOL_TYPE === BOSS_SYMBOL,
+    isBossGroup: (g) => g.ENCOUNT_SYMBOL_TYPE === EncounterSymbol.Boss,
     monstersText,
   };
 }

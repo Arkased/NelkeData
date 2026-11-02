@@ -22,16 +22,27 @@ export enum ColumnWarningKind {
   Duplicate = 'duplicate',
 }
 
-/** A column that adds nothing to its sheet. */
-export interface ColumnWarning {
+interface ColumnWarningBase {
   sheet: string;
   column: string;
-  kind: ColumnWarningKind;
-  /** For SingleValue: the value, as JSON. */
-  value?: string;
-  /** For Duplicate: the header of the earlier column. */
-  twin?: string;
 }
+
+/** A column that has 1 value in all rows. */
+export interface SingleValueWarning extends ColumnWarningBase {
+  kind: ColumnWarningKind.SingleValue;
+  /** The value, as JSON. */
+  value: string;
+}
+
+/** A column that has the same values as an earlier column. */
+export interface DuplicateWarning extends ColumnWarningBase {
+  kind: ColumnWarningKind.Duplicate;
+  /** The header of the earlier column. */
+  twin: string;
+}
+
+/** A column that adds nothing to its sheet. */
+export type ColumnWarning = SingleValueWarning | DuplicateWarning;
 
 /**
  * Creates the column of the icon of a row. The getter returns the PNG file name of the icon in output/icons/.
@@ -74,9 +85,12 @@ export function findRedundantColumns<R>(sheet: string, columns: readonly Column<
  * @sideEffects none
  */
 export function formatColumnWarning(w: ColumnWarning): string {
-  return w.kind === ColumnWarningKind.SingleValue
-    ? `${w.sheet}: column "${w.column}" has 1 value only (${w.value ?? ''})`
-    : `${w.sheet}: column "${w.column}" is the same as "${w.twin ?? ''}"`;
+  switch (w.kind) {
+    case ColumnWarningKind.SingleValue:
+      return `${w.sheet}: column "${w.column}" has 1 value only (${w.value})`;
+    case ColumnWarningKind.Duplicate:
+      return `${w.sheet}: column "${w.column}" is the same as "${w.twin}"`;
+  }
 }
 
 /** What to put in a sheet. */

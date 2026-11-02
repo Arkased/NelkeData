@@ -10,7 +10,6 @@ import { addSheet, formatColumnWarning, type ColumnWarning, type SheetSpec } fro
 import { zoneColumns } from './zoneColumns.js';
 
 const ICON_SIZE = 64;
-const STORY_CATEGORY: string = CharacterCategory.Story;
 
 /** Where to read the game files and where to write the workbook. */
 export interface BuildOptions {
@@ -38,7 +37,7 @@ export async function buildWorkbook(options: BuildOptions): Promise<void> {
   const characterIcon = characterIconOf(game);
   // Story NPCs with no face ("Old Man", "Young Woman") are generic roles, not named characters.
   const isGenericNpc = (c: (typeof characters.characters)[number]): boolean =>
-    c.CHARACTER_CATEGORY_ID === STORY_CATEGORY && !characterIcon(c);
+    c.CHARACTER_CATEGORY_ID === CharacterCategory.Story && !characterIcon(c);
   const nameOf = (c: (typeof characters.characters)[number]): string => characters.characterName.get(c.CHARACTER_ID) ?? '';
 
   const wb = new ExcelJS.Workbook();

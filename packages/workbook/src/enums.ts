@@ -56,5 +56,6 @@ export enum Element {
 
 /** The encounter group types of encount_group.xml that the workbook tells apart. */
 export enum EncounterSymbol {
+  Normal = 'BTL_ENCOUNT_SYMBOL_TYPE_NORMAL',
   Boss = 'BTL_ENCOUNT_SYMBOL_TYPE_BOSS',
 }

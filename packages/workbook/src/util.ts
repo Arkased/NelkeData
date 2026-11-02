@@ -41,6 +41,23 @@ export function range(nums: readonly number[]): string {
 }
 
 /**
+ * Gets the value of a key in a map, adding a new value first when the key is new.
+ * @param map - the map
+ * @param key - the key
+ * @param create - makes the value for a new key
+ * @returns the value of the key
+ * @sideEffects adds the new value to the map when the key has none
+ */
+export function getOrCreate<K, V>(map: Map<K, V>, key: K, create: () => V): V {
+  let value = map.get(key);
+  if (value === undefined) {
+    value = create();
+    map.set(key, value);
+  }
+  return value;
+}
+
+/**
  * Gets the list of a key in a map of lists, adding an empty list first when the key is new.
  * @param map - the map of lists
  * @param key - the key
@@ -48,12 +65,7 @@ export function range(nums: readonly number[]): string {
  * @sideEffects adds an empty list to the map when the key has none
  */
 export function listFor<K, V>(map: Map<K, V[]>, key: K): V[] {
-  let list = map.get(key);
-  if (!list) {
-    list = [];
-    map.set(key, list);
-  }
-  return list;
+  return getOrCreate(map, key, () => []);
 }
 
 /**

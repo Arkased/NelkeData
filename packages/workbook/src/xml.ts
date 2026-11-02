@@ -46,6 +46,21 @@ export function stringShape<K extends string>(keys: readonly K[]): Record<K, z.Z
   return shape as Record<K, z.ZodString>;
 }
 
+/** A value that is not a member of the enum that its field expects. */
+export interface UnknownValue {
+  unknown: string;
+}
+
+/**
+ * Builds a Zod schema for a field that holds a member of a string enum, and keeps any other value as an UnknownValue.
+ * @param members - the string enum
+ * @returns the schema
+ * @sideEffects none
+ */
+export function enumOrUnknown<E extends Record<string, string>>(members: E): z.ZodType<E[keyof E] | UnknownValue> {
+  return z.union([z.enum(members), z.string().transform((unknown): UnknownValue => ({ unknown }))]);
+}
+
 /**
  * Creates a table reader for the extracted saves folder.
  * @param savesDir - the extracted saves folder

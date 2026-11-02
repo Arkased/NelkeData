@@ -1,12 +1,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { z } from 'zod';
+import { IconKind } from './enums.js';
 import { g1tToPng } from './g1t.js';
 
-/** The lists of icon textures that the game UI files define. */
-export enum IconKind {
-  Item = 'item',
-  Npc = 'npc',
-  Monster = 'monster',
+const imageSchema = z.object({ texture: z.string().regex(/^ui\/.+/) });
+
+// Reads the texture file names of the `<image>` elements of a UI style file, in file order.
+function parseImageList(xml: string): string[] {
+  return [...xml.matchAll(/<image ([^>]*?)\/>/g)].map((m) => {
+    const attributes = Object.fromEntries([...(m[1] ?? '').matchAll(/(\w+)="([^"]*)"/g)].map((a) => [a[1] ?? '', a[2] ?? '']));
+    return imageSchema.parse(attributes).texture.slice('ui/'.length);
+  });
 }
 
 const LIST_FILES: Record<IconKind, string> = {
@@ -35,10 +40,7 @@ export function createIconSet(savesDir: string, dataDir: string, size: number): 
   const lists = new Map<IconKind, string[]>();
   for (const kind of Object.values(IconKind)) {
     const xml = fs.readFileSync(path.join(savesDir, 'ui', 'etc', LIST_FILES[kind]), 'utf8');
-    lists.set(
-      kind,
-      [...xml.matchAll(/texture="ui\/([^"]+)"/g)].flatMap((m) => m[1] ?? []),
-    );
+    lists.set(kind, parseImageList(xml));
   }
   const images = new Map<string, Buffer>();
   const missing = new Set<string>();

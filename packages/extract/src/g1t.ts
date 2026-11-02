@@ -1,10 +1,5 @@
+import { TextureFormat } from './enums.js';
 import { encodePng, type RgbaImage } from './png.js';
-
-/** The block compression of a G1T texture. */
-export enum TextureFormat {
-  Dxt1 = 'DXT1',
-  Dxt5 = 'DXT5',
-}
 
 type Rgb = [number, number, number];
 

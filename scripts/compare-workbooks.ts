@@ -1,4 +1,5 @@
-// Usage: tsx scripts/compare-workbooks.ts <baseline.xlsx> <new.xlsx>
+// Usage: tsx scripts/compare-workbooks.ts <baseline.xlsx> <new.xlsx> [result.txt]
+// Writes the same lines to the result file, which defaults to compare-<yyyymmdd-hhmmss>.txt next to the new workbook.
 // Compares the cell values of 2 workbooks sheet by sheet, and the PNG file names in the icons/ folders next to them.
 // Prints each difference and exits with 1 when there is one.
 import fs from 'node:fs';
@@ -50,12 +51,21 @@ function compareIcons(baselineFile: string, newFile: string): string[] {
   ];
 }
 
+function timestamp(now: Date): string {
+  const pad = (n: number): string => String(n).padStart(2, '0');
+  const date = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}`;
+  return `${date}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+}
+
 async function main(): Promise<void> {
-  const [baselineFile, newFile] = process.argv.slice(2);
-  if (!baselineFile || !newFile) throw new Error('usage: compare-workbooks.ts <baseline.xlsx> <new.xlsx>');
+  const [baselineFile, newFile, resultArg] = process.argv.slice(2);
+  if (!baselineFile || !newFile) throw new Error('usage: compare-workbooks.ts <baseline.xlsx> <new.xlsx> [result.txt]');
+  const resultFile = resultArg ?? path.join(path.dirname(newFile), `compare-${timestamp(new Date())}.txt`);
   const diffs = [...(await compareSheets(baselineFile, newFile)), ...compareIcons(baselineFile, newFile)];
-  for (const d of diffs) console.log(d);
-  console.log(diffs.length ? `${diffs.length} differences` : 'no difference');
+  const lines = [...diffs, diffs.length ? `${diffs.length} differences` : 'no difference'];
+  fs.writeFileSync(resultFile, `${lines.join('\n')}\n`);
+  for (const line of lines) console.log(line);
+  console.log(`result written to ${resultFile}`);
   process.exitCode = diffs.length ? 1 : 0;
 }
 

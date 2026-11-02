@@ -89,6 +89,16 @@ const districtSchema = z.object({ COMMERCIAL_DISTRICT_ID: z.string(), COMMERCIAL
 /** A row of recipe.xml. */
 export type Recipe = z.output<typeof recipeSchema>;
 
+/**
+ * Tells whether a material slot of a recipe is empty.
+ * @param slot - the material slot
+ * @returns true for an empty slot
+ * @sideEffects none
+ */
+export function isEmptySlot(slot: Recipe['slots'][number]): boolean {
+  return slot.id === NO_MATERIAL;
+}
+
 /** How a recipe is unlocked. */
 export interface Unlock {
   set: string;
@@ -188,7 +198,7 @@ export function loadRecipes(read: ReadTable, t: (label: string) => string, sourc
   // Recipe economics use the selling price of each item. Elements have no price, so they cost 0.
   // Every recipe gives 1 item, so the output value is the price of the result.
   const priceOf = (id: string): number => Number(itemById.get(id)?.ITEM_SELLING_PRICE ?? 0);
-  const materialsOf = (r: Recipe): Recipe['slots'] => r.slots.filter((m) => m.id !== NO_MATERIAL);
+  const materialsOf = (r: Recipe): Recipe['slots'] => r.slots.filter((m) => !isEmptySlot(m));
   const inputCost = (r: Recipe): number => round(materialsOf(r).reduce((sum, m) => sum + priceOf(m.id) * m.num, 0));
   return {
     recipes,
