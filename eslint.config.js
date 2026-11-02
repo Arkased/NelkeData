@@ -3,7 +3,7 @@ import jsdoc from 'eslint-plugin-jsdoc';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/dist/', 'extracted/', 'output/', 'node_modules/'] },
+  { ignores: ['**/dist/', 'extracted/', 'output/', 'node_modules/', '.claude/'] },
   eslint.configs.recommended,
   tseslint.configs.strictTypeChecked,
   tseslint.configs.stylisticTypeChecked,
