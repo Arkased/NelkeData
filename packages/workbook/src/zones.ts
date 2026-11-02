@@ -32,8 +32,7 @@ const uniqueCollectSchema = z.object({ AREA_TAG: z.string(), ITEM_TAG: z.string(
 const groupSchema = z
   .object({
     ENCOUNT_TABLE: z.string(),
-    // An unknown group type reads as a normal group.
-    ENCOUNT_SYMBOL_TYPE: z.enum(EncounterSymbol).catch(EncounterSymbol.Normal),
+    ENCOUNT_SYMBOL_TYPE: z.enum(EncounterSymbol),
     AREA_TAG: z.string(),
     // A group with fewer than 3 monsters leaves the other slots out.
     MONSTER_00: z.string().default(''),
