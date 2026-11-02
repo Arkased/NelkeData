@@ -16,7 +16,7 @@ The owner accepted these requirements as a draft on 2026-11-02. The final approv
 | Icon grid and modal | A category page shows the game icons of its entities in a grid, in the order of the game. A click on an icon opens the detail in a modal, and the URL changes to the URL of the entity. Back closes the modal. Each entity also has its own page for a direct visit. | A UI test opens an icon, checks the URL, and goes back. |
 | Search | Each category page has a search box. The grid shows only the icons whose English or Japanese name contains the text. The search does not reload the page. | A UI test types a name and finds the icon. |
 | Filters | Each category page has filters. The grid shows only the icons that match all the selected filters. The filters are in the URL. | A UI test selects 2 filters. |
-| Placeholder data | An entity with placeholder data does not show on the site: for example an item with the name "Item 015", or with no name. The workbook keeps it. | A test makes sure that no name on the site matches the placeholder patterns. |
+| Placeholder data | An entity with placeholder data does not show on the site: for example an item with the name "Item 015", or with no name. The workbook drops it too. | A test makes sure that no name on the site matches the placeholder patterns. |
 | Numbers | A rate, a price or a ratio shows with at most 1 decimal, with no floating-point error. | A test of the number format. |
 | Names | The name of an entity shows when the pointer is on its icon, or when the icon has the focus. | A UI test. |
 | Links | Each mention of an entity that has a page is a link to that page. A mention of an entity with no page is plain text. | A build check finds each internal link, and fails when a link has no target. |
@@ -27,7 +27,7 @@ The owner accepted these requirements as a draft on 2026-11-02. The final approv
 
 | Name | Contract | Proof |
 | --- | --- | --- |
-| Item grid | 1 page shows the icons of all items (305 at present, with the placeholder items). There is no separate recipe page. The filters are the item category of the game, the shop that sells the item, and "Craftable" (the items that a recipe makes, 169 at present). The element items are not a separate category. | A UI test selects "Craftable" and finds 1 recipe item. |
+| Item grid | 1 page shows the icons of all items (305 in the game data, with the placeholder items). There is no separate recipe page. The filters are the item category of the game, the shop that sells the item, and "Craftable" (the items that a recipe makes, 169 at present). The element items are not a separate category. | A UI test selects "Craftable" and finds 1 recipe item. |
 | Item detail | The detail shows the name, the description, the category, the price, the shops that sell the item, the farm that grows it, and the elements that the Reduce command gives for it. | A UI test of 1 item with each kind of data. |
 | How to get | The detail shows each source of the item: the areas and spots where you gather it, with the rate and the task that opens the area; the monsters that drop it, with quantity and rate. Each area and monster is a link. | A UI test of 1 gather item and 1 drop. |
 | Used in | The detail shows each item that uses the item as a material in its recipe, with the quantity, as links. | A UI test of 1 material. |

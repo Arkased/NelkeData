@@ -13,7 +13,7 @@ The first HTML prototype (#11) drew each UI element with a game texture, and fil
 - A clear and organized view of the data comes first. The site uses the game parts where they make the data clear: the panels, the name plates, the header bars, the icons and the friendship hearts. Where a game part makes the data harder to read, the site uses a plain element in the colors of the game.
 - A category page has filters, not tabs. The filters of the items are the item category and the shop. 2 or more filters combine.
 - The element items are not a separate category.
-- Entities with placeholder data (for example the items with the name "Item 015") do not show on the site. The workbook keeps them.
+- Entities with placeholder data (for example the items with the name "Item 015") do not show on the site or in the workbook. The owner said: "the workbook does not need to be different".
 
 This supersedes the rule of [decision 0004](0004-game-ui-style.md) that the site draws each part with a game texture, and the tabs of [decision 0005](0005-icon-grids.md). The icon grids, the game panels for the details and the rule of no tables stay.
 
