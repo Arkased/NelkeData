@@ -82,6 +82,13 @@ export function auditFn() {
     if (!e.children.length && !e.textContent.trim()) out.empty.push(desc(e));
   }
   // ---- round 4: the mechanical rules of the UI standard ----
+  // No internal id of the game files (EVENT_MM00_110) in any visible text, tooltip, label or placeholder.
+  const ID_RE = /\b[A-Z][A-Z0-9]+(_[A-Z0-9]+)+\b/;
+  out.ids = [];
+  for (const e of document.querySelectorAll('[data-tip], [aria-label], [placeholder], [title], img[alt]')) {
+    if (!vis(e)) continue;
+    for (const a of ['data-tip', 'aria-label', 'placeholder', 'title', 'alt']) if (ID_RE.test(e.getAttribute(a) || '')) out.ids.push(`internal id in ${a}: ${desc(e)}`);
+  }
   Object.assign(out, { captions: [], banned: [], money: [], units: [], images: [], tiles: [], spacing: [], fonts: [] });
   // 1. banned text. A multiplier is written ×1.25, never 1.25x or x3.
   const BANNED = /\bQty\b|\bNeeds\b|(^|\s)x\d|\d(\.\d+)?x\b|game units|opens after|open from the start|Scroll sideways|\d+ of \d+ items|Element rating|Friendship needed/;
@@ -92,6 +99,7 @@ export function auditFn() {
     const s = n.textContent.trim();
     if (!s) continue;
     if (BANNED.test(s)) out.banned.push(`"${s.slice(0, 40)}" in ${desc(el)}`);
+    if (ID_RE.test(s)) out.ids.push(`internal id "${s.slice(0, 40)}" in ${desc(el)}`);
     // every % is a rate with the format N%
     if (/\d%/.test(s) && !el.closest('.rate, .name, .node, .link, .lt, .desc, .person')) out.units.push(`% outside .rate: "${s.slice(0, 40)}"`);
   }
@@ -128,7 +136,8 @@ export function auditFn() {
   }
   // 4b. every mention of an item, a monster, a character or a research has its icon, also a link inside a text
   for (const e of document.querySelectorAll('a[href^="#/items/"], a[href^="#/monsters/"], a[href^="#/characters/"], a[href^="#/research/"]')) {
-    if (!vis(e) || /^#\/research\/[a-z]+$/.test(e.getAttribute('href'))) continue;
+    // A research has no icon in the game, so the research card of a character shows its name and its tree.
+    if (!vis(e) || e.matches('.rcard') || /^#\/research\/[a-z]+$/.test(e.getAttribute('href'))) continue;
     const im = e.querySelector('img');
     if (!im || !im.complete || im.naturalWidth === 0) out.images.push(`entity mention without icon: ${desc(e)}`);
   }

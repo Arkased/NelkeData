@@ -46,12 +46,52 @@ async function navTo(label) {
   await page.locator('#nav a', { hasText: label }).click();
 }
 
+/** Below 600 px the filter groups are behind the "Filters" button: opens them. */
+async function openFilters() {
+  if (width >= 600) return;
+  if ((await page.locator('#ftoggle').getAttribute('aria-expanded')) !== 'true') await page.locator('#ftoggle').click();
+}
+
 await step('home', async () => {
   await go('#/home');
   await page.waitForSelector('.home .card');
   ok((await page.locator('.home .card').count()) === 5, '5 category cards');
   ok((await page.locator('.nav img').count()) === 5, 'nav has 5 icons');
+  const cards = await page.evaluate(() => [...document.querySelectorAll('.home .card')].map((c) => { const r = c.getBoundingClientRect(); const ic = c.querySelector('.card-ic').getBoundingClientRect(); const tx = c.querySelector('.card-tx b').getBoundingClientRect(); return { w: r.width, h: r.height, ic: ic.top - r.top + ic.height / 2 - r.height / 2, tx: tx.top - r.top }; }));
+  const spread = (k) => Math.max(...cards.map((c) => c[k])) - Math.min(...cards.map((c) => c[k]));
+  ok(spread('w') < 1 && spread('h') < 1, `5 cards have the same size (${cards[0].w.toFixed(0)} x ${cards[0].h.toFixed(0)})`);
+  ok(spread('ic') < 1 && spread('tx') < 1, 'icon and title are at the same place in each card');
 });
+
+await step('background covers the full page height', async () => {
+  await go('#/areas');
+  await page.waitForSelector('.zone');
+  const r = await page.evaluate(() => { const h = document.documentElement.getBoundingClientRect().height; const bs = getComputedStyle(document.documentElement); return { h, inner: innerHeight, img: bs.backgroundImage.includes('bg-town-tile'), repeat: bs.backgroundRepeat.includes('repeat-y'), fixed: bs.backgroundAttachment.includes('fixed') }; });
+  ok(r.img && r.repeat && !r.fixed, `background is on the page and repeats down (page ${Math.round(r.h)} px, viewport ${r.inner} px)`);
+});
+
+if (width < 600) {
+  await step('filters behind 1 button below 600 px', async () => {
+    await go('#/items');
+    await page.waitForSelector('#grid .cell');
+    ok(await page.locator('#ftoggle').isVisible() && !(await page.locator('[data-shop]').first().isVisible()), 'Filters button shows and the groups are closed');
+    const top = await page.evaluate(() => document.querySelector('.toolbar').getBoundingClientRect().height);
+    ok(top < 160, `closed toolbar is small (${Math.round(top)} px)`);
+    await go('#/items?cat=Material,Merchandise&craft=1');
+    await page.waitForSelector('#grid .cell');
+    ok((await page.locator('#ftoggle .badge').innerText()) === '3', 'badge shows 3 active filters');
+    ok(!(await page.locator('[data-cat]').first().isVisible()), 'closed by default with filters in the URL');
+    await page.locator('#ftoggle').click();
+    ok(await page.locator('[data-cat]').first().isVisible(), 'the button opens the groups');
+    ok((await hash()).includes('cat=Material%2CMerchandise') && (await hash()).includes('craft=1'), 'URL state is unchanged');
+  });
+} else {
+  await step('filters are visible from 600 px', async () => {
+    await go('#/items');
+    await page.waitForSelector('#grid .cell');
+    ok(!(await page.locator('#ftoggle').isVisible()) && (await page.locator('[data-shop]').first().isVisible()), 'no Filters button, groups visible');
+  });
+}
 
 await step('items page loads', async () => {
   await go('#/items');
@@ -65,6 +105,9 @@ await step('items page loads', async () => {
 });
 
 await step('toggle each filter group', async () => {
+  await go('#/items');
+  await page.waitForSelector('#grid .cell');
+  await openFilters();
   const n0 = await page.locator('#grid .cell').count();
   await page.locator('[data-cat=Material]').click();
   const nMat = await page.locator('#grid .cell').count();
@@ -241,6 +284,7 @@ await step('monsters page and modal', async () => {
   await page.waitForSelector('#grid .cell');
   const n = await page.locator('#grid .cell').count();
   ok(n === (await page.evaluate(() => Object.keys(window.DATA.monsters).length)), `${n} monster cells`);
+  await openFilters();
   await page.locator('[data-mk=boss]').click();
   const nb = await page.locator('#grid .cell').count();
   ok(nb > 0 && nb < n, `boss filter: ${nb}`);
@@ -267,6 +311,7 @@ await step('characters page and modal', async () => {
   await navTo('Characters');
   await page.waitForSelector('#grid .cell');
   const n = await page.locator('#grid .cell').count();
+  await openFilters();
   await page.locator('[data-ck=Alchemist]').click();
   const na = await page.locator('#grid .cell').count();
   ok(na > 0 && na < n, `type filter: ${na} of ${n}`);
@@ -276,7 +321,7 @@ await step('characters page and modal', async () => {
   ok((await page.locator('.modal .top').count()) === 1, 'character modal');
   const names = await page.evaluate(() => window.DATA.chars.map((c) => c.n));
   ok(new Set(names).size === names.length, 'no 2 characters with the same name');
-  ok((await page.locator('.modal .bar', { hasText: 'Research' }).count()) === 1 && (await page.locator('.modal a.mini[href^="#/research/"] img').count()) > 0, 'research cards have their icon');
+  ok((await page.locator('.modal .bar', { hasText: 'Research' }).count()) === 1 && (await page.locator('.modal a.rcard').count()) > 0 && (await page.locator('.modal a.mini[href^="#/research/"]').count()) === 0, 'research cards show the name and the tree, with no repeated face');
 });
 await closeEsc();
 await step('character with aptitudes, skills and join conditions', async () => {
@@ -285,6 +330,9 @@ await step('character with aptitudes, skills and join conditions', async () => {
   const t = await page.locator('.modal-body').innerText();
   ok(/Aptitudes/i.test(t) && /Skills/i.test(t) && /Joins the town/i.test(t), 'aptitudes, skills and join sections');
   ok(/Lv \d+/.test(t) && /Town population/i.test(t) && /Turn \d+/.test(t) && /not confirmed/i.test(t), 'skill level, population, turn marked not confirmed');
+  ok(/Learned at an event/i.test(t) && !/\b[A-Z][A-Z0-9]+(_[A-Z0-9]+)+\b/.test(t), 'event skill reads "Learned at an event", no internal id');
+  const teach = await page.evaluate(() => [...document.querySelectorAll('.modal .bar')].filter((b) => /^Teaches/.test(b.textContent)).length);
+  ok(teach <= 1, `at most 1 Teaches section (${teach})`);
 });
 await closeEsc();
 

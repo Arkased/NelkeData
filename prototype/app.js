@@ -70,6 +70,8 @@
     FISH: { label: 'Fishing', unit: 'Spot' },
   };
   const GIMMICK_ORDER = ['BOX', 'BUG', 'DIG', 'FISH'];
+  /** An internal id of the game files (EVENT_MM00_110): it never shows to the user. */
+  const INTERNAL_ID = /\b[A-Z][A-Z0-9]+(_[A-Z0-9]+)+\b/;
   const CHAR_TYPES = ['Main', 'Story', 'Alchemist', 'Townsfolk', 'Fairy'];
 
   let base = null; // { view, key, hash, tree }
@@ -132,6 +134,15 @@
   const searchBox = (q, ph) => `<label class="search">${catImg(9)}<input type="search" id="q" placeholder="${ph}" value="${esc(q)}" autocomplete="off" aria-label="Search by name"></label>`;
   /** The unlock of a zone: "From the start", or "After task N" with the name of the task. */
   const opens = (z) => (z.task ? `After task ${z.task}${z.taskName ? `: ${z.taskName}` : ''}` : 'From the start');
+  /** Below 600 px the filter groups are behind this button (CSS); the badge shows the number of active filters. */
+  const filtersBtn = () => '<button class="btn ftoggle" id="ftoggle" aria-expanded="false" aria-controls="fpanel"><span>Filters</span><b class="badge" hidden>0</b></button>';
+  const setFilterCount = (n) => {
+    const b = $('#ftoggle .badge');
+    b.hidden = !n;
+    b.textContent = n;
+    $('#ftoggle').setAttribute('aria-label', n ? `Filters, ${n} active` : 'Filters');
+  };
+  const wireFilters = () => $('#ftoggle').addEventListener('click', () => $('#ftoggle').setAttribute('aria-expanded', $('.toolbar').classList.toggle('fopen')));
   const tg = (attr, val, label, on, ic) => `<button class="toggle" ${attr}="${esc(val)}" aria-pressed="${on}">${ic || ''}<span>${esc(label)}</span></button>`;
 
   // ---------- tooltip ----------
@@ -203,16 +214,17 @@
     const shopsUsed = Object.keys(SHOP).filter((s) => D.items.some((i) => i.shops.includes(s)));
     $('#main').innerHTML = `
       <div class="toolbar">
-        <div class="srow">${searchBox(st.q, 'Search items')}<button class="btn" id="reset" hidden>Clear filters</button></div>
-        <div class="fgroup"><span class="cap">Category</span><div class="opts">${CATS.map((c) => tg('data-cat', c, c, st.cat.includes(c), catImg(CAT_ICON[c]))).join('')}</div></div>
+        <div class="srow">${searchBox(st.q, 'Search items')}${filtersBtn()}<button class="btn" id="reset" hidden>Clear filters</button></div>
+        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Category</span><div class="opts">${CATS.map((c) => tg('data-cat', c, c, st.cat.includes(c), catImg(CAT_ICON[c]))).join('')}</div></div>
         <div class="fgroup"><span class="cap">Sold at</span><div class="opts">${shopsUsed.map((s) => tg('data-shop', s, SHOP[s].label, st.shop.includes(s), `<img class="cat" src="img/ui/${SHOP[s].img}.png" alt="">`)).join('')}</div></div>
-        <div class="fgroup"><span class="cap">Synthesis</span><div class="opts">${tg('data-craft', '1', 'Craftable', st.craft, catImg(CAT_ICON.craft))}</div></div>
+        <div class="fgroup"><span class="cap">Synthesis</span><div class="opts">${tg('data-craft', '1', 'Craftable', st.craft, catImg(CAT_ICON.craft))}</div></div></div>
       </div>
       <div class="gridwrap bi u p-cream"><div class="grid" id="grid"></div></div>`;
     const draw = () => {
       const list = filterItems();
       const qs = qsOf();
       $('#reset').hidden = !qs;
+      setFilterCount(st.cat.length + st.shop.length + (st.craft ? 1 : 0));
       $('#grid').innerHTML = list.length
         ? list.map((i) => ent({ href: `#/items/${i.id}${qs}`, icon: i.icon, name: i.n, cls: 'cell' })).join('')
         : `<div class="empty">Nothing matches the filters.</div>`;
@@ -227,6 +239,7 @@
     const flip = (arr, v) => (arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
     const clear = () => { st.cat = []; st.shop = []; st.craft = false; st.q = ''; $('#q').value = ''; draw(); };
     draw();
+    wireFilters();
     $('#q').addEventListener('input', (e) => { st.q = e.target.value; draw(); });
     $('.toolbar').addEventListener('click', (e) => {
       const b = e.target.closest('.toggle');
@@ -264,8 +277,8 @@
   function monstersPage() {
     $('#main').innerHTML = `
       <div class="toolbar">
-        ${searchBox(st.mq, 'Search monsters')}
-        <div class="fgroup"><span class="cap">Type</span><div class="opts">${[['', 'All'], ['monster', 'Monsters'], ['boss', 'Bosses']].map(([v, l]) => tg('data-mk', v, l, st.mk === v)).join('')}</div></div>
+        <div class="srow">${searchBox(st.mq, 'Search monsters')}${filtersBtn()}</div>
+        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Type</span><div class="opts">${[['', 'All'], ['monster', 'Monsters'], ['boss', 'Bosses']].map(([v, l]) => tg('data-mk', v, l, st.mk === v)).join('')}</div></div></div>
       </div>
       <div class="gridwrap bi u p-cream"><div class="grid" id="grid"></div></div>`;
     const draw = () => {
@@ -273,8 +286,10 @@
       const list = Object.entries(D.monsters).filter(([, m]) => (!st.mk || (st.mk === 'boss') === m.boss) && (!q || m.n.toLowerCase().includes(q)));
       $('#grid').innerHTML = list.length ? list.map(([id, m]) => ent({ href: `#/monsters/${id}`, icon: m.icon, name: m.n, cls: `cell${m.boss ? ' boss' : ''}` })).join('') : '<div class="empty">Nothing matches the filters.</div>';
       document.querySelectorAll('.toolbar [data-mk]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.mk === st.mk));
+      setFilterCount(st.mk ? 1 : 0);
     };
     draw();
+    wireFilters();
     $('#q').addEventListener('input', (e) => { st.mq = e.target.value; draw(); });
     $('.toolbar').addEventListener('click', (e) => { const b = e.target.closest('[data-mk]'); if (b) { st.mk = b.dataset.mk; draw(); } });
   }
@@ -282,8 +297,8 @@
     const types = CHAR_TYPES.filter((t) => D.chars.some((c) => c.type === t));
     $('#main').innerHTML = `
       <div class="toolbar">
-        ${searchBox(st.cq, 'Search characters')}
-        <div class="fgroup"><span class="cap">Type</span><div class="opts">${types.map((t) => tg('data-ck', t, t, st.ck.includes(t))).join('')}</div></div>
+        <div class="srow">${searchBox(st.cq, 'Search characters')}${filtersBtn()}</div>
+        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Type</span><div class="opts">${types.map((t) => tg('data-ck', t, t, st.ck.includes(t))).join('')}</div></div></div>
       </div>
       <div class="gridwrap bi u p-cream"><div class="grid" id="grid"></div></div>`;
     const draw = () => {
@@ -291,8 +306,10 @@
       const list = D.chars.filter((c) => (!st.ck.length || st.ck.includes(c.type)) && (!q || c.n.toLowerCase().includes(q)));
       $('#grid').innerHTML = list.length ? list.map((c) => ent({ href: `#/characters/${c.id}`, icon: c.icon, name: c.n, cls: 'cell' })).join('') : '<div class="empty">Nothing matches the filters.</div>';
       document.querySelectorAll('.toolbar [data-ck]').forEach((b) => b.setAttribute('aria-pressed', st.ck.includes(b.dataset.ck)));
+      setFilterCount(st.ck.length);
     };
     draw();
+    wireFilters();
     $('#q').addEventListener('input', (e) => { st.cq = e.target.value; draw(); });
     $('.toolbar').addEventListener('click', (e) => { const b = e.target.closest('[data-ck]'); if (b) { st.ck = st.ck.includes(b.dataset.ck) ? st.ck.filter((x) => x !== b.dataset.ck) : [...st.ck, b.dataset.ck]; draw(); } });
   }
@@ -392,7 +409,8 @@
       if (u.teacher) bits.push(ul('Taught by', `<span class="uv">${slot({ icon: u.tIcon, tip: u.teacher })}<span>${esc(u.teacher)}</span>${u.friendship > 0 ? heart(u.friendship) : ''}</span>`));
       if (s.researchId) bits.push(ul(`Research${u.researcher ? ` (${u.researcher})` : ''}`, `<span class="uv">${icoLink(`#/research/${RS[s.researchId].tree}/${s.researchId}`, resIcon(RS[s.researchId]), u.research || RS[s.researchId].n)}</span>`));
       else if (u.research) bits.push(ul('Research', `<span class="uv">${esc(u.research)}</span>`));
-      if (u.event) bits.push(ul('Event', `<span class="uv">${esc(u.event)}</span>`));
+      // An event with no name in the game files is an internal id: it shows as "An event", never as the id.
+      if (u.event) bits.push(ul('Event', `<span class="uv">${INTERNAL_ID.test(u.event) ? 'An event' : esc(u.event)}</span>`));
     }
     h += `${bits.length ? `<div class="unlock">${bits.join('')}</div>` : ''}</div></div>`;
     return h;
@@ -520,23 +538,29 @@
     if (c.desc) h += `<p class="desc">${esc(c.desc)}</p>`;
     if (c.apt.length) h += bar('Aptitudes') + `<div class="chips">${c.apt.map((a) => `<span class="chip">${esc(a)}</span>`).join('')}</div>`;
     if (c.skills.length) {
-      h += bar('Skills') + `<div class="cols">${c.skills.map((s) => `<div class="link plain"><span class="lt"><b>${esc(s.n)}</b>${s.ev ? cap('Learned at event') : ''}</span>${s.ev ? `<span class="evid">${esc(s.ev)}</span>` : `<span class="pct">Lv ${s.lv}</span>`}</div>`).join('')}</div>`;
+      h += bar('Skills') + `<div class="cols">${c.skills.map((s) => `<div class="link plain"><span class="lt"><b>${esc(s.n)}</b>${s.ev ? cap('Learned at an event') : ''}</span>${s.ev ? '' : `<span class="pct">Lv ${s.lv}</span>`}</div>`).join('')}</div>`;
     }
     if (c.join) {
+      // The event of the join is an internal id with no player-facing name in the game files, so it does not show.
       const j = c.join;
       const st = (label, v) => `<div class="stat">${cap(label)}<span>${v}</span></div>`;
-      h += bar('Joins the town') + `<div class="crumb left">${[
-        j.event ? st('Event', `<span class="evid">${esc(j.event)}</span>`) : '',
+      const stats = [
         j.pop ? st('Town population', `${fmt(j.pop)} ${j.pop === 1 ? 'person' : 'people'}`) : '',
         j.turn ? st('Turn (not confirmed)', `Turn ${j.turn}`) : '',
-      ].join('')}</div>`;
+      ].filter(Boolean);
+      if (stats.length) h += bar('Joins the town') + `<div class="crumb left">${stats.join('')}</div>`;
     }
+    // The game has no icon for a research (the tree cells show state icons only), so a research is a card with its name and its tree.
     const rs = Object.values(RS).filter((r) => r.who.some((w) => w.id === c.id));
-    if (rs.length) h += bar('Research') + `<div class="minis">${rs.map((r) => resEnt(r.id)).join('')}</div>`;
-    // The recipe sets that the character teaches, with the items that their recipes make.
+    if (rs.length) {
+      h += bar('Research') + `<div class="cols">${rs.map((r) => `<a class="link rcard" href="#/research/${r.tree}/${r.id}"><span class="lt"><b>${esc(r.n)}</b><small>${esc(TREES.find((t) => t.key === r.tree).label)}</small></span></a>`).join('')}</div>`;
+    }
+    // The recipe sets that the character teaches, with the items that their recipes make: 1 section, 1 label for each set.
     const taught = D.items.filter((i) => i.syn && i.syn.unlock && i.syn.unlock.teacher === c.nr);
-    const sets = Object.groupBy(taught, (i) => i.syn.unlock.set || '');
-    for (const [set, list] of Object.entries(sets)) h += bar(set ? `Teaches: ${set}` : 'Teaches') + `<div class="minis">${list.map((i) => itemEnt(i.id)).join('')}</div>`;
+    const sets = Object.entries(Object.groupBy(taught, (i) => i.syn.unlock.set || ''));
+    if (sets.length) {
+      h += bar('Teaches') + `<div class="sets">${sets.map(([set, list]) => `<div class="tbl${list.length > 1 ? ' multi' : ''}">${set ? cap(set) : ''}<div class="row">${list.map((i) => itemEnt(i.id)).join('')}</div></div>`).join('')}</div>`;
+    }
     return h;
   }
 
