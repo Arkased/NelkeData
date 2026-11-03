@@ -88,7 +88,7 @@ export function auditFn() {
     }
   }
   for (const i of document.images) if (i.complete && i.naturalWidth === 0) out.brokenImg.push(i.src.slice(-50));
-  for (const e of document.querySelectorAll('.grp, .minis, .row, .cols, .syn-val, .unlock, .tbl, .ledger, .areas, .opts, .zone-in, .facts, .syn-top, .syn-body, .who, main > *')) {
+  for (const e of document.querySelectorAll('.grp, .minis, .row, .cols, .syn-stats, .panel-cols, .col, .unlock, .tbl, .areas, .opts, .zone-in, .facts, .who, main > *')) {
     if (!e.children.length && !e.textContent.trim()) out.empty.push(desc(e));
   }
   // ---- round 4: the mechanical rules of the UI standard ----
@@ -101,7 +101,7 @@ export function auditFn() {
   }
   Object.assign(out, { captions: [], banned: [], money: [], units: [], images: [], tiles: [], spacing: [], fonts: [] });
   // 1. banned text. A multiplier is written ×1.25, never 1.25x or x3.
-  const BANNED = /\bQty\b|\bNeeds\b|(^|\s)x\d|\d(\.\d+)?x\b|game units|opens after|open from the start|Scroll sideways|\d+ of \d+ items|Element rating|Friendship needed/;
+  const BANNED = /\b\d+ (needed|per drop|given)\b|\bQty\b|\bNeeds\b|(^|\s)x\d|\d(\.\d+)?x\b|game units|opens after|open from the start|Scroll sideways|\d+ of \d+ items|Element rating|Friendship needed/;
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   for (let n = walker.nextNode(); n; n = walker.nextNode()) {
     const el = n.parentElement;
@@ -123,14 +123,31 @@ export function auditFn() {
     if (!im || !/cost\.png$/.test(im.getAttribute('src')) || !/^-?\d[\d,]*(\.\d)?$/.test(e.textContent.trim())) out.money.push(`synthesis cost without icon or number: ${desc(e)}`);
   }
   for (const e of document.querySelectorAll('.lr .val')) if (!e.querySelector('.money, .cost')) out.money.push(`ledger value without unit: ${desc(e)}`);
-  for (const e of document.querySelectorAll('.bigstat b')) if (!e.querySelector('.money, .cost') && !/^\d+ turns?$/.test(e.textContent.trim())) out.units.push(`stat is not money, cost or "N turns": ${desc(e)}`);
+  for (const e of document.querySelectorAll('.who .stat')) if (!e.querySelector('.money, .cost, .fr') && !/^\d+ turns?$/.test(e.querySelector('b')?.textContent.trim() ?? '')) out.units.push(`stat is not money, friendship or "N turns": ${desc(e)}`);
   for (const e of document.querySelectorAll('.fr')) if (!e.querySelector('img[src$="fav-icon.png"]') || !/^\d+$/.test(e.textContent.trim())) out.units.push(`friendship without heart or number: ${desc(e)}`);
   // 3. unit formats
   for (const e of document.querySelectorAll('.rate')) if (!/^\d+(\.\d)?%$/.test(e.textContent.trim())) out.units.push(`rate format: "${e.textContent.trim()}"`);
   for (const e of document.querySelectorAll('.mini small')) {
     if (e.querySelector('.rate')) continue;
     const s = e.textContent.trim();
-    if (!/^\d[\d,]* (needed|given)$/.test(s) && !/^\d[\d,]* per drop · \d+(\.\d)?%$/.test(s) && !/^Lv \d+(-\d+)?$/.test(s)) out.units.push(`tile value format: "${s}" in ${desc(e.parentElement)}`);
+    if (!/^Lv \d+(-\d+)?$/.test(s)) out.units.push(`tile value format: "${s}" in ${desc(e.parentElement)}`);
+  }
+  // The quantity of an item is a badge "×N" (N of 2 or more) on the bottom right corner of the item icon.
+  for (const e of document.querySelectorAll('.qty')) {
+    const t = e.textContent.trim();
+    if (!/^×\d+$/.test(t) || Number(t.slice(1)) < 2) out.units.push(`quantity badge format: "${t}"`);
+    const sl = e.parentElement.getBoundingClientRect(), b = e.getBoundingClientRect();
+    if (!e.parentElement.matches('.slot') || b.right > sl.right + 1 || b.bottom > sl.bottom + 1 || sl.right - b.right > 8 || sl.bottom - b.bottom > 8) out.units.push(`quantity badge is not on the bottom right corner of the icon: "${t}"`);
+  }
+  // The values of the synthesis stats have their unit.
+  for (const e of document.querySelectorAll('.syn-stats .val')) if (!e.querySelector('.money, .cost')) out.money.push(`synthesis value without unit: ${desc(e)}`);
+  // From 768 px the header row of a research detail (the researchers, the friendship, the stats) is 1 row: its children have the same top (±4 px).
+  out.rows = [];
+  if (innerWidth >= 768) {
+    for (const row of document.querySelectorAll('.modal .who')) {
+      const tops = [...row.children].filter(vis).map((k) => k.getBoundingClientRect().top);
+      if (tops.length && Math.max(...tops) - Math.min(...tops) > 4) out.rows.push(`header row is not 1 row: tops ${tops.map(Math.round).join(',')}`);
+    }
   }
   // A tile has at most 1 value line, and the line does not wrap.
   for (const e of document.querySelectorAll('.mini')) {
@@ -139,7 +156,7 @@ export function auditFn() {
     for (const sm of smalls) if (sm.getBoundingClientRect().height > parseFloat(getComputedStyle(sm).lineHeight) * 1.5) out.tiles.push(`tile value wraps: "${sm.textContent.trim()}"`);
   }
   // 4. every entity link and tile has an image that loaded
-  for (const e of document.querySelectorAll('.mini, a.slot, .node, .elm, .shop, .person, .card')) {
+  for (const e of document.querySelectorAll('.mini, a.slot, .node, .el, .shop, .person, .card')) {
     if (!vis(e)) continue;
     const im = e.querySelector('img');
     if (!im || !im.complete || im.naturalWidth === 0) out.images.push(`no loaded image: ${desc(e)}`);
@@ -169,7 +186,7 @@ export function auditFn() {
     if (ws.length > 1 && Math.max(...ws) - Math.min(...ws) > 1) out.tiles.push(`uneven tiles ${Math.min(...ws).toFixed(1)}..${Math.max(...ws).toFixed(1)} in ${desc(p)}`);
   }
   // 7. paddings, margins and gaps of the containers are multiples of 4 px
-  const SP = '.page, .hdr-bar, .nav, .nav a, .toolbar, .srow, .search, .fgroup, .opts, .toggle, .btn, .stat, .ul, .uv, .gridwrap, .grid, .mini, .zones, .zone-in, .zone-head, .areas, a.area, .modal-body, .mhead, .name, .bar, .grp, .gh, .minis, .cols, .row, .link, .chip, .chips, .desc, .top, .facts, .sold, .shop, .reduce, .el, .money, .cost, .fr, .syn, .syn-top, .syn-body, .syn-val, .ledger, .lr, .unlock, .ul, .uv, .bigstat, .disp, .dcol, .elms, .elm, .drs, .dr, .who, .need, .person, .conds, .crumb, .diffline, .diffs, .diff, .home, a.card, .card-tx, .treein, .treescroll, .node, #main, #main > *';
+  const SP = '.page, .hdr-bar, .nav, .nav a, .toolbar, .srow, .search, .fgroup, .opts, .toggle, .btn, .stat, .ul, .uv, .gridwrap, .grid, .mini, .zones, .zone-in, .zone-head, .areas, a.area, .modal-body, .mhead, .name, .bar, .grp, .gh, .minis, .cols, .row, .link, .chip, .chips, .desc, .top, .facts, .sold, .shop, .reduce, .el, .money, .cost, .fr, .syn, .syn-stats, .panel, .panel-head, .panel-cols, .col, .jn, .qty, .unlock, .ul, .uv, .disp, .dcol, .drs, .dr, .who, .need, .person, .conds, .crumb, .diffline, .diffs, .diff, .home, a.card, .card-tx, .treein, .treescroll, .node, #main, #main > *';
   const ok4 = (v) => v === 'normal' || v === 'auto' || (Number.isFinite(parseFloat(v)) && Math.abs(parseFloat(v) / 4 - Math.round(parseFloat(v) / 4)) < 0.001);
   for (const e of document.querySelectorAll(SP)) {
     if (!vis(e)) continue;
@@ -231,6 +248,10 @@ export const pick = (page) =>
       charFull: D.chars.find((c) => c.apt.length && c.skills.some((s) => s.ev) && c.join && c.join.pop > 0 && c.join.turn > 0) || D.chars.find((c) => c.apt.length && c.skills.length && c.join && c.join.pop > 0),
       resFriend,
       resCond,
+      charStory: D.chars.find((c) => c.n === 'Gino'),
+      charAlone: D.chars.find((c) => c.join && c.join.story && !c.join.with.length),
+      charPop: D.chars.find((c) => c.join && !c.join.story && c.join.pop > 0),
+      dusky: Object.values(D.research).find((r) => r.n === 'Dusky Barrier Breaker'),
     };
     return Object.fromEntries(Object.entries({ ...names, ...extra }).map(([k, v]) => [k, v ? { id: v.id, n: v.n } : null]));
   });
