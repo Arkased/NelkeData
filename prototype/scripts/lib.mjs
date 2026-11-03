@@ -186,25 +186,35 @@ export function auditFn() {
     const near = ((e.textContent || '') + ' ' + (e.parentElement?.textContent || '')).toLowerCase();
     if (tipText && near.includes(tipText)) out.tooltips.push(`tooltip repeats visible text "${tipText}": ${desc(e)}`);
   }
-  // Round 6: the text in the header bar, the section bars and the name plates has the same space above and below it (within 2 px), measured on the visible part of the texture, and it does not touch the ornaments.
-  // The visible part of bar-brown.png is rows 22..97 of 107, of plate-gold.png rows 5..130 of 142.
+  // Round 6: the text in the header bar, the section titles, the names and the buttons has the same space above and below it (within 2 px), measured inside the border box.
   out.titles = [];
-  for (const e of document.querySelectorAll('.hdr-bar, .bar, .zone-head, .name, a.area')) {
+  for (const e of document.querySelectorAll('.hdr-bar, .bar, .name, a.area, .btn:not(.close), .toggle, .nav a, .menu-btn')) {
     if (!vis(e)) continue;
-    const gold = e.matches('.name, a.area');
-    const [top, bot, full] = gold ? [5, 130, 142] : [22, 97, 107];
     const r = e.getBoundingClientRect();
-    const sc = parseFloat(getComputedStyle(e).getPropertyValue('--s'));
+    const cs = getComputedStyle(e);
     const range = document.createRange();
     range.selectNodeContents(e.matches('.hdr-bar') ? e.querySelector('.site-name') : e);
     const t = range.getBoundingClientRect();
     if (!t.height) continue;
-    // the top and the bottom of the texture are drawn at the edges of the border box
-    const above = t.top - (r.top + top * sc), below = r.bottom - (full - bot) * sc - t.bottom;
+    const above = t.top - (r.top + parseFloat(cs.borderTopWidth)), below = r.bottom - parseFloat(cs.borderBottomWidth) - t.bottom;
     if (Math.abs(above - below) > 2) out.titles.push(`text space above ${above.toFixed(1)} / below ${below.toFixed(1)}: ${desc(e)}`);
-    if (above < 2 || below < 2) out.titles.push(`text too close to the edge of the bar (${above.toFixed(1)} / ${below.toFixed(1)}): ${desc(e)}`);
-    const orn = (gold ? 90 : 80) * sc;
-    if (t.left < r.left + orn - 1 || t.right > r.right - orn + 1) out.titles.push(`text touches the ornaments: ${desc(e)}`);
+    if (above < 2 || below < 2) out.titles.push(`text too close to the edge (${above.toFixed(1)} / ${below.toFixed(1)}): ${desc(e)}`);
+  }
+  // Title styles: a section title (.bar) is 700; a sub-title (.sub) is not larger than a section title; a zone name has no fill.
+  out.styles = [];
+  const barSize = parseFloat(getComputedStyle(document.querySelector('.bar') || document.body).fontSize);
+  for (const e of document.querySelectorAll('.bar')) if (vis(e) && getComputedStyle(e).fontWeight !== '700') out.styles.push(`section title weight ${getComputedStyle(e).fontWeight}: ${desc(e)}`);
+  for (const e of document.querySelectorAll('.sub')) if (vis(e) && parseFloat(getComputedStyle(e).fontSize) > barSize) out.styles.push(`sub-title larger than a section title: ${desc(e)}`);
+  for (const e of document.querySelectorAll('.zone-name, .zone-name *')) if (vis(e) && getComputedStyle(e).backgroundColor !== 'rgba(0, 0, 0, 0)') out.styles.push(`zone name with a background ${getComputedStyle(e).backgroundColor}: ${desc(e)}`);
+  const tb = document.querySelector('.treebox'), tp = document.querySelector('.toolbar');
+  if (tb && tp && Math.abs(tb.getBoundingClientRect().right - tp.getBoundingClientRect().right) > 1) out.styles.push(`tree box right ${tb.getBoundingClientRect().right} != panel right ${tp.getBoundingClientRect().right}`);
+  // Decision 0009: no game UI texture for a frame part. No computed background image, border image or image source names one.
+  out.textures = [];
+  const TEX = /bg-town|panel-(star|cream|tan|note|notebook|scroll|w01)|popup-crest|corner[-_a-z0-9]*\.png|\bplate-|\bbar-(brown|bronze)|\bbtn-(brown|cream|gold)|\btabw?-(on|off)|frame\.png|glow\.png|highlight\.png/;
+  for (const e of document.querySelectorAll('body, body *, html')) {
+    const cs = getComputedStyle(e);
+    for (const k of ['backgroundImage', 'borderImageSource', 'listStyleImage', 'maskImage']) if (TEX.test(cs[k])) out.textures.push(`${k} is a frame texture: ${desc(e)}`);
+    if (e.tagName === 'IMG' && TEX.test(e.getAttribute('src') || '')) out.textures.push(`image is a frame texture: ${e.getAttribute('src')}`);
   }
   // 4. every entity link and tile has an image that loaded
   for (const e of document.querySelectorAll('.mini, a.slot, .node, .el, .shop, .person, .card')) {
@@ -257,6 +267,20 @@ export function auditFn() {
   }
   for (const e of document.querySelectorAll('.gh')) if (e.parentElement.children.length === 1) out.orphan.push(`header without content: ${desc(e)}`);
   for (const e of document.querySelectorAll('.bar')) { const n = e.nextElementSibling; if (!n || n.classList.contains('bar')) out.orphan.push(`bar without content: ${desc(e)}`); }
+  // A section bar or a sub-title is followed by a content element that shows (a tile, a link, text, an image) and is not another bar or sub-title.
+  out.noContent = [];
+  for (const e of document.querySelectorAll('.bar, .gh')) {
+    if (!vis(e)) continue;
+    const sibs = [...e.parentElement.children];
+    const next = sibs.slice(sibs.indexOf(e) + 1).find((k) => vis(k) && !k.matches('script, style'));
+    const content = next && !next.matches('.bar, .gh') && (next.textContent.trim() || next.querySelector('img')) && next.getBoundingClientRect().height > 0;
+    if (!content) out.noContent.push(`title with no content after it: ${desc(e)}`);
+  }
+  // The legal notice shows on each page, below the content, centered, with the game title in italics.
+  out.footer = [];
+  const ft = document.querySelector('footer.foot');
+  if (!ft || !vis(ft) || !/^Unofficial fan site\. We claim no affiliation with Koei Tecmo\. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists\.$/.test(ft.textContent.trim())) out.footer.push('legal notice missing or changed');
+  else if (getComputedStyle(ft).textAlign !== 'center' || ft.getBoundingClientRect().top < document.querySelector('#main').getBoundingClientRect().bottom - 1) out.footer.push('legal notice not centered below the content');
   // The title of a game is in italics everywhere it shows.
   for (const e of document.querySelectorAll('.game-title')) if (vis(e) && getComputedStyle(e).fontStyle !== 'italic') out.italic.push(`game title not italic: ${desc(e)}`);
   return out;

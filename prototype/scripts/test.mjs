@@ -64,8 +64,31 @@ await step('root URL shows the Items page, no landing page', async () => {
 await step('background covers the full page height', async () => {
   await go('#/areas');
   await page.waitForSelector('.zone');
-  const r = await page.evaluate(() => { const h = document.documentElement.getBoundingClientRect().height; const bs = getComputedStyle(document.documentElement); return { h, inner: innerHeight, img: bs.backgroundImage.includes('bg-town-tile'), repeat: bs.backgroundRepeat.includes('repeat-y'), fixed: bs.backgroundAttachment.includes('fixed') }; });
-  ok(r.img && r.repeat && !r.fixed, `background is on the page and repeats down (page ${Math.round(r.h)} px, viewport ${r.inner} px)`);
+  const r = await page.evaluate(() => { const h = document.documentElement.getBoundingClientRect().height; const bs = getComputedStyle(document.documentElement); return { h, inner: innerHeight, img: bs.backgroundImage, color: bs.backgroundColor }; });
+  ok(r.img === 'none' && r.color !== 'rgba(0, 0, 0, 0)', `the page background is 1 flat color, no image (${r.color}; page ${Math.round(r.h)} px, viewport ${r.inner} px)`);
+});
+await step('no frame texture in the CSS, the markup or the inline styles', async () => {
+  const fs = await import('node:fs');
+  const dir = fileURLToPath(new URL('..', import.meta.url));
+  const TEX = /bg-town|panel-(star|cream|tan|note|notebook|scroll|w01)|popup-crest|corner[-_a-z0-9]*\.png|\bplate-|\bbar-(brown|bronze)|\bbtn-(brown|cream|gold)|\btabw?-(on|off)|frame\.png|glow\.png|highlight\.png|border-image/;
+  const FONT = /font-family:[^;}]*/g;
+  for (const f of ['style.css', 'app.js', 'index.html']) {
+    const hit = fs.readFileSync(dir + f, 'utf8').split('\n').map((l, i) => [i + 1, l]).filter(([, l]) => TEX.test(l.replace(/\/\*.*?\*\//g, '')));
+    ok(hit.length === 0, `${f} names no frame texture${hit.length ? ': line ' + hit.map((h) => h[0]).join(',') : ''}`);
+  }
+  // Typefaces: only Lora and Source Sans 3, from local files.
+  const css = fs.readFileSync(dir + 'style.css', 'utf8');
+  const faces = css.match(/@font-face\s*\{[^}]*\}/g) || [];
+  ok(faces.length === 4 && faces.every((f) => /font-family:\s*"(Lora|Source Sans 3)"/.test(f)), `${faces.length} @font-face rules, all Lora or Source Sans 3`);
+  const urls = [...css.matchAll(/url\(\s*['"]?([^)'"]+)['"]?\s*\)/g)].map((m) => m[1]).filter((u) => /\.(woff2?|ttf|otf|eot|g1n|fnt)$/i.test(u) || /^(https?:)?\/\//.test(u));
+  ok(urls.length === 4 && urls.every((u) => /^fonts\/[\w-]+\.woff2$/.test(u) && fs.existsSync(dir + u)), `font URLs are local files: ${urls.join(', ')}`);
+  const fams = (css.match(FONT) || []).map((x) => x.replace('font-family:', '').trim());
+  ok(fams.every((x) => /^(var\(--font(-head)?\)|inherit|"Lora"|"Source Sans 3")/.test(x) || x === '"Lora", serif' || x === '"Source Sans 3", sans-serif'), `font-family only Lora or Source Sans 3: ${fams.join(' | ')}`);
+  ok(/--font:\s*"Source Sans 3", sans-serif;/.test(css) && /--font-head:\s*"Lora", serif;/.test(css), 'the body font is Source Sans 3, the heading font is Lora');
+  const used = await page.evaluate(async () => { await document.fonts.ready; return [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/"/g, '') + ' ' + f.weight); });
+  ok(used.some((u) => u.startsWith('Lora')) && used.some((u) => u.startsWith('Source Sans 3')), `both fonts loaded: ${used.join(', ')}`);
+  const inline = await page.evaluate(() => [...document.querySelectorAll('[style]')].map((e) => e.getAttribute('style')).filter((s) => /url\(/.test(s)));
+  ok(inline.length === 0, 'no inline style loads an image');
 });
 
 if (width < 600) {
@@ -404,10 +427,10 @@ for (const tree of ['main', 'attack', 'support', 'emergency']) {
     await page.locator('.opts a', { hasText: new RegExp(`^${TREE_LABELS[tree]}$`) }).click();
     await page.waitForSelector('.node');
     ok((await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)), 'page has no horizontal scroll');
-    // The box fits the tree: its chrome (border and padding, 2 x 36 px) is all that is more than the tree.
+    // The box has the full width of the content column; the tree scrolls inside it when it is wider.
     const fit = await page.evaluate(() => { const b = document.querySelector('.treebox').getBoundingClientRect(); const t = document.querySelector('.tree').getBoundingClientRect(); return { dh: b.height - t.height, dw: b.width - t.width, scrolls: document.querySelector('.treescroll').scrollWidth > document.querySelector('.treescroll').clientWidth }; });
     ok(fit.dh <= 76, `box height fits the tree (+${Math.round(fit.dh)} px)`);
-    ok(fit.scrolls || fit.dw <= 76, `box width fits the tree (+${Math.round(fit.dw)} px), or the tree scrolls inside its box`);
+    ok(fit.scrolls || fit.dw >= 0, `box is at least as wide as the tree, or the tree scrolls inside its box (+${Math.round(fit.dw)} px)`);
     ok(!/Scroll sideways/.test(await page.locator('main').innerText()), 'no how-to text');
     const n = await page.locator('.node').count();
     ok(n > 3 || tree === 'emergency', `${n} nodes`);
@@ -645,6 +668,31 @@ await step('monsters that need an Investigation Lv', async () => {
   ok((await tiles.locator('.tbadge').innerText()) === `Lv ${multi.lo}–${multi.hi}`, `range badge ${await tiles.locator('.tbadge').innerText()}`);
 });
 await closeEsc();
+
+await step('research bonus: tile with quantity, friendship heart', async () => {
+  await go('#/research/' + (await page.evaluate(() => window.DATA.research.STDY_RES_132.tree)) + '/STDY_RES_132');
+  await page.waitForSelector('.modal');
+  const stone = page.locator('.modal a.mini', { hasText: 'Spirit Rock' });
+  ok((await stone.count()) === 1, 'Spirit Rock tile in the research');
+  ok((await stone.locator('.qty').innerText()) === '×100', 'Spirit Rock quantity ×100');
+  ok((await page.locator('.modal .gh b', { hasText: /^Bonus$/ }).count()) === 1, 'sub-title Bonus');
+  ok((await page.locator('.modal a.mini .qty', { hasText: '×10' }).count()) >= 1, 'prize item Alchemy Equipment ×10');
+  const d = await page.evaluate(() => Object.values(window.DATA.research).filter((r) => r.bonus).length);
+  ok(d === 21, `21 research of the site have a bonus (23 in the game, 2 are in no tree), got ${d}`);
+  const withTile = await page.evaluate(() => Object.values(window.DATA.research).filter((r) => r.bonus && r.bonus.item).length);
+  ok(withTile === 18, `18 bonuses have an item tile, got ${withTile}`);
+});
+await closeEsc();
+await step('legal notice in the footer of each page', async () => {
+  const want = 'Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists.';
+  for (const h of ['#/items', '#/areas', '#/monsters', '#/characters', '#/research/main']) {
+    await go(h);
+    await page.waitForTimeout(100);
+    const f = page.locator('footer.foot');
+    ok((await f.innerText()).trim() === want, `notice on ${h}`);
+    ok((await f.locator('cite.game-title').count()) === 1, `game title in cite on ${h}`);
+  }
+});
 
 // The test fails on any audit finding (the rules of the UI standard are part of the audit).
 if (auditTotal > 0) { fails++; console.log(`  FAIL ${auditTotal} audit findings`); }

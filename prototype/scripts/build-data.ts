@@ -276,11 +276,8 @@ const districts = new Map(readRows('commercial_district/commercial_district.xml'
 const requests = new Map(readRows('request/request.xml').map((d) => [d.REQUEST_ID ?? '', d.REQUEST_DESCRIPTION_LABEL_ID ?? '']));
 const researchRows = readRows('study/stdy_research.xml');
 const researchById = new Map(researchRows.map((r) => [r.STDY_RES_ID, r]));
-const bonusName: Record<string, string> = {
-  STDY_BONUS_TYPE_COST_DOWN: 'Cost down',
-  STDY_BONUS_TYPE_BONUS_ITEM: 'Bonus item',
-  STDY_BONUS_TYPE_CONSTRUCTION_EXPENSES_UP: 'Construction expenses up',
-};
+// The name of a bonus type in the game. The English message file (saves/message_en/message.xml) has no text for any of the 3 types, so none shows.
+const bonusName: Record<string, string> = {};
 const researchOut: Record<string, unknown> = {};
 const treeNames = ['main', 'attack', 'support', 'emergency'];
 const trees: Record<string, { res: (string | null)[][]; con: (string | null)[][] }> = {};
@@ -317,7 +314,8 @@ for (const id of Object.keys(resTree)) {
   const p = prize.get(r.STDY_PRIZE_TAG);
   const coll = p && p.STDY_PRIZE_RECIPE_COLLECTION !== 'RECIPE_COLLECTION_INVALID' ? p.STDY_PRIZE_RECIPE_COLLECTION : '';
   const c = cond.get(r.STDY_RES_COND_TAG);
-  const bonusItem = r.STDY_BONUS_TAG;
+  const bonusType = r.STDY_BONUS_TAG ?? '';
+  const hasBonus = bonusType !== '' && bonusType !== 'STDY_BONUS_TYPE_INVALID';
   // The icon of a research is the icon of its output: the first prize item, else the first item of the prize recipe set, else the bonus item.
   const prizeItemId = p ? itemRef(p.STDY_PRIZE_ITEM_NAME_00 ?? '') : '';
   const setItems = coll ? setItemRecipes(coll) : [];
@@ -337,7 +335,10 @@ for (const id of Object.keys(resTree)) {
     pre: (c ? [0, 1, 2, 3].map((n) => c[`STDY_COND_RES_TAG_0${n}`] ?? '') : []).filter((x) => x && x !== 'STDY_RES_INVALID'),
     set: coll ? { n: t(collections.get(coll)?.RECIPE_COLLECTION_NAME_LABEL_ID ?? ''), recipes: setItemRecipes(coll) } : null,
     prizeItem: p && itemRef(p.STDY_PRIZE_ITEM_NAME_00 ?? '') ? { id: p.STDY_PRIZE_ITEM_NAME_00, q: Number(p.STDY_PRIZE_ITEM_NUM_00) } : null,
-    bonus: bonusName[bonusItem ?? ''] ?? '',
+    // The bonus: the item with its quantity (STDY_PRIZE_BONUS_ITEM), the friendship value, and the name of the type when the game has one.
+    bonus: hasBonus
+      ? { type: bonusName[bonusType] ?? '', item: bonusItemId ? { id: bonusItemId, q: Number(p?.STDY_PRIZE_BONUS_ITEM_NUM ?? 0) } : null, friend: Number(r.STDY_BONUS_FRIEND_POINT ?? 0) }
+      : null,
     // STDY_FRIEND_POINT: the game text MESSAGE_STUDY_FRIENDSHIP is "Researcher friendship level: Over N"; the Japanese text is the TOTAL friendship of the researchers, N or more. The site label is "Total friendship".
     friendNeed: Number(r.STDY_FRIEND_POINT),
     // stdy_conditions.xml: the district and the request conditions. STDY_COND_CHARACTER_TAG_* repeats the researchers of the research, so it is not shown again.

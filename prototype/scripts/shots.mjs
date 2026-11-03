@@ -12,7 +12,7 @@ let total = 0;
 for (const w of widths) {
   const page = await newPage(browser, w);
   const P = await pick(page);
-  const first = await page.evaluate((a) => ({ friendTree: window.DATA.research[a[0]].tree, condTree: window.DATA.research[a[1]].tree, lifeSpring: 'EXPL_RESEARCH_SPRING_00', interior: 'EXPL_RESEARCH_SPRING_01', zone: 'EXPL_AREA_SPRING', res: Object.keys(window.DATA.research).find((k) => window.DATA.research[k].tree === 'main' && window.DATA.research[k].mats.length), resA: Object.keys(window.DATA.research).find((k) => window.DATA.research[k].tree === 'attack') }), [P.resFriend.id, P.resCond.id]);
+  const first = await page.evaluate((a) => ({ friendTree: window.DATA.research[a[0]].tree, condTree: window.DATA.research[a[1]].tree, lifeSpring: 'EXPL_RESEARCH_SPRING_00', interior: 'EXPL_RESEARCH_SPRING_01', zone: 'EXPL_AREA_SPRING', res: Object.keys(window.DATA.research).find((k) => window.DATA.research[k].tree === 'main' && window.DATA.research[k].mats.length), bonusTree: window.DATA.research.STDY_RES_132.tree, resA: Object.keys(window.DATA.research).find((k) => window.DATA.research[k].tree === 'attack') }), [P.resFriend.id, P.resCond.id]);
   const item = (k) => `#/items/${P[k].id}`;
   const states = [
     ['items', '#/items'],
@@ -54,6 +54,7 @@ for (const w of widths) {
     ['research-attack', '#/research/attack'],
     ['research-support', '#/research/support'],
     ['research-emergency', '#/research/emergency'],
+    ['research-bonus', `#/research/${first.bonusTree}/STDY_RES_132`],
     ['research-node', `#/research/main/${first.res}`],
     ['research-node-attack', `#/research/attack/${first.resA}`],
   ];

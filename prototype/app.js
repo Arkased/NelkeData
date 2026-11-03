@@ -39,13 +39,12 @@
   const CATS = ['Material', 'Merchandise', 'Battle Item', 'Construction'];
   // The game category icons (win03_icon01 list): cat-N.png.
   const CAT_ICON = { Material: 5, Merchandise: 2, 'Battle Item': 8, Construction: 1, craft: 11 };
-  const FACE_MONSTER = D.monsters[Object.keys(D.monsters)[0]].icon;
-  const FACE_CHAR = D.chars[0].icon;
+  /** The nav icons of Monsters and Characters are the quest category icons of the game (20th_main_quest.g1t, m_q01_icon02 LIST01 and LIST02). */
   const NAV = [
     { k: 'items', label: 'Items', href: '#/items', cat: 15 },
     { k: 'areas', label: 'Areas', href: '#/areas', cat: 16 },
-    { k: 'monsters', label: 'Monsters', href: '#/monsters', face: FACE_MONSTER },
-    { k: 'characters', label: 'Characters', href: '#/characters', face: FACE_CHAR },
+    { k: 'monsters', label: 'Monsters', href: '#/monsters', img: 'nav-monsters' },
+    { k: 'characters', label: 'Characters', href: '#/characters', img: 'nav-characters' },
     { k: 'research', label: 'Research', href: '#/research/main', cat: 10 },
   ];
   /** The research trees. The names are the tab texts of the study screen (ui_en/20th_mix/uil_20th_study_1031.xml, text_on): Main, Attack, Town Building, Emergency. */
@@ -129,7 +128,7 @@
   };
   const shopChip = (key) => `<span class="shop"><img src="img/ui/${SHOP[key].img}.png" alt="">${SHOP[key].label}</span>`;
   /** A group of a modal: a title, then the content. No caption (the title says what it is). */
-  const grp = (title, body) => `<section class="grp"><div class="gh"><b>${esc(title)}</b></div>${body}</section>`;
+  const grp = (title, body) => `<section class="grp"><div class="gh"><b class="sub">${esc(title)}</b></div>${body}</section>`;
   /** The 1 style of a small label. */
   const cap = (text, cls = '') => `<small class="cap ${cls}">${esc(text)}</small>`;
   const head = (name) => `<div class="mhead"><h2 class="name bi p-gold">${esc(name)}</h2><button class="close btn" data-close aria-label="Close">&times;</button></div>`;
@@ -174,7 +173,7 @@
   function renderNav() {
     $('#nav').innerHTML = NAV.map((n) => {
       const on = base && base.view === n.k;
-      const ic = n.face ? slot({ icon: n.face, cls: 'navface' }) : catImg(n.cat);
+      const ic = n.img ? `<img class="cat" src="img/ui/${n.img}.png" alt="">` : catImg(n.cat);
       return `<a href="${n.href}" ${on ? 'aria-current="page"' : ''}>${ic}<span>${n.label}</span></a>`;
     }).join('');
   }
@@ -263,7 +262,7 @@
         const areas = z.areas.filter((a) => !q || a.n.toLowerCase().includes(q) || z.n.toLowerCase().includes(q));
         if (!areas.length) return '';
         return `<section class="zone bi u p-star" aria-label="${esc(z.n)}"><div class="zone-in">
-          <a class="zone-head bi p-brown" href="#/areas/${z.id}"><h2>${esc(z.n)}</h2></a>
+          <h2 class="bar zone-name"><a class="zone-link" href="#/areas/${z.id}">${esc(z.n)}</a></h2>
           <div class="areas">${areas.map((a) => `<a class="area bi p-gold" href="#/areas/${a.id}"><span>${esc(a.n)}</span></a>`).join('')}</div>
         </div></section>`;
       }).join('');
@@ -631,14 +630,19 @@
       if (n.pre.length) h += `<div class="minis">${n.pre.filter((p) => RS[p]).map((p) => resEnt(p)).join('')}</div>`;
       if (n.conds.length) h += `<div class="conds">${n.conds.map((c) => `<div class="link plain"><span class="lt">${cap(c.k === 'district' ? 'District' : 'Request')}<b>${esc(c.v)}</b></span></div>`).join('')}</div>`;
     }
-    if (n.set || n.prizeItem || n.bonus) {
+    // A bonus shows only with an item or the name of its type in the game: a sub-title never shows with nothing under it.
+    const bonus = n.bonus && (n.bonus.item || n.bonus.type) ? n.bonus : null;
+    if (n.set || n.prizeItem || bonus) {
       h += bar('Gives');
       if (n.set) h += grp(`Recipe set: ${n.set.n}`, `<div class="minis">${n.set.recipes.filter((i) => IT.has(i)).map((i) => itemEnt(i)).join('')}</div>`);
       // The sub-heading names the kind only when there is more than 1 kind of reward.
-      const kinds = [n.set, n.prizeItem, n.bonus].filter(Boolean).length;
+      const kinds = [n.set, n.prizeItem, bonus].filter(Boolean).length;
       const kind = (title, body) => (kinds > 1 ? grp(title, body) : body);
       if (n.prizeItem) h += kind('Item', `<div class="minis">${itemEnt(n.prizeItem.id, { qty: n.prizeItem.q })}</div>`);
-      if (n.bonus) h += kind('Bonus', `<div class="link plain"><span class="lt"><b>${esc(n.bonus)}</b></span></div>`);
+      if (bonus) {
+        const body = (bonus.item ? `<div class="minis">${itemEnt(bonus.item.id, { qty: bonus.item.q })}</div>` : '') + (bonus.type ? `<div class="link plain"><span class="lt"><b>${esc(bonus.type)}</b></span></div>` : '');
+        h += `<section class="grp"><div class="gh"><b class="sub">Bonus</b>${bonus.friend > 0 ? heart(bonus.friend) : ''}</div>${body}</section>`;
+      }
     }
     return h;
   }
