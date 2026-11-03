@@ -45,7 +45,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 
 ### Icons
 
-- Each entity mention has its game icon: an item, a monster, a character, a research, a shop.
+- Each entity mention has its game icon: an item, a monster, a character, a shop. A research has no icon in the game. The research tree shows the face of the first researcher on each node. Other pages show a research as a card with its name and its tree.
 - A shop has the icon of its building. A category filter has the icon of the game category.
 - A unit with a game icon (money, synthesis cost, friendship) shows the icon each time.
 
