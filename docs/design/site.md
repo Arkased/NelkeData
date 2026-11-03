@@ -37,7 +37,7 @@ Each kind of value has 1 format on all pages.
 | Money (a price, a cost, a research fee) | The coin icon of the game, then the number. | 🪙 1,200 |
 | Synthesis cost | The synthesis cost icon of the game, then the number. | ⚗ 4 |
 | Rate | The number, then `%`. At most 1 decimal. | 12.5% |
-| Quantity of an item | `×` and the number, in a badge on the bottom right corner of the item icon, as in the material slots of the game. Only for 2 or more. The section title gives the role (Materials, Drops, Gives). | ×3 |
+| Quantity of an item | `×` and the number, in a badge on the bottom right corner of the item icon, as in the material slots of the game. Only for 2 or more, and only on an item icon. A monster tile in "How to get" of an item has no quantity badge, because the badge would read as a count of monsters. The section title gives the role (Materials, Drops, Gives). | ×3 |
 | Rate or level on a tile | A badge on the bottom right corner of the icon, the same as the quantity badge. No tile has a quantity and a rate or a level together. A tile has no value line. A level range is 1 badge. | 25%, Lv 34, Lv 3–8 |
 | Research duration | The number, then `turns` (`turn` for 1). | 2 turns |
 | Level | `Lv`, then the number. | Lv 12 |

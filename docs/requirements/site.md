@@ -32,7 +32,7 @@ The owner approved these requirements and the layouts of the HTML prototype (#11
 | --- | --- | --- |
 | Item grid | 1 page shows the icons of all items (305 in the game data, with the placeholder items). There is no separate recipe page. The filters are the item category of the game, the shop that sells the item, and "Craftable" (the items that a recipe makes, 169 at present). The element items are not a separate category. | A UI test selects "Craftable" and finds 1 recipe item. |
 | Item detail | The top of the detail shows the name, the category, the price, the shops that sell the item ("Sold at", with the shop icons) and the description. The elements that the Reduce command gives show as a small note, not as a section. | A UI test of 1 item with each kind of data. |
-| How to get | The detail shows each way to get the item: the areas where you gather it, with the rate; the special gather points of an area; the monsters that drop it, with the quantity; the farm that grows it. Each area and monster is a link. A fact of the area itself, for example the task that opens it, does not show here. | A UI test of 1 gather item and 1 drop. |
+| How to get | The detail shows each way to get the item: the areas where you gather it, with the rate; the special gather points of an area; the monsters that drop it; the farm that grows it. Each area and monster is a link. A fact of the area itself, for example the task that opens it, does not show here. | A UI test of 1 gather item and 1 drop. |
 | Used in | The detail shows each item whose recipe uses the item as a material, as links. | A UI test of 1 material. |
 
 ## Synthesis (priority 1)
