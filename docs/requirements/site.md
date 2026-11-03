@@ -8,7 +8,7 @@ The owner accepted these requirements as a draft on 2026-11-02. The final approv
 
 | Name | Contract | Proof |
 | --- | --- | --- |
-| Host | The site is on GitHub Pages at `https://arkased.github.io/NelkeData/`. Each push to `main` that changes `data/` or `packages/site/` deploys it. | The run of the deploy workflow passes, and the home page loads. |
+| Host | The site is on GitHub Pages at `https://arkased.github.io/NelkeData/`. Each push to `main` that changes `data/` or `packages/site/` deploys it. | The run of the deploy workflow passes, and the root URL loads the Items page. |
 | Static | The site is static files only. It needs no server and no database. | The build output is only HTML, CSS, JS and images. |
 | Same data | Each value on the site is the same as the value in the workbook. The site shows only the data that helps a player. The workbook keeps all columns. | The site and the workbook read the same files of `data/`. A test compares a sample of entities. |
 | Game UI | A clear and organized view of the data comes first. The site uses the UI textures of the game where they make the data clear: the panels, the name plates, the header bars, the icons and the friendship hearts. Where a game part makes the data harder to read, the site uses a plain element in the colors of the game. | The owner approves the prototype, and compares the site with the game by eye. |

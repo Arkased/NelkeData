@@ -19,7 +19,7 @@ The site uses the UI parts of the game where they make the data clear. The textu
 | Filter | A plain toggle button with the game category icon or the shop icon, and the name |
 | Value, calculation | Plain text in a clear layout, for example a sum with its operators |
 
-The spacing follows 1 scale of 4 px steps. Each panel has the same gutter on all sides.
+The spacing follows 1 scale of 4 px steps. Each panel has the same gutter on all sides. A text in a bar or a name plate has the same space above and below it, and it does not touch the ornaments of the bar.
 
 ## UI standard
 
@@ -34,7 +34,8 @@ Each kind of value has 1 format on all pages.
 | Money (a price, a cost, a research fee) | The coin icon of the game, then the number. | 🪙 1,200 |
 | Synthesis cost | The synthesis cost icon of the game, then the number. | ⚗ 4 |
 | Rate | The number, then `%`. At most 1 decimal. | 12.5% |
-| Quantity of an item | `×` and the number, in a badge on the bottom right corner of the item icon, as in the material slots of the game. The section title gives the role (Materials, Drops, Gives). | ×3 |
+| Quantity of an item | `×` and the number, in a badge on the bottom right corner of the item icon, as in the material slots of the game. Only for 2 or more. The section title gives the role (Materials, Drops, Gives). | ×3 |
+| Rate or level on a tile | A badge on the bottom left corner of the icon, in the same style as the quantity badge. A tile has no value line. | 25%, Lv 34 |
 | Research duration | The number, then `turns` (`turn` for 1). | 2 turns |
 | Level | `Lv`, then the number. | Lv 12 |
 | Multiplier | `×`, then the number. | ×1.25 |
@@ -45,7 +46,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 
 ### Icons
 
-- Each entity mention has its game icon: an item, a monster, a character, a shop. A research has no icon in the game. The research tree shows the face of the first researcher on each node. Other pages show a research as a card with its name and its tree.
+- Each entity mention has its game icon: an item, a monster, a character, a shop. A research has no icon in the game, so it shows the icon of its output, in this order: the first prize item, the first item of the prize recipe set, the bonus item. A research with no output in the game files shows the research icon of the game. The researchers show only on the research detail.
 - A shop has the icon of its building. A category filter has the icon of the game category.
 - A unit with a game icon (money, synthesis cost, friendship) shows the icon each time.
 
@@ -62,7 +63,13 @@ A value never shows with no unit or no role word. A missing value does not show:
 - The page shows no text that tells the user how to use the page, for example "click a node" or "scroll sideways". A section has no caption that repeats its title or the meaning of a unit.
 - A label has 1 style on all pages.
 - A fact that is the same for each entity of a category (a global table of the game) does not show on each entity.
-- A condition that each player meets does not show, for example the join turn 1 or a town population of 0.
+- A condition that each player meets does not show: a join turn of 1 or less, and a town population at or below the start population of the game (`OC_INITIAL_POPULATION` in `out_constant/out_constant.xml`, 30).
+- A value that is the same for each entity does not show. Each monster drop has the rate 100%, so a drop shows no rate.
+- A group shows only when the player can use it to find an entity. The game category of a character (Story, Townsfolk, Fairy) does not show, as a line or as a filter. The game of origin of a character shows.
+- A tooltip shows only text that is not already visible.
+- The level of an area uses the term of the game: "Investigation Lv". It rises from 1 to 5 as the player sends teams to the area. Some monster groups appear only from Investigation Lv 2 or 3 (`REQ_LV` in `expl_encount/area_encount.xml`).
+- The treasure chests and the tool gathers (Bug Net, Digging, Fishing) are 1 row of columns, in the same order on each area and zone detail.
+- The friendship level uses the heart icon of the game, never an emoji or a font glyph.
 - "Joins the town" on a character shows the conditions of `character/character_app_con.xml`: the town population and the turn. A character whose join event is not the game start (`EVENT_MS01_010`) joins in a story event. The event has no name in the game files, so the section says "Joins in a story event" and shows the tiles of the other characters with the same event, under "Joins with". 100 characters join this way, for example Gino with Melvia, Mimi, Marc, Gerard, the 2 Chims and Piana.
 - A short list of values is 1 line in the top block of the detail, not a section. For example the element DEF of a monster is 1 line of element icons, each with its value.
 - The related parts of a detail are in 1 panel: on an area, the difficulty, the gather items and the monsters of the area; on a zone, its areas and its treasure.
@@ -96,9 +103,7 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 
 ## Pages
 
-### Home
-
-The 5 categories, each with its game icon: Items, Research, Areas, Monsters and Characters.
+The site has no landing page. The root URL shows the Items page.
 
 ### Category pages (Items, Monsters, Characters)
 
