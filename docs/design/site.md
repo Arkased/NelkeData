@@ -19,7 +19,7 @@ The site uses the UI parts of the game where they make the data clear. The textu
 | Filter | A plain toggle button with the game category icon or the shop icon, and the name |
 | Value, calculation | Plain text in a clear layout, for example a sum with its operators |
 
-The spacing follows 1 scale of 4 px steps. Each panel has the same gutter on all sides. A text in a bar or a name plate has the same space above and below it, and it does not touch the ornaments of the bar.
+The page always keeps the space of the vertical scroll bar (`scrollbar-gutter: stable` on the root element). So no element moves when the scroll bar shows or goes away: when a filter makes the page shorter, or when a modal opens and locks the scroll of the page. The spacing follows 1 scale of 4 px steps. Each panel has the same gutter on all sides. A text in a bar or a name plate has the same space above and below it, and it does not touch the ornaments of the bar.
 
 ## UI standard
 
