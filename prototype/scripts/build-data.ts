@@ -18,6 +18,9 @@ const { items, recipes, zones, characters, messages, icons } = g;
 const t = messages.t;
 const readRows = (rel: string): Record<string, string>[] => parseElements(fs.readFileSync(path.join(EXTRACTED, 'saves', rel), 'utf8'));
 const charIcon = characterIconOf(g);
+// The start population of the game: a join population at or below it is met by each player, so it is not data of the join.
+const initialPopulation = Number(readRows('out_constant/out_constant.xml').find((r) => r.OUT_CONSTANT_DEF === 'OC_INITIAL_POPULATION')?.OUT_CONSTANT_NUM);
+if (!Number.isFinite(initialPopulation)) throw new Error('OC_INITIAL_POPULATION not found');
 
 // ---- characters (only the ones that the prototype shows) ----
 const charByBattle = new Map(characters.characters.map((c) => [c.BTL_CHARACTER_ID, c]));
@@ -242,7 +245,7 @@ for (const s of zones.spots) {
     n: s.name,
     diff: s.area.difficulties.map((d) => d.replace('EXPL_AREA_DIFFICULTY_', '')),
     gather: col.toSorted((a, b) => Number(b.RATE) - Number(a.RATE)).map((c) => ({ i: itemRef(c.ITEM_TAG), r: Number(c.RATE) })).filter((c) => c.i),
-    mons: [...mons.values()].map((m) => ({ m: m.m, lo: Math.min(...m.lv), hi: Math.max(...m.lv), req: m.req, boss: m.boss })),
+    mons: [...mons.values()].map((m) => ({ m: m.m, lo: Math.min(...m.lv), hi: Math.max(...m.lv), lvs: [...new Set(m.lv)].sort((x, y) => x - y), req: m.req, boss: m.boss })),
   });
 }
 const zoneOut = zoneOrder.map((id) => {
@@ -315,7 +318,14 @@ for (const id of Object.keys(resTree)) {
   const coll = p && p.STDY_PRIZE_RECIPE_COLLECTION !== 'RECIPE_COLLECTION_INVALID' ? p.STDY_PRIZE_RECIPE_COLLECTION : '';
   const c = cond.get(r.STDY_RES_COND_TAG);
   const bonusItem = r.STDY_BONUS_TAG;
+  // The icon of a research is the icon of its output: the first prize item, else the first item of the prize recipe set, else the bonus item.
+  const prizeItemId = p ? itemRef(p.STDY_PRIZE_ITEM_NAME_00 ?? '') : '';
+  const setItems = coll ? setItemRecipes(coll) : [];
+  const bonusItemId = p ? itemRef(p.STDY_PRIZE_BONUS_ITEM ?? '') : '';
+  const [iconKind, iconItem] = prizeItemId ? ['prize', prizeItemId] : setItems.length ? ['recipe', setItems[0]] : bonusItemId ? ['bonus', bonusItemId] : ['', ''];
   researchOut[id] = {
+    icon: iconItem ? itemById.get(iconItem)!.icon : '',
+    iconKind,
     id,
     tree: resTree[id],
     n: t(r.STDY_RES_NAME_LABEL_ID) || id,
@@ -402,8 +412,8 @@ const charsOut = shownChars.map((c) => {
       return m ? { n: m[1], lv: m[2] ? Number(m[2]) : 0, ev: m[3] ?? '' } : { n: s, lv: 0, ev: '' };
     }),
     // character_app_con.xml. The event has no name in the data, so it shows as its id. The meaning of the join turn is not confirmed.
-    // Turn 0 and 1 and population 0 are met by each player, so they are not data of the join. The meaning of the join turn is not confirmed.
-    join: story || pop > 0 || turn > 1 ? { story, with: story ? (byEvent[ev] ?? []).filter((x) => x !== c).map((x) => x.CHARACTER_ID) : [], pop: pop > 0 ? pop : 0, turn: turn > 1 ? turn : 0 } : null,
+    // Turn 0 and 1 and a population at or below the start population (OC_INITIAL_POPULATION) are met by each player, so they are not data of the join. The meaning of the join turn is not confirmed.
+    join: story || pop > initialPopulation || turn > 1 ? { story, with: story ? (byEvent[ev] ?? []).filter((x) => x !== c).map((x) => x.CHARACTER_ID) : [], pop: pop > initialPopulation ? pop : 0, turn: turn > 1 ? turn : 0 } : null,
     friendMax: Number(c.CHARA_COMPANION_MAX),
   };
 });
@@ -417,6 +427,10 @@ for (const name of used) {
   if (png) fs.writeFileSync(path.join(OUT, 'img', 'icons', name), png);
 }
 fs.writeFileSync(path.join(OUT, 'data.js'), `window.DATA = ${JSON.stringify(data)};\n`);
+{
+  const kinds = Object.values(researchOut as Record<string, { iconKind: string }>).map((r) => r.iconKind || 'none');
+  console.log('RESEARCH ICONS', JSON.stringify({ total: kinds.length, ...Object.fromEntries([...new Set(kinds)].map((k) => [k, kinds.filter((x) => x === k).length])) }), 'initialPopulation', initialPopulation);
+}
 console.log('DROPPED', JSON.stringify(dropped));
 console.log('CHAR TYPES', JSON.stringify(Object.entries(Object.groupBy(charsOut, (c) => c.type)).map(([k, v]) => [k, v?.length])));
 console.log('FILTERED', JSON.stringify({ ...filtered, items: filtered.items }, null, 1));

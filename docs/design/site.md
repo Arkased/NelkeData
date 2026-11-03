@@ -65,7 +65,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 - A fact that is the same for each entity of a category (a global table of the game) does not show on each entity.
 - A condition that each player meets does not show: a join turn of 1 or less, and a town population at or below the start population of the game (`OC_INITIAL_POPULATION` in `out_constant/out_constant.xml`, 30).
 - A value that is the same for each entity does not show. Each monster drop has the rate 100%, so a drop shows no rate.
-- A group shows only when the player can use it to find an entity. The game category of a character (Story, Townsfolk, Fairy) does not show, as a line or as a filter. The game of origin of a character shows.
+- A group shows only when the player can use it to find an entity. The group of a character shows as a line and as a filter only for "Alchemist" and "Townsfolk". The story characters and the fairy show no group and match no group filter value, and "Story" and "Fairy" show nowhere. The game of origin of a character shows as a line and as a filter.
 - A tooltip shows only text that is not already visible.
 - The level of an area uses the term of the game: "Investigation Lv". It rises from 1 to 5 as the player sends teams to the area. Some monster groups appear only from Investigation Lv 2 or 3 (`REQ_LV` in `expl_encount/area_encount.xml`).
 - The treasure chests and the tool gathers (Bug Net, Digging, Fishing) are 1 row of columns, in the same order on each area and zone detail.

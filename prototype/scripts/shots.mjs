@@ -31,7 +31,7 @@ for (const w of widths) {
     ['area-interior', `#/areas/${first.interior}`],
     ['area-outside', `#/areas/${first.lifeSpring}`],
     ['zone', `#/areas/${first.zone}`],
-    ['home', '#/home'],
+    ['root', ''],
     ['item-shop', item('shop')],
     ['area-bestial', `#/areas/${P.bestial.id}`],
     ['area-bountiful', `#/areas/${P.bountiful.id}`],
