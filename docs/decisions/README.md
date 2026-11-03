@@ -41,3 +41,4 @@ A decision that replaces an earlier one sets the status of the earlier record to
 | [0007](0007-clear-data-and-filters.md) | Clear data first, and filters instead of tabs | accepted |
 | [0008](0008-recipes-in-items.md) | The recipes are part of the item page | accepted |
 | [0009](0009-own-look.md) | The site has its own look, with the game icons | accepted |
+| [0010](0010-no-search-box.md) | The site has no search box | accepted |

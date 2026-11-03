@@ -105,7 +105,6 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 | Header | The site name, and the links to the 5 categories with their game icons. Monsters and Characters use the quest category icons of the game (`20th_main_quest.g1t`, `gen_20th_m_q01_icon02` LIST01, a demon head, and LIST02, a person bust), from the same set as the Research chart icon. | Below 600 px, the links go into a menu button. |
 | Footer | The legal notice of the requirements, in the small label size, centered. | It shows on each page, below the content. |
 | Filters | 1 group of toggle buttons for each filter: the item category, and the shop. | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
-| Search box | A text box. | Each key filters the icons at once, on the English and the Japanese name. The text is in the URL. |
 | Icon grid | The game icons in the order of the game. The number of columns follows the width. | The name shows on hover and on focus. A click opens the modal. Each icon is a real link, so Ctrl+click opens the page of the entity in a new tab. |
 | Modal | A panel with the detail of the entity, and a close button. | 1. The URL changes to the URL of the entity. Back closes the modal. 2. A link inside the modal replaces its content. Back shows the content before it. 3. Esc, the close button and a click outside close it. The focus goes back to the icon. 4. On a narrow window, the modal fills the screen. |
 | Entity page | The same detail panel as the modal, on a full page. | The page for a direct visit, a search engine and a new tab. |
@@ -117,14 +116,13 @@ The site has no landing page. The root URL shows the Items page.
 
 ### Category pages (Items, Monsters, Characters)
 
-- **Blocks, in order:** Header. Search box and filters. Icon grid.
-- **Empty state:** The panel says "Nothing matches the search." It has a button that clears the search.
+- **Blocks, in order:** Header. Filters. Icon grid.
+- **Empty state:** The panel says "Nothing matches the filters." It has a button that clears the filters.
 
 ### Areas page
 
-- **Blocks, in order:** Header. Search box. 1 panel for each top-level zone, in the order of the game.
+- **Blocks, in order:** Header. 1 panel for each top-level zone, in the order of the game.
 - **Zone panel:** The name of the zone as a section title, and the names of its areas as plain buttons. A click on an area opens its detail in the modal.
-- **Empty state:** The same as on a category page.
 
 ### Details
 
