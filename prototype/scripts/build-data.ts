@@ -376,9 +376,14 @@ const charName2 = (c: (typeof nonMonsters)[number]): string => {
   sameNames.push(`${c.CHARACTER_ID}: ${kindOf(c.CHARACTER_ID) || '?'}`);
   return kindOf(c.CHARACTER_ID) ? `${n} (${kindOf(c.CHARACTER_ID)})` : n;
 };
+// A join event that is not the game start and not EVENT_NONE is a story event (no name in the game files). Characters with the same event join together.
+const eventOf = (c: (typeof shownChars)[number]): string => characters.joinConditionOf(c)?.CHARACTER_APP_EVENT ?? '';
+const isStoryEvent = (e: string): boolean => e !== '' && e !== 'EVENT_MS01_010' && e !== 'EVENT_NONE';
+const byEvent = Object.groupBy(shownChars.filter((c) => isStoryEvent(eventOf(c))), eventOf);
 const charsOut = shownChars.map((c) => {
   const j = characters.joinConditionOf(c);
-  const event = j ? g.story.eventLabel(j.CHARACTER_APP_EVENT) : '';
+  const ev = eventOf(c);
+  const story = isStoryEvent(ev);
   const pop = Number(j?.CHARACTER_APP_POPULATION ?? 0);
   const turn = Number(j?.CHARACTER_APP_CTURN ?? 0);
   return {
@@ -397,10 +402,12 @@ const charsOut = shownChars.map((c) => {
       return m ? { n: m[1], lv: m[2] ? Number(m[2]) : 0, ev: m[3] ?? '' } : { n: s, lv: 0, ev: '' };
     }),
     // character_app_con.xml. The event has no name in the data, so it shows as its id. The meaning of the join turn is not confirmed.
-    join: event || pop || turn ? { event, pop, turn } : null,
+    // Turn 0 and 1 and population 0 are met by each player, so they are not data of the join. The meaning of the join turn is not confirmed.
+    join: story || pop > 0 || turn > 1 ? { story, with: story ? (byEvent[ev] ?? []).filter((x) => x !== c).map((x) => x.CHARACTER_ID) : [], pop: pop > 0 ? pop : 0, turn: turn > 1 ? turn : 0 } : null,
     friendMax: Number(c.CHARA_COMPANION_MAX),
   };
 });
+console.log('STORY EVENT JOIN', charsOut.filter((c) => c.join?.story).length, JSON.stringify(Object.fromEntries(Object.entries(byEvent).map(([k, v]) => [k, v?.length]))));
 console.log('SAME NAMES', JSON.stringify(sameNames));
 const data = { items: itemOut, zones: zoneOut, monsters: monstersOut, chars: charsOut, research: researchOut, trees };
 collectIcons(data);

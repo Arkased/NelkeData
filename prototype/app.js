@@ -1,7 +1,7 @@
-/* Prototype app, round 4: hash routing, 6 views (home, items, areas, monsters, characters, research) on the real data (window.DATA).
+/* Prototype app, round 5: hash routing, 6 views (home, items, areas, monsters, characters, research) on the real data (window.DATA).
    Recipes are part of the item (decision 0008): the item modal has the Synthesis section.
    An area is one spot of the game data: "Life Spring: Interior" is not part of "Life Spring".
-   Units, 1 format each: money = coin icon + number; synthesis cost = its icon + number; rate = N%; quantity = "N needed" / "N per drop" / "N given";
+   Units, 1 format each: money = coin icon + number; synthesis cost = its icon + number; rate = N%; quantity = a "×N" badge on the item icon (N of 2 or more);
    duration = "N turns"; level = "Lv N"; friendship = heart + number. */
 (() => {
   const D = window.DATA;
@@ -94,7 +94,8 @@
   function ent(o) {
     const tag = o.href ? 'a' : 'div';
     const tip = o.name.length > 14 ? ` data-tip="${esc(o.name)}"` : '';
-    return `<${tag} class="mini ${o.cls || ''}"${o.href ? ` href="${o.href}"` : ''}${tip}><span class="slot ${crop(o.icon)}">${o.icon ? `<img src="${icon(o.icon)}" alt="">` : ''}</span><span class="nm">${esc(o.name)}</span>${o.val ? `<small>${o.val}</small>` : ''}</${tag}>`;
+    const qty = o.qty >= 2 ? `<b class="qty">×${o.qty}</b>` : '';
+    return `<${tag} class="mini ${o.cls || ''}"${o.href ? ` href="${o.href}"` : ''}${tip}><span class="slot ${crop(o.icon)}">${o.icon ? `<img src="${icon(o.icon)}" alt="">` : ''}${qty}</span><span class="nm">${esc(o.name)}</span>${o.val ? `<small>${o.val}</small>` : ''}</${tag}>`;
   }
   /** The icon of a research: the same as its node in the tree (the face of the first researcher, else the item that it gives). */
   const resIcon = (n) => (n.who[0] ? n.who[0].icon : n.prizeItem ? IT.get(n.prizeItem.id).icon : '');
@@ -122,8 +123,8 @@
   const turns = (n) => `${n} turn${n === 1 ? '' : 's'}`;
   const lvRange = (lo, hi) => `Lv ${lo === hi ? lo : `${lo}-${hi}`}`;
   /** Friendship as the game heart and a number. */
-  /** The value line of a drop tile: 1 line, the quantity and the rate. */
-  const dropVal = (d) => `${fmt(d.num)} per drop · ${pct(d.rate)}`;
+  /** The tile options of a drop: the rate is the value line and the quantity is the badge on the icon. */
+  const dropOpts = (d) => ({ val: pct(d.rate), qty: d.num });
   const heart = (n) => `<span class="fr" role="img" aria-label="Friendship ${n}"><img src="img/ui/fav-icon.png" alt=""><b>${n}</b></span>`;
   const shopChip = (key) => `<span class="shop"><img src="img/ui/${SHOP[key].img}.png" alt="">${SHOP[key].label}</span>`;
   /** A group of a modal: a title, then the content. No caption (the title says what it is). */
@@ -315,41 +316,34 @@
   }
 
   // ---------- research tree ----------
-  const CW = 104, NODE_H = 126, CONN_H = 36, CY = 38; // column width, node row height, connector row height, line height inside a node row
-  const SIDES = { HORIZONTAL: 'R', VERTICAL: 'UD', RIGHT_UP: 'RU', RIGHT_DOWN: 'RD', LEFT_UP: 'LU', LEFT_DOWN: 'LD' };
+  // Layout: the node rows (0, 2, 4 of the game) are NODE_H high and the connector rows (1, 3) are CONN_H thin. The lines are drawn from the prerequisites
+  // (stdy_conditions.xml), not from the connector cells: each line leaves the right side of the prerequisite icon and enters the left side of the research that needs it.
+  // The lines that enter 1 research share the last vertical run (the channel, 16 px before the icon), so they join before the node.
+  const CW = 104, NODE_H = 128, CONN_H = 16, CY = 40, HALF = 36, CHAN = 16; // column width, node row height, connector row height, icon center y in a node row, half icon width, gap icon to channel
   function researchPage(treeKey) {
     const tree = D.trees[treeKey];
     const ys = []; let y = 0;
     for (let r = 0; r < tree.res.length; r++) { ys.push(y); y += r % 2 === 0 ? NODE_H : CONN_H; }
     let lastRow = 0;
-    tree.res.forEach((row, r) => { if (r % 2 === 0 && row.some((id) => id && RS[id])) lastRow = r; });
-    // The box fits the tree: the columns up to the last one that has a node or a line, and the rows up to the last node row.
     let lastCol = 0;
-    for (let r = 0; r <= lastRow; r++) for (let c = 0; c < 20; c++) if (tree.res[r][c] || tree.con[r][c]) lastCol = Math.max(lastCol, c);
+    const pos = new Map();
+    tree.res.forEach((row, r) => row.forEach((id, c) => {
+      if (!id || !RS[id]) return;
+      pos.set(id, { c, r });
+      if (r % 2 === 0) lastRow = Math.max(lastRow, r);
+      lastCol = Math.max(lastCol, c);
+    }));
     const W = (lastCol + 1) * CW;
     let H = ys[lastRow] + NODE_H;
-    const sides = (r, c) => (tree.con[r][c] ? SIDES[tree.con[r][c]] || '' : '');
     const lines = [];
-    for (let r = 0; r < tree.res.length; r++) {
-      for (let c = 0; c < 20; c++) {
-        const own = sides(r, c);
-        if (!(tree.res[r][c] || own)) continue;
-        const cx = c * CW + CW / 2;
-        const top = ys[r], odd = r % 2 === 1;
-        const cy = odd ? top + CONN_H / 2 : top + CY;
-        const bottom = top + (odd ? CONN_H : NODE_H);
-        const segs = [];
-        if (own.includes('R')) segs.push([c * CW + CW, cy]);
-        if (c > 0 && sides(r, c - 1).includes('R')) segs.push([c * CW, cy]);
-        // A node's line up reaches the foot of the node above, so a join is never left half drawn.
-        if (own.includes('U') && r > 0) segs.push([cx, !odd && tree.res[r][c] && RS[tree.res[r][c]] && r > 1 ? top - CONN_H - 8 : top]);
-        if (own.includes('D')) segs.push([cx, bottom]);
-        for (const [x2, y2] of segs) {
-          // A line that leaves a node downwards starts under its label, never through the text.
-          const hasNode = !odd && tree.res[r][c] && RS[tree.res[r][c]];
-          const y1 = hasNode && x2 === cx && y2 > cy ? bottom - 8 : cy;
-          lines.push(`<line x1="${cx}" y1="${y1}" x2="${x2}" y2="${y2}"/>`);
-        }
+    for (const [id, to] of pos) {
+      for (const pre of RS[id].pre) {
+        const from = pos.get(pre);
+        if (!from) continue;
+        const x1 = from.c * CW + CW / 2 + HALF, y1 = ys[from.r] + CY;
+        const x2 = to.c * CW + CW / 2 - HALF, y2 = ys[to.r] + CY;
+        const xc = x2 - CHAN;
+        lines.push(`<path data-from="${pre}" data-to="${id}" d="M${x1} ${y1}${y1 === y2 ? `H${x2}` : `H${xc}V${y2}H${x2}`}"/>`);
       }
     }
     const nodes = [];
@@ -366,7 +360,7 @@
       <div class="toolbar"><div class="fgroup"><span class="cap">Tree</span><div class="opts">${TREES.map((t) => `<a class="toggle" href="#/research/${t.key}" aria-pressed="${t.key === treeKey}">${t.label}</a>`).join('')}</div></div></div>
       <div class="treebox bi u p-tan"><div class="treein">
         <div class="treescroll"><div class="tree" style="width:${W}px;height:${H}px">
-          <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" fill="none" stroke="#9a6a35" stroke-width="7" stroke-linecap="round" aria-hidden="true">${lines.join('')}</svg>
+          <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" fill="none" stroke="#9a6a35" stroke-width="4" stroke-linejoin="round" aria-hidden="true">${lines.join('')}</svg>
           ${nodes.join('')}
         </div></div>
       </div></div>`;
@@ -380,28 +374,27 @@
   }
 
   // ---------- modals ----------
-  /** The Synthesis block of a craftable item: the cost and the materials, then the value as a ledger, then the unlock. */
+  /**
+   * The Synthesis block of a craftable item, 3 rows: the materials in 1 grid, the values in 1 row of stats (label above the value, 1 baseline), then the unlock.
+   * The stats are in 1 grid with equal gaps, so the cost and the values do not float.
+   */
   function synthesis(it) {
     const s = it.syn;
     const u = s.unlock;
     const pos = (n) => (n > 0 ? 'pos' : n < 0 ? 'neg' : '');
-    const row = (op, label, v, cls = '') => `<div class="lr ${cls}"><span class="op">${op}</span><span class="lb">${label}</span><b class="val">${v}</b></div>`;
+    const stat = (label, v, cls = '') => `<div class="stat ${cls}">${cap(label)}<b class="val">${v}</b></div>`;
     let h = bar('Synthesis') + '<div class="syn">';
-    h += `<div class="syn-top"><div class="bigstat">${cap('Synthesis cost')}<b>${costU(s.cost)}</b></div><div class="row mats">${s.mats.map((m) => itemEnt(m.id, { val: `${fmt(m.q)} needed` })).join('')}</div></div>`;
-    h += '<div class="syn-body"><div class="syn-val">';
+    h += `<div class="minis mats">${s.mats.map((m) => itemEnt(m.id, { qty: m.q })).join('')}</div>`;
+    const stats = [stat('Synthesis cost', costU(s.cost))];
     if (s.added === null) {
-      // No selling price: the value is not calculated, and the only known row is the material cost.
-      h += `<div class="ledger">${row('', 'Material cost', money(s.input))}</div>`;
+      // No selling price: the value is not calculated, and the only known value is the material cost.
+      stats.push(stat('Material cost', money(s.input)));
     } else {
-      h += `<div class="ledger">
-        ${row('', 'Selling price', money(s.price))}
-        ${row('&minus;', 'Material cost', money(s.input))}
-        ${row('=', 'Added value', money(s.added), `sum ${pos(s.added)}`)}
-        ${s.per === null ? '' : `${row('&divide;', 'Synthesis cost', costU(s.cost))}${row('=', 'Value per cost', `${money(s.per)}<span class="per">per</span><img class="ico" src="img/ui/cost.png" alt="Synthesis cost">`, `sum ${pos(s.per)}`)}`}
-      </div>`;
+      stats.push(stat('Selling price', money(s.price)), stat('Material cost', money(s.input)), stat('Added value', money(s.added), pos(s.added)));
+      if (s.per !== null) stats.push(stat('Value per cost', `${money(s.per)}<span class="per">per</span><img class="ico" src="img/ui/cost.png" alt="Synthesis cost">`, pos(s.per)));
     }
+    h += `<div class="syn-stats">${stats.join('')}</div>`;
     if (s.unpriced.length) h += `<div class="ul">${cap('Counted as 0 (no price)')}<span class="uv wrap">${s.unpriced.map(itemLink).join('')}</span></div>`;
-    h += '</div>';
     const bits = [];
     const ul = (c, body) => `<div class="ul">${cap(c)}${body}</div>`;
     if (u) {
@@ -412,7 +405,7 @@
       // An event with no name in the game files is an internal id: it shows as "An event", never as the id.
       if (u.event) bits.push(ul('Event', `<span class="uv">${INTERNAL_ID.test(u.event) ? 'An event' : esc(u.event)}</span>`));
     }
-    h += `${bits.length ? `<div class="unlock">${bits.join('')}</div>` : ''}</div></div>`;
+    h += `${bits.length ? `<div class="unlock">${bits.join('')}</div>` : ''}</div>`;
     return h;
   }
 
@@ -423,22 +416,26 @@
       if (!tables.length) return '';
       const g = GIMMICK[t];
       const body = tables.map((tb) => `<div class="tbl">${tables.length > 1 ? cap(`${g.unit} ${tb.n}`) : ''}<div class="minis">${tb.items.map((x) => itemEnt(x.i, { val: pct(x.r) })).join('')}</div></div>`).join('');
-      return grp(g.label, body);
-    }).join('');
-  }
+      return col(grp(g.label, body));
+    }).join('');  }
 
-  /** The element icon with its name under it (expl_area.xml ele_00..03 flags, in the order Fire, Water, Wind, Earth). */
-  const elmIcon = (k, val = '') => `<span class="elm" data-tip="${ELEMENT_NAMES[k]}"><span class="slot">${IT.has(ELEMENT_IDS[k]) ? `<img src="${icon(IT.get(ELEMENT_IDS[k]).icon)}" alt="">` : ''}</span>${val ? `<b>${ELEMENT_NAMES[k]}</b>` : ''}<small>${val || ELEMENT_NAMES[k]}</small></span>`;
+  /** An element: its game icon, then the text (the element name, or a value). The icon files are the element items of the game. */
+  const elChip = (k, val = '') => `<span class="el" data-tip="${ELEMENT_NAMES[k]}"><img src="${IT.has(ELEMENT_IDS[k]) ? icon(IT.get(ELEMENT_IDS[k]).icon) : ''}" alt="${ELEMENT_NAMES[k]}"><b>${val || ELEMENT_NAMES[k]}</b></span>`;
+  /** A stat: a label above a value. */
+  const statBox = (label, v) => `<div class="stat">${cap(label)}${v}</div>`;
 
   /**
-   * The dispatch data of a zone: the elements of the area (expl_area.xml ele_00..03).
+   * The elements of a zone (expl_area.xml ele_00..03), as a stat of the head line of a panel.
    * The element rating table (expl_send_element.xml) is the same on every area, so it does not show here.
    */
-  function dispatch(z) {
+  function elementStat(z) {
     const els = z.ele.map((v, k) => (v ? k : -1)).filter((k) => k >= 0);
-    if (!els.length) return '';
-    return grp('Area element', `<div class="elms">${els.map((k) => elmIcon(k)).join('')}</div>`);
+    return els.length ? statBox('Area element', `<span class="els">${els.map((k) => elChip(k)).join('')}</span>`) : '';
   }
+
+  /** 1 panel for the related parts of a detail: the head line, then the columns (the parts side by side when there is room). */
+  const panel = (headBits, ...sections) => `<div class="panel"><div class="crumb left panel-head">${headBits.filter(Boolean).join('')}</div>${sections.filter(Boolean).map((x) => `<div class="panel-cols${x.flow ? ' flow' : ''}">${x.flow ? x.h : x}</div>`).join('')}</div>`;
+  const col = (...parts) => (parts.some(Boolean) ? `<div class="col">${parts.filter(Boolean).join('')}</div>` : '');
 
   function itemModal(id) {
     const it = IT.get(id);
@@ -464,7 +461,7 @@
       }).join('')}</div>`));
     }
     if (it.drops.length) {
-      groups.push(grp('Monster drops', `<div class="minis">${it.drops.map((d) => monEnt(d.m, { val: dropVal(d) })).join('')}</div>`));
+      groups.push(grp('Monster drops', `<div class="minis">${it.drops.map((d) => monEnt(d.m, dropOpts(d))).join('')}</div>`));
     }
     for (const t of GIMMICK_ORDER) {
       const rows = it.special.filter((e) => e.t === t);
@@ -485,44 +482,42 @@
   function areaModal(id) {
     const a = AREA.get(id);
     if (a) {
-      let h = head(a.n);
-      h += `<div class="crumb left"><div class="stat">${cap('Zone')}<a class="tl" href="#/areas/${a.zone.id}">${esc(a.zone.n)}</a></div><div class="stat">${cap('Opens')}<span>${esc(opens(a.zone))}</span></div></div>`;
-      h += `<div class="diffline"><span class="cap">Difficulty by area level</span><div class="diffs">${a.diff.map((d, i) => `<div class="diff"><b>${d}</b><span>${i + 1}</span></div>`).join('')}</div></div>`;
       const mon = (m) => monEnt(m.m, { val: lvRange(m.lo, m.hi) });
-      if (a.gather.length) h += grp('Gather', `<div class="minis">${a.gather.map((g) => itemEnt(g.i, { val: pct(g.r) })).join('')}</div>`);
+      const gather = a.gather.length ? grp('Gather', `<div class="minis">${a.gather.map((g) => itemEnt(g.i, { val: pct(g.r) })).join('')}</div>`) : '';
       // The tile has 1 value line (the level), so the monsters that only show from an area level are their own group.
+      let mons = '';
       for (const [boss, title] of [[false, 'Monsters'], [true, 'Bosses']]) {
         const reqs = [...new Set(a.mons.filter((m) => !!m.boss === boss).map((m) => m.req || 0))].sort((x, y) => x - y);
         for (const req of reqs) {
           const list = a.mons.filter((m) => !!m.boss === boss && (m.req || 0) === req);
-          h += grp(req ? `${title} from area level ${req}` : title, `<div class="minis${boss ? ' boss' : ''}">${list.map(mon).join('')}</div>`);
+          mons += grp(req ? `${title} from area level ${req}` : title, `<div class="minis${boss ? ' boss' : ''}">${list.map(mon).join('')}</div>`);
         }
       }
-      h += dispatch(a.zone);
-      h += rareGroups(a.zone);
-      return h;
+      const diff = statBox('Difficulty by area level', `<div class="diffs">${a.diff.map((d, i) => `<div class="diff"><b>${d}</b><span>${i + 1}</span></div>`).join('')}</div>`);
+      return head(a.n) + panel(
+        [statBox('Zone', `<a class="tl" href="#/areas/${a.zone.id}">${esc(a.zone.n)}</a>`), statBox('Opens', `<span>${esc(opens(a.zone))}</span>`), diff, elementStat(a.zone)],
+        col(gather) + col(mons),
+        rareGroups(a.zone) && { h: rareGroups(a.zone), flow: true },
+      );
     }
     const z = ZONE.get(id);
     if (!z) return null;
-    let h = head(z.n);
-    h += `<div class="crumb left"><div class="stat">${cap('Opens')}<span>${esc(opens(z))}</span></div></div>`;
-    h += grp('Areas', `<div class="cols">${z.areas.map((x) => `<a class="link" href="#/areas/${x.id}"><span class="lt"><b>${esc(x.n)}</b></span></a>`).join('')}</div>`);
-    h += dispatch(z);
-    h += rareGroups(z);
-    return h;
+    return head(z.n) + panel(
+      [statBox('Opens', `<span>${esc(opens(z))}</span>`), elementStat(z)],
+      { h: col(grp('Areas', `<div class="cols">${z.areas.map((x) => `<a class="link" href="#/areas/${x.id}"><span class="lt"><b>${esc(x.n)}</b></span></a>`).join('')}</div>`)) + rareGroups(z), flow: true },
+    );
   }
 
   function monsterModal(id) {
     const m = D.monsters[id];
     if (!m) return null;
     let h = head(m.n);
-    h += `<div class="top">${slot({ icon: m.icon })}<div class="facts"><span class="catline">${m.boss ? 'Boss' : 'Monster'}</span><span class="catline">Rank ${m.rank}</span></div></div>`;
+    h += `<div class="top">${slot({ icon: m.icon })}<div class="facts"><span class="catline">${m.boss ? 'Boss' : 'Monster'}</span><span class="catline">Rank ${m.rank}</span>${m.def ? `<span class="reduce">${cap('Element DEF')}<span class="els">${m.def.map((v, k) => elChip(k, String(v))).join('')}</span></span>` : ''}</div></div>`;
     if (m.desc) h += `<p class="desc">${esc(m.desc)}</p>`;
     const drops = DROPS.get(id) || [];
     // m.def: the element DEF in the order Fire, Water, Wind, Earth (btl_chara element_1..4). A monster with no battle data or only 0 has none.
     // An element with DEF 0 has no modifier, so it does not show.
-    if (m.def) h += bar('Element DEF') + `<div class="elms">${m.def.map((v, k) => (v ? elmIcon(k, String(v)) : '')).join('')}</div>`;
-    if (drops.length) h += bar('Drops') + `<div class="minis">${drops.map((d) => itemEnt(d.id, { val: dropVal(d) })).join('')}</div>`;
+    if (drops.length) h += bar('Drops') + `<div class="minis">${drops.map((d) => itemEnt(d.id, dropOpts(d))).join('')}</div>`;
     const hab = HABITAT.get(id) || [];
     if (hab.length) {
       h += bar('Found in') + `<div class="cols">${hab.map((x) => { const a = AREA.get(x.area); return `<a class="link" href="#/areas/${a.id}"><span class="lt"><b>${esc(a.n)}</b><small>${esc(a.zone.n)}</small></span><span class="pct">${lvRange(x.lo, x.hi)}</span></a>`; }).join('')}</div>`;
@@ -541,14 +536,18 @@
       h += bar('Skills') + `<div class="cols">${c.skills.map((s) => `<div class="link plain"><span class="lt"><b>${esc(s.n)}</b>${s.ev ? cap('Learned at an event') : ''}</span>${s.ev ? '' : `<span class="pct">Lv ${s.lv}</span>`}</div>`).join('')}</div>`;
     }
     if (c.join) {
-      // The event of the join is an internal id with no player-facing name in the game files, so it does not show.
+      // The event of the join has no name in the game files, so the section says "Joins in a story event" and lists the characters that join with it.
+      // A turn of 0 or 1 and a population of 0 are met by each player: the data has dropped them.
       const j = c.join;
       const st = (label, v) => `<div class="stat">${cap(label)}<span>${v}</span></div>`;
       const stats = [
         j.pop ? st('Town population', `${fmt(j.pop)} ${j.pop === 1 ? 'person' : 'people'}`) : '',
         j.turn ? st('Turn (not confirmed)', `Turn ${j.turn}`) : '',
       ].filter(Boolean);
-      if (stats.length) h += bar('Joins the town') + `<div class="crumb left">${stats.join('')}</div>`;
+      const withIds = j.with.map((id) => D.chars.find((x) => x.id === id)).filter(Boolean);
+      if (j.story || stats.length) {
+        h += bar('Joins the town') + `<div class="jn">${j.story ? '<span class="uv">Joins in a story event</span>' : ''}${stats.length ? `<div class="crumb left">${stats.join('')}</div>` : ''}${withIds.length ? grp('Joins with', `<div class="minis">${withIds.map((x) => charEnt(x)).join('')}</div>`) : ''}</div>`;
+      }
     }
     // The game has no icon for a research (the tree cells show state icons only), so a research is a card with its name and its tree.
     const rs = Object.values(RS).filter((r) => r.who.some((w) => w.id === c.id));
@@ -572,14 +571,15 @@
     if (!n) return null;
     let h = head(n.n);
     const stats = [];
-    if (n.dur > 0) stats.push(`<div class="bigstat">${cap('Duration')}<b>${turns(n.dur)}</b></div>`);
-    if (n.money > 0) stats.push(`<div class="bigstat">${cap('Research fee')}<b>${money(n.money)}</b></div>`);
+    if (n.friendNeed > 0) stats.push(`<div class="stat need">${cap('Total friendship')}${heart(n.friendNeed)}</div>`);
+    if (n.dur > 0) stats.push(`<div class="stat">${cap('Duration')}<b>${turns(n.dur)}</b></div>`);
+    if (n.money > 0) stats.push(`<div class="stat">${cap('Research fee')}<b>${money(n.money)}</b></div>`);
     const person = (w) => {
       const c = D.chars.find((x) => x.id === w.id);
       return `<${c ? 'a' : 'div'} class="person"${c ? ` href="#/characters/${c.id}"` : ''}>${slot({ icon: w.icon, tip: w.n })}<span>${esc(w.n)}</span></${c ? 'a' : 'div'}>`;
     };
-    h += `<div class="who">${n.who.map(person).join('')}${n.friendNeed > 0 ? `<div class="need">${cap('Total friendship')}${heart(n.friendNeed)}</div>` : ''}${stats.length ? `<div class="stats">${stats.join('')}</div>` : ''}</div>`;
-    if (n.mats.length) h += bar('Materials') + `<div class="minis">${n.mats.map((m) => itemEnt(m.id, { val: `${fmt(m.q)} needed` })).join('')}</div>`;
+    h += `<div class="who">${n.who.map(person).join('')}${stats.length ? `<div class="stats">${stats.join('')}</div>` : ''}</div>`;
+    if (n.mats.length) h += bar('Materials') + `<div class="minis">${n.mats.map((m) => itemEnt(m.id, { qty: m.q })).join('')}</div>`;
     if (n.pre.length || n.conds.length) {
       h += bar('Requires');
       if (n.pre.length) h += `<div class="minis">${n.pre.filter((p) => RS[p]).map((p) => resEnt(p)).join('')}</div>`;
@@ -591,7 +591,7 @@
       // The sub-heading names the kind only when there is more than 1 kind of reward.
       const kinds = [n.set, n.prizeItem, n.bonus].filter(Boolean).length;
       const kind = (title, body) => (kinds > 1 ? grp(title, body) : body);
-      if (n.prizeItem) h += kind('Item', `<div class="minis">${itemEnt(n.prizeItem.id, { val: `${fmt(n.prizeItem.q)} given` })}</div>`);
+      if (n.prizeItem) h += kind('Item', `<div class="minis">${itemEnt(n.prizeItem.id, { qty: n.prizeItem.q })}</div>`);
       if (n.bonus) h += kind('Bonus', `<div class="link plain"><span class="lt"><b>${esc(n.bonus)}</b></span></div>`);
     }
     return h;
@@ -606,9 +606,9 @@
     if (go && base) history.replaceState(null, '', base.hash);
     if (go) { route(); if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll: true }); }
   }
-  function openModal(html) {
+  function openModal(html, cls = '') {
     if (!root.firstChild) lastFocus = document.activeElement;
-    root.innerHTML = `<div class="overlay" data-overlay><div class="modal bi u p-star" role="dialog" aria-modal="true" tabindex="-1"><div class="modal-body">${html}</div></div></div>`;
+    root.innerHTML = `<div class="overlay" data-overlay><div class="modal bi u p-star ${cls}" role="dialog" aria-modal="true" tabindex="-1"><div class="modal-body">${html}</div></div></div>`;
     document.body.style.overflow = 'hidden';
     $('.modal', root).focus({ preventScroll: true });
   }
@@ -649,7 +649,7 @@
       renderBase(base);
       renderNav();
       const html = { items: itemModal, areas: areaModal, research: researchModal, monsters: monsterModal, characters: characterModal }[p.view](p.id);
-      if (html) openModal(html);
+      if (html) openModal(html, p.view === 'areas' ? 'wide' : '');
       else closeModal(true);
     } else {
       closeModal(false);

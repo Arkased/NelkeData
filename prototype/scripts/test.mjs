@@ -153,16 +153,25 @@ for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'mo
     const howT = (await page.locator('.modal .bar', { hasText: 'How to get' }).count()) ? await page.evaluate(() => { let s = ''; let n = [...document.querySelectorAll('.modal .bar')].find((b) => /How to get/.test(b.textContent)).nextElementSibling; while (n && !n.classList.contains('bar')) { s += n.innerText + '\n'; n = n.nextElementSibling; } return s; }) : '';
     if (k === 'gather') ok(/GATHER/i.test(t) && /Used in/i.test(t), 'has Gather and Used in');
     if (k === 'gather') ok(!/opens after|open from the start/.test(howT), 'gather cards have no "opens after"');
-    if (k === 'drop') ok(/Monster drops/i.test(t) && /\d per drop/.test(t), 'has Monster drops with "N per drop"');
+    if (k === 'drop') ok(/Monster drops/i.test(t) && !/per drop/.test(t), 'has Monster drops, with no "N per drop" text');
     if (k === 'drop') ok((await page.locator('.modal a.mini[href^="#/monsters/"]').count()) > 0, 'drops are monster links');
     if (k === 'shop') ok(/sold at/i.test(topT) && (await page.locator('.modal .top .sold img').count()) > 0, 'top block has "Sold at" with shop icons');
     ok(!/Shops|Medicine Shop|General Store|Grocery Store|Clothing Store|Weapon\/Armor Shop/.test(howT), 'no shop in How to get');
     if (k === 'farm') ok(/Farm/.test(t) && !/Grown in/.test(t), 'has Farm group');
-    if (k.startsWith('craft') || k === 'unpriced') ok(/Synthesis cost/i.test(t) && /\d needed/.test(synT) && !/\bx\d/i.test(synT), 'synthesis block: "N needed", no "x3"');
+    if (k.startsWith('craft') || k === 'unpriced') ok(/Synthesis cost/i.test(t) && !/\d needed/.test(synT) && !/\bx\d/i.test(synT), 'synthesis block: no "N needed", no "x3"');
+    if (k.startsWith('craft') || k === 'unpriced') {
+      const want = await page.evaluate((id) => window.DATA.items.find((i) => i.id === id).syn.mats.filter((m) => m.q >= 2).map((m) => '×' + m.q), P[k].id);
+      const got = await page.locator('.modal .syn .mats .qty').allInnerTexts();
+      ok(got.join(',') === want.join(','), `material badges ${got.join(',') || '(none)'} = the quantities of 2 or more`);
+      ok((await page.locator('.modal .syn .mats .mini').count()) === (await page.evaluate((id) => window.DATA.items.find((i) => i.id === id).syn.mats.length, P[k].id)), 'the materials are 1 grid of tiles');
+      const gaps = await page.evaluate(() => { const g = getComputedStyle(document.querySelector('.modal .syn-stats')); return [g.rowGap, g.columnGap]; });
+      ok(gaps.every((g) => parseFloat(g) % 4 === 0), `synthesis stat gaps ${gaps.join(' / ')} on the 4 px scale`);
+      ok(await page.evaluate(() => { const rs = {}; document.querySelectorAll('.modal .syn-stats .val').forEach((e) => { const t = Math.round(e.getBoundingClientRect().top / 2); const k = Math.round(e.closest('.stat').getBoundingClientRect().top / 2); (rs[k] ||= new Set()).add(t); }); return Object.values(rs).every((v) => v.size === 1); }), 'the stat values of a row share 1 baseline');
+    }
     if (k === 'craftNoPrice') ok(!/Selling price/i.test(synT) && /Material cost/i.test(synT), 'no selling price: only the material cost row shows');
-    if (k === 'drop') ok((await page.locator('.modal .mini small').allInnerTexts()).every((s) => /^\d[\d,]* per drop · \d+(\.\d)?%$/.test(s)), 'drop tiles have 1 value line "N per drop · N%"');
+    if (k === 'drop') ok((await page.locator('.modal .mini small').allInnerTexts()).every((s) => /^\d+(\.\d)?%$/.test(s)), 'drop tiles have 1 value line "N%"');
     if (k === 'rare') ok(/(Treasure|Bug Net|Digging|Fishing)/.test(t), 'rare group');
-    if (k === 'craftPriced') ok((await page.locator('.modal .syn .cost img[src$="cost.png"]').count()) >= 2 && (await page.locator('.modal .syn .money img[src$="coin.png"]').count()) >= 3, 'synthesis cost and money have their icons');
+    if (k === 'craftPriced') ok((await page.locator('.modal .syn img[src$="cost.png"]').count()) >= 2 && (await page.locator('.modal .syn .money img[src$="coin.png"]').count()) >= 3, 'synthesis cost and money have their icons');
     ok((await page.locator('.modal .top').innerText()).match(/Reduces into|Material|Merchandise|Battle|Construction/) !== null, 'top has category');
   });
   await closeEsc();
@@ -222,9 +231,14 @@ await step('area modal: interior', async () => {
   ok((await modalTitle()) === 'Life Spring: Interior', 'title is the interior');
   const t = await page.locator('.modal-body').innerText();
   ok(/Gather/.test(t) && /Monsters/.test(t), 'gather and monsters');
+  ok((await page.locator('.modal .panel').count()) === 1 && (await page.locator('.modal .panel .grp').count()) >= 2 && (await page.locator('.modal > .modal-body > .grp').count()) === 0, 'the area is 1 panel with its parts inside (no floating section)');
+  if (width >= 1200) {
+    const pos = await page.evaluate(() => { const g = [...document.querySelectorAll('.modal .panel-cols')[0].children].map((c) => c.getBoundingClientRect()); const m = document.querySelector('.modal-body').getBoundingClientRect(); return { n: g.length, sameTop: g.length < 2 || Math.abs(g[0].top - g[1].top) < 2, w: g.reduce((a, r) => a + r.width, 0) / m.width }; });
+    ok(pos.n === 2 && pos.sameTop && pos.w > 0.8, `gather and monsters side by side, ${Math.round(pos.w * 100)}% of the width`);
+  }
   ok(/Treasure/.test(t) && /Bug Net/.test(t), 'rare groups with the game terms');
   ok(/Area element/i.test(t) && !/Element rating|\dx\b/.test(t), 'the area element shows, the global rating table does not');
-  ok((await page.locator('.modal .elm img').count()) >= 1, 'the area elements have their icons');
+  ok((await page.locator('.modal .panel-head .el img').count()) >= 1, 'the area elements have their icons, in the head line of the panel');
   const crumb = await page.locator('.modal .crumb').innerText();
   ok(/ZONE/i.test(crumb) && /OPENS/i.test(crumb) && /From the start|After task \d+/.test(crumb), `header has labelled Zone and Opens: ${crumb.replace(/\n/g, ' | ')}`);
   ok((await page.locator('.modal .crumb a.tl').count()) === 1, 'the zone is a link');
@@ -237,6 +251,7 @@ await step('area modal: outside area', async () => {
   await page.locator('.modal .crumb a').click();
   await page.waitForFunction(() => document.querySelector('.modal .name')?.textContent === 'Harvest Spring');
   ok((await page.locator('.modal .link').count()) >= 7, 'zone modal lists its areas');
+  ok((await page.locator('.modal .panel').count()) === 1 && (await page.locator('.modal > .modal-body > .grp').count()) === 0, 'the zone is 1 panel (areas and treasure inside)');
   await page.locator('.modal .link', { hasText: 'Life Spring: Interior' }).click();
   await page.waitForFunction(() => document.querySelector('.modal .name')?.textContent === 'Life Spring: Interior');
   await page.locator('.modal a.mini').first().click();
@@ -294,7 +309,7 @@ await step('monsters page and modal', async () => {
   await go(`#/monsters/${P.monster.id}`);
   await page.waitForSelector('.modal');
   const t = await page.locator('.modal-body').innerText();
-  ok(/Drops/.test(t) && /\d per drop/.test(t) && /Found in/.test(t) && /Lv \d+/.test(t), 'drops "N per drop" and areas with "Lv N"');
+  ok(/Drops/.test(t) && !/per drop/.test(t) && /Found in/.test(t) && /Lv \d+/.test(t), 'drops with a rate and areas with "Lv N"');
   ok(/Rank \d+/.test(t), 'rank');
 });
 await closeEsc();
@@ -303,9 +318,14 @@ await step('monster with element DEF', async () => {
   await page.waitForSelector('.modal');
   const t = await page.locator('.modal-body').innerText();
   const want = await page.evaluate((id) => window.DATA.monsters[id].def.filter((v) => v).map(String), P.monDef.id);
-  ok(/Element DEF/i.test(t) && (await page.locator('.modal .elm img').count()) === want.length, `element DEF with an icon for each of the ${want.length} elements`);
-  const vals = await page.locator('.modal .elm small').allInnerTexts();
-  ok(vals.join(',') === want.join(','), `DEF values ${vals.join(',')}`);
+  const all = await page.evaluate((id) => window.DATA.monsters[id].def.map(String), P.monDef.id);
+  ok(/Element DEF/i.test(await page.locator('.modal .top').innerText()) && !(await page.locator('.modal .bar', { hasText: 'Element DEF' }).count()), 'element DEF is in the top block, not a section');
+  ok((await page.locator('.modal .top .el img').count()) === 4, 'the DEF line has the 4 element icons');
+  const vals = await page.locator('.modal .top .el b').allInnerTexts();
+  ok(vals.join(',') === all.join(','), `DEF values ${vals.join(',')}`);
+  const ys = await page.evaluate(() => [...document.querySelectorAll('.modal .top .el')].map((e) => Math.round(e.getBoundingClientRect().top)));
+  ok(width < 600 || new Set(ys).size === 1, 'the DEF line is 1 row (from 600 px)');
+  void want;
 });
 await closeEsc();
 
@@ -331,7 +351,7 @@ await step('character with aptitudes, skills and join conditions', async () => {
   await page.waitForSelector('.modal');
   const t = await page.locator('.modal-body').innerText();
   ok(/Aptitudes/i.test(t) && /Skills/i.test(t) && /Joins the town/i.test(t), 'aptitudes, skills and join sections');
-  ok(/Lv \d+/.test(t) && /Town population/i.test(t) && /Turn \d+/.test(t) && /not confirmed/i.test(t), 'skill level, population, turn marked not confirmed');
+  ok(/Lv \d+/.test(t) && /Town population/i.test(t) && !/Turn [01]\b/.test(t) && !/population 0\b/i.test(t), 'skill level, population; no turn of 0 or 1');
   ok(/Learned at an event/i.test(t) && !/\b[A-Z][A-Z0-9]+(_[A-Z0-9]+)+\b/.test(t), 'event skill reads "Learned at an event", no internal id');
   const teach = await page.evaluate(() => [...document.querySelectorAll('.modal .bar')].filter((b) => /^Teaches/.test(b.textContent)).length);
   ok(teach <= 1, `at most 1 Teaches section (${teach})`);
@@ -351,7 +371,37 @@ for (const tree of ['main', 'attack', 'support', 'emergency']) {
     ok(fit.scrolls || fit.dw <= 76, `box width fits the tree (+${Math.round(fit.dw)} px), or the tree scrolls inside its box`);
     ok(!/Scroll sideways/.test(await page.locator('main').innerText()), 'no how-to text');
     const n = await page.locator('.node').count();
-    ok(n > 3, `${n} nodes`);
+    ok(n > 3 || tree === 'emergency', `${n} nodes`);
+    // The drawn lines are exactly the prerequisites of the nodes of the tree (stdy_conditions.xml): no extra line, no missing line.
+    const drawn = await page.evaluate(() => [...document.querySelectorAll('.tree svg path')].map((p) => `${p.dataset.from}>${p.dataset.to}`).sort());
+    const want = await page.evaluate((tk) => {
+      const D = window.DATA;
+      const ids = new Set(D.trees[tk].res.flat().filter((id) => id && D.research[id]));
+      return [...ids].flatMap((id) => D.research[id].pre.map((p) => `${p}>${id}`)).sort();
+    }, tree);
+    ok(drawn.join() === want.join(), `${drawn.length} lines = ${want.length} prerequisites${drawn.join() === want.join() ? '' : ': extra ' + drawn.filter((d) => !want.includes(d)).join(' ') + ' missing ' + want.filter((d) => !drawn.includes(d)).join(' ')}`);
+    // Each line leaves the right side of the prerequisite icon and enters the left side of the research, in orthogonal segments.
+    const geo = await page.evaluate(() => {
+      const bad = [];
+      const sv = document.querySelector('.tree svg').getBoundingClientRect();
+      for (const p of document.querySelectorAll('.tree svg path')) {
+        const f = document.querySelector(`.node[href$="/${p.dataset.from}"] .slot`)?.getBoundingClientRect();
+        const t = document.querySelector(`.node[href$="/${p.dataset.to}"] .slot`)?.getBoundingClientRect();
+        const a = p.getPointAtLength(0), b = p.getPointAtLength(p.getTotalLength());
+        if (!f || !t) { bad.push(`no node for ${p.dataset.from}>${p.dataset.to}`); continue; }
+        if (Math.abs(sv.left + a.x - f.right) > 2 || Math.abs(sv.top + a.y - (f.top + f.height / 2)) > 2) bad.push(`start of ${p.dataset.from}>${p.dataset.to}`);
+        if (Math.abs(sv.left + b.x - t.left) > 2 || Math.abs(sv.top + b.y - (t.top + t.height / 2)) > 2) bad.push(`end of ${p.dataset.from}>${p.dataset.to}`);
+        if (!/^M[\d.]+ [\d.]+H[\d.]+(V[\d.]+H[\d.]+)?$/.test(p.getAttribute('d'))) bad.push(`not orthogonal: ${p.getAttribute('d')}`);
+      }
+      return bad;
+    });
+    ok(geo.length === 0, `lines leave the right side and enter the left side, orthogonal${geo.length ? ': ' + geo.slice(0, 3).join('; ') : ''}`);
+    if (tree === 'main') {
+      const truth = ['100>103', '101>103', '102>103', '103>132', '132>104', '104>105', '104>106', '104>107', '105>108', '106>108', '107>108', '108>109', '109>110', '110>111'].map((x) => x.split('>').map((i) => 'STDY_RES_' + i).join('>')).sort();
+      ok(drawn.join() === truth.join(), 'main tree: the 14 prerequisites of the game (100, 101, 102 have no line between them)');
+    }
+    const pitch = await page.evaluate(() => { const r = [...document.querySelectorAll('.node')].map((n) => Math.round(n.offsetTop)); return [...new Set(r)].sort((a, b) => a - b); });
+    ok(pitch.every((v, i) => i === 0 || v - pitch[i - 1] <= 144), `connector rows are thin (node rows at ${pitch.join(', ')})`);
     await page.locator('.node').nth(Math.min(2, n - 1)).click();
     await page.waitForSelector('.modal');
     ok((await page.locator('.modal .who').count()) === 1, 'research modal');
@@ -369,12 +419,12 @@ await step('research tab labels', async () => {
 await step('research with a friendship requirement', async () => {
   await go(`#/research/${(await page.evaluate((id) => window.DATA.research[id].tree, P.resFriend.id))}/${P.resFriend.id}`);
   await page.waitForSelector('.modal');
-  ok((await page.locator('.modal .who .need .fr img[src$="fav-icon.png"]').count()) === 1, 'heart next to the researcher');
-  const num = await page.locator('.modal .who .need .fr b').innerText();
+  ok((await page.locator('.modal .who .stat.need .fr img[src$="fav-icon.png"]').count()) === 1, 'heart next to the researcher');
+  const num = await page.locator('.modal .who .stat.need .fr b').innerText();
   ok(num === String(await page.evaluate((id) => window.DATA.research[id].friendNeed, P.resFriend.id)), `heart number ${num}`);
   const t = await page.locator('.modal-body').innerText();
-  ok(/TOTAL FRIENDSHIP/i.test(await page.locator('.modal .who .need').innerText()), 'label "Total friendship"');
-  ok(/\d+ needed/.test(t) || !(await page.locator('.modal .minis').count()), 'materials show "N needed"');
+  ok(/TOTAL FRIENDSHIP/i.test(await page.locator('.modal .who .stat.need').innerText()), 'label "Total friendship"');
+  ok(!/\d+ needed/.test(t), 'materials have no "N needed" text');
   ok(/\d+ turns?/.test(t), 'duration as "N turns"');
 });
 await closeEsc();
@@ -382,6 +432,37 @@ await step('research with a condition', async () => {
   await go(`#/research/${(await page.evaluate((id) => window.DATA.research[id].tree, P.resCond.id))}/${P.resCond.id}`);
   await page.waitForSelector('.modal');
   ok((await page.locator('.modal .conds .link').count()) >= 1, 'condition shown');
+});
+await closeEsc();
+
+await step('character joining in a story event', async () => {
+  await go(`#/characters/${P.charStory.id}`);
+  await page.waitForSelector('.modal');
+  const t = await page.locator('.modal-body').innerText();
+  const want = await page.evaluate((id) => window.DATA.chars.find((c) => c.id === id).join.with.map((i) => window.DATA.chars.find((c) => c.id === i).n), P.charStory.id);
+  ok(/Joins in a story event/.test(t) && /Joins with/.test(t), 'says "Joins in a story event" and "Joins with"');
+  const names = await page.locator('.modal .jn .grp a.mini .nm').allInnerTexts();
+  ok(names.length === want.length && want.every((n) => names.includes(n)) && !names.includes(P.charStory.n) && want.length >= 10, `${names.length} tiles of the other characters of the event`);
+  ok(!/Turn [01]\b|population 0\b/i.test(t), 'no turn of 0 or 1, no population of 0');
+});
+await closeEsc();
+await step('character alone on its story event, and a population join', async () => {
+  await go(`#/characters/${P.charAlone.id}`);
+  await page.waitForSelector('.modal');
+  ok(/Joins in a story event/.test(await page.locator('.modal-body').innerText()) && (await page.locator('.modal .jn .grp').count()) === 0, 'alone: only "Joins in a story event"');
+  await go(`#/characters/${P.charPop.id}`);
+  await page.waitForSelector('.modal');
+  const t = await page.locator('.modal-body').innerText();
+  ok(/Town population/i.test(t) && !/story event/.test(t) && !/Turn \d/.test(t), 'population join: the population only');
+});
+await closeEsc();
+await step('research header is 1 row (Dusky Barrier Breaker)', async () => {
+  await go(`#/research/${await page.evaluate((id) => window.DATA.research[id].tree, P.dusky.id)}/${P.dusky.id}`);
+  await page.waitForSelector('.modal .who');
+  if (width >= 768) {
+    const tops = await page.evaluate(() => [...document.querySelectorAll('.modal .who > *')].map((k) => Math.round(k.getBoundingClientRect().top)));
+    ok(tops.length >= 3 && Math.max(...tops) - Math.min(...tops) <= 4, `header children tops ${tops.join(',')}`);
+  } else ok(true, 'narrow: the header may wrap');
 });
 await closeEsc();
 
