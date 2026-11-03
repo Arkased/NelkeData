@@ -71,7 +71,7 @@
   let base = null; // { view, key, hash, tree }
   let viewKey = '';
   let lastFocus = null;
-  const st = { cat: [], shop: [], craft: false, q: '', aq: '', mq: '', mk: '', cq: '', cg: [] };
+  const st = { cat: [], shop: [], craft: false, mk: '', cg: [] };
 
   // ---------- small parts ----------
   const icon = (f) => (f.startsWith('img/') ? f : `img/icons/${f}`);
@@ -132,7 +132,8 @@
   /** The 1 style of a small label. */
   const cap = (text, cls = '') => `<small class="cap ${cls}">${esc(text)}</small>`;
   const head = (name) => `<div class="mhead"><h2 class="name bi p-gold">${esc(name)}</h2><button class="close btn" data-close aria-label="Close">&times;</button></div>`;
-  const searchBox = (q, ph) => `<label class="search">${catImg(9)}<input type="search" id="q" placeholder="${ph}" value="${esc(q)}" autocomplete="off" aria-label="Search by name"></label>`;
+  /** The empty state of a category page: the text and the button that clears the filters (the page wires [data-clear]). */
+  const emptyState = () => '<div class="empty">Nothing matches the filters.<button class="btn" data-clear>Clear filters</button></div>';
   /** The unlock of a zone: "From the start", or "After task N" with the name of the task. */
   const opens = (z) => (z.task ? `After task ${z.task}${z.taskName ? `: ${z.taskName}` : ''}` : 'From the start');
   /** Below 600 px the filter groups are behind this button (CSS); the badge shows the number of active filters. */
@@ -189,7 +190,6 @@
     if (st.cat.length) p.set('cat', st.cat.join(','));
     if (st.shop.length) p.set('shop', st.shop.join(','));
     if (st.craft) p.set('craft', '1');
-    if (st.q.trim()) p.set('q', st.q.trim());
     const s = p.toString();
     return s ? `?${s}` : '';
   };
@@ -198,22 +198,17 @@
     st.cat = (p.get('cat') || '').split(',').filter((c) => CATS.includes(c));
     st.shop = (p.get('shop') || '').split(',').filter((c) => SHOP[c]);
     st.craft = p.get('craft') === '1';
-    st.q = p.get('q') || '';
   };
   const itemHash = () => `#/items${qsOf()}`;
-  function filterItems() {
-    const s = st.q.trim().toLowerCase();
-    return D.items.filter((i) =>
-      (!st.cat.length || st.cat.includes(i.cat)) &&
-      (!st.shop.length || i.shops.some((x) => st.shop.includes(x))) &&
-      (!st.craft || i.syn) &&
-      (!s || i.n.toLowerCase().includes(s) || i.jp.includes(st.q.trim())));
-  }
+  const filterItems = () => D.items.filter((i) =>
+    (!st.cat.length || st.cat.includes(i.cat)) &&
+    (!st.shop.length || i.shops.some((x) => st.shop.includes(x))) &&
+    (!st.craft || i.syn));
   function itemsPage() {
     const shopsUsed = Object.keys(SHOP).filter((s) => D.items.some((i) => i.shops.includes(s)));
     $('#main').innerHTML = `
       <div class="toolbar">
-        <div class="srow">${searchBox(st.q, 'Search items')}${filtersBtn()}<button class="btn" id="reset" hidden>Clear filters</button></div>
+        <div class="srow">${filtersBtn()}<button class="btn" id="reset" hidden>Clear filters</button></div>
         <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Category</span><div class="opts">${CATS.map((c) => tg('data-cat', c, c, st.cat.includes(c), catImg(CAT_ICON[c]))).join('')}</div></div>
         <div class="fgroup"><span class="cap">Sold at</span><div class="opts">${shopsUsed.map((s) => tg('data-shop', s, SHOP[s].label, st.shop.includes(s), `<img class="cat" src="img/ui/${SHOP[s].img}.png" alt="">`)).join('')}</div></div>
         <div class="fgroup"><span class="cap">Synthesis</span><div class="opts">${tg('data-craft', '1', 'Craftable', st.craft, catImg(CAT_ICON.craft))}</div></div></div>
@@ -226,7 +221,7 @@
       setFilterCount(st.cat.length + st.shop.length + (st.craft ? 1 : 0));
       $('#grid').innerHTML = list.length
         ? list.map((i) => ent({ href: `#/items/${i.id}${qs}`, icon: i.icon, name: i.n, cls: 'cell' })).join('')
-        : `<div class="empty">Nothing matches the filters.</div>`;
+        : emptyState();
       document.querySelectorAll('.toolbar .toggle').forEach((b) => {
         const on = b.dataset.cat ? st.cat.includes(b.dataset.cat) : b.dataset.shop ? st.shop.includes(b.dataset.shop) : st.craft;
         b.setAttribute('aria-pressed', on);
@@ -236,10 +231,10 @@
       history.replaceState(null, '', itemHash());
     };
     const flip = (arr, v) => (arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
-    const clear = () => { st.cat = []; st.shop = []; st.craft = false; st.q = ''; $('#q').value = ''; draw(); };
+    const clear = () => { st.cat = []; st.shop = []; st.craft = false; draw(); };
     draw();
     wireFilters();
-    $('#q').addEventListener('input', (e) => { st.q = e.target.value; draw(); });
+    $('#grid').addEventListener('click', (e) => { if (e.target.closest('[data-clear]')) clear(); });
     $('.toolbar').addEventListener('click', (e) => {
       const b = e.target.closest('.toggle');
       if (b) {
@@ -251,72 +246,71 @@
     });
   }
 
+  // ---------- about page ----------
+  const REPO = 'https://github.com/Arkased/NelkeData';
+  const GAME_TITLE = '<cite class="game-title">Nelke &amp; the Legendary Alchemists</cite>';
+  /** The About page: 1 panel with the sections Contact, Source and Legal. */
+  function aboutPage() {
+    $('#main').innerHTML = `<div class="about-wrap"><div class="about bi u p-cream">
+      <section>${bar('Contact')}<div class="atext"><p>Errors and questions go to the <a class="tl" href="${REPO}/issues">issues of the GitHub repository</a>.</p></div></section>
+      <section>${bar('Source')}<div class="atext"><p><a class="tl" href="${REPO}">${REPO}</a></p><p>The data comes from the files of the Steam version of the game.</p></div></section>
+      <section>${bar('Legal')}<div class="atext"><p>Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of ${GAME_TITLE}.</p></div></section>
+    </div></div>`;
+  }
+
   // ---------- areas page ----------
   function areasPage() {
-    $('#main').innerHTML = `
-      <div class="toolbar">${searchBox(st.aq, 'Search areas')}</div>
-      <div class="zones" id="zones"></div>`;
-    const draw = () => {
-      const q = st.aq.trim().toLowerCase();
-      const html = D.zones.map((z) => {
-        const areas = z.areas.filter((a) => !q || a.n.toLowerCase().includes(q) || z.n.toLowerCase().includes(q));
-        if (!areas.length) return '';
-        return `<section class="zone bi u p-star" aria-label="${esc(z.n)}"><div class="zone-in">
+    $('#main').innerHTML = '<div class="zones" id="zones"></div>';
+    $('#zones').innerHTML = D.zones.map((z) => {
+      const areas = z.areas;
+      return `<section class="zone bi u p-star" aria-label="${esc(z.n)}"><div class="zone-in">
           <h2 class="bar zone-name"><a class="zone-link" href="#/areas/${z.id}">${esc(z.n)}</a></h2>
           <div class="areas">${areas.map((a) => `<a class="area bi p-gold" href="#/areas/${a.id}"><span>${esc(a.n)}</span></a>`).join('')}</div>
         </div></section>`;
-      }).join('');
-      $('#zones').innerHTML = html || `<div class="empty">Nothing matches the search.</div>`;
-    };
-    draw();
-    $('#q').addEventListener('input', (e) => { st.aq = e.target.value; draw(); });
+    }).join('');
   }
 
   // ---------- monsters and characters pages ----------
   function monstersPage() {
     $('#main').innerHTML = `
       <div class="toolbar">
-        <div class="srow">${searchBox(st.mq, 'Search monsters')}${filtersBtn()}</div>
+        ${filtersBtn()}
         <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Type</span><div class="opts">${[['', 'All'], ['monster', 'Monsters'], ['boss', 'Bosses']].map(([v, l]) => tg('data-mk', v, l, st.mk === v)).join('')}</div></div></div>
       </div>
       <div class="gridwrap bi u p-cream"><div class="grid" id="grid"></div></div>`;
     const draw = () => {
-      const q = st.mq.trim().toLowerCase();
-      const list = Object.entries(D.monsters).filter(([, m]) => (!st.mk || (st.mk === 'boss') === m.boss) && (!q || m.n.toLowerCase().includes(q)));
-      $('#grid').innerHTML = list.length ? list.map(([id, m]) => ent({ href: `#/monsters/${id}`, icon: m.icon, name: m.n, cls: `cell${m.boss ? ' boss' : ''}` })).join('') : '<div class="empty">Nothing matches the filters.</div>';
+      const list = Object.entries(D.monsters).filter(([, m]) => !st.mk || (st.mk === 'boss') === m.boss);
+      $('#grid').innerHTML = list.length ? list.map(([id, m]) => ent({ href: `#/monsters/${id}`, icon: m.icon, name: m.n, cls: `cell${m.boss ? ' boss' : ''}` })).join('') : emptyState();
       document.querySelectorAll('.toolbar [data-mk]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.mk === st.mk));
       setFilterCount(st.mk ? 1 : 0);
     };
     draw();
     wireFilters();
-    $('#q').addEventListener('input', (e) => { st.mq = e.target.value; draw(); });
+    $('#grid').addEventListener('click', (e) => { if (e.target.closest('[data-clear]')) { st.mk = ''; draw(); } });
     $('.toolbar').addEventListener('click', (e) => { const b = e.target.closest('[data-mk]'); if (b) { st.mk = b.dataset.mk; draw(); } });
   }
-  /** The characters page keeps its filters in the hash query: group, q. */
+  /** The characters page keeps its filter in the hash query: group. */
   const charQs = () => {
     const p = new URLSearchParams();
     if (st.cg.length) p.set('group', st.cg.join(','));
-    if (st.cq.trim()) p.set('q', st.cq.trim());
     const q = p.toString();
     return q ? `?${q}` : '';
   };
   const readCharQs = (qs) => {
     const p = new URLSearchParams(qs);
     st.cg = (p.get('group') || '').split(',').filter((c) => CHAR_GROUPS.includes(c));
-    st.cq = p.get('q') || '';
   };
   function charactersPage() {
     $('#main').innerHTML = `
       <div class="toolbar">
-        <div class="srow">${searchBox(st.cq, 'Search characters')}${filtersBtn()}</div>
+        ${filtersBtn()}
         <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Group</span><div class="opts">${filterOpts('data-cg', CHAR_GROUPS, st.cg)}</div></div></div>
       </div>
       <div class="gridwrap bi u p-cream"><div class="grid" id="grid"></div></div>`;
     const draw = () => {
-      const q = st.cq.trim().toLowerCase();
       const qs = charQs();
-      const list = D.chars.filter((c) => (!st.cg.length || st.cg.includes(groupOf(c))) && (!q || c.n.toLowerCase().includes(q)));
-      $('#grid').innerHTML = list.length ? list.map((c) => ent({ href: `#/characters/${c.id}${qs}`, icon: c.icon, name: c.n, cls: 'cell' })).join('') : '<div class="empty">Nothing matches the filters.</div>';
+      const list = D.chars.filter((c) => !st.cg.length || st.cg.includes(groupOf(c)));
+      $('#grid').innerHTML = list.length ? list.map((c) => ent({ href: `#/characters/${c.id}${qs}`, icon: c.icon, name: c.n, cls: 'cell' })).join('') : emptyState();
       document.querySelectorAll('.toolbar .toggle[data-cg]').forEach((b) => b.setAttribute('aria-pressed', st.cg.includes(b.dataset.cg)));
       setFilterCount(st.cg.length);
       base = { ...base, hash: `#/characters${qs}`, key: `characters${qs}` };
@@ -325,7 +319,7 @@
     };
     draw();
     wireFilters();
-    $('#q').addEventListener('input', (e) => { st.cq = e.target.value; draw(); });
+    $('#grid').addEventListener('click', (e) => { if (e.target.closest('[data-clear]')) { st.cg = []; draw(); } });
     $('.toolbar').addEventListener('click', (e) => {
       const b = e.target.closest('[data-cg]');
       if (!b) return;
@@ -671,19 +665,20 @@
   function parse() {
     const [path, qs = ''] = location.hash.replace(/^#\/?/, '').split('?');
     const parts = path.split('/').filter(Boolean);
-    const view = NAV.some((n) => n.k === parts[0]) ? parts[0] : 'items';
+    const view = NAV.some((n) => n.k === parts[0]) || parts[0] === 'about' ? parts[0] : 'items';
     if (view === 'research') {
       const tree = D.trees[parts[1]] ? parts[1] : 'main';
       const id = parts[1] && !D.trees[parts[1]] ? null : parts[2];
       return { view, tree, id, key: `research/${tree}`, hash: `#/research/${tree}` };
     }
-    return { view, id: parts[1], qs, key: view === 'items' || view === 'characters' ? `${view}${qs ? `?${qs}` : ''}` : view, hash: view === 'items' || view === 'characters' ? `#/${view}${qs ? `?${qs}` : ''}` : `#/${view}` };
+    return { view, id: view === 'about' ? undefined : parts[1], qs, key: view === 'items' || view === 'characters' ? `${view}${qs ? `?${qs}` : ''}` : view, hash: view === 'items' || view === 'characters' ? `#/${view}${qs ? `?${qs}` : ''}` : `#/${view}` };
   }
   function renderBase(b) {
     if (viewKey === b.key) return;
     viewKey = b.key;
     window.scrollTo(0, 0);
     if (b.view === 'items') { readQs(b.qs || ''); itemsPage(); }
+    else if (b.view === 'about') aboutPage();
     else if (b.view === 'areas') areasPage();
     else if (b.view === 'monsters') monstersPage();
     else if (b.view === 'characters') { readCharQs(b.qs || ''); charactersPage(); }
@@ -707,6 +702,13 @@
       renderNav();
     }
     $('#nav').classList.remove('open');
+    setTitle();
+  }
+  /** The document title of each view ends with the site name; an open detail leads with its name. */
+  function setTitle() {
+    const view = base && base.view === 'about' ? 'About' : (NAV.find((n) => base && n.k === base.view) || NAV[0]).label;
+    const detail = $('.modal .name');
+    document.title = `${detail ? detail.textContent : view} - Westwald Archive`;
   }
   addEventListener('hashchange', route);
   route();

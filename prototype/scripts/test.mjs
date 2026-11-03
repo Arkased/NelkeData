@@ -34,8 +34,9 @@ const P = await pick(page);
 console.log(JSON.stringify(P));
 
 const openItem = async (name) => {
-  await page.locator('#q').fill(name);
-  await page.locator('#grid .cell', { hasText: name }).first().click();
+  if (!(await page.locator('#grid .cell .nm').first().isVisible().catch(() => false)) || !/^#\/items(\?|$)/.test(await hash())) { await go('#/items'); await page.waitForSelector('#grid .cell'); }
+  const exact = new RegExp(`^${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`);
+  await page.locator('#grid .cell').filter({ has: page.locator('.nm', { hasText: exact }) }).first().click();
   await page.waitForSelector('.modal');
 };
 const closeEsc = async () => { await page.keyboard.press('Escape'); await page.waitForFunction(() => !document.querySelector('.modal')); };
@@ -149,18 +150,25 @@ await step('toggle each filter group', async () => {
   await page.locator('[data-craft]').click();
 });
 
-await step('search, empty state, clear', async () => {
-  await page.locator('#q').fill('uni');
-  const n = await page.locator('#grid .cell').count();
-  ok(n > 0 && n < 296, `search "uni": ${n}`);
-  await page.locator('#q').fill('zzzzqq');
-  ok((await page.locator('.empty').count()) === 1, 'empty state shows');
-  await page.locator('#reset').click();
-  ok((await page.locator('#grid .cell').count()) === 296 && (await page.locator('#q').inputValue()) === '', 'clear from empty state');
-  const jp = await page.evaluate(() => window.DATA.items.find((i) => i.n === 'Uni').jp);
-  await page.locator('#q').fill(jp);
-  ok((await page.locator('#grid .cell').count()) > 0, 'japanese search');
-  await page.locator('#q').fill('');
+await step('empty state and its clear button', async () => {
+  const pair = await page.evaluate(() => {
+    const cats = [...new Set(window.DATA.items.map((i) => i.cat))];
+    const shops = [...new Set(window.DATA.items.flatMap((i) => i.shops))];
+    for (const c of cats) for (const s of shops) if (!window.DATA.items.some((i) => i.cat === c && i.shops.includes(s))) return [c, s];
+    return null;
+  });
+  ok(!!pair, `a category and a shop with no common item: ${pair}`);
+  await go(`#/items?cat=${pair[0]}&shop=${pair[1]}`);
+  await page.waitForSelector('.empty');
+  ok((await page.locator('.empty').innerText()).startsWith('Nothing matches the filters.'), 'empty state text');
+  await page.locator('.empty [data-clear]').click();
+  ok((await page.locator('#grid .cell').count()) === 296 && (await hash()) === '#/items', 'the empty-state button clears the filters');
+  for (const h of ['#/items', '#/areas', '#/monsters', '#/characters']) {
+    await go(h);
+    ok((await page.locator('#q, input[type="search"], .search').count()) === 0, `no search box on ${h}`);
+  }
+  await go('#/areas');
+  ok((await page.locator('.empty').count()) === 0, 'no empty state on Areas');
 });
 
 for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'monster drop item'], ['shop', 'shop item'], ['farm', 'farm item'], ['craftPriced', 'craftable with price'], ['craftNoPrice', 'craftable without price'], ['unpriced', 'craftable with unpriced materials'], ['rare', 'rare find item'], ['longName', 'longest name']]) {
@@ -200,15 +208,21 @@ for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'mo
 
 // The vertical scroll bar showing or going away must not move the header (scrollbar-gutter: stable on the root).
 if (width === 1280) {
-  await step('no layout shift: header x with all items, empty search, modal open', async () => {
+  await step('no layout shift: header x with all items, empty state, modal open', async () => {
     const xs = () => page.evaluate(() => ({ title: document.querySelector('.site-name').getBoundingClientRect().left, nav: document.querySelector('.nav a').getBoundingClientRect().left }));
     await go('#/items');
     await page.waitForSelector('#grid .cell');
     const all = await xs();
-    await page.locator('#q').fill('zzzzqq');
+    const pair = await page.evaluate(() => {
+      const cats = [...new Set(window.DATA.items.map((i) => i.cat))];
+      const shops = [...new Set(window.DATA.items.flatMap((i) => i.shops))];
+      for (const c of cats) for (const s of shops) if (!window.DATA.items.some((i) => i.cat === c && i.shops.includes(s))) return [c, s];
+    });
+    await go(`#/items?cat=${pair[0]}&shop=${pair[1]}`);
     await page.waitForSelector('.empty');
     const empty = await xs();
-    await page.locator('#q').fill('');
+    await go('#/items');
+    await page.waitForSelector('#grid .cell');
     await openItem(P.craftPriced.n);
     const modal = await xs();
     console.log(`  header x (title, nav link): all items ${all.title}, ${all.nav}; empty ${empty.title}, ${empty.nav}; modal ${modal.title}, ${modal.nav}`);
@@ -218,7 +232,7 @@ if (width === 1280) {
 }
 
 await step('modal: link inside, Back, Esc', async () => {
-  await page.locator('#q').fill('');
+  await go('#/items');
   await openItem(P.craftPriced.n);
   const t0 = await modalTitle();
   const h0 = await hash();
@@ -248,7 +262,6 @@ await step('modal: link inside, Back, Esc', async () => {
 
 await step('back button closes the modal', async () => {
   await go('#/items');
-  await page.locator('#q').fill('');
   await page.locator('#grid .cell').nth(3).click();
   await page.waitForSelector('.modal');
   await page.goBack();
@@ -683,15 +696,43 @@ await step('research bonus: tile with quantity, friendship heart', async () => {
   ok(withTile === 18, `18 bonuses have an item tile, got ${withTile}`);
 });
 await closeEsc();
-await step('legal notice in the footer of each page', async () => {
+const PAGES = ['#/items', '#/areas', '#/monsters', '#/characters', '#/research/main', '#/about'];
+await step('legal notice and About link in the footer of each page', async () => {
   const want = 'Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists.';
-  for (const h of ['#/items', '#/areas', '#/monsters', '#/characters', '#/research/main']) {
+  for (const h of PAGES) {
     await go(h);
     await page.waitForTimeout(100);
     const f = page.locator('footer.foot');
-    ok((await f.innerText()).trim() === want, `notice on ${h}`);
+    ok((await f.locator('.legal').innerText()).trim() === want, `notice on ${h}`);
     ok((await f.locator('cite.game-title').count()) === 1, `game title in cite on ${h}`);
+    ok((await f.locator('a', { hasText: /^About$/ }).getAttribute('href')) === '#/about', `About link on ${h}`);
   }
+});
+await step('site name and tagline in the header of each page, titles end with the name', async () => {
+  for (const h of PAGES) {
+    await go(h);
+    await page.waitForTimeout(100);
+    const b = page.locator('.hdr-bar .brand');
+    ok((await b.locator('.site-name').innerText()) === 'Westwald Archive', `site name on ${h}`);
+    ok((await b.locator('.tagline').innerText()) === 'Unofficial fansite for Nelke & the Legendary Alchemists' && (await b.locator('.tagline cite.game-title').count()) === 1, `tagline on ${h}`);
+    ok((await page.title()).endsWith('Westwald Archive'), `document title on ${h}: ${await page.title()}`);
+    ok((await page.locator('.hdr-bar').innerText()).indexOf('Data prototype') < 0, `no prototype label on ${h}`);
+    const s = await page.evaluate(() => { const n = document.querySelector('.site-name').getBoundingClientRect(), t = document.querySelector('.tagline').getBoundingClientRect(); return { under: t.top >= n.bottom - 1, font: getComputedStyle(document.querySelector('.site-name')).fontFamily, w: getComputedStyle(document.querySelector('.site-name')).fontWeight }; });
+    ok(/Lora/.test(s.font) && s.w === '700', `name in Lora 700 on ${h}`);
+    ok(s.under === (width < 600), `tagline ${width < 600 ? 'under' : 'after'} the name on ${h}`);
+  }
+});
+await step('About page', async () => {
+  await go('#/about');
+  await page.waitForSelector('.about');
+  ok((await page.locator('#nav a[aria-current]').count()) === 0, 'no selected category link');
+  ok((await page.locator('#nav a[href="#/about"]').count()) === 0, 'no About link in the header');
+  ok((await page.locator('.about .bar').allInnerTexts()).join() === 'Contact,Source,Legal', 'the 3 section titles');
+  ok((await page.locator('.about a[href="https://github.com/Arkased/NelkeData/issues"]').count()) === 1, 'link to the issues');
+  ok((await page.locator('.about a[href="https://github.com/Arkased/NelkeData"]').count()) === 1, 'link to the repository');
+  const w = await page.evaluate(() => Math.round(document.querySelector('.about').getBoundingClientRect().width));
+  ok(w <= 720, `panel width ${w} up to 720`);
+  auditTotal += await audit(page, 'about', true);
 });
 
 // The test fails on any audit finding (the rules of the UI standard are part of the audit).

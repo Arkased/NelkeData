@@ -13,12 +13,19 @@ for (const w of widths) {
   const page = await newPage(browser, w);
   const P = await pick(page);
   const first = await page.evaluate((a) => ({ friendTree: window.DATA.research[a[0]].tree, condTree: window.DATA.research[a[1]].tree, lifeSpring: 'EXPL_RESEARCH_SPRING_00', interior: 'EXPL_RESEARCH_SPRING_01', zone: 'EXPL_AREA_SPRING', res: Object.keys(window.DATA.research).find((k) => window.DATA.research[k].tree === 'main' && window.DATA.research[k].mats.length), bonusTree: window.DATA.research.STDY_RES_132.tree, resA: Object.keys(window.DATA.research).find((k) => window.DATA.research[k].tree === 'attack') }), [P.resFriend.id, P.resCond.id]);
+  [first.emptyCat, first.emptyShop] = await page.evaluate(() => {
+    const cats = [...new Set(window.DATA.items.map((i) => i.cat))];
+    const shops = [...new Set(window.DATA.items.flatMap((i) => i.shops))];
+    for (const c of cats) for (const s of shops) if (!window.DATA.items.some((i) => i.cat === c && i.shops.includes(s))) return [c, s];
+    return [];
+  });
   const item = (k) => `#/items/${P[k].id}`;
   const states = [
     ['items', '#/items'],
     ['items-filtered', '#/items?cat=Material,Merchandise&shop=GSTORE_SALE_FLAG&craft=1'],
-    ['items-search', '#/items?q=ra'],
-    ['items-empty', '#/items?q=zzzz'],
+    ['items-empty', `#/items?cat=${first.emptyCat}&shop=${first.emptyShop}`],
+    ['header', '#/items'],
+    ['about', '#/about'],
     ['item-gather', item('gather')],
     ['item-drop', item('drop')],
     ['item-farm', item('farm')],

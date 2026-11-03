@@ -193,7 +193,7 @@ export function auditFn() {
     const r = e.getBoundingClientRect();
     const cs = getComputedStyle(e);
     const range = document.createRange();
-    range.selectNodeContents(e.matches('.hdr-bar') ? e.querySelector('.site-name') : e);
+    range.selectNodeContents(e.matches('.hdr-bar') ? e.querySelector('.brand') : e);
     const t = range.getBoundingClientRect();
     if (!t.height) continue;
     const above = t.top - (r.top + parseFloat(cs.borderTopWidth)), below = r.bottom - parseFloat(cs.borderBottomWidth) - t.bottom;
@@ -232,7 +232,7 @@ export function auditFn() {
   // 4c. no caption under a section heading (a caption repeats the title or explains a unit), and 1 label style
   for (const e of document.querySelectorAll('.gh small, .bar + small, .bar + .note, .bar + p, .gh + small, .gh + .note, .gh + p')) if (vis(e)) out.captions.push(`caption under a heading: ${desc(e)}`);
   for (const e of document.querySelectorAll('small')) {
-    if (!vis(e) || e.closest('.mini, .lt, .elm, .card-tx, .site-name')) continue;
+    if (!vis(e) || e.closest('.mini, .lt, .elm, .card-tx, .brand')) continue;
     const cs = getComputedStyle(e);
     if (!e.classList.contains('cap') || cs.textTransform !== 'uppercase' || cs.fontSize !== '12px' || cs.fontWeight !== '800') out.captions.push(`label without the label style: ${desc(e)}`);
   }
@@ -279,7 +279,9 @@ export function auditFn() {
   // The legal notice shows on each page, below the content, centered, with the game title in italics.
   out.footer = [];
   const ft = document.querySelector('footer.foot');
-  if (!ft || !vis(ft) || !/^Unofficial fan site\. We claim no affiliation with Koei Tecmo\. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists\.$/.test(ft.textContent.trim())) out.footer.push('legal notice missing or changed');
+  const lg = ft && ft.querySelector('.legal');
+  if (!ft || !vis(ft) || !lg || !/^Unofficial fan site\. We claim no affiliation with Koei Tecmo\. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists\.$/.test(lg.textContent.trim())) out.footer.push('legal notice missing or changed');
+  else if (!ft.querySelector('a[href="#/about"]')) out.footer.push('footer link to the About page missing');
   else if (getComputedStyle(ft).textAlign !== 'center' || ft.getBoundingClientRect().top < document.querySelector('#main').getBoundingClientRect().bottom - 1) out.footer.push('legal notice not centered below the content');
   // The title of a game is in italics everywhere it shows.
   for (const e of document.querySelectorAll('.game-title')) if (vis(e) && getComputedStyle(e).fontStyle !== 'italic') out.italic.push(`game title not italic: ${desc(e)}`);
