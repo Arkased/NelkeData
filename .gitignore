@@ -6,3 +6,5 @@ output/
 # Compiled output of tsc -b.
 dist/
 *.tsbuildinfo
+# Screenshots of the UI test of the prototype.
+prototype/shots/
