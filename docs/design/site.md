@@ -15,7 +15,8 @@ The site has its own plain look in the colors of the game: cream, warm brown and
 | Header | A flat brown bar with the site name in cream text. No ornaments. |
 | Panel, modal | A cream box with a thin brown border and a small radius. No ornaments. |
 | Name of an entity | A heading in the title size, in dark brown. No plate. |
-| Section title | Text in the body size, bold, brown, with a thin rule under it. No bar. |
+| Section title | Lora 700 in the body size, brown, with a thin rule under it. No bar. The zone name on the Areas page is a section title too. |
+| Sub-title | A title inside a section, for example "Bonus", "Joins with" or "Gather": Source Sans 3 700 in the body size, dark brown, with no rule. It is never larger than the section title. |
 | Grid cell | The game icon with no extra frame. A plain highlight on hover and on focus. |
 | Friendship level | The heart icon of the game with its digit sprites |
 | Button, filter, tab | A plain button with a thin border. A selected button has a gold fill. The game category icon or the shop icon, then the name. |
@@ -133,7 +134,7 @@ Each detail is 1 panel. The prototype composes each panel from the parts of "Vis
 
 - **Purpose:** Browse the research as the game shows it: a grid of nodes with lines from left to right.
 - **Blocks, in order:** Header. 1 tab for each of the 4 trees, with the name of the tree in the game. Tree box.
-- **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The icon is on a beige square with round corners, in the same color as the background of the character face icons. The game uses the even rows for the nodes and the odd rows for the lines only. Each line is 1 prerequisite of `study/stdy_conditions.xml`: it leaves the right side of the prerequisite and enters the left side of the research that needs it. The lines that enter 1 node join before the node, so 3 prerequisites show as 3 lines that meet. No line shows that is not a prerequisite. The link types of the tree files only confirm the drawing. The box scrolls horizontally inside the page. The page itself does not scroll horizontally.
+- **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The icon is on a beige square with round corners, in the same color as the background of the character face icons. The game uses the even rows for the nodes and the odd rows for the lines only. Each line is 1 prerequisite of `study/stdy_conditions.xml`: it leaves the right side of the prerequisite and enters the left side of the research that needs it. The lines that enter 1 node join before the node, so 3 prerequisites show as 3 lines that meet. No line shows that is not a prerequisite. The link types of the tree files only confirm the drawing. The box has the full width of the content column, the same as the tab panel above it. It scrolls horizontally inside the page. The page itself does not scroll horizontally.
 - **Research detail, "Gives":** the prize items, and the items that the recipes of the prize recipe set make. The bonus item of `study/stdy_prize.xml` (`STDY_PRIZE_BONUS_ITEM`) is a tile with its quantity under the sub-title "Bonus". When `STDY_BONUS_FRIEND_POINT` is above 0, the sub-title also shows that friendship value. A bonus with no item (cost down, construction expenses up) shows the name of its type in the game when the game has 1, else it does not show. A sub-title never shows with nothing under it.
 - **Interactions:** A click on a node opens the research in the modal.
 - **States:** A node that the game has with no name shows its ID.
