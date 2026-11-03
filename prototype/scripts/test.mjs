@@ -46,12 +46,52 @@ async function navTo(label) {
   await page.locator('#nav a', { hasText: label }).click();
 }
 
+/** Below 600 px the filter groups are behind the "Filters" button: opens them. */
+async function openFilters() {
+  if (width >= 600) return;
+  if ((await page.locator('#ftoggle').getAttribute('aria-expanded')) !== 'true') await page.locator('#ftoggle').click();
+}
+
 await step('home', async () => {
   await go('#/home');
   await page.waitForSelector('.home .card');
   ok((await page.locator('.home .card').count()) === 5, '5 category cards');
   ok((await page.locator('.nav img').count()) === 5, 'nav has 5 icons');
+  const cards = await page.evaluate(() => [...document.querySelectorAll('.home .card')].map((c) => { const r = c.getBoundingClientRect(); const ic = c.querySelector('.card-ic').getBoundingClientRect(); const tx = c.querySelector('.card-tx b').getBoundingClientRect(); return { w: r.width, h: r.height, ic: ic.top - r.top + ic.height / 2 - r.height / 2, tx: tx.top - r.top }; }));
+  const spread = (k) => Math.max(...cards.map((c) => c[k])) - Math.min(...cards.map((c) => c[k]));
+  ok(spread('w') < 1 && spread('h') < 1, `5 cards have the same size (${cards[0].w.toFixed(0)} x ${cards[0].h.toFixed(0)})`);
+  ok(spread('ic') < 1 && spread('tx') < 1, 'icon and title are at the same place in each card');
 });
+
+await step('background covers the full page height', async () => {
+  await go('#/areas');
+  await page.waitForSelector('.zone');
+  const r = await page.evaluate(() => { const h = document.documentElement.getBoundingClientRect().height; const bs = getComputedStyle(document.documentElement); return { h, inner: innerHeight, img: bs.backgroundImage.includes('bg-town-tile'), repeat: bs.backgroundRepeat.includes('repeat-y'), fixed: bs.backgroundAttachment.includes('fixed') }; });
+  ok(r.img && r.repeat && !r.fixed, `background is on the page and repeats down (page ${Math.round(r.h)} px, viewport ${r.inner} px)`);
+});
+
+if (width < 600) {
+  await step('filters behind 1 button below 600 px', async () => {
+    await go('#/items');
+    await page.waitForSelector('#grid .cell');
+    ok(await page.locator('#ftoggle').isVisible() && !(await page.locator('[data-shop]').first().isVisible()), 'Filters button shows and the groups are closed');
+    const top = await page.evaluate(() => document.querySelector('.toolbar').getBoundingClientRect().height);
+    ok(top < 160, `closed toolbar is small (${Math.round(top)} px)`);
+    await go('#/items?cat=Material,Merchandise&craft=1');
+    await page.waitForSelector('#grid .cell');
+    ok((await page.locator('#ftoggle .badge').innerText()) === '3', 'badge shows 3 active filters');
+    ok(!(await page.locator('[data-cat]').first().isVisible()), 'closed by default with filters in the URL');
+    await page.locator('#ftoggle').click();
+    ok(await page.locator('[data-cat]').first().isVisible(), 'the button opens the groups');
+    ok((await hash()).includes('cat=Material%2CMerchandise') && (await hash()).includes('craft=1'), 'URL state is unchanged');
+  });
+} else {
+  await step('filters are visible from 600 px', async () => {
+    await go('#/items');
+    await page.waitForSelector('#grid .cell');
+    ok(!(await page.locator('#ftoggle').isVisible()) && (await page.locator('[data-shop]').first().isVisible()), 'no Filters button, groups visible');
+  });
+}
 
 await step('items page loads', async () => {
   await go('#/items');
@@ -65,6 +105,9 @@ await step('items page loads', async () => {
 });
 
 await step('toggle each filter group', async () => {
+  await go('#/items');
+  await page.waitForSelector('#grid .cell');
+  await openFilters();
   const n0 = await page.locator('#grid .cell').count();
   await page.locator('[data-cat=Material]').click();
   const nMat = await page.locator('#grid .cell').count();
@@ -116,7 +159,8 @@ for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'mo
     ok(!/Shops|Medicine Shop|General Store|Grocery Store|Clothing Store|Weapon\/Armor Shop/.test(howT), 'no shop in How to get');
     if (k === 'farm') ok(/Farm/.test(t) && !/Grown in/.test(t), 'has Farm group');
     if (k.startsWith('craft') || k === 'unpriced') ok(/Synthesis cost/i.test(t) && /\d needed/.test(synT) && !/\bx\d/i.test(synT), 'synthesis block: "N needed", no "x3"');
-    if (k === 'craftNoPrice') ok(/No selling price/.test(t), 'no price note');
+    if (k === 'craftNoPrice') ok(!/Selling price/i.test(synT) && /Material cost/i.test(synT), 'no selling price: only the material cost row shows');
+    if (k === 'drop') ok((await page.locator('.modal .mini small').allInnerTexts()).every((s) => /^\d[\d,]* per drop · \d+(\.\d)?%$/.test(s)), 'drop tiles have 1 value line "N per drop · N%"');
     if (k === 'rare') ok(/(Treasure|Bug Net|Digging|Fishing)/.test(t), 'rare group');
     if (k === 'craftPriced') ok((await page.locator('.modal .syn .cost img[src$="cost.png"]').count()) >= 2 && (await page.locator('.modal .syn .money img[src$="coin.png"]').count()) >= 3, 'synthesis cost and money have their icons');
     ok((await page.locator('.modal .top').innerText()).match(/Reduces into|Material|Merchandise|Battle|Construction/) !== null, 'top has category');
@@ -179,8 +223,11 @@ await step('area modal: interior', async () => {
   const t = await page.locator('.modal-body').innerText();
   ok(/Gather/.test(t) && /Monsters/.test(t), 'gather and monsters');
   ok(/Treasure/.test(t) && /Bug Net/.test(t), 'rare groups with the game terms');
-  ok(/Area element/i.test(t) && /Element rating/i.test(t) && /1\.5x/.test(t) && /1\.25x/.test(t), 'dispatch block with the elements and the ratings');
-  ok((await page.locator('.modal .elm').count()) >= 1 && (await page.locator('.modal .dr .mark').allInnerTexts()).join('') === '◎○―', 'dispatch block has the element icons and the 3 marks');
+  ok(/Area element/i.test(t) && !/Element rating|\dx\b/.test(t), 'the area element shows, the global rating table does not');
+  ok((await page.locator('.modal .elm img').count()) >= 1, 'the area elements have their icons');
+  const crumb = await page.locator('.modal .crumb').innerText();
+  ok(/ZONE/i.test(crumb) && /OPENS/i.test(crumb) && /From the start|After task \d+/.test(crumb), `header has labelled Zone and Opens: ${crumb.replace(/\n/g, ' | ')}`);
+  ok((await page.locator('.modal .crumb a.tl').count()) === 1, 'the zone is a link');
 });
 await closeEsc();
 await step('area modal: outside area', async () => {
@@ -237,6 +284,9 @@ await step('monsters page and modal', async () => {
   await page.waitForSelector('#grid .cell');
   const n = await page.locator('#grid .cell').count();
   ok(n === (await page.evaluate(() => Object.keys(window.DATA.monsters).length)), `${n} monster cells`);
+  const mnames = await page.locator('#grid .cell .nm').allTextContents();
+  ok(new Set(mnames).size === mnames.length, 'no 2 monsters in the grid with the same name');
+  await openFilters();
   await page.locator('[data-mk=boss]').click();
   const nb = await page.locator('#grid .cell').count();
   ok(nb > 0 && nb < n, `boss filter: ${nb}`);
@@ -245,6 +295,17 @@ await step('monsters page and modal', async () => {
   await page.waitForSelector('.modal');
   const t = await page.locator('.modal-body').innerText();
   ok(/Drops/.test(t) && /\d per drop/.test(t) && /Found in/.test(t) && /Lv \d+/.test(t), 'drops "N per drop" and areas with "Lv N"');
+  ok(/Rank \d+/.test(t), 'rank');
+});
+await closeEsc();
+await step('monster with element DEF', async () => {
+  await go(`#/monsters/${P.monDef.id}`);
+  await page.waitForSelector('.modal');
+  const t = await page.locator('.modal-body').innerText();
+  const want = await page.evaluate((id) => window.DATA.monsters[id].def.filter((v) => v).map(String), P.monDef.id);
+  ok(/Element DEF/i.test(t) && (await page.locator('.modal .elm img').count()) === want.length, `element DEF with an icon for each of the ${want.length} elements`);
+  const vals = await page.locator('.modal .elm small').allInnerTexts();
+  ok(vals.join(',') === want.join(','), `DEF values ${vals.join(',')}`);
 });
 await closeEsc();
 
@@ -252,6 +313,7 @@ await step('characters page and modal', async () => {
   await navTo('Characters');
   await page.waitForSelector('#grid .cell');
   const n = await page.locator('#grid .cell').count();
+  await openFilters();
   await page.locator('[data-ck=Alchemist]').click();
   const na = await page.locator('#grid .cell').count();
   ok(na > 0 && na < n, `type filter: ${na} of ${n}`);
@@ -259,17 +321,34 @@ await step('characters page and modal', async () => {
   await go(`#/characters/${P.character.id}`);
   await page.waitForSelector('.modal');
   ok((await page.locator('.modal .top').count()) === 1, 'character modal');
+  const names = await page.evaluate(() => window.DATA.chars.map((c) => c.n));
+  ok(new Set(names).size === names.length, 'no 2 characters with the same name');
+  ok((await page.locator('.modal .bar', { hasText: 'Research' }).count()) === 1 && (await page.locator('.modal a.rcard').count()) > 0 && (await page.locator('.modal a.mini[href^="#/research/"]').count()) === 0, 'research cards show the name and the tree, with no repeated face');
+});
+await closeEsc();
+await step('character with aptitudes, skills and join conditions', async () => {
+  await go(`#/characters/${P.charFull.id}`);
+  await page.waitForSelector('.modal');
+  const t = await page.locator('.modal-body').innerText();
+  ok(/Aptitudes/i.test(t) && /Skills/i.test(t) && /Joins the town/i.test(t), 'aptitudes, skills and join sections');
+  ok(/Lv \d+/.test(t) && /Town population/i.test(t) && /Turn \d+/.test(t) && /not confirmed/i.test(t), 'skill level, population, turn marked not confirmed');
+  ok(/Learned at an event/i.test(t) && !/\b[A-Z][A-Z0-9]+(_[A-Z0-9]+)+\b/.test(t), 'event skill reads "Learned at an event", no internal id');
+  const teach = await page.evaluate(() => [...document.querySelectorAll('.modal .bar')].filter((b) => /^Teaches/.test(b.textContent)).length);
+  ok(teach <= 1, `at most 1 Teaches section (${teach})`);
 });
 await closeEsc();
 
-const TREE_LABELS = { main: 'Main', attack: 'Usage', support: 'City Building', emergency: 'Emergency' };
+const TREE_LABELS = { main: 'Main', attack: 'Attack', support: 'Town Building', emergency: 'Emergency' };
 for (const tree of ['main', 'attack', 'support', 'emergency']) {
   await step(`research tree ${tree}`, async () => {
     await navTo('Research');
     await page.locator('.opts a', { hasText: new RegExp(`^${TREE_LABELS[tree]}$`) }).click();
     await page.waitForSelector('.node');
     ok((await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)), 'page has no horizontal scroll');
-    ok((await page.evaluate(() => { const s = document.querySelector('.treescroll'); return s.scrollWidth > s.clientWidth; })), 'tree scrolls inside its box');
+    // The box fits the tree: its chrome (border and padding, 2 x 36 px) is all that is more than the tree.
+    const fit = await page.evaluate(() => { const b = document.querySelector('.treebox').getBoundingClientRect(); const t = document.querySelector('.tree').getBoundingClientRect(); return { dh: b.height - t.height, dw: b.width - t.width, scrolls: document.querySelector('.treescroll').scrollWidth > document.querySelector('.treescroll').clientWidth }; });
+    ok(fit.dh <= 76, `box height fits the tree (+${Math.round(fit.dh)} px)`);
+    ok(fit.scrolls || fit.dw <= 76, `box width fits the tree (+${Math.round(fit.dw)} px), or the tree scrolls inside its box`);
     ok(!/Scroll sideways/.test(await page.locator('main').innerText()), 'no how-to text');
     const n = await page.locator('.node').count();
     ok(n > 3, `${n} nodes`);
@@ -283,7 +362,8 @@ for (const tree of ['main', 'attack', 'support', 'emergency']) {
 await step('research tab labels', async () => {
   await navTo('Research');
   const labels = await page.locator('.opts a.toggle').allInnerTexts();
-  ok(labels.join(',') === 'Main,Usage,City Building,Emergency', `tabs: ${labels.join(', ')}`);
+  ok(labels.join(',') === 'Main,Attack,Town Building,Emergency', `tabs: ${labels.join(', ')}`);
+  ok((await page.locator('.toolbar .cap').innerText()).toLowerCase() === 'tree', 'the filter label is "Tree"');
 });
 
 await step('research with a friendship requirement', async () => {
@@ -293,6 +373,7 @@ await step('research with a friendship requirement', async () => {
   const num = await page.locator('.modal .who .need .fr b').innerText();
   ok(num === String(await page.evaluate((id) => window.DATA.research[id].friendNeed, P.resFriend.id)), `heart number ${num}`);
   const t = await page.locator('.modal-body').innerText();
+  ok(/TOTAL FRIENDSHIP/i.test(await page.locator('.modal .who .need').innerText()), 'label "Total friendship"');
   ok(/\d+ needed/.test(t) || !(await page.locator('.modal .minis').count()), 'materials show "N needed"');
   ok(/\d+ turns?/.test(t), 'duration as "N turns"');
 });
