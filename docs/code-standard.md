@@ -35,6 +35,7 @@ The check command of the project enforces the rules tagged `[lint]` and `[script
 - `[review]` A test reads no wall clock and sleeps for no real time. It uses an injected clock.
 - `[review]` A test does not assert that a fake was called, unless the call is the contract: an outgoing message, a spawned process.
 - `[review]` A test makes its temp folders under the temp folder of the system, and removes nothing outside them.
+- `[review]` The tests run in parallel. A UI test runs each width in its own browser context at the same time, and so does the screenshot script. A test shares no state with another test, so the order and the parallel run do not change the result.
 
 ## 4. Changes to behavior
 
