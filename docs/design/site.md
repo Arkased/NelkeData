@@ -66,7 +66,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 - A condition that each player meets does not show: a join turn of 1 or less, and a town population at or below the start population of the game (`OC_INITIAL_POPULATION` in `out_constant/out_constant.xml`, 30).
 - A value that is the same for each entity does not show.
 - A rate of 100% does not show anywhere: on a monster drop (each drop has the rate 100%), on a treasure chest or a tool gather with 1 item, on a gather. The item is certain, so the rate tells nothing.
-- A group shows only when the player can use it to find an entity. A character shows its group, Alchemist or Townsfolk, as a line and as a filter (`CHARACTER_CATEGORY_ID` 2 and 3 in `character/character.xml`). The 4 story characters (Nelke, Misty, Knoss, Lotos, categories 0, 1 and 4) show no group. The game of origin of a character also shows, as a line and as a filter.
+- A group shows only when the player can use it to find an entity. Each character shows its group, Alchemist or Townsfolk, as a line and as a filter. Alchemist is `CHARACTER_CATEGORY_ID` 2 in `character/character.xml`. Townsfolk is each other category: 3, and the 4 story characters Nelke, Misty, Knoss and Lotos (categories 0, 1 and 4). The game of origin of a character also shows, as a line and as a filter.
 - A tooltip shows only text that is not already visible.
 - An entity shows 1 time in a list. A monster with more than 1 level in an area is 1 tile with a level range.
 - The Characters page lists only the characters that can join the town: the join event in `character/character_app_con.xml` is not `EVENT_NONE`. A visitor, an NPC or a variant for an event (for example "Weapon Shopkeeper" or "Boss") has no page.
