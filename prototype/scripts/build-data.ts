@@ -374,7 +374,14 @@ const labelCount = new Map<string, number>();
 for (const c of nonMonsters) labelCount.set(c.CHARACTER_NAME_LABEL_ID, (labelCount.get(c.CHARACTER_NAME_LABEL_ID) ?? 0) + 1);
 const isPicture = (c: (typeof nonMonsters)[number]): boolean => (labelCount.get(c.CHARACTER_NAME_LABEL_ID) ?? 0) > 1 && c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID === 'MESSAGE_COMMON_NOTHING';
 for (const c of nonMonsters.filter(isPicture)) filtered.characters.push(`${c.CHARACTER_ID}: picture of ${charName(c.CHARACTER_ID)}`);
-const shownChars = nonMonsters.filter((c) => !isPicture(c));
+// A character joins the town only when its join event (CHARACTER_APP_CON_ID -> character_app_con.xml CHARACTER_APP_EVENT) is not EVENT_NONE.
+// The others (Fairy, Boss, shopkeepers, visitors, variants) have no page: a mention of them elsewhere is plain text with the face.
+const joinEventOf = (c: (typeof nonMonsters)[number]): string => characters.joinConditionOf(c)?.CHARACTER_APP_EVENT ?? '';
+const nonPictures = nonMonsters.filter((c) => !isPicture(c));
+const droppedChars = nonPictures.filter((c) => !joinEventOf(c) || joinEventOf(c) === 'EVENT_NONE');
+for (const c of droppedChars) filtered.characters.push(`${c.CHARACTER_ID}: ${charName(c.CHARACTER_ID)} (does not join: EVENT_NONE)`);
+console.log('NON-JOINING CHARACTERS', droppedChars.length, JSON.stringify(droppedChars.map((c) => `${charName(c.CHARACTER_ID)} [${c.CHARACTER_ID}]`)));
+const shownChars = nonPictures.filter((c) => !droppedChars.includes(c));
 // A name that is still shared (CHARACTER_CHIM_MALE and CHARACTER_CHIM_FEMALE, 2 persons with their own description) gets the word of its id.
 const nameCount = new Map<string, number>();
 for (const c of shownChars) nameCount.set(charName(c.CHARACTER_ID), (nameCount.get(charName(c.CHARACTER_ID)) ?? 0) + 1);

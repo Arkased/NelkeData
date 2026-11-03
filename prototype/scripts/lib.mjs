@@ -131,9 +131,18 @@ export function auditFn() {
   for (const e of document.querySelectorAll('.mini small')) out.tiles.push(`tile with a value line: "${e.textContent.trim()}" in ${desc(e.parentElement)}`);
   for (const e of document.querySelectorAll('.lbadge')) {
     const t = e.textContent.trim();
-    if (!/^(\d+(\.\d)?%|Lv \d+)$/.test(t)) out.units.push(`left badge format: "${t}"`);
+    if (!/^(\d+(\.\d)?%|Lv \d+(–\d+)?)$/.test(t)) out.units.push(`left badge format: "${t}"`);
     const sl = e.parentElement.getBoundingClientRect(), b = e.getBoundingClientRect();
     if (!e.parentElement.matches('.slot') || b.left < sl.left - 1 || b.bottom > sl.bottom + 1 || b.left - sl.left > 8 || sl.bottom - b.bottom > 8) out.units.push(`left badge is not on the bottom left corner of the icon: "${t}"`);
+  }
+  // No 2 tiles of 1 section link to the same entity (a monster with several levels in an area is 1 tile with a level range).
+  for (const sec of document.querySelectorAll('.minis, .grid, .row')) {
+    const seen = new Set();
+    for (const a of sec.querySelectorAll(':scope > a.mini')) {
+      const h = (a.getAttribute('href') || '').split('?')[0];
+      if (seen.has(h)) out.tiles.push(`2 tiles of 1 section link to the same entity: ${h}`);
+      seen.add(h);
+    }
   }
   // The quantity of an item is a badge "×N" (N of 2 or more) on the bottom right corner of the item icon.
   for (const e of document.querySelectorAll('.qty')) {

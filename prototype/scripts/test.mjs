@@ -337,14 +337,49 @@ await step('characters page and modal', async () => {
   ok(na === 22, `Alchemist filter: ${na} of ${n}`);
   await page.locator('[data-cg=Alchemist]').click();
   await page.locator('[data-cg=Townsfolk]').click();
-  ok((await page.locator('#grid .cell').count()) === 114, 'Townsfolk filter: 114');
+  ok((await page.locator('#grid .cell').count()) === 104, 'Townsfolk filter: 104');
   await page.locator('[data-cg=Townsfolk]').click();
-  const games = await page.locator('[data-ck]').count();
-  await page.locator('[data-ck]').first().click();
+  // A filter with more than 8 values is 1 multiple-choice drop-down.
+  const games = await page.evaluate(() => new Set(window.DATA.chars.map((c) => c.game).filter(Boolean)).size);
+  ok(games > 8 && (await page.locator('.toolbar .dd').count()) === 1 && (await page.locator('.toolbar button[data-ck]').count()) === 0, `${games} games are 1 drop-down, not buttons`);
+  const btn = page.locator('.ddbtn');
+  ok((await btn.getAttribute('aria-expanded')) === 'false' && (await page.locator('.ddpanel').isHidden()), 'drop-down is closed at first');
+  await btn.click();
+  ok((await btn.getAttribute('aria-expanded')) === 'true' && (await page.locator('.ddpanel').isVisible()), 'drop-down opens');
+  await page.locator('.ddpanel input').first().check();
+  await page.locator('.ddpanel input').nth(1).check();
   const ng = await page.locator('#grid .cell').count();
-  ok(games > 5 && ng > 0 && ng < n, `game filter: ${games} games, first one has ${ng} of ${n}`);
-  await page.locator('[data-ck]').first().click();
-  ok((await page.locator('.toolbar [data-cg], .toolbar [data-ck]').allInnerTexts()).every((x) => !/^(Story|Fairy|Main)$/.test(x.trim())), 'no Story, Fairy or Main filter');
+  ok(ng > 0 && ng < n, `2 games selected: ${ng} of ${n}`);
+  ok((await btn.locator('.badge').innerText()) === '2', 'the button shows the count 2');
+  ok(/[?&]game=[^&]+(%2C|,)[^&]+/.test(await hash()), `selection in the URL: ${await hash()}`);
+  ok(await page.evaluate(() => { const p = document.querySelector('.ddpanel').getBoundingClientRect(); return p.left >= 0 && p.right <= innerWidth + 1 && document.documentElement.scrollWidth <= innerWidth + 1; }), 'open panel fits the viewport width');
+  await page.keyboard.press('Escape');
+  ok((await page.locator('.ddpanel').isHidden()) && (await btn.getAttribute('aria-expanded')) === 'false', 'Esc closes the drop-down');
+  ok(await page.evaluate(() => document.activeElement === document.querySelector('.ddbtn')), 'focus returns to the button');
+  await page.keyboard.press('Enter');
+  ok((await btn.getAttribute('aria-expanded')) === 'true', 'Enter opens the drop-down');
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Space');
+  ok((await btn.locator('.badge').innerText()) === '1', 'Space on the focused option toggles it');
+  await page.keyboard.press('Escape');
+  const withGame = await hash();
+  await go(withGame);
+  await page.waitForSelector('#grid .cell');
+  await openFilters();
+  ok((await page.locator('.ddbtn .badge').innerText()) === '1' && (await page.locator('#grid .cell').count()) > 0, 'after a reload the selection is read from the URL');
+  await go('#/characters');
+  await page.waitForSelector('#grid .cell');
+  ok((await page.locator('.toolbar [data-cg]').allInnerTexts()).every((x) => !/^(Story|Fairy|Main)$/.test(x.trim())), 'no Story, Fairy or Main filter');
+  const dat = await page.evaluate(() => { const D = window.DATA; const ids = new Set(D.chars.map((c) => c.nr)); const t = D.items.find((i) => i.syn && i.syn.unlock && i.syn.unlock.teacher && !ids.has(i.syn.unlock.teacher)); return { names: D.chars.map((c) => c.n), ids: D.chars.map((c) => c.id), taught: t ? t.id : '' }; });
+  for (const nm of ['Fairy', 'Boss', 'Weapon Shopkeeper', 'Uryu', 'Lise', 'Annie', 'Lina', 'Veola', 'Arlin', 'Fee']) ok(!dat.names.includes(nm), `${nm} does not join: not in the list`);
+  ok(!dat.ids.includes('CHARACTER_HAGEL_A3') && !dat.ids.includes('CHARACTER_HAGEL_A1'), 'no Gerhard variant');
+  ok(dat.ids.length === 130, `${dat.ids.length} characters that join`);
+  if (dat.taught) {
+    await go(`#/items/${dat.taught}`);
+    await page.waitForSelector('.modal');
+    ok((await page.locator('.modal a[href^="#/characters/"]').count()) === 0, 'a teacher that does not join is plain text, not a link');
+    await closeEsc();
+  }
   await go(`#/characters/${P.character.id}`);
   await page.waitForSelector('.modal');
   ok((await page.locator('.modal .top').count()) === 1, 'character modal');
@@ -601,7 +636,15 @@ await step('monsters that need an Investigation Lv', async () => {
   await go('#/areas/' + id);
   await page.waitForSelector('.modal');
   ok((await page.locator('.modal .gh b', { hasText: /from Investigation Lv \d/i }).count()) >= 1, 'a group says "from Investigation Lv N"');
-  ok((await page.locator('.modal .mini .lbadge', { hasText: /^Lv \d+$/ }).count()) > 0, 'monster levels are badges');
+  ok((await page.locator('.modal .mini .lbadge', { hasText: /^Lv \d+(–\d+)?$/ }).count()) > 0, 'monster levels are badges');
+  // A monster with several levels in an area is 1 tile with 1 range badge.
+  const multi = await page.evaluate(() => { const D = window.DATA; for (const z of D.zones) for (const a of z.areas) { const m = a.mons.find((x) => x.lo !== x.hi); if (m) return { area: a.id, m: m.m, lo: m.lo, hi: m.hi }; } return null; });
+  ok(!!multi, 'the data has an area with a multi-level monster');
+  await go('#/areas/' + multi.area);
+  await page.waitForSelector('.modal');
+  const tiles = page.locator(`.modal a.mini[href="#/monsters/${multi.m}"]`);
+  ok((await tiles.count()) === 1, `multi-level monster: ${await tiles.count()} tile`);
+  ok((await tiles.locator('.lbadge').innerText()) === `Lv ${multi.lo}–${multi.hi}`, `range badge ${await tiles.locator('.lbadge').innerText()}`);
 });
 await closeEsc();
 

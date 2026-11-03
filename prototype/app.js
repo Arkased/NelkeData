@@ -118,7 +118,7 @@
   const pct = (n) => `<span class="rate">${fmt(n)}%</span>`;
   const pctText = (n) => `${fmt(n)}%`;
   const turns = (n) => `${n} turn${n === 1 ? '' : 's'}`;
-  const lvRange = (lo, hi) => `Lv ${lo === hi ? lo : `${lo}-${hi}`}`;
+  const lvRange = (lo, hi) => `Lv ${lo === hi ? lo : `${lo}–${hi}`}`;
   /** The tile options of a drop: the quantity is the badge on the icon. Each drop rate is 100%, so the rate does not show. */
   const dropOpts = (d) => ({ qty: d.num });
   /** Friendship as the game heart icon (img/ui/fav-icon.png) and a number. */
@@ -142,6 +142,41 @@
   };
   const wireFilters = () => $('#ftoggle').addEventListener('click', () => $('#ftoggle').setAttribute('aria-expanded', $('.toolbar').classList.toggle('fopen')));
   const tg = (attr, val, label, on, ic) => `<button class="toggle" ${attr}="${esc(val)}" aria-pressed="${on}">${ic || ''}<span>${esc(label)}</span></button>`;
+
+  /** A filter with more than this many values is 1 drop-down list with multiple choice. */
+  const DD_MIN = 8;
+  /** A multiple-choice drop-down: a button (with the count of the selected values) that opens a checklist panel. The values are checkboxes with attr=value. */
+  const dropdown = (attr, id, noun, values, selected) => `<div class="dd" data-dd="${id}"><button type="button" class="btn ddbtn" aria-expanded="false" aria-controls="dd-${id}" aria-haspopup="true"><span>${noun}</span><b class="badge"${selected.length ? '' : ' hidden'}>${selected.length}</b><i class="caret" aria-hidden="true"></i></button><div class="ddpanel" id="dd-${id}" role="group" aria-label="${noun}" hidden>${values.map((v) => `<label class="ddopt"><input type="checkbox" ${attr}="${esc(v)}"${selected.includes(v) ? ' checked' : ''}><span>${esc(v)}</span></label>`).join('')}</div></div>`;
+  /** The values of a filter: toggle buttons, or 1 drop-down when there are more than DD_MIN. */
+  const filterOpts = (attr, id, noun, values, selected) => (values.length > DD_MIN ? dropdown(attr, id, noun, values, selected) : values.map((t) => tg(attr, t, t, selected.includes(t))).join(''));
+  const setDropdownCount = (dd, n) => {
+    const b = dd.querySelector('.badge');
+    b.hidden = !n;
+    b.textContent = n;
+    const noun = dd.querySelector('.ddbtn span').textContent;
+    dd.querySelector('.ddbtn').setAttribute('aria-label', n ? `${noun}, ${n} selected` : noun);
+  };
+  /** Opens and closes the panels of the drop-downs inside rootEl. Esc or a click outside closes the open panel; Esc returns the focus to the button. */
+  function wireDropdowns(rootEl) {
+    const set = (dd, open, refocus) => {
+      const btn = dd.querySelector('.ddbtn');
+      dd.querySelector('.ddpanel').hidden = !open;
+      btn.setAttribute('aria-expanded', open);
+      if (!open && refocus) btn.focus();
+    };
+    rootEl.querySelectorAll('.dd').forEach((dd) => {
+      dd.querySelector('.ddbtn').addEventListener('click', () => {
+        const open = dd.querySelector('.ddpanel').hidden;
+        rootEl.querySelectorAll('.dd').forEach((o) => o !== dd && set(o, false));
+        set(dd, open);
+      });
+      dd.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !dd.querySelector('.ddpanel').hidden) { e.stopPropagation(); set(dd, false, true); }
+      });
+      dd.addEventListener('focusout', (e) => { if (e.relatedTarget && !dd.contains(e.relatedTarget)) set(dd, false); });
+    });
+    document.addEventListener('click', (e) => { if (rootEl.isConnected) rootEl.querySelectorAll('.dd').forEach((dd) => !dd.contains(e.target) && set(dd, false)); });
+  }
 
   // ---------- tooltip ----------
   const tip = $('#tip');
@@ -286,24 +321,47 @@
     $('#q').addEventListener('input', (e) => { st.mq = e.target.value; draw(); });
     $('.toolbar').addEventListener('click', (e) => { const b = e.target.closest('[data-mk]'); if (b) { st.mk = b.dataset.mk; draw(); } });
   }
+  /** The characters page keeps its filters in the hash query: group, game, q. */
+  const charQs = () => {
+    const p = new URLSearchParams();
+    if (st.cg.length) p.set('group', st.cg.join(','));
+    if (st.ck.length) p.set('game', st.ck.join(','));
+    if (st.cq.trim()) p.set('q', st.cq.trim());
+    const q = p.toString();
+    return q ? `?${q}` : '';
+  };
+  const readCharQs = (qs) => {
+    const p = new URLSearchParams(qs);
+    st.cg = (p.get('group') || '').split(',').filter((c) => CHAR_GROUPS.includes(c));
+    st.ck = (p.get('game') || '').split(',').filter((c) => GAMES.includes(c));
+    st.cq = p.get('q') || '';
+  };
   function charactersPage() {
     $('#main').innerHTML = `
       <div class="toolbar">
         <div class="srow">${searchBox(st.cq, 'Search characters')}${filtersBtn()}</div>
-        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Group</span><div class="opts">${CHAR_GROUPS.map((t) => tg('data-cg', t, t, st.cg.includes(t))).join('')}</div></div>
-        <div class="fgroup"><span class="cap">Game</span><div class="opts">${GAMES.map((t) => tg('data-ck', t, t, st.ck.includes(t))).join('')}</div></div></div>
+        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Group</span><div class="opts">${filterOpts('data-cg', 'group', 'Group', CHAR_GROUPS, st.cg)}</div></div>
+        <div class="fgroup"><span class="cap">Game</span><div class="opts">${filterOpts('data-ck', 'game', 'Game', GAMES, st.ck)}</div></div></div>
       </div>
       <div class="gridwrap bi u p-cream"><div class="grid" id="grid"></div></div>`;
     const draw = () => {
       const q = st.cq.trim().toLowerCase();
+      const qs = charQs();
       const list = D.chars.filter((c) => (!st.cg.length || st.cg.includes(groupOf(c))) && (!st.ck.length || st.ck.includes(c.game)) && (!q || c.n.toLowerCase().includes(q)));
-      $('#grid').innerHTML = list.length ? list.map((c) => ent({ href: `#/characters/${c.id}`, icon: c.icon, name: c.n, cls: 'cell' })).join('') : '<div class="empty">Nothing matches the filters.</div>';
-      document.querySelectorAll('.toolbar [data-ck]').forEach((b) => b.setAttribute('aria-pressed', st.ck.includes(b.dataset.ck)));
-      document.querySelectorAll('.toolbar [data-cg]').forEach((b) => b.setAttribute('aria-pressed', st.cg.includes(b.dataset.cg)));
+      $('#grid').innerHTML = list.length ? list.map((c) => ent({ href: `#/characters/${c.id}${qs}`, icon: c.icon, name: c.n, cls: 'cell' })).join('') : '<div class="empty">Nothing matches the filters.</div>';
+      document.querySelectorAll('.toolbar .toggle[data-ck]').forEach((b) => b.setAttribute('aria-pressed', st.ck.includes(b.dataset.ck)));
+      document.querySelectorAll('.toolbar .toggle[data-cg]').forEach((b) => b.setAttribute('aria-pressed', st.cg.includes(b.dataset.cg)));
+      document.querySelectorAll('.toolbar input[data-ck]').forEach((b) => { b.checked = st.ck.includes(b.dataset.ck); });
+      document.querySelectorAll('.toolbar input[data-cg]').forEach((b) => { b.checked = st.cg.includes(b.dataset.cg); });
+      document.querySelectorAll('.toolbar .dd').forEach((dd) => setDropdownCount(dd, (dd.dataset.dd === 'game' ? st.ck : st.cg).length));
       setFilterCount(st.ck.length + st.cg.length);
+      base = { ...base, hash: `#/characters${qs}`, key: `characters${qs}` };
+      viewKey = base.key;
+      history.replaceState(null, '', base.hash);
     };
     draw();
     wireFilters();
+    wireDropdowns($('.toolbar'));
     $('#q').addEventListener('input', (e) => { st.cq = e.target.value; draw(); });
     $('.toolbar').addEventListener('click', (e) => {
       const b = e.target.closest('[data-ck], [data-cg]');
@@ -506,8 +564,8 @@
   function areaModal(id) {
     const a = AREA.get(id);
     if (a) {
-      // A monster tile has its level on the badge (1 level), so a monster that shows at 2 levels has 1 tile for each level.
-      const mon = (m) => m.lvs.map((lv) => monEnt(m.m, { badge: `Lv ${lv}` })).join('');
+      // 1 tile for each monster; its badge is the level range of the area (Lv 3–8) or the one level (Lv 5).
+      const mon = (m) => monEnt(m.m, { badge: lvRange(m.lo, m.hi) });
       const gather = a.gather.length ? grp('Gather', `<div class="minis">${a.gather.map((g) => itemEnt(g.i, { badge: pctText(g.r) })).join('')}</div>`) : '';
       // The monsters that only show from an Investigation Lv are their own group.
       let mons = '';
@@ -653,7 +711,7 @@
       const id = parts[1] && !D.trees[parts[1]] ? null : parts[2];
       return { view, tree, id, key: `research/${tree}`, hash: `#/research/${tree}` };
     }
-    return { view, id: parts[1], qs, key: view === 'items' ? `items${qs ? `?${qs}` : ''}` : view, hash: view === 'items' ? `#/items${qs ? `?${qs}` : ''}` : `#/${view}` };
+    return { view, id: parts[1], qs, key: view === 'items' || view === 'characters' ? `${view}${qs ? `?${qs}` : ''}` : view, hash: view === 'items' || view === 'characters' ? `#/${view}${qs ? `?${qs}` : ''}` : `#/${view}` };
   }
   function renderBase(b) {
     if (viewKey === b.key) return;
@@ -662,7 +720,7 @@
     if (b.view === 'items') { readQs(b.qs || ''); itemsPage(); }
     else if (b.view === 'areas') areasPage();
     else if (b.view === 'monsters') monstersPage();
-    else if (b.view === 'characters') charactersPage();
+    else if (b.view === 'characters') { readCharQs(b.qs || ''); charactersPage(); }
     else researchPage(b.tree);
   }
   function route() {
@@ -678,7 +736,7 @@
     } else {
       closeModal(false);
       // The page already shows this hash after a filter change, so it keeps its state.
-      if (!(base && viewKey === p.key && p.view === 'items' && base.hash === p.hash)) base = p;
+      if (!(base && viewKey === p.key && (p.view === 'items' || p.view === 'characters') && base.hash === p.hash)) base = p;
       renderBase(base);
       renderNav();
     }
