@@ -167,12 +167,31 @@ for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'mo
       ok(await page.evaluate(() => { const rs = {}; document.querySelectorAll('.modal .syn-stats .val').forEach((e) => { const t = Math.round(e.getBoundingClientRect().top / 2); const k = Math.round(e.closest('.stat').getBoundingClientRect().top / 2); (rs[k] ||= new Set()).add(t); }); return Object.values(rs).every((v) => v.size === 1); }), 'the stat values of a row share 1 baseline');
     }
     if (k === 'craftNoPrice') ok(!/Selling price/i.test(synT) && /Material cost/i.test(synT), 'no selling price: only the material cost row shows');
-    if (k === 'drop') ok((await page.locator('.modal .mini .lbadge').count()) === 0 && (await page.locator('.modal .mini small').count()) === 0, 'drop tiles show no rate (each drop rate is 100%)');
+    if (k === 'drop') ok((await page.locator('.modal .mini .tbadge').count()) === 0 && (await page.locator('.modal .mini small').count()) === 0, 'drop tiles show no rate (each drop rate is 100%)');
     if (k === 'rare') ok(/(Treasure|Bug Net|Digging|Fishing)/.test(t), 'rare group');
     if (k === 'craftPriced') ok((await page.locator('.modal .syn img[src$="cost.png"]').count()) >= 2 && (await page.locator('.modal .syn .money img[src$="coin.png"]').count()) >= 3, 'synthesis cost and money have their icons');
     ok((await page.locator('.modal .top').innerText()).match(/Reduces into|Material|Merchandise|Battle|Construction/) !== null, 'top has category');
   });
   await closeEsc();
+}
+
+// The vertical scroll bar showing or going away must not move the header (scrollbar-gutter: stable on the root).
+if (width === 1280) {
+  await step('no layout shift: header x with all items, empty search, modal open', async () => {
+    const xs = () => page.evaluate(() => ({ title: document.querySelector('.site-name').getBoundingClientRect().left, nav: document.querySelector('.nav a').getBoundingClientRect().left }));
+    await go('#/items');
+    await page.waitForSelector('#grid .cell');
+    const all = await xs();
+    await page.locator('#q').fill('zzzzqq');
+    await page.waitForSelector('.empty');
+    const empty = await xs();
+    await page.locator('#q').fill('');
+    await openItem(P.craftPriced.n);
+    const modal = await xs();
+    console.log(`  header x (title, nav link): all items ${all.title}, ${all.nav}; empty ${empty.title}, ${empty.nav}; modal ${modal.title}, ${modal.nav}`);
+    ok(all.title === empty.title && empty.title === modal.title && all.nav === empty.nav && empty.nav === modal.nav, 'the header x is equal in the 3 states');
+    await closeEsc();
+  });
 }
 
 await step('modal: link inside, Back, Esc', async () => {
@@ -297,8 +316,8 @@ await step('monsters page and modal', async () => {
   await page.waitForSelector('#grid .cell');
   const n = await page.locator('#grid .cell').count();
   ok(n === (await page.evaluate(() => Object.keys(window.DATA.monsters).length)), `${n} monster cells`);
-  const mnames = await page.locator('#grid .cell .nm').allTextContents();
-  ok(new Set(mnames).size === mnames.length, 'no 2 monsters in the grid with the same name');
+  // The rank is not shown, so 2 monsters (the 2 "Beast") share a name; they differ by the icon.
+  ok(await page.evaluate(() => { const m = Object.values(window.DATA.monsters).map((x) => `${x.n}|${x.icon}`); return new Set(m).size === m.length; }), 'no 2 monsters with the same name and the same icon');
   await openFilters();
   await page.locator('[data-mk=boss]').click();
   const nb = await page.locator('#grid .cell').count();
@@ -308,7 +327,7 @@ await step('monsters page and modal', async () => {
   await page.waitForSelector('.modal');
   const t = await page.locator('.modal-body').innerText();
   ok(/Drops/.test(t) && !/per drop/.test(t) && /Found in/.test(t) && /Lv \d+/.test(t), 'drops with a rate and areas with "Lv N"');
-  ok(/Rank \d+/.test(t), 'rank');
+  ok(!/Rank/.test(t), 'no rank');
 });
 await closeEsc();
 await step('monster with element DEF', async () => {
@@ -337,36 +356,14 @@ await step('characters page and modal', async () => {
   ok(na === 22, `Alchemist filter: ${na} of ${n}`);
   await page.locator('[data-cg=Alchemist]').click();
   await page.locator('[data-cg=Townsfolk]').click();
-  ok((await page.locator('#grid .cell').count()) === 104, 'Townsfolk filter: 104');
+  ok((await page.locator('#grid .cell').count()) === n - na, `Townsfolk filter: ${n - na} (every character that is not an Alchemist)`);
   await page.locator('[data-cg=Townsfolk]').click();
-  // A filter with more than 8 values is 1 multiple-choice drop-down.
-  const games = await page.evaluate(() => new Set(window.DATA.chars.map((c) => c.game).filter(Boolean)).size);
-  ok(games > 8 && (await page.locator('.toolbar .dd').count()) === 1 && (await page.locator('.toolbar button[data-ck]').count()) === 0, `${games} games are 1 drop-down, not buttons`);
-  const btn = page.locator('.ddbtn');
-  ok((await btn.getAttribute('aria-expanded')) === 'false' && (await page.locator('.ddpanel').isHidden()), 'drop-down is closed at first');
-  await btn.click();
-  ok((await btn.getAttribute('aria-expanded')) === 'true' && (await page.locator('.ddpanel').isVisible()), 'drop-down opens');
-  await page.locator('.ddpanel input').first().check();
-  await page.locator('.ddpanel input').nth(1).check();
-  const ng = await page.locator('#grid .cell').count();
-  ok(ng > 0 && ng < n, `2 games selected: ${ng} of ${n}`);
-  ok((await btn.locator('.badge').innerText()) === '2', 'the button shows the count 2');
-  ok(/[?&]game=[^&]+(%2C|,)[^&]+/.test(await hash()), `selection in the URL: ${await hash()}`);
-  ok(await page.evaluate(() => { const p = document.querySelector('.ddpanel').getBoundingClientRect(); return p.left >= 0 && p.right <= innerWidth + 1 && document.documentElement.scrollWidth <= innerWidth + 1; }), 'open panel fits the viewport width');
-  await page.keyboard.press('Escape');
-  ok((await page.locator('.ddpanel').isHidden()) && (await btn.getAttribute('aria-expanded')) === 'false', 'Esc closes the drop-down');
-  ok(await page.evaluate(() => document.activeElement === document.querySelector('.ddbtn')), 'focus returns to the button');
-  await page.keyboard.press('Enter');
-  ok((await btn.getAttribute('aria-expanded')) === 'true', 'Enter opens the drop-down');
-  await page.keyboard.press('Tab');
-  await page.keyboard.press('Space');
-  ok((await btn.locator('.badge').innerText()) === '1', 'Space on the focused option toggles it');
-  await page.keyboard.press('Escape');
-  const withGame = await hash();
-  await go(withGame);
-  await page.waitForSelector('#grid .cell');
-  await openFilters();
-  ok((await page.locator('.ddbtn .badge').innerText()) === '1' && (await page.locator('#grid .cell').count()) > 0, 'after a reload the selection is read from the URL');
+  ok((await page.locator('.toolbar .dd, .toolbar [data-ck]').count()) === 0 && !(await page.locator('.toolbar').innerText()).includes('Game'), 'no Game filter');
+  ok(await page.evaluate(() => window.DATA.chars.filter((c) => ['Nelke', 'Misty', 'Knoss', 'Lotos'].includes(c.n)).length === 4), 'Nelke, Misty, Knoss and Lotos are in the data');
+  await page.locator('[data-cg=Townsfolk]').click();
+  ok((await page.locator('#grid .cell', { hasText: /^Nelke$/ }).count()) === 1, 'Townsfolk filter includes Nelke');
+  ok(/group=Townsfolk/.test(await hash()) && !/game=/.test(await hash()), `URL has group, no game: ${await hash()}`);
+  await page.locator('[data-cg=Townsfolk]').click();
   await go('#/characters');
   await page.waitForSelector('#grid .cell');
   ok((await page.locator('.toolbar [data-cg]').allInnerTexts()).every((x) => !/^(Story|Fairy|Main)$/.test(x.trim())), 'no Story, Fairy or Main filter');
@@ -392,7 +389,7 @@ await step('character with aptitudes, skills and join conditions', async () => {
   await go(`#/characters/${P.charFull.id}`);
   await page.waitForSelector('.modal');
   const t = await page.locator('.modal-body').innerText();
-  ok(/Aptitudes/i.test(t) && /Skills/i.test(t) && /Joins the town/i.test(t), 'aptitudes, skills and join sections');
+  ok(!/Aptitudes/i.test(t) && /Skills/i.test(t) && /Joins the town/i.test(t), 'no aptitudes; skills and join sections');
   ok(/Lv \d+/.test(t) && /Town population/i.test(t) && !/Turn [01]\b/.test(t) && !/population 0\b/i.test(t), 'skill level, population; no turn of 0 or 1');
   ok(/Learned at an event/i.test(t) && !/\b[A-Z][A-Z0-9]+(_[A-Z0-9]+)+\b/.test(t), 'event skill reads "Learned at an event", no internal id');
   const teach = await page.evaluate(() => [...document.querySelectorAll('.modal .bar')].filter((b) => /^Teaches/.test(b.textContent)).length);
@@ -506,8 +503,9 @@ await step('research with a friendship requirement', async () => {
   await go(`#/research/${(await page.evaluate((id) => window.DATA.research[id].tree, P.resFriend.id))}/${P.resFriend.id}`);
   await page.waitForSelector('.modal');
   ok((await page.locator('.modal .who .stat.need .fr img[src$="fav-icon.png"]').count()) === 1, 'heart next to the researcher');
-  const num = await page.locator('.modal .who .stat.need .fr b').innerText();
-  ok(num === String(await page.evaluate((id) => window.DATA.research[id].friendNeed, P.resFriend.id)), `heart number ${num}`);
+  const need = String(await page.evaluate((id) => window.DATA.research[id].friendNeed, P.resFriend.id));
+  const sprites = (await page.locator('.modal .who .stat.need .fr .fd img').evaluateAll((l) => l.map((i) => i.getAttribute('src').replace(/^.*favc-(\d+)\.png$/, '$1')))).join(',');
+  ok(sprites === (Number(need) <= 10 ? need : need.split('').join(',')), `heart digit sprites ${sprites} for the level ${need}`);
   const t = await page.locator('.modal-body').innerText();
   ok(/TOTAL FRIENDSHIP/i.test(await page.locator('.modal .who .stat.need').innerText()), 'label "Total friendship"');
   ok(!/\d+ needed/.test(t), 'materials have no "N needed" text');
@@ -582,7 +580,7 @@ await step('character detail: group, game, population', async () => {
   await go('#/characters/' + info.story);
   await page.waitForSelector('.modal');
   const t = await page.locator('.modal .top').innerText();
-  ok(!/\b(Story|Fairy|Alchemist|Townsfolk)\b/.test(t) && /Atelier of the New World/.test(t), 'story character: no group line, the game of origin shows');
+  ok(/\bTownsfolk\b/.test(t) && !/\b(Story|Fairy|Alchemist)\b/.test(t) && /Atelier of the New World/.test(t), 'story character (Knoss): Townsfolk line, the game of origin shows');
   if (info.withPop) {
     await go('#/characters/' + info.withPop);
     await page.waitForSelector('.modal');
@@ -636,7 +634,7 @@ await step('monsters that need an Investigation Lv', async () => {
   await go('#/areas/' + id);
   await page.waitForSelector('.modal');
   ok((await page.locator('.modal .gh b', { hasText: /from Investigation Lv \d/i }).count()) >= 1, 'a group says "from Investigation Lv N"');
-  ok((await page.locator('.modal .mini .lbadge', { hasText: /^Lv \d+(–\d+)?$/ }).count()) > 0, 'monster levels are badges');
+  ok((await page.locator('.modal .mini .tbadge', { hasText: /^Lv \d+(–\d+)?$/ }).count()) > 0, 'monster levels are badges');
   // A monster with several levels in an area is 1 tile with 1 range badge.
   const multi = await page.evaluate(() => { const D = window.DATA; for (const z of D.zones) for (const a of z.areas) { const m = a.mons.find((x) => x.lo !== x.hi); if (m) return { area: a.id, m: m.m, lo: m.lo, hi: m.hi }; } return null; });
   ok(!!multi, 'the data has an area with a multi-level monster');
@@ -644,7 +642,7 @@ await step('monsters that need an Investigation Lv', async () => {
   await page.waitForSelector('.modal');
   const tiles = page.locator(`.modal a.mini[href="#/monsters/${multi.m}"]`);
   ok((await tiles.count()) === 1, `multi-level monster: ${await tiles.count()} tile`);
-  ok((await tiles.locator('.lbadge').innerText()) === `Lv ${multi.lo}–${multi.hi}`, `range badge ${await tiles.locator('.lbadge').innerText()}`);
+  ok((await tiles.locator('.tbadge').innerText()) === `Lv ${multi.lo}–${multi.hi}`, `range badge ${await tiles.locator('.tbadge').innerText()}`);
 });
 await closeEsc();
 

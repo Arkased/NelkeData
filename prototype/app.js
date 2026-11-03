@@ -65,15 +65,14 @@
   const GIMMICK_ORDER = ['BOX', 'BUG', 'DIG', 'FISH'];
   /** An internal id of the game files (EVENT_MM00_110): it never shows to the user. */
   const INTERNAL_ID = /\b[A-Z][A-Z0-9]+(_[A-Z0-9]+)+\b/;
-  /** The groups of a character that the player can use to find it. The other game categories (Main, Story, Fairy) do not show. */
+  /** The groups of a character: Alchemist is the category 2 of the game, Townsfolk is each other category. */
   const CHAR_GROUPS = ['Alchemist', 'Townsfolk'];
-  const groupOf = (c) => (CHAR_GROUPS.includes(c.type) ? c.type : '');
-  const GAMES = [...new Set(D.chars.map((c) => c.game).filter(Boolean))];
+  const groupOf = (c) => (c.type === 'Alchemist' ? 'Alchemist' : 'Townsfolk');
 
   let base = null; // { view, key, hash, tree }
   let viewKey = '';
   let lastFocus = null;
-  const st = { cat: [], shop: [], craft: false, q: '', aq: '', mq: '', mk: '', cq: '', ck: [], cg: [] };
+  const st = { cat: [], shop: [], craft: false, q: '', aq: '', mq: '', mk: '', cq: '', cg: [] };
 
   // ---------- small parts ----------
   const icon = (f) => (f.startsWith('img/') ? f : `img/icons/${f}`);
@@ -85,11 +84,11 @@
     const tag = o.href ? 'a' : 'span';
     return `<${tag} class="slot ${crop(o.icon)} ${o.cls || ''}"${o.href ? ` href="${o.href}"` : ''}>${o.icon ? `<img src="${icon(o.icon)}" alt="">` : ''}</${tag}>`;
   }
-  /** The tile of an entity, used everywhere: the icon with its badges (o.qty bottom right, o.badge bottom left: a rate or a level), then the name (at most 2 lines). No value line, no tooltip. It is 1 link when it has a page. */
+  /** The tile of an entity, used everywhere: the icon with its badges (o.qty or o.badge, both on the bottom right: a rate or a level; a tile has 1 badge), then the name (at most 2 lines). No value line, no tooltip. It is 1 link when it has a page. */
   function ent(o) {
     const tag = o.href ? 'a' : 'div';
     const qty = o.qty >= 2 ? `<b class="qty">×${o.qty}</b>` : '';
-    const badge = o.badge ? `<b class="lbadge">${esc(o.badge)}</b>` : '';
+    const badge = o.badge ? `<b class="tbadge">${esc(o.badge)}</b>` : '';
     return `<${tag} class="mini ${o.cls || ''}"${o.href ? ` href="${o.href}"` : ''}><span class="slot ${crop(o.icon)}">${o.icon ? `<img src="${icon(o.icon)}" alt="">` : ''}${badge}${qty}</span><span class="nm">${esc(o.name)}</span></${tag}>`;
   }
   /** The icon of a research: the icon of its output (the data picks the first prize item, else the first item of the prize recipe set, else the bonus item). With no output it is the Research icon of the nav. */
@@ -115,14 +114,19 @@
   const coin = '<img class="ico" src="img/ui/coin.png" alt="Cole">';
   const money = (n, cls = '') => `<span class="money ${cls}">${coin}${fmt(n)}</span>`;
   const costU = (n, cls = '') => `<span class="cost ${cls}"><img class="ico" src="img/ui/cost.png" alt="Synthesis cost">${fmt(n)}</span>`;
-  const pct = (n) => `<span class="rate">${fmt(n)}%</span>`;
-  const pctText = (n) => `${fmt(n)}%`;
+  /** A rate of 100% never shows: the item is certain, so these return an empty string. */
+  const certain = (n) => fmt(n) === '100';
+  const pct = (n) => (certain(n) ? '' : `<span class="rate">${fmt(n)}%</span>`);
+  const pctText = (n) => (certain(n) ? '' : `${fmt(n)}%`);
   const turns = (n) => `${n} turn${n === 1 ? '' : 's'}`;
   const lvRange = (lo, hi) => `Lv ${lo === hi ? lo : `${lo}–${hi}`}`;
   /** The tile options of a drop: the quantity is the badge on the icon. Each drop rate is 100%, so the rate does not show. */
   const dropOpts = (d) => ({ qty: d.num });
-  /** Friendship as the game heart icon (img/ui/fav-icon.png) and a number. */
-  const heart = (n) => `<span class="fr" role="img" aria-label="Friendship ${n}"><img src="img/ui/fav-icon.png" alt=""><b>${n}</b></span>`;
+  /** The shared friendship level: the game heart with the level on it in the digit sprites (favc-0 to favc-10). A level above 10 uses 1 sprite for each digit. No text node. */
+  const heart = (n) => {
+    const sprites = n <= 10 ? [n] : String(n).split('');
+    return `<span class="fr" role="img" aria-label="Friendship ${n}"><img class="hb" src="img/ui/fav-icon.png" alt=""><span class="fd">${sprites.map((d) => `<img src="img/ui/favc-${d}.png" alt="">`).join('')}</span></span>`;
+  };
   const shopChip = (key) => `<span class="shop"><img src="img/ui/${SHOP[key].img}.png" alt="">${SHOP[key].label}</span>`;
   /** A group of a modal: a title, then the content. No caption (the title says what it is). */
   const grp = (title, body) => `<section class="grp"><div class="gh"><b>${esc(title)}</b></div>${body}</section>`;
@@ -143,40 +147,8 @@
   const wireFilters = () => $('#ftoggle').addEventListener('click', () => $('#ftoggle').setAttribute('aria-expanded', $('.toolbar').classList.toggle('fopen')));
   const tg = (attr, val, label, on, ic) => `<button class="toggle" ${attr}="${esc(val)}" aria-pressed="${on}">${ic || ''}<span>${esc(label)}</span></button>`;
 
-  /** A filter with more than this many values is 1 drop-down list with multiple choice. */
-  const DD_MIN = 8;
-  /** A multiple-choice drop-down: a button (with the count of the selected values) that opens a checklist panel. The values are checkboxes with attr=value. */
-  const dropdown = (attr, id, noun, values, selected) => `<div class="dd" data-dd="${id}"><button type="button" class="btn ddbtn" aria-expanded="false" aria-controls="dd-${id}" aria-haspopup="true"><span>${noun}</span><b class="badge"${selected.length ? '' : ' hidden'}>${selected.length}</b><i class="caret" aria-hidden="true"></i></button><div class="ddpanel" id="dd-${id}" role="group" aria-label="${noun}" hidden>${values.map((v) => `<label class="ddopt"><input type="checkbox" ${attr}="${esc(v)}"${selected.includes(v) ? ' checked' : ''}><span>${esc(v)}</span></label>`).join('')}</div></div>`;
-  /** The values of a filter: toggle buttons, or 1 drop-down when there are more than DD_MIN. */
-  const filterOpts = (attr, id, noun, values, selected) => (values.length > DD_MIN ? dropdown(attr, id, noun, values, selected) : values.map((t) => tg(attr, t, t, selected.includes(t))).join(''));
-  const setDropdownCount = (dd, n) => {
-    const b = dd.querySelector('.badge');
-    b.hidden = !n;
-    b.textContent = n;
-    const noun = dd.querySelector('.ddbtn span').textContent;
-    dd.querySelector('.ddbtn').setAttribute('aria-label', n ? `${noun}, ${n} selected` : noun);
-  };
-  /** Opens and closes the panels of the drop-downs inside rootEl. Esc or a click outside closes the open panel; Esc returns the focus to the button. */
-  function wireDropdowns(rootEl) {
-    const set = (dd, open, refocus) => {
-      const btn = dd.querySelector('.ddbtn');
-      dd.querySelector('.ddpanel').hidden = !open;
-      btn.setAttribute('aria-expanded', open);
-      if (!open && refocus) btn.focus();
-    };
-    rootEl.querySelectorAll('.dd').forEach((dd) => {
-      dd.querySelector('.ddbtn').addEventListener('click', () => {
-        const open = dd.querySelector('.ddpanel').hidden;
-        rootEl.querySelectorAll('.dd').forEach((o) => o !== dd && set(o, false));
-        set(dd, open);
-      });
-      dd.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !dd.querySelector('.ddpanel').hidden) { e.stopPropagation(); set(dd, false, true); }
-      });
-      dd.addEventListener('focusout', (e) => { if (e.relatedTarget && !dd.contains(e.relatedTarget)) set(dd, false); });
-    });
-    document.addEventListener('click', (e) => { if (rootEl.isConnected) rootEl.querySelectorAll('.dd').forEach((dd) => !dd.contains(e.target) && set(dd, false)); });
-  }
+  /** The values of a filter: toggle buttons. */
+  const filterOpts = (attr, values, selected) => values.map((t) => tg(attr, t, t, selected.includes(t))).join('');
 
   // ---------- tooltip ----------
   const tip = $('#tip');
@@ -321,11 +293,10 @@
     $('#q').addEventListener('input', (e) => { st.mq = e.target.value; draw(); });
     $('.toolbar').addEventListener('click', (e) => { const b = e.target.closest('[data-mk]'); if (b) { st.mk = b.dataset.mk; draw(); } });
   }
-  /** The characters page keeps its filters in the hash query: group, game, q. */
+  /** The characters page keeps its filters in the hash query: group, q. */
   const charQs = () => {
     const p = new URLSearchParams();
     if (st.cg.length) p.set('group', st.cg.join(','));
-    if (st.ck.length) p.set('game', st.ck.join(','));
     if (st.cq.trim()) p.set('q', st.cq.trim());
     const q = p.toString();
     return q ? `?${q}` : '';
@@ -333,41 +304,33 @@
   const readCharQs = (qs) => {
     const p = new URLSearchParams(qs);
     st.cg = (p.get('group') || '').split(',').filter((c) => CHAR_GROUPS.includes(c));
-    st.ck = (p.get('game') || '').split(',').filter((c) => GAMES.includes(c));
     st.cq = p.get('q') || '';
   };
   function charactersPage() {
     $('#main').innerHTML = `
       <div class="toolbar">
         <div class="srow">${searchBox(st.cq, 'Search characters')}${filtersBtn()}</div>
-        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Group</span><div class="opts">${filterOpts('data-cg', 'group', 'Group', CHAR_GROUPS, st.cg)}</div></div>
-        <div class="fgroup"><span class="cap">Game</span><div class="opts">${filterOpts('data-ck', 'game', 'Game', GAMES, st.ck)}</div></div></div>
+        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Group</span><div class="opts">${filterOpts('data-cg', CHAR_GROUPS, st.cg)}</div></div></div>
       </div>
       <div class="gridwrap bi u p-cream"><div class="grid" id="grid"></div></div>`;
     const draw = () => {
       const q = st.cq.trim().toLowerCase();
       const qs = charQs();
-      const list = D.chars.filter((c) => (!st.cg.length || st.cg.includes(groupOf(c))) && (!st.ck.length || st.ck.includes(c.game)) && (!q || c.n.toLowerCase().includes(q)));
+      const list = D.chars.filter((c) => (!st.cg.length || st.cg.includes(groupOf(c))) && (!q || c.n.toLowerCase().includes(q)));
       $('#grid').innerHTML = list.length ? list.map((c) => ent({ href: `#/characters/${c.id}${qs}`, icon: c.icon, name: c.n, cls: 'cell' })).join('') : '<div class="empty">Nothing matches the filters.</div>';
-      document.querySelectorAll('.toolbar .toggle[data-ck]').forEach((b) => b.setAttribute('aria-pressed', st.ck.includes(b.dataset.ck)));
       document.querySelectorAll('.toolbar .toggle[data-cg]').forEach((b) => b.setAttribute('aria-pressed', st.cg.includes(b.dataset.cg)));
-      document.querySelectorAll('.toolbar input[data-ck]').forEach((b) => { b.checked = st.ck.includes(b.dataset.ck); });
-      document.querySelectorAll('.toolbar input[data-cg]').forEach((b) => { b.checked = st.cg.includes(b.dataset.cg); });
-      document.querySelectorAll('.toolbar .dd').forEach((dd) => setDropdownCount(dd, (dd.dataset.dd === 'game' ? st.ck : st.cg).length));
-      setFilterCount(st.ck.length + st.cg.length);
+      setFilterCount(st.cg.length);
       base = { ...base, hash: `#/characters${qs}`, key: `characters${qs}` };
       viewKey = base.key;
       history.replaceState(null, '', base.hash);
     };
     draw();
     wireFilters();
-    wireDropdowns($('.toolbar'));
     $('#q').addEventListener('input', (e) => { st.cq = e.target.value; draw(); });
     $('.toolbar').addEventListener('click', (e) => {
-      const b = e.target.closest('[data-ck], [data-cg]');
+      const b = e.target.closest('[data-cg]');
       if (!b) return;
-      const [k, v] = b.dataset.ck ? ['ck', b.dataset.ck] : ['cg', b.dataset.cg];
-      st[k] = st[k].includes(v) ? st[k].filter((x) => x !== v) : [...st[k], v];
+      st.cg = st.cg.includes(b.dataset.cg) ? st.cg.filter((x) => x !== b.dataset.cg) : [...st.cg, b.dataset.cg];
       draw();
     });
   }
@@ -551,7 +514,7 @@
       const g = GIMMICK[t];
       groups.push(grp(g.label, `<div class="cols">${rows.map((e) => {
         const z = ZONE.get(e.z);
-        const rates = [...new Set(e.r)].sort((a, b) => b - a).map(pct).join(' / ');
+        const rates = [...new Set(e.r)].sort((a, b) => b - a).map(pct).filter(Boolean).join(' / ');
         return `<a class="link" href="#/areas/${z.id}"><span class="lt"><b>${esc(z.n)}</b></span><span class="pct">${rates}</span></a>`;
       }).join('')}</div>`));
     }
@@ -596,7 +559,7 @@
     const m = D.monsters[id];
     if (!m) return null;
     let h = head(m.n);
-    h += `<div class="top">${slot({ icon: m.icon })}<div class="facts"><span class="catline">${m.boss ? 'Boss' : 'Monster'}</span><span class="catline">Rank ${m.rank}</span>${m.def ? `<span class="reduce">${cap('Element DEF')}<span class="els">${m.def.map((v, k) => elChip(k, String(v))).join('')}</span></span>` : ''}</div></div>`;
+    h += `<div class="top">${slot({ icon: m.icon })}<div class="facts"><span class="catline">${m.boss ? 'Boss' : 'Monster'}</span>${m.def ? `<span class="reduce">${cap('Element DEF')}<span class="els">${m.def.map((v, k) => elChip(k, String(v))).join('')}</span></span>` : ''}</div></div>`;
     if (m.desc) h += `<p class="desc">${esc(m.desc)}</p>`;
     const drops = DROPS.get(id) || [];
     // m.def: the element DEF in the order Fire, Water, Wind, Earth (btl_chara element_1..4). A monster with no battle data or only 0 has none.
@@ -613,9 +576,8 @@
     const c = D.chars.find((x) => x.id === id);
     if (!c) return null;
     let h = head(c.n);
-    h += `<div class="top">${slot({ icon: c.icon })}<div class="facts">${groupOf(c) ? `<span class="catline">${groupOf(c)}</span>` : ''}${c.game ? `<span class="catline">${esc(c.game)}</span>` : ''}</div></div>`;
+    h += `<div class="top">${slot({ icon: c.icon })}<div class="facts"><span class="catline">${groupOf(c)}</span>${c.game ? `<span class="catline">${esc(c.game)}</span>` : ''}</div></div>`;
     if (c.desc) h += `<p class="desc">${esc(c.desc)}</p>`;
-    if (c.apt.length) h += bar('Aptitudes') + `<div class="chips">${c.apt.map((a) => `<span class="chip">${esc(a)}</span>`).join('')}</div>`;
     if (c.skills.length) {
       h += bar('Skills') + `<div class="cols">${c.skills.map((s) => `<div class="link plain"><span class="lt"><b>${esc(s.n)}</b>${s.ev ? cap('Learned at an event') : ''}</span>${s.ev ? '' : `<span class="pct">Lv ${s.lv}</span>`}</div>`).join('')}</div>`;
     }

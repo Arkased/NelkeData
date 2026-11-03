@@ -111,7 +111,7 @@ export function auditFn() {
     if (BANNED.test(s)) out.banned.push(`"${s.slice(0, 40)}" in ${desc(el)}`);
     if (ID_RE.test(s)) out.ids.push(`internal id "${s.slice(0, 40)}" in ${desc(el)}`);
     // every % is a rate with the format N%
-    if (/\d%/.test(s) && !el.closest('.rate, .lbadge, .name, .node, .link, .lt, .desc, .person')) out.units.push(`% outside .rate: "${s.slice(0, 40)}"`);
+    if (/\d%/.test(s) && !el.closest('.rate, .tbadge, .name, .node, .link, .lt, .desc, .person')) out.units.push(`% outside .rate: "${s.slice(0, 40)}"`);
   }
   // 2. money and synthesis cost have their icon, the numbers of the stat lines are a unit
   for (const e of document.querySelectorAll('.money')) {
@@ -124,16 +124,22 @@ export function auditFn() {
   }
   for (const e of document.querySelectorAll('.lr .val')) if (!e.querySelector('.money, .cost')) out.money.push(`ledger value without unit: ${desc(e)}`);
   for (const e of document.querySelectorAll('.who .stat')) if (!e.querySelector('.money, .cost, .fr') && !/^\d+ turns?$/.test(e.querySelector('b')?.textContent.trim() ?? '')) out.units.push(`stat is not money, friendship or "N turns": ${desc(e)}`);
-  for (const e of document.querySelectorAll('.fr')) if (!e.querySelector('img[src$="fav-icon.png"]') || !/^\d+$/.test(e.textContent.trim())) out.units.push(`friendship without heart or number: ${desc(e)}`);
+  for (const e of document.querySelectorAll('.fr')) {
+    if (!e.querySelector('img[src$="fav-icon.png"]') || !e.querySelector('img[src*="favc-"]')) out.units.push(`friendship without heart or digit sprite: ${desc(e)}`);
+    if (/\d/.test(e.textContent)) out.units.push(`friendship with a number in the page font: ${desc(e)}`);
+  }
+  // A rate of 100% never shows, as text or as a badge.
+  for (const e of document.querySelectorAll('.rate, .tbadge, .pct')) if (/(^|[^\d.])100(\.0)?\s?%/.test(e.textContent)) out.units.push(`visible 100%: ${desc(e)}`);
+  if (/(^|[^\d.])100(\.0)?\s?%/.test(document.body.innerText)) out.units.push('visible text "100%" on the page');
   // 3. unit formats
   for (const e of document.querySelectorAll('.rate')) if (!/^\d+(\.\d)?%$/.test(e.textContent.trim())) out.units.push(`rate format: "${e.textContent.trim()}"`);
-  // A tile has no value line. A rate or a level is a badge on the bottom left corner of the icon: "25%" or "Lv 34".
+  // A tile has no value line. A rate or a level is a badge on the bottom right corner of the icon: "25%" or "Lv 34".
   for (const e of document.querySelectorAll('.mini small')) out.tiles.push(`tile with a value line: "${e.textContent.trim()}" in ${desc(e.parentElement)}`);
-  for (const e of document.querySelectorAll('.lbadge')) {
+  for (const e of document.querySelectorAll('.tbadge')) {
     const t = e.textContent.trim();
-    if (!/^(\d+(\.\d)?%|Lv \d+(–\d+)?)$/.test(t)) out.units.push(`left badge format: "${t}"`);
+    if (!/^(\d+(\.\d)?%|Lv \d+(–\d+)?)$/.test(t)) out.units.push(`tile badge format: "${t}"`);
     const sl = e.parentElement.getBoundingClientRect(), b = e.getBoundingClientRect();
-    if (!e.parentElement.matches('.slot') || b.left < sl.left - 1 || b.bottom > sl.bottom + 1 || b.left - sl.left > 8 || sl.bottom - b.bottom > 8) out.units.push(`left badge is not on the bottom left corner of the icon: "${t}"`);
+    if (!e.parentElement.matches('.slot') || b.right > sl.right + 1 || b.bottom > sl.bottom + 1 || sl.right - b.right > 8 || sl.bottom - b.bottom > 8) out.units.push(`tile badge is not on the bottom right corner of the icon: "${t}"`);
   }
   // No 2 tiles of 1 section link to the same entity (a monster with several levels in an area is 1 tile with a level range).
   for (const sec of document.querySelectorAll('.minis, .grid, .row')) {
@@ -144,6 +150,8 @@ export function auditFn() {
       seen.add(h);
     }
   }
+  // A tile has at most 1 badge (a quantity, a rate or a level).
+  for (const sl of document.querySelectorAll('.slot')) if (sl.querySelectorAll('.qty, .tbadge').length > 1) out.tiles.push(`tile with more than 1 badge: ${desc(sl)}`);
   // The quantity of an item is a badge "×N" (N of 2 or more) on the bottom right corner of the item icon.
   for (const e of document.querySelectorAll('.qty')) {
     const t = e.textContent.trim();
@@ -288,7 +296,7 @@ export const pick = (page) =>
       boss: mk.find((k) => D.monsters[k].boss) ? { id: mk.find((k) => D.monsters[k].boss), n: '' } : null,
       character: charRes,
       monDef: mk.map((k) => ({ id: k, n: D.monsters[k].n, m: D.monsters[k] })).find((x) => x.m.def && D.items.some((i) => i.drops.some((d) => d.m === x.id)) && D.zones.some((z) => z.areas.some((a) => a.mons.some((m) => m.m === x.id)))),
-      charFull: D.chars.find((c) => c.apt.length && c.skills.some((s) => s.ev) && c.join && c.join.pop > 0 && c.join.turn > 0) || D.chars.find((c) => c.apt.length && c.skills.length && c.join && c.join.pop > 0),
+      charFull: D.chars.find((c) => c.skills.some((s) => s.ev) && c.join && c.join.pop > 0 && c.join.turn > 0) || D.chars.find((c) => c.skills.length && c.join && c.join.pop > 0),
       resFriend,
       resCond,
       charStory: D.chars.find((c) => c.n === 'Gino'),
