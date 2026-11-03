@@ -62,6 +62,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 - Each section holds only facts of its title. "How to get" holds only the ways to get the item: gather, drop, farm. A shop is not a way to get an item in this sense: it shows as "Sold at", next to the price.
 - The page shows no text that tells the user how to use the page, for example "click a node" or "scroll sideways". A section has no caption that repeats its title or the meaning of a unit.
 - A label has 1 style on all pages.
+- The title of a game is in italics everywhere, as standard style guides ask for the title of a work: the game of origin of a character, and the game title in the header.
 - A fact that is the same for each entity of a category (a global table of the game) does not show on each entity.
 - A condition that each player meets does not show: a join turn of 1 or less, and a town population at or below the start population of the game (`OC_INITIAL_POPULATION` in `out_constant/out_constant.xml`, 30).
 - A value that is the same for each entity does not show.
