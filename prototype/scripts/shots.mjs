@@ -7,20 +7,29 @@ const only = process.argv[3] ? process.argv[3].split(',') : null;
 const browser = await launch();
 fs.mkdirSync(`${root}/shots`, { recursive: true });
 if (!only) for (const f of fs.readdirSync(`${root}/shots`)) fs.unlinkSync(`${root}/shots/${f}`);
-let total = 0;
 
-for (const w of widths) {
+/** Takes the shots of 1 width in its own browser context. Returns the number of audit findings. */
+async function shootWidth(w) {
+  let total = 0;
   const page = await newPage(browser, w);
   const P = await pick(page);
   const first = await page.evaluate((a) => ({ friendTree: window.DATA.research[a[0]].tree, condTree: window.DATA.research[a[1]].tree, lifeSpring: 'EXPL_RESEARCH_SPRING_00', interior: 'EXPL_RESEARCH_SPRING_01', zone: 'EXPL_AREA_SPRING', res: Object.keys(window.DATA.research).find((k) => window.DATA.research[k].tree === 'main' && window.DATA.research[k].mats.length), bonusTree: window.DATA.research.STDY_RES_132.tree, resA: Object.keys(window.DATA.research).find((k) => window.DATA.research[k].tree === 'attack') }), [P.resFriend.id, P.resCond.id]);
+  [first.emptyCat, first.emptyShop] = await page.evaluate(() => {
+    const cats = [...new Set(window.DATA.items.map((i) => i.cat))];
+    const shops = [...new Set(window.DATA.items.flatMap((i) => i.shops))];
+    for (const c of cats) for (const s of shops) if (!window.DATA.items.some((i) => i.cat === c && i.shops.includes(s))) return [c, s];
+    return [];
+  });
   const item = (k) => `#/items/${P[k].id}`;
   const states = [
     ['items', '#/items'],
     ['items-filtered', '#/items?cat=Material,Merchandise&shop=GSTORE_SALE_FLAG&craft=1'],
-    ['items-search', '#/items?q=ra'],
-    ['items-empty', '#/items?q=zzzz'],
+    ['items-empty', `#/items?cat=${first.emptyCat}&shop=${first.emptyShop}`],
+    ['header', '#/items'],
+    ['about', '#/about'],
     ['item-gather', item('gather')],
     ['item-drop', item('drop')],
+    ['item-drop-qty', item('dropQty')],
     ['item-farm', item('farm')],
     ['item-rare', item('rare')],
     ['item-craft', item('craftPriced')],
@@ -76,7 +85,9 @@ for (const w of widths) {
     await page.locator('#menu').click();
     await page.screenshot({ path: `${root}/shots/menu-open-${w}.png` });
   }
-  await page.close();
+  await page.context().close();
+  return total;
 }
-console.log('TOTAL AUDIT FINDINGS', total);
+const totals = await Promise.all(widths.map(shootWidth));
+console.log('TOTAL AUDIT FINDINGS', totals.reduce((a, b) => a + b, 0));
 await browser.close();
