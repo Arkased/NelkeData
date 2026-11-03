@@ -27,7 +27,7 @@ export async function settle(page) {
 
 /** The DOM audit. Returns { category: [descriptions] }. */
 export function auditFn() {
-  const out = { hscroll: [], overflow: [], textOverflow: [], overlap: [], tight: [], brokenImg: [], empty: [], orphan: [] };
+  const out = { hscroll: [], overflow: [], textOverflow: [], overlap: [], tight: [], brokenImg: [], empty: [], orphan: [], italic: [] };
   const desc = (e) => `${e.tagName.toLowerCase()}${e.className && typeof e.className === 'string' ? '.' + e.className.trim().split(/\s+/).join('.') : ''} "${(e.textContent || '').trim().slice(0, 30)}"`;
   const vis = (e) => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none'; };
   const skip = (e) => e.closest('.treescroll, #tip, svg') || (e.closest('.overlay') && false);
@@ -257,6 +257,8 @@ export function auditFn() {
   }
   for (const e of document.querySelectorAll('.gh')) if (e.parentElement.children.length === 1) out.orphan.push(`header without content: ${desc(e)}`);
   for (const e of document.querySelectorAll('.bar')) { const n = e.nextElementSibling; if (!n || n.classList.contains('bar')) out.orphan.push(`bar without content: ${desc(e)}`); }
+  // The title of a game is in italics everywhere it shows.
+  for (const e of document.querySelectorAll('.game-title')) if (vis(e) && getComputedStyle(e).fontStyle !== 'italic') out.italic.push(`game title not italic: ${desc(e)}`);
   return out;
 }
 
