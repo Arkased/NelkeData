@@ -39,7 +39,7 @@ Each kind of value has 1 format on all pages.
 | Research duration | The number, then `turns` (`turn` for 1). | 2 turns |
 | Level | `Lv`, then the number. | Lv 12 |
 | Multiplier | `×`, then the number. | ×1.25 |
-| Friendship level | The heart icons of the game, then the number. | ♥ 5 |
+| Friendship level | The heart icon of the game (`fav-icon.png`) with the level on it in the digit sprites of the game (`favc-0` to `favc-10`), as in the game. A level above 10 uses 1 sprite for each digit. No number in the font of the page. | ♥ with a 5 on it |
 | Large number | A comma for each 3 digits. | 12,000 |
 
 A value never shows with no unit or no role word. A missing value does not show: the row or the line goes away. The page never shows a placeholder such as "0", "-" or "none" for a missing value.
@@ -64,7 +64,8 @@ A value never shows with no unit or no role word. A missing value does not show:
 - A label has 1 style on all pages.
 - A fact that is the same for each entity of a category (a global table of the game) does not show on each entity.
 - A condition that each player meets does not show: a join turn of 1 or less, and a town population at or below the start population of the game (`OC_INITIAL_POPULATION` in `out_constant/out_constant.xml`, 30).
-- A value that is the same for each entity does not show. Each monster drop has the rate 100%, so a drop shows no rate.
+- A value that is the same for each entity does not show.
+- A rate of 100% does not show anywhere: on a monster drop (each drop has the rate 100%), on a treasure chest or a tool gather with 1 item, on a gather. The item is certain, so the rate tells nothing.
 - A group shows only when the player can use it to find an entity. A character shows its group, Alchemist or Townsfolk, as a line and as a filter (`CHARACTER_CATEGORY_ID` 2 and 3 in `character/character.xml`). The 4 story characters (Nelke, Misty, Knoss, Lotos, categories 0, 1 and 4) show no group. The game of origin of a character also shows, as a line and as a filter.
 - A tooltip shows only text that is not already visible.
 - An entity shows 1 time in a list. A monster with more than 1 level in an area is 1 tile with a level range.
