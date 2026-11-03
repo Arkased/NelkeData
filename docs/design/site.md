@@ -103,7 +103,7 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 | Part | Holds | Behavior |
 | --- | --- | --- |
 | Header | The site name "Westwald Archive" in Lora 700, the tagline "Unofficial fansite for _Nelke & the Legendary Alchemists_" in the small label size after it, and the links to the 5 categories with their game icons. Monsters and Characters use the quest category icons of the game (`20th_main_quest.g1t`, `gen_20th_m_q01_icon02` LIST01, a demon head, and LIST02, a person bust), from the same set as the Research chart icon. | Below 600 px, the tagline goes to a second line under the name, and the links go into a menu button. |
-| Footer | The legal notice of the requirements, in the small label size, centered. | It shows on each page, below the content. |
+| Footer | The legal notice of the requirements and a link "About" to the About page, in the small label size, centered. | It shows on each page, below the content. |
 | Filters | 1 group of toggle buttons for each filter: the item category, and the shop. | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
 | Icon grid | The game icons in the order of the game. The number of columns follows the width. | The name shows on hover and on focus. A click opens the modal. Each icon is a real link, so Ctrl+click opens the page of the entity in a new tab. |
 | Modal | A panel with the detail of the entity, and a close button. | 1. The URL changes to the URL of the entity. Back closes the modal. 2. A link inside the modal replaces its content. Back shows the content before it. 3. Esc, the close button and a click outside close it. The focus goes back to the icon. 4. On a narrow window, the modal fills the screen. |
@@ -123,6 +123,14 @@ The site has no landing page. The root URL shows the Items page.
 
 - **Blocks, in order:** Header. 1 panel for each top-level zone, in the order of the game.
 - **Zone panel:** The name of the zone as a section title, and the names of its areas as plain buttons. A click on an area opens its detail in the modal.
+
+### About page
+
+- **Blocks, in order:** Header. 1 panel with the 3 sections below, each with a section title. Footer. The header has no link to the page, and no category link is selected.
+- **Contact:** 1 sentence: errors and questions go to the issues of the GitHub repository, with a link to `https://github.com/Arkased/NelkeData/issues`.
+- **Source:** a link to the repository `https://github.com/Arkased/NelkeData`, and 1 sentence: the data comes from the files of the Steam version of the game.
+- **Legal:** the legal notice of the requirements, in the body size.
+- **Layout:** the panel has the width of the content column up to 720 px, centered. The text has the body size. A link has the style of the other text links.
 
 ### Details
 
