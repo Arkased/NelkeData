@@ -188,7 +188,7 @@ export function auditFn() {
   }
   // Round 6: the text in the header bar, the section titles, the names and the buttons has the same space above and below it (within 2 px), measured inside the border box.
   out.titles = [];
-  for (const e of document.querySelectorAll('.hdr-bar, .bar, .zone-head, .name, a.area, .btn:not(.close), .toggle, .nav a, .menu-btn')) {
+  for (const e of document.querySelectorAll('.hdr-bar, .bar, .name, a.area, .btn:not(.close), .toggle, .nav a, .menu-btn')) {
     if (!vis(e)) continue;
     const r = e.getBoundingClientRect();
     const cs = getComputedStyle(e);
@@ -200,6 +200,14 @@ export function auditFn() {
     if (Math.abs(above - below) > 2) out.titles.push(`text space above ${above.toFixed(1)} / below ${below.toFixed(1)}: ${desc(e)}`);
     if (above < 2 || below < 2) out.titles.push(`text too close to the edge (${above.toFixed(1)} / ${below.toFixed(1)}): ${desc(e)}`);
   }
+  // Title styles: a section title (.bar) is 700; a sub-title (.sub) is not larger than a section title; a zone name has no fill.
+  out.styles = [];
+  const barSize = parseFloat(getComputedStyle(document.querySelector('.bar') || document.body).fontSize);
+  for (const e of document.querySelectorAll('.bar')) if (vis(e) && getComputedStyle(e).fontWeight !== '700') out.styles.push(`section title weight ${getComputedStyle(e).fontWeight}: ${desc(e)}`);
+  for (const e of document.querySelectorAll('.sub')) if (vis(e) && parseFloat(getComputedStyle(e).fontSize) > barSize) out.styles.push(`sub-title larger than a section title: ${desc(e)}`);
+  for (const e of document.querySelectorAll('.zone-name, .zone-name *')) if (vis(e) && getComputedStyle(e).backgroundColor !== 'rgba(0, 0, 0, 0)') out.styles.push(`zone name with a background ${getComputedStyle(e).backgroundColor}: ${desc(e)}`);
+  const tb = document.querySelector('.treebox'), tp = document.querySelector('.toolbar');
+  if (tb && tp && Math.abs(tb.getBoundingClientRect().right - tp.getBoundingClientRect().right) > 1) out.styles.push(`tree box right ${tb.getBoundingClientRect().right} != panel right ${tp.getBoundingClientRect().right}`);
   // Decision 0009: no game UI texture for a frame part. No computed background image, border image or image source names one.
   out.textures = [];
   const TEX = /bg-town|panel-(star|cream|tan|note|notebook|scroll|w01)|popup-crest|corner[-_a-z0-9]*\.png|\bplate-|\bbar-(brown|bronze)|\bbtn-(brown|cream|gold)|\btabw?-(on|off)|frame\.png|glow\.png|highlight\.png/;

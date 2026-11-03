@@ -92,7 +92,7 @@ a.tl:hover { color: var(--warm); text-decoration-color: var(--warm); }
 .site-name { color: var(--cream); font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .site-name small { font-weight: 600; font-size: 12px; opacity: 0.8; margin-left: var(--s2); }
 .game-title { font-style: italic; }
-.site-name, .name, .bar, .zone-head { font-family: var(--font-head); }
+.site-name, .name, .bar { font-family: var(--font-head); }
 .foot { text-align: center; font-size: 12px; line-height: 1.5; color: var(--ink-soft); padding: var(--g) 0; }
 .site-name .short { display: none; }
 .menu-btn { display: none; min-height: 28px; padding: 0 var(--s3); background: var(--brown-dark); border: 1px solid var(--gold); border-radius: 10px; color: #fff0c4; font-weight: 800; }
@@ -171,11 +171,12 @@ a.slot:focus-visible { box-shadow: 0 0 0 3px var(--warm); }
 .name { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 var(--s2); text-align: center; font-weight: 900; font-size: 22px; line-height: 1.15; color: var(--brown-dark); overflow-wrap: anywhere; }
 .close { flex: none; width: 40px; height: 40px; padding: 0; font-size: 22px; line-height: 1; }
 /* A section title: bold brown text with a thin rule under it. The space above and below the text is the same (4 px). */
-.bar { display: flex; align-items: center; justify-content: flex-start; padding: var(--s1) 0; color: var(--brown); font-weight: 800; font-size: 14px; line-height: 1.2; letter-spacing: 0.4px; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; }
+.bar { display: flex; align-items: center; justify-content: flex-start; padding: var(--s1) 0; color: var(--brown); font-weight: 700; font-size: 14px; line-height: 1.2; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; }
 .grp { display: grid; gap: var(--s3); align-content: start; }
 .gh { display: grid; gap: var(--s1); }
 .gh:has(.fr) { display: flex; align-items: center; gap: var(--s2); }
-.gh b { font-size: 16px; font-weight: 900; line-height: 1.2; }
+/* A sub-title: Source Sans 3 700 in the body size, dark brown, no rule. */
+.sub { font-family: var(--font); font-size: 14px; font-weight: 700; line-height: 1.2; color: var(--brown-dark); }
 .tbl { display: grid; gap: var(--s1); }
 .sets { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s4); align-items: flex-start; }
 .sets .tbl { gap: var(--s2); }
@@ -265,18 +266,15 @@ a.person:hover, a.person:focus-visible { background: rgba(243, 182, 31, 0.28); b
 .zones { display: grid; gap: var(--g); grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: start; }
 .zone { overflow: hidden; }
 .zone-in { display: grid; gap: var(--s3); padding: var(--s3); }
-.zone-head { display: flex; align-items: center; justify-content: center; height: 44px; border-radius: 8px; color: var(--cream); font-weight: 900; font-size: 20px; text-align: center; padding: 0 var(--s4); transition: background 0.1s; }
-a.zone-head:hover, a.zone-head:focus-visible { background: var(--brown-dark); }
-.zone-head h2 { font-size: inherit; line-height: 1.1; }
+a.zone-link:hover, a.zone-link:focus-visible { text-decoration: underline; text-decoration-color: var(--line); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .areas { display: grid; gap: var(--s2); grid-template-columns: repeat(auto-fit, minmax(176px, 1fr)); }
 a.area { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 48px; padding: var(--s1) var(--s2); font-weight: 900; font-size: 14px; line-height: 1.15; color: var(--brown-dark); background: var(--cream-2); border: 1px solid var(--line); border-radius: 8px; transition: background 0.1s; }
 a.area:hover, a.area:focus-visible { background: var(--gold-soft); outline: none; }
 a.area:focus-visible { filter: brightness(1.07) drop-shadow(0 0 6px #fff3a8); outline: none; }
 a.area:focus-visible { box-shadow: 0 0 0 3px var(--warm); }
-a.zone-head:focus-visible { outline-offset: 0; }
 
 /* ---- research ---- */
-.treebox { width: fit-content; max-width: 100%; }
+.treebox { width: auto; min-width: 0; }
 .treein { padding: var(--g); display: grid; gap: var(--s2); }
 .treescroll { overflow-x: auto; overflow-y: hidden; scrollbar-color: var(--warm) transparent; }
 .tree { position: relative; }
@@ -299,7 +297,6 @@ a.node:focus-visible { outline: 3px solid var(--warm); outline-offset: -2px; }
   /* a tile name never breaks inside a word: the longest word ("Magnagardener", 85 px) needs the full 88 px tile */
   .mini { padding-left: 0; padding-right: 0; }
   .zones { grid-template-columns: 1fr; }
-  .zone-head { font-size: 16px; }
   .top > .slot { width: 88px; }
   .syn { padding: var(--s3); }
   .hdr-bar { padding: 0 var(--s3); }

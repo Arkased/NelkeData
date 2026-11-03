@@ -128,7 +128,7 @@
   };
   const shopChip = (key) => `<span class="shop"><img src="img/ui/${SHOP[key].img}.png" alt="">${SHOP[key].label}</span>`;
   /** A group of a modal: a title, then the content. No caption (the title says what it is). */
-  const grp = (title, body) => `<section class="grp"><div class="gh"><b>${esc(title)}</b></div>${body}</section>`;
+  const grp = (title, body) => `<section class="grp"><div class="gh"><b class="sub">${esc(title)}</b></div>${body}</section>`;
   /** The 1 style of a small label. */
   const cap = (text, cls = '') => `<small class="cap ${cls}">${esc(text)}</small>`;
   const head = (name) => `<div class="mhead"><h2 class="name bi p-gold">${esc(name)}</h2><button class="close btn" data-close aria-label="Close">&times;</button></div>`;
@@ -262,7 +262,7 @@
         const areas = z.areas.filter((a) => !q || a.n.toLowerCase().includes(q) || z.n.toLowerCase().includes(q));
         if (!areas.length) return '';
         return `<section class="zone bi u p-star" aria-label="${esc(z.n)}"><div class="zone-in">
-          <a class="zone-head bi p-brown" href="#/areas/${z.id}"><h2>${esc(z.n)}</h2></a>
+          <h2 class="bar zone-name"><a class="zone-link" href="#/areas/${z.id}">${esc(z.n)}</a></h2>
           <div class="areas">${areas.map((a) => `<a class="area bi p-gold" href="#/areas/${a.id}"><span>${esc(a.n)}</span></a>`).join('')}</div>
         </div></section>`;
       }).join('');
@@ -641,7 +641,7 @@
       if (n.prizeItem) h += kind('Item', `<div class="minis">${itemEnt(n.prizeItem.id, { qty: n.prizeItem.q })}</div>`);
       if (bonus) {
         const body = (bonus.item ? `<div class="minis">${itemEnt(bonus.item.id, { qty: bonus.item.q })}</div>` : '') + (bonus.type ? `<div class="link plain"><span class="lt"><b>${esc(bonus.type)}</b></span></div>` : '');
-        h += `<section class="grp"><div class="gh"><b>Bonus</b>${bonus.friend > 0 ? heart(bonus.friend) : ''}</div>${body}</section>`;
+        h += `<section class="grp"><div class="gh"><b class="sub">Bonus</b>${bonus.friend > 0 ? heart(bonus.friend) : ''}</div>${body}</section>`;
       }
     }
     return h;

@@ -427,10 +427,10 @@ for (const tree of ['main', 'attack', 'support', 'emergency']) {
     await page.locator('.opts a', { hasText: new RegExp(`^${TREE_LABELS[tree]}$`) }).click();
     await page.waitForSelector('.node');
     ok((await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)), 'page has no horizontal scroll');
-    // The box fits the tree: its chrome (border and padding, 2 x 36 px) is all that is more than the tree.
+    // The box has the full width of the content column; the tree scrolls inside it when it is wider.
     const fit = await page.evaluate(() => { const b = document.querySelector('.treebox').getBoundingClientRect(); const t = document.querySelector('.tree').getBoundingClientRect(); return { dh: b.height - t.height, dw: b.width - t.width, scrolls: document.querySelector('.treescroll').scrollWidth > document.querySelector('.treescroll').clientWidth }; });
     ok(fit.dh <= 76, `box height fits the tree (+${Math.round(fit.dh)} px)`);
-    ok(fit.scrolls || fit.dw <= 76, `box width fits the tree (+${Math.round(fit.dw)} px), or the tree scrolls inside its box`);
+    ok(fit.scrolls || fit.dw >= 0, `box is at least as wide as the tree, or the tree scrolls inside its box (+${Math.round(fit.dw)} px)`);
     ok(!/Scroll sideways/.test(await page.locator('main').innerText()), 'no how-to text');
     const n = await page.locator('.node').count();
     ok(n > 3 || tree === 'emergency', `${n} nodes`);
