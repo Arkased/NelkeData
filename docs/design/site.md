@@ -66,11 +66,10 @@ A value never shows with no unit or no role word. A missing value does not show:
 - A condition that each player meets does not show: a join turn of 1 or less, and a town population at or below the start population of the game (`OC_INITIAL_POPULATION` in `out_constant/out_constant.xml`, 30).
 - A value that is the same for each entity does not show.
 - A rate of 100% does not show anywhere: on a monster drop (each drop has the rate 100%), on a treasure chest or a tool gather with 1 item, on a gather. The item is certain, so the rate tells nothing.
-- A group shows only when the player can use it to find an entity. Each character shows its group, Alchemist or Townsfolk, as a line and as a filter. Alchemist is `CHARACTER_CATEGORY_ID` 2 in `character/character.xml`. Townsfolk is each other category: 3, and the 4 story characters Nelke, Misty, Knoss and Lotos (categories 0, 1 and 4). The game of origin of a character also shows, as a line and as a filter.
+- A group shows only when the player can use it to find an entity. Each character shows its group, Alchemist or Townsfolk, as a line and as a filter. Alchemist is `CHARACTER_CATEGORY_ID` 2 in `character/character.xml`. Townsfolk is each other category: 3, and the 4 story characters Nelke, Misty, Knoss and Lotos (categories 0, 1 and 4). The game of origin of a character shows as a line.
 - A tooltip shows only text that is not already visible.
 - An entity shows 1 time in a list. A monster with more than 1 level in an area is 1 tile with a level range.
 - The Characters page lists only the characters that can join the town: the join event in `character/character_app_con.xml` is not `EVENT_NONE`. A visitor, an NPC or a variant for an event (for example "Weapon Shopkeeper" or "Boss") has no page.
-- A filter with more than 8 values is 1 drop-down list with multiple choice, not a row of toggle buttons.
 - The level of an area uses the term of the game: "Investigation Lv". It rises from 1 to 5 as the player sends teams to the area. Some monster groups appear only from Investigation Lv 2 or 3 (`REQ_LV` in `expl_encount/area_encount.xml`).
 - The treasure chests and the tool gathers (Bug Net, Digging, Fishing) are 1 row of columns, in the same order on each area and zone detail.
 - The friendship level uses the heart icon of the game, never an emoji or a font glyph.
@@ -86,10 +85,11 @@ A value never shows with no unit or no role word. A missing value does not show:
 
 Before the owner sees a round, the orchestrator does these steps:
 
-1. Run the UI test. It must pass with no audit failure.
-2. Open each screenshot at 360, 768, 1280 and 1920 px. Write 1 line for each screenshot: its name and the defects found, or "no defect".
-3. Check each screenshot against each rule of this section, and against the spacing and the alignment rules of "Visual style".
-4. Fix each failure, and do steps 1 to 3 again.
+1. Make sure that each page, filter, section and fact traces to a row of `docs/requirements/site.md`. A part that no row asks for is removed, or goes to the owner as a requirement change before it is built.
+2. Run the UI test. It must pass with no audit failure.
+3. Open each screenshot at 360, 768, 1280 and 1920 px. Write 1 line for each screenshot: its name and the defects found, or "no defect".
+4. Check each screenshot against each rule of this section, and against the spacing and the alignment rules of "Visual style".
+5. Fix each failure, and do steps 1 to 4 again.
 
 ## Shared parts
 
