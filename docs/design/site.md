@@ -37,6 +37,7 @@ Each kind of value has 1 format on all pages.
 | Quantity of an item | The number, then 1 word that says the role of the item. | `3 needed` (a material), `2 per drop` (a drop), `1 given` (a reward) |
 | Research duration | The number, then `turns` (`turn` for 1). | 2 turns |
 | Level | `Lv`, then the number. | Lv 12 |
+| Multiplier | `×`, then the number. | ×1.25 |
 | Friendship level | The heart icons of the game, then the number. | ♥ 5 |
 | Large number | A comma for each 3 digits. | 12,000 |
 
@@ -58,7 +59,9 @@ A value never shows with no unit or no role word. A missing value does not show:
 ### Content
 
 - Each section holds only facts of its title. "How to get" holds only the ways to get the item: gather, drop, farm. A shop is not a way to get an item in this sense: it shows as "Sold at", next to the price.
-- The page shows no text that tells the user how to use the page, for example "click a node" or "scroll sideways".
+- The page shows no text that tells the user how to use the page, for example "click a node" or "scroll sideways". A section has no caption that repeats its title or the meaning of a unit.
+- A label has 1 style on all pages.
+- A fact that is the same for each entity of a category (a global table of the game) does not show on each entity.
 - The page shows no count of the visible entities.
 - A fact shows 1 time on a page.
 - A fact of an area does not show on the page of an item, for example the condition that opens the area.
@@ -68,7 +71,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 Before the owner sees a round, the orchestrator does these steps:
 
 1. Run the UI test. It must pass with no audit failure.
-2. Open each screenshot at 360, 768, 1280 and 1920 px.
+2. Open each screenshot at 360, 768, 1280 and 1920 px. Write 1 line for each screenshot: its name and the defects found, or "no defect".
 3. Check each screenshot against each rule of this section, and against the spacing and the alignment rules of "Visual style".
 4. Fix each failure, and do steps 1 to 3 again.
 
