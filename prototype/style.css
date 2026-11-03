@@ -91,6 +91,7 @@ a.tl:hover { color: var(--warm); text-decoration-color: var(--warm); }
 .hdr-bar { --s: 0.45; height: calc(107 * var(--s) * 1px); display: flex; align-items: center; justify-content: space-between; padding: var(--s2) var(--s4) 0; }
 .site-name { color: #ffe9b0; font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: 0.5px; text-shadow: 0 2px 0 #3b1e0c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .site-name small { font-weight: 600; font-size: 12px; opacity: 0.8; margin-left: var(--s2); }
+.game-title { font-style: italic; }
 .site-name .short { display: none; }
 .menu-btn { display: none; min-height: 28px; padding: 0 var(--s3); background: var(--brown-dark); border: 2px solid var(--gold); border-radius: 10px; color: #fff0c4; font-weight: 800; }
 .nav { display: flex; gap: var(--s2); justify-content: center; flex-wrap: wrap; margin-top: var(--s2); }

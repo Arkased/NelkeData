@@ -576,7 +576,7 @@
     const c = D.chars.find((x) => x.id === id);
     if (!c) return null;
     let h = head(c.n);
-    h += `<div class="top">${slot({ icon: c.icon })}<div class="facts"><span class="catline">${groupOf(c)}</span>${c.game ? `<span class="catline">${esc(c.game)}</span>` : ''}</div></div>`;
+    h += `<div class="top">${slot({ icon: c.icon })}<div class="facts"><span class="catline">${groupOf(c)}</span>${c.game ? `<span class="catline"><cite class="game-title">${esc(c.game)}</cite></span>` : ''}</div></div>`;
     if (c.desc) h += `<p class="desc">${esc(c.desc)}</p>`;
     if (c.skills.length) {
       h += bar('Skills') + `<div class="cols">${c.skills.map((s) => `<div class="link plain"><span class="lt"><b>${esc(s.n)}</b>${s.ev ? cap('Learned at an event') : ''}</span>${s.ev ? '' : `<span class="pct">Lv ${s.lv}</span>`}</div>`).join('')}</div>`;
