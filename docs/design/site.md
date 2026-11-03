@@ -2,7 +2,7 @@
 
 The page and UI layouts of the website. [The site requirements](../requirements/site.md) ask for this design. A category page is a grid of game icons, and an icon opens its detail in a modal ([decision 0005](../decisions/0005-icon-grids.md)). A clear view of the data comes first ([decision 0007](../decisions/0007-clear-data-and-filters.md)).
 
-The owner approved the research tree layout. The other layouts wait on the approval of the prototype (#11).
+The owner approved the layouts of the prototype (#11) on 2026-11-02: the Items, Areas, Monsters, Characters and Research pages, and their details. A new page (for example the buildings) needs its own prototype and a separate approval before it is built.
 
 ## Visual style
 
