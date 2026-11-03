@@ -65,7 +65,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 - Each section holds only facts of its title. "How to get" holds only the ways to get the item: gather, drop, farm. A shop is not a way to get an item in this sense: it shows as "Sold at", next to the price.
 - The page shows no text that tells the user how to use the page, for example "click a node" or "scroll sideways". A section has no caption that repeats its title or the meaning of a unit.
 - A label has 1 style on all pages.
-- The title of a game is in italics everywhere, as standard style guides ask for the title of a work: the game of origin of a character, and the game title in the header.
+- The title of a game is in italics everywhere, as standard style guides ask for the title of a work: the game of origin of a character, the game title in the tagline of the header, and the game title in the legal notice.
 - A fact that is the same for each entity of a category (a global table of the game) does not show on each entity.
 - A condition that each player meets does not show: a join turn of 1 or less, and a town population at or below the start population of the game (`OC_INITIAL_POPULATION` in `out_constant/out_constant.xml`, 30).
 - A value that is the same for each entity does not show.
@@ -102,7 +102,7 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 
 | Part | Holds | Behavior |
 | --- | --- | --- |
-| Header | The site name, and the links to the 5 categories with their game icons. Monsters and Characters use the quest category icons of the game (`20th_main_quest.g1t`, `gen_20th_m_q01_icon02` LIST01, a demon head, and LIST02, a person bust), from the same set as the Research chart icon. | Below 600 px, the links go into a menu button. |
+| Header | The site name "Westwald Archive" in Lora 700, the tagline "Unofficial fansite for _Nelke & the Legendary Alchemists_" in the small label size after it, and the links to the 5 categories with their game icons. Monsters and Characters use the quest category icons of the game (`20th_main_quest.g1t`, `gen_20th_m_q01_icon02` LIST01, a demon head, and LIST02, a person bust), from the same set as the Research chart icon. | Below 600 px, the tagline goes to a second line under the name, and the links go into a menu button. |
 | Footer | The legal notice of the requirements, in the small label size, centered. | It shows on each page, below the content. |
 | Filters | 1 group of toggle buttons for each filter: the item category, and the shop. | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
 | Icon grid | The game icons in the order of the game. The number of columns follows the width. | The name shows on hover and on focus. A click opens the modal. Each icon is a real link, so Ctrl+click opens the page of the entity in a new tab. |
