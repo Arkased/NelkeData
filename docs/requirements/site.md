@@ -2,7 +2,7 @@
 
 A static website for lookups of the game data of _Nelke & the Legendary Alchemists_. It is for players who want to find, for example, where to gather an item, what a recipe needs, or what a monster drops. The categories come from [decision 0001](../decisions/0001-site-categories.md) and [decision 0008](../decisions/0008-recipes-in-items.md). The look and the structure of the pages come from [decision 0005](../decisions/0005-icon-grids.md) and [decision 0007](../decisions/0007-clear-data-and-filters.md).
 
-The owner accepted these requirements as a draft on 2026-11-02. The final approval waits on the second round of the HTML prototype (#11).
+The owner approved these requirements and the layouts of the HTML prototype (#11) on 2026-11-02. A new page (for example the buildings) needs its own requirement rows, its own prototype and a separate approval.
 
 ## General
 
