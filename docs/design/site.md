@@ -34,7 +34,7 @@ Each kind of value has 1 format on all pages.
 | Money (a price, a cost, a research fee) | The coin icon of the game, then the number. | 🪙 1,200 |
 | Synthesis cost | The synthesis cost icon of the game, then the number. | ⚗ 4 |
 | Rate | The number, then `%`. At most 1 decimal. | 12.5% |
-| Quantity of an item | The number, then 1 word that says the role of the item. | `3 needed` (a material), `2 per drop` (a drop), `1 given` (a reward) |
+| Quantity of an item | `×` and the number, in a badge on the bottom right corner of the item icon, as in the material slots of the game. The section title gives the role (Materials, Drops, Gives). | ×3 |
 | Research duration | The number, then `turns` (`turn` for 1). | 2 turns |
 | Level | `Lv`, then the number. | Lv 12 |
 | Multiplier | `×`, then the number. | ×1.25 |
@@ -62,6 +62,11 @@ A value never shows with no unit or no role word. A missing value does not show:
 - The page shows no text that tells the user how to use the page, for example "click a node" or "scroll sideways". A section has no caption that repeats its title or the meaning of a unit.
 - A label has 1 style on all pages.
 - A fact that is the same for each entity of a category (a global table of the game) does not show on each entity.
+- A condition that each player meets does not show, for example the join turn 1 or a town population of 0.
+- "Joins the town" on a character shows the conditions of `character/character_app_con.xml`: the town population and the turn. A character whose join event is not the game start (`EVENT_MS01_010`) joins in a story event. The event has no name in the game files, so the section says "Joins in a story event" and shows the tiles of the other characters with the same event, under "Joins with". 74 characters join this way, for example Gino with Melvia, Mimi, Marc, Gerard, the 2 Chims and Piana.
+- A short list of values is 1 line in the top block of the detail, not a section. For example the element DEF of a monster is 1 line of element icons, each with its value.
+- The related parts of a detail are in 1 panel: on an area, the difficulty, the gather items and the monsters of the area; on a zone, its areas and its treasure.
+- The parts of 1 row align on 1 baseline. A header row of a detail (for example the researchers and the stats of a research) stays on 1 row at 768 px and wider.
 - The page shows no count of the visible entities.
 - A fact shows 1 time on a page.
 - A fact of an area does not show on the page of an item, for example the condition that opens the area.
@@ -114,6 +119,6 @@ Each detail is 1 game panel. The prototype composes each panel from the game par
 
 - **Purpose:** Browse the research as the game shows it: a grid of nodes with lines from left to right.
 - **Blocks, in order:** Header. 1 tab for each of the 4 trees, with the name of the tree in the game. Tree box.
-- **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The lines between the nodes follow the link types of the game: horizontal, vertical, up and down. The box scrolls horizontally inside the page. The page itself does not scroll horizontally.
+- **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The game uses the even rows for the nodes and the odd rows for the lines only. Each line is 1 prerequisite of `study/stdy_conditions.xml`: it leaves the right side of the prerequisite and enters the left side of the research that needs it. The lines that enter 1 node join before the node, so 3 prerequisites show as 3 lines that meet. No line shows that is not a prerequisite. The link types of the tree files only confirm the drawing. The box scrolls horizontally inside the page. The page itself does not scroll horizontally.
 - **Interactions:** A click on a node opens the research in the modal.
 - **States:** A node that the game has with no name shows its ID.
