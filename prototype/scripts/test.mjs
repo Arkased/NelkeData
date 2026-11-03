@@ -373,7 +373,7 @@ for (const tree of ['main', 'attack', 'support', 'emergency']) {
     const n = await page.locator('.node').count();
     ok(n > 3 || tree === 'emergency', `${n} nodes`);
     // The drawn lines are exactly the prerequisites of the nodes of the tree (stdy_conditions.xml): no extra line, no missing line.
-    const drawn = await page.evaluate(() => [...document.querySelectorAll('.tree svg path')].map((p) => `${p.dataset.from}>${p.dataset.to}`).sort());
+    const drawn = await page.evaluate(() => [...document.querySelectorAll('.tree svg path[data-from]')].map((p) => `${p.dataset.from}>${p.dataset.to}`).sort());
     const want = await page.evaluate((tk) => {
       const D = window.DATA;
       const ids = new Set(D.trees[tk].res.flat().filter((id) => id && D.research[id]));
@@ -384,7 +384,7 @@ for (const tree of ['main', 'attack', 'support', 'emergency']) {
     const geo = await page.evaluate(() => {
       const bad = [];
       const sv = document.querySelector('.tree svg').getBoundingClientRect();
-      for (const p of document.querySelectorAll('.tree svg path')) {
+      for (const p of document.querySelectorAll('.tree svg path[data-from]')) {
         const f = document.querySelector(`.node[href$="/${p.dataset.from}"] .slot`)?.getBoundingClientRect();
         const t = document.querySelector(`.node[href$="/${p.dataset.to}"] .slot`)?.getBoundingClientRect();
         const a = p.getPointAtLength(0), b = p.getPointAtLength(p.getTotalLength());
@@ -396,6 +396,50 @@ for (const tree of ['main', 'attack', 'support', 'emergency']) {
       return bad;
     });
     ok(geo.length === 0, `lines leave the right side and enter the left side, orthogonal${geo.length ? ': ' + geo.slice(0, 3).join('; ') : ''}`);
+    // No false edge: 2 edges whose segments overlap share the source or the target; no line runs within 12 px right of a node that is no source.
+    const amb = await page.evaluate(() => {
+      const bad = [];
+      const edges = [...document.querySelectorAll('.tree svg path[data-from]')].map((p) => {
+        const nums = p.getAttribute('d').match(/[MHV]|[\d.]+/g);
+        const pts = []; let x = 0, y = 0, cmd = '';
+        for (let i = 0; i < nums.length; i++) {
+          if (/[MHV]/.test(nums[i])) { cmd = nums[i]; continue; }
+          const v = Number(nums[i]);
+          if (cmd === 'M') { x = v; y = Number(nums[++i]); cmd = 'L'; } else if (cmd === 'H') x = v; else if (cmd === 'V') y = v;
+          pts.push([x, y]);
+          if (pts.length === 1) pts.unshift([x, y]);
+        }
+        const segs = [];
+        for (let i = 1; i < pts.length; i++) if (pts[i][0] !== pts[i - 1][0] || pts[i][1] !== pts[i - 1][1]) segs.push([pts[i - 1], pts[i]]);
+        return { from: p.dataset.from, to: p.dataset.to, segs };
+      });
+      const ov = (a, b) => {
+        const [[ax1, ay1], [ax2, ay2]] = a, [[bx1, by1], [bx2, by2]] = b;
+        if (ax1 === ax2 && bx1 === bx2 && ax1 === bx1) return Math.min(Math.max(ay1, ay2), Math.max(by1, by2)) - Math.max(Math.min(ay1, ay2), Math.min(by1, by2)) > 1;
+        if (ay1 === ay2 && by1 === by2 && ay1 === by1) return Math.min(Math.max(ax1, ax2), Math.max(bx1, bx2)) - Math.max(Math.min(ax1, ax2), Math.min(bx1, bx2)) > 1;
+        return false;
+      };
+      for (let i = 0; i < edges.length; i++) for (let j = i + 1; j < edges.length; j++) {
+        const a = edges[i], b = edges[j];
+        if (a.from === b.from || a.to === b.to) continue;
+        if (a.segs.some((s) => b.segs.some((t) => ov(s, t)))) bad.push(`overlap ${a.from}>${a.to} / ${b.from}>${b.to}`);
+      }
+      const sources = new Set(edges.map((e) => e.from));
+      const sv = document.querySelector('.tree svg').getBoundingClientRect();
+      for (const a of document.querySelectorAll('.tree a.node')) {
+        const id = a.getAttribute('href').split('/').pop();
+        if (sources.has(id)) continue;
+        const r = a.querySelector('.slot').getBoundingClientRect();
+        const right = r.right - sv.left, top = r.top - sv.top, bottom = r.bottom - sv.top;
+        for (const e of edges) for (const [[x1, y1], [x2, y2]] of e.segs) {
+          const nearX = Math.max(Math.min(x1, x2), right) <= Math.min(Math.max(x1, x2), right + 12);
+          const nearY = Math.max(Math.min(y1, y2), top) <= Math.min(Math.max(y1, y2), bottom);
+          if (nearX && nearY) bad.push(`line ${e.from}>${e.to} within 12 px of ${id}`);
+        }
+      }
+      return bad;
+    });
+    ok(amb.length === 0, `no line implies a false edge${amb.length ? ': ' + amb.slice(0, 4).join('; ') : ''}`);
     if (tree === 'main') {
       const truth = ['100>103', '101>103', '102>103', '103>132', '132>104', '104>105', '104>106', '104>107', '105>108', '106>108', '107>108', '108>109', '109>110', '110>111'].map((x) => x.split('>').map((i) => 'STDY_RES_' + i).join('>')).sort();
       ok(drawn.join() === truth.join(), 'main tree: the 14 prerequisites of the game (100, 101, 102 have no line between them)');

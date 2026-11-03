@@ -318,8 +318,9 @@
   // ---------- research tree ----------
   // Layout: the node rows (0, 2, 4 of the game) are NODE_H high and the connector rows (1, 3) are CONN_H thin. The lines are drawn from the prerequisites
   // (stdy_conditions.xml), not from the connector cells: each line leaves the right side of the prerequisite icon and enters the left side of the research that needs it.
-  // The lines that enter 1 research share the last vertical run (the channel, 16 px before the icon), so they join before the node.
-  const CW = 104, NODE_H = 128, CONN_H = 16, CY = 40, HALF = 36, CHAN = 16; // column width, node row height, connector row height, icon center y in a node row, half icon width, gap icon to channel
+  // A vertical segment belongs to exactly 1 group: the fan-out of 1 source (a bus near the source) or the fan-in of 1 target (a bus near the target).
+  // A source with 2 or more lines fans out; every other line goes down at the fan-in bus of its target. Two groups of 1 gap never share an x where their vertical extents meet.
+  const CW = 128, NODE_H = 128, CONN_H = 16, CY = 40, HALF = 36, LANE0 = 26, LANE = 10, AH = 9; // column width (56 px between 2 icons), node row height, connector row height, icon center y in a node row, half icon width, first bus distance from the icon, distance between 2 buses of 1 gap, arrowhead length
   function researchPage(treeKey) {
     const tree = D.trees[treeKey];
     const ys = []; let y = 0;
@@ -335,16 +336,39 @@
     }));
     const W = (lastCol + 1) * CW;
     let H = ys[lastRow] + NODE_H;
-    const lines = [];
+    const edges = [];
     for (const [id, to] of pos) {
       for (const pre of RS[id].pre) {
         const from = pos.get(pre);
-        if (!from) continue;
-        const x1 = from.c * CW + CW / 2 + HALF, y1 = ys[from.r] + CY;
-        const x2 = to.c * CW + CW / 2 - HALF, y2 = ys[to.r] + CY;
-        const xc = x2 - CHAN;
-        lines.push(`<path data-from="${pre}" data-to="${id}" d="M${x1} ${y1}${y1 === y2 ? `H${x2}` : `H${xc}V${y2}H${x2}`}"/>`);
+        if (from) edges.push({ pre, id, from, to, y1: ys[from.r] + CY, y2: ys[to.r] + CY });
       }
+    }
+    const outDeg = new Map();
+    for (const e of edges) outDeg.set(e.pre, (outDeg.get(e.pre) ?? 0) + 1);
+    // The groups: a fan-out per source with 2 or more lines, a fan-in per target for the other lines.
+    const groups = new Map();
+    for (const e of edges) {
+      const out = outDeg.get(e.pre) > 1;
+      const key = `${out ? 'o' : 'i'}:${out ? e.pre : e.id}`;
+      let g = groups.get(key);
+      if (!g) { g = { out, gap: out ? e.from.c : e.to.c - 1, lo: Infinity, hi: -Infinity, lane: 0 }; groups.set(key, g); }
+      g.lo = Math.min(g.lo, e.y1, e.y2); g.hi = Math.max(g.hi, e.y1, e.y2);
+      e.g = g;
+    }
+    // Lanes: in 1 gap, a group takes the first lane where its vertical extent meets no other group.
+    const byGap = new Map();
+    for (const g of groups.values()) {
+      if (g.lo === g.hi) continue;
+      const list = byGap.get(g.gap) ?? [];
+      while (list.some((o) => o.lane === g.lane && o.lo <= g.hi && g.lo <= o.hi)) g.lane++;
+      list.push(g); byGap.set(g.gap, list);
+    }
+    const lines = [], heads = [];
+    for (const e of edges) {
+      const x1 = e.from.c * CW + CW / 2 + HALF, x2 = e.to.c * CW + CW / 2 - HALF;
+      const xb = e.g.out ? x1 + LANE0 + LANE * e.g.lane : x2 - LANE0 - LANE * e.g.lane;
+      lines.push(`<path data-from="${e.pre}" data-to="${e.id}" d="M${x1} ${e.y1}${e.y1 === e.y2 ? `H${x2}` : `H${xb}V${e.y2}H${x2}`}"/>`);
+      heads.push(`<path d="M${x2 - AH} ${e.y2 - 6}L${x2} ${e.y2}L${x2 - AH} ${e.y2 + 6}Z"/>`);
     }
     const nodes = [];
     for (let r = 0; r < tree.res.length; r += 2) {
@@ -360,7 +384,7 @@
       <div class="toolbar"><div class="fgroup"><span class="cap">Tree</span><div class="opts">${TREES.map((t) => `<a class="toggle" href="#/research/${t.key}" aria-pressed="${t.key === treeKey}">${t.label}</a>`).join('')}</div></div></div>
       <div class="treebox bi u p-tan"><div class="treein">
         <div class="treescroll"><div class="tree" style="width:${W}px;height:${H}px">
-          <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" fill="none" stroke="#9a6a35" stroke-width="4" stroke-linejoin="round" aria-hidden="true">${lines.join('')}</svg>
+          <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" fill="none" stroke="#9a6a35" stroke-width="4" stroke-linejoin="round" aria-hidden="true">${lines.join('')}<g fill="#9a6a35" stroke-width="1">${heads.join('')}</g></svg>
           ${nodes.join('')}
         </div></div>
       </div></div>`;
@@ -398,7 +422,7 @@
     const bits = [];
     const ul = (c, body) => `<div class="ul">${cap(c)}${body}</div>`;
     if (u) {
-      if (u.set) bits.push(ul('Recipe set', `<span class="uv">${esc(u.set)}</span>`));
+      if (u.set && u.set !== it.n) bits.push(ul('Recipe set', `<span class="uv">${esc(u.set)}</span>`));
       if (u.teacher) bits.push(ul('Taught by', `<span class="uv">${slot({ icon: u.tIcon, tip: u.teacher })}<span>${esc(u.teacher)}</span>${u.friendship > 0 ? heart(u.friendship) : ''}</span>`));
       if (s.researchId) bits.push(ul(`Research${u.researcher ? ` (${u.researcher})` : ''}`, `<span class="uv">${icoLink(`#/research/${RS[s.researchId].tree}/${s.researchId}`, resIcon(RS[s.researchId]), u.research || RS[s.researchId].n)}</span>`));
       else if (u.research) bits.push(ul('Research', `<span class="uv">${esc(u.research)}</span>`));
