@@ -1,25 +1,26 @@
 # Website
 
-The page and UI layouts of the website. [The site requirements](../requirements/site.md) ask for this design. A category page is a grid of game icons, and an icon opens its detail in a modal ([decision 0005](../decisions/0005-icon-grids.md)). A clear view of the data comes first, and the game parts serve it ([decision 0007](../decisions/0007-clear-data-and-filters.md)).
+The page and UI layouts of the website. [The site requirements](../requirements/site.md) ask for this design. A category page is a grid of game icons, and an icon opens its detail in a modal ([decision 0005](../decisions/0005-icon-grids.md)). A clear view of the data comes first ([decision 0007](../decisions/0007-clear-data-and-filters.md)).
 
 The owner approved the research tree layout. The other layouts wait on the approval of the prototype (#11).
 
 ## Visual style
 
-The site uses the UI parts of the game where they make the data clear. The textures are in `20th_window.g1t` and `20th_common.g1t`. The rectangle and the 9-slice borders of each part are in `extracted/saves/ui/gen_styles/uis_gen_20th_*.xml`. CSS draws each part with `border-image`, so a part fits any size. Any other element is a plain element in the colors of the game.
+The site has its own plain look in the colors of the game: cream, warm brown and gold ([decision 0009](../decisions/0009-own-look.md)). It uses no UI texture of the game for a frame part, so it does not look official. CSS draws each part with colors, borders and radii only. The game icons that carry data stay: the items, the monsters, the characters, the shops, the categories, the elements, the money, the synthesis cost and the friendship heart with its digits.
 
 | Site part | Look |
 | --- | --- |
-| Page background | A background of `20th_bg*.g1t` |
-| Panel, modal | The cream panels with corner ornaments |
-| Name of an entity | The gold name plates |
-| Section title | The brown header bars |
-| Grid cell | The item icon with no extra frame, because the icons already have a margin. A plain highlight on hover and on focus. |
-| Friendship level | The heart icons of the game |
-| Filter | A plain toggle button with the game category icon or the shop icon, and the name |
+| Page background | 1 flat warm color. No image. |
+| Header | A flat brown bar with the site name in cream text. No ornaments. |
+| Panel, modal | A cream box with a thin brown border and a small radius. No ornaments. |
+| Name of an entity | A heading in the title size, in dark brown. No plate. |
+| Section title | Text in the body size, bold, brown, with a thin rule under it. No bar. |
+| Grid cell | The game icon with no extra frame. A plain highlight on hover and on focus. |
+| Friendship level | The heart icon of the game with its digit sprites |
+| Button, filter, tab | A plain button with a thin border. A selected button has a gold fill. The game category icon or the shop icon, then the name. |
 | Value, calculation | Plain text in a clear layout, for example a sum with its operators |
 
-The page always keeps the space of the vertical scroll bar (`scrollbar-gutter: stable` on the root element). So no element moves when the scroll bar shows or goes away: when a filter makes the page shorter, or when a modal opens and locks the scroll of the page. The spacing follows 1 scale of 4 px steps. Each panel has the same gutter on all sides. A text in a bar or a name plate has the same space above and below it, and it does not touch the ornaments of the bar.
+The page always keeps the space of the vertical scroll bar (`scrollbar-gutter: stable` on the root element). So no element moves when the scroll bar shows or goes away: when a filter makes the page shorter, or when a modal opens and locks the scroll of the page. The spacing follows 1 scale of 4 px steps. Each panel has the same gutter on all sides. A text in a bar or a button has the same space above and below it.
 
 ## UI standard
 
@@ -53,7 +54,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 ### Components
 
 - 1 tile component shows each entity on each page: the icon, the name under it, and at most 1 value line under the name. The tile has the same size in each grid of a page.
-- 1 section component: a header bar with the title, then the content. A section with no content does not show.
+- 1 section component: the section title, then the content. A section with no content does not show.
 - 1 stat component: a small label above a value with its unit.
 - The text of the page has 3 sizes only: the title, the body and the small label.
 
@@ -104,7 +105,7 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 | Filters | 1 group of toggle buttons for each filter: the item category, and the shop. | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
 | Search box | A text box. | Each key filters the icons at once, on the English and the Japanese name. The text is in the URL. |
 | Icon grid | The game icons in the order of the game. The number of columns follows the width. | The name shows on hover and on focus. A click opens the modal. Each icon is a real link, so Ctrl+click opens the page of the entity in a new tab. |
-| Modal | A game panel with the detail of the entity, and a close button. | 1. The URL changes to the URL of the entity. Back closes the modal. 2. A link inside the modal replaces its content. Back shows the content before it. 3. Esc, the close button and a click outside close it. The focus goes back to the icon. 4. On a narrow window, the modal fills the screen. |
+| Modal | A panel with the detail of the entity, and a close button. | 1. The URL changes to the URL of the entity. Back closes the modal. 2. A link inside the modal replaces its content. Back shows the content before it. 3. Esc, the close button and a click outside close it. The focus goes back to the icon. 4. On a narrow window, the modal fills the screen. |
 | Entity page | The same detail panel as the modal, on a full page. | The page for a direct visit, a search engine and a new tab. |
 | Entity link | The icon of the entity, and its name. | It opens the entity in the modal. An entity with no page is plain text. |
 
@@ -119,13 +120,13 @@ The site has no landing page. The root URL shows the Items page.
 
 ### Areas page
 
-- **Blocks, in order:** Header. Search box. 1 game panel for each top-level zone, in the order of the game.
-- **Zone panel:** The name of the zone on a header bar, and the names of its areas on name plates. A click on an area opens its detail in the modal.
+- **Blocks, in order:** Header. Search box. 1 panel for each top-level zone, in the order of the game.
+- **Zone panel:** The name of the zone as a section title, and the names of its areas as plain buttons. A click on an area opens its detail in the modal.
 - **Empty state:** The same as on a category page.
 
 ### Details
 
-Each detail is 1 game panel. The prototype composes each panel from the game parts, with the data that the requirements list for its category. A material is a tile with its quantity in the format of the UI standard. An element is its icon with its value.
+Each detail is 1 panel. The prototype composes each panel from the parts of "Visual style", with the data that the requirements list for its category. A material is a tile with its quantity in the format of the UI standard. An element is its icon with its value.
 
 ### Research tree page
 

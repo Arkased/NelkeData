@@ -2,7 +2,7 @@
 
 Date: 2026-11-02
 Decided by: owner
-Status: accepted
+Status: superseded by 0009
 
 ## Context
 
