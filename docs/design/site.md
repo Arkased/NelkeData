@@ -35,7 +35,7 @@ Each kind of value has 1 format on all pages.
 | Synthesis cost | The synthesis cost icon of the game, then the number. | ⚗ 4 |
 | Rate | The number, then `%`. At most 1 decimal. | 12.5% |
 | Quantity of an item | `×` and the number, in a badge on the bottom right corner of the item icon, as in the material slots of the game. Only for 2 or more. The section title gives the role (Materials, Drops, Gives). | ×3 |
-| Rate or level on a tile | A badge on the bottom left corner of the icon, in the same style as the quantity badge. A tile has no value line. | 25%, Lv 34 |
+| Rate or level on a tile | A badge on the bottom left corner of the icon, in the same style as the quantity badge. A tile has no value line. A level range is 1 badge. | 25%, Lv 34, Lv 3–8 |
 | Research duration | The number, then `turns` (`turn` for 1). | 2 turns |
 | Level | `Lv`, then the number. | Lv 12 |
 | Multiplier | `×`, then the number. | ×1.25 |
@@ -67,6 +67,9 @@ A value never shows with no unit or no role word. A missing value does not show:
 - A value that is the same for each entity does not show. Each monster drop has the rate 100%, so a drop shows no rate.
 - A group shows only when the player can use it to find an entity. A character shows its group, Alchemist or Townsfolk, as a line and as a filter (`CHARACTER_CATEGORY_ID` 2 and 3 in `character/character.xml`). The 4 story characters (Nelke, Misty, Knoss, Lotos, categories 0, 1 and 4) show no group. The game of origin of a character also shows, as a line and as a filter.
 - A tooltip shows only text that is not already visible.
+- An entity shows 1 time in a list. A monster with more than 1 level in an area is 1 tile with a level range.
+- The Characters page lists only the characters that can join the town: the join event in `character/character_app_con.xml` is not `EVENT_NONE`. A visitor, an NPC or a variant for an event (for example "Weapon Shopkeeper" or "Boss") has no page.
+- A filter with more than 8 values is 1 drop-down list with multiple choice, not a row of toggle buttons.
 - The level of an area uses the term of the game: "Investigation Lv". It rises from 1 to 5 as the player sends teams to the area. Some monster groups appear only from Investigation Lv 2 or 3 (`REQ_LV` in `expl_encount/area_encount.xml`).
 - The treasure chests and the tool gathers (Bug Net, Digging, Fishing) are 1 row of columns, in the same order on each area and zone detail.
 - The friendship level uses the heart icon of the game, never an emoji or a font glyph.
