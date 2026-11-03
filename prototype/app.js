@@ -559,7 +559,10 @@
     const taught = D.items.filter((i) => i.syn && i.syn.unlock && i.syn.unlock.teacher === c.nr);
     const sets = Object.entries(Object.groupBy(taught, (i) => i.syn.unlock.set || ''));
     if (sets.length) {
-      h += bar('Teaches') + `<div class="sets">${sets.map(([set, list]) => `<div class="tbl${list.length > 1 ? ' multi' : ''}">${set ? cap(set) : ''}<div class="row">${list.map((i) => itemEnt(i.id)).join('')}</div></div>`).join('')}</div>`;
+      // The set label shows only when the set has 2 or more items or its name differs from its single item. The sets with no label go together in 1 row at the top.
+      const labelled = sets.filter(([set, list]) => set && (list.length > 1 || set.toLowerCase() !== list[0].n.toLowerCase()));
+      const bare = sets.filter((x) => !labelled.includes(x)).flatMap(([, list]) => list);
+      h += bar('Teaches') + `<div class="sets">${bare.length ? `<div class="tbl"><div class="row">${bare.map((i) => itemEnt(i.id)).join('')}</div></div>` : ''}${labelled.map(([set, list]) => `<div class="tbl${list.length > 1 ? ' multi' : ''}">${cap(set)}<div class="row">${list.map((i) => itemEnt(i.id)).join('')}</div></div>`).join('')}</div>`;
     }
     return h;
   }

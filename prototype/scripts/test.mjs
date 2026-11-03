@@ -284,6 +284,8 @@ await step('monsters page and modal', async () => {
   await page.waitForSelector('#grid .cell');
   const n = await page.locator('#grid .cell').count();
   ok(n === (await page.evaluate(() => Object.keys(window.DATA.monsters).length)), `${n} monster cells`);
+  const mnames = await page.locator('#grid .cell .nm').allTextContents();
+  ok(new Set(mnames).size === mnames.length, 'no 2 monsters in the grid with the same name');
   await openFilters();
   await page.locator('[data-mk=boss]').click();
   const nb = await page.locator('#grid .cell').count();

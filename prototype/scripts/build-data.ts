@@ -351,6 +351,10 @@ const collectIcons = (v: unknown): void => {
   else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) (k === 'icon' || k === 'tIcon') && typeof x === 'string' && x ? used.add(x) : collectIcons(x);
 };
 for (const c of characters.characters.filter(characters.isMonster)) monsterKey(c);
+// A name that 2 real monsters share (CHARACTER_HOMM0 and CHARACTER_HOMM2 are both "Beast": own name label, description, rank and areas) gets its rank.
+const monsterNameCount = new Map<string, number>();
+for (const m of monsterSet.values()) monsterNameCount.set(m.n, (monsterNameCount.get(m.n) ?? 0) + 1);
+for (const m of monsterSet.values()) if ((monsterNameCount.get(m.n) ?? 0) > 1) m.n = `${m.n} (Rank ${m.rank})`;
 const monstersOut = Object.fromEntries(monsterSet);
 // Duplicate names (point 11). An entry such as CHARACTER_PAMELA_A4 has the name label of CHARACTER_PAMELA, no description (MESSAGE_COMMON_NOTHING),
 // no source game, no aptitudes and no join condition (CHARACTER_APP_CON_078 = EVENT_NONE). It is another picture of the same person
