@@ -9,7 +9,8 @@ export const launch = () => chromium.launch({ executablePath: 'C:/Users/Kevin Li
 
 /** Opens a page at a width and collects the console errors in page.errs. */
 export async function newPage(browser, width) {
-  const page = await browser.newPage({ viewport: { width, height: width < 700 ? 800 : 900 } });
+  const context = await browser.newContext({ viewport: { width, height: width < 700 ? 800 : 900 } });
+  const page = await context.newPage();
   page.errs = [];
   page.on('pageerror', (e) => page.errs.push('pageerror: ' + e.message));
   page.on('console', (m) => (m.type() === 'error' || m.type() === 'warning') && page.errs.push(m.type() + ': ' + m.text()));

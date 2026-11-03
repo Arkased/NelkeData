@@ -1,21 +1,15 @@
 // Interactive test in a real browser, with the DOM audit and the mechanical UI rules (see auditFn in lib.mjs).
-// Usage: node test.mjs [width]. Without a width it runs at 360, 768, 1280 and 1920 and fails when 1 run fails.
-import { spawnSync } from 'node:child_process';
+// Usage: node test.mjs [widthsCsv]. Default 360,768,1280,1920. One browser, 1 context for each width, all widths at the same time.
+// A width shares no state with another width. The run fails when 1 width fails.
 import { fileURLToPath } from 'node:url';
 import { launch, newPage, settle, audit, pick, url } from './lib.mjs';
 
-if (!process.argv[2]) {
-  let bad = 0;
-  for (const w of [360, 768, 1280, 1920]) {
-    const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), String(w)], { stdio: 'inherit' });
-    if (r.status !== 0) bad++;
-  }
-  console.log(bad ? `\nFAILED at ${bad} of 4 widths` : '\nALL 4 WIDTHS PASS');
-  process.exit(bad ? 1 : 0);
-}
+const widths = (process.argv[2] || '360,768,1280,1920').split(',').map(Number);
 
-const width = Number(process.argv[2]);
-const browser = await launch();
+/** Runs the whole test at 1 width in its own browser context. Returns { fails, text } with the buffered output. */
+async function runWidth(browser, width) {
+const lines = [];
+const console = { log: (...a) => lines.push(a.join(' ')) };
 const page = await newPage(browser, width);
 let fails = 0, auditTotal = 0;
 const ok = (cond, msg) => { console.log(`  ${cond ? 'PASS' : 'FAIL'} ${msg}`); if (!cond) fails++; };
@@ -742,5 +736,14 @@ await step('About page', async () => {
 // The test fails on any audit finding (the rules of the UI standard are part of the audit).
 if (auditTotal > 0) { fails++; console.log(`  FAIL ${auditTotal} audit findings`); }
 console.log(`\n[${width}] RESULT: ${fails} failures, ${auditTotal} audit findings`);
+await page.context().close();
+return { fails, text: lines.join('\n') };
+}
+
+const browser = await launch();
+const results = await Promise.all(widths.map((w) => runWidth(browser, w)));
 await browser.close();
-process.exit(fails ? 1 : 0);
+for (const r of results) console.log(r.text);
+const bad = results.filter((r) => r.fails > 0).length;
+console.log(bad ? `\nFAILED at ${bad} of ${widths.length} widths` : `\nALL ${widths.length} WIDTHS PASS`);
+process.exit(bad ? 1 : 0);
