@@ -1,0 +1,3 @@
+# Gitignored static data that Claude Code copies into each new worktree.
+extracted/
+output/
