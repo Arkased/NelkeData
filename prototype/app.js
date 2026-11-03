@@ -39,13 +39,12 @@
   const CATS = ['Material', 'Merchandise', 'Battle Item', 'Construction'];
   // The game category icons (win03_icon01 list): cat-N.png.
   const CAT_ICON = { Material: 5, Merchandise: 2, 'Battle Item': 8, Construction: 1, craft: 11 };
-  const FACE_MONSTER = D.monsters[Object.keys(D.monsters)[0]].icon;
-  const FACE_CHAR = D.chars[0].icon;
+  /** The nav icons of Monsters and Characters are the quest category icons of the game (20th_main_quest.g1t, m_q01_icon02 LIST01 and LIST02). */
   const NAV = [
     { k: 'items', label: 'Items', href: '#/items', cat: 15 },
     { k: 'areas', label: 'Areas', href: '#/areas', cat: 16 },
-    { k: 'monsters', label: 'Monsters', href: '#/monsters', face: FACE_MONSTER },
-    { k: 'characters', label: 'Characters', href: '#/characters', face: FACE_CHAR },
+    { k: 'monsters', label: 'Monsters', href: '#/monsters', img: 'nav-monsters' },
+    { k: 'characters', label: 'Characters', href: '#/characters', img: 'nav-characters' },
     { k: 'research', label: 'Research', href: '#/research/main', cat: 10 },
   ];
   /** The research trees. The names are the tab texts of the study screen (ui_en/20th_mix/uil_20th_study_1031.xml, text_on): Main, Attack, Town Building, Emergency. */
@@ -174,7 +173,7 @@
   function renderNav() {
     $('#nav').innerHTML = NAV.map((n) => {
       const on = base && base.view === n.k;
-      const ic = n.face ? slot({ icon: n.face, cls: 'navface' }) : catImg(n.cat);
+      const ic = n.img ? `<img class="cat" src="img/ui/${n.img}.png" alt="">` : catImg(n.cat);
       return `<a href="${n.href}" ${on ? 'aria-current="page"' : ''}>${ic}<span>${n.label}</span></a>`;
     }).join('');
   }

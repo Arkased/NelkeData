@@ -64,8 +64,31 @@ await step('root URL shows the Items page, no landing page', async () => {
 await step('background covers the full page height', async () => {
   await go('#/areas');
   await page.waitForSelector('.zone');
-  const r = await page.evaluate(() => { const h = document.documentElement.getBoundingClientRect().height; const bs = getComputedStyle(document.documentElement); return { h, inner: innerHeight, img: bs.backgroundImage.includes('bg-town-tile'), repeat: bs.backgroundRepeat.includes('repeat-y'), fixed: bs.backgroundAttachment.includes('fixed') }; });
-  ok(r.img && r.repeat && !r.fixed, `background is on the page and repeats down (page ${Math.round(r.h)} px, viewport ${r.inner} px)`);
+  const r = await page.evaluate(() => { const h = document.documentElement.getBoundingClientRect().height; const bs = getComputedStyle(document.documentElement); return { h, inner: innerHeight, img: bs.backgroundImage, color: bs.backgroundColor }; });
+  ok(r.img === 'none' && r.color !== 'rgba(0, 0, 0, 0)', `the page background is 1 flat color, no image (${r.color}; page ${Math.round(r.h)} px, viewport ${r.inner} px)`);
+});
+await step('no frame texture in the CSS, the markup or the inline styles', async () => {
+  const fs = await import('node:fs');
+  const dir = fileURLToPath(new URL('..', import.meta.url));
+  const TEX = /bg-town|panel-(star|cream|tan|note|notebook|scroll|w01)|popup-crest|corner[-_a-z0-9]*\.png|\bplate-|\bbar-(brown|bronze)|\bbtn-(brown|cream|gold)|\btabw?-(on|off)|frame\.png|glow\.png|highlight\.png|border-image/;
+  const FONT = /font-family:[^;}]*/g;
+  for (const f of ['style.css', 'app.js', 'index.html']) {
+    const hit = fs.readFileSync(dir + f, 'utf8').split('\n').map((l, i) => [i + 1, l]).filter(([, l]) => TEX.test(l.replace(/\/\*.*?\*\//g, '')));
+    ok(hit.length === 0, `${f} names no frame texture${hit.length ? ': line ' + hit.map((h) => h[0]).join(',') : ''}`);
+  }
+  // Typefaces: only Lora and Source Sans 3, from local files.
+  const css = fs.readFileSync(dir + 'style.css', 'utf8');
+  const faces = css.match(/@font-face\s*\{[^}]*\}/g) || [];
+  ok(faces.length === 4 && faces.every((f) => /font-family:\s*"(Lora|Source Sans 3)"/.test(f)), `${faces.length} @font-face rules, all Lora or Source Sans 3`);
+  const urls = [...css.matchAll(/url\(\s*['"]?([^)'"]+)['"]?\s*\)/g)].map((m) => m[1]).filter((u) => /\.(woff2?|ttf|otf|eot|g1n|fnt)$/i.test(u) || /^(https?:)?\/\//.test(u));
+  ok(urls.length === 4 && urls.every((u) => /^fonts\/[\w-]+\.woff2$/.test(u) && fs.existsSync(dir + u)), `font URLs are local files: ${urls.join(', ')}`);
+  const fams = (css.match(FONT) || []).map((x) => x.replace('font-family:', '').trim());
+  ok(fams.every((x) => /^(var\(--font(-head)?\)|inherit|"Lora"|"Source Sans 3")/.test(x) || x === '"Lora", serif' || x === '"Source Sans 3", sans-serif'), `font-family only Lora or Source Sans 3: ${fams.join(' | ')}`);
+  ok(/--font:\s*"Source Sans 3", sans-serif;/.test(css) && /--font-head:\s*"Lora", serif;/.test(css), 'the body font is Source Sans 3, the heading font is Lora');
+  const used = await page.evaluate(async () => { await document.fonts.ready; return [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/"/g, '') + ' ' + f.weight); });
+  ok(used.some((u) => u.startsWith('Lora')) && used.some((u) => u.startsWith('Source Sans 3')), `both fonts loaded: ${used.join(', ')}`);
+  const inline = await page.evaluate(() => [...document.querySelectorAll('[style]')].map((e) => e.getAttribute('style')).filter((s) => /url\(/.test(s)));
+  ok(inline.length === 0, 'no inline style loads an image');
 });
 
 if (width < 600) {
