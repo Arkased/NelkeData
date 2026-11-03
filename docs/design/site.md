@@ -2,7 +2,7 @@
 
 The page and UI layouts of the website. [The site requirements](../requirements/site.md) ask for this design. A category page is a grid of game icons, and an icon opens its detail in a modal ([decision 0005](../decisions/0005-icon-grids.md)). A clear view of the data comes first ([decision 0007](../decisions/0007-clear-data-and-filters.md)).
 
-The owner approved the research tree layout. The other layouts wait on the approval of the prototype (#11).
+The owner approved the layouts of the prototype (#11) on 2026-11-02: the Items, Areas, Monsters, Characters and Research pages, and their details. A new page (for example the buildings) needs its own prototype and a separate approval before it is built.
 
 ## Visual style
 
@@ -10,11 +10,13 @@ The site has its own plain look in the colors of the game: cream, warm brown and
 
 | Site part | Look |
 | --- | --- |
+| Typeface | 2 open fonts (SIL Open Font License), not fonts of the game: Lora (a warm serif) for the titles and the entity names, and Source Sans 3 for all other text. The site serves the WOFF2 files itself (from the Fontsource packages `@fontsource/lora` and `@fontsource/source-sans-3`), with no font CDN. The CSS has no other `@font-face`. |
 | Page background | 1 flat warm color. No image. |
 | Header | A flat brown bar with the site name in cream text. No ornaments. |
 | Panel, modal | A cream box with a thin brown border and a small radius. No ornaments. |
 | Name of an entity | A heading in the title size, in dark brown. No plate. |
-| Section title | Text in the body size, bold, brown, with a thin rule under it. No bar. |
+| Section title | Lora 700 in the body size, brown, with a thin rule under it. No bar. The zone name on the Areas page is a section title too. |
+| Sub-title | A title inside a section, for example "Bonus", "Joins with" or "Gather": Source Sans 3 700 in the body size, dark brown, with no rule. It is never larger than the section title. |
 | Grid cell | The game icon with no extra frame. A plain highlight on hover and on focus. |
 | Friendship level | The heart icon of the game with its digit sprites |
 | Button, filter, tab | A plain button with a thin border. A selected button has a gold fill. The game category icon or the shop icon, then the name. |
@@ -100,7 +102,7 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 
 | Part | Holds | Behavior |
 | --- | --- | --- |
-| Header | The site name, and the links to the 5 categories with their game icons. | Below 600 px, the links go into a menu button. |
+| Header | The site name, and the links to the 5 categories with their game icons. Monsters and Characters use the quest category icons of the game (`20th_main_quest.g1t`, `gen_20th_m_q01_icon02` LIST01, a demon head, and LIST02, a person bust), from the same set as the Research chart icon. | Below 600 px, the links go into a menu button. |
 | Footer | The legal notice of the requirements, in the small label size, centered. | It shows on each page, below the content. |
 | Filters | 1 group of toggle buttons for each filter: the item category, and the shop. | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
 | Search box | A text box. | Each key filters the icons at once, on the English and the Japanese name. The text is in the URL. |
@@ -132,7 +134,7 @@ Each detail is 1 panel. The prototype composes each panel from the parts of "Vis
 
 - **Purpose:** Browse the research as the game shows it: a grid of nodes with lines from left to right.
 - **Blocks, in order:** Header. 1 tab for each of the 4 trees, with the name of the tree in the game. Tree box.
-- **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The icon is on a beige square with round corners, in the same color as the background of the character face icons. The game uses the even rows for the nodes and the odd rows for the lines only. Each line is 1 prerequisite of `study/stdy_conditions.xml`: it leaves the right side of the prerequisite and enters the left side of the research that needs it. The lines that enter 1 node join before the node, so 3 prerequisites show as 3 lines that meet. No line shows that is not a prerequisite. The link types of the tree files only confirm the drawing. The box scrolls horizontally inside the page. The page itself does not scroll horizontally.
+- **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The icon is on a beige square with round corners, in the same color as the background of the character face icons. The game uses the even rows for the nodes and the odd rows for the lines only. Each line is 1 prerequisite of `study/stdy_conditions.xml`: it leaves the right side of the prerequisite and enters the left side of the research that needs it. The lines that enter 1 node join before the node, so 3 prerequisites show as 3 lines that meet. No line shows that is not a prerequisite. The link types of the tree files only confirm the drawing. The box has the full width of the content column, the same as the tab panel above it. It scrolls horizontally inside the page. The page itself does not scroll horizontally.
 - **Research detail, "Gives":** the prize items, and the items that the recipes of the prize recipe set make. The bonus item of `study/stdy_prize.xml` (`STDY_PRIZE_BONUS_ITEM`) is a tile with its quantity under the sub-title "Bonus". When `STDY_BONUS_FRIEND_POINT` is above 0, the sub-title also shows that friendship value. A bonus with no item (cost down, construction expenses up) shows the name of its type in the game when the game has 1, else it does not show. A sub-title never shows with nothing under it.
 - **Interactions:** A click on a node opens the research in the modal.
 - **States:** A node that the game has with no name shows its ID.
