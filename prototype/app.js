@@ -499,7 +499,7 @@
       }).join('')}</div>`));
     }
     if (it.drops.length) {
-      groups.push(grp('Monster drops', `<div class="minis">${it.drops.map((d) => monEnt(d.m, dropOpts(d))).join('')}</div>`));
+      groups.push(grp('Monster drops', `<div class="minis">${it.drops.map((d) => monEnt(d.m)).join('')}</div>`));
     }
     for (const t of GIMMICK_ORDER) {
       const rows = it.special.filter((e) => e.t === t);

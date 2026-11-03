@@ -309,6 +309,7 @@ export const pick = (page) =>
     const names = {
       gather: first((i) => i.gather.length > 2 && i.usedIn.length && i.cat === 'Material' && !i.id.includes('ELEMENT')),
       drop: first((i) => i.drops.length && !i.gather.length) || first((i) => i.drops.length),
+      dropQty: first((i) => i.drops.some((d) => d.num >= 2)),
       shop: first((i) => i.shops.length && !i.syn && !i.gather.length) || first((i) => i.shops.length),
       farm: first((i) => i.farm),
       craftPriced: first((i) => i.syn && i.syn.added !== null && i.syn.unlock && i.syn.unlock.friendship > 0 && i.syn.researchId) || first((i) => i.syn && i.syn.added !== null && i.syn.unlock && i.syn.unlock.friendship > 0) || first((i) => i.syn && i.syn.added !== null),

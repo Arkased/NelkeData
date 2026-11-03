@@ -29,6 +29,7 @@ async function shootWidth(w) {
     ['about', '#/about'],
     ['item-gather', item('gather')],
     ['item-drop', item('drop')],
+    ['item-drop-qty', item('dropQty')],
     ['item-farm', item('farm')],
     ['item-rare', item('rare')],
     ['item-craft', item('craftPriced')],

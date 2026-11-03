@@ -165,7 +165,7 @@ await step('empty state and its clear button', async () => {
   ok((await page.locator('.empty').count()) === 0, 'no empty state on Areas');
 });
 
-for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'monster drop item'], ['shop', 'shop item'], ['farm', 'farm item'], ['craftPriced', 'craftable with price'], ['craftNoPrice', 'craftable without price'], ['unpriced', 'craftable with unpriced materials'], ['rare', 'rare find item'], ['longName', 'longest name']]) {
+for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'monster drop item'], ['dropQty', 'monster drop item with a quantity of 2 or more'],['shop', 'shop item'], ['farm', 'farm item'], ['craftPriced', 'craftable with price'], ['craftNoPrice', 'craftable without price'], ['unpriced', 'craftable with unpriced materials'], ['rare', 'rare find item'], ['longName', 'longest name']]) {
   await step(`item modal: ${label} (${P[k]?.n})`, async () => {
     await openItem(P[k].n);
     ok((await hash()).startsWith(`#/items/${P[k].id}`), `url ${await hash()}`);
@@ -178,6 +178,7 @@ for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'mo
     if (k === 'gather') ok(!/opens after|open from the start/.test(howT), 'gather cards have no "opens after"');
     if (k === 'drop') ok(/Monster drops/i.test(t) && !/per drop/.test(t), 'has Monster drops, with no "N per drop" text');
     if (k === 'drop') ok((await page.locator('.modal a.mini[href^="#/monsters/"]').count()) > 0, 'drops are monster links');
+    if (k === 'dropQty') ok((await page.locator('.modal a.mini[href^="#/monsters/"]').count()) > 0 && (await page.locator('.modal a.mini[href^="#/monsters/"] .qty').count()) === 0, 'the monster tiles of the drops have no quantity badge');
     if (k === 'shop') ok(/sold at/i.test(topT) && (await page.locator('.modal .top .sold img').count()) > 0, 'top block has "Sold at" with shop icons');
     ok(!/Shops|Medicine Shop|General Store|Grocery Store|Clothing Store|Weapon\/Armor Shop/.test(howT), 'no shop in How to get');
     if (k === 'farm') ok(/Farm/.test(t) && !/Grown in/.test(t), 'has Farm group');
