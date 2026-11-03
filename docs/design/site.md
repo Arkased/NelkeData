@@ -35,7 +35,7 @@ Each kind of value has 1 format on all pages.
 | Synthesis cost | The synthesis cost icon of the game, then the number. | ⚗ 4 |
 | Rate | The number, then `%`. At most 1 decimal. | 12.5% |
 | Quantity of an item | `×` and the number, in a badge on the bottom right corner of the item icon, as in the material slots of the game. Only for 2 or more. The section title gives the role (Materials, Drops, Gives). | ×3 |
-| Rate or level on a tile | A badge on the bottom left corner of the icon, in the same style as the quantity badge. A tile has no value line. A level range is 1 badge. | 25%, Lv 34, Lv 3–8 |
+| Rate or level on a tile | A badge on the bottom right corner of the icon, the same as the quantity badge. No tile has a quantity and a rate or a level together. A tile has no value line. A level range is 1 badge. | 25%, Lv 34, Lv 3–8 |
 | Research duration | The number, then `turns` (`turn` for 1). | 2 turns |
 | Level | `Lv`, then the number. | Lv 12 |
 | Multiplier | `×`, then the number. | ×1.25 |
@@ -65,6 +65,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 - A fact that is the same for each entity of a category (a global table of the game) does not show on each entity.
 - A condition that each player meets does not show: a join turn of 1 or less, and a town population at or below the start population of the game (`OC_INITIAL_POPULATION` in `out_constant/out_constant.xml`, 30).
 - A value that is the same for each entity does not show.
+- The monster rank does not show anywhere, also not in a name.
 - A rate of 100% does not show anywhere: on a monster drop (each drop has the rate 100%), on a treasure chest or a tool gather with 1 item, on a gather. The item is certain, so the rate tells nothing.
 - A group shows only when the player can use it to find an entity. Each character shows its group, Alchemist or Townsfolk, as a line and as a filter. Alchemist is `CHARACTER_CATEGORY_ID` 2 in `character/character.xml`. Townsfolk is each other category: 3, and the 4 story characters Nelke, Misty, Knoss and Lotos (categories 0, 1 and 4). The game of origin of a character shows as a line.
 - A tooltip shows only text that is not already visible.
