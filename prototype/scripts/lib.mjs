@@ -1,8 +1,9 @@
 // Shared: browser launch, the DOM audit and the data picks.
 import { chromium } from 'playwright';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-export const root = 'C:/Users/KEVINL~1/AppData/Local/Temp/claude/c--Users-Kevin-Liu-Documents-Projects-NelkeData/08d1da3d-5b13-40ff-9319-79080bd05efb/scratchpad/proto';
+export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const url = 'file:///' + path.resolve(root, 'index.html').replace(/\\/g, '/');
 export const launch = () => chromium.launch({ executablePath: 'C:/Users/Kevin Liu/AppData/Local/ms-playwright/chromium-1232/chrome-win64/chrome.exe' });
 
@@ -81,17 +82,16 @@ export function auditFn() {
     if (!e.children.length && !e.textContent.trim()) out.empty.push(desc(e));
   }
   // ---- round 4: the mechanical rules of the UI standard ----
-  Object.assign(out, { banned: [], money: [], units: [], images: [], tiles: [], spacing: [], fonts: [] });
-  const inArea = !!document.querySelector('.modal .crumb');
-  // 1. banned text (the area detail may keep "opens after Task N")
-  const BANNED = /\bQty\b|\bNeeds\b|^x\d|×\d|game units|opens after|open from the start|Scroll sideways|\d+ of \d+ items/;
+  Object.assign(out, { captions: [], banned: [], money: [], units: [], images: [], tiles: [], spacing: [], fonts: [] });
+  // 1. banned text. A multiplier is written ×1.25, never 1.25x or x3.
+  const BANNED = /\bQty\b|\bNeeds\b|(^|\s)x\d|\d(\.\d+)?x\b|game units|opens after|open from the start|Scroll sideways|\d+ of \d+ items|Element rating|Friendship needed/;
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   for (let n = walker.nextNode(); n; n = walker.nextNode()) {
     const el = n.parentElement;
     if (!el || ['SCRIPT', 'STYLE'].includes(el.tagName) || !vis(el)) continue;
     const s = n.textContent.trim();
     if (!s) continue;
-    if (BANNED.test(s) && !(inArea && /^opens after|^open from the start/.test(s) && el.closest('.crumb'))) out.banned.push(`"${s.slice(0, 40)}" in ${desc(el)}`);
+    if (BANNED.test(s)) out.banned.push(`"${s.slice(0, 40)}" in ${desc(el)}`);
     // every % is a rate with the format N%
     if (/\d%/.test(s) && !el.closest('.rate, .name, .node, .link, .lt, .desc, .person')) out.units.push(`% outside .rate: "${s.slice(0, 40)}"`);
   }
@@ -112,14 +112,32 @@ export function auditFn() {
   for (const e of document.querySelectorAll('.mini small')) {
     if (e.querySelector('.rate')) continue;
     const s = e.textContent.trim();
-    if (!/^\d[\d,]* (needed|per drop|given)$/.test(s) && !/^Lv \d+(-\d+)?$/.test(s)) out.units.push(`tile value format: "${s}" in ${desc(e.parentElement)}`);
+    if (!/^\d[\d,]* (needed|given)$/.test(s) && !/^\d[\d,]* per drop · \d+(\.\d)?%$/.test(s) && !/^Lv \d+(-\d+)?$/.test(s)) out.units.push(`tile value format: "${s}" in ${desc(e.parentElement)}`);
   }
-  for (const e of document.querySelectorAll('.mini small .rate')) if (e.parentElement.textContent.trim() !== e.textContent.trim()) out.units.push(`tile rate shares its line: ${desc(e)}`);
+  // A tile has at most 1 value line, and the line does not wrap.
+  for (const e of document.querySelectorAll('.mini')) {
+    const smalls = e.querySelectorAll('small');
+    if (smalls.length > 1) out.tiles.push(`tile with ${smalls.length} value lines: ${desc(e)}`);
+    for (const sm of smalls) if (sm.getBoundingClientRect().height > parseFloat(getComputedStyle(sm).lineHeight) * 1.5) out.tiles.push(`tile value wraps: "${sm.textContent.trim()}"`);
+  }
   // 4. every entity link and tile has an image that loaded
   for (const e of document.querySelectorAll('.mini, a.slot, .node, .elm, .shop, .person, .card')) {
     if (!vis(e)) continue;
     const im = e.querySelector('img');
     if (!im || !im.complete || im.naturalWidth === 0) out.images.push(`no loaded image: ${desc(e)}`);
+  }
+  // 4b. every mention of an item, a monster, a character or a research has its icon, also a link inside a text
+  for (const e of document.querySelectorAll('a[href^="#/items/"], a[href^="#/monsters/"], a[href^="#/characters/"], a[href^="#/research/"]')) {
+    if (!vis(e) || /^#\/research\/[a-z]+$/.test(e.getAttribute('href'))) continue;
+    const im = e.querySelector('img');
+    if (!im || !im.complete || im.naturalWidth === 0) out.images.push(`entity mention without icon: ${desc(e)}`);
+  }
+  // 4c. no caption under a section heading (a caption repeats the title or explains a unit), and 1 label style
+  for (const e of document.querySelectorAll('.gh small, .bar + small, .bar + .note, .bar + p, .gh + small, .gh + .note, .gh + p')) if (vis(e)) out.captions.push(`caption under a heading: ${desc(e)}`);
+  for (const e of document.querySelectorAll('small')) {
+    if (!vis(e) || e.closest('.mini, .lt, .elm, .card-tx, .site-name')) continue;
+    const cs = getComputedStyle(e);
+    if (!e.classList.contains('cap') || cs.textTransform !== 'uppercase' || cs.fontSize !== '12px' || cs.fontWeight !== '800') out.captions.push(`label without the label style: ${desc(e)}`);
   }
   // 5. empty sections
   for (const e of document.querySelectorAll('.grp, .conds, .elms, .sold, .drs, .disp, .dcol, .home, .opts, .toolbar, .zones')) {
@@ -132,7 +150,7 @@ export function auditFn() {
     if (ws.length > 1 && Math.max(...ws) - Math.min(...ws) > 1) out.tiles.push(`uneven tiles ${Math.min(...ws).toFixed(1)}..${Math.max(...ws).toFixed(1)} in ${desc(p)}`);
   }
   // 7. paddings, margins and gaps of the containers are multiples of 4 px
-  const SP = '.page, .hdr-bar, .nav, .nav a, .toolbar, .srow, .search, .fgroup, .opts, .toggle, .btn, .gridwrap, .grid, .mini, .zones, .zone-in, .zone-head, .areas, a.area, .modal-body, .mhead, .name, .bar, .grp, .gh, .minis, .cols, .row, .link, .chip, .chips, .desc, .top, .facts, .sold, .shop, .reduce, .el, .money, .cost, .fr, .syn, .syn-top, .syn-body, .syn-val, .ledger, .lr, .unlock, .ul, .uv, .bigstat, .disp, .dcol, .elms, .elm, .drs, .dr, .who, .need, .person, .conds, .crumb, .diffline, .diffs, .diff, .home, a.card, .card-tx, .treein, .treescroll, .node, #main, #main > *';
+  const SP = '.page, .hdr-bar, .nav, .nav a, .toolbar, .srow, .search, .fgroup, .opts, .toggle, .btn, .stat, .ul, .uv, .gridwrap, .grid, .mini, .zones, .zone-in, .zone-head, .areas, a.area, .modal-body, .mhead, .name, .bar, .grp, .gh, .minis, .cols, .row, .link, .chip, .chips, .desc, .top, .facts, .sold, .shop, .reduce, .el, .money, .cost, .fr, .syn, .syn-top, .syn-body, .syn-val, .ledger, .lr, .unlock, .ul, .uv, .bigstat, .disp, .dcol, .elms, .elm, .drs, .dr, .who, .need, .person, .conds, .crumb, .diffline, .diffs, .diff, .home, a.card, .card-tx, .treein, .treescroll, .node, #main, #main > *';
   const ok4 = (v) => v === 'normal' || v === 'auto' || (Number.isFinite(parseFloat(v)) && Math.abs(parseFloat(v) / 4 - Math.round(parseFloat(v) / 4)) < 0.001);
   for (const e of document.querySelectorAll(SP)) {
     if (!vis(e)) continue;
@@ -190,6 +208,8 @@ export const pick = (page) =>
       monster: withHab ? { id: withHab, n: D.monsters[withHab].n } : null,
       boss: mk.find((k) => D.monsters[k].boss) ? { id: mk.find((k) => D.monsters[k].boss), n: '' } : null,
       character: charRes,
+      monDef: mk.map((k) => ({ id: k, n: D.monsters[k].n, m: D.monsters[k] })).find((x) => x.m.def && D.items.some((i) => i.drops.some((d) => d.m === x.id)) && D.zones.some((z) => z.areas.some((a) => a.mons.some((m) => m.m === x.id)))),
+      charFull: D.chars.find((c) => c.apt.length && c.skills.some((s) => s.ev) && c.join && c.join.pop > 0 && c.join.turn > 0) || D.chars.find((c) => c.apt.length && c.skills.length && c.join && c.join.pop > 0),
       resFriend,
       resCond,
     };

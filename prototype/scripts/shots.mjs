@@ -5,6 +5,7 @@ import { launch, newPage, settle, audit, pick, root } from './lib.mjs';
 const widths = (process.argv[2] || '360,768,1280,1920').split(',').map(Number);
 const only = process.argv[3] ? process.argv[3].split(',') : null;
 const browser = await launch();
+fs.mkdirSync(`${root}/shots`, { recursive: true });
 if (!only) for (const f of fs.readdirSync(`${root}/shots`)) fs.unlinkSync(`${root}/shots/${f}`);
 let total = 0;
 
@@ -36,7 +37,9 @@ for (const w of widths) {
     ['area-bountiful', `#/areas/${P.bountiful.id}`],
     ['monsters', '#/monsters'],
     ['monster', `#/monsters/${P.monster.id}`],
+    ['monster-def', `#/monsters/${P.monDef.id}`],
     ['characters', '#/characters'],
+    ['character-full', `#/characters/${P.charFull.id}`],
     ['character', `#/characters/${P.character.id}`],
     ['research-friend', `#/research/${first.friendTree}/${P.resFriend.id}`],
     ['research-cond', `#/research/${first.condTree}/${P.resCond.id}`],

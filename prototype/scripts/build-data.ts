@@ -1,14 +1,18 @@
-// Builds proto/data.js (window.DATA = ...) and proto/img/icons/*.png from the game files.
+// Builds prototype/data.js (window.DATA = ...) and prototype/img/icons/*.png from the game files.
+// Usage: build-data.ts <extractedDir>
 import fs from 'node:fs';
 import path from 'node:path';
-import { IconKind } from 'file:///C:/Users/Kevin Liu/Documents/Projects/NelkeData/packages/extract/src/enums.ts';
-import { loadGame } from 'file:///C:/Users/Kevin Liu/Documents/Projects/NelkeData/packages/workbook/src/game.ts';
-import { characterIconOf } from 'file:///C:/Users/Kevin Liu/Documents/Projects/NelkeData/packages/workbook/src/characterColumns.ts';
-import { parseElements } from 'file:///C:/Users/Kevin Liu/Documents/Projects/NelkeData/packages/workbook/src/xml.ts';
-import { isEmptySlot } from 'file:///C:/Users/Kevin Liu/Documents/Projects/NelkeData/packages/workbook/src/recipes.ts';
+import { fileURLToPath } from 'node:url';
+import { IconKind } from '../../packages/extract/src/enums.ts';
+import { loadGame } from '../../packages/workbook/src/game.ts';
+import { ELEMENTS } from '../../packages/workbook/src/characters.ts';
+import { characterIconOf } from '../../packages/workbook/src/characterColumns.ts';
+import { parseElements } from '../../packages/workbook/src/xml.ts';
+import { isEmptySlot } from '../../packages/workbook/src/recipes.ts';
 
-const EXTRACTED = 'C:/Users/Kevin Liu/Documents/Projects/NelkeData/extracted';
-const OUT = 'C:/Users/KEVINL~1/AppData/Local/Temp/claude/c--Users-Kevin-Liu-Documents-Projects-NelkeData/08d1da3d-5b13-40ff-9319-79080bd05efb/scratchpad/proto';
+const EXTRACTED = process.argv[2] ?? '';
+if (!EXTRACTED) throw new Error('Usage: build-data.ts <extractedDir>');
+const OUT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const g = loadGame(EXTRACTED, 128);
 const { items, recipes, zones, characters, messages, icons } = g;
 const t = messages.t;
@@ -17,7 +21,8 @@ const charIcon = characterIconOf(g);
 
 // ---- characters (only the ones that the prototype shows) ----
 const charByBattle = new Map(characters.characters.map((c) => [c.BTL_CHARACTER_ID, c]));
-const monsterSet = new Map<string, { n: string; icon: string; boss: boolean; rank: number; desc: string }>();
+const monsterSet = new Map<string, { n: string; icon: string; boss: boolean; rank: number; desc: string; def: number[] | null }>();
+const ELEMENT_ORDER = ELEMENTS;
 const monsterKey = (c: (typeof characters.characters)[number]): string => {
   const k = c.CHARACTER_ID;
   const nm = characters.characterName.get(k) ?? '';
@@ -33,6 +38,11 @@ const monsterKey = (c: (typeof characters.characters)[number]): string => {
       boss: c.CHARACTER_CATEGORY_ID === '9',
       rank: Number(c.CHARACTER_RANK_ID),
       desc: t(c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID),
+      // The element DEF in the order Fire, Water, Wind, Earth (the Monsters sheet columns "<Element> DEF"); null for a monster with no battle data or only 0.
+      def: ((): number[] | null => {
+        const d = ELEMENT_ORDER.map((e) => characters.elementDef(c, e));
+        return d.every((v) => typeof v === 'number') && d.some((v) => v !== 0) ? (d as number[]) : null;
+      })(),
     });
   }
   return k;
@@ -53,7 +63,7 @@ for (const i of items.items) {
   const why = isPh(t(i.ITEM_NAME_LABEL_ID)) || isPh(messages.jp(i.ITEM_NAME_LABEL_ID)) ? 'placeholder name' : t(i.ITEM_DESCRIPTION_LABEL_ID).startsWith('*') ? 'placeholder description' : '';
   if (why) hiddenItems.set(i.ITEM_ID, `${t(i.ITEM_NAME_LABEL_ID)} (${why})`);
 }
-const filtered: Record<string, string[]> = { items: [...hiddenItems].map(([id, w]) => `${id}: ${w}`), recipes: [], research: [], monsters: [], areas: [] };
+const filtered: Record<string, string[]> = { characters: [], items: [...hiddenItems].map(([id, w]) => `${id}: ${w}`), recipes: [], research: [], monsters: [], areas: [] };
 
 // ---- items ----
 const shownItems = items.items.filter((i) => !hiddenItems.has(i.ITEM_ID));
@@ -175,7 +185,7 @@ const rareByZone = new Map<string, Rare[]>();
 
 // ---- zones, areas, spots ----
 const zoneOrder: string[] = [];
-const zoneMap = new Map<string, { id: string; n: string; task: number; diff: string[]; areas: { id: string; n: string; diff: string[]; gather: unknown[]; mons: unknown[] }[]; rare: Rare[] }>();
+const zoneMap = new Map<string, { id: string; n: string; task: number; taskName: string; diff: string[]; areas: { id: string; n: string; diff: string[]; gather: unknown[]; mons: unknown[] }[]; rare: Rare[] }>();
 // Spot types (EXPL_RESEARCH_NAME_0x6 "Bestial ..." and 0x7 "Bountiful ..."): a Bestial spot is the battle-only route and a Bountiful spot is the gather-only route.
 // RESEARCH_ROUTE_TUTORIAL_TEXT_001 / _002 (Japanese): the 6th route has battles and no gathering, the 7th route is where the area's main materials are gathered.
 const dropped = { bountifulMonsterRows: 0, bountifulSpots: 0, bestialGatherRows: 0, bestialSpots: 0 };
@@ -205,6 +215,7 @@ for (const s of zones.spots) {
       id: zid,
       n: s.area.name,
       task: s.area.task,
+      taskName: g.story.mainTask.get(s.area.task_id)?.name ?? '',
       diff: s.area.difficulties.map((d) => d.replace('EXPL_AREA_DIFFICULTY_', '')),
       areas: [],
       rare: rareByZone.get(zid) ?? [],
@@ -234,14 +245,12 @@ for (const s of zones.spots) {
     mons: [...mons.values()].map((m) => ({ m: m.m, lo: Math.min(...m.lv), hi: Math.max(...m.lv), req: m.req, boss: m.boss })),
   });
 }
-// expl_send_element.xml: the rating of a dispatched character by the elements that match the area (the mark, the number of matching elements, the gather and battle ratios).
-const dispatchLegend = readRows('expl_send/expl_send_element.xml').map((r) => ({ mark: r.rank_name, match: Number(r.prm), gather: Number(r.ratio_collect), battle: Number(r.ratio_battle) }));
 const zoneOut = zoneOrder.map((id) => {
   const z = zoneMap.get(id)!;
   const dr = dispatchRows.get(id);
   // expl_area.xml ele_00..03: flags of the 4 elements in the order Fire, Water, Wind, Earth (the order of the character element fields and of the item reduce fields).
   const ele = [0, 1, 2, 3].map((k) => Number(dr?.[`ele_0${k}`] ?? 0));
-  return { id, n: z.n, task: z.task, ele, rare: z.rare, areas: z.areas };
+  return { id, n: z.n, task: z.task, taskName: z.taskName, ele, rare: z.rare, areas: z.areas };
 });
 for (const z of zoneOut) for (const r of z.rare) for (const x of r.items) x.i = itemRef(x.i);
 for (const z of zoneOut) z.rare = z.rare.map((r) => ({ ...r, items: r.items.filter((x) => x.i) })).filter((r) => r.items.length);
@@ -311,7 +320,7 @@ for (const id of Object.keys(resTree)) {
     tree: resTree[id],
     n: t(r.STDY_RES_NAME_LABEL_ID) || id,
     unnamed: !t(r.STDY_RES_NAME_LABEL_ID),
-    who: [r.STDY_RES_CHARACTER_TAG_00, r.STDY_RES_CHARACTER_TAG_01].filter((x) => x && x !== 'CHARACTER_INVALID').map((x) => ({ n: charName(x) || x, icon: npcFace(x) })),
+    who: [r.STDY_RES_CHARACTER_TAG_00, r.STDY_RES_CHARACTER_TAG_01].filter((x) => x && x !== 'CHARACTER_INVALID').map((x) => ({ id: x, n: charName(x) || x, icon: npcFace(x) })),
     dur: Number(r.STDY_RES_DURATION),
     money: Number(r.STDY_RES_MONEY_NUM),
     mats: [0, 1, 2, 3].map((n) => ({ id: r[`STDY_RES_ITEM_NAME_0${n}`] ?? '', q: Number(r[`STDY_RES_ITEM_NUM_0${n}`] ?? 0) })).filter((m) => itemRef(m.id ?? '')),
@@ -319,7 +328,7 @@ for (const id of Object.keys(resTree)) {
     set: coll ? { n: t(collections.get(coll)?.RECIPE_COLLECTION_NAME_LABEL_ID ?? ''), recipes: setItemRecipes(coll) } : null,
     prizeItem: p && itemRef(p.STDY_PRIZE_ITEM_NAME_00 ?? '') ? { id: p.STDY_PRIZE_ITEM_NAME_00, q: Number(p.STDY_PRIZE_ITEM_NUM_00) } : null,
     bonus: bonusName[bonusItem ?? ''] ?? '',
-    // STDY_FRIEND_POINT: the game text MESSAGE_STUDY_FRIENDSHIP is "Researcher friendship level: Over N"; the Japanese text is the TOTAL friendship of the researchers, N or more.
+    // STDY_FRIEND_POINT: the game text MESSAGE_STUDY_FRIENDSHIP is "Researcher friendship level: Over N"; the Japanese text is the TOTAL friendship of the researchers, N or more. The site label is "Total friendship".
     friendNeed: Number(r.STDY_FRIEND_POINT),
     // stdy_conditions.xml: the district and the request conditions. STDY_COND_CHARACTER_TAG_* repeats the researchers of the research, so it is not shown again.
     conds: [
@@ -343,19 +352,53 @@ const collectIcons = (v: unknown): void => {
 };
 for (const c of characters.characters.filter(characters.isMonster)) monsterKey(c);
 const monstersOut = Object.fromEntries(monsterSet);
-const charsOut = characters.characters
-  .filter((c) => !characters.isMonster(c) && !isPh(charName(c.CHARACTER_ID)) && charIcon(c))
-  .map((c) => ({
+// Duplicate names (point 11). An entry such as CHARACTER_PAMELA_A4 has the name label of CHARACTER_PAMELA, no description (MESSAGE_COMMON_NOTHING),
+// no source game, no aptitudes and no join condition (CHARACTER_APP_CON_078 = EVENT_NONE). It is another picture of the same person
+// that only the visit events (visit/data_visit.xml) use. It has no field of its own to show, so it is not a character of the site.
+const nonMonsters = characters.characters.filter((c) => !characters.isMonster(c) && !isPh(charName(c.CHARACTER_ID)) && charIcon(c));
+const labelCount = new Map<string, number>();
+for (const c of nonMonsters) labelCount.set(c.CHARACTER_NAME_LABEL_ID, (labelCount.get(c.CHARACTER_NAME_LABEL_ID) ?? 0) + 1);
+const isPicture = (c: (typeof nonMonsters)[number]): boolean => (labelCount.get(c.CHARACTER_NAME_LABEL_ID) ?? 0) > 1 && c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID === 'MESSAGE_COMMON_NOTHING';
+for (const c of nonMonsters.filter(isPicture)) filtered.characters.push(`${c.CHARACTER_ID}: picture of ${charName(c.CHARACTER_ID)}`);
+const shownChars = nonMonsters.filter((c) => !isPicture(c));
+// A name that is still shared (CHARACTER_CHIM_MALE and CHARACTER_CHIM_FEMALE, 2 persons with their own description) gets the word of its id.
+const nameCount = new Map<string, number>();
+for (const c of shownChars) nameCount.set(charName(c.CHARACTER_ID), (nameCount.get(charName(c.CHARACTER_ID)) ?? 0) + 1);
+const sameNames: string[] = [];
+const kindOf = (id: string): string => (/_MALE$/.test(id) ? 'boy' : /_FEMALE$/.test(id) ? 'girl' : '');
+const charName2 = (c: (typeof nonMonsters)[number]): string => {
+  const n = charName(c.CHARACTER_ID);
+  if ((nameCount.get(n) ?? 0) < 2) return n;
+  sameNames.push(`${c.CHARACTER_ID}: ${kindOf(c.CHARACTER_ID) || '?'}`);
+  return kindOf(c.CHARACTER_ID) ? `${n} (${kindOf(c.CHARACTER_ID)})` : n;
+};
+const charsOut = shownChars.map((c) => {
+  const j = characters.joinConditionOf(c);
+  const event = j ? g.story.eventLabel(j.CHARACTER_APP_EVENT) : '';
+  const pop = Number(j?.CHARACTER_APP_POPULATION ?? 0);
+  const turn = Number(j?.CHARACTER_APP_CTURN ?? 0);
+  return {
     id: c.CHARACTER_ID,
-    n: charName(c.CHARACTER_ID),
+    n: charName2(c),
+    // The name of the game data: the recipe teachers of the item data are matched by it.
+    nr: charName(c.CHARACTER_ID),
     icon: charIcon(c),
     type: characters.typeOf(c),
     desc: t(c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID),
     game: characters.sourceGame(c),
-    apt: characters.aptitudesText(c),
+    apt: characters.aptitudesText(c) ? characters.aptitudesText(c).split(', ') : [],
+    // skillsText: "Name (Lv N)", and for the 5th skill "Name (EVENT_ID)": the skill that the character learns at an event.
+    skills: (characters.skillsText(c) ? characters.skillsText(c).split(', ') : []).map((s) => {
+      const m = /^(.*) \((?:Lv (\d+)|(EVENT_\w+))\)$/.exec(s);
+      return m ? { n: m[1], lv: m[2] ? Number(m[2]) : 0, ev: m[3] ?? '' } : { n: s, lv: 0, ev: '' };
+    }),
+    // character_app_con.xml. The event has no name in the data, so it shows as its id. The meaning of the join turn is not confirmed.
+    join: event || pop || turn ? { event, pop, turn } : null,
     friendMax: Number(c.CHARA_COMPANION_MAX),
-  }));
-const data = { items: itemOut, zones: zoneOut, monsters: monstersOut, chars: charsOut, research: researchOut, trees, dispatch: dispatchLegend };
+  };
+});
+console.log('SAME NAMES', JSON.stringify(sameNames));
+const data = { items: itemOut, zones: zoneOut, monsters: monstersOut, chars: charsOut, research: researchOut, trees };
 collectIcons(data);
 fs.mkdirSync(path.join(OUT, 'img', 'icons'), { recursive: true });
 for (const name of used) {
