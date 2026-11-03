@@ -16,10 +16,61 @@ The site uses the UI parts of the game where they make the data clear. The textu
 | Section title | The brown header bars |
 | Grid cell | The item icon with no extra frame, because the icons already have a margin. A plain highlight on hover and on focus. |
 | Friendship level | The heart icons of the game |
-| Filter | A plain toggle button with the game category icon or the shop name |
+| Filter | A plain toggle button with the game category icon or the shop icon, and the name |
 | Value, calculation | Plain text in a clear layout, for example a sum with its operators |
 
 The spacing follows 1 scale of 4 px steps. Each panel has the same gutter on all sides.
+
+## UI standard
+
+Each page follows these rules. The UI test checks each rule that a script can check. The orchestrator checks the screenshots against the other rules before the owner sees a page.
+
+### Values and units
+
+Each kind of value has 1 format on all pages.
+
+| Value | Format | Example |
+| --- | --- | --- |
+| Money (a price, a cost, a research fee) | The coin icon of the game, then the number. | 🪙 1,200 |
+| Synthesis cost | The synthesis cost icon of the game, then the number. | ⚗ 4 |
+| Rate | The number, then `%`. At most 1 decimal. | 12.5% |
+| Quantity of an item | The number, then 1 word that says the role of the item. | `3 needed` (a material), `2 per drop` (a drop), `1 given` (a reward) |
+| Research duration | The number, then `turns` (`turn` for 1). | 2 turns |
+| Level | `Lv`, then the number. | Lv 12 |
+| Friendship level | The heart icons of the game, then the number. | ♥ 5 |
+| Large number | A comma for each 3 digits. | 12,000 |
+
+A value never shows with no unit or no role word. A missing value does not show: the row or the line goes away. The page never shows a placeholder such as "0", "-" or "none" for a missing value.
+
+### Icons
+
+- Each entity mention has its game icon: an item, a monster, a character, a research, a shop.
+- A shop has the icon of its building. A category filter has the icon of the game category.
+- A unit with a game icon (money, synthesis cost, friendship) shows the icon each time.
+
+### Components
+
+- 1 tile component shows each entity on each page: the icon, the name under it, and at most 1 value line under the name. The tile has the same size in each grid of a page.
+- 1 section component: a header bar with the title, then the content. A section with no content does not show.
+- 1 stat component: a small label above a value with its unit.
+- The text of the page has 3 sizes only: the title, the body and the small label.
+
+### Content
+
+- Each section holds only facts of its title. "How to get" holds only the ways to get the item: gather, drop, farm. A shop is not a way to get an item in this sense: it shows as "Sold at", next to the price.
+- The page shows no text that tells the user how to use the page, for example "click a node" or "scroll sideways".
+- The page shows no count of the visible entities.
+- A fact shows 1 time on a page.
+- A fact of an area does not show on the page of an item, for example the condition that opens the area.
+
+### Self-review
+
+Before the owner sees a round, the orchestrator does these steps:
+
+1. Run the UI test. It must pass with no audit failure.
+2. Open each screenshot at 360, 768, 1280 and 1920 px.
+3. Check each screenshot against each rule of this section, and against the spacing and the alignment rules of "Visual style".
+4. Fix each failure, and do steps 1 to 3 again.
 
 ## Shared parts
 
@@ -54,12 +105,12 @@ The 5 categories, each with its game icon: Items, Research, Areas, Monsters and 
 
 ### Details
 
-Each detail is 1 game panel. The prototype composes each panel from the game parts, with the data that the requirements list for its category. A material is an icon slot with its quantity. An element is its icon with its value.
+Each detail is 1 game panel. The prototype composes each panel from the game parts, with the data that the requirements list for its category. A material is a tile with its quantity in the format of the UI standard. An element is its icon with its value.
 
 ### Research tree page
 
 - **Purpose:** Browse the research as the game shows it: a grid of nodes with lines from left to right.
-- **Blocks, in order:** Header. 1 tab for each of the 4 trees. Tree box.
+- **Blocks, in order:** Header. 1 tab for each of the 4 trees, with the name of the tree in the game. Tree box.
 - **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The lines between the nodes follow the link types of the game: horizontal, vertical, up and down. The box scrolls horizontally inside the page. The page itself does not scroll horizontally.
 - **Interactions:** A click on a node opens the research in the modal.
 - **States:** A node that the game has with no name shows its ID.
