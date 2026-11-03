@@ -677,6 +677,8 @@
     if (viewKey === b.key) return;
     viewKey = b.key;
     window.scrollTo(0, 0);
+    // The About page shows the notice in its section "Legal", so it has no footer.
+    document.querySelector('footer.foot').hidden = b.view === 'about';
     if (b.view === 'items') { readQs(b.qs || ''); itemsPage(); }
     else if (b.view === 'about') aboutPage();
     else if (b.view === 'areas') areasPage();

@@ -699,7 +699,11 @@ await closeEsc();
 const PAGES = ['#/items', '#/areas', '#/monsters', '#/characters', '#/research/main', '#/about'];
 await step('legal notice and About link in the footer of each page', async () => {
   const want = 'Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists.';
-  for (const h of PAGES) {
+  await go('#/about');
+  await page.waitForSelector('.about');
+  ok(!(await page.locator('footer.foot').isVisible()), 'no footer on #/about');
+  ok((await page.locator('body').innerText()).split(want).length - 1 === 1, 'the notice shows 1 time on #/about');
+  for (const h of PAGES.filter((p) => p !== '#/about')) {
     await go(h);
     await page.waitForTimeout(100);
     const f = page.locator('footer.foot');

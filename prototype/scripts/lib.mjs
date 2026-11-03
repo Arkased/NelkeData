@@ -277,10 +277,16 @@ export function auditFn() {
     if (!content) out.noContent.push(`title with no content after it: ${desc(e)}`);
   }
   // The legal notice shows on each page, below the content, centered, with the game title in italics.
+  // The About page has no footer: its section "Legal" shows the notice, so the notice shows 1 time.
   out.footer = [];
+  const NOTICE = 'Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists.';
   const ft = document.querySelector('footer.foot');
   const lg = ft && ft.querySelector('.legal');
-  if (!ft || !vis(ft) || !lg || !/^Unofficial fan site\. We claim no affiliation with Koei Tecmo\. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists\.$/.test(lg.textContent.trim())) out.footer.push('legal notice missing or changed');
+  if (location.hash === '#/about') {
+    if (ft && vis(ft)) out.footer.push('footer shows on the About page');
+    const n = document.body.innerText.split(NOTICE).length - 1;
+    if (n !== 1) out.footer.push(`legal notice shows ${n} times on the About page`);
+  } else if (!ft || !vis(ft) || !lg || lg.textContent.trim() !== NOTICE) out.footer.push('legal notice missing or changed');
   else if (!ft.querySelector('a[href="#/about"]')) out.footer.push('footer link to the About page missing');
   else if (getComputedStyle(ft).textAlign !== 'center' || ft.getBoundingClientRect().top < document.querySelector('#main').getBoundingClientRect().bottom - 1) out.footer.push('legal notice not centered below the content');
   // The title of a game is in italics everywhere it shows.
