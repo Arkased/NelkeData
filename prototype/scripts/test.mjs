@@ -646,6 +646,31 @@ await step('monsters that need an Investigation Lv', async () => {
 });
 await closeEsc();
 
+await step('research bonus: tile with quantity, friendship heart', async () => {
+  await go('#/research/' + (await page.evaluate(() => window.DATA.research.STDY_RES_132.tree)) + '/STDY_RES_132');
+  await page.waitForSelector('.modal');
+  const stone = page.locator('.modal a.mini', { hasText: 'Spirit Rock' });
+  ok((await stone.count()) === 1, 'Spirit Rock tile in the research');
+  ok((await stone.locator('.qty').innerText()) === '×100', 'Spirit Rock quantity ×100');
+  ok((await page.locator('.modal .gh b', { hasText: /^Bonus$/ }).count()) === 1, 'sub-title Bonus');
+  ok((await page.locator('.modal a.mini .qty', { hasText: '×10' }).count()) >= 1, 'prize item Alchemy Equipment ×10');
+  const d = await page.evaluate(() => Object.values(window.DATA.research).filter((r) => r.bonus).length);
+  ok(d === 21, `21 research of the site have a bonus (23 in the game, 2 are in no tree), got ${d}`);
+  const withTile = await page.evaluate(() => Object.values(window.DATA.research).filter((r) => r.bonus && r.bonus.item).length);
+  ok(withTile === 18, `18 bonuses have an item tile, got ${withTile}`);
+});
+await closeEsc();
+await step('legal notice in the footer of each page', async () => {
+  const want = 'Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists.';
+  for (const h of ['#/items', '#/areas', '#/monsters', '#/characters', '#/research/main']) {
+    await go(h);
+    await page.waitForTimeout(100);
+    const f = page.locator('footer.foot');
+    ok((await f.innerText()).trim() === want, `notice on ${h}`);
+    ok((await f.locator('cite.game-title').count()) === 1, `game title in cite on ${h}`);
+  }
+});
+
 // The test fails on any audit finding (the rules of the UI standard are part of the audit).
 if (auditTotal > 0) { fails++; console.log(`  FAIL ${auditTotal} audit findings`); }
 console.log(`\n[${width}] RESULT: ${fails} failures, ${auditTotal} audit findings`);

@@ -92,6 +92,7 @@ a.tl:hover { color: var(--warm); text-decoration-color: var(--warm); }
 .site-name { color: #ffe9b0; font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: 0.5px; text-shadow: 0 2px 0 #3b1e0c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .site-name small { font-weight: 600; font-size: 12px; opacity: 0.8; margin-left: var(--s2); }
 .game-title { font-style: italic; }
+.foot { text-align: center; font-size: 12px; line-height: 1.5; color: var(--ink-soft); padding: var(--g) 0; }
 .site-name .short { display: none; }
 .menu-btn { display: none; min-height: 28px; padding: 0 var(--s3); background: var(--brown-dark); border: 2px solid var(--gold); border-radius: 10px; color: #fff0c4; font-weight: 800; }
 .nav { display: flex; gap: var(--s2); justify-content: center; flex-wrap: wrap; margin-top: var(--s2); }
@@ -172,6 +173,7 @@ a.slot:focus-visible { box-shadow: 0 0 0 3px var(--warm); }
 .bar { --s: 0.373; display: flex; align-items: center; justify-content: center; height: calc(107 * var(--s) * 1px); padding-top: 4px; color: #ffeab4; font-weight: 800; font-size: 16px; line-height: 1.2; text-shadow: 0 1px 0 #3b1e0c; letter-spacing: 0.4px; }
 .grp { display: grid; gap: var(--s3); align-content: start; }
 .gh { display: grid; gap: var(--s1); }
+.gh:has(.fr) { display: flex; align-items: center; gap: var(--s2); }
 .gh b { font-size: 16px; font-weight: 900; line-height: 1.2; }
 .tbl { display: grid; gap: var(--s1); }
 .sets { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s4); align-items: flex-start; }
