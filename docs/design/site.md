@@ -10,7 +10,7 @@ The site has its own plain look in the colors of the game: cream, warm brown and
 
 | Site part | Look |
 | --- | --- |
-| Typeface | The system sans-serif font of the device (`system-ui, sans-serif`). The CSS has no `@font-face` and loads no font file, so no font of the game shows. |
+| Typeface | 2 open fonts (SIL Open Font License), not fonts of the game: Lora (a warm serif) for the titles and the entity names, and Source Sans 3 for all other text. The site serves the WOFF2 files itself (from the Fontsource packages `@fontsource/lora` and `@fontsource/source-sans-3`), with no font CDN. The CSS has no other `@font-face`. |
 | Page background | 1 flat warm color. No image. |
 | Header | A flat brown bar with the site name in cream text. No ornaments. |
 | Panel, modal | A cream box with a thin brown border and a small radius. No ornaments. |
