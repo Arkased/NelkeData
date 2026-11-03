@@ -52,6 +52,16 @@ export function auditFn() {
       const lines = Math.round(e.scrollHeight / parseFloat(cs.lineHeight));
       if (lines > 2) out.textOverflow.push(`name needs ${lines} lines (cut by ellipsis): ${desc(e)}`);
     }
+    // a tile name must not break inside a word (a literal hyphen or soft hyphen in the word allows the break)
+    if (e.matches('.mini .nm')) {
+      const tn = [...e.childNodes].find((n) => n.nodeType === 3);
+      if (tn) for (const m of tn.textContent.matchAll(/\S+/g)) {
+        if (/[-­‐]/.test(m[0])) continue;
+        const wr = document.createRange(); wr.setStart(tn, m.index); wr.setEnd(tn, m.index + m[0].length);
+        const tops = new Set([...wr.getClientRects()].map((q) => Math.round(q.top / 4)));
+        if (tops.size > 1) out.textOverflow.push(`name breaks inside the word "${m[0]}": ${desc(e)}`);
+      }
+    }
     // text touching the border of a control
     if (cs.borderTopWidth !== '0px' && cs.borderTopColor !== 'rgba(0, 0, 0, 0)' && [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) {
       const range = document.createRange(); range.selectNodeContents(e);
