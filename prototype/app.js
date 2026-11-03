@@ -1,7 +1,7 @@
-/* Prototype app, round 5: hash routing, 6 views (home, items, areas, monsters, characters, research) on the real data (window.DATA).
+/* Prototype app, round 6: hash routing, 5 views (items, areas, monsters, characters, research; the root shows items) on the real data (window.DATA).
    Recipes are part of the item (decision 0008): the item modal has the Synthesis section.
    An area is one spot of the game data: "Life Spring: Interior" is not part of "Life Spring".
-   Units, 1 format each: money = coin icon + number; synthesis cost = its icon + number; rate = N%; quantity = a "×N" badge on the item icon (N of 2 or more);
+   Units, 1 format each: money = coin icon + number; synthesis cost = its icon + number; rate = N%; quantity = a "×N" badge on the bottom right of the icon (N of 2 or more); rate and level = a badge on the bottom left of the icon;
    duration = "N turns"; level = "Lv N"; friendship = heart + number. */
 (() => {
   const D = window.DATA;
@@ -48,13 +48,6 @@
     { k: 'characters', label: 'Characters', href: '#/characters', face: FACE_CHAR },
     { k: 'research', label: 'Research', href: '#/research/main', cat: 10 },
   ];
-  const BLURB = {
-    items: 'Prices, recipes and where each item comes from.',
-    areas: 'The gather items, monsters and dispatch data of each area.',
-    monsters: 'Drops, and the areas where they live.',
-    characters: 'Alchemists, townsfolk and the research they do.',
-    research: 'The 4 research trees and what each research needs and gives.',
-  };
   /** The research trees. The names are the tab texts of the study screen (ui_en/20th_mix/uil_20th_study_1031.xml, text_on): Main, Attack, Town Building, Emergency. */
   const TREES = [
     { key: 'main', label: 'Main' },
@@ -72,33 +65,36 @@
   const GIMMICK_ORDER = ['BOX', 'BUG', 'DIG', 'FISH'];
   /** An internal id of the game files (EVENT_MM00_110): it never shows to the user. */
   const INTERNAL_ID = /\b[A-Z][A-Z0-9]+(_[A-Z0-9]+)+\b/;
-  const CHAR_TYPES = ['Main', 'Story', 'Alchemist', 'Townsfolk', 'Fairy'];
+  /** The groups of a character that the player can use to find it. The other game categories (Main, Story, Fairy) do not show. */
+  const CHAR_GROUPS = ['Alchemist', 'Townsfolk'];
+  const groupOf = (c) => (CHAR_GROUPS.includes(c.type) ? c.type : '');
+  const GAMES = [...new Set(D.chars.map((c) => c.game).filter(Boolean))];
 
   let base = null; // { view, key, hash, tree }
   let viewKey = '';
   let lastFocus = null;
-  const st = { cat: [], shop: [], craft: false, q: '', aq: '', mq: '', mk: '', cq: '', ck: [] };
+  const st = { cat: [], shop: [], craft: false, q: '', aq: '', mq: '', mk: '', cq: '', ck: [], cg: [] };
 
   // ---------- small parts ----------
-  const icon = (f) => `img/icons/${f}`;
+  const icon = (f) => (f.startsWith('img/') ? f : `img/icons/${f}`);
   const catImg = (n, cls = '') => `<img class="cat ${cls}" src="img/ui/cat-${n}.png" alt="">`;
   /** An item icon or a face, with no frame. href makes it a link; tip is the hover and screen reader name. */
   /** The face files have a transparent margin in a 128 px canvas: the monster portraits fill 76 px, the character faces 113 px. */
   const crop = (f) => (f && f.startsWith('monster_') ? 'm76' : f && f.startsWith('npc_') ? 'n113' : '');
   function slot(o) {
     const tag = o.href ? 'a' : 'span';
-    const tip = o.tip ? ` data-tip="${esc(o.tip)}" aria-label="${esc(o.tip)}"` : '';
-    return `<${tag} class="slot ${crop(o.icon)} ${o.cls || ''}"${o.href ? ` href="${o.href}"` : ''}${tip}>${o.icon ? `<img src="${icon(o.icon)}" alt="">` : ''}</${tag}>`;
+    return `<${tag} class="slot ${crop(o.icon)} ${o.cls || ''}"${o.href ? ` href="${o.href}"` : ''}>${o.icon ? `<img src="${icon(o.icon)}" alt="">` : ''}</${tag}>`;
   }
-  /** The tile of an entity, used everywhere: icon, name (at most 2 lines), then at most 1 value line (val) right under the name. It is 1 link when it has a page. */
+  /** The tile of an entity, used everywhere: the icon with its badges (o.qty bottom right, o.badge bottom left: a rate or a level), then the name (at most 2 lines). No value line, no tooltip. It is 1 link when it has a page. */
   function ent(o) {
     const tag = o.href ? 'a' : 'div';
-    const tip = o.name.length > 14 ? ` data-tip="${esc(o.name)}"` : '';
     const qty = o.qty >= 2 ? `<b class="qty">×${o.qty}</b>` : '';
-    return `<${tag} class="mini ${o.cls || ''}"${o.href ? ` href="${o.href}"` : ''}${tip}><span class="slot ${crop(o.icon)}">${o.icon ? `<img src="${icon(o.icon)}" alt="">` : ''}${qty}</span><span class="nm">${esc(o.name)}</span>${o.val ? `<small>${o.val}</small>` : ''}</${tag}>`;
+    const badge = o.badge ? `<b class="lbadge">${esc(o.badge)}</b>` : '';
+    return `<${tag} class="mini ${o.cls || ''}"${o.href ? ` href="${o.href}"` : ''}><span class="slot ${crop(o.icon)}">${o.icon ? `<img src="${icon(o.icon)}" alt="">` : ''}${badge}${qty}</span><span class="nm">${esc(o.name)}</span></${tag}>`;
   }
-  /** The icon of a research: the same as its node in the tree (the face of the first researcher, else the item that it gives). */
-  const resIcon = (n) => (n.who[0] ? n.who[0].icon : n.prizeItem ? IT.get(n.prizeItem.id).icon : '');
+  /** The icon of a research: the icon of its output (the data picks the first prize item, else the first item of the prize recipe set, else the bonus item). With no output it is the Research icon of the nav. */
+  const RES_NAV_ICON = 'img/ui/cat-10.png';
+  const resIcon = (n) => n.icon || RES_NAV_ICON;
   const resEnt = (id, o = {}) => {
     const n = RS[id];
     return ent({ href: `#/research/${n.tree}/${id}`, icon: resIcon(n), name: n.n, ...o });
@@ -120,11 +116,12 @@
   const money = (n, cls = '') => `<span class="money ${cls}">${coin}${fmt(n)}</span>`;
   const costU = (n, cls = '') => `<span class="cost ${cls}"><img class="ico" src="img/ui/cost.png" alt="Synthesis cost">${fmt(n)}</span>`;
   const pct = (n) => `<span class="rate">${fmt(n)}%</span>`;
+  const pctText = (n) => `${fmt(n)}%`;
   const turns = (n) => `${n} turn${n === 1 ? '' : 's'}`;
-  const lvRange = (lo, hi) => `Lv ${lo === hi ? lo : `${lo}-${hi}`}`;
-  /** Friendship as the game heart and a number. */
-  /** The tile options of a drop: the rate is the value line and the quantity is the badge on the icon. */
-  const dropOpts = (d) => ({ val: pct(d.rate), qty: d.num });
+  const lvRange = (lo, hi) => `Lv ${lo === hi ? lo : `${lo}–${hi}`}`;
+  /** The tile options of a drop: the quantity is the badge on the icon. Each drop rate is 100%, so the rate does not show. */
+  const dropOpts = (d) => ({ qty: d.num });
+  /** Friendship as the game heart icon (img/ui/fav-icon.png) and a number. */
   const heart = (n) => `<span class="fr" role="img" aria-label="Friendship ${n}"><img src="img/ui/fav-icon.png" alt=""><b>${n}</b></span>`;
   const shopChip = (key) => `<span class="shop"><img src="img/ui/${SHOP[key].img}.png" alt="">${SHOP[key].label}</span>`;
   /** A group of a modal: a title, then the content. No caption (the title says what it is). */
@@ -145,6 +142,41 @@
   };
   const wireFilters = () => $('#ftoggle').addEventListener('click', () => $('#ftoggle').setAttribute('aria-expanded', $('.toolbar').classList.toggle('fopen')));
   const tg = (attr, val, label, on, ic) => `<button class="toggle" ${attr}="${esc(val)}" aria-pressed="${on}">${ic || ''}<span>${esc(label)}</span></button>`;
+
+  /** A filter with more than this many values is 1 drop-down list with multiple choice. */
+  const DD_MIN = 8;
+  /** A multiple-choice drop-down: a button (with the count of the selected values) that opens a checklist panel. The values are checkboxes with attr=value. */
+  const dropdown = (attr, id, noun, values, selected) => `<div class="dd" data-dd="${id}"><button type="button" class="btn ddbtn" aria-expanded="false" aria-controls="dd-${id}" aria-haspopup="true"><span>${noun}</span><b class="badge"${selected.length ? '' : ' hidden'}>${selected.length}</b><i class="caret" aria-hidden="true"></i></button><div class="ddpanel" id="dd-${id}" role="group" aria-label="${noun}" hidden>${values.map((v) => `<label class="ddopt"><input type="checkbox" ${attr}="${esc(v)}"${selected.includes(v) ? ' checked' : ''}><span>${esc(v)}</span></label>`).join('')}</div></div>`;
+  /** The values of a filter: toggle buttons, or 1 drop-down when there are more than DD_MIN. */
+  const filterOpts = (attr, id, noun, values, selected) => (values.length > DD_MIN ? dropdown(attr, id, noun, values, selected) : values.map((t) => tg(attr, t, t, selected.includes(t))).join(''));
+  const setDropdownCount = (dd, n) => {
+    const b = dd.querySelector('.badge');
+    b.hidden = !n;
+    b.textContent = n;
+    const noun = dd.querySelector('.ddbtn span').textContent;
+    dd.querySelector('.ddbtn').setAttribute('aria-label', n ? `${noun}, ${n} selected` : noun);
+  };
+  /** Opens and closes the panels of the drop-downs inside rootEl. Esc or a click outside closes the open panel; Esc returns the focus to the button. */
+  function wireDropdowns(rootEl) {
+    const set = (dd, open, refocus) => {
+      const btn = dd.querySelector('.ddbtn');
+      dd.querySelector('.ddpanel').hidden = !open;
+      btn.setAttribute('aria-expanded', open);
+      if (!open && refocus) btn.focus();
+    };
+    rootEl.querySelectorAll('.dd').forEach((dd) => {
+      dd.querySelector('.ddbtn').addEventListener('click', () => {
+        const open = dd.querySelector('.ddpanel').hidden;
+        rootEl.querySelectorAll('.dd').forEach((o) => o !== dd && set(o, false));
+        set(dd, open);
+      });
+      dd.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !dd.querySelector('.ddpanel').hidden) { e.stopPropagation(); set(dd, false, true); }
+      });
+      dd.addEventListener('focusout', (e) => { if (e.relatedTarget && !dd.contains(e.relatedTarget)) set(dd, false); });
+    });
+    document.addEventListener('click', (e) => { if (rootEl.isConnected) rootEl.querySelectorAll('.dd').forEach((dd) => !dd.contains(e.target) && set(dd, false)); });
+  }
 
   // ---------- tooltip ----------
   const tip = $('#tip');
@@ -179,11 +211,6 @@
     const open = $('#nav').classList.toggle('open');
     $('#menu').setAttribute('aria-expanded', open);
   });
-
-  // ---------- home ----------
-  function homePage() {
-    $('#main').innerHTML = `<div class="home">${NAV.map((n) => `<a class="card bi p-gold" href="${n.href}"><span class="card-ic">${n.face ? slot({ icon: n.face }) : catImg(n.cat)}</span><span class="card-tx"><b>${n.label}</b><small>${BLURB[n.k]}</small></span></a>`).join('')}</div>`;
-  }
 
   // ---------- items page (filters live in the hash query) ----------
   const qsOf = () => {
@@ -294,25 +321,55 @@
     $('#q').addEventListener('input', (e) => { st.mq = e.target.value; draw(); });
     $('.toolbar').addEventListener('click', (e) => { const b = e.target.closest('[data-mk]'); if (b) { st.mk = b.dataset.mk; draw(); } });
   }
+  /** The characters page keeps its filters in the hash query: group, game, q. */
+  const charQs = () => {
+    const p = new URLSearchParams();
+    if (st.cg.length) p.set('group', st.cg.join(','));
+    if (st.ck.length) p.set('game', st.ck.join(','));
+    if (st.cq.trim()) p.set('q', st.cq.trim());
+    const q = p.toString();
+    return q ? `?${q}` : '';
+  };
+  const readCharQs = (qs) => {
+    const p = new URLSearchParams(qs);
+    st.cg = (p.get('group') || '').split(',').filter((c) => CHAR_GROUPS.includes(c));
+    st.ck = (p.get('game') || '').split(',').filter((c) => GAMES.includes(c));
+    st.cq = p.get('q') || '';
+  };
   function charactersPage() {
-    const types = CHAR_TYPES.filter((t) => D.chars.some((c) => c.type === t));
     $('#main').innerHTML = `
       <div class="toolbar">
         <div class="srow">${searchBox(st.cq, 'Search characters')}${filtersBtn()}</div>
-        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Type</span><div class="opts">${types.map((t) => tg('data-ck', t, t, st.ck.includes(t))).join('')}</div></div></div>
+        <div class="fpanel" id="fpanel"><div class="fgroup"><span class="cap">Group</span><div class="opts">${filterOpts('data-cg', 'group', 'Group', CHAR_GROUPS, st.cg)}</div></div>
+        <div class="fgroup"><span class="cap">Game</span><div class="opts">${filterOpts('data-ck', 'game', 'Game', GAMES, st.ck)}</div></div></div>
       </div>
       <div class="gridwrap bi u p-cream"><div class="grid" id="grid"></div></div>`;
     const draw = () => {
       const q = st.cq.trim().toLowerCase();
-      const list = D.chars.filter((c) => (!st.ck.length || st.ck.includes(c.type)) && (!q || c.n.toLowerCase().includes(q)));
-      $('#grid').innerHTML = list.length ? list.map((c) => ent({ href: `#/characters/${c.id}`, icon: c.icon, name: c.n, cls: 'cell' })).join('') : '<div class="empty">Nothing matches the filters.</div>';
-      document.querySelectorAll('.toolbar [data-ck]').forEach((b) => b.setAttribute('aria-pressed', st.ck.includes(b.dataset.ck)));
-      setFilterCount(st.ck.length);
+      const qs = charQs();
+      const list = D.chars.filter((c) => (!st.cg.length || st.cg.includes(groupOf(c))) && (!st.ck.length || st.ck.includes(c.game)) && (!q || c.n.toLowerCase().includes(q)));
+      $('#grid').innerHTML = list.length ? list.map((c) => ent({ href: `#/characters/${c.id}${qs}`, icon: c.icon, name: c.n, cls: 'cell' })).join('') : '<div class="empty">Nothing matches the filters.</div>';
+      document.querySelectorAll('.toolbar .toggle[data-ck]').forEach((b) => b.setAttribute('aria-pressed', st.ck.includes(b.dataset.ck)));
+      document.querySelectorAll('.toolbar .toggle[data-cg]').forEach((b) => b.setAttribute('aria-pressed', st.cg.includes(b.dataset.cg)));
+      document.querySelectorAll('.toolbar input[data-ck]').forEach((b) => { b.checked = st.ck.includes(b.dataset.ck); });
+      document.querySelectorAll('.toolbar input[data-cg]').forEach((b) => { b.checked = st.cg.includes(b.dataset.cg); });
+      document.querySelectorAll('.toolbar .dd').forEach((dd) => setDropdownCount(dd, (dd.dataset.dd === 'game' ? st.ck : st.cg).length));
+      setFilterCount(st.ck.length + st.cg.length);
+      base = { ...base, hash: `#/characters${qs}`, key: `characters${qs}` };
+      viewKey = base.key;
+      history.replaceState(null, '', base.hash);
     };
     draw();
     wireFilters();
+    wireDropdowns($('.toolbar'));
     $('#q').addEventListener('input', (e) => { st.cq = e.target.value; draw(); });
-    $('.toolbar').addEventListener('click', (e) => { const b = e.target.closest('[data-ck]'); if (b) { st.ck = st.ck.includes(b.dataset.ck) ? st.ck.filter((x) => x !== b.dataset.ck) : [...st.ck, b.dataset.ck]; draw(); } });
+    $('.toolbar').addEventListener('click', (e) => {
+      const b = e.target.closest('[data-ck], [data-cg]');
+      if (!b) return;
+      const [k, v] = b.dataset.ck ? ['ck', b.dataset.ck] : ['cg', b.dataset.cg];
+      st[k] = st[k].includes(v) ? st[k].filter((x) => x !== v) : [...st[k], v];
+      draw();
+    });
   }
 
   // ---------- research tree ----------
@@ -423,7 +480,7 @@
     const ul = (c, body) => `<div class="ul">${cap(c)}${body}</div>`;
     if (u) {
       if (u.set && u.set !== it.n) bits.push(ul('Recipe set', `<span class="uv">${esc(u.set)}</span>`));
-      if (u.teacher) bits.push(ul('Taught by', `<span class="uv">${slot({ icon: u.tIcon, tip: u.teacher })}<span>${esc(u.teacher)}</span>${u.friendship > 0 ? heart(u.friendship) : ''}</span>`));
+      if (u.teacher) bits.push(ul('Taught by', `<span class="uv">${slot({ icon: u.tIcon })}<span>${esc(u.teacher)}</span>${u.friendship > 0 ? heart(u.friendship) : ''}</span>`));
       if (s.researchId) bits.push(ul(`Research${u.researcher ? ` (${u.researcher})` : ''}`, `<span class="uv">${icoLink(`#/research/${RS[s.researchId].tree}/${s.researchId}`, resIcon(RS[s.researchId]), u.research || RS[s.researchId].n)}</span>`));
       else if (u.research) bits.push(ul('Research', `<span class="uv">${esc(u.research)}</span>`));
       // An event with no name in the game files is an internal id: it shows as "An event", never as the id.
@@ -433,18 +490,19 @@
     return h;
   }
 
-  /** The rare finds of a zone, 1 group for each gimmick type. */
+  /** The rare finds of a zone, 1 group for each gimmick type, in the order Treasure, Bug Net, Digging, Fishing. They are 1 row of columns on the area and the zone detail. */
   function rareGroups(z) {
     return GIMMICK_ORDER.map((t) => {
       const tables = z.rare.filter((r) => r.t === t);
       if (!tables.length) return '';
       const g = GIMMICK[t];
-      const body = tables.map((tb) => `<div class="tbl">${tables.length > 1 ? cap(`${g.unit} ${tb.n}`) : ''}<div class="minis">${tb.items.map((x) => itemEnt(x.i, { val: pct(x.r) })).join('')}</div></div>`).join('');
+      const body = tables.map((tb) => `<div class="tbl">${tables.length > 1 ? cap(`${g.unit} ${tb.n}`) : ''}<div class="minis">${tb.items.map((x) => itemEnt(x.i, { badge: pctText(x.r) })).join('')}</div></div>`).join('');
       return col(grp(g.label, body));
-    }).join('');  }
+    }).join('');
+  }
 
   /** An element: its game icon, then the text (the element name, or a value). The icon files are the element items of the game. */
-  const elChip = (k, val = '') => `<span class="el" data-tip="${ELEMENT_NAMES[k]}"><img src="${IT.has(ELEMENT_IDS[k]) ? icon(IT.get(ELEMENT_IDS[k]).icon) : ''}" alt="${ELEMENT_NAMES[k]}"><b>${val || ELEMENT_NAMES[k]}</b></span>`;
+  const elChip = (k, val = '') => `<span class="el"${val ? ` data-tip="${ELEMENT_NAMES[k]}"` : ''}><img src="${IT.has(ELEMENT_IDS[k]) ? icon(IT.get(ELEMENT_IDS[k]).icon) : ''}" alt="${ELEMENT_NAMES[k]}"><b>${val || ELEMENT_NAMES[k]}</b></span>`;
   /** A stat: a label above a value. */
   const statBox = (label, v) => `<div class="stat">${cap(label)}${v}</div>`;
 
@@ -458,7 +516,7 @@
   }
 
   /** 1 panel for the related parts of a detail: the head line, then the columns (the parts side by side when there is room). */
-  const panel = (headBits, ...sections) => `<div class="panel"><div class="crumb left panel-head">${headBits.filter(Boolean).join('')}</div>${sections.filter(Boolean).map((x) => `<div class="panel-cols${x.flow ? ' flow' : ''}">${x.flow ? x.h : x}</div>`).join('')}</div>`;
+  const panel = (headBits, ...sections) => `<div class="panel"><div class="crumb left panel-head">${headBits.filter(Boolean).join('')}</div>${sections.filter(Boolean).map((x) => `<div class="panel-cols${x.row ? ' gathers' : ''}">${x.row ? x.h : x}</div>`).join('')}</div>`;
   const col = (...parts) => (parts.some(Boolean) ? `<div class="col">${parts.filter(Boolean).join('')}</div>` : '');
 
   function itemModal(id) {
@@ -506,29 +564,31 @@
   function areaModal(id) {
     const a = AREA.get(id);
     if (a) {
-      const mon = (m) => monEnt(m.m, { val: lvRange(m.lo, m.hi) });
-      const gather = a.gather.length ? grp('Gather', `<div class="minis">${a.gather.map((g) => itemEnt(g.i, { val: pct(g.r) })).join('')}</div>`) : '';
-      // The tile has 1 value line (the level), so the monsters that only show from an area level are their own group.
+      // 1 tile for each monster; its badge is the level range of the area (Lv 3–8) or the one level (Lv 5).
+      const mon = (m) => monEnt(m.m, { badge: lvRange(m.lo, m.hi) });
+      const gather = a.gather.length ? grp('Gather', `<div class="minis">${a.gather.map((g) => itemEnt(g.i, { badge: pctText(g.r) })).join('')}</div>`) : '';
+      // The monsters that only show from an Investigation Lv are their own group.
       let mons = '';
       for (const [boss, title] of [[false, 'Monsters'], [true, 'Bosses']]) {
         const reqs = [...new Set(a.mons.filter((m) => !!m.boss === boss).map((m) => m.req || 0))].sort((x, y) => x - y);
         for (const req of reqs) {
           const list = a.mons.filter((m) => !!m.boss === boss && (m.req || 0) === req);
-          mons += grp(req ? `${title} from area level ${req}` : title, `<div class="minis${boss ? ' boss' : ''}">${list.map(mon).join('')}</div>`);
+          mons += grp(req ? `${title} from Investigation Lv ${req}` : title, `<div class="minis${boss ? ' boss' : ''}">${list.map(mon).join('')}</div>`);
         }
       }
-      const diff = statBox('Difficulty by area level', `<div class="diffs">${a.diff.map((d, i) => `<div class="diff"><b>${d}</b><span>${i + 1}</span></div>`).join('')}</div>`);
+      const diff = statBox('Difficulty by Investigation Lv', `<div class="diffs">${a.diff.map((d, i) => `<div class="diff"><b>${d}</b><span>${i + 1}</span></div>`).join('')}</div>`);
       return head(a.n) + panel(
         [statBox('Zone', `<a class="tl" href="#/areas/${a.zone.id}">${esc(a.zone.n)}</a>`), statBox('Opens', `<span>${esc(opens(a.zone))}</span>`), diff, elementStat(a.zone)],
         col(gather) + col(mons),
-        rareGroups(a.zone) && { h: rareGroups(a.zone), flow: true },
+        rareGroups(a.zone) && { h: rareGroups(a.zone), row: true },
       );
     }
     const z = ZONE.get(id);
     if (!z) return null;
     return head(z.n) + panel(
       [statBox('Opens', `<span>${esc(opens(z))}</span>`), elementStat(z)],
-      { h: col(grp('Areas', `<div class="cols">${z.areas.map((x) => `<a class="link" href="#/areas/${x.id}"><span class="lt"><b>${esc(x.n)}</b></span></a>`).join('')}</div>`)) + rareGroups(z), flow: true },
+      col(grp('Areas', `<div class="cols">${z.areas.map((x) => `<a class="link" href="#/areas/${x.id}"><span class="lt"><b>${esc(x.n)}</b></span></a>`).join('')}</div>`)),
+      rareGroups(z) && { h: rareGroups(z), row: true },
     );
   }
 
@@ -553,7 +613,7 @@
     const c = D.chars.find((x) => x.id === id);
     if (!c) return null;
     let h = head(c.n);
-    h += `<div class="top">${slot({ icon: c.icon })}<div class="facts"><span class="catline">${esc(c.type)}</span>${c.game ? `<span class="catline">${esc(c.game)}</span>` : ''}</div></div>`;
+    h += `<div class="top">${slot({ icon: c.icon })}<div class="facts">${groupOf(c) ? `<span class="catline">${groupOf(c)}</span>` : ''}${c.game ? `<span class="catline">${esc(c.game)}</span>` : ''}</div></div>`;
     if (c.desc) h += `<p class="desc">${esc(c.desc)}</p>`;
     if (c.apt.length) h += bar('Aptitudes') + `<div class="chips">${c.apt.map((a) => `<span class="chip">${esc(a)}</span>`).join('')}</div>`;
     if (c.skills.length) {
@@ -573,10 +633,10 @@
         h += bar('Joins the town') + `<div class="jn">${j.story ? '<span class="uv">Joins in a story event</span>' : ''}${stats.length ? `<div class="crumb left">${stats.join('')}</div>` : ''}${withIds.length ? grp('Joins with', `<div class="minis">${withIds.map((x) => charEnt(x)).join('')}</div>`) : ''}</div>`;
       }
     }
-    // The game has no icon for a research (the tree cells show state icons only), so a research is a card with its name and its tree.
+    // A research shows the icon of its output, as in the tree.
     const rs = Object.values(RS).filter((r) => r.who.some((w) => w.id === c.id));
     if (rs.length) {
-      h += bar('Research') + `<div class="cols">${rs.map((r) => `<a class="link rcard" href="#/research/${r.tree}/${r.id}"><span class="lt"><b>${esc(r.n)}</b><small>${esc(TREES.find((t) => t.key === r.tree).label)}</small></span></a>`).join('')}</div>`;
+      h += bar('Research') + `<div class="minis">${rs.map((r) => resEnt(r.id)).join('')}</div>`;
     }
     // The recipe sets that the character teaches, with the items that their recipes make: 1 section, 1 label for each set.
     const taught = D.items.filter((i) => i.syn && i.syn.unlock && i.syn.unlock.teacher === c.nr);
@@ -600,7 +660,7 @@
     if (n.money > 0) stats.push(`<div class="stat">${cap('Research fee')}<b>${money(n.money)}</b></div>`);
     const person = (w) => {
       const c = D.chars.find((x) => x.id === w.id);
-      return `<${c ? 'a' : 'div'} class="person"${c ? ` href="#/characters/${c.id}"` : ''}>${slot({ icon: w.icon, tip: w.n })}<span>${esc(w.n)}</span></${c ? 'a' : 'div'}>`;
+      return `<${c ? 'a' : 'div'} class="person"${c ? ` href="#/characters/${c.id}"` : ''}>${slot({ icon: w.icon })}<span>${esc(w.n)}</span></${c ? 'a' : 'div'}>`;
     };
     h += `<div class="who">${n.who.map(person).join('')}${stats.length ? `<div class="stats">${stats.join('')}</div>` : ''}</div>`;
     if (n.mats.length) h += bar('Materials') + `<div class="minis">${n.mats.map((m) => itemEnt(m.id, { qty: m.q })).join('')}</div>`;
@@ -645,24 +705,22 @@
   function parse() {
     const [path, qs = ''] = location.hash.replace(/^#\/?/, '').split('?');
     const parts = path.split('/').filter(Boolean);
-    const view = NAV.some((n) => n.k === parts[0]) ? parts[0] : 'home';
-    if (view === 'home') return { view, key: 'home', hash: '#/home' };
+    const view = NAV.some((n) => n.k === parts[0]) ? parts[0] : 'items';
     if (view === 'research') {
       const tree = D.trees[parts[1]] ? parts[1] : 'main';
       const id = parts[1] && !D.trees[parts[1]] ? null : parts[2];
       return { view, tree, id, key: `research/${tree}`, hash: `#/research/${tree}` };
     }
-    return { view, id: parts[1], qs, key: view === 'items' ? `items${qs ? `?${qs}` : ''}` : view, hash: view === 'items' ? `#/items${qs ? `?${qs}` : ''}` : `#/${view}` };
+    return { view, id: parts[1], qs, key: view === 'items' || view === 'characters' ? `${view}${qs ? `?${qs}` : ''}` : view, hash: view === 'items' || view === 'characters' ? `#/${view}${qs ? `?${qs}` : ''}` : `#/${view}` };
   }
   function renderBase(b) {
     if (viewKey === b.key) return;
     viewKey = b.key;
     window.scrollTo(0, 0);
-    if (b.view === 'home') homePage();
-    else if (b.view === 'items') { readQs(b.qs || ''); itemsPage(); }
+    if (b.view === 'items') { readQs(b.qs || ''); itemsPage(); }
     else if (b.view === 'areas') areasPage();
     else if (b.view === 'monsters') monstersPage();
-    else if (b.view === 'characters') charactersPage();
+    else if (b.view === 'characters') { readCharQs(b.qs || ''); charactersPage(); }
     else researchPage(b.tree);
   }
   function route() {
@@ -678,7 +736,7 @@
     } else {
       closeModal(false);
       // The page already shows this hash after a filter change, so it keeps its state.
-      if (!(base && viewKey === p.key && p.view === 'items' && base.hash === p.hash)) base = p;
+      if (!(base && viewKey === p.key && (p.view === 'items' || p.view === 'characters') && base.hash === p.hash)) base = p;
       renderBase(base);
       renderNav();
     }

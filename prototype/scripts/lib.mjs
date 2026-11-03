@@ -111,7 +111,7 @@ export function auditFn() {
     if (BANNED.test(s)) out.banned.push(`"${s.slice(0, 40)}" in ${desc(el)}`);
     if (ID_RE.test(s)) out.ids.push(`internal id "${s.slice(0, 40)}" in ${desc(el)}`);
     // every % is a rate with the format N%
-    if (/\d%/.test(s) && !el.closest('.rate, .name, .node, .link, .lt, .desc, .person')) out.units.push(`% outside .rate: "${s.slice(0, 40)}"`);
+    if (/\d%/.test(s) && !el.closest('.rate, .lbadge, .name, .node, .link, .lt, .desc, .person')) out.units.push(`% outside .rate: "${s.slice(0, 40)}"`);
   }
   // 2. money and synthesis cost have their icon, the numbers of the stat lines are a unit
   for (const e of document.querySelectorAll('.money')) {
@@ -127,10 +127,22 @@ export function auditFn() {
   for (const e of document.querySelectorAll('.fr')) if (!e.querySelector('img[src$="fav-icon.png"]') || !/^\d+$/.test(e.textContent.trim())) out.units.push(`friendship without heart or number: ${desc(e)}`);
   // 3. unit formats
   for (const e of document.querySelectorAll('.rate')) if (!/^\d+(\.\d)?%$/.test(e.textContent.trim())) out.units.push(`rate format: "${e.textContent.trim()}"`);
-  for (const e of document.querySelectorAll('.mini small')) {
-    if (e.querySelector('.rate')) continue;
-    const s = e.textContent.trim();
-    if (!/^Lv \d+(-\d+)?$/.test(s)) out.units.push(`tile value format: "${s}" in ${desc(e.parentElement)}`);
+  // A tile has no value line. A rate or a level is a badge on the bottom left corner of the icon: "25%" or "Lv 34".
+  for (const e of document.querySelectorAll('.mini small')) out.tiles.push(`tile with a value line: "${e.textContent.trim()}" in ${desc(e.parentElement)}`);
+  for (const e of document.querySelectorAll('.lbadge')) {
+    const t = e.textContent.trim();
+    if (!/^(\d+(\.\d)?%|Lv \d+(–\d+)?)$/.test(t)) out.units.push(`left badge format: "${t}"`);
+    const sl = e.parentElement.getBoundingClientRect(), b = e.getBoundingClientRect();
+    if (!e.parentElement.matches('.slot') || b.left < sl.left - 1 || b.bottom > sl.bottom + 1 || b.left - sl.left > 8 || sl.bottom - b.bottom > 8) out.units.push(`left badge is not on the bottom left corner of the icon: "${t}"`);
+  }
+  // No 2 tiles of 1 section link to the same entity (a monster with several levels in an area is 1 tile with a level range).
+  for (const sec of document.querySelectorAll('.minis, .grid, .row')) {
+    const seen = new Set();
+    for (const a of sec.querySelectorAll(':scope > a.mini')) {
+      const h = (a.getAttribute('href') || '').split('?')[0];
+      if (seen.has(h)) out.tiles.push(`2 tiles of 1 section link to the same entity: ${h}`);
+      seen.add(h);
+    }
   }
   // The quantity of an item is a badge "×N" (N of 2 or more) on the bottom right corner of the item icon.
   for (const e of document.querySelectorAll('.qty')) {
@@ -149,11 +161,42 @@ export function auditFn() {
       if (tops.length && Math.max(...tops) - Math.min(...tops) > 4) out.rows.push(`header row is not 1 row: tops ${tops.map(Math.round).join(',')}`);
     }
   }
-  // A tile has at most 1 value line, and the line does not wrap.
-  for (const e of document.querySelectorAll('.mini')) {
-    const smalls = e.querySelectorAll('small');
-    if (smalls.length > 1) out.tiles.push(`tile with ${smalls.length} value lines: ${desc(e)}`);
-    for (const sm of smalls) if (sm.getBoundingClientRect().height > parseFloat(getComputedStyle(sm).lineHeight) * 1.5) out.tiles.push(`tile value wraps: "${sm.textContent.trim()}"`);
+  // Round 6: no emoji or heart glyph in the page text (the friendship level is the heart icon of the game).
+  out.emoji = [];
+  const GLYPH = /[\u2764\u2665\u2661\u{1F300}-\u{1FAFF}]/u;
+  const w2 = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let n = w2.nextNode(); n; n = w2.nextNode()) {
+    const el = n.parentElement;
+    if (!el || ['SCRIPT', 'STYLE'].includes(el.tagName) || !vis(el)) continue;
+    if (GLYPH.test(n.textContent)) out.emoji.push(`glyph "${n.textContent.trim().slice(0, 30)}" in ${desc(el)}`);
+  }
+  // Round 6: no tooltip (data-tip or title) whose text is already visible in the element or, for an icon, next to it.
+  out.tooltips = [];
+  for (const e of document.querySelectorAll('[data-tip], [title]')) {
+    if (!vis(e)) continue;
+    const tipText = (e.getAttribute('data-tip') || e.getAttribute('title') || '').trim().toLowerCase();
+    const near = ((e.textContent || '') + ' ' + (e.parentElement?.textContent || '')).toLowerCase();
+    if (tipText && near.includes(tipText)) out.tooltips.push(`tooltip repeats visible text "${tipText}": ${desc(e)}`);
+  }
+  // Round 6: the text in the header bar, the section bars and the name plates has the same space above and below it (within 2 px), measured on the visible part of the texture, and it does not touch the ornaments.
+  // The visible part of bar-brown.png is rows 22..97 of 107, of plate-gold.png rows 5..130 of 142.
+  out.titles = [];
+  for (const e of document.querySelectorAll('.hdr-bar, .bar, .zone-head, .name, a.area')) {
+    if (!vis(e)) continue;
+    const gold = e.matches('.name, a.area');
+    const [top, bot, full] = gold ? [5, 130, 142] : [22, 97, 107];
+    const r = e.getBoundingClientRect();
+    const sc = parseFloat(getComputedStyle(e).getPropertyValue('--s'));
+    const range = document.createRange();
+    range.selectNodeContents(e.matches('.hdr-bar') ? e.querySelector('.site-name') : e);
+    const t = range.getBoundingClientRect();
+    if (!t.height) continue;
+    // the top and the bottom of the texture are drawn at the edges of the border box
+    const above = t.top - (r.top + top * sc), below = r.bottom - (full - bot) * sc - t.bottom;
+    if (Math.abs(above - below) > 2) out.titles.push(`text space above ${above.toFixed(1)} / below ${below.toFixed(1)}: ${desc(e)}`);
+    if (above < 2 || below < 2) out.titles.push(`text too close to the edge of the bar (${above.toFixed(1)} / ${below.toFixed(1)}): ${desc(e)}`);
+    const orn = (gold ? 90 : 80) * sc;
+    if (t.left < r.left + orn - 1 || t.right > r.right - orn + 1) out.titles.push(`text touches the ornaments: ${desc(e)}`);
   }
   // 4. every entity link and tile has an image that loaded
   for (const e of document.querySelectorAll('.mini, a.slot, .node, .el, .shop, .person, .card')) {

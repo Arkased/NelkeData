@@ -52,15 +52,13 @@ async function openFilters() {
   if ((await page.locator('#ftoggle').getAttribute('aria-expanded')) !== 'true') await page.locator('#ftoggle').click();
 }
 
-await step('home', async () => {
-  await go('#/home');
-  await page.waitForSelector('.home .card');
-  ok((await page.locator('.home .card').count()) === 5, '5 category cards');
+await step('root URL shows the Items page, no landing page', async () => {
+  await page.goto(url);
+  await page.waitForSelector('#grid .cell');
+  ok((await page.locator('.home').count()) === 0, 'no home page');
+  ok((await page.locator('#nav a[aria-current="page"]').allInnerTexts()).join() === 'Items', 'the Items nav button is active');
+  ok((await page.locator('#grid .cell').count()) > 100 && (await hash()) === '#/items', `items grid at the root, hash ${await hash()}`);
   ok((await page.locator('.nav img').count()) === 5, 'nav has 5 icons');
-  const cards = await page.evaluate(() => [...document.querySelectorAll('.home .card')].map((c) => { const r = c.getBoundingClientRect(); const ic = c.querySelector('.card-ic').getBoundingClientRect(); const tx = c.querySelector('.card-tx b').getBoundingClientRect(); return { w: r.width, h: r.height, ic: ic.top - r.top + ic.height / 2 - r.height / 2, tx: tx.top - r.top }; }));
-  const spread = (k) => Math.max(...cards.map((c) => c[k])) - Math.min(...cards.map((c) => c[k]));
-  ok(spread('w') < 1 && spread('h') < 1, `5 cards have the same size (${cards[0].w.toFixed(0)} x ${cards[0].h.toFixed(0)})`);
-  ok(spread('ic') < 1 && spread('tx') < 1, 'icon and title are at the same place in each card');
 });
 
 await step('background covers the full page height', async () => {
@@ -169,7 +167,7 @@ for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'mo
       ok(await page.evaluate(() => { const rs = {}; document.querySelectorAll('.modal .syn-stats .val').forEach((e) => { const t = Math.round(e.getBoundingClientRect().top / 2); const k = Math.round(e.closest('.stat').getBoundingClientRect().top / 2); (rs[k] ||= new Set()).add(t); }); return Object.values(rs).every((v) => v.size === 1); }), 'the stat values of a row share 1 baseline');
     }
     if (k === 'craftNoPrice') ok(!/Selling price/i.test(synT) && /Material cost/i.test(synT), 'no selling price: only the material cost row shows');
-    if (k === 'drop') ok((await page.locator('.modal .mini small').allInnerTexts()).every((s) => /^\d+(\.\d)?%$/.test(s)), 'drop tiles have 1 value line "N%"');
+    if (k === 'drop') ok((await page.locator('.modal .mini .lbadge').count()) === 0 && (await page.locator('.modal .mini small').count()) === 0, 'drop tiles show no rate (each drop rate is 100%)');
     if (k === 'rare') ok(/(Treasure|Bug Net|Digging|Fishing)/.test(t), 'rare group');
     if (k === 'craftPriced') ok((await page.locator('.modal .syn img[src$="cost.png"]').count()) >= 2 && (await page.locator('.modal .syn .money img[src$="coin.png"]').count()) >= 3, 'synthesis cost and money have their icons');
     ok((await page.locator('.modal .top').innerText()).match(/Reduces into|Material|Merchandise|Battle|Construction/) !== null, 'top has category');
@@ -334,16 +332,60 @@ await step('characters page and modal', async () => {
   await page.waitForSelector('#grid .cell');
   const n = await page.locator('#grid .cell').count();
   await openFilters();
-  await page.locator('[data-ck=Alchemist]').click();
+  await page.locator('[data-cg=Alchemist]').click();
   const na = await page.locator('#grid .cell').count();
-  ok(na > 0 && na < n, `type filter: ${na} of ${n}`);
-  await page.locator('[data-ck=Alchemist]').click();
+  ok(na === 22, `Alchemist filter: ${na} of ${n}`);
+  await page.locator('[data-cg=Alchemist]').click();
+  await page.locator('[data-cg=Townsfolk]').click();
+  ok((await page.locator('#grid .cell').count()) === 104, 'Townsfolk filter: 104');
+  await page.locator('[data-cg=Townsfolk]').click();
+  // A filter with more than 8 values is 1 multiple-choice drop-down.
+  const games = await page.evaluate(() => new Set(window.DATA.chars.map((c) => c.game).filter(Boolean)).size);
+  ok(games > 8 && (await page.locator('.toolbar .dd').count()) === 1 && (await page.locator('.toolbar button[data-ck]').count()) === 0, `${games} games are 1 drop-down, not buttons`);
+  const btn = page.locator('.ddbtn');
+  ok((await btn.getAttribute('aria-expanded')) === 'false' && (await page.locator('.ddpanel').isHidden()), 'drop-down is closed at first');
+  await btn.click();
+  ok((await btn.getAttribute('aria-expanded')) === 'true' && (await page.locator('.ddpanel').isVisible()), 'drop-down opens');
+  await page.locator('.ddpanel input').first().check();
+  await page.locator('.ddpanel input').nth(1).check();
+  const ng = await page.locator('#grid .cell').count();
+  ok(ng > 0 && ng < n, `2 games selected: ${ng} of ${n}`);
+  ok((await btn.locator('.badge').innerText()) === '2', 'the button shows the count 2');
+  ok(/[?&]game=[^&]+(%2C|,)[^&]+/.test(await hash()), `selection in the URL: ${await hash()}`);
+  ok(await page.evaluate(() => { const p = document.querySelector('.ddpanel').getBoundingClientRect(); return p.left >= 0 && p.right <= innerWidth + 1 && document.documentElement.scrollWidth <= innerWidth + 1; }), 'open panel fits the viewport width');
+  await page.keyboard.press('Escape');
+  ok((await page.locator('.ddpanel').isHidden()) && (await btn.getAttribute('aria-expanded')) === 'false', 'Esc closes the drop-down');
+  ok(await page.evaluate(() => document.activeElement === document.querySelector('.ddbtn')), 'focus returns to the button');
+  await page.keyboard.press('Enter');
+  ok((await btn.getAttribute('aria-expanded')) === 'true', 'Enter opens the drop-down');
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Space');
+  ok((await btn.locator('.badge').innerText()) === '1', 'Space on the focused option toggles it');
+  await page.keyboard.press('Escape');
+  const withGame = await hash();
+  await go(withGame);
+  await page.waitForSelector('#grid .cell');
+  await openFilters();
+  ok((await page.locator('.ddbtn .badge').innerText()) === '1' && (await page.locator('#grid .cell').count()) > 0, 'after a reload the selection is read from the URL');
+  await go('#/characters');
+  await page.waitForSelector('#grid .cell');
+  ok((await page.locator('.toolbar [data-cg]').allInnerTexts()).every((x) => !/^(Story|Fairy|Main)$/.test(x.trim())), 'no Story, Fairy or Main filter');
+  const dat = await page.evaluate(() => { const D = window.DATA; const ids = new Set(D.chars.map((c) => c.nr)); const t = D.items.find((i) => i.syn && i.syn.unlock && i.syn.unlock.teacher && !ids.has(i.syn.unlock.teacher)); return { names: D.chars.map((c) => c.n), ids: D.chars.map((c) => c.id), taught: t ? t.id : '' }; });
+  for (const nm of ['Fairy', 'Boss', 'Weapon Shopkeeper', 'Uryu', 'Lise', 'Annie', 'Lina', 'Veola', 'Arlin', 'Fee']) ok(!dat.names.includes(nm), `${nm} does not join: not in the list`);
+  ok(!dat.ids.includes('CHARACTER_HAGEL_A3') && !dat.ids.includes('CHARACTER_HAGEL_A1'), 'no Gerhard variant');
+  ok(dat.ids.length === 130, `${dat.ids.length} characters that join`);
+  if (dat.taught) {
+    await go(`#/items/${dat.taught}`);
+    await page.waitForSelector('.modal');
+    ok((await page.locator('.modal a[href^="#/characters/"]').count()) === 0, 'a teacher that does not join is plain text, not a link');
+    await closeEsc();
+  }
   await go(`#/characters/${P.character.id}`);
   await page.waitForSelector('.modal');
   ok((await page.locator('.modal .top').count()) === 1, 'character modal');
   const names = await page.evaluate(() => window.DATA.chars.map((c) => c.n));
   ok(new Set(names).size === names.length, 'no 2 characters with the same name');
-  ok((await page.locator('.modal .bar', { hasText: 'Research' }).count()) === 1 && (await page.locator('.modal a.rcard').count()) > 0 && (await page.locator('.modal a.mini[href^="#/research/"]').count()) === 0, 'research cards show the name and the tree, with no repeated face');
+  ok((await page.locator('.modal .bar', { hasText: 'Research' }).count()) === 1 && (await page.locator('.modal a.mini[href^="#/research/"]').count()) > 0 && (await page.locator('.modal a.rcard').count()) === 0, 'research tiles show the icon of the output');
 });
 await closeEsc();
 await step('character with aptitudes, skills and join conditions', async () => {
@@ -518,6 +560,93 @@ await step('nav menu (narrow)', async () => {
   await page.locator('#nav a', { hasText: 'Items' }).click();
   ok(await page.locator('#nav.open').count() === 0, 'menu closes after a click');
 });
+
+// ---- round 6 ----
+await step('character detail: group, game, population', async () => {
+  const info = await page.evaluate(() => {
+    const D = window.DATA;
+    const marie = D.chars.find((c) => c.type === 'Alchemist');
+    const townsfolk = D.chars.find((c) => c.type === 'Townsfolk' && c.game);
+    const story = D.chars.find((c) => c.n === 'Knoss');
+    const low = D.chars.filter((c) => c.join && c.join.pop > 0 && c.join.pop <= 30).length;
+    const withPop = D.chars.find((c) => c.join && !c.join.story && c.join.pop > 30);
+    return { marie: marie.id, townsfolk: townsfolk.id, story: story.id, low, withPop: withPop && withPop.id };
+  });
+  ok(info.low === 0, 'no join population at or below 30 in the data');
+  await go('#/characters/' + info.marie);
+  await page.waitForSelector('.modal');
+  ok((await page.locator('.modal .top .catline').first().innerText()) === 'Alchemist', 'Alchemist line');
+  await go('#/characters/' + info.townsfolk);
+  await page.waitForSelector('.modal');
+  ok((await page.locator('.modal .top .catline').first().innerText()) === 'Townsfolk', 'Townsfolk line');
+  await go('#/characters/' + info.story);
+  await page.waitForSelector('.modal');
+  const t = await page.locator('.modal .top').innerText();
+  ok(!/\b(Story|Fairy|Alchemist|Townsfolk)\b/.test(t) && /Atelier of the New World/.test(t), 'story character: no group line, the game of origin shows');
+  if (info.withPop) {
+    await go('#/characters/' + info.withPop);
+    await page.waitForSelector('.modal');
+    const pops = await page.locator('.modal .jn .stat', { hasText: /Town population/i }).allInnerTexts();
+    ok(pops.length === 1 && Number(pops[0].replace(/\D/g, '')) > 30, `population above 30 shows (${pops[0]?.replace(/\n/g, ' ')})`);
+  }
+});
+await closeEsc();
+await step('research icons are the output', async () => {
+  const r = await page.evaluate(() => {
+    const R = Object.values(window.DATA.research);
+    return { total: R.length, prize: R.filter((x) => x.iconKind === 'prize').length, recipe: R.filter((x) => x.iconKind === 'recipe').length, bonus: R.filter((x) => x.iconKind === 'bonus').length, none: R.filter((x) => !x.icon).length, face: R.some((x) => x.who.some((w) => w.icon && w.icon === x.icon)) };
+  });
+  console.log('  research icons ' + JSON.stringify(r));
+  ok(r.prize + r.recipe + r.bonus + r.none === r.total, 'each research has 1 kind of icon');
+  await go('#/research/main');
+  await page.waitForSelector('.node');
+  const faces = await page.evaluate(() => { const f = new Set(window.DATA.research && Object.values(window.DATA.research).flatMap((x) => x.who.map((w) => w.icon))); return [...document.querySelectorAll('.node img')].filter((i) => f.has(i.getAttribute('src').replace('img/icons/', ''))).length; });
+  ok(faces === 0, 'no researcher face on a tree node');
+  const dusky = P.dusky.id;
+  await go('#/research/main/' + dusky);
+  await page.waitForSelector('.modal');
+  ok((await page.locator('.modal .who .person .slot img').count()) >= 1, 'the researcher faces show in the detail header');
+});
+await closeEsc();
+await step('zone and area: treasure and tool gathers in 1 row, same order', async () => {
+  const order = async (hash) => {
+    await go(hash);
+    await page.waitForSelector('.modal');
+    return page.evaluate(() => {
+      const row = document.querySelector('.modal .panel-cols.gathers');
+      if (!row) return null;
+      const cols = [...row.children].map((c) => ({ t: c.querySelector('.gh b').textContent, top: Math.round(c.getBoundingClientRect().top) }));
+      return { titles: cols.map((c) => c.t), oneRow: new Set(cols.map((c) => c.top)).size === 1 };
+    });
+  };
+  const rank = (t) => ['Treasure', 'Bug Net', 'Digging', 'Fishing'].indexOf(t);
+  const z = await order('#/areas/EXPL_AREA_SPRING');
+  const a = await order('#/areas/EXPL_RESEARCH_SPRING_00');
+  ok(z && a && z.titles.join() === a.titles.join(), `zone and area have the same gathers: ${z && z.titles.join(', ')}`);
+  ok(z.titles.every((t, i) => i === 0 || rank(t) > rank(z.titles[i - 1])), 'in the order Treasure, Bug Net, Digging, Fishing');
+  ok(width < 1200 || z.oneRow, 'the gathers are 1 row');
+  await go('#/areas/EXPL_RESEARCH_SPRING_00');
+  await page.waitForSelector('.modal');
+  const txt = await page.locator('.modal-body').innerText();
+  ok(/Difficulty by Investigation Lv/i.test(txt) && !/area level/i.test(txt), 'Investigation Lv term');
+});
+await closeEsc();
+await step('monsters that need an Investigation Lv', async () => {
+  const id = await page.evaluate(() => window.DATA.zones.flatMap((z) => z.areas).find((a) => a.mons.some((m) => m.req > 1)).id);
+  await go('#/areas/' + id);
+  await page.waitForSelector('.modal');
+  ok((await page.locator('.modal .gh b', { hasText: /from Investigation Lv \d/i }).count()) >= 1, 'a group says "from Investigation Lv N"');
+  ok((await page.locator('.modal .mini .lbadge', { hasText: /^Lv \d+(–\d+)?$/ }).count()) > 0, 'monster levels are badges');
+  // A monster with several levels in an area is 1 tile with 1 range badge.
+  const multi = await page.evaluate(() => { const D = window.DATA; for (const z of D.zones) for (const a of z.areas) { const m = a.mons.find((x) => x.lo !== x.hi); if (m) return { area: a.id, m: m.m, lo: m.lo, hi: m.hi }; } return null; });
+  ok(!!multi, 'the data has an area with a multi-level monster');
+  await go('#/areas/' + multi.area);
+  await page.waitForSelector('.modal');
+  const tiles = page.locator(`.modal a.mini[href="#/monsters/${multi.m}"]`);
+  ok((await tiles.count()) === 1, `multi-level monster: ${await tiles.count()} tile`);
+  ok((await tiles.locator('.lbadge').innerText()) === `Lv ${multi.lo}–${multi.hi}`, `range badge ${await tiles.locator('.lbadge').innerText()}`);
+});
+await closeEsc();
 
 // The test fails on any audit finding (the rules of the UI standard are part of the audit).
 if (auditTotal > 0) { fails++; console.log(`  FAIL ${auditTotal} audit findings`); }

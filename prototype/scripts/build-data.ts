@@ -18,6 +18,9 @@ const { items, recipes, zones, characters, messages, icons } = g;
 const t = messages.t;
 const readRows = (rel: string): Record<string, string>[] => parseElements(fs.readFileSync(path.join(EXTRACTED, 'saves', rel), 'utf8'));
 const charIcon = characterIconOf(g);
+// The start population of the game: a join population at or below it is met by each player, so it is not data of the join.
+const initialPopulation = Number(readRows('out_constant/out_constant.xml').find((r) => r.OUT_CONSTANT_DEF === 'OC_INITIAL_POPULATION')?.OUT_CONSTANT_NUM);
+if (!Number.isFinite(initialPopulation)) throw new Error('OC_INITIAL_POPULATION not found');
 
 // ---- characters (only the ones that the prototype shows) ----
 const charByBattle = new Map(characters.characters.map((c) => [c.BTL_CHARACTER_ID, c]));
@@ -242,7 +245,7 @@ for (const s of zones.spots) {
     n: s.name,
     diff: s.area.difficulties.map((d) => d.replace('EXPL_AREA_DIFFICULTY_', '')),
     gather: col.toSorted((a, b) => Number(b.RATE) - Number(a.RATE)).map((c) => ({ i: itemRef(c.ITEM_TAG), r: Number(c.RATE) })).filter((c) => c.i),
-    mons: [...mons.values()].map((m) => ({ m: m.m, lo: Math.min(...m.lv), hi: Math.max(...m.lv), req: m.req, boss: m.boss })),
+    mons: [...mons.values()].map((m) => ({ m: m.m, lo: Math.min(...m.lv), hi: Math.max(...m.lv), lvs: [...new Set(m.lv)].sort((x, y) => x - y), req: m.req, boss: m.boss })),
   });
 }
 const zoneOut = zoneOrder.map((id) => {
@@ -315,7 +318,14 @@ for (const id of Object.keys(resTree)) {
   const coll = p && p.STDY_PRIZE_RECIPE_COLLECTION !== 'RECIPE_COLLECTION_INVALID' ? p.STDY_PRIZE_RECIPE_COLLECTION : '';
   const c = cond.get(r.STDY_RES_COND_TAG);
   const bonusItem = r.STDY_BONUS_TAG;
+  // The icon of a research is the icon of its output: the first prize item, else the first item of the prize recipe set, else the bonus item.
+  const prizeItemId = p ? itemRef(p.STDY_PRIZE_ITEM_NAME_00 ?? '') : '';
+  const setItems = coll ? setItemRecipes(coll) : [];
+  const bonusItemId = p ? itemRef(p.STDY_PRIZE_BONUS_ITEM ?? '') : '';
+  const [iconKind, iconItem] = prizeItemId ? ['prize', prizeItemId] : setItems.length ? ['recipe', setItems[0]] : bonusItemId ? ['bonus', bonusItemId] : ['', ''];
   researchOut[id] = {
+    icon: iconItem ? itemById.get(iconItem)!.icon : '',
+    iconKind,
     id,
     tree: resTree[id],
     n: t(r.STDY_RES_NAME_LABEL_ID) || id,
@@ -364,7 +374,14 @@ const labelCount = new Map<string, number>();
 for (const c of nonMonsters) labelCount.set(c.CHARACTER_NAME_LABEL_ID, (labelCount.get(c.CHARACTER_NAME_LABEL_ID) ?? 0) + 1);
 const isPicture = (c: (typeof nonMonsters)[number]): boolean => (labelCount.get(c.CHARACTER_NAME_LABEL_ID) ?? 0) > 1 && c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID === 'MESSAGE_COMMON_NOTHING';
 for (const c of nonMonsters.filter(isPicture)) filtered.characters.push(`${c.CHARACTER_ID}: picture of ${charName(c.CHARACTER_ID)}`);
-const shownChars = nonMonsters.filter((c) => !isPicture(c));
+// A character joins the town only when its join event (CHARACTER_APP_CON_ID -> character_app_con.xml CHARACTER_APP_EVENT) is not EVENT_NONE.
+// The others (Fairy, Boss, shopkeepers, visitors, variants) have no page: a mention of them elsewhere is plain text with the face.
+const joinEventOf = (c: (typeof nonMonsters)[number]): string => characters.joinConditionOf(c)?.CHARACTER_APP_EVENT ?? '';
+const nonPictures = nonMonsters.filter((c) => !isPicture(c));
+const droppedChars = nonPictures.filter((c) => !joinEventOf(c) || joinEventOf(c) === 'EVENT_NONE');
+for (const c of droppedChars) filtered.characters.push(`${c.CHARACTER_ID}: ${charName(c.CHARACTER_ID)} (does not join: EVENT_NONE)`);
+console.log('NON-JOINING CHARACTERS', droppedChars.length, JSON.stringify(droppedChars.map((c) => `${charName(c.CHARACTER_ID)} [${c.CHARACTER_ID}]`)));
+const shownChars = nonPictures.filter((c) => !droppedChars.includes(c));
 // A name that is still shared (CHARACTER_CHIM_MALE and CHARACTER_CHIM_FEMALE, 2 persons with their own description) gets the word of its id.
 const nameCount = new Map<string, number>();
 for (const c of shownChars) nameCount.set(charName(c.CHARACTER_ID), (nameCount.get(charName(c.CHARACTER_ID)) ?? 0) + 1);
@@ -402,8 +419,8 @@ const charsOut = shownChars.map((c) => {
       return m ? { n: m[1], lv: m[2] ? Number(m[2]) : 0, ev: m[3] ?? '' } : { n: s, lv: 0, ev: '' };
     }),
     // character_app_con.xml. The event has no name in the data, so it shows as its id. The meaning of the join turn is not confirmed.
-    // Turn 0 and 1 and population 0 are met by each player, so they are not data of the join. The meaning of the join turn is not confirmed.
-    join: story || pop > 0 || turn > 1 ? { story, with: story ? (byEvent[ev] ?? []).filter((x) => x !== c).map((x) => x.CHARACTER_ID) : [], pop: pop > 0 ? pop : 0, turn: turn > 1 ? turn : 0 } : null,
+    // Turn 0 and 1 and a population at or below the start population (OC_INITIAL_POPULATION) are met by each player, so they are not data of the join. The meaning of the join turn is not confirmed.
+    join: story || pop > initialPopulation || turn > 1 ? { story, with: story ? (byEvent[ev] ?? []).filter((x) => x !== c).map((x) => x.CHARACTER_ID) : [], pop: pop > initialPopulation ? pop : 0, turn: turn > 1 ? turn : 0 } : null,
     friendMax: Number(c.CHARA_COMPANION_MAX),
   };
 });
@@ -417,6 +434,10 @@ for (const name of used) {
   if (png) fs.writeFileSync(path.join(OUT, 'img', 'icons', name), png);
 }
 fs.writeFileSync(path.join(OUT, 'data.js'), `window.DATA = ${JSON.stringify(data)};\n`);
+{
+  const kinds = Object.values(researchOut as Record<string, { iconKind: string }>).map((r) => r.iconKind || 'none');
+  console.log('RESEARCH ICONS', JSON.stringify({ total: kinds.length, ...Object.fromEntries([...new Set(kinds)].map((k) => [k, kinds.filter((x) => x === k).length])) }), 'initialPopulation', initialPopulation);
+}
 console.log('DROPPED', JSON.stringify(dropped));
 console.log('CHAR TYPES', JSON.stringify(Object.entries(Object.groupBy(charsOut, (c) => c.type)).map(([k, v]) => [k, v?.length])));
 console.log('FILTERED', JSON.stringify({ ...filtered, items: filtered.items }, null, 1));
