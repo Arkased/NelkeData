@@ -3,6 +3,7 @@ import { Element, Stat, CharacterType } from '../enums.js';
 import type { DirectData } from '../inverse.js';
 import type { Game } from '../parse/game.js';
 import type { Character as CharacterRow, Characters } from '../parse/characters.js';
+import { descriptionOrNull } from '../placeholder.js';
 import { withSlugs } from '../slug.js';
 import { getOrCreate, orNull, required } from '../util.js';
 import { storyEventOf } from './story.js';
@@ -57,7 +58,7 @@ function commonFields(
     rank: c.CHARACTER_RANK_ID === NO_RANK ? null : Number(c.CHARACTER_RANK_ID),
     stats: recordOf(STATS, (stat) => characters.baseStat(c, stat)),
     growth: characters.growthOf(c),
-    description: orNull(messages.t(c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID)),
+    description: descriptionOrNull(messages.t(c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID)),
   };
 }
 

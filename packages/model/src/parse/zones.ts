@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { EncounterSymbol } from '../enums.js';
 import { listFor, required } from '../util.js';
+import type { Messages } from './messages.js';
 import type { Story } from './story.js';
 import type { ReadTable } from './xml.js';
 
@@ -110,14 +111,15 @@ export interface Zones {
 /**
  * Loads the zones, the areas, the gather tables and the encounters.
  * @param read - the table reader of the saves folder
- * @param t - the English text of a label
+ * @param messages - the game texts
  * @param story - the main tasks
- * @returns the zone data
+ * @returns the zone data, without the zones and areas that are placeholders
  * @sideEffects reads the exploration tables through the table reader
  */
-export function loadZones(read: ReadTable, t: (label: string) => string, story: Story): Zones {
+export function loadZones(read: ReadTable, messages: Messages, story: Story): Zones {
+  const { t } = messages;
   // A zone opens when its main task (task_id) is complete; the first zone is open from the start.
-  const zoneRows = read('expl_area/expl_area.xml', zoneSchema);
+  const zoneRows = read('expl_area/expl_area.xml', zoneSchema).filter((a) => !messages.isPlaceholder(a.area_name));
   const zoneInfo = (a: (typeof zoneRows)[number]): ZoneRow => {
     const task = a.task_id ? required(story.mainTask, a.task_id) : undefined;
     return { ...a, name: t(a.area_name), task: task?.num ?? 0, taskName: task?.name ?? '' };
@@ -129,7 +131,7 @@ export function loadZones(read: ReadTable, t: (label: string) => string, story: 
   const areaById = new Map<string, AreaRow>();
   for (const s of read('expl_research/expl_research.xml', areaSchema)) {
     const zone = zoneById.get(s.expl_area);
-    if (zone) areaById.set(s.expl_research, { ...s, zone, name: t(s.map_name) });
+    if (zone && !messages.isPlaceholder(s.map_name)) areaById.set(s.expl_research, { ...s, zone, name: t(s.map_name) });
   }
 
   const collectByArea = new Map<string, Collect[]>();

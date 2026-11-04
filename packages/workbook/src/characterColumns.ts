@@ -110,8 +110,7 @@ export function characterColumns(lookup: Lookup): Column<Character>[] {
       get: (c) =>
         c.recipeSetIds
           .map((id) => required(lookup.recipeSets, id))
-          .filter((set) => set.name !== null)
-          .map((set) => `${set.name ?? ''} (FRD ${set.friendship ?? ''})`)
+          .map((set) => `${set.name} (FRD ${set.friendship ?? ''})`)
           .join(', '),
     },
     { header: 'Description', width: 80, get: (c) => c.description ?? '' },

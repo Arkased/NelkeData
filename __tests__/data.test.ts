@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { ICON_DIR, ICON_SIZES, readData, type ModelData } from '@nelke/model';
+import { ICON_DIR, ICON_SIZES, isPlaceholder, readData, type ModelData } from '@nelke/model';
 
 const dataDir = path.join(import.meta.dirname, '..', 'data');
 const iconDirs = ICON_SIZES.map((size) => path.join(dataDir, ICON_DIR, String(size)));
@@ -35,6 +35,21 @@ describe('data/', () => {
       const slugs = data[kind].map((e) => ('slug' in e ? e.slug : ''));
       expect(new Set(slugs).size, kind).toBe(slugs.length);
     }
+  });
+
+  it('has no name that matches the placeholder patterns', () => {
+    const named = [
+      ...data.items.map((e) => ({ id: e.id, name: e.name, nameJp: e.nameJp })),
+      ...data.monsters.map((e) => ({ id: e.id, name: e.name, nameJp: e.nameJp })),
+      ...data.characters.map((e) => ({ id: e.id, name: e.name, nameJp: e.nameJp })),
+      ...[...data.recipeSets, ...data.research, ...data.zones, ...data.areas].map((e) => ({ id: e.id, name: e.name, nameJp: null })),
+    ];
+    expect(named.filter((e) => isPlaceholder(e.name, e.nameJp ?? '')).map((e) => e.id)).toEqual([]);
+  });
+
+  it('has no description that starts with *', () => {
+    const described = [...data.items, ...data.monsters, ...data.characters];
+    expect(described.filter((e) => e.description?.startsWith('*')).map((e) => e.id)).toEqual([]);
   });
 
   it.each(iconDirs)('names a file of %s in each icon', (dir) => {
