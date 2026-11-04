@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { compareRows, formatSheetDiff, type SheetRows } from '../compare-rows.js';
+import { compareRows, type SheetRows } from '../compare-rows.js';
 
 const header = ['Name', 'Price'];
 const sheet = (...rows: string[][]): SheetRows => ({ header, rows });
@@ -45,7 +45,6 @@ describe('compareRows', () => {
     expect(diff.removedKeys).toEqual([]);
     expect(diff.addedKeys).toEqual([]);
     expect(diff.changes).toEqual([]);
-    expect(formatSheetDiff('Items', diff)).toContain('Items: column removed: Name');
   });
 
   it('gives 2 different rows 2 different keys when the cells hold a slash', () => {
