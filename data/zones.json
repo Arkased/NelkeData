@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "name": "Ferien Plains",
+    "task": null,
+    "difficulties": [
+      "F",
+      "F",
+      "F",
+      "E",
+      "E"
+    ],
+    "areaIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "specialItemIds": [
+      38,
+      81,
+      20,
+      31,
+      25
+    ],
+    "slug": "ferien-plains"
+  },
+  {
+    "id": 2,
+    "name": "Nearby Forest",
+    "task": {
+      "number": 1,
+      "name": "Develop into a Healthy Village"
+    },
+    "difficulties": [
+      "E",
+      "E",
+      "E",
+      "D",
+      "D"
+    ],
+    "areaIds": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "specialItemIds": [
+      82,
+      21,
+      77,
+      26,
+      22,
+      27,
+      32,
+      29,
+      73
+    ],
+    "slug": "nearby-forest"
+  },
+  {
+    "id": 3,
+    "name": "Stille Path",
+    "task": {
+      "number": 2,
+      "name": "Develop into a Lively Village"
+    },
+    "difficulties": [
+      "D",
+      "D",
+      "D",
+      "C",
+      "C"
+    ],
+    "areaIds": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "specialItemIds": [
+      38,
+      12,
+      78,
+      72,
+      90,
+      28,
+      84,
+      19,
+      64,
+      69
+    ],
+    "slug": "stille-path"
+  },
+  {
+    "id": 4,
+    "name": "Grand Pass",
+    "task": {
+      "number": 3,
+      "name": "Develop into a Energetic Village"
+    },
+    "difficulties": [
+      "D",
+      "D",
+      "D",
+      "C",
+      "C"
+    ],
+    "areaIds": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "specialItemIds": [
+      61,
+      82,
+      71,
+      35,
+      85,
+      88,
+      64,
+      69
+    ],
+    "slug": "grand-pass"
+  },
+  {
+    "id": 5,
+    "name": "Nebel Highlands",
+    "task": {
+      "number": 4,
+      "name": "Develop into a Bustling Town"
+    },
+    "difficulties": [
+      "B",
+      "B",
+      "B",
+      "A",
+      "A"
+    ],
+    "areaIds": [
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "specialItemIds": [
+      38,
+      61,
+      75,
+      71,
+      92,
+      57,
+      85,
+      19,
+      28
+    ],
+    "slug": "nebel-highlands"
+  },
+  {
+    "id": 6,
+    "name": "Harvest Spring",
+    "task": {
+      "number": 5,
+      "name": "Develop into an Flowing Town"
+    },
+    "difficulties": [
+      "B",
+      "B",
+      "B",
+      "A",
+      "A"
+    ],
+    "areaIds": [
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "specialItemIds": [
+      46,
+      48,
+      45,
+      72,
+      40,
+      42,
+      41,
+      44,
+      39,
+      26,
+      27,
+      30,
+      93,
+      85
+    ],
+    "slug": "harvest-spring"
+  },
+  {
+    "id": 7,
+    "name": "Neumont Ruins",
+    "task": {
+      "number": 6,
+      "name": "Develop into an Active Town"
+    },
+    "difficulties": [
+      "B",
+      "B",
+      "A",
+      "A",
+      "S"
+    ],
+    "areaIds": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      57
+    ],
+    "specialItemIds": [
+      60,
+      47,
+      49,
+      77,
+      78,
+      72,
+      50,
+      33,
+      11,
+      64,
+      92
+    ],
+    "slug": "neumont-ruins"
+  },
+  {
+    "id": 8,
+    "name": "Lernenberg",
+    "task": {
+      "number": 7,
+      "name": "Develop into an Alchemy Town"
+    },
+    "difficulties": [
+      "B",
+      "B",
+      "A",
+      "A",
+      "S"
+    ],
+    "areaIds": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56
+    ],
+    "specialItemIds": [
+      90,
+      11,
+      92,
+      27,
+      93,
+      85,
+      33,
+      69,
+      64,
+      34
+    ],
+    "slug": "lernenberg"
+  }
+]

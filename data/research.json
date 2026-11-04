@@ -1,0 +1,1258 @@
+[
+  {
+    "id": 1,
+    "name": "Flammable Substance",
+    "researcherId": 5,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "flammable-substance",
+    "unlocksIds": [
+      6
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Strong Wood",
+    "researcherId": 6,
+    "prerequisiteIds": [
+      23
+    ],
+    "district": null,
+    "recipeSetId": 8,
+    "slug": "strong-wood",
+    "unlocksIds": [
+      7
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Strong Board",
+    "researcherId": 18,
+    "prerequisiteIds": [
+      24
+    ],
+    "district": null,
+    "recipeSetId": 9,
+    "slug": "strong-board",
+    "unlocksIds": []
+  },
+  {
+    "id": 4,
+    "name": "Puni Essence Production",
+    "researcherId": 7,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "puni-essence-production",
+    "unlocksIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Way of Medicine",
+    "researcherId": 6,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "way-of-medicine",
+    "unlocksIds": [
+      6
+    ]
+  },
+  {
+    "id": 6,
+    "name": "All Purpose Essence",
+    "researcherId": 8,
+    "prerequisiteIds": [
+      1,
+      4,
+      5
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "all-purpose-essence",
+    "unlocksIds": [
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "id": 7,
+    "name": "For Major Synthesis",
+    "researcherId": 7,
+    "prerequisiteIds": [
+      2
+    ],
+    "district": null,
+    "recipeSetId": 15,
+    "slug": "for-major-synthesis",
+    "unlocksIds": [
+      8,
+      29,
+      48
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Fresh Materials",
+    "researcherId": 29,
+    "prerequisiteIds": [
+      7
+    ],
+    "district": null,
+    "recipeSetId": 16,
+    "slug": "fresh-materials",
+    "unlocksIds": [
+      14
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Useful Metal",
+    "researcherId": 21,
+    "prerequisiteIds": [
+      14
+    ],
+    "district": null,
+    "recipeSetId": 10,
+    "slug": "useful-metal",
+    "unlocksIds": [
+      18
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Magically Light",
+    "researcherId": 28,
+    "prerequisiteIds": [
+      28
+    ],
+    "district": null,
+    "recipeSetId": 13,
+    "slug": "magically-light",
+    "unlocksIds": [
+      50
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Applied Bomb Research",
+    "researcherId": 8,
+    "prerequisiteIds": [
+      6
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "applied-bomb-research",
+    "unlocksIds": [
+      113
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Various Usage",
+    "researcherId": 9,
+    "prerequisiteIds": [
+      6
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "various-usage",
+    "unlocksIds": [
+      15
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Super Puni Essence",
+    "researcherId": 7,
+    "prerequisiteIds": [
+      6
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "super-puni-essence",
+    "unlocksIds": [
+      120
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Resistance Wall",
+    "researcherId": 10,
+    "prerequisiteIds": [
+      8
+    ],
+    "district": null,
+    "recipeSetId": 14,
+    "slug": "resistance-wall",
+    "unlocksIds": [
+      9
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Rare Materials",
+    "researcherId": 28,
+    "prerequisiteIds": [
+      12
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "rare-materials",
+    "unlocksIds": [
+      16,
+      115,
+      124
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Mystery Sweetener",
+    "researcherId": 30,
+    "prerequisiteIds": [
+      15
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "mystery-sweetener",
+    "unlocksIds": [
+      121
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Electric Breakdown",
+    "researcherId": 29,
+    "prerequisiteIds": [
+      124
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "electric-breakdown",
+    "unlocksIds": [
+      19,
+      116
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Useful Metal!",
+    "researcherId": 27,
+    "prerequisiteIds": [
+      9
+    ],
+    "district": null,
+    "recipeSetId": 11,
+    "slug": "useful-metal-18",
+    "unlocksIds": [
+      49
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Smelly Liquid",
+    "researcherId": 10,
+    "prerequisiteIds": [
+      17
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "smelly-liquid",
+    "unlocksIds": [
+      20,
+      122,
+      125
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Shiny Oil",
+    "researcherId": 13,
+    "prerequisiteIds": [
+      19
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "shiny-oil",
+    "unlocksIds": [
+      21,
+      117,
+      123
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Effect On All",
+    "researcherId": 21,
+    "prerequisiteIds": [
+      20
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "effect-on-all",
+    "unlocksIds": [
+      22,
+      25,
+      127
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Uni Potential",
+    "researcherId": 27,
+    "prerequisiteIds": [
+      21
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "uni-potential",
+    "unlocksIds": [
+      114,
+      118
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Peaceful Land",
+    "researcherId": 5,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": 39,
+    "slug": "peaceful-land",
+    "unlocksIds": [
+      2
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Rainbow Shine",
+    "researcherId": 8,
+    "prerequisiteIds": [
+      48
+    ],
+    "district": null,
+    "recipeSetId": 19,
+    "slug": "rainbow-shine",
+    "unlocksIds": [
+      3
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Pie Revenge",
+    "researcherId": 20,
+    "prerequisiteIds": [
+      21
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "pie-revenge",
+    "unlocksIds": [
+      128
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Flame Essence",
+    "researcherId": 5,
+    "prerequisiteIds": [
+      126
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "flame-essence",
+    "unlocksIds": [
+      31
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Colorful Town",
+    "researcherId": 9,
+    "prerequisiteIds": [
+      29
+    ],
+    "district": null,
+    "recipeSetId": 12,
+    "slug": "colorful-town",
+    "unlocksIds": [
+      28
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Pretty Wall",
+    "researcherId": 7,
+    "prerequisiteIds": [
+      27
+    ],
+    "district": null,
+    "recipeSetId": 18,
+    "slug": "pretty-wall",
+    "unlocksIds": [
+      10
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Vibrant Plant",
+    "researcherId": 13,
+    "prerequisiteIds": [
+      7
+    ],
+    "district": null,
+    "recipeSetId": 17,
+    "slug": "vibrant-plant",
+    "unlocksIds": [
+      27
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Water Essence",
+    "researcherId": 26,
+    "prerequisiteIds": [
+      126
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "water-essence",
+    "unlocksIds": [
+      32
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Sky Essence",
+    "researcherId": 24,
+    "prerequisiteIds": [
+      26
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "sky-essence",
+    "unlocksIds": [
+      119
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Land Essence",
+    "researcherId": 23,
+    "prerequisiteIds": [
+      30
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "land-essence",
+    "unlocksIds": [
+      119
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Using Rare Materials",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "using-rare-materials",
+    "unlocksIds": []
+  },
+  {
+    "id": 34,
+    "name": "An Eye-Opening Cup",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "an-eye-opening-cup",
+    "unlocksIds": []
+  },
+  {
+    "id": 35,
+    "name": "Unrivaled Item!",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "unrivaled-item",
+    "unlocksIds": []
+  },
+  {
+    "id": 36,
+    "name": "Scents Everywhere",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "scents-everywhere",
+    "unlocksIds": []
+  },
+  {
+    "id": 37,
+    "name": "Logical Reconsideration",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "logical-reconsideration",
+    "unlocksIds": []
+  },
+  {
+    "id": 38,
+    "name": "Passion and Flow",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "passion-and-flow",
+    "unlocksIds": []
+  },
+  {
+    "id": 39,
+    "name": "Revenge of the Best Pie",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "revenge-of-the-best-pie",
+    "unlocksIds": []
+  },
+  {
+    "id": 40,
+    "name": "Elixir Evolved",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "elixir-evolved",
+    "unlocksIds": []
+  },
+  {
+    "id": 41,
+    "name": "Pie Ingredient Gathering",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "pie-ingredient-gathering",
+    "unlocksIds": []
+  },
+  {
+    "id": 42,
+    "name": "The Dragon Hourglass",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "the-dragon-hourglass",
+    "unlocksIds": []
+  },
+  {
+    "id": 43,
+    "name": "Delicious Hourglass",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "delicious-hourglass",
+    "unlocksIds": []
+  },
+  {
+    "id": 44,
+    "name": "Nutritious Dough",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "nutritious-dough",
+    "unlocksIds": []
+  },
+  {
+    "id": 45,
+    "name": "A Pinch of Secret Flavors",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "a-pinch-of-secret-flavors",
+    "unlocksIds": []
+  },
+  {
+    "id": 46,
+    "name": "Research Byproduct",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "research-byproduct",
+    "unlocksIds": []
+  },
+  {
+    "id": 47,
+    "name": "Build More Buildings",
+    "researcherId": 7,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "build-more-buildings",
+    "unlocksIds": []
+  },
+  {
+    "id": 48,
+    "name": "Rapid Construction",
+    "researcherId": 20,
+    "prerequisiteIds": [
+      7
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "rapid-construction",
+    "unlocksIds": [
+      24
+    ]
+  },
+  {
+    "id": 49,
+    "name": "Modernization Project",
+    "researcherId": 24,
+    "prerequisiteIds": [
+      18
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "modernization-project",
+    "unlocksIds": []
+  },
+  {
+    "id": 50,
+    "name": "Path to Master Crafts",
+    "researcherId": 15,
+    "prerequisiteIds": [
+      10
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "path-to-master-crafts",
+    "unlocksIds": []
+  },
+  {
+    "id": 51,
+    "name": "Grand Manor",
+    "researcherId": 22,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "grand-manor",
+    "unlocksIds": []
+  },
+  {
+    "id": 61,
+    "name": "Proper Home Cooking",
+    "researcherId": 20,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "proper-home-cooking",
+    "unlocksIds": [
+      62,
+      63
+    ]
+  },
+  {
+    "id": 62,
+    "name": "Fruits and Vegetables",
+    "researcherId": 7,
+    "prerequisiteIds": [
+      61
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "fruits-and-vegetables",
+    "unlocksIds": [
+      64
+    ]
+  },
+  {
+    "id": 63,
+    "name": "Hunting and Fishing",
+    "researcherId": 16,
+    "prerequisiteIds": [
+      61
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "hunting-and-fishing",
+    "unlocksIds": [
+      64
+    ]
+  },
+  {
+    "id": 64,
+    "name": "Sudden Pain Relief",
+    "researcherId": 23,
+    "prerequisiteIds": [
+      62,
+      63
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "sudden-pain-relief",
+    "unlocksIds": [
+      65,
+      66,
+      67
+    ]
+  },
+  {
+    "id": 65,
+    "name": "Team Rorona's Dish",
+    "researcherId": 13,
+    "prerequisiteIds": [
+      64
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "team-rorona-s-dish",
+    "unlocksIds": [
+      68
+    ]
+  },
+  {
+    "id": 66,
+    "name": "Team Escha's Dish",
+    "researcherId": 23,
+    "prerequisiteIds": [
+      64
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "team-escha-s-dish",
+    "unlocksIds": [
+      68
+    ]
+  },
+  {
+    "id": 67,
+    "name": "Team Lydie's Dish",
+    "researcherId": 30,
+    "prerequisiteIds": [
+      64
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "team-lydie-s-dish",
+    "unlocksIds": [
+      68
+    ]
+  },
+  {
+    "id": 68,
+    "name": "The Finishing Touches",
+    "researcherId": 5,
+    "prerequisiteIds": [
+      65,
+      66,
+      67
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "the-finishing-touches",
+    "unlocksIds": [
+      69
+    ]
+  },
+  {
+    "id": 69,
+    "name": "De-Multiplication Tonic",
+    "researcherId": 6,
+    "prerequisiteIds": [
+      68
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "de-multiplication-tonic",
+    "unlocksIds": []
+  },
+  {
+    "id": 101,
+    "name": "New Living Series",
+    "researcherId": 5,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "new-living-series",
+    "unlocksIds": [
+      104
+    ]
+  },
+  {
+    "id": 102,
+    "name": "Find the Secret Room!",
+    "researcherId": 28,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "find-the-secret-room",
+    "unlocksIds": [
+      104
+    ]
+  },
+  {
+    "id": 103,
+    "name": "Lost Mana?",
+    "researcherId": 10,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "lost-mana",
+    "unlocksIds": [
+      104
+    ]
+  },
+  {
+    "id": 104,
+    "name": "Dusky Barrier Breaker",
+    "researcherId": 26,
+    "prerequisiteIds": [
+      101,
+      102,
+      103
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "dusky-barrier-breaker",
+    "unlocksIds": [
+      133
+    ]
+  },
+  {
+    "id": 105,
+    "name": "Mist Lifter Powder",
+    "researcherId": 6,
+    "prerequisiteIds": [
+      133
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "mist-lifter-powder",
+    "unlocksIds": [
+      106,
+      107,
+      108
+    ]
+  },
+  {
+    "id": 106,
+    "name": "Harvest Soil",
+    "researcherId": 24,
+    "prerequisiteIds": [
+      105
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "harvest-soil",
+    "unlocksIds": [
+      109
+    ]
+  },
+  {
+    "id": 107,
+    "name": "First Rate Mana Booster",
+    "researcherId": 16,
+    "prerequisiteIds": [
+      105
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "first-rate-mana-booster",
+    "unlocksIds": [
+      109
+    ]
+  },
+  {
+    "id": 108,
+    "name": "1,000% Plant Food",
+    "researcherId": 21,
+    "prerequisiteIds": [
+      105
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "1-000-plant-food",
+    "unlocksIds": [
+      109
+    ]
+  },
+  {
+    "id": 109,
+    "name": "Get Everyone Together!",
+    "researcherId": 30,
+    "prerequisiteIds": [
+      106,
+      107,
+      108
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "get-everyone-together",
+    "unlocksIds": [
+      110
+    ]
+  },
+  {
+    "id": 110,
+    "name": "First Barrier: Time",
+    "researcherId": 7,
+    "prerequisiteIds": [
+      109
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "first-barrier-time",
+    "unlocksIds": [
+      111
+    ]
+  },
+  {
+    "id": 111,
+    "name": "Second Barrier: Space",
+    "researcherId": 15,
+    "prerequisiteIds": [
+      110
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "second-barrier-space",
+    "unlocksIds": [
+      112
+    ]
+  },
+  {
+    "id": 112,
+    "name": "Combined Synthesis",
+    "researcherId": 23,
+    "prerequisiteIds": [
+      111
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "combined-synthesis",
+    "unlocksIds": []
+  },
+  {
+    "id": 113,
+    "name": "Burned Wasteland",
+    "researcherId": 5,
+    "prerequisiteIds": [
+      11
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "burned-wasteland",
+    "unlocksIds": []
+  },
+  {
+    "id": 114,
+    "name": "Dangerous Uni",
+    "researcherId": 6,
+    "prerequisiteIds": [
+      22
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "dangerous-uni",
+    "unlocksIds": [
+      126
+    ]
+  },
+  {
+    "id": 115,
+    "name": "Cold Limit Surpassed",
+    "researcherId": 20,
+    "prerequisiteIds": [
+      15
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "cold-limit-surpassed",
+    "unlocksIds": []
+  },
+  {
+    "id": 116,
+    "name": "Electric Spark 1,000%!",
+    "researcherId": 26,
+    "prerequisiteIds": [
+      17
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "electric-spark-1-000",
+    "unlocksIds": []
+  },
+  {
+    "id": 117,
+    "name": "March On! Globe Cannon!",
+    "researcherId": 7,
+    "prerequisiteIds": [
+      20
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "march-on-globe-cannon",
+    "unlocksIds": []
+  },
+  {
+    "id": 118,
+    "name": "It's Raining Uni",
+    "researcherId": 8,
+    "prerequisiteIds": [
+      22
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "it-s-raining-uni",
+    "unlocksIds": [
+      126
+    ]
+  },
+  {
+    "id": 119,
+    "name": "Four Heavens Bomb",
+    "researcherId": 10,
+    "prerequisiteIds": [
+      31,
+      32
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "four-heavens-bomb",
+    "unlocksIds": []
+  },
+  {
+    "id": 120,
+    "name": "Puni Essence Ointment",
+    "researcherId": 23,
+    "prerequisiteIds": [
+      13
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "puni-essence-ointment",
+    "unlocksIds": []
+  },
+  {
+    "id": 121,
+    "name": "Whole Lotta Sweets",
+    "researcherId": 6,
+    "prerequisiteIds": [
+      16
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "whole-lotta-sweets",
+    "unlocksIds": []
+  },
+  {
+    "id": 122,
+    "name": "Dangerous Dark Water",
+    "researcherId": 7,
+    "prerequisiteIds": [
+      19
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "dangerous-dark-water",
+    "unlocksIds": []
+  },
+  {
+    "id": 123,
+    "name": "Descending Aurora",
+    "researcherId": 16,
+    "prerequisiteIds": [
+      20
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "descending-aurora",
+    "unlocksIds": []
+  },
+  {
+    "id": 124,
+    "name": "Simply Refreshing",
+    "researcherId": 16,
+    "prerequisiteIds": [
+      15
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "simply-refreshing",
+    "unlocksIds": [
+      17
+    ]
+  },
+  {
+    "id": 125,
+    "name": "Mysterious Perfume",
+    "researcherId": 13,
+    "prerequisiteIds": [
+      19
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "mysterious-perfume",
+    "unlocksIds": []
+  },
+  {
+    "id": 126,
+    "name": "Knowledge Transition",
+    "researcherId": 15,
+    "prerequisiteIds": [
+      114,
+      118,
+      128
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "knowledge-transition",
+    "unlocksIds": [
+      26,
+      30
+    ]
+  },
+  {
+    "id": 127,
+    "name": "Take Orally--Or Don't",
+    "researcherId": 5,
+    "prerequisiteIds": [
+      21
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "take-orally-or-don-t",
+    "unlocksIds": []
+  },
+  {
+    "id": 128,
+    "name": "A New Pie: Complete",
+    "researcherId": 8,
+    "prerequisiteIds": [
+      25
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "a-new-pie-complete",
+    "unlocksIds": [
+      126
+    ]
+  },
+  {
+    "id": 129,
+    "name": "Cutting a Path",
+    "researcherId": 5,
+    "prerequisiteIds": [],
+    "district": "Riosmyste District",
+    "recipeSetId": null,
+    "slug": "cutting-a-path",
+    "unlocksIds": []
+  },
+  {
+    "id": 130,
+    "name": "Escape from Humidity!",
+    "researcherId": 22,
+    "prerequisiteIds": [],
+    "district": "Aufgabe District",
+    "recipeSetId": null,
+    "slug": "escape-from-humidity",
+    "unlocksIds": []
+  },
+  {
+    "id": 131,
+    "name": "Resilient Steel Frame",
+    "researcherId": 21,
+    "prerequisiteIds": [],
+    "district": "Manachimie District",
+    "recipeSetId": null,
+    "slug": "resilient-steel-frame",
+    "unlocksIds": []
+  },
+  {
+    "id": 132,
+    "name": "Hot Land",
+    "researcherId": 18,
+    "prerequisiteIds": [],
+    "district": "Abend District",
+    "recipeSetId": null,
+    "slug": "hot-land",
+    "unlocksIds": []
+  },
+  {
+    "id": 133,
+    "name": "Opportunity Bears Fruit",
+    "researcherId": 15,
+    "prerequisiteIds": [
+      104
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "opportunity-bears-fruit",
+    "unlocksIds": [
+      105
+    ]
+  },
+  {
+    "id": 141,
+    "name": "Light on Darkness!",
+    "researcherId": 5,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "light-on-darkness",
+    "unlocksIds": []
+  },
+  {
+    "id": 142,
+    "name": "Storm for a Storm!",
+    "researcherId": 29,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "storm-for-a-storm",
+    "unlocksIds": []
+  },
+  {
+    "id": 143,
+    "name": "Peaceful Resolution",
+    "researcherId": 22,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "peaceful-resolution",
+    "unlocksIds": []
+  },
+  {
+    "id": 144,
+    "name": "Shooting Star Detour",
+    "researcherId": 8,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "shooting-star-detour",
+    "unlocksIds": []
+  },
+  {
+    "id": 145,
+    "name": "Calm the King!",
+    "researcherId": 24,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "calm-the-king",
+    "unlocksIds": []
+  }
+]

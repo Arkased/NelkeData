@@ -1,0 +1,3724 @@
+[
+  {
+    "id": 1,
+    "name": "Fellowship Plains",
+    "route": 0,
+    "gather": [
+      {
+        "itemId": 2,
+        "rate": 19
+      },
+      {
+        "itemId": 10,
+        "rate": 16
+      },
+      {
+        "itemId": 6,
+        "rate": 15
+      },
+      {
+        "itemId": 37,
+        "rate": 14
+      },
+      {
+        "itemId": 66,
+        "rate": 13
+      },
+      {
+        "itemId": 18,
+        "rate": 12
+      },
+      {
+        "itemId": 86,
+        "rate": 11
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 132,
+        "levels": [
+          1
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 140,
+        "levels": [
+          2
+        ],
+        "areaLevel": 3,
+        "boss": false
+      }
+    ],
+    "slug": "fellowship-plains",
+    "zoneId": 1
+  },
+  {
+    "id": 2,
+    "name": "Fellowship Plains: Interior",
+    "route": 1,
+    "gather": [
+      {
+        "itemId": 38,
+        "rate": 33
+      },
+      {
+        "itemId": 5,
+        "rate": 25
+      },
+      {
+        "itemId": 17,
+        "rate": 22
+      },
+      {
+        "itemId": 66,
+        "rate": 8
+      },
+      {
+        "itemId": 6,
+        "rate": 6
+      },
+      {
+        "itemId": 10,
+        "rate": 4
+      },
+      {
+        "itemId": 2,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 132,
+        "levels": [
+          1
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 140,
+        "levels": [
+          2
+        ],
+        "areaLevel": 3,
+        "boss": false
+      }
+    ],
+    "slug": "fellowship-plains-interior",
+    "zoneId": 1
+  },
+  {
+    "id": 3,
+    "name": "Highview Plains",
+    "route": 2,
+    "gather": [
+      {
+        "itemId": 1,
+        "rate": 33
+      },
+      {
+        "itemId": 15,
+        "rate": 25
+      },
+      {
+        "itemId": 20,
+        "rate": 22
+      },
+      {
+        "itemId": 66,
+        "rate": 8
+      },
+      {
+        "itemId": 38,
+        "rate": 6
+      },
+      {
+        "itemId": 37,
+        "rate": 4
+      },
+      {
+        "itemId": 2,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 143,
+        "levels": [
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 158,
+        "levels": [
+          3,
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 146,
+        "levels": [
+          6
+        ],
+        "areaLevel": 3,
+        "boss": false
+      }
+    ],
+    "slug": "highview-plains",
+    "zoneId": 1
+  },
+  {
+    "id": 4,
+    "name": "Highview Plains: Interior",
+    "route": 3,
+    "gather": [
+      {
+        "itemId": 59,
+        "rate": 26
+      },
+      {
+        "itemId": 65,
+        "rate": 24
+      },
+      {
+        "itemId": 25,
+        "rate": 22
+      },
+      {
+        "itemId": 10,
+        "rate": 12
+      },
+      {
+        "itemId": 1,
+        "rate": 10
+      },
+      {
+        "itemId": 2,
+        "rate": 6
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 143,
+        "levels": [
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 158,
+        "levels": [
+          3,
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      }
+    ],
+    "slug": "highview-plains-interior",
+    "zoneId": 1
+  },
+  {
+    "id": 5,
+    "name": "Insight Prairie",
+    "route": 4,
+    "gather": [
+      {
+        "itemId": 4,
+        "rate": 26
+      },
+      {
+        "itemId": 31,
+        "rate": 24
+      },
+      {
+        "itemId": 81,
+        "rate": 22
+      },
+      {
+        "itemId": 5,
+        "rate": 12
+      },
+      {
+        "itemId": 86,
+        "rate": 10
+      },
+      {
+        "itemId": 2,
+        "rate": 6
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 143,
+        "levels": [
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 158,
+        "levels": [
+          3,
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 146,
+        "levels": [
+          6
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 146,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      },
+      {
+        "monsterId": 143,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      },
+      {
+        "monsterId": 158,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      }
+    ],
+    "slug": "insight-prairie",
+    "zoneId": 1
+  },
+  {
+    "id": 6,
+    "name": "Bestial Plains",
+    "route": 5,
+    "gather": [
+      {
+        "itemId": 2,
+        "rate": 16
+      },
+      {
+        "itemId": 1,
+        "rate": 15
+      },
+      {
+        "itemId": 4,
+        "rate": 14
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 143,
+        "levels": [
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 158,
+        "levels": [
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 146,
+        "levels": [
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      }
+    ],
+    "slug": "bestial-plains",
+    "zoneId": 1
+  },
+  {
+    "id": 7,
+    "name": "Bountiful Plains",
+    "route": 6,
+    "gather": [
+      {
+        "itemId": 31,
+        "rate": 16
+      },
+      {
+        "itemId": 20,
+        "rate": 15
+      },
+      {
+        "itemId": 38,
+        "rate": 14
+      },
+      {
+        "itemId": 81,
+        "rate": 13
+      },
+      {
+        "itemId": 15,
+        "rate": 12
+      },
+      {
+        "itemId": 25,
+        "rate": 11
+      },
+      {
+        "itemId": 59,
+        "rate": 10
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 132,
+        "levels": [
+          1
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 140,
+        "levels": [
+          2
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 143,
+        "levels": [
+          4,
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 158,
+        "levels": [
+          3,
+          4,
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 146,
+        "levels": [
+          6
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "monsterId": 146,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      },
+      {
+        "monsterId": 143,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      },
+      {
+        "monsterId": 158,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      }
+    ],
+    "slug": "bountiful-plains",
+    "zoneId": 1
+  },
+  {
+    "id": 8,
+    "name": "Verdure Forest",
+    "route": 0,
+    "gather": [
+      {
+        "itemId": 3,
+        "rate": 22
+      },
+      {
+        "itemId": 26,
+        "rate": 20
+      },
+      {
+        "itemId": 21,
+        "rate": 18
+      },
+      {
+        "itemId": 56,
+        "rate": 16
+      },
+      {
+        "itemId": 82,
+        "rate": 14
+      },
+      {
+        "itemId": 65,
+        "rate": 5
+      },
+      {
+        "itemId": 6,
+        "rate": 3
+      },
+      {
+        "itemId": 2,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 133,
+        "levels": [
+          7
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 152,
+        "levels": [
+          8
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "verdure-forest",
+    "zoneId": 2
+  },
+  {
+    "id": 9,
+    "name": "Verdure Forest: Interior",
+    "route": 1,
+    "gather": [
+      {
+        "itemId": 23,
+        "rate": 23
+      },
+      {
+        "itemId": 22,
+        "rate": 21
+      },
+      {
+        "itemId": 58,
+        "rate": 19
+      },
+      {
+        "itemId": 7,
+        "rate": 17
+      },
+      {
+        "itemId": 31,
+        "rate": 8
+      },
+      {
+        "itemId": 38,
+        "rate": 6
+      },
+      {
+        "itemId": 3,
+        "rate": 4
+      },
+      {
+        "itemId": 1,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 133,
+        "levels": [
+          7
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 152,
+        "levels": [
+          8
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "verdure-forest-interior",
+    "zoneId": 2
+  },
+  {
+    "id": 10,
+    "name": "Emerald Forest",
+    "route": 2,
+    "gather": [
+      {
+        "itemId": 74,
+        "rate": 23
+      },
+      {
+        "itemId": 27,
+        "rate": 21
+      },
+      {
+        "itemId": 24,
+        "rate": 19
+      },
+      {
+        "itemId": 53,
+        "rate": 17
+      },
+      {
+        "itemId": 25,
+        "rate": 8
+      },
+      {
+        "itemId": 5,
+        "rate": 6
+      },
+      {
+        "itemId": 6,
+        "rate": 4
+      },
+      {
+        "itemId": 3,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 149,
+        "levels": [
+          10,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 155,
+        "levels": [
+          11,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "emerald-forest",
+    "zoneId": 2
+  },
+  {
+    "id": 11,
+    "name": "Emerald Forest: Interior",
+    "route": 3,
+    "gather": [
+      {
+        "itemId": 32,
+        "rate": 23
+      },
+      {
+        "itemId": 73,
+        "rate": 21
+      },
+      {
+        "itemId": 36,
+        "rate": 19
+      },
+      {
+        "itemId": 76,
+        "rate": 17
+      },
+      {
+        "itemId": 26,
+        "rate": 8
+      },
+      {
+        "itemId": 21,
+        "rate": 6
+      },
+      {
+        "itemId": 3,
+        "rate": 4
+      },
+      {
+        "itemId": 4,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 149,
+        "levels": [
+          10
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 155,
+        "levels": [
+          11
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "emerald-forest-interior",
+    "zoneId": 2
+  },
+  {
+    "id": 12,
+    "name": "Sunny Woods",
+    "route": 4,
+    "gather": [
+      {
+        "itemId": 29,
+        "rate": 23
+      },
+      {
+        "itemId": 19,
+        "rate": 21
+      },
+      {
+        "itemId": 61,
+        "rate": 19
+      },
+      {
+        "itemId": 91,
+        "rate": 17
+      },
+      {
+        "itemId": 81,
+        "rate": 8
+      },
+      {
+        "itemId": 6,
+        "rate": 6
+      },
+      {
+        "itemId": 31,
+        "rate": 4
+      },
+      {
+        "itemId": 3,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 149,
+        "levels": [
+          10
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 155,
+        "levels": [
+          11,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 133,
+        "levels": [
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 152,
+        "levels": [
+          11
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 164,
+        "levels": [
+          17
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "sunny-woods",
+    "zoneId": 2
+  },
+  {
+    "id": 13,
+    "name": "Bestial Forest",
+    "route": 5,
+    "gather": [
+      {
+        "itemId": 3,
+        "rate": 16
+      },
+      {
+        "itemId": 4,
+        "rate": 15
+      },
+      {
+        "itemId": 2,
+        "rate": 14
+      },
+      {
+        "itemId": 1,
+        "rate": 13
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 152,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 149,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 155,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bestial-forest",
+    "zoneId": 2
+  },
+  {
+    "id": 14,
+    "name": "Bountiful Forest",
+    "route": 6,
+    "gather": [
+      {
+        "itemId": 61,
+        "rate": 30
+      },
+      {
+        "itemId": 58,
+        "rate": 29
+      },
+      {
+        "itemId": 22,
+        "rate": 28
+      },
+      {
+        "itemId": 26,
+        "rate": 27
+      },
+      {
+        "itemId": 24,
+        "rate": 26
+      },
+      {
+        "itemId": 27,
+        "rate": 25
+      },
+      {
+        "itemId": 74,
+        "rate": 24
+      },
+      {
+        "itemId": 32,
+        "rate": 23
+      },
+      {
+        "itemId": 73,
+        "rate": 22
+      },
+      {
+        "itemId": 29,
+        "rate": 21
+      },
+      {
+        "itemId": 19,
+        "rate": 20
+      },
+      {
+        "itemId": 21,
+        "rate": 19
+      },
+      {
+        "itemId": 23,
+        "rate": 18
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 133,
+        "levels": [
+          7,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 152,
+        "levels": [
+          8,
+          11
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 149,
+        "levels": [
+          10
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 155,
+        "levels": [
+          11,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bountiful-forest",
+    "zoneId": 2
+  },
+  {
+    "id": 15,
+    "name": "Shady Road",
+    "route": 0,
+    "gather": [
+      {
+        "itemId": 70,
+        "rate": 22
+      },
+      {
+        "itemId": 30,
+        "rate": 20
+      },
+      {
+        "itemId": 12,
+        "rate": 18
+      },
+      {
+        "itemId": 68,
+        "rate": 16
+      },
+      {
+        "itemId": 94,
+        "rate": 14
+      },
+      {
+        "itemId": 4,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 150,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 141,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "shady-road",
+    "zoneId": 3
+  },
+  {
+    "id": 16,
+    "name": "Shady Road: Interior",
+    "route": 1,
+    "gather": [
+      {
+        "itemId": 77,
+        "rate": 22
+      },
+      {
+        "itemId": 33,
+        "rate": 20
+      },
+      {
+        "itemId": 93,
+        "rate": 18
+      },
+      {
+        "itemId": 67,
+        "rate": 16
+      },
+      {
+        "itemId": 89,
+        "rate": 14
+      },
+      {
+        "itemId": 22,
+        "rate": 5
+      },
+      {
+        "itemId": 4,
+        "rate": 3
+      },
+      {
+        "itemId": 2,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 150,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 141,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "shady-road-interior",
+    "zoneId": 3
+  },
+  {
+    "id": 17,
+    "name": "Dark Path",
+    "route": 2,
+    "gather": [
+      {
+        "itemId": 78,
+        "rate": 22
+      },
+      {
+        "itemId": 72,
+        "rate": 20
+      },
+      {
+        "itemId": 90,
+        "rate": 18
+      },
+      {
+        "itemId": 83,
+        "rate": 16
+      },
+      {
+        "itemId": 79,
+        "rate": 14
+      },
+      {
+        "itemId": 27,
+        "rate": 5
+      },
+      {
+        "itemId": 4,
+        "rate": 3
+      },
+      {
+        "itemId": 3,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 159,
+        "levels": [
+          13,
+          15,
+          17
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 156,
+        "levels": [
+          14,
+          17
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 150,
+        "levels": [
+          17
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "dark-path",
+    "zoneId": 3
+  },
+  {
+    "id": 18,
+    "name": "Dark Path: Interior",
+    "route": 3,
+    "gather": [
+      {
+        "itemId": 28,
+        "rate": 22
+      },
+      {
+        "itemId": 84,
+        "rate": 20
+      },
+      {
+        "itemId": 16,
+        "rate": 18
+      },
+      {
+        "itemId": 80,
+        "rate": 16
+      },
+      {
+        "itemId": 13,
+        "rate": 14
+      },
+      {
+        "itemId": 24,
+        "rate": 5
+      },
+      {
+        "itemId": 4,
+        "rate": 3
+      },
+      {
+        "itemId": 1,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 159,
+        "levels": [
+          13,
+          15
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 156,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "dark-path-interior",
+    "zoneId": 3
+  },
+  {
+    "id": 19,
+    "name": "Oblivion Road",
+    "route": 4,
+    "gather": [
+      {
+        "itemId": 64,
+        "rate": 22
+      },
+      {
+        "itemId": 69,
+        "rate": 20
+      },
+      {
+        "itemId": 35,
+        "rate": 18
+      },
+      {
+        "itemId": 50,
+        "rate": 16
+      },
+      {
+        "itemId": 55,
+        "rate": 14
+      },
+      {
+        "itemId": 30,
+        "rate": 5
+      },
+      {
+        "itemId": 4,
+        "rate": 3
+      },
+      {
+        "itemId": 2,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 159,
+        "levels": [
+          13,
+          15
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 156,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 156,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "monsterId": 167,
+        "levels": [
+          22
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "oblivion-road",
+    "zoneId": 3
+  },
+  {
+    "id": 20,
+    "name": "Bestial Road",
+    "route": 5,
+    "gather": [
+      {
+        "itemId": 4,
+        "rate": 16
+      },
+      {
+        "itemId": 3,
+        "rate": 15
+      },
+      {
+        "itemId": 2,
+        "rate": 14
+      },
+      {
+        "itemId": 1,
+        "rate": 13
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 150,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 159,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 141,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 156,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bestial-road",
+    "zoneId": 3
+  },
+  {
+    "id": 21,
+    "name": "Bountiful Road",
+    "route": 6,
+    "gather": [
+      {
+        "itemId": 50,
+        "rate": 30
+      },
+      {
+        "itemId": 35,
+        "rate": 29
+      },
+      {
+        "itemId": 16,
+        "rate": 28
+      },
+      {
+        "itemId": 93,
+        "rate": 27
+      },
+      {
+        "itemId": 90,
+        "rate": 26
+      },
+      {
+        "itemId": 30,
+        "rate": 25
+      },
+      {
+        "itemId": 69,
+        "rate": 24
+      },
+      {
+        "itemId": 84,
+        "rate": 23
+      },
+      {
+        "itemId": 78,
+        "rate": 22
+      },
+      {
+        "itemId": 72,
+        "rate": 21
+      },
+      {
+        "itemId": 77,
+        "rate": 20
+      },
+      {
+        "itemId": 33,
+        "rate": 19
+      },
+      {
+        "itemId": 64,
+        "rate": 18
+      },
+      {
+        "itemId": 28,
+        "rate": 17
+      },
+      {
+        "itemId": 70,
+        "rate": 16
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 150,
+        "levels": [
+          14,
+          17,
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 141,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 159,
+        "levels": [
+          13,
+          15,
+          17,
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 156,
+        "levels": [
+          14,
+          17
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 156,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "monsterId": 167,
+        "levels": [
+          22
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "bountiful-road",
+    "zoneId": 3
+  },
+  {
+    "id": 22,
+    "name": "Windless Ridge",
+    "route": 0,
+    "gather": [
+      {
+        "itemId": 85,
+        "rate": 23
+      },
+      {
+        "itemId": 87,
+        "rate": 21
+      },
+      {
+        "itemId": 27,
+        "rate": 19
+      },
+      {
+        "itemId": 74,
+        "rate": 17
+      },
+      {
+        "itemId": 55,
+        "rate": 10
+      },
+      {
+        "itemId": 76,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      },
+      {
+        "itemId": 2,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 134,
+        "levels": [
+          20
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 147,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "windless-ridge",
+    "zoneId": 4
+  },
+  {
+    "id": 23,
+    "name": "Windless Ridge: Interior",
+    "route": 1,
+    "gather": [
+      {
+        "itemId": 52,
+        "rate": 23
+      },
+      {
+        "itemId": 88,
+        "rate": 21
+      },
+      {
+        "itemId": 8,
+        "rate": 19
+      },
+      {
+        "itemId": 51,
+        "rate": 17
+      },
+      {
+        "itemId": 68,
+        "rate": 10
+      },
+      {
+        "itemId": 1,
+        "rate": 6
+      },
+      {
+        "itemId": 3,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 134,
+        "levels": [
+          20
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 147,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "windless-ridge-interior",
+    "zoneId": 4
+  },
+  {
+    "id": 24,
+    "name": "Hazy Mountain Pass",
+    "route": 2,
+    "gather": [
+      {
+        "itemId": 71,
+        "rate": 23
+      },
+      {
+        "itemId": 9,
+        "rate": 21
+      },
+      {
+        "itemId": 31,
+        "rate": 19
+      },
+      {
+        "itemId": 93,
+        "rate": 17
+      },
+      {
+        "itemId": 91,
+        "rate": 10
+      },
+      {
+        "itemId": 1,
+        "rate": 6
+      },
+      {
+        "itemId": 4,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 147,
+        "levels": [
+          21,
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 161,
+        "levels": [
+          20,
+          21,
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 134,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "hazy-mountain-pass",
+    "zoneId": 4
+  },
+  {
+    "id": 25,
+    "name": "Hazy Mountain Pass: Interior",
+    "route": 3,
+    "gather": [
+      {
+        "itemId": 63,
+        "rate": 23
+      },
+      {
+        "itemId": 57,
+        "rate": 21
+      },
+      {
+        "itemId": 84,
+        "rate": 19
+      },
+      {
+        "itemId": 38,
+        "rate": 17
+      },
+      {
+        "itemId": 94,
+        "rate": 10
+      },
+      {
+        "itemId": 1,
+        "rate": 6
+      },
+      {
+        "itemId": 2,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 147,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 161,
+        "levels": [
+          20,
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "hazy-mountain-pass-interior",
+    "zoneId": 4
+  },
+  {
+    "id": 26,
+    "name": "Venture Mountain Pass",
+    "route": 4,
+    "gather": [
+      {
+        "itemId": 54,
+        "rate": 23
+      },
+      {
+        "itemId": 14,
+        "rate": 21
+      },
+      {
+        "itemId": 19,
+        "rate": 19
+      },
+      {
+        "itemId": 64,
+        "rate": 17
+      },
+      {
+        "itemId": 12,
+        "rate": 8
+      },
+      {
+        "itemId": 89,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      },
+      {
+        "itemId": 3,
+        "rate": 2
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 161,
+        "levels": [
+          20,
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 147,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 135,
+        "levels": [
+          22
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 135,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "monsterId": 165,
+        "levels": [
+          30
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "venture-mountain-pass",
+    "zoneId": 4
+  },
+  {
+    "id": 27,
+    "name": "Bestial Mountain Pass",
+    "route": 5,
+    "gather": [
+      {
+        "itemId": 1,
+        "rate": 16
+      },
+      {
+        "itemId": 4,
+        "rate": 15
+      },
+      {
+        "itemId": 2,
+        "rate": 14
+      },
+      {
+        "itemId": 3,
+        "rate": 13
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 147,
+        "levels": [
+          31
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 161,
+        "levels": [
+          31
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 134,
+        "levels": [
+          31
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 135,
+        "levels": [
+          31
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bestial-mountain-pass",
+    "zoneId": 4
+  },
+  {
+    "id": 28,
+    "name": "Bountiful Mountain Pass",
+    "route": 6,
+    "gather": [
+      {
+        "itemId": 88,
+        "rate": 16
+      },
+      {
+        "itemId": 51,
+        "rate": 15
+      },
+      {
+        "itemId": 85,
+        "rate": 14
+      },
+      {
+        "itemId": 71,
+        "rate": 13
+      },
+      {
+        "itemId": 52,
+        "rate": 12
+      },
+      {
+        "itemId": 27,
+        "rate": 11
+      },
+      {
+        "itemId": 31,
+        "rate": 10
+      },
+      {
+        "itemId": 64,
+        "rate": 9
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 134,
+        "levels": [
+          20
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 147,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 161,
+        "levels": [
+          20,
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 135,
+        "levels": [
+          22
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 135,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "monsterId": 165,
+        "levels": [
+          30
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "bountiful-mountain-pass",
+    "zoneId": 4
+  },
+  {
+    "id": 29,
+    "name": "Vista Hill",
+    "route": 0,
+    "gather": [
+      {
+        "itemId": 41,
+        "rate": 25
+      },
+      {
+        "itemId": 25,
+        "rate": 24
+      },
+      {
+        "itemId": 69,
+        "rate": 23
+      },
+      {
+        "itemId": 10,
+        "rate": 10
+      },
+      {
+        "itemId": 6,
+        "rate": 8
+      },
+      {
+        "itemId": 3,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 135,
+        "levels": [
+          26
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 142,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "vista-hill",
+    "zoneId": 5
+  },
+  {
+    "id": 30,
+    "name": "Vista Hill: Interior",
+    "route": 1,
+    "gather": [
+      {
+        "itemId": 50,
+        "rate": 25
+      },
+      {
+        "itemId": 30,
+        "rate": 24
+      },
+      {
+        "itemId": 20,
+        "rate": 23
+      },
+      {
+        "itemId": 67,
+        "rate": 10
+      },
+      {
+        "itemId": 18,
+        "rate": 8
+      },
+      {
+        "itemId": 3,
+        "rate": 6
+      },
+      {
+        "itemId": 2,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 135,
+        "levels": [
+          26
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 142,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "vista-hill-interior",
+    "zoneId": 5
+  },
+  {
+    "id": 31,
+    "name": "Wind Chime Highlands",
+    "route": 2,
+    "gather": [
+      {
+        "itemId": 92,
+        "rate": 23
+      },
+      {
+        "itemId": 28,
+        "rate": 21
+      },
+      {
+        "itemId": 88,
+        "rate": 19
+      },
+      {
+        "itemId": 31,
+        "rate": 17
+      },
+      {
+        "itemId": 9,
+        "rate": 10
+      },
+      {
+        "itemId": 3,
+        "rate": 6
+      },
+      {
+        "itemId": 4,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 148,
+        "levels": [
+          28,
+          30
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 157,
+        "levels": [
+          27,
+          30
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 142,
+        "levels": [
+          30
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "wind-chime-highlands",
+    "zoneId": 5
+  },
+  {
+    "id": 32,
+    "name": "Wind Chime Highlands: Interior",
+    "route": 3,
+    "gather": [
+      {
+        "itemId": 42,
+        "rate": 25
+      },
+      {
+        "itemId": 85,
+        "rate": 24
+      },
+      {
+        "itemId": 57,
+        "rate": 23
+      },
+      {
+        "itemId": 76,
+        "rate": 10
+      },
+      {
+        "itemId": 87,
+        "rate": 8
+      },
+      {
+        "itemId": 3,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 148,
+        "levels": [
+          28
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 157,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "wind-chime-highlands-interior",
+    "zoneId": 5
+  },
+  {
+    "id": 33,
+    "name": "Wild Blue Yonder",
+    "route": 4,
+    "gather": [
+      {
+        "itemId": 75,
+        "rate": 25
+      },
+      {
+        "itemId": 19,
+        "rate": 24
+      },
+      {
+        "itemId": 8,
+        "rate": 23
+      },
+      {
+        "itemId": 89,
+        "rate": 10
+      },
+      {
+        "itemId": 57,
+        "rate": 8
+      },
+      {
+        "itemId": 3,
+        "rate": 6
+      },
+      {
+        "itemId": 2,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 148,
+        "levels": [
+          28
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 157,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 170,
+        "levels": [
+          37
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "wild-blue-yonder",
+    "zoneId": 5
+  },
+  {
+    "id": 34,
+    "name": "Bestial Highlands",
+    "route": 5,
+    "gather": [
+      {
+        "itemId": 3,
+        "rate": 16
+      },
+      {
+        "itemId": 4,
+        "rate": 15
+      },
+      {
+        "itemId": 2,
+        "rate": 14
+      },
+      {
+        "itemId": 1,
+        "rate": 13
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 142,
+        "levels": [
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 148,
+        "levels": [
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 157,
+        "levels": [
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 135,
+        "levels": [
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bestial-highlands",
+    "zoneId": 5
+  },
+  {
+    "id": 35,
+    "name": "Bountiful Highlands",
+    "route": 6,
+    "gather": [
+      {
+        "itemId": 75,
+        "rate": 16
+      },
+      {
+        "itemId": 92,
+        "rate": 15
+      },
+      {
+        "itemId": 42,
+        "rate": 14
+      },
+      {
+        "itemId": 41,
+        "rate": 13
+      },
+      {
+        "itemId": 50,
+        "rate": 12
+      },
+      {
+        "itemId": 69,
+        "rate": 11
+      },
+      {
+        "itemId": 85,
+        "rate": 10
+      },
+      {
+        "itemId": 28,
+        "rate": 9
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 135,
+        "levels": [
+          26
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 142,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 148,
+        "levels": [
+          28
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 157,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bountiful-highlands",
+    "zoneId": 5
+  },
+  {
+    "id": 36,
+    "name": "Life Spring",
+    "route": 0,
+    "gather": [
+      {
+        "itemId": 46,
+        "rate": 25
+      },
+      {
+        "itemId": 26,
+        "rate": 24
+      },
+      {
+        "itemId": 84,
+        "rate": 23
+      },
+      {
+        "itemId": 20,
+        "rate": 10
+      },
+      {
+        "itemId": 18,
+        "rate": 8
+      },
+      {
+        "itemId": 2,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 136,
+        "levels": [
+          34
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 144,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "life-spring",
+    "zoneId": 6
+  },
+  {
+    "id": 37,
+    "name": "Life Spring: Interior",
+    "route": 1,
+    "gather": [
+      {
+        "itemId": 39,
+        "rate": 25
+      },
+      {
+        "itemId": 19,
+        "rate": 24
+      },
+      {
+        "itemId": 63,
+        "rate": 23
+      },
+      {
+        "itemId": 8,
+        "rate": 10
+      },
+      {
+        "itemId": 54,
+        "rate": 8
+      },
+      {
+        "itemId": 2,
+        "rate": 6
+      },
+      {
+        "itemId": 3,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 136,
+        "levels": [
+          34
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 144,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "life-spring-interior",
+    "zoneId": 6
+  },
+  {
+    "id": 38,
+    "name": "Guardian Stream",
+    "route": 2,
+    "gather": [
+      {
+        "itemId": 45,
+        "rate": 23
+      },
+      {
+        "itemId": 33,
+        "rate": 21
+      },
+      {
+        "itemId": 92,
+        "rate": 19
+      },
+      {
+        "itemId": 30,
+        "rate": 17
+      },
+      {
+        "itemId": 51,
+        "rate": 10
+      },
+      {
+        "itemId": 2,
+        "rate": 6
+      },
+      {
+        "itemId": 4,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 162,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 137,
+        "levels": [
+          36
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 136,
+        "levels": [
+          38
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 168,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "guardian-stream",
+    "zoneId": 6
+  },
+  {
+    "id": 39,
+    "name": "Guardian Stream: Interior",
+    "route": 3,
+    "gather": [
+      {
+        "itemId": 40,
+        "rate": 23
+      },
+      {
+        "itemId": 85,
+        "rate": 21
+      },
+      {
+        "itemId": 28,
+        "rate": 19
+      },
+      {
+        "itemId": 38,
+        "rate": 17
+      },
+      {
+        "itemId": 5,
+        "rate": 10
+      },
+      {
+        "itemId": 2,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 162,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 137,
+        "levels": [
+          36
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "guardian-stream-interior",
+    "zoneId": 6
+  },
+  {
+    "id": 40,
+    "name": "Lost Spring",
+    "route": 4,
+    "gather": [
+      {
+        "itemId": 48,
+        "rate": 25
+      },
+      {
+        "itemId": 42,
+        "rate": 24
+      },
+      {
+        "itemId": 50,
+        "rate": 23
+      },
+      {
+        "itemId": 94,
+        "rate": 10
+      },
+      {
+        "itemId": 14,
+        "rate": 8
+      },
+      {
+        "itemId": 2,
+        "rate": 6
+      },
+      {
+        "itemId": 3,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 162,
+        "levels": [
+          35,
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 137,
+        "levels": [
+          36
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 171,
+        "levels": [
+          48
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "lost-spring",
+    "zoneId": 6
+  },
+  {
+    "id": 41,
+    "name": "Bestial Spring",
+    "route": 5,
+    "gather": [
+      {
+        "itemId": 2,
+        "rate": 16
+      },
+      {
+        "itemId": 4,
+        "rate": 15
+      },
+      {
+        "itemId": 1,
+        "rate": 14
+      },
+      {
+        "itemId": 3,
+        "rate": 13
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 136,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 144,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 162,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 137,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bestial-spring",
+    "zoneId": 6
+  },
+  {
+    "id": 42,
+    "name": "Bountiful Spring",
+    "route": 6,
+    "gather": [
+      {
+        "itemId": 46,
+        "rate": 16
+      },
+      {
+        "itemId": 39,
+        "rate": 15
+      },
+      {
+        "itemId": 45,
+        "rate": 14
+      },
+      {
+        "itemId": 40,
+        "rate": 13
+      },
+      {
+        "itemId": 48,
+        "rate": 12
+      },
+      {
+        "itemId": 42,
+        "rate": 11
+      },
+      {
+        "itemId": 51,
+        "rate": 10
+      },
+      {
+        "itemId": 30,
+        "rate": 9
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 136,
+        "levels": [
+          34,
+          38
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 144,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 162,
+        "levels": [
+          35,
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 137,
+        "levels": [
+          36
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 168,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bountiful-spring",
+    "zoneId": 6
+  },
+  {
+    "id": 43,
+    "name": "Dawn Ruins",
+    "route": 0,
+    "gather": [
+      {
+        "itemId": 11,
+        "rate": 25
+      },
+      {
+        "itemId": 48,
+        "rate": 24
+      },
+      {
+        "itemId": 25,
+        "rate": 23
+      },
+      {
+        "itemId": 92,
+        "rate": 10
+      },
+      {
+        "itemId": 67,
+        "rate": 8
+      },
+      {
+        "itemId": 1,
+        "rate": 6
+      },
+      {
+        "itemId": 2,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 137,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 153,
+        "levels": [
+          48
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "dawn-ruins",
+    "zoneId": 7
+  },
+  {
+    "id": 44,
+    "name": "Dawn Ruins: Interior",
+    "route": 1,
+    "gather": [
+      {
+        "itemId": 60,
+        "rate": 25
+      },
+      {
+        "itemId": 46,
+        "rate": 24
+      },
+      {
+        "itemId": 20,
+        "rate": 23
+      },
+      {
+        "itemId": 69,
+        "rate": 10
+      },
+      {
+        "itemId": 18,
+        "rate": 8
+      },
+      {
+        "itemId": 1,
+        "rate": 6
+      },
+      {
+        "itemId": 3,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 137,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 153,
+        "levels": [
+          48
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "dawn-ruins-interior",
+    "zoneId": 7
+  },
+  {
+    "id": 45,
+    "name": "Midnight Ruins",
+    "route": 2,
+    "gather": [
+      {
+        "itemId": 44,
+        "rate": 23
+      },
+      {
+        "itemId": 58,
+        "rate": 21
+      },
+      {
+        "itemId": 64,
+        "rate": 19
+      },
+      {
+        "itemId": 69,
+        "rate": 17
+      },
+      {
+        "itemId": 14,
+        "rate": 10
+      },
+      {
+        "itemId": 1,
+        "rate": 6
+      },
+      {
+        "itemId": 4,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 151,
+        "levels": [
+          49
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 163,
+        "levels": [
+          50
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 153,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 166,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "midnight-ruins",
+    "zoneId": 7
+  },
+  {
+    "id": 46,
+    "name": "Midnight Ruins: Interior",
+    "route": 3,
+    "gather": [
+      {
+        "itemId": 39,
+        "rate": 25
+      },
+      {
+        "itemId": 75,
+        "rate": 24
+      },
+      {
+        "itemId": 35,
+        "rate": 23
+      },
+      {
+        "itemId": 45,
+        "rate": 10
+      },
+      {
+        "itemId": 76,
+        "rate": 8
+      },
+      {
+        "itemId": 1,
+        "rate": 6
+      },
+      {
+        "itemId": 2,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 151,
+        "levels": [
+          49
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 163,
+        "levels": [
+          50
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "midnight-ruins-interior",
+    "zoneId": 7
+  },
+  {
+    "id": 47,
+    "name": "Eternal Ruins",
+    "route": 4,
+    "gather": [
+      {
+        "itemId": 47,
+        "rate": 25
+      },
+      {
+        "itemId": 50,
+        "rate": 24
+      },
+      {
+        "itemId": 42,
+        "rate": 23
+      },
+      {
+        "itemId": 91,
+        "rate": 10
+      },
+      {
+        "itemId": 57,
+        "rate": 8
+      },
+      {
+        "itemId": 1,
+        "rate": 6
+      },
+      {
+        "itemId": 3,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 151,
+        "levels": [
+          49,
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 163,
+        "levels": [
+          50,
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 173,
+        "levels": [
+          58
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "eternal-ruins",
+    "zoneId": 7
+  },
+  {
+    "id": 48,
+    "name": "Bestial Ruins",
+    "route": 5,
+    "gather": [
+      {
+        "itemId": 1,
+        "rate": 16
+      },
+      {
+        "itemId": 4,
+        "rate": 15
+      },
+      {
+        "itemId": 3,
+        "rate": 14
+      },
+      {
+        "itemId": 2,
+        "rate": 13
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 135,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 136,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 137,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 153,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 151,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 163,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bestial-ruins",
+    "zoneId": 7
+  },
+  {
+    "id": 49,
+    "name": "Bountiful Ruins",
+    "route": 6,
+    "gather": [
+      {
+        "itemId": 60,
+        "rate": 16
+      },
+      {
+        "itemId": 44,
+        "rate": 15
+      },
+      {
+        "itemId": 47,
+        "rate": 14
+      },
+      {
+        "itemId": 35,
+        "rate": 13
+      },
+      {
+        "itemId": 75,
+        "rate": 12
+      },
+      {
+        "itemId": 84,
+        "rate": 11
+      },
+      {
+        "itemId": 27,
+        "rate": 10
+      },
+      {
+        "itemId": 11,
+        "rate": 9
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 137,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 153,
+        "levels": [
+          48
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 151,
+        "levels": [
+          49,
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 163,
+        "levels": [
+          50,
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bountiful-ruins",
+    "zoneId": 7
+  },
+  {
+    "id": 50,
+    "name": "Snowy Mountain",
+    "route": 0,
+    "gather": [
+      {
+        "itemId": 43,
+        "rate": 25
+      },
+      {
+        "itemId": 51,
+        "rate": 24
+      },
+      {
+        "itemId": 52,
+        "rate": 23
+      },
+      {
+        "itemId": 50,
+        "rate": 10
+      },
+      {
+        "itemId": 13,
+        "rate": 8
+      },
+      {
+        "itemId": 4,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 138,
+        "levels": [
+          55
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 144,
+        "levels": [
+          56
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "snowy-mountain",
+    "zoneId": 8
+  },
+  {
+    "id": 51,
+    "name": "Snowy Mountain: Interior",
+    "route": 1,
+    "gather": [
+      {
+        "itemId": 21,
+        "rate": 25
+      },
+      {
+        "itemId": 90,
+        "rate": 24
+      },
+      {
+        "itemId": 8,
+        "rate": 23
+      },
+      {
+        "itemId": 54,
+        "rate": 10
+      },
+      {
+        "itemId": 14,
+        "rate": 8
+      },
+      {
+        "itemId": 4,
+        "rate": 6
+      },
+      {
+        "itemId": 2,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 138,
+        "levels": [
+          55
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 144,
+        "levels": [
+          56
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "snowy-mountain-interior",
+    "zoneId": 8
+  },
+  {
+    "id": 52,
+    "name": "Lernenberg: Foothills",
+    "route": 2,
+    "gather": [
+      {
+        "itemId": 62,
+        "rate": 23
+      },
+      {
+        "itemId": 75,
+        "rate": 21
+      },
+      {
+        "itemId": 64,
+        "rate": 19
+      },
+      {
+        "itemId": 47,
+        "rate": 17
+      },
+      {
+        "itemId": 12,
+        "rate": 10
+      },
+      {
+        "itemId": 4,
+        "rate": 6
+      },
+      {
+        "itemId": 3,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 160,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 154,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 145,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 169,
+        "levels": [
+          63
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "lernenberg-foothills",
+    "zoneId": 8
+  },
+  {
+    "id": 53,
+    "name": "Lernenberg: Mountainside",
+    "route": 3,
+    "gather": [
+      {
+        "itemId": 34,
+        "rate": 25
+      },
+      {
+        "itemId": 39,
+        "rate": 24
+      },
+      {
+        "itemId": 43,
+        "rate": 23
+      },
+      {
+        "itemId": 92,
+        "rate": 10
+      },
+      {
+        "itemId": 91,
+        "rate": 8
+      },
+      {
+        "itemId": 4,
+        "rate": 6
+      },
+      {
+        "itemId": 1,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 160,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 154,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 145,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "lernenberg-mountainside",
+    "zoneId": 8
+  },
+  {
+    "id": 54,
+    "name": "Lernenberg: Summit",
+    "route": 4,
+    "gather": [
+      {
+        "itemId": 49,
+        "rate": 25
+      },
+      {
+        "itemId": 92,
+        "rate": 24
+      },
+      {
+        "itemId": 60,
+        "rate": 23
+      },
+      {
+        "itemId": 33,
+        "rate": 10
+      },
+      {
+        "itemId": 69,
+        "rate": 8
+      },
+      {
+        "itemId": 4,
+        "rate": 6
+      },
+      {
+        "itemId": 2,
+        "rate": 4
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 160,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 154,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 145,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 172,
+        "levels": [
+          65
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "lernenberg-summit",
+    "zoneId": 8
+  },
+  {
+    "id": 55,
+    "name": "Bestial Mountain",
+    "route": 5,
+    "gather": [
+      {
+        "itemId": 4,
+        "rate": 16
+      },
+      {
+        "itemId": 3,
+        "rate": 15
+      },
+      {
+        "itemId": 2,
+        "rate": 14
+      },
+      {
+        "itemId": 1,
+        "rate": 13
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 138,
+        "levels": [
+          68
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 160,
+        "levels": [
+          68
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 154,
+        "levels": [
+          68
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 145,
+        "levels": [
+          68
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ],
+    "slug": "bestial-mountain",
+    "zoneId": 8
+  },
+  {
+    "id": 56,
+    "name": "Bountiful Mountain",
+    "route": 6,
+    "gather": [
+      {
+        "itemId": 90,
+        "rate": 16
+      },
+      {
+        "itemId": 43,
+        "rate": 15
+      },
+      {
+        "itemId": 34,
+        "rate": 14
+      },
+      {
+        "itemId": 49,
+        "rate": 13
+      },
+      {
+        "itemId": 39,
+        "rate": 12
+      },
+      {
+        "itemId": 92,
+        "rate": 11
+      },
+      {
+        "itemId": 60,
+        "rate": 10
+      },
+      {
+        "itemId": 33,
+        "rate": 9
+      }
+    ],
+    "monsters": [
+      {
+        "monsterId": 138,
+        "levels": [
+          55
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 144,
+        "levels": [
+          56
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 160,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 154,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 145,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 169,
+        "levels": [
+          63
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "monsterId": 172,
+        "levels": [
+          65
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ],
+    "slug": "bountiful-mountain",
+    "zoneId": 8
+  },
+  {
+    "id": 57,
+    "name": "Dimension Gate",
+    "route": 7,
+    "gather": [],
+    "monsters": [],
+    "slug": "dimension-gate",
+    "zoneId": 7
+  }
+]

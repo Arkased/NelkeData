@@ -1,0 +1,4664 @@
+[
+  {
+    "id": 132,
+    "name": "Blue Puni",
+    "nameJp": "青ぷにぷに",
+    "icon": "monster_faceicon001.png",
+    "rank": 4,
+    "stats": {
+      "HP": 94,
+      "STR": 96,
+      "VIT": 82,
+      "INT": 71,
+      "DEX": 108,
+      "LUCK": 86,
+      "AGI": 67,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 2
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A squishy monster found pretty much everywhere. It's so weak even a child can defeat it. Still, they tend to attack in groups and may catch unsuspecting adventurers unaware.",
+    "type": "Monster",
+    "wage": 120,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 25,
+      "Wind": 0,
+      "Earth": -25
+    },
+    "exp": 9,
+    "drops": [
+      {
+        "itemId": 59,
+        "quantity": 2,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [
+      {
+        "zoneId": 1,
+        "levels": [
+          3
+        ],
+        "boss": false
+      }
+    ],
+    "slug": "blue-puni",
+    "areas": [
+      {
+        "areaId": 1,
+        "levels": [
+          1
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 2,
+        "levels": [
+          1
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 7,
+        "levels": [
+          1
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 133,
+    "name": "Green Puni",
+    "nameJp": "緑ぷにぷに",
+    "icon": "monster_faceicon002.png",
+    "rank": 4,
+    "stats": {
+      "HP": 196,
+      "STR": 104,
+      "VIT": 91,
+      "INT": 78,
+      "DEX": 118,
+      "LUCK": 89,
+      "AGI": 78,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 2
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "Slightly stronger than a standard Blue Puni. It's a little harder and more bouncy, which it uses to its advantage when it attacks.",
+    "type": "Monster",
+    "wage": 300,
+    "elementDef": {
+      "Fire": -25,
+      "Water": 0,
+      "Wind": 25,
+      "Earth": 0
+    },
+    "exp": 9,
+    "drops": [
+      {
+        "itemId": 59,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "green-puni",
+    "areas": [
+      {
+        "areaId": 8,
+        "levels": [
+          7
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 9,
+        "levels": [
+          7
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 12,
+        "levels": [
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 14,
+        "levels": [
+          7,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 134,
+    "name": "Red Puni",
+    "nameJp": "赤ぷにぷに",
+    "icon": "monster_faceicon003.png",
+    "rank": 3,
+    "stats": {
+      "HP": 236,
+      "STR": 121,
+      "VIT": 88,
+      "INT": 81,
+      "DEX": 128,
+      "LUCK": 104,
+      "AGI": 84,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 2
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A much stronger, more aggressive Puni. It's quite hot-blooded, and will chase after you if it spots you.",
+    "type": "Monster",
+    "wage": 1200,
+    "elementDef": {
+      "Fire": 25,
+      "Water": -25,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 9,
+    "drops": [
+      {
+        "itemId": 59,
+        "quantity": 4,
+        "rate": 100
+      },
+      {
+        "itemId": 63,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "red-puni",
+    "areas": [
+      {
+        "areaId": 22,
+        "levels": [
+          20
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 23,
+        "levels": [
+          20
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 24,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 27,
+        "levels": [
+          31
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 28,
+        "levels": [
+          20
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 135,
+    "name": "Gold Puni",
+    "nameJp": "金ぷにぷに",
+    "icon": "monster_faceicon004.png",
+    "rank": 3,
+    "stats": {
+      "HP": 310,
+      "STR": 118,
+      "VIT": 115,
+      "INT": 86,
+      "DEX": 130,
+      "LUCK": 189,
+      "AGI": 108,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A shining gold Puni which has consumed too many metals. It has a uniquely metallic odor. It's quick to run away from danger.",
+    "type": "Monster",
+    "wage": 1500,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": -25,
+      "Earth": 0
+    },
+    "exp": 11,
+    "drops": [
+      {
+        "itemId": 59,
+        "quantity": 4,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "gold-puni",
+    "areas": [
+      {
+        "areaId": 26,
+        "levels": [
+          22
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 26,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "areaId": 27,
+        "levels": [
+          31
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 28,
+        "levels": [
+          22
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 28,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "areaId": 29,
+        "levels": [
+          26
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 30,
+        "levels": [
+          26
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 34,
+        "levels": [
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 35,
+        "levels": [
+          26
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 48,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 136,
+    "name": "Black Puni",
+    "nameJp": "黒ぷにぷに",
+    "icon": "monster_faceicon005.png",
+    "rank": 2,
+    "stats": {
+      "HP": 380,
+      "STR": 134,
+      "VIT": 120,
+      "INT": 98,
+      "DEX": 135,
+      "LUCK": 129,
+      "AGI": 106,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A completely black and extremely hard Puni. Many theories have tried to explain its existence, such as having a core of burnt silicon, but none have been verified.",
+    "type": "Monster",
+    "wage": 2400,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 13,
+    "drops": [
+      {
+        "itemId": 59,
+        "quantity": 6,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "black-puni",
+    "areas": [
+      {
+        "areaId": 36,
+        "levels": [
+          34
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 37,
+        "levels": [
+          34
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 38,
+        "levels": [
+          38
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 41,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 42,
+        "levels": [
+          34,
+          38
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 48,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 137,
+    "name": "Fake Puni",
+    "nameJp": "プニモドキ",
+    "icon": "monster_faceicon006.png",
+    "rank": 2,
+    "stats": {
+      "HP": 460,
+      "STR": 135,
+      "VIT": 97,
+      "INT": 126,
+      "DEX": 140,
+      "LUCK": 135,
+      "AGI": 108,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A Puni unlike any other. To most it may look the same, but to the trained eye the differences are obvious.",
+    "type": "Monster",
+    "wage": 3120,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 17,
+    "drops": [
+      {
+        "itemId": 39,
+        "quantity": 4,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "fake-puni",
+    "areas": [
+      {
+        "areaId": 38,
+        "levels": [
+          36
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 39,
+        "levels": [
+          36
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 40,
+        "levels": [
+          36
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 41,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 42,
+        "levels": [
+          36
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 43,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 44,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 48,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 49,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 138,
+    "name": "Special Puni",
+    "nameJp": "すぺしゃるぷに",
+    "icon": "monster_faceicon007.png",
+    "rank": 1,
+    "stats": {
+      "HP": 800,
+      "STR": 150,
+      "VIT": 90,
+      "INT": 150,
+      "DEX": 140,
+      "LUCK": 200,
+      "AGI": 130,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A prismatic rainbow Puni. This extremely powerful specimen would cause difficulty for even the most experienced adventurers.",
+    "type": "Monster",
+    "wage": 3500,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 50,
+    "drops": [
+      {
+        "itemId": 59,
+        "quantity": 8,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "special-puni",
+    "areas": [
+      {
+        "areaId": 50,
+        "levels": [
+          55
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 51,
+        "levels": [
+          55
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 55,
+        "levels": [
+          68
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 56,
+        "levels": [
+          55
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 139,
+    "name": "Master Puni",
+    "nameJp": "ますたーぷに",
+    "icon": "monster_faceicon008.png",
+    "rank": 0,
+    "stats": {
+      "HP": 5000,
+      "STR": 150,
+      "VIT": 150,
+      "INT": 150,
+      "DEX": 150,
+      "LUCK": 150,
+      "AGI": 150,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 10
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "The king of all things Puni. It acts as a kind of Puni commander, but its considerable size and strength make it a formidable opponent even on its own.",
+    "type": "Boss",
+    "wage": 60000,
+    "elementDef": {
+      "Fire": 50,
+      "Water": 50,
+      "Wind": 50,
+      "Earth": 50
+    },
+    "exp": 800,
+    "drops": [
+      {
+        "itemId": 59,
+        "quantity": 9,
+        "rate": 100
+      },
+      {
+        "itemId": 60,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [
+      {
+        "zoneId": 1,
+        "levels": [
+          98
+        ],
+        "boss": true
+      }
+    ],
+    "slug": "master-puni",
+    "areas": []
+  },
+  {
+    "id": 140,
+    "name": "Beast",
+    "nameJp": "ケモノ",
+    "icon": "monster_faceicon011.png",
+    "rank": 4,
+    "stats": {
+      "HP": 157,
+      "STR": 100,
+      "VIT": 74,
+      "INT": 82,
+      "DEX": 121,
+      "LUCK": 105,
+      "AGI": 80,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A bipedal beast noted for its fluffy fur. The Gatekeeper is the weakest of the beasts, and thus the lowest rank. But despite its cute appearance, it can still pose quite a danger.",
+    "type": "Monster",
+    "wage": 150,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 10,
+    "drops": [
+      {
+        "itemId": 6,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [
+      {
+        "zoneId": 1,
+        "levels": [
+          3
+        ],
+        "boss": false
+      }
+    ],
+    "slug": "beast",
+    "areas": [
+      {
+        "areaId": 1,
+        "levels": [
+          2
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 2,
+        "levels": [
+          2
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 7,
+        "levels": [
+          2
+        ],
+        "areaLevel": 3,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 141,
+    "name": "Guard",
+    "nameJp": "ケモノ門番",
+    "icon": "monster_faceicon009.png",
+    "rank": 3,
+    "stats": {
+      "HP": 301,
+      "STR": 113,
+      "VIT": 82,
+      "INT": 116,
+      "DEX": 156,
+      "LUCK": 148,
+      "AGI": 108,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A beast one rank up from Gatekeeper due to its ability to wield a larger weapon. When a Gatekeeper ranks up, they're naturally inclined to look after the weaker.",
+    "type": "Monster",
+    "wage": 720,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 11,
+    "drops": [
+      {
+        "itemId": 68,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "guard",
+    "areas": [
+      {
+        "areaId": 15,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 16,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 20,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 21,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 142,
+    "name": "Beast",
+    "nameJp": "ケモノ近衛",
+    "icon": "monster_faceicon010.png",
+    "rank": 2,
+    "stats": {
+      "HP": 550,
+      "STR": 128,
+      "VIT": 85,
+      "INT": 132,
+      "DEX": 178,
+      "LUCK": 154,
+      "AGI": 114,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "The highest beast rank. It's powerful enough to fight without relying on weapons. Reaching this rank means you're a full-grown adult.",
+    "type": "Monster",
+    "wage": 2700,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 13,
+    "drops": [
+      {
+        "itemId": 54,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "beast-142",
+    "areas": [
+      {
+        "areaId": 29,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 30,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 31,
+        "levels": [
+          30
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 34,
+        "levels": [
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 35,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 143,
+    "name": "Horned Beast",
+    "nameJp": "ホーンビースト",
+    "icon": "monster_faceicon012.png",
+    "rank": 4,
+    "stats": {
+      "HP": 176,
+      "STR": 107,
+      "VIT": 100,
+      "INT": 100,
+      "DEX": 131,
+      "LUCK": 110,
+      "AGI": 97,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A larger species of rabbit with fearsome horns. The tail may look especially puffy, but it doesn't actually contain much fur. Don't let one of these hit you--it WILL hurt.",
+    "type": "Monster",
+    "wage": 180,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 12,
+    "drops": [
+      {
+        "itemId": 17,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "horned-beast",
+    "areas": [
+      {
+        "areaId": 3,
+        "levels": [
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 4,
+        "levels": [
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 5,
+        "levels": [
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 5,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      },
+      {
+        "areaId": 6,
+        "levels": [
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 7,
+        "levels": [
+          4,
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 7,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 144,
+    "name": "Icicle Beast",
+    "nameJp": "アイシクルラビット",
+    "icon": "monster_faceicon013.png",
+    "rank": 2,
+    "stats": {
+      "HP": 530,
+      "STR": 128,
+      "VIT": 114,
+      "INT": 118,
+      "DEX": 151,
+      "LUCK": 138,
+      "AGI": 113,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A rabbit with crystal horns hard as diamond. They're found in cold regions, so they have thick fur which leads to stronger defenses.",
+    "type": "Monster",
+    "wage": 3840,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 50,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 18,
+    "drops": [
+      {
+        "itemId": 21,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "icicle-beast",
+    "areas": [
+      {
+        "areaId": 36,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 37,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 41,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 42,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 50,
+        "levels": [
+          56
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 51,
+        "levels": [
+          56
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 56,
+        "levels": [
+          56
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 145,
+    "name": "Fortunate Heart",
+    "nameJp": "フォーチュンハート",
+    "icon": "monster_faceicon014.png",
+    "rank": 1,
+    "stats": {
+      "HP": 760,
+      "STR": 139,
+      "VIT": 108,
+      "INT": 132,
+      "DEX": 168,
+      "LUCK": 150,
+      "AGI": 123,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A cute, angelic rabbit. It has a unique heart pattern, and legend has it that if you can touch that area, you will find your love requited.",
+    "type": "Monster",
+    "wage": 4550,
+    "elementDef": {
+      "Fire": 25,
+      "Water": 25,
+      "Wind": 25,
+      "Earth": 0
+    },
+    "exp": 24,
+    "drops": [
+      {
+        "itemId": 11,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "fortunate-heart",
+    "areas": [
+      {
+        "areaId": 52,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 53,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 54,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 55,
+        "levels": [
+          68
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 56,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 146,
+    "name": "Cheery Flower",
+    "nameJp": "チアーフラワー",
+    "icon": "monster_faceicon015.png",
+    "rank": 4,
+    "stats": {
+      "HP": 134,
+      "STR": 105,
+      "VIT": 98,
+      "INT": 100,
+      "DEX": 132,
+      "LUCK": 108,
+      "AGI": 90,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 2
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "An intriguing flowery monster. It absorbs nutrients via its roots, helping the flower on its head bloom. The white cotton puffs on its hands will harden over time.",
+    "type": "Monster",
+    "wage": 210,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 25,
+      "Earth": 0
+    },
+    "exp": 11,
+    "drops": [
+      {
+        "itemId": 18,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "cheery-flower",
+    "areas": [
+      {
+        "areaId": 3,
+        "levels": [
+          6
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 5,
+        "levels": [
+          6
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 5,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      },
+      {
+        "areaId": 6,
+        "levels": [
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 7,
+        "levels": [
+          6
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 7,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 147,
+    "name": "Sunshade Grass",
+    "nameJp": "ヒダマリグサ",
+    "icon": "monster_faceicon016.png",
+    "rank": 3,
+    "stats": {
+      "HP": 380,
+      "STR": 118,
+      "VIT": 78,
+      "INT": 118,
+      "DEX": 153,
+      "LUCK": 132,
+      "AGI": 103,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 2
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A flower-like monster that feeds off sunlight. It withers after even a day without sun, so it's constantly seeking sunny areas.",
+    "type": "Monster",
+    "wage": 1800,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 25,
+      "Earth": 0
+    },
+    "exp": 12,
+    "drops": [
+      {
+        "itemId": 87,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "sunshade-grass",
+    "areas": [
+      {
+        "areaId": 22,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 23,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 24,
+        "levels": [
+          21,
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 25,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 26,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 27,
+        "levels": [
+          31
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 28,
+        "levels": [
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 148,
+    "name": "Aluma",
+    "nameJp": "アリューマ",
+    "icon": "monster_faceicon017.png",
+    "rank": 2,
+    "stats": {
+      "HP": 540,
+      "STR": 124,
+      "VIT": 84,
+      "INT": 122,
+      "DEX": 163,
+      "LUCK": 148,
+      "AGI": 115,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 3
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 2
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A plant monster that scatters poisonous spores as a defense mechanism when it senses danger. The buds in its hands stay closed in order to gather poison.",
+    "type": "Monster",
+    "wage": 3240,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 25,
+      "Earth": 0
+    },
+    "exp": 16,
+    "drops": [
+      {
+        "itemId": 9,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "aluma",
+    "areas": [
+      {
+        "areaId": 31,
+        "levels": [
+          28,
+          30
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 32,
+        "levels": [
+          28
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 33,
+        "levels": [
+          28
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 34,
+        "levels": [
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 35,
+        "levels": [
+          28
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 149,
+    "name": "Dustshooter",
+    "nameJp": "ダストシューター",
+    "icon": "monster_faceicon018.png",
+    "rank": 4,
+    "stats": {
+      "HP": 210,
+      "STR": 116,
+      "VIT": 99,
+      "INT": 95,
+      "DEX": 121,
+      "LUCK": 109,
+      "AGI": 78,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 2
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A mysterious monster that lives in a cauldron. One theory says this cauldron was part of a failed synthesis and gave birth to the creature.",
+    "type": "Monster",
+    "wage": 375,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 13,
+    "drops": [
+      {
+        "itemId": 81,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "dustshooter",
+    "areas": [
+      {
+        "areaId": 10,
+        "levels": [
+          10,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 11,
+        "levels": [
+          10
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 12,
+        "levels": [
+          10
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 13,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 14,
+        "levels": [
+          10
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 150,
+    "name": "Seedcaster",
+    "nameJp": "シードキャスター",
+    "icon": "monster_faceicon019.png",
+    "rank": 3,
+    "stats": {
+      "HP": 230,
+      "STR": 123,
+      "VIT": 110,
+      "INT": 139,
+      "DEX": 139,
+      "LUCK": 132,
+      "AGI": 91,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 2
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster constantly engulfed in blazing heat. The boiling cauldron keeps the creature warm and vital, so if the monster leaves the cauldron it will be weakened.",
+    "type": "Monster",
+    "wage": 900,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 15,
+    "drops": [
+      {
+        "itemId": 19,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "seedcaster",
+    "areas": [
+      {
+        "areaId": 15,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 16,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 17,
+        "levels": [
+          17
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 20,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 21,
+        "levels": [
+          14,
+          17,
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 151,
+    "name": "Hidedecker",
+    "nameJp": "ハイドデッカー",
+    "icon": "monster_faceicon020.png",
+    "rank": 1,
+    "stats": {
+      "HP": 480,
+      "STR": 153,
+      "VIT": 117,
+      "INT": 155,
+      "DEX": 130,
+      "LUCK": 129,
+      "AGI": 108,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 2
+      },
+      "STR": {
+        "min": 0,
+        "max": 2
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster that can enclose itself in its cauldron to charge up its energy. The flower found on its head does not exist anywhere else in nature.",
+    "type": "Monster",
+    "wage": 5625,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 22,
+    "drops": [
+      {
+        "itemId": 47,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "hidedecker",
+    "areas": [
+      {
+        "areaId": 45,
+        "levels": [
+          49
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 46,
+        "levels": [
+          49
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 47,
+        "levels": [
+          49,
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 48,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 49,
+        "levels": [
+          49,
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 152,
+    "name": "Ravenous Bat",
+    "nameJp": "ラべナスバット",
+    "icon": "monster_faceicon021.png",
+    "rank": 4,
+    "stats": {
+      "HP": 159,
+      "STR": 103,
+      "VIT": 107,
+      "INT": 103,
+      "DEX": 130,
+      "LUCK": 68,
+      "AGI": 98,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 1
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A quite eye-catching pink monster. It lives mainly in dark areas, and is often mistaken for some kind of ghost.",
+    "type": "Monster",
+    "wage": 450,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 10,
+    "drops": [
+      {
+        "itemId": 26,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "ravenous-bat",
+    "areas": [
+      {
+        "areaId": 8,
+        "levels": [
+          8
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 9,
+        "levels": [
+          8
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 12,
+        "levels": [
+          11
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 13,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 14,
+        "levels": [
+          8,
+          11
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 153,
+    "name": "Demonic Hunter",
+    "nameJp": "デモニックハンター",
+    "icon": "monster_faceicon022.png",
+    "rank": 1,
+    "stats": {
+      "HP": 400,
+      "STR": 123,
+      "VIT": 112,
+      "INT": 125,
+      "DEX": 130,
+      "LUCK": 88,
+      "AGI": 132,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 1
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A fanged bat monster that gives off an ominous aura. If you're bitten, you'll find yourself engulfed in darkness, confused and unable to move for a period of time.",
+    "type": "Monster",
+    "wage": 6750,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 18,
+    "drops": [
+      {
+        "itemId": 57,
+        "quantity": 6,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "demonic-hunter",
+    "areas": [
+      {
+        "areaId": 43,
+        "levels": [
+          48
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 44,
+        "levels": [
+          48
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 45,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 48,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 49,
+        "levels": [
+          48
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 154,
+    "name": "Cold Blood",
+    "nameJp": "コールドブラッド",
+    "icon": "monster_faceicon023.png",
+    "rank": 1,
+    "stats": {
+      "HP": 780,
+      "STR": 132,
+      "VIT": 128,
+      "INT": 132,
+      "DEX": 130,
+      "LUCK": 92,
+      "AGI": 144,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 1
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A bat monster found mainly in cold regions. Its fangs emit ice energy, freezing anything it bites. Some claim that the supersonic waves it emits cause blizzards.",
+    "type": "Monster",
+    "wage": 5600,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 50,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 22,
+    "drops": [
+      {
+        "itemId": 90,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "cold-blood",
+    "areas": [
+      {
+        "areaId": 52,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 53,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 54,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 55,
+        "levels": [
+          68
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 56,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 155,
+    "name": "Ghost Mushroom",
+    "nameJp": "オバケキノコ",
+    "icon": "monster_faceicon024.png",
+    "rank": 4,
+    "stats": {
+      "HP": 310,
+      "STR": 100,
+      "VIT": 71,
+      "INT": 105,
+      "DEX": 100,
+      "LUCK": 108,
+      "AGI": 97,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A giant mushroom monster. It uses its long tongue as a deadly weapon. Experienced explorers can look at the monster's tongue and determine the state of the health.",
+    "type": "Monster",
+    "wage": 525,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 11,
+    "drops": [
+      {
+        "itemId": 91,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "ghost-mushroom",
+    "areas": [
+      {
+        "areaId": 10,
+        "levels": [
+          11,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 11,
+        "levels": [
+          11
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 12,
+        "levels": [
+          11,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 13,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 14,
+        "levels": [
+          11,
+          12
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 156,
+    "name": "Antidote Mushroom",
+    "nameJp": "ゲドクキノコ",
+    "icon": "monster_faceicon025.png",
+    "rank": 3,
+    "stats": {
+      "HP": 422,
+      "STR": 110,
+      "VIT": 74,
+      "INT": 119,
+      "DEX": 110,
+      "LUCK": 111,
+      "AGI": 107,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A poisonous looking mushroom. It shoots out poisonous spores from its tongue. Mushrooms you can collect from this creature are not poisonous themselves.",
+    "type": "Monster",
+    "wage": 1080,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 13,
+    "drops": [
+      {
+        "itemId": 89,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "antidote-mushroom",
+    "areas": [
+      {
+        "areaId": 17,
+        "levels": [
+          14,
+          17
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 18,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 19,
+        "levels": [
+          14
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 19,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "areaId": 20,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 21,
+        "levels": [
+          14,
+          17
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 21,
+        "levels": [
+          19
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 157,
+    "name": "Mush-Wolf",
+    "nameJp": "マッシュウルフ",
+    "icon": "monster_faceicon026.png",
+    "rank": 2,
+    "stats": {
+      "HP": 987,
+      "STR": 120,
+      "VIT": 77,
+      "INT": 125,
+      "DEX": 120,
+      "LUCK": 115,
+      "AGI": 114,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster with a hat-looking cap. Unlike the other mushroom monsters, it has sharp teeth you'll notice when you get up close, since it will lunge and try to bite you.",
+    "type": "Monster",
+    "wage": 3780,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 18,
+    "drops": [
+      {
+        "itemId": 14,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "mush-wolf",
+    "areas": [
+      {
+        "areaId": 31,
+        "levels": [
+          27,
+          30
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 32,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 33,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 34,
+        "levels": [
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 35,
+        "levels": [
+          27
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 158,
+    "name": "Plains Turtle",
+    "nameJp": "草原ガメ",
+    "icon": "monster_faceicon027.png",
+    "rank": 4,
+    "stats": {
+      "HP": 60,
+      "STR": 95,
+      "VIT": 120,
+      "INT": 90,
+      "DEX": 81,
+      "LUCK": 65,
+      "AGI": 32,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 1
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A tortoise monster that dwells in grassy plains. Its hard shell is surprisingly sharp, and can lead to serious injury.",
+    "type": "Monster",
+    "wage": 240,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 15,
+    "drops": [
+      {
+        "itemId": 15,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "plains-turtle",
+    "areas": [
+      {
+        "areaId": 3,
+        "levels": [
+          3,
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 4,
+        "levels": [
+          3,
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 5,
+        "levels": [
+          3,
+          4
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 5,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      },
+      {
+        "areaId": 6,
+        "levels": [
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 7,
+        "levels": [
+          3,
+          4,
+          12
+        ],
+        "areaLevel": 3,
+        "boss": false
+      },
+      {
+        "areaId": 7,
+        "levels": [
+          8
+        ],
+        "areaLevel": 3,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 159,
+    "name": "Hidden Stone",
+    "nameJp": "イワガクレ",
+    "icon": "monster_faceicon028.png",
+    "rank": 3,
+    "stats": {
+      "HP": 85,
+      "STR": 95,
+      "VIT": 135,
+      "INT": 106,
+      "DEX": 121,
+      "LUCK": 84,
+      "AGI": 57,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 1
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster with a shell made from stacked rocks. It lives in dry climates like deserts and rocky mountains. When it wants to sleep, it will dig a hole and withdraw into its shell.",
+    "type": "Monster",
+    "wage": 1260,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 18,
+    "drops": [
+      {
+        "itemId": 93,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "hidden-stone",
+    "areas": [
+      {
+        "areaId": 17,
+        "levels": [
+          13,
+          15,
+          17
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 18,
+        "levels": [
+          13,
+          15
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 19,
+        "levels": [
+          13,
+          15
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 20,
+        "levels": [
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 21,
+        "levels": [
+          13,
+          15,
+          17,
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 160,
+    "name": "Spiked Turtle",
+    "nameJp": "スパイクタートル",
+    "icon": "monster_faceicon029.png",
+    "rank": 1,
+    "stats": {
+      "HP": 99,
+      "STR": 111,
+      "VIT": 146,
+      "INT": 124,
+      "DEX": 136,
+      "LUCK": 100,
+      "AGI": 86,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 2
+      },
+      "DEX": {
+        "min": 0,
+        "max": 2
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 1
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster with a pointed shell. The unique shape causes a tornado when it spins around. It appears black in low light, so it is known as Black Shell in some worlds.",
+    "type": "Monster",
+    "wage": 6650,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 25,
+    "drops": [
+      {
+        "itemId": 62,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "spiked-turtle",
+    "areas": [
+      {
+        "areaId": 52,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 53,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 54,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 55,
+        "levels": [
+          68
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 56,
+        "levels": [
+          57,
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 161,
+    "name": "Mountain Jellyfish",
+    "nameJp": "山クラゲ",
+    "icon": "monster_faceicon030.png",
+    "rank": 3,
+    "stats": {
+      "HP": 280,
+      "STR": 107,
+      "VIT": 96,
+      "INT": 113,
+      "DEX": 124,
+      "LUCK": 130,
+      "AGI": 88,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 1
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A jellyfish-type monster found in the mountains. Its ability to float allows it to live on land, and half of its body is made of water, which it absorbs through the air and plants.",
+    "type": "Monster",
+    "wage": 2100,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 25,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 17,
+    "drops": [
+      {
+        "itemId": 88,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "mountain-jellyfish",
+    "areas": [
+      {
+        "areaId": 24,
+        "levels": [
+          20,
+          21,
+          25
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 25,
+        "levels": [
+          20,
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 26,
+        "levels": [
+          20,
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 27,
+        "levels": [
+          31
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 28,
+        "levels": [
+          20,
+          21
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 162,
+    "name": "Flower Parasol",
+    "nameJp": "フラワーパラソル",
+    "icon": "monster_faceicon031.png",
+    "rank": 2,
+    "stats": {
+      "HP": 573,
+      "STR": 113,
+      "VIT": 119,
+      "INT": 123,
+      "DEX": 124,
+      "LUCK": 150,
+      "AGI": 97,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 1
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster with flowery patterns on it. It contains a special venom which can eventually petrify anything it attacks.",
+    "type": "Monster",
+    "wage": 4560,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 25,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 20,
+    "drops": [
+      {
+        "itemId": 40,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "flower-parasol",
+    "areas": [
+      {
+        "areaId": 38,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 39,
+        "levels": [
+          35
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 40,
+        "levels": [
+          35,
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 41,
+        "levels": [
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 42,
+        "levels": [
+          35,
+          39
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 163,
+    "name": "Devil's Tentacle",
+    "nameJp": "デビルズテンタクル",
+    "icon": "monster_faceicon032.png",
+    "rank": 1,
+    "stats": {
+      "HP": 760,
+      "STR": 121,
+      "VIT": 126,
+      "INT": 128,
+      "DEX": 131,
+      "LUCK": 170,
+      "AGI": 112,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 1
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 3
+      },
+      "AGI": {
+        "min": 0,
+        "max": 3
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster that mutated after absorbing too much poison. It uses this poison to attack, and is highly resistant to poison itself.",
+    "type": "Monster",
+    "wage": 7875,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 25,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 35,
+    "drops": [
+      {
+        "itemId": 69,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "devil-s-tentacle",
+    "areas": [
+      {
+        "areaId": 45,
+        "levels": [
+          50
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 46,
+        "levels": [
+          50
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 47,
+        "levels": [
+          50,
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 48,
+        "levels": [
+          60
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 49,
+        "levels": [
+          50,
+          52
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 164,
+    "name": "Forest Guard",
+    "nameJp": "森の番人",
+    "icon": "monster_faceicon033.png",
+    "rank": 0,
+    "stats": {
+      "HP": 381,
+      "STR": 91,
+      "VIT": 139,
+      "INT": 101,
+      "DEX": 100,
+      "LUCK": 87,
+      "AGI": 70,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 5
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 0
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A golem made of wood. It was once part of some ancient ruins, but eventually found its way to the nearby forests, which it defends. It can use wood to repair itself.",
+    "type": "Boss",
+    "wage": 3000,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 25,
+      "Earth": 0
+    },
+    "exp": 20,
+    "drops": [
+      {
+        "itemId": 36,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "forest-guard",
+    "areas": [
+      {
+        "areaId": 12,
+        "levels": [
+          17
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 165,
+    "name": "Stone Breaker",
+    "nameJp": "ストーンブレイカー",
+    "icon": "monster_faceicon034.png",
+    "rank": 0,
+    "stats": {
+      "HP": 580,
+      "STR": 91,
+      "VIT": 139,
+      "INT": 101,
+      "DEX": 100,
+      "LUCK": 125,
+      "AGI": 60,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 5
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 0
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A golem made of stone. These stones are composed of a unique mineral which it can also use to repair itself.",
+    "type": "Boss",
+    "wage": 12000,
+    "elementDef": {
+      "Fire": 25,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 30,
+    "drops": [
+      {
+        "itemId": 64,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "stone-breaker",
+    "areas": [
+      {
+        "areaId": 26,
+        "levels": [
+          30
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "areaId": 28,
+        "levels": [
+          30
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 166,
+    "name": "Magnagardener",
+    "nameJp": "マグナガードナー",
+    "icon": "monster_faceicon035.png",
+    "rank": 0,
+    "stats": {
+      "HP": 930,
+      "STR": 91,
+      "VIT": 139,
+      "INT": 101,
+      "DEX": 100,
+      "LUCK": 125,
+      "AGI": 60,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 5
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 3
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 0
+      },
+      "AGI": {
+        "min": 0,
+        "max": 2
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A special type of golem that defends specific locations. They have a set range they'll defend, so as long as you stay out of their area, they'll leave you alone.",
+    "type": "Boss",
+    "wage": 45000,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 25,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 60,
+    "drops": [
+      {
+        "itemId": 92,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "magnagardener",
+    "areas": [
+      {
+        "areaId": 45,
+        "levels": [
+          57
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 167,
+    "name": "Crimson Raider",
+    "nameJp": "クリムゾンレイダー",
+    "icon": "monster_faceicon036.png",
+    "rank": 3,
+    "stats": {
+      "HP": 496,
+      "STR": 132,
+      "VIT": 103,
+      "INT": 119,
+      "DEX": 132,
+      "LUCK": 130,
+      "AGI": 100,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 5
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster that looks like an eagle with beastly legs. In addition to its wings, it's covered in bright red fur, and the fire it breathes can easily melt rock.",
+    "type": "Boss",
+    "wage": 7200,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 25
+    },
+    "exp": 32,
+    "drops": [
+      {
+        "itemId": 61,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "crimson-raider",
+    "areas": [
+      {
+        "areaId": 19,
+        "levels": [
+          22
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "areaId": 21,
+        "levels": [
+          22
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 168,
+    "name": "Bernfeld",
+    "nameJp": "ベルンフェルト",
+    "icon": "monster_faceicon037.png",
+    "rank": 2,
+    "stats": {
+      "HP": 846,
+      "STR": 132,
+      "VIT": 111,
+      "INT": 121,
+      "DEX": 132,
+      "LUCK": 130,
+      "AGI": 100,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 5
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "An odd monster with a chicken's head, snake scales, and a poison-spitting tail. It's extremely aggressive and will attack anything that comes close.",
+    "type": "Boss",
+    "wage": 28800,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 25
+    },
+    "exp": 49,
+    "drops": [
+      {
+        "itemId": 57,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "bernfeld",
+    "areas": [
+      {
+        "areaId": 38,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 42,
+        "levels": [
+          47
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 169,
+    "name": "Bolt Eagle",
+    "nameJp": "ボルトイーグル",
+    "icon": "monster_faceicon038.png",
+    "rank": 1,
+    "stats": {
+      "HP": 1200,
+      "STR": 132,
+      "VIT": 130,
+      "INT": 124,
+      "DEX": 132,
+      "LUCK": 130,
+      "AGI": 100,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 3
+      },
+      "STR": {
+        "min": 0,
+        "max": 3
+      },
+      "VIT": {
+        "min": 0,
+        "max": 2
+      },
+      "INT": {
+        "min": 0,
+        "max": 3
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 5
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster that looks like a huge, majestic eagle. It's said to fly at the speed of light, with a sound of thunder. Once it notices you, escape is all but impossible.",
+    "type": "Boss",
+    "wage": 42000,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 25
+    },
+    "exp": 75,
+    "drops": [
+      {
+        "itemId": 39,
+        "quantity": 3,
+        "rate": 100
+      },
+      {
+        "itemId": 61,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "bolt-eagle",
+    "areas": [
+      {
+        "areaId": 52,
+        "levels": [
+          63
+        ],
+        "areaLevel": 0,
+        "boss": false
+      },
+      {
+        "areaId": 56,
+        "levels": [
+          63
+        ],
+        "areaLevel": 0,
+        "boss": false
+      }
+    ]
+  },
+  {
+    "id": 170,
+    "name": "Fallen Knight",
+    "nameJp": "フォールンナイト",
+    "icon": "monster_faceicon041.png",
+    "rank": 0,
+    "stats": {
+      "HP": 2306,
+      "STR": 56,
+      "VIT": 1,
+      "INT": 56,
+      "DEX": 96,
+      "LUCK": 1,
+      "AGI": 56,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "An armored skeleton knight. It's said to be composed of the spirits of knights that have fallen in battle, though it doesn't fight like a knight.",
+    "type": "Boss",
+    "wage": 21600,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 25
+    },
+    "exp": 60,
+    "drops": [
+      {
+        "itemId": 92,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "fallen-knight",
+    "areas": [
+      {
+        "areaId": 33,
+        "levels": [
+          37
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 171,
+    "name": "Flammecanne",
+    "nameJp": "火竜フランカンネ",
+    "icon": "monster_faceicon042.png",
+    "rank": 0,
+    "stats": {
+      "HP": 3124,
+      "STR": 114,
+      "VIT": 44,
+      "INT": 114,
+      "DEX": 124,
+      "LUCK": 124,
+      "AGI": 124,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "One of the strongest dragons in the world. Its fire breath can melt rock in an instant, and its speed, strength, and battle skills are unparalleled.",
+    "type": "Boss",
+    "wage": 28800,
+    "elementDef": {
+      "Fire": 75,
+      "Water": 0,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 92,
+    "drops": [
+      {
+        "itemId": 50,
+        "quantity": 3,
+        "rate": 100
+      },
+      {
+        "itemId": 52,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "flammecanne",
+    "areas": [
+      {
+        "areaId": 40,
+        "levels": [
+          48
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 172,
+    "name": "Valanar",
+    "nameJp": "水竜ヴァラナル",
+    "icon": "monster_faceicon047.png",
+    "rank": 0,
+    "stats": {
+      "HP": 5164,
+      "STR": 104,
+      "VIT": 1,
+      "INT": 94,
+      "DEX": 164,
+      "LUCK": 114,
+      "AGI": 114,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "One of the strongest dragons in the world. It can create tornadoes from water, and even while sleeping it can cause storms which make the oceans roil and rumble.",
+    "type": "Boss",
+    "wage": 42000,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 75,
+      "Wind": 0,
+      "Earth": 0
+    },
+    "exp": 150,
+    "drops": [
+      {
+        "itemId": 60,
+        "quantity": 3,
+        "rate": 100
+      },
+      {
+        "itemId": 51,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [],
+    "slug": "valanar",
+    "areas": [
+      {
+        "areaId": 54,
+        "levels": [
+          65
+        ],
+        "areaLevel": 0,
+        "boss": true
+      },
+      {
+        "areaId": 56,
+        "levels": [
+          65
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 173,
+    "name": "Clay Statue",
+    "nameJp": "クレイスタチュー",
+    "icon": "monster_faceicon043.png",
+    "rank": 0,
+    "stats": {
+      "HP": 4292,
+      "STR": 92,
+      "VIT": 1,
+      "INT": 92,
+      "DEX": 142,
+      "LUCK": 1,
+      "AGI": 192,
+      "CHR": 100
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster completely shrouded in mystery. All anyone knows is that it's lightning fast, and only the most highly trained warriors stand any chance against it.",
+    "type": "Boss",
+    "wage": 40000,
+    "elementDef": {
+      "Fire": 0,
+      "Water": 0,
+      "Wind": 75,
+      "Earth": 0
+    },
+    "exp": 115,
+    "drops": [
+      {
+        "itemId": 60,
+        "quantity": 3,
+        "rate": 100
+      }
+    ],
+    "zoneEncounters": [
+      {
+        "zoneId": 1,
+        "levels": [
+          55
+        ],
+        "boss": true
+      }
+    ],
+    "slug": "clay-statue",
+    "areas": [
+      {
+        "areaId": 47,
+        "levels": [
+          58
+        ],
+        "areaLevel": 0,
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": 199,
+    "name": "Siegel",
+    "nameJp": "ズィーゲル",
+    "icon": "monster_faceicon053.png",
+    "rank": 0,
+    "stats": {
+      "HP": 6000,
+      "STR": 110,
+      "VIT": 110,
+      "INT": 110,
+      "DEX": 110,
+      "LUCK": 110,
+      "AGI": 110,
+      "CHR": 110
+    },
+    "growth": {
+      "HP": {
+        "min": 0,
+        "max": 4
+      },
+      "STR": {
+        "min": 0,
+        "max": 4
+      },
+      "VIT": {
+        "min": 0,
+        "max": 4
+      },
+      "INT": {
+        "min": 0,
+        "max": 4
+      },
+      "DEX": {
+        "min": 0,
+        "max": 4
+      },
+      "LUCK": {
+        "min": 0,
+        "max": 4
+      },
+      "AGI": {
+        "min": 0,
+        "max": 4
+      },
+      "CHR": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    "description": "A monster that was sealed by a sage using the power of alchemy.",
+    "type": "Boss",
+    "wage": 50000,
+    "elementDef": {
+      "Fire": 50,
+      "Water": 0,
+      "Wind": 50,
+      "Earth": 0
+    },
+    "exp": 200,
+    "drops": [],
+    "zoneEncounters": [],
+    "slug": "siegel",
+    "areas": []
+  }
+]

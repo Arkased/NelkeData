@@ -1,0 +1,2183 @@
+[
+  {
+    "id": 1,
+    "name": "Silvalia",
+    "recipeIds": [
+      6
+    ],
+    "teacherId": 28,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 2,
+    "name": "Moffcloth",
+    "recipeIds": [
+      10
+    ],
+    "teacherId": 10,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 3,
+    "name": "Animal Resonator",
+    "recipeIds": [
+      75
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 4,
+    "name": "Morgen Light",
+    "recipeIds": [
+      76
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 5,
+    "name": "Gravicrystal",
+    "recipeIds": [
+      77
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 6,
+    "name": "Wind God's Bag",
+    "recipeIds": [
+      78
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 7,
+    "name": "Slumber Incense",
+    "recipeIds": [
+      79
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 8,
+    "name": "Spruce",
+    "recipeIds": [
+      220
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 2
+  },
+  {
+    "id": 9,
+    "name": "Dense Wood",
+    "recipeIds": [
+      221
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 3
+  },
+  {
+    "id": 10,
+    "name": "Liquid Metal",
+    "recipeIds": [
+      223
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 9
+  },
+  {
+    "id": 11,
+    "name": "Ultimate Steel",
+    "recipeIds": [
+      224
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 18
+  },
+  {
+    "id": 12,
+    "name": "Colorful Brick",
+    "recipeIds": [
+      226
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 27
+  },
+  {
+    "id": 13,
+    "name": "Magic Stone",
+    "recipeIds": [
+      227
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 10
+  },
+  {
+    "id": 14,
+    "name": "Fireproof Plate",
+    "recipeIds": [
+      228
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 14
+  },
+  {
+    "id": 15,
+    "name": "Synthesis Piece",
+    "recipeIds": [
+      229
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 7
+  },
+  {
+    "id": 16,
+    "name": "Ice Box",
+    "recipeIds": [
+      231
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 8
+  },
+  {
+    "id": 17,
+    "name": "Fertilizer",
+    "recipeIds": [
+      232
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 29
+  },
+  {
+    "id": 18,
+    "name": "Precision Block",
+    "recipeIds": [
+      240
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 28
+  },
+  {
+    "id": 19,
+    "name": "Aurora Crystal",
+    "recipeIds": [
+      241
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 24
+  },
+  {
+    "id": 20,
+    "name": "Wheat Flour",
+    "recipeIds": [
+      20
+    ],
+    "teacherId": 5,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 21,
+    "name": "Simple Sweets",
+    "recipeIds": [
+      100
+    ],
+    "teacherId": 5,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 22,
+    "name": "Bomb",
+    "recipeIds": [
+      45
+    ],
+    "teacherId": 5,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 23,
+    "name": "Neutralizer-R",
+    "recipeIds": [
+      2
+    ],
+    "teacherId": 5,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 24,
+    "name": "Timber",
+    "recipeIds": [
+      219
+    ],
+    "teacherId": 6,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 25,
+    "name": "Beer",
+    "recipeIds": [
+      96
+    ],
+    "teacherId": 5,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 26,
+    "name": "Traditional Bread",
+    "recipeIds": [
+      90
+    ],
+    "teacherId": 6,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 27,
+    "name": "Puni Jelly",
+    "recipeIds": [
+      102
+    ],
+    "teacherId": 6,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 28,
+    "name": "Butterfly Net",
+    "recipeIds": [
+      72
+    ],
+    "teacherId": 6,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 29,
+    "name": "Distilled Water",
+    "recipeIds": [
+      18
+    ],
+    "teacherId": 7,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 30,
+    "name": "Distorted Stone",
+    "recipeIds": [
+      225
+    ],
+    "teacherId": 6,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 31,
+    "name": "Blessed Wine",
+    "recipeIds": [
+      97
+    ],
+    "teacherId": 7,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 32,
+    "name": "Healing Aroma",
+    "recipeIds": [
+      124
+    ],
+    "teacherId": 7,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 33,
+    "name": "Pure Incense",
+    "recipeIds": [
+      117
+    ],
+    "teacherId": 7,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 34,
+    "name": "Magical Paint",
+    "recipeIds": [
+      125
+    ],
+    "teacherId": 7,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 35,
+    "name": "Healing Salve",
+    "recipeIds": [
+      52
+    ],
+    "teacherId": 7,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 36,
+    "name": "Shovel",
+    "recipeIds": [
+      73
+    ],
+    "teacherId": 7,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 37,
+    "name": "Ingot",
+    "recipeIds": [
+      5
+    ],
+    "teacherId": 7,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 38,
+    "name": "Neutralizer-G",
+    "recipeIds": [
+      3
+    ],
+    "teacherId": 7,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 39,
+    "name": "Rich Soil",
+    "recipeIds": [
+      237
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": 23
+  },
+  {
+    "id": 40,
+    "name": "Apple Tart",
+    "recipeIds": [
+      94
+    ],
+    "teacherId": 8,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 41,
+    "name": "Polishing Powder",
+    "recipeIds": [
+      14
+    ],
+    "teacherId": 8,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 42,
+    "name": "Zettel",
+    "recipeIds": [
+      17
+    ],
+    "teacherId": 8,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 43,
+    "name": "Polished Crystal",
+    "recipeIds": [
+      30
+    ],
+    "teacherId": 8,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 44,
+    "name": "Ice Bomb",
+    "recipeIds": [
+      46
+    ],
+    "teacherId": 8,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 45,
+    "name": "Fruit Tea",
+    "recipeIds": [
+      53
+    ],
+    "teacherId": 8,
+    "friendship": 3,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 46,
+    "name": "Neutralizer-B",
+    "recipeIds": [
+      1
+    ],
+    "teacherId": 8,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 47,
+    "name": "Cloth",
+    "recipeIds": [
+      9
+    ],
+    "teacherId": 8,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 48,
+    "name": "Pure Oil",
+    "recipeIds": [
+      19
+    ],
+    "teacherId": 9,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 49,
+    "name": "Crystal Ball",
+    "recipeIds": [
+      122
+    ],
+    "teacherId": 9,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 50,
+    "name": "Lightning Bomb",
+    "recipeIds": [
+      47
+    ],
+    "teacherId": 9,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 51,
+    "name": "Nectar",
+    "recipeIds": [
+      54
+    ],
+    "teacherId": 9,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 52,
+    "name": "Neutralizer-Y",
+    "recipeIds": [
+      4
+    ],
+    "teacherId": 9,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 53,
+    "name": "Alchemic Clay",
+    "recipeIds": [
+      16
+    ],
+    "teacherId": 9,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 54,
+    "name": "Alchemy Coal",
+    "recipeIds": [
+      34
+    ],
+    "teacherId": 9,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 55,
+    "name": "Iron Board",
+    "recipeIds": [
+      222
+    ],
+    "teacherId": 9,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 56,
+    "name": "Honey",
+    "recipeIds": [
+      31
+    ],
+    "teacherId": 28,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 57,
+    "name": "Pocket Watch",
+    "recipeIds": [
+      118
+    ],
+    "teacherId": 28,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 58,
+    "name": "Globe",
+    "recipeIds": [
+      48
+    ],
+    "teacherId": 28,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 59,
+    "name": "Breezy Aroma",
+    "recipeIds": [
+      55
+    ],
+    "teacherId": 28,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 60,
+    "name": "Diamond",
+    "recipeIds": [
+      15
+    ],
+    "teacherId": 28,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 61,
+    "name": "Comet",
+    "recipeIds": [
+      13
+    ],
+    "teacherId": 28,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 62,
+    "name": "Tough Alloy",
+    "recipeIds": [
+      239
+    ],
+    "teacherId": 28,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 63,
+    "name": "Alchemy Drops",
+    "recipeIds": [
+      101
+    ],
+    "teacherId": 10,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 64,
+    "name": "Discharge Tube",
+    "recipeIds": [
+      126
+    ],
+    "teacherId": 10,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 65,
+    "name": "Maiden's Spear",
+    "recipeIds": [
+      146
+    ],
+    "teacherId": 10,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 66,
+    "name": "Battle Mail",
+    "recipeIds": [
+      152
+    ],
+    "teacherId": 10,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 67,
+    "name": "Scattershot",
+    "recipeIds": [
+      142
+    ],
+    "teacherId": 10,
+    "friendship": 3,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 68,
+    "name": "Craft",
+    "recipeIds": [
+      49
+    ],
+    "teacherId": 10,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 69,
+    "name": "Veggie Bun",
+    "recipeIds": [
+      92
+    ],
+    "teacherId": 13,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 70,
+    "name": "Music Box",
+    "recipeIds": [
+      123
+    ],
+    "teacherId": 13,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 71,
+    "name": "Armored Bunker",
+    "recipeIds": [
+      148
+    ],
+    "teacherId": 13,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 72,
+    "name": "Crystal Fang",
+    "recipeIds": [
+      145
+    ],
+    "teacherId": 13,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 73,
+    "name": "Reclamation Tool",
+    "recipeIds": [
+      74
+    ],
+    "teacherId": 13,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 74,
+    "name": "Meteor",
+    "recipeIds": [
+      50
+    ],
+    "teacherId": 13,
+    "friendship": 3,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 75,
+    "name": "Pitchfork",
+    "recipeIds": [
+      233
+    ],
+    "teacherId": 13,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 76,
+    "name": "Deluxe Pancakes",
+    "recipeIds": [
+      99
+    ],
+    "teacherId": 16,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 77,
+    "name": "Ether Ink",
+    "recipeIds": [
+      116
+    ],
+    "teacherId": 16,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 78,
+    "name": "Maiden Armor",
+    "recipeIds": [
+      156
+    ],
+    "teacherId": 16,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 79,
+    "name": "Shooting Star",
+    "recipeIds": [
+      150
+    ],
+    "teacherId": 16,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 80,
+    "name": "Dark Water",
+    "recipeIds": [
+      57
+    ],
+    "teacherId": 16,
+    "friendship": 4,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 81,
+    "name": "Spirit Weave",
+    "recipeIds": [
+      58
+    ],
+    "teacherId": 16,
+    "friendship": 3,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 82,
+    "name": "Bear Doll",
+    "recipeIds": [
+      129
+    ],
+    "teacherId": 20,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 83,
+    "name": "Bloody Claw",
+    "recipeIds": [
+      149
+    ],
+    "teacherId": 20,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 84,
+    "name": "Dragoon Mail",
+    "recipeIds": [
+      155
+    ],
+    "teacherId": 20,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 85,
+    "name": "Codex of Creation",
+    "recipeIds": [
+      59
+    ],
+    "teacherId": 20,
+    "friendship": 3,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 86,
+    "name": "Blitz Core: Void",
+    "recipeIds": [
+      51
+    ],
+    "teacherId": 20,
+    "friendship": 5,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 87,
+    "name": "Ruby",
+    "recipeIds": [
+      24
+    ],
+    "teacherId": 20,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 88,
+    "name": "Rainbow Paint",
+    "recipeIds": [
+      242
+    ],
+    "teacherId": 20,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 89,
+    "name": "Jiggly Pudding",
+    "recipeIds": [
+      98
+    ],
+    "teacherId": 23,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 90,
+    "name": "Genug Water Pot",
+    "recipeIds": [
+      119
+    ],
+    "teacherId": 23,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 91,
+    "name": "Claiomh Solais",
+    "recipeIds": [
+      143
+    ],
+    "teacherId": 23,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 92,
+    "name": "Cloth Skirt",
+    "recipeIds": [
+      193
+    ],
+    "teacherId": 23,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 93,
+    "name": "Leather Coat",
+    "recipeIds": [
+      195
+    ],
+    "teacherId": 23,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 94,
+    "name": "Farden Coat",
+    "recipeIds": [
+      196
+    ],
+    "teacherId": 23,
+    "friendship": 3,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 95,
+    "name": "Elixir",
+    "recipeIds": [
+      56
+    ],
+    "teacherId": 23,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 96,
+    "name": "Water Pump",
+    "recipeIds": [
+      238
+    ],
+    "teacherId": 23,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 97,
+    "name": "Strength Meat",
+    "recipeIds": [
+      104
+    ],
+    "teacherId": 17,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 98,
+    "name": "Gramophone",
+    "recipeIds": [
+      128
+    ],
+    "teacherId": 17,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 99,
+    "name": "Valkyrie Cloth",
+    "recipeIds": [
+      157
+    ],
+    "teacherId": 17,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 100,
+    "name": "Sturdy Shirt",
+    "recipeIds": [
+      198
+    ],
+    "teacherId": 17,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 101,
+    "name": "Concealing Skin",
+    "recipeIds": [
+      197
+    ],
+    "teacherId": 17,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 102,
+    "name": "Nightshade",
+    "recipeIds": [
+      201
+    ],
+    "teacherId": 17,
+    "friendship": 3,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 103,
+    "name": "Stylish Shirt",
+    "recipeIds": [
+      199
+    ],
+    "teacherId": 17,
+    "friendship": 3,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 104,
+    "name": "Dragon's Secret",
+    "recipeIds": [
+      60
+    ],
+    "teacherId": 17,
+    "friendship": 3,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 105,
+    "name": "Flugel",
+    "recipeIds": [
+      11
+    ],
+    "teacherId": 13,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 106,
+    "name": "Store Shelf",
+    "recipeIds": [
+      235
+    ],
+    "teacherId": 17,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 107,
+    "name": "Stamina Bread",
+    "recipeIds": [
+      91
+    ],
+    "teacherId": 15,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 108,
+    "name": "B/W Tarot",
+    "recipeIds": [
+      131
+    ],
+    "teacherId": 15,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 109,
+    "name": "Meteorite Armor",
+    "recipeIds": [
+      153
+    ],
+    "teacherId": 15,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 110,
+    "name": "Gorgeous Dress",
+    "recipeIds": [
+      194
+    ],
+    "teacherId": 15,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 111,
+    "name": "Granate",
+    "recipeIds": [
+      208
+    ],
+    "teacherId": 15,
+    "friendship": 2,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 112,
+    "name": "Gold Eisen",
+    "recipeIds": [
+      7
+    ],
+    "teacherId": 15,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 113,
+    "name": "Petrified Wood",
+    "recipeIds": [
+      236
+    ],
+    "teacherId": 15,
+    "friendship": 0,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 114,
+    "name": "Living Pie",
+    "recipeIds": [
+      95
+    ],
+    "teacherId": 20,
+    "friendship": 3,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 115,
+    "name": "Speculator Dice",
+    "recipeIds": [
+      121
+    ],
+    "teacherId": 5,
+    "friendship": 4,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 116,
+    "name": "Storm Drill",
+    "recipeIds": [
+      144
+    ],
+    "teacherId": 6,
+    "friendship": 4,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 117,
+    "name": "Fantastic Wig",
+    "recipeIds": [
+      202
+    ],
+    "teacherId": 7,
+    "friendship": 4,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 118,
+    "name": "Bridal Blouse",
+    "recipeIds": [
+      200
+    ],
+    "teacherId": 8,
+    "friendship": 4,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 119,
+    "name": "Smaragd",
+    "recipeIds": [
+      26
+    ],
+    "teacherId": 9,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 120,
+    "name": "Fishing Pole",
+    "recipeIds": [
+      71
+    ],
+    "teacherId": 28,
+    "friendship": 4,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 121,
+    "name": "Harmonium",
+    "recipeIds": [
+      8
+    ],
+    "teacherId": 29,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 122,
+    "name": "Sapphire",
+    "recipeIds": [
+      25
+    ],
+    "teacherId": 30,
+    "friendship": 4,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 123,
+    "name": "Display Mannequin",
+    "recipeIds": [
+      234
+    ],
+    "teacherId": 31,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_060",
+      "label": "After Task 5: Develop into an Flowing Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 124,
+    "name": "Mushroom Stew",
+    "recipeIds": [
+      103
+    ],
+    "teacherId": 5,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 125,
+    "name": "Crystal Weight",
+    "recipeIds": [
+      130
+    ],
+    "teacherId": 6,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 126,
+    "name": "World Splitter",
+    "recipeIds": [
+      147
+    ],
+    "teacherId": 7,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 127,
+    "name": "Gnade Ring",
+    "recipeIds": [
+      23
+    ],
+    "teacherId": 15,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 128,
+    "name": "Mythical Ring",
+    "recipeIds": [
+      206
+    ],
+    "teacherId": 9,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 129,
+    "name": "Refuel Pads",
+    "recipeIds": [
+      181
+    ],
+    "teacherId": 28,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 130,
+    "name": "Refresh Medicine",
+    "recipeIds": [
+      171
+    ],
+    "teacherId": 29,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 131,
+    "name": "Cough Drop",
+    "recipeIds": [
+      168
+    ],
+    "teacherId": 30,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 132,
+    "name": "Berg Medicine",
+    "recipeIds": [
+      173
+    ],
+    "teacherId": 31,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 133,
+    "name": "Medical Herb Tea",
+    "recipeIds": [
+      169
+    ],
+    "teacherId": 10,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 134,
+    "name": "Velvetis",
+    "recipeIds": [
+      12
+    ],
+    "teacherId": 10,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 135,
+    "name": "Medicine Base",
+    "recipeIds": [
+      32
+    ],
+    "teacherId": 13,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 136,
+    "name": "Pure Poison",
+    "recipeIds": [
+      21
+    ],
+    "teacherId": 16,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_070",
+      "label": "After Task 6: Develop into an Active Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 137,
+    "name": "Apple Story",
+    "recipeIds": [
+      105
+    ],
+    "teacherId": 24,
+    "friendship": 4,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 138,
+    "name": "Mirage Mirror",
+    "recipeIds": [
+      120
+    ],
+    "teacherId": 16,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 139,
+    "name": "Alchemic Mail",
+    "recipeIds": [
+      154
+    ],
+    "teacherId": 21,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 140,
+    "name": "Hollow Ring",
+    "recipeIds": [
+      22
+    ],
+    "teacherId": 22,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 141,
+    "name": "Glass Tiara",
+    "recipeIds": [
+      203
+    ],
+    "teacherId": 23,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 142,
+    "name": "Spirit Earrings",
+    "recipeIds": [
+      204
+    ],
+    "teacherId": 20,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 143,
+    "name": "Vitality Pill",
+    "recipeIds": [
+      177
+    ],
+    "teacherId": 24,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 144,
+    "name": "Heal Bandage",
+    "recipeIds": [
+      180
+    ],
+    "teacherId": 26,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 145,
+    "name": "Migraine Syrup",
+    "recipeIds": [
+      172
+    ],
+    "teacherId": 27,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 146,
+    "name": "Eye-Opener",
+    "recipeIds": [
+      170
+    ],
+    "teacherId": 17,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 147,
+    "name": "Witch Salve",
+    "recipeIds": [
+      174
+    ],
+    "teacherId": 18,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 148,
+    "name": "Ashes of Origin",
+    "recipeIds": [
+      29
+    ],
+    "teacherId": 15,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 149,
+    "name": "Crimson Stone",
+    "recipeIds": [
+      28
+    ],
+    "teacherId": 15,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 150,
+    "name": "Instrument Set",
+    "recipeIds": [
+      230
+    ],
+    "teacherId": 28,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_080",
+      "label": "After Task 7: Develop into an Alchemy Town"
+    },
+    "researchId": null
+  },
+  {
+    "id": 151,
+    "name": "Golden Soup",
+    "recipeIds": [
+      93
+    ],
+    "teacherId": 5,
+    "friendship": 7,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 152,
+    "name": "Gold Puni Statue",
+    "recipeIds": [
+      127
+    ],
+    "teacherId": 6,
+    "friendship": 7,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 153,
+    "name": "Goddess Shield",
+    "recipeIds": [
+      151
+    ],
+    "teacherId": 7,
+    "friendship": 7,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 154,
+    "name": "Sun Flower",
+    "recipeIds": [
+      207
+    ],
+    "teacherId": 8,
+    "friendship": 7,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 155,
+    "name": "Ares Brooch",
+    "recipeIds": [
+      205
+    ],
+    "teacherId": 9,
+    "friendship": 7,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 156,
+    "name": "Drachen Elixir",
+    "recipeIds": [
+      178
+    ],
+    "teacherId": 28,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 157,
+    "name": "No-Doc",
+    "recipeIds": [
+      182
+    ],
+    "teacherId": 29,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 158,
+    "name": "Cold Medicine",
+    "recipeIds": [
+      175
+    ],
+    "teacherId": 30,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 159,
+    "name": "Mystery Elixir",
+    "recipeIds": [
+      179
+    ],
+    "teacherId": 31,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 160,
+    "name": "Forbidden Capsule",
+    "recipeIds": [
+      176
+    ],
+    "teacherId": 10,
+    "friendship": 5,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 161,
+    "name": "Philosopher's Stone",
+    "recipeIds": [
+      27
+    ],
+    "teacherId": 10,
+    "friendship": 0,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 162,
+    "name": "Gold Nugget",
+    "recipeIds": [
+      33
+    ],
+    "teacherId": 13,
+    "friendship": 7,
+    "unlockEvent": {
+      "id": "EVENT_MM01_090",
+      "label": "After Task 8: Develop into a Booming City"
+    },
+    "researchId": null
+  },
+  {
+    "id": 163,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 164,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 165,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 166,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 167,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 168,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 169,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 170,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 171,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 172,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 173,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 174,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 175,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 176,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 177,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 178,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 179,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 180,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 181,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 182,
+    "name": null,
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 183,
+    "name": null,
+    "recipeIds": [
+      268,
+      31,
+      269
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 184,
+    "name": null,
+    "recipeIds": [
+      53,
+      181,
+      267
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 185,
+    "name": null,
+    "recipeIds": [
+      100,
+      18,
+      99
+    ],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 186,
+    "name": "Apcol",
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 187,
+    "name": "Flour",
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  },
+  {
+    "id": 188,
+    "name": "Uni Pouch",
+    "recipeIds": [],
+    "teacherId": null,
+    "friendship": null,
+    "unlockEvent": null,
+    "researchId": null
+  }
+]

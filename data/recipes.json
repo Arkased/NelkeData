@@ -1,0 +1,4732 @@
+[
+  {
+    "id": 1,
+    "resultItemId": 123,
+    "materials": [
+      {
+        "itemId": 17,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 10,
+    "addedValue": 86,
+    "addedValuePerCost": 21.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      46
+    ]
+  },
+  {
+    "id": 2,
+    "resultItemId": 124,
+    "materials": [
+      {
+        "itemId": 18,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 8,
+    "addedValue": 79,
+    "addedValuePerCost": 19.75,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      23
+    ]
+  },
+  {
+    "id": 3,
+    "resultItemId": 125,
+    "materials": [
+      {
+        "itemId": 5,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 10,
+    "addedValue": 78,
+    "addedValuePerCost": 19.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      38
+    ]
+  },
+  {
+    "id": 4,
+    "resultItemId": 126,
+    "materials": [
+      {
+        "itemId": 22,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 38,
+    "addedValue": 131,
+    "addedValuePerCost": 21.83,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      52
+    ]
+  },
+  {
+    "id": 5,
+    "resultItemId": 127,
+    "materials": [
+      {
+        "itemId": 31,
+        "quantity": 2
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 52,
+    "addedValue": 182,
+    "addedValuePerCost": 26,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      37
+    ]
+  },
+  {
+    "id": 6,
+    "resultItemId": 128,
+    "materials": [
+      {
+        "itemId": 32,
+        "quantity": 2
+      },
+      {
+        "itemId": 1,
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 104,
+    "addedValue": 321,
+    "addedValuePerCost": 29.18,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      1
+    ]
+  },
+  {
+    "id": 7,
+    "resultItemId": 129,
+    "materials": [
+      {
+        "itemId": 27,
+        "quantity": 2
+      },
+      {
+        "itemId": 77,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 10
+      },
+      {
+        "itemId": 4,
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 14,
+    "inputCost": 152,
+    "addedValue": 870.67,
+    "addedValuePerCost": 62.19,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      112
+    ]
+  },
+  {
+    "id": 8,
+    "resultItemId": 130,
+    "materials": [
+      {
+        "itemId": 92,
+        "quantity": 2
+      },
+      {
+        "itemId": 30,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 10
+      },
+      {
+        "itemId": 3,
+        "quantity": 6
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 198,
+    "addedValue": 1164.67,
+    "addedValuePerCost": 68.51,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      121
+    ]
+  },
+  {
+    "id": 9,
+    "resultItemId": 131,
+    "materials": [
+      {
+        "itemId": 38,
+        "quantity": 2
+      },
+      {
+        "itemId": 4,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 54,
+    "addedValue": 155,
+    "addedValuePerCost": 22.14,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      47
+    ]
+  },
+  {
+    "id": 10,
+    "resultItemId": 132,
+    "materials": [
+      {
+        "itemId": 56,
+        "quantity": 2
+      },
+      {
+        "itemId": 2,
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 22,
+    "addedValue": 379.33,
+    "addedValuePerCost": 54.19,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      2
+    ]
+  },
+  {
+    "id": 11,
+    "resultItemId": 133,
+    "materials": [
+      {
+        "itemId": 80,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 10
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 18,
+    "addedValue": 506,
+    "addedValuePerCost": 63.25,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      105
+    ]
+  },
+  {
+    "id": 12,
+    "resultItemId": 134,
+    "materials": [
+      {
+        "itemId": 52,
+        "quantity": 1
+      },
+      {
+        "itemId": 39,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 10
+      },
+      {
+        "itemId": 3,
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 146,
+    "addedValue": 2162,
+    "addedValuePerCost": 135.13,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      134
+    ]
+  },
+  {
+    "id": 13,
+    "resultItemId": 135,
+    "materials": [
+      {
+        "itemId": 24,
+        "quantity": 1
+      },
+      {
+        "itemId": 136,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 147,
+    "addedValue": 100,
+    "addedValuePerCost": 14.29,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      61
+    ]
+  },
+  {
+    "id": 14,
+    "resultItemId": 136,
+    "materials": [
+      {
+        "itemId": 25,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 23,
+    "addedValue": 74,
+    "addedValuePerCost": 18.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      41
+    ]
+  },
+  {
+    "id": 15,
+    "resultItemId": 137,
+    "materials": [
+      {
+        "itemId": 27,
+        "quantity": 1
+      },
+      {
+        "itemId": 138,
+        "quantity": 1
+      },
+      {
+        "itemId": 31,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 356,
+    "addedValue": 409.33,
+    "addedValuePerCost": 34.11,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      60
+    ]
+  },
+  {
+    "id": 16,
+    "resultItemId": 138,
+    "materials": [
+      {
+        "itemId": 58,
+        "quantity": 1
+      },
+      {
+        "itemId": 74,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 84,
+    "addedValue": 196,
+    "addedValuePerCost": 24.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      53
+    ]
+  },
+  {
+    "id": 17,
+    "resultItemId": 139,
+    "materials": [
+      {
+        "itemId": 5,
+        "quantity": 3
+      },
+      {
+        "itemId": 82,
+        "quantity": 3
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 57,
+    "addedValue": 230,
+    "addedValuePerCost": 28.75,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      42
+    ]
+  },
+  {
+    "id": 18,
+    "resultItemId": 140,
+    "materials": [
+      {
+        "itemId": 2,
+        "quantity": 4
+      },
+      {
+        "itemId": 66,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 14,
+    "addedValue": 78,
+    "addedValuePerCost": 19.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      29,
+      185
+    ]
+  },
+  {
+    "id": 19,
+    "resultItemId": 141,
+    "materials": [
+      {
+        "itemId": 18,
+        "quantity": 2
+      },
+      {
+        "itemId": 17,
+        "quantity": 1
+      },
+      {
+        "itemId": 123,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 122,
+    "addedValue": 196,
+    "addedValuePerCost": 24.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      48
+    ]
+  },
+  {
+    "id": 20,
+    "resultItemId": 142,
+    "materials": [
+      {
+        "itemId": 10,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 2,
+    "inputCost": 2,
+    "addedValue": 33,
+    "addedValuePerCost": 16.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      20
+    ]
+  },
+  {
+    "id": 21,
+    "resultItemId": 143,
+    "materials": [
+      {
+        "itemId": 13,
+        "quantity": 1
+      },
+      {
+        "itemId": 16,
+        "quantity": 1
+      },
+      {
+        "itemId": 126,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 230,
+    "addedValue": 1600,
+    "addedValuePerCost": 123.08,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      136
+    ]
+  },
+  {
+    "id": 22,
+    "resultItemId": 144,
+    "materials": [
+      {
+        "itemId": 130,
+        "quantity": 1
+      },
+      {
+        "itemId": 148,
+        "quantity": 1
+      },
+      {
+        "itemId": 60,
+        "quantity": 1
+      },
+      {
+        "itemId": 11,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 38,
+    "inputCost": 3368,
+    "addedValue": 4760,
+    "addedValuePerCost": 125.26,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      140
+    ]
+  },
+  {
+    "id": 23,
+    "resultItemId": 145,
+    "materials": [
+      {
+        "itemId": 130,
+        "quantity": 1
+      },
+      {
+        "itemId": 376,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 32,
+    "inputCost": 3313.33,
+    "addedValue": 3538.67,
+    "addedValuePerCost": 110.58,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      127
+    ]
+  },
+  {
+    "id": 24,
+    "resultItemId": 146,
+    "materials": [
+      {
+        "itemId": 28,
+        "quantity": 1
+      },
+      {
+        "itemId": 138,
+        "quantity": 1
+      },
+      {
+        "itemId": 136,
+        "quantity": 1
+      },
+      {
+        "itemId": 124,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 15,
+    "inputCost": 521,
+    "addedValue": 771,
+    "addedValuePerCost": 51.4,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      87
+    ]
+  },
+  {
+    "id": 25,
+    "resultItemId": 147,
+    "materials": [
+      {
+        "itemId": 28,
+        "quantity": 2
+      },
+      {
+        "itemId": 138,
+        "quantity": 1
+      },
+      {
+        "itemId": 136,
+        "quantity": 2
+      },
+      {
+        "itemId": 123,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 684,
+    "addedValue": 1052,
+    "addedValuePerCost": 55.37,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      122
+    ]
+  },
+  {
+    "id": 26,
+    "resultItemId": 148,
+    "materials": [
+      {
+        "itemId": 28,
+        "quantity": 2
+      },
+      {
+        "itemId": 138,
+        "quantity": 1
+      },
+      {
+        "itemId": 136,
+        "quantity": 2
+      },
+      {
+        "itemId": 125,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 676,
+    "addedValue": 1145.33,
+    "addedValuePerCost": 60.28,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      119
+    ]
+  },
+  {
+    "id": 27,
+    "resultItemId": 149,
+    "materials": [
+      {
+        "itemId": 150,
+        "quantity": 1
+      },
+      {
+        "itemId": 11,
+        "quantity": 1
+      },
+      {
+        "itemId": 137,
+        "quantity": 1
+      },
+      {
+        "itemId": 151,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 27,
+    "inputCost": 3394.33,
+    "addedValue": 7737.67,
+    "addedValuePerCost": 286.58,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      161
+    ]
+  },
+  {
+    "id": 28,
+    "resultItemId": 150,
+    "materials": [
+      {
+        "itemId": 51,
+        "quantity": 1
+      },
+      {
+        "itemId": 34,
+        "quantity": 1
+      },
+      {
+        "itemId": 50,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 194,
+    "addedValue": 1464,
+    "addedValuePerCost": 122,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      149
+    ]
+  },
+  {
+    "id": 29,
+    "resultItemId": 151,
+    "materials": [
+      {
+        "itemId": 12,
+        "quantity": 1
+      },
+      {
+        "itemId": 30,
+        "quantity": 1
+      },
+      {
+        "itemId": 18,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 85,
+    "addedValue": 831,
+    "addedValuePerCost": 103.88,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      148
+    ]
+  },
+  {
+    "id": 30,
+    "resultItemId": 152,
+    "materials": [
+      {
+        "itemId": 26,
+        "quantity": 1
+      },
+      {
+        "itemId": 131,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 241,
+    "addedValue": 162,
+    "addedValuePerCost": 18,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      43
+    ]
+  },
+  {
+    "id": 31,
+    "resultItemId": 153,
+    "materials": [
+      {
+        "itemId": 82,
+        "quantity": 3
+      },
+      {
+        "itemId": 81,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 54,
+    "addedValue": 184,
+    "addedValuePerCost": 23,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      56,
+      183
+    ]
+  },
+  {
+    "id": 32,
+    "resultItemId": 154,
+    "materials": [
+      {
+        "itemId": 5,
+        "quantity": 2
+      },
+      {
+        "itemId": 87,
+        "quantity": 2
+      },
+      {
+        "itemId": 9,
+        "quantity": 2
+      },
+      {
+        "itemId": 55,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 156,
+    "addedValue": 1314,
+    "addedValuePerCost": 119.45,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      135
+    ]
+  },
+  {
+    "id": 33,
+    "resultItemId": 155,
+    "materials": [
+      {
+        "itemId": 149,
+        "quantity": 1
+      },
+      {
+        "itemId": 49,
+        "quantity": 1
+      },
+      {
+        "itemId": 12,
+        "quantity": 1
+      },
+      {
+        "itemId": 156,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 39,
+    "inputCost": 11745,
+    "addedValue": 4687,
+    "addedValuePerCost": 120.18,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      162
+    ]
+  },
+  {
+    "id": 34,
+    "resultItemId": 156,
+    "materials": [
+      {
+        "itemId": 36,
+        "quantity": 2
+      },
+      {
+        "itemId": 20,
+        "quantity": 2
+      },
+      {
+        "itemId": 1,
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 80,
+    "addedValue": 424,
+    "addedValuePerCost": 35.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      54
+    ]
+  },
+  {
+    "id": 45,
+    "resultItemId": 167,
+    "materials": [
+      {
+        "itemId": 20,
+        "quantity": 1
+      },
+      {
+        "itemId": 17,
+        "quantity": 1
+      },
+      {
+        "itemId": 124,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 127,
+    "addedValue": 126,
+    "addedValuePerCost": 18,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      22
+    ]
+  },
+  {
+    "id": 46,
+    "resultItemId": 168,
+    "materials": [
+      {
+        "itemId": 21,
+        "quantity": 1
+      },
+      {
+        "itemId": 15,
+        "quantity": 1
+      },
+      {
+        "itemId": 123,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 165,
+    "addedValue": 185,
+    "addedValuePerCost": 20.56,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      44
+    ]
+  },
+  {
+    "id": 47,
+    "resultItemId": 169,
+    "materials": [
+      {
+        "itemId": 22,
+        "quantity": 1
+      },
+      {
+        "itemId": 23,
+        "quantity": 1
+      },
+      {
+        "itemId": 125,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 180,
+    "addedValue": 235,
+    "addedValuePerCost": 23.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      50
+    ]
+  },
+  {
+    "id": 48,
+    "resultItemId": 170,
+    "materials": [
+      {
+        "itemId": 139,
+        "quantity": 1
+      },
+      {
+        "itemId": 37,
+        "quantity": 1
+      },
+      {
+        "itemId": 126,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 463,
+    "addedValue": 326.33,
+    "addedValuePerCost": 27.19,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      58
+    ]
+  },
+  {
+    "id": 49,
+    "resultItemId": 171,
+    "materials": [
+      {
+        "itemId": 6,
+        "quantity": 2
+      },
+      {
+        "itemId": 127,
+        "quantity": 1
+      },
+      {
+        "itemId": 124,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 339,
+    "addedValue": 623.67,
+    "addedValuePerCost": 56.7,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      68
+    ]
+  },
+  {
+    "id": 50,
+    "resultItemId": 172,
+    "materials": [
+      {
+        "itemId": 135,
+        "quantity": 1
+      },
+      {
+        "itemId": 33,
+        "quantity": 2
+      },
+      {
+        "itemId": 133,
+        "quantity": 1
+      },
+      {
+        "itemId": 171,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 25,
+    "inputCost": 1855.67,
+    "addedValue": 1968.33,
+    "addedValuePerCost": 78.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      74
+    ]
+  },
+  {
+    "id": 51,
+    "resultItemId": 173,
+    "materials": [
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 30,
+        "quantity": 1
+      },
+      {
+        "itemId": 35,
+        "quantity": 1
+      },
+      {
+        "itemId": 126,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 682,
+    "addedValue": 944.67,
+    "addedValuePerCost": 55.57,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      86
+    ]
+  },
+  {
+    "id": 52,
+    "resultItemId": 174,
+    "materials": [
+      {
+        "itemId": 5,
+        "quantity": 1
+      },
+      {
+        "itemId": 18,
+        "quantity": 1
+      },
+      {
+        "itemId": 15,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 5,
+    "inputCost": 46,
+    "addedValue": 108,
+    "addedValuePerCost": 21.6,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      35
+    ]
+  },
+  {
+    "id": 53,
+    "resultItemId": 175,
+    "materials": [
+      {
+        "itemId": 7,
+        "quantity": 2
+      },
+      {
+        "itemId": 86,
+        "quantity": 1
+      },
+      {
+        "itemId": 15,
+        "quantity": 1
+      },
+      {
+        "itemId": 76,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 85,
+    "addedValue": 105,
+    "addedValuePerCost": 17.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      45,
+      184
+    ]
+  },
+  {
+    "id": 54,
+    "resultItemId": 176,
+    "materials": [
+      {
+        "itemId": 58,
+        "quantity": 1
+      },
+      {
+        "itemId": 91,
+        "quantity": 1
+      },
+      {
+        "itemId": 53,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 98,
+    "addedValue": 229,
+    "addedValuePerCost": 25.44,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      51
+    ]
+  },
+  {
+    "id": 55,
+    "resultItemId": 177,
+    "materials": [
+      {
+        "itemId": 141,
+        "quantity": 1
+      },
+      {
+        "itemId": 36,
+        "quantity": 1
+      },
+      {
+        "itemId": 76,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 341,
+    "addedValue": 123,
+    "addedValuePerCost": 12.3,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      59
+    ]
+  },
+  {
+    "id": 56,
+    "resultItemId": 178,
+    "materials": [
+      {
+        "itemId": 176,
+        "quantity": 1
+      },
+      {
+        "itemId": 9,
+        "quantity": 2
+      },
+      {
+        "itemId": 51,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 538,
+    "addedValue": 1079.33,
+    "addedValuePerCost": 59.96,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      95
+    ]
+  },
+  {
+    "id": 57,
+    "resultItemId": 179,
+    "materials": [
+      {
+        "itemId": 19,
+        "quantity": 1
+      },
+      {
+        "itemId": 143,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 1887,
+    "addedValue": -368.33,
+    "addedValuePerCost": -21.67,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      80
+    ]
+  },
+  {
+    "id": 58,
+    "resultItemId": 180,
+    "materials": [
+      {
+        "itemId": 131,
+        "quantity": 2
+      },
+      {
+        "itemId": 38,
+        "quantity": 2
+      },
+      {
+        "itemId": 93,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 531,
+    "addedValue": 901,
+    "addedValuePerCost": 56.31,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      81
+    ]
+  },
+  {
+    "id": 59,
+    "resultItemId": 181,
+    "materials": [
+      {
+        "itemId": 139,
+        "quantity": 1
+      },
+      {
+        "itemId": 58,
+        "quantity": 1
+      },
+      {
+        "itemId": 39,
+        "quantity": 1
+      },
+      {
+        "itemId": 30,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 460,
+    "addedValue": 1005.33,
+    "addedValuePerCost": 62.83,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      85
+    ]
+  },
+  {
+    "id": 60,
+    "resultItemId": 182,
+    "materials": [
+      {
+        "itemId": 50,
+        "quantity": 3
+      },
+      {
+        "itemId": 140,
+        "quantity": 2
+      },
+      {
+        "itemId": 12,
+        "quantity": 2
+      },
+      {
+        "itemId": 11,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 498,
+    "addedValue": 2692,
+    "addedValuePerCost": 134.6,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      104
+    ]
+  },
+  {
+    "id": 71,
+    "resultItemId": 209,
+    "materials": [
+      {
+        "itemId": 388,
+        "quantity": 1
+      },
+      {
+        "itemId": 46,
+        "quantity": 1
+      },
+      {
+        "itemId": 45,
+        "quantity": 1
+      },
+      {
+        "itemId": 36,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 153,
+    "addedValue": 2031,
+    "addedValuePerCost": 126.94,
+    "unpricedItemIds": [
+      388
+    ],
+    "recipeSetIds": [
+      120
+    ]
+  },
+  {
+    "id": 72,
+    "resultItemId": 210,
+    "materials": [
+      {
+        "itemId": 38,
+        "quantity": 1
+      },
+      {
+        "itemId": 37,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 34,
+    "addedValue": 60,
+    "addedValuePerCost": 15,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      28
+    ]
+  },
+  {
+    "id": 73,
+    "resultItemId": 211,
+    "materials": [
+      {
+        "itemId": 37,
+        "quantity": 1
+      },
+      {
+        "itemId": 127,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 241,
+    "addedValue": 119,
+    "addedValuePerCost": 13.22,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      36
+    ]
+  },
+  {
+    "id": 74,
+    "resultItemId": 212,
+    "materials": [
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 128,
+        "quantity": 1
+      },
+      {
+        "itemId": 36,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 838,
+    "addedValue": 1046,
+    "addedValuePerCost": 58.11,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      73
+    ]
+  },
+  {
+    "id": 75,
+    "resultItemId": 213,
+    "materials": [
+      {
+        "itemId": 129,
+        "quantity": 1
+      },
+      {
+        "itemId": 50,
+        "quantity": 2
+      },
+      {
+        "itemId": 56,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 1152.67,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      3
+    ]
+  },
+  {
+    "id": 76,
+    "resultItemId": 214,
+    "materials": [
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 21,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 444,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      4
+    ]
+  },
+  {
+    "id": 77,
+    "resultItemId": 215,
+    "materials": [
+      {
+        "itemId": 93,
+        "quantity": 2
+      },
+      {
+        "itemId": 140,
+        "quantity": 2
+      },
+      {
+        "itemId": 17,
+        "quantity": 3
+      },
+      {
+        "itemId": 126,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 670,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      5
+    ]
+  },
+  {
+    "id": 78,
+    "resultItemId": 216,
+    "materials": [
+      {
+        "itemId": 132,
+        "quantity": 1
+      },
+      {
+        "itemId": 58,
+        "quantity": 1
+      },
+      {
+        "itemId": 125,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 20
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 528.33,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      6
+    ]
+  },
+  {
+    "id": 79,
+    "resultItemId": 217,
+    "materials": [
+      {
+        "itemId": 72,
+        "quantity": 1
+      },
+      {
+        "itemId": 8,
+        "quantity": 1
+      },
+      {
+        "itemId": 177,
+        "quantity": 1
+      },
+      {
+        "itemId": 141,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 851,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      7
+    ]
+  },
+  {
+    "id": 90,
+    "resultItemId": 258,
+    "materials": [
+      {
+        "itemId": 142,
+        "quantity": 1
+      },
+      {
+        "itemId": 18,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 5,
+    "inputCost": 43,
+    "addedValue": 92,
+    "addedValuePerCost": 18.4,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      26
+    ]
+  },
+  {
+    "id": 91,
+    "resultItemId": 259,
+    "materials": [
+      {
+        "itemId": 258,
+        "quantity": 2
+      },
+      {
+        "itemId": 83,
+        "quantity": 3
+      },
+      {
+        "itemId": 54,
+        "quantity": 2
+      },
+      {
+        "itemId": 42,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 438,
+    "addedValue": 1712,
+    "addedValuePerCost": 107,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      107
+    ]
+  },
+  {
+    "id": 92,
+    "resultItemId": 260,
+    "materials": [
+      {
+        "itemId": 142,
+        "quantity": 3
+      },
+      {
+        "itemId": 83,
+        "quantity": 3
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      },
+      {
+        "itemId": 79,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 171,
+    "addedValue": 527.67,
+    "addedValuePerCost": 52.77,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      69
+    ]
+  },
+  {
+    "id": 93,
+    "resultItemId": 261,
+    "materials": [
+      {
+        "itemId": 43,
+        "quantity": 2
+      },
+      {
+        "itemId": 2,
+        "quantity": 10
+      },
+      {
+        "itemId": 63,
+        "quantity": 2
+      },
+      {
+        "itemId": 51,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 22,
+    "inputCost": 370,
+    "addedValue": 6574,
+    "addedValuePerCost": 298.82,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      151
+    ]
+  },
+  {
+    "id": 94,
+    "resultItemId": 262,
+    "materials": [
+      {
+        "itemId": 142,
+        "quantity": 3
+      },
+      {
+        "itemId": 65,
+        "quantity": 2
+      },
+      {
+        "itemId": 86,
+        "quantity": 2
+      },
+      {
+        "itemId": 2,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 153,
+    "addedValue": 113,
+    "addedValuePerCost": 16.14,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      40
+    ]
+  },
+  {
+    "id": 95,
+    "resultItemId": 263,
+    "materials": [
+      {
+        "itemId": 59,
+        "quantity": 3
+      },
+      {
+        "itemId": 142,
+        "quantity": 3
+      },
+      {
+        "itemId": 88,
+        "quantity": 3
+      },
+      {
+        "itemId": 54,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 22,
+    "inputCost": 438,
+    "addedValue": 2488,
+    "addedValuePerCost": 113.09,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      114
+    ]
+  },
+  {
+    "id": 96,
+    "resultItemId": 264,
+    "materials": [
+      {
+        "itemId": 10,
+        "quantity": 2
+      },
+      {
+        "itemId": 66,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 3,
+    "inputCost": 9,
+    "addedValue": 50,
+    "addedValuePerCost": 16.67,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      25
+    ]
+  },
+  {
+    "id": 97,
+    "resultItemId": 265,
+    "materials": [
+      {
+        "itemId": 86,
+        "quantity": 3
+      },
+      {
+        "itemId": 140,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 122,
+    "addedValue": 97,
+    "addedValuePerCost": 16.17,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      31
+    ]
+  },
+  {
+    "id": 98,
+    "resultItemId": 266,
+    "materials": [
+      {
+        "itemId": 79,
+        "quantity": 2
+      },
+      {
+        "itemId": 59,
+        "quantity": 3
+      },
+      {
+        "itemId": 153,
+        "quantity": 1
+      },
+      {
+        "itemId": 7,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 15,
+    "inputCost": 404,
+    "addedValue": 853.33,
+    "addedValuePerCost": 56.89,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      89
+    ]
+  },
+  {
+    "id": 99,
+    "resultItemId": 267,
+    "materials": [
+      {
+        "itemId": 153,
+        "quantity": 1
+      },
+      {
+        "itemId": 79,
+        "quantity": 1
+      },
+      {
+        "itemId": 142,
+        "quantity": 2
+      },
+      {
+        "itemId": 53,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 343,
+    "addedValue": 515.67,
+    "addedValuePerCost": 46.88,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      76,
+      185
+    ]
+  },
+  {
+    "id": 100,
+    "resultItemId": 268,
+    "materials": [
+      {
+        "itemId": 142,
+        "quantity": 2
+      },
+      {
+        "itemId": 6,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 88,
+    "addedValue": 24,
+    "addedValuePerCost": 6,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      21,
+      185
+    ]
+  },
+  {
+    "id": 101,
+    "resultItemId": 269,
+    "materials": [
+      {
+        "itemId": 68,
+        "quantity": 2
+      },
+      {
+        "itemId": 82,
+        "quantity": 1
+      },
+      {
+        "itemId": 139,
+        "quantity": 1
+      },
+      {
+        "itemId": 94,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 343,
+    "addedValue": 417,
+    "addedValuePerCost": 41.7,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      63
+    ]
+  },
+  {
+    "id": 102,
+    "resultItemId": 270,
+    "materials": [
+      {
+        "itemId": 59,
+        "quantity": 1
+      },
+      {
+        "itemId": 15,
+        "quantity": 1
+      },
+      {
+        "itemId": 65,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 72,
+    "addedValue": 129,
+    "addedValuePerCost": 18.43,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      27
+    ]
+  },
+  {
+    "id": 103,
+    "resultItemId": 271,
+    "materials": [
+      {
+        "itemId": 14,
+        "quantity": 1
+      },
+      {
+        "itemId": 91,
+        "quantity": 2
+      },
+      {
+        "itemId": 94,
+        "quantity": 3
+      },
+      {
+        "itemId": 127,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 424,
+    "addedValue": 2174,
+    "addedValuePerCost": 135.88,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      124
+    ]
+  },
+  {
+    "id": 104,
+    "resultItemId": 272,
+    "materials": [
+      {
+        "itemId": 54,
+        "quantity": 2
+      },
+      {
+        "itemId": 153,
+        "quantity": 1
+      },
+      {
+        "itemId": 14,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 341,
+    "addedValue": 1015,
+    "addedValuePerCost": 63.44,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      97
+    ]
+  },
+  {
+    "id": 105,
+    "resultItemId": 273,
+    "materials": [
+      {
+        "itemId": 65,
+        "quantity": 4
+      },
+      {
+        "itemId": 293,
+        "quantity": 2
+      },
+      {
+        "itemId": 84,
+        "quantity": 2
+      },
+      {
+        "itemId": 24,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 24,
+    "inputCost": 834,
+    "addedValue": 3392,
+    "addedValuePerCost": 141.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      137
+    ]
+  },
+  {
+    "id": 116,
+    "resultItemId": 284,
+    "materials": [
+      {
+        "itemId": 293,
+        "quantity": 1
+      },
+      {
+        "itemId": 31,
+        "quantity": 2
+      },
+      {
+        "itemId": 68,
+        "quantity": 2
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 355,
+    "addedValue": 750.33,
+    "addedValuePerCost": 57.72,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      77
+    ]
+  },
+  {
+    "id": 117,
+    "resultItemId": 285,
+    "materials": [
+      {
+        "itemId": 66,
+        "quantity": 2
+      },
+      {
+        "itemId": 37,
+        "quantity": 1
+      },
+      {
+        "itemId": 81,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 48,
+    "addedValue": 122,
+    "addedValuePerCost": 20.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      33
+    ]
+  },
+  {
+    "id": 118,
+    "resultItemId": 286,
+    "materials": [
+      {
+        "itemId": 73,
+        "quantity": 1
+      },
+      {
+        "itemId": 74,
+        "quantity": 1
+      },
+      {
+        "itemId": 38,
+        "quantity": 2
+      },
+      {
+        "itemId": 4,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 148,
+    "addedValue": 305,
+    "addedValuePerCost": 27.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      57
+    ]
+  },
+  {
+    "id": 119,
+    "resultItemId": 287,
+    "materials": [
+      {
+        "itemId": 140,
+        "quantity": 1
+      },
+      {
+        "itemId": 27,
+        "quantity": 2
+      },
+      {
+        "itemId": 88,
+        "quantity": 1
+      },
+      {
+        "itemId": 126,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 412,
+    "addedValue": 992,
+    "addedValuePerCost": 62,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      90
+    ]
+  },
+  {
+    "id": 120,
+    "resultItemId": 288,
+    "materials": [
+      {
+        "itemId": 72,
+        "quantity": 2
+      },
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 376,
+        "quantity": 1
+      },
+      {
+        "itemId": 136,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 32,
+    "inputCost": 2550.67,
+    "addedValue": 10797.33,
+    "addedValuePerCost": 337.42,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      138
+    ]
+  },
+  {
+    "id": 121,
+    "resultItemId": 289,
+    "materials": [
+      {
+        "itemId": 55,
+        "quantity": 2
+      },
+      {
+        "itemId": 22,
+        "quantity": 2
+      },
+      {
+        "itemId": 136,
+        "quantity": 2
+      },
+      {
+        "itemId": 75,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 450,
+    "addedValue": 2100,
+    "addedValuePerCost": 110.53,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      115
+    ]
+  },
+  {
+    "id": 122,
+    "resultItemId": 290,
+    "materials": [
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 136,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 500,
+    "addedValue": 30,
+    "addedValuePerCost": 2.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      49
+    ]
+  },
+  {
+    "id": 123,
+    "resultItemId": 291,
+    "materials": [
+      {
+        "itemId": 73,
+        "quantity": 1
+      },
+      {
+        "itemId": 70,
+        "quantity": 1
+      },
+      {
+        "itemId": 141,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 418,
+    "addedValue": 668.67,
+    "addedValuePerCost": 51.44,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      70
+    ]
+  },
+  {
+    "id": 124,
+    "resultItemId": 292,
+    "materials": [
+      {
+        "itemId": 66,
+        "quantity": 1
+      },
+      {
+        "itemId": 65,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 3
+      },
+      {
+        "itemId": 1,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 5,
+    "inputCost": 21,
+    "addedValue": 119,
+    "addedValuePerCost": 23.8,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      32
+    ]
+  },
+  {
+    "id": 125,
+    "resultItemId": 293,
+    "materials": [
+      {
+        "itemId": 59,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 2
+      },
+      {
+        "itemId": 18,
+        "quantity": 1
+      },
+      {
+        "itemId": 124,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 125,
+    "addedValue": 150,
+    "addedValuePerCost": 21.43,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      34
+    ]
+  },
+  {
+    "id": 126,
+    "resultItemId": 294,
+    "materials": [
+      {
+        "itemId": 26,
+        "quantity": 1
+      },
+      {
+        "itemId": 74,
+        "quantity": 1
+      },
+      {
+        "itemId": 70,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 179,
+    "addedValue": 817,
+    "addedValuePerCost": 62.85,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      64
+    ]
+  },
+  {
+    "id": 127,
+    "resultItemId": 295,
+    "materials": [
+      {
+        "itemId": 59,
+        "quantity": 1
+      },
+      {
+        "itemId": 129,
+        "quantity": 1
+      },
+      {
+        "itemId": 155,
+        "quantity": 1
+      },
+      {
+        "itemId": 126,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 52,
+    "inputCost": 17653.67,
+    "addedValue": 6818.33,
+    "addedValuePerCost": 131.12,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      152
+    ]
+  },
+  {
+    "id": 128,
+    "resultItemId": 296,
+    "materials": [
+      {
+        "itemId": 32,
+        "quantity": 1
+      },
+      {
+        "itemId": 73,
+        "quantity": 1
+      },
+      {
+        "itemId": 135,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 595,
+    "addedValue": 909,
+    "addedValuePerCost": 56.81,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      98
+    ]
+  },
+  {
+    "id": 129,
+    "resultItemId": 297,
+    "materials": [
+      {
+        "itemId": 56,
+        "quantity": 4
+      },
+      {
+        "itemId": 293,
+        "quantity": 1
+      },
+      {
+        "itemId": 80,
+        "quantity": 2
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 355,
+    "addedValue": 703.67,
+    "addedValuePerCost": 54.13,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      82
+    ]
+  },
+  {
+    "id": 130,
+    "resultItemId": 298,
+    "materials": [
+      {
+        "itemId": 64,
+        "quantity": 2
+      },
+      {
+        "itemId": 90,
+        "quantity": 1
+      },
+      {
+        "itemId": 290,
+        "quantity": 1
+      },
+      {
+        "itemId": 84,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 24,
+    "inputCost": 811,
+    "addedValue": 3385,
+    "addedValuePerCost": 141.04,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      125
+    ]
+  },
+  {
+    "id": 131,
+    "resultItemId": 299,
+    "materials": [
+      {
+        "itemId": 139,
+        "quantity": 1
+      },
+      {
+        "itemId": 71,
+        "quantity": 1
+      },
+      {
+        "itemId": 75,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 15,
+    "inputCost": 406,
+    "addedValue": 870,
+    "addedValuePerCost": 58,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      108
+    ]
+  },
+  {
+    "id": 142,
+    "resultItemId": 310,
+    "materials": [
+      {
+        "itemId": 67,
+        "quantity": 1
+      },
+      {
+        "itemId": 167,
+        "quantity": 1
+      },
+      {
+        "itemId": 31,
+        "quantity": 3
+      },
+      {
+        "itemId": 37,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 359,
+    "addedValue": 718.33,
+    "addedValuePerCost": 55.26,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      67
+    ]
+  },
+  {
+    "id": 143,
+    "resultItemId": 311,
+    "materials": [
+      {
+        "itemId": 128,
+        "quantity": 1
+      },
+      {
+        "itemId": 85,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 6
+      },
+      {
+        "itemId": 4,
+        "quantity": 6
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 487,
+    "addedValue": 1074.33,
+    "addedValuePerCost": 63.2,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      91
+    ]
+  },
+  {
+    "id": 144,
+    "resultItemId": 312,
+    "materials": [
+      {
+        "itemId": 129,
+        "quantity": 1
+      },
+      {
+        "itemId": 84,
+        "quantity": 1
+      },
+      {
+        "itemId": 19,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 21,
+    "inputCost": 1143.67,
+    "addedValue": 1778.33,
+    "addedValuePerCost": 84.68,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      116
+    ]
+  },
+  {
+    "id": 145,
+    "resultItemId": 313,
+    "materials": [
+      {
+        "itemId": 29,
+        "quantity": 1
+      },
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 58,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 14,
+    "inputCost": 483,
+    "addedValue": 661,
+    "addedValuePerCost": 47.21,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      72
+    ]
+  },
+  {
+    "id": 146,
+    "resultItemId": 314,
+    "materials": [
+      {
+        "itemId": 127,
+        "quantity": 1
+      },
+      {
+        "itemId": 387,
+        "quantity": 1
+      },
+      {
+        "itemId": 6,
+        "quantity": 3
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 261,
+    "addedValue": 645.67,
+    "addedValuePerCost": 58.7,
+    "unpricedItemIds": [
+      387
+    ],
+    "recipeSetIds": [
+      65
+    ]
+  },
+  {
+    "id": 147,
+    "resultItemId": 315,
+    "materials": [
+      {
+        "itemId": 150,
+        "quantity": 2
+      },
+      {
+        "itemId": 57,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 23,
+    "inputCost": 3345,
+    "addedValue": 1201,
+    "addedValuePerCost": 52.22,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      126
+    ]
+  },
+  {
+    "id": 148,
+    "resultItemId": 316,
+    "materials": [
+      {
+        "itemId": 127,
+        "quantity": 1
+      },
+      {
+        "itemId": 70,
+        "quantity": 1
+      },
+      {
+        "itemId": 29,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 326,
+    "addedValue": 722,
+    "addedValuePerCost": 55.54,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      71
+    ]
+  },
+  {
+    "id": 149,
+    "resultItemId": 317,
+    "materials": [
+      {
+        "itemId": 84,
+        "quantity": 1
+      },
+      {
+        "itemId": 128,
+        "quantity": 1
+      },
+      {
+        "itemId": 55,
+        "quantity": 2
+      },
+      {
+        "itemId": 124,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 622,
+    "addedValue": 998,
+    "addedValuePerCost": 58.71,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      83
+    ]
+  },
+  {
+    "id": 150,
+    "resultItemId": 318,
+    "materials": [
+      {
+        "itemId": 24,
+        "quantity": 1
+      },
+      {
+        "itemId": 36,
+        "quantity": 2
+      },
+      {
+        "itemId": 123,
+        "quantity": 1
+      },
+      {
+        "itemId": 128,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 591,
+    "addedValue": 859.67,
+    "addedValuePerCost": 53.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      79
+    ]
+  },
+  {
+    "id": 151,
+    "resultItemId": 319,
+    "materials": [
+      {
+        "itemId": 78,
+        "quantity": 1
+      },
+      {
+        "itemId": 148,
+        "quantity": 1
+      },
+      {
+        "itemId": 92,
+        "quantity": 1
+      },
+      {
+        "itemId": 85,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 27,
+    "inputCost": 2016.33,
+    "addedValue": 8459.67,
+    "addedValuePerCost": 313.32,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      153
+    ]
+  },
+  {
+    "id": 152,
+    "resultItemId": 320,
+    "materials": [
+      {
+        "itemId": 132,
+        "quantity": 1
+      },
+      {
+        "itemId": 38,
+        "quantity": 2
+      },
+      {
+        "itemId": 2,
+        "quantity": 3
+      },
+      {
+        "itemId": 4,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 455.33,
+    "addedValue": 475.34,
+    "addedValuePerCost": 39.61,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      66
+    ]
+  },
+  {
+    "id": 153,
+    "resultItemId": 321,
+    "materials": [
+      {
+        "itemId": 129,
+        "quantity": 1
+      },
+      {
+        "itemId": 92,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 1093.67,
+    "addedValue": 622.33,
+    "addedValuePerCost": 32.75,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      109
+    ]
+  },
+  {
+    "id": 154,
+    "resultItemId": 322,
+    "materials": [
+      {
+        "itemId": 130,
+        "quantity": 1
+      },
+      {
+        "itemId": 52,
+        "quantity": 1
+      },
+      {
+        "itemId": 85,
+        "quantity": 1
+      },
+      {
+        "itemId": 94,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 22,
+    "inputCost": 1530.67,
+    "addedValue": 2475.33,
+    "addedValuePerCost": 112.52,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      139
+    ]
+  },
+  {
+    "id": 155,
+    "resultItemId": 323,
+    "materials": [
+      {
+        "itemId": 320,
+        "quantity": 1
+      },
+      {
+        "itemId": 80,
+        "quantity": 1
+      },
+      {
+        "itemId": 50,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 1002.67,
+    "addedValue": 524,
+    "addedValuePerCost": 32.75,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      84
+    ]
+  },
+  {
+    "id": 156,
+    "resultItemId": 324,
+    "materials": [
+      {
+        "itemId": 132,
+        "quantity": 1
+      },
+      {
+        "itemId": 31,
+        "quantity": 3
+      },
+      {
+        "itemId": 70,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 530.33,
+    "addedValue": 767,
+    "addedValuePerCost": 47.94,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      78
+    ]
+  },
+  {
+    "id": 157,
+    "resultItemId": 325,
+    "materials": [
+      {
+        "itemId": 133,
+        "quantity": 1
+      },
+      {
+        "itemId": 128,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 6
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 949,
+    "addedValue": 719,
+    "addedValuePerCost": 39.94,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      99
+    ]
+  },
+  {
+    "id": 168,
+    "resultItemId": 336,
+    "materials": [
+      {
+        "itemId": 269,
+        "quantity": 1
+      },
+      {
+        "itemId": 5,
+        "quantity": 2
+      },
+      {
+        "itemId": 153,
+        "quantity": 2
+      },
+      {
+        "itemId": 8,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 21,
+    "inputCost": 1275,
+    "addedValue": 2705,
+    "addedValuePerCost": 128.81,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      131
+    ]
+  },
+  {
+    "id": 169,
+    "resultItemId": 337,
+    "materials": [
+      {
+        "itemId": 9,
+        "quantity": 2
+      },
+      {
+        "itemId": 154,
+        "quantity": 1
+      },
+      {
+        "itemId": 15,
+        "quantity": 1
+      },
+      {
+        "itemId": 47,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 23,
+    "inputCost": 1706,
+    "addedValue": 2390,
+    "addedValuePerCost": 103.91,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      133
+    ]
+  },
+  {
+    "id": 170,
+    "resultItemId": 338,
+    "materials": [
+      {
+        "itemId": 63,
+        "quantity": 1
+      },
+      {
+        "itemId": 62,
+        "quantity": 1
+      },
+      {
+        "itemId": 154,
+        "quantity": 2
+      },
+      {
+        "itemId": 123,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 25,
+    "inputCost": 3115,
+    "addedValue": 1529,
+    "addedValuePerCost": 61.16,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      146
+    ]
+  },
+  {
+    "id": 171,
+    "resultItemId": 339,
+    "materials": [
+      {
+        "itemId": 154,
+        "quantity": 1
+      },
+      {
+        "itemId": 153,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      },
+      {
+        "itemId": 94,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 1727,
+    "addedValue": 1243,
+    "addedValuePerCost": 73.12,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      130
+    ]
+  },
+  {
+    "id": 172,
+    "resultItemId": 340,
+    "materials": [
+      {
+        "itemId": 89,
+        "quantity": 2
+      },
+      {
+        "itemId": 153,
+        "quantity": 2
+      },
+      {
+        "itemId": 87,
+        "quantity": 2
+      },
+      {
+        "itemId": 140,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 738,
+    "addedValue": 2934,
+    "addedValuePerCost": 146.7,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      145
+    ]
+  },
+  {
+    "id": 173,
+    "resultItemId": 341,
+    "materials": [
+      {
+        "itemId": 154,
+        "quantity": 1
+      },
+      {
+        "itemId": 5,
+        "quantity": 2
+      },
+      {
+        "itemId": 79,
+        "quantity": 1
+      },
+      {
+        "itemId": 141,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 23,
+    "inputCost": 2147,
+    "addedValue": 2257,
+    "addedValuePerCost": 98.13,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      132
+    ]
+  },
+  {
+    "id": 174,
+    "resultItemId": 342,
+    "materials": [
+      {
+        "itemId": 143,
+        "quantity": 1
+      },
+      {
+        "itemId": 151,
+        "quantity": 2
+      },
+      {
+        "itemId": 89,
+        "quantity": 1
+      },
+      {
+        "itemId": 62,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 26,
+    "inputCost": 3727,
+    "addedValue": 1397,
+    "addedValuePerCost": 53.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      147
+    ]
+  },
+  {
+    "id": 175,
+    "resultItemId": 343,
+    "materials": [
+      {
+        "itemId": 14,
+        "quantity": 3
+      },
+      {
+        "itemId": 43,
+        "quantity": 2
+      },
+      {
+        "itemId": 34,
+        "quantity": 2
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 27,
+    "inputCost": 497,
+    "addedValue": 8695,
+    "addedValuePerCost": 322.04,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      158
+    ]
+  },
+  {
+    "id": 176,
+    "resultItemId": 344,
+    "materials": [
+      {
+        "itemId": 149,
+        "quantity": 1
+      },
+      {
+        "itemId": 44,
+        "quantity": 1
+      },
+      {
+        "itemId": 49,
+        "quantity": 1
+      },
+      {
+        "itemId": 16,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 37,
+    "inputCost": 11342,
+    "addedValue": 3370,
+    "addedValuePerCost": 91.08,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      160
+    ]
+  },
+  {
+    "id": 177,
+    "resultItemId": 345,
+    "materials": [
+      {
+        "itemId": 154,
+        "quantity": 1
+      },
+      {
+        "itemId": 88,
+        "quantity": 2
+      },
+      {
+        "itemId": 57,
+        "quantity": 2
+      },
+      {
+        "itemId": 9,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 21,
+    "inputCost": 1676,
+    "addedValue": 2090,
+    "addedValuePerCost": 99.52,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      143
+    ]
+  },
+  {
+    "id": 178,
+    "resultItemId": 346,
+    "materials": [
+      {
+        "itemId": 154,
+        "quantity": 2
+      },
+      {
+        "itemId": 50,
+        "quantity": 1
+      },
+      {
+        "itemId": 52,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 25,
+    "inputCost": 3062,
+    "addedValue": 6654,
+    "addedValuePerCost": 266.16,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      156
+    ]
+  },
+  {
+    "id": 179,
+    "resultItemId": 347,
+    "materials": [
+      {
+        "itemId": 11,
+        "quantity": 1
+      },
+      {
+        "itemId": 49,
+        "quantity": 1
+      },
+      {
+        "itemId": 151,
+        "quantity": 1
+      },
+      {
+        "itemId": 154,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 30,
+    "inputCost": 3999,
+    "addedValue": 7749,
+    "addedValuePerCost": 258.3,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      159
+    ]
+  },
+  {
+    "id": 180,
+    "resultItemId": 348,
+    "materials": [
+      {
+        "itemId": 87,
+        "quantity": 2
+      },
+      {
+        "itemId": 132,
+        "quantity": 2
+      },
+      {
+        "itemId": 14,
+        "quantity": 2
+      },
+      {
+        "itemId": 125,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 1020.67,
+    "addedValue": 2551.33,
+    "addedValuePerCost": 127.57,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      144
+    ]
+  },
+  {
+    "id": 181,
+    "resultItemId": 349,
+    "materials": [
+      {
+        "itemId": 76,
+        "quantity": 2
+      },
+      {
+        "itemId": 5,
+        "quantity": 2
+      },
+      {
+        "itemId": 139,
+        "quantity": 2
+      },
+      {
+        "itemId": 124,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 707,
+    "addedValue": 2365,
+    "addedValuePerCost": 139.12,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      129,
+      184
+    ]
+  },
+  {
+    "id": 182,
+    "resultItemId": 350,
+    "materials": [
+      {
+        "itemId": 154,
+        "quantity": 1
+      },
+      {
+        "itemId": 12,
+        "quantity": 1
+      },
+      {
+        "itemId": 134,
+        "quantity": 1
+      },
+      {
+        "itemId": 126,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 27,
+    "inputCost": 3968,
+    "addedValue": 6780,
+    "addedValuePerCost": 251.11,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      157
+    ]
+  },
+  {
+    "id": 193,
+    "resultItemId": 361,
+    "materials": [
+      {
+        "itemId": 131,
+        "quantity": 2
+      },
+      {
+        "itemId": 77,
+        "quantity": 2
+      },
+      {
+        "itemId": 30,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 578,
+    "addedValue": 1162,
+    "addedValuePerCost": 64.56,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      92
+    ]
+  },
+  {
+    "id": 194,
+    "resultItemId": 362,
+    "materials": [
+      {
+        "itemId": 133,
+        "quantity": 1
+      },
+      {
+        "itemId": 64,
+        "quantity": 1
+      },
+      {
+        "itemId": 41,
+        "quantity": 2
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 731,
+    "addedValue": 935.67,
+    "addedValuePerCost": 49.25,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      110
+    ]
+  },
+  {
+    "id": 195,
+    "resultItemId": 363,
+    "materials": [
+      {
+        "itemId": 139,
+        "quantity": 2
+      },
+      {
+        "itemId": 80,
+        "quantity": 1
+      },
+      {
+        "itemId": 32,
+        "quantity": 2
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 696,
+    "addedValue": 1266.67,
+    "addedValuePerCost": 63.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      93
+    ]
+  },
+  {
+    "id": 196,
+    "resultItemId": 364,
+    "materials": [
+      {
+        "itemId": 131,
+        "quantity": 2
+      },
+      {
+        "itemId": 85,
+        "quantity": 2
+      },
+      {
+        "itemId": 80,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 578,
+    "addedValue": 1143.33,
+    "addedValuePerCost": 63.52,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      94
+    ]
+  },
+  {
+    "id": 197,
+    "resultItemId": 365,
+    "materials": [
+      {
+        "itemId": 293,
+        "quantity": 2
+      },
+      {
+        "itemId": 80,
+        "quantity": 1
+      },
+      {
+        "itemId": 132,
+        "quantity": 1
+      },
+      {
+        "itemId": 61,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 1031.33,
+    "addedValue": 856.67,
+    "addedValuePerCost": 45.09,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      101
+    ]
+  },
+  {
+    "id": 198,
+    "resultItemId": 366,
+    "materials": [
+      {
+        "itemId": 132,
+        "quantity": 2
+      },
+      {
+        "itemId": 29,
+        "quantity": 2
+      },
+      {
+        "itemId": 5,
+        "quantity": 2
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 904.67,
+    "addedValue": 688.66,
+    "addedValuePerCost": 38.26,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      100
+    ]
+  },
+  {
+    "id": 199,
+    "resultItemId": 367,
+    "materials": [
+      {
+        "itemId": 132,
+        "quantity": 2
+      },
+      {
+        "itemId": 293,
+        "quantity": 1
+      },
+      {
+        "itemId": 88,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 1128.67,
+    "addedValue": 879.33,
+    "addedValuePerCost": 43.97,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      103
+    ]
+  },
+  {
+    "id": 200,
+    "resultItemId": 368,
+    "materials": [
+      {
+        "itemId": 133,
+        "quantity": 1
+      },
+      {
+        "itemId": 39,
+        "quantity": 1
+      },
+      {
+        "itemId": 61,
+        "quantity": 2
+      },
+      {
+        "itemId": 64,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 775,
+    "addedValue": 1791,
+    "addedValuePerCost": 89.55,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      118
+    ]
+  },
+  {
+    "id": 201,
+    "resultItemId": 369,
+    "materials": [
+      {
+        "itemId": 71,
+        "quantity": 2
+      },
+      {
+        "itemId": 57,
+        "quantity": 1
+      },
+      {
+        "itemId": 133,
+        "quantity": 1
+      },
+      {
+        "itemId": 38,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 711,
+    "addedValue": 851.67,
+    "addedValuePerCost": 47.32,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      102
+    ]
+  },
+  {
+    "id": 202,
+    "resultItemId": 370,
+    "materials": [
+      {
+        "itemId": 56,
+        "quantity": 4
+      },
+      {
+        "itemId": 129,
+        "quantity": 1
+      },
+      {
+        "itemId": 63,
+        "quantity": 2
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 21,
+    "inputCost": 1128.67,
+    "addedValue": 1977.33,
+    "addedValuePerCost": 94.16,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      117
+    ]
+  },
+  {
+    "id": 203,
+    "resultItemId": 371,
+    "materials": [
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 84,
+        "quantity": 1
+      },
+      {
+        "itemId": 134,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 24,
+    "inputCost": 2775,
+    "addedValue": 1777,
+    "addedValuePerCost": 74.04,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      141
+    ]
+  },
+  {
+    "id": 204,
+    "resultItemId": 372,
+    "materials": [
+      {
+        "itemId": 58,
+        "quantity": 1
+      },
+      {
+        "itemId": 147,
+        "quantity": 1
+      },
+      {
+        "itemId": 127,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 26,
+    "inputCost": 2009,
+    "addedValue": 3149,
+    "addedValuePerCost": 121.12,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      142
+    ]
+  },
+  {
+    "id": 205,
+    "resultItemId": 373,
+    "materials": [
+      {
+        "itemId": 147,
+        "quantity": 1
+      },
+      {
+        "itemId": 148,
+        "quantity": 1
+      },
+      {
+        "itemId": 146,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 43,
+    "inputCost": 4849.33,
+    "addedValue": 14830.67,
+    "addedValuePerCost": 344.9,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      155
+    ]
+  },
+  {
+    "id": 206,
+    "resultItemId": 374,
+    "materials": [
+      {
+        "itemId": 60,
+        "quantity": 1
+      },
+      {
+        "itemId": 130,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 22,
+    "inputCost": 1436.67,
+    "addedValue": 2581.33,
+    "addedValuePerCost": 117.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      128
+    ]
+  },
+  {
+    "id": 207,
+    "resultItemId": 375,
+    "materials": [
+      {
+        "itemId": 150,
+        "quantity": 1
+      },
+      {
+        "itemId": 134,
+        "quantity": 1
+      },
+      {
+        "itemId": 11,
+        "quantity": 1
+      },
+      {
+        "itemId": 51,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 28,
+    "inputCost": 4076,
+    "addedValue": 6732,
+    "addedValuePerCost": 240.43,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      154
+    ]
+  },
+  {
+    "id": 208,
+    "resultItemId": 376,
+    "materials": [
+      {
+        "itemId": 28,
+        "quantity": 2
+      },
+      {
+        "itemId": 138,
+        "quantity": 1
+      },
+      {
+        "itemId": 136,
+        "quantity": 1
+      },
+      {
+        "itemId": 64,
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 589,
+    "addedValue": 1361.67,
+    "addedValuePerCost": 68.08,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      111
+    ]
+  },
+  {
+    "id": 219,
+    "resultItemId": 387,
+    "materials": [
+      {
+        "itemId": 37,
+        "quantity": 2
+      },
+      {
+        "itemId": 17,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 3,
+    "inputCost": 24,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      24
+    ]
+  },
+  {
+    "id": 220,
+    "resultItemId": 388,
+    "materials": [
+      {
+        "itemId": 37,
+        "quantity": 2
+      },
+      {
+        "itemId": 387,
+        "quantity": 1
+      },
+      {
+        "itemId": 136,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 111,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      387
+    ],
+    "recipeSetIds": [
+      8
+    ]
+  },
+  {
+    "id": 221,
+    "resultItemId": 389,
+    "materials": [
+      {
+        "itemId": 387,
+        "quantity": 1
+      },
+      {
+        "itemId": 126,
+        "quantity": 1
+      },
+      {
+        "itemId": 12,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 190,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      387
+    ],
+    "recipeSetIds": [
+      9
+    ]
+  },
+  {
+    "id": 222,
+    "resultItemId": 390,
+    "materials": [
+      {
+        "itemId": 27,
+        "quantity": 1
+      },
+      {
+        "itemId": 24,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 100,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      55
+    ]
+  },
+  {
+    "id": 223,
+    "resultItemId": 391,
+    "materials": [
+      {
+        "itemId": 28,
+        "quantity": 1
+      },
+      {
+        "itemId": 16,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 102,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      10
+    ]
+  },
+  {
+    "id": 224,
+    "resultItemId": 392,
+    "materials": [
+      {
+        "itemId": 92,
+        "quantity": 1
+      },
+      {
+        "itemId": 48,
+        "quantity": 1
+      },
+      {
+        "itemId": 156,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 665,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      11
+    ]
+  },
+  {
+    "id": 225,
+    "resultItemId": 393,
+    "materials": [
+      {
+        "itemId": 23,
+        "quantity": 1
+      },
+      {
+        "itemId": 25,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 77,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      30
+    ]
+  },
+  {
+    "id": 226,
+    "resultItemId": 394,
+    "materials": [
+      {
+        "itemId": 293,
+        "quantity": 1
+      },
+      {
+        "itemId": 22,
+        "quantity": 1
+      },
+      {
+        "itemId": 393,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 313,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      393
+    ],
+    "recipeSetIds": [
+      12
+    ]
+  },
+  {
+    "id": 227,
+    "resultItemId": 395,
+    "materials": [
+      {
+        "itemId": 30,
+        "quantity": 1
+      },
+      {
+        "itemId": 393,
+        "quantity": 1
+      },
+      {
+        "itemId": 19,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 113,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      393
+    ],
+    "recipeSetIds": [
+      13
+    ]
+  },
+  {
+    "id": 228,
+    "resultItemId": 396,
+    "materials": [
+      {
+        "itemId": 128,
+        "quantity": 1
+      },
+      {
+        "itemId": 156,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 929,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      14
+    ]
+  },
+  {
+    "id": 229,
+    "resultItemId": 397,
+    "materials": [
+      {
+        "itemId": 127,
+        "quantity": 1
+      },
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 74,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 15,
+    "inputCost": 682,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      15
+    ]
+  },
+  {
+    "id": 230,
+    "resultItemId": 398,
+    "materials": [
+      {
+        "itemId": 152,
+        "quantity": 1
+      },
+      {
+        "itemId": 390,
+        "quantity": 1
+      },
+      {
+        "itemId": 39,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 481,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      390
+    ],
+    "recipeSetIds": [
+      150
+    ]
+  },
+  {
+    "id": 231,
+    "resultItemId": 399,
+    "materials": [
+      {
+        "itemId": 90,
+        "quantity": 1
+      },
+      {
+        "itemId": 37,
+        "quantity": 1
+      },
+      {
+        "itemId": 81,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 89,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      16
+    ]
+  },
+  {
+    "id": 232,
+    "resultItemId": 400,
+    "materials": [
+      {
+        "itemId": 78,
+        "quantity": 1
+      },
+      {
+        "itemId": 77,
+        "quantity": 1
+      },
+      {
+        "itemId": 72,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 164,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      17
+    ]
+  },
+  {
+    "id": 233,
+    "resultItemId": 401,
+    "materials": [
+      {
+        "itemId": 36,
+        "quantity": 1
+      },
+      {
+        "itemId": 27,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 60,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      75
+    ]
+  },
+  {
+    "id": 234,
+    "resultItemId": 402,
+    "materials": [
+      {
+        "itemId": 138,
+        "quantity": 1
+      },
+      {
+        "itemId": 37,
+        "quantity": 2
+      },
+      {
+        "itemId": 40,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 357,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      123
+    ]
+  },
+  {
+    "id": 235,
+    "resultItemId": 403,
+    "materials": [
+      {
+        "itemId": 387,
+        "quantity": 1
+      },
+      {
+        "itemId": 85,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 62,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      387
+    ],
+    "recipeSetIds": [
+      106
+    ]
+  },
+  {
+    "id": 236,
+    "resultItemId": 404,
+    "materials": [
+      {
+        "itemId": 387,
+        "quantity": 1
+      },
+      {
+        "itemId": 129,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 1022.67,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      387
+    ],
+    "recipeSetIds": [
+      113
+    ]
+  },
+  {
+    "id": 237,
+    "resultItemId": 405,
+    "materials": [
+      {
+        "itemId": 66,
+        "quantity": 2
+      },
+      {
+        "itemId": 25,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 37,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      39
+    ]
+  },
+  {
+    "id": 238,
+    "resultItemId": 406,
+    "materials": [
+      {
+        "itemId": 128,
+        "quantity": 1
+      },
+      {
+        "itemId": 74,
+        "quantity": 1
+      },
+      {
+        "itemId": 69,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 535,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      96
+    ]
+  },
+  {
+    "id": 239,
+    "resultItemId": 407,
+    "materials": [
+      {
+        "itemId": 29,
+        "quantity": 1
+      },
+      {
+        "itemId": 137,
+        "quantity": 1
+      },
+      {
+        "itemId": 1,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 806.33,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      62
+    ]
+  },
+  {
+    "id": 240,
+    "resultItemId": 408,
+    "materials": [
+      {
+        "itemId": 30,
+        "quantity": 1
+      },
+      {
+        "itemId": 156,
+        "quantity": 1
+      },
+      {
+        "itemId": 4,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 560,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      18
+    ]
+  },
+  {
+    "id": 241,
+    "resultItemId": 409,
+    "materials": [
+      {
+        "itemId": 26,
+        "quantity": 1
+      },
+      {
+        "itemId": 293,
+        "quantity": 1
+      },
+      {
+        "itemId": 3,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 307,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      19
+    ]
+  },
+  {
+    "id": 242,
+    "resultItemId": 410,
+    "materials": [
+      {
+        "itemId": 293,
+        "quantity": 2
+      },
+      {
+        "itemId": 84,
+        "quantity": 1
+      },
+      {
+        "itemId": 35,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 668,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      88
+    ]
+  },
+  {
+    "id": 253,
+    "resultItemId": 421,
+    "materials": [
+      {
+        "itemId": 38,
+        "quantity": 2
+      },
+      {
+        "itemId": 127,
+        "quantity": 2
+      },
+      {
+        "itemId": 3,
+        "quantity": 20
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 522,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": 254,
+    "resultItemId": 422,
+    "materials": [
+      {
+        "itemId": 294,
+        "quantity": 2
+      },
+      {
+        "itemId": 73,
+        "quantity": 2
+      },
+      {
+        "itemId": 84,
+        "quantity": 2
+      },
+      {
+        "itemId": 1,
+        "quantity": 30
+      }
+    ],
+    "synthesisCost": 39,
+    "inputCost": 2218,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": 255,
+    "resultItemId": 423,
+    "materials": [
+      {
+        "itemId": 130,
+        "quantity": 1
+      },
+      {
+        "itemId": 26,
+        "quantity": 2
+      },
+      {
+        "itemId": 92,
+        "quantity": 1
+      },
+      {
+        "itemId": 2,
+        "quantity": 40
+      }
+    ],
+    "synthesisCost": 34,
+    "inputCost": 1497.67,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": 256,
+    "resultItemId": 424,
+    "materials": [
+      {
+        "itemId": 150,
+        "quantity": 1
+      },
+      {
+        "itemId": 156,
+        "quantity": 1
+      },
+      {
+        "itemId": 124,
+        "quantity": 4
+      },
+      {
+        "itemId": 4,
+        "quantity": 50
+      }
+    ],
+    "synthesisCost": 39,
+    "inputCost": 2510,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": 267,
+    "resultItemId": 446,
+    "materials": [
+      {
+        "itemId": 442,
+        "quantity": 2
+      },
+      {
+        "itemId": 10,
+        "quantity": 1
+      },
+      {
+        "itemId": 15,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 5,
+    "inputCost": 61,
+    "addedValue": -21.8,
+    "addedValuePerCost": -4.36,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      184
+    ]
+  },
+  {
+    "id": 268,
+    "resultItemId": 444,
+    "materials": [
+      {
+        "itemId": 10,
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 3,
+    "inputCost": 3,
+    "addedValue": 43.4,
+    "addedValuePerCost": 14.47,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      183
+    ]
+  },
+  {
+    "id": 269,
+    "resultItemId": 445,
+    "materials": [
+      {
+        "itemId": 6,
+        "quantity": 2
+      },
+      {
+        "itemId": 10,
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 3,
+    "inputCost": 19,
+    "addedValue": 15.4,
+    "addedValuePerCost": 5.13,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      183
+    ]
+  }
+]
