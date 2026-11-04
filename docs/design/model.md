@@ -26,7 +26,18 @@ The model holds the facts of the game as typed fields, and the values that more 
 - **A computed value is in the model when a consumer shows it.** The recipe value (input cost, added value, added value per synthesis cost, unpriced materials) is in the model. So the site and the workbook show the same numbers. The formulas are in `README.md`, section "Recipe value".
 - **A name of a thing with no page is resolved text.** The category of an item, the name of a district or the label of a story event is English text in the entity. Such a thing is not an entity, so it has no ID to link to.
 - **A text that only 1 consumer shows is in that consumer.** The joined text cells, the sort of the rows and the aggregates of a column (for example "First Gather Task", the lowest task of all gather places) are in the workbook.
-- **The model keeps every entity that the game uses.** It drops only the rows that the game marks as placeholders. Each consumer selects the entities that it shows: for example the workbook drops the generic NPCs, and the site shows only the characters that can join the town.
+- **The model keeps every entity that the game uses.** It drops only the placeholders (section "Placeholders"). Each consumer selects the entities that it shows: for example the workbook drops the generic NPCs, and the site shows only the characters that can join the town.
+
+## Placeholders
+
+The row "Placeholder data" of [the site requirements](../requirements/site.md) asks that no consumer shows a placeholder, and the row of the same name in [the workbook requirements](../requirements/workbook.md) asks the same of the workbook. 1 function of the model applies 1 rule to each kind with a name. A row is a placeholder when 1 of these is true:
+
+1. The English name is empty or only white space.
+2. The English name starts with `*`. The game marks the rows that it does not use this way, for example `*Unneccesary`.
+3. The English name is `Item` and a number, for example "Item 015".
+4. The Japanese name is `アイテムの名前` and a number.
+
+The model drops a placeholder row before the joins. So no link can point to it, and no consumer needs its own filter. A recipe whose result or whose material is a placeholder is a placeholder too: without the material, its input cost would be wrong. A description that starts with `*` is placeholder text: the model writes `null` for it, and the entity stays.
 
 ## Kinds of entity
 
