@@ -19,12 +19,12 @@ The files, the commands and the limits of the website. The design is in [docs/de
 
 | File | Holds |
 | --- | --- |
-| `astro.config.mjs` | `site`, `base`, `trailingSlash` and the static output. |
+| `src/base.ts` | The site origin and the base path. The only place that holds them. |
+| `astro.config.mjs` | `site` and `base` (both from `src/base.ts`), `trailingSlash` and the static output. |
 | `src/url.ts` | `pageUrl(path)`: the URL of a page under the base path. The only place that adds the base path. |
-| `src/categories.ts` | The list of the category pages that exist: label, path and icon, in the order of the header. |
 | `src/styles/global.css` | The CSS custom properties (colors, spacing, text sizes, radii), `scrollbar-gutter: stable` on the root element, and the base rules. |
-| `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS, the header, the `<main>` slot and the footer. Props: `title` (the page name, or none for the root page). |
-| `src/components/Header.astro` | The site name, the tagline and the category links of `src/categories.ts`. |
+| `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS, the header, the `<main>` slot and the footer. |
+| `src/components/Header.astro` | The site name and the tagline. |
 | `src/components/Footer.astro` | The legal notice. |
 | `src/pages/index.astro` | The root page. |
 | `scripts/check-links.ts` | The link check of `dist/`. |
@@ -57,5 +57,6 @@ The `.ts` files of the package are in `tsc -b`. `astro check` checks the `.astro
 | Permissions | `contents: read`, `pages: write`, `id-token: write` |
 | Concurrency | group `pages`, `cancel-in-progress: false` |
 | Steps | `actions/checkout`, `actions/setup-node` (Node 24, npm cache), `npm ci`, `npx playwright install --with-deps chromium`, `npm run site:build`, `npm run site:test`, `actions/upload-pages-artifact` (path `packages/site/dist`), `actions/deploy-pages` |
+| Action versions | Each action is pinned to 1 exact release tag, for example `v7.0.1`, not a major tag. |
 | Pages source | GitHub Actions (`build_type: workflow`) |
 | Live URL | `https://arkased.github.io/NelkeData/` |

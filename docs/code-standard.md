@@ -55,7 +55,7 @@ The check command of the project enforces the rules tagged `[lint]` and `[script
 - `[lint]` No `any`. No non-null `!`.
 - `[review]` Data from outside the process (a game file, a JSON file of `data/`) is parsed with a Zod schema before use. No `as` on such data.
 - `[review]` A fixed set of names is a string `enum`, defined 1 time in 1 leaf module. A Zod schema takes the enum. A `switch` over an enum has no `default`.
-- `[review]` An object type is an `interface`. An array type is `T[]`.
+- `[review]` An object type is an `interface`, except a type of data with a Zod schema: that type is `z.infer` of the schema, so the schema and the type cannot differ. An array type is `T[]`.
 - `[review]` A function has at most 4 positional parameters. More go into 1 options object.
 - `[lint]` Every export has a JSDoc block: 1 sentence in the present tense, `@param`, `@returns` and `@throws` where they apply, and `@sideEffects` (`none`, or each effect).
 
