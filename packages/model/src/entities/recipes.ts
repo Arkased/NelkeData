@@ -3,7 +3,7 @@ import type { DirectData } from '../inverse.js';
 import type { Game } from '../parse/game.js';
 import { isEmptySlot } from '../parse/recipes.js';
 import { withSlugs } from '../slug.js';
-import { isPlaceholder, round } from '../util.js';
+import { round } from '../util.js';
 import { idSet, type IdSet } from './ids.js';
 import { storyEventOf } from './story.js';
 
@@ -55,10 +55,9 @@ export function buildRecipeSets(game: Game, links: RecipeLinks): DirectData['rec
   const { t } = game.messages;
   return game.recipes.recipeSets.map((c) => {
     const teacherId = links.characterIds.has(c.CHARACTER_ID) ? c.CHARACTER_ID : null;
-    const label = t(c.RECIPE_COLLECTION_NAME_LABEL_ID);
     return {
       id: c.RECIPE_COLLECTION_ID,
-      name: isPlaceholder(label) ? null : label,
+      name: t(c.RECIPE_COLLECTION_NAME_LABEL_ID),
       recipeIds: c.recipeIds.filter((id) => recipeIds.has(id)),
       teacherId,
       friendship: teacherId === null ? null : Number(c.RECIPE_COLLECTION_COMPANION_NUM),
@@ -68,7 +67,7 @@ export function buildRecipeSets(game: Game, links: RecipeLinks): DirectData['rec
 }
 
 /**
- * Makes the research from the game tables. The research that has a placeholder name is left out.
+ * Makes the research from the game tables.
  * @param game - the game data
  * @param links - the IDs of the characters
  * @returns the research, in the order of the game table
@@ -76,11 +75,10 @@ export function buildRecipeSets(game: Game, links: RecipeLinks): DirectData['rec
  */
 export function buildResearch(game: Game, links: Pick<RecipeLinks, 'characterIds'>): DirectData['research'] {
   const { t } = game.messages;
-  const named = game.recipes.research.filter((r) => !isPlaceholder(t(r.STDY_RES_NAME_LABEL_ID)));
-  const researchIds = idSet(named, (r) => r.STDY_RES_ID);
+  const researchIds = idSet(game.recipes.research, (r) => r.STDY_RES_ID);
   const setIds = idSet(game.recipes.recipeSets, (c) => c.RECIPE_COLLECTION_ID);
   return withSlugs(
-    named.map((r) => ({
+    game.recipes.research.map((r) => ({
       id: r.STDY_RES_ID,
       name: t(r.STDY_RES_NAME_LABEL_ID),
       researcherId: links.characterIds.has(r.STDY_RES_CHARACTER_TAG_00) ? r.STDY_RES_CHARACTER_TAG_00 : null,

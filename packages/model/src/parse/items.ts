@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { Element, ItemCategory, Shop, ShopFlag } from '../enums.js';
-import { isPlaceholder } from '../util.js';
+import type { Messages } from './messages.js';
 import { enumOrUnknown, type ReadTable } from './xml.js';
 
 const CATEGORY_NAMES: Record<ItemCategory, string> = {
@@ -70,9 +70,11 @@ export type Item = z.output<typeof itemSchema>;
 
 /** The items of the game and the names of their categories. */
 export interface Items {
-  /** The items that have a name. */
+  /** The items that are not placeholders. */
   items: Item[];
   itemById: Map<string, Item>;
+  /** The IDs of the placeholder items, which the recipes must not use. */
+  placeholderIds: ReadonlySet<string>;
   categoryOf: (item: Item) => string;
   subCategoryOf: (item: Item) => string;
   /** Maps a growing area type (FARM_ID) to the name of the level 0 farm facility of that sub-category. */
@@ -82,12 +84,14 @@ export interface Items {
 /**
  * Loads the items, their sub-categories and the farm facilities.
  * @param read - the table reader of the saves folder
- * @param t - the English text of a label
+ * @param messages - the game texts
  * @returns the items and the lookups
  * @sideEffects reads the item and facility tables through the table reader
  */
-export function loadItems(read: ReadTable, t: (label: string) => string): Items {
-  const items = read('item/item.xml', itemSchema).filter((i) => !isPlaceholder(t(i.ITEM_NAME_LABEL_ID)));
+export function loadItems(read: ReadTable, messages: Messages): Items {
+  const { t } = messages;
+  const rows = read('item/item.xml', itemSchema);
+  const items = rows.filter((i) => !messages.isPlaceholder(i.ITEM_NAME_LABEL_ID));
   const itemById = new Map(items.map((i) => [i.ITEM_ID, i]));
   const subCategory = new Map(
     read('item/item_sub_category.xml', subCategorySchema).map((s) => [s.ITEM__SUB_CATEGORY_ID, t(s.ITEM_SUB_CATEGORY_NAME_LABEL_ID)]),
@@ -101,6 +105,7 @@ export function loadItems(read: ReadTable, t: (label: string) => string): Items 
   return {
     items,
     itemById,
+    placeholderIds: new Set(rows.filter((i) => messages.isPlaceholder(i.ITEM_NAME_LABEL_ID)).map((i) => i.ITEM_ID)),
     categoryOf: (i) =>
       typeof i.ITEM_CATEGORY_ID === 'string' ? CATEGORY_NAMES[i.ITEM_CATEGORY_ID] : `Category ${i.ITEM_CATEGORY_ID.unknown}`,
     subCategoryOf: (i) => subCategory.get(i.ITEM_SUB_CATEGORY_ID) ?? '',

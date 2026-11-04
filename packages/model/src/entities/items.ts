@@ -3,6 +3,7 @@ import { Element } from '../enums.js';
 import type { DirectData } from '../inverse.js';
 import type { Game } from '../parse/game.js';
 import { withSlugs } from '../slug.js';
+import { descriptionOrNull } from '../placeholder.js';
 import { orNull } from '../util.js';
 
 const NO_FARM = '-1';
@@ -36,7 +37,7 @@ export function buildItems(game: Game): DirectData['items'] {
       },
       growingArea: i.FARM_ID === NO_FARM ? null : (items.farm.get(i.FARM_ID) ?? `Farm ${i.FARM_ID}`),
       baseYield: i.FARM_ID === NO_FARM ? null : Number(i.ITEM_BASIC_CULTIVATION_NUM),
-      description: orNull(t(i.ITEM_DESCRIPTION_LABEL_ID)),
+      description: descriptionOrNull(t(i.ITEM_DESCRIPTION_LABEL_ID)),
     })),
   );
 }

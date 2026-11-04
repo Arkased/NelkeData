@@ -3,8 +3,10 @@ import { Element, Stat, CharacterType } from '../enums.js';
 import type { DirectData } from '../inverse.js';
 import type { Game } from '../parse/game.js';
 import type { Character as CharacterRow, Characters } from '../parse/characters.js';
+import { descriptionOrNull } from '../placeholder.js';
 import { withSlugs } from '../slug.js';
 import { getOrCreate, orNull, required } from '../util.js';
+import { withoutPlaceholders } from './ids.js';
 import { storyEventOf } from './story.js';
 
 const NO_RANK = '-1';
@@ -57,7 +59,7 @@ function commonFields(
     rank: c.CHARACTER_RANK_ID === NO_RANK ? null : Number(c.CHARACTER_RANK_ID),
     stats: recordOf(STATS, (stat) => characters.baseStat(c, stat)),
     growth: characters.growthOf(c),
-    description: orNull(messages.t(c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID)),
+    description: descriptionOrNull(messages.t(c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID)),
   };
 }
 
@@ -93,7 +95,13 @@ export function buildMonsters(game: Game): DirectData['monsters'] {
         wage: Number(c.CHARACTER_SUBMONEY),
         elementDef: battle ? recordOf(ELEMENTS, (element) => characters.elementDef(c, element) ?? 0) : null,
         exp: battle ? Number(battle.battle_exp) : null,
-        drops: battle ? characters.dropsOf(battle).map((d) => ({ itemId: d.id, quantity: d.num, rate: d.rate })) : [],
+        drops: battle
+          ? withoutPlaceholders(characters.dropsOf(battle), (d) => d.id, game.items.placeholderIds).map((d) => ({
+              itemId: d.id,
+              quantity: d.num,
+              rate: d.rate,
+            }))
+          : [],
         zoneEncounters: zoneEncountersOf(game, c),
       };
     }),
@@ -104,7 +112,7 @@ export function buildMonsters(game: Game): DirectData['monsters'] {
  * Makes the characters from the game tables: all the characters that are not monsters.
  * @param game - the game data
  * @returns the characters, in the order of the game table
- * @throws {Error} when a character that is not a monster has the type Monster or Boss
+ * @throws {Error} when a character that is not a monster has the type Monster or Boss, or has a category that the model does not know
  * @sideEffects requests the icon of each character from the icon set, which decodes it
  */
 export function buildCharacters(game: Game): DirectData['characters'] {

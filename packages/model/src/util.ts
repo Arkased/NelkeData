@@ -1,14 +1,4 @@
 /**
- * Tells whether a game name is a placeholder: empty, or starting with '*'.
- * @param name - the English name of a row
- * @returns true for a placeholder
- * @sideEffects none
- */
-export function isPlaceholder(name: string): boolean {
-  return !name || name.startsWith('*');
-}
-
-/**
  * Rounds a number to 2 decimals.
  * @param n - the number to round
  * @returns the rounded number

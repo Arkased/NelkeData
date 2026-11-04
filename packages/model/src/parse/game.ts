@@ -32,9 +32,9 @@ export function loadGame(extractedDir: string, iconSizes: readonly number[]): Ga
   const messages = loadMessages(read);
   const icons = createIcons(savesDir, path.join(extractedDir, 'data'), iconSizes);
   const story = loadStory(read, messages.t);
-  const items = loadItems(read, messages.t);
-  const characters = loadCharacters(read, messages.t);
-  const zones = loadZones(read, messages.t, story);
-  const recipes = loadRecipes(read, messages.t, items);
+  const items = loadItems(read, messages);
+  const characters = loadCharacters(read, messages);
+  const zones = loadZones(read, messages, story);
+  const recipes = loadRecipes(read, messages, items);
   return { messages, icons, story, items, characters, zones, recipes };
 }

@@ -432,8 +432,7 @@
     "addedValuePerCost": 19.5,
     "unpricedItemIds": [],
     "recipeSetIds": [
-      "RECIPE_COLLECTION_DISTILLED_WATER",
-      "RECIPE_COLLECTION_ALPHA_HARD"
+      "RECIPE_COLLECTION_DISTILLED_WATER"
     ]
   },
   {
@@ -787,8 +786,7 @@
     "addedValuePerCost": 23,
     "unpricedItemIds": [],
     "recipeSetIds": [
-      "RECIPE_COLLECTION_HONEY",
-      "RECIPE_COLLECTION_ALPHA_EASY"
+      "RECIPE_COLLECTION_HONEY"
     ]
   },
   {
@@ -1128,8 +1126,7 @@
     "addedValuePerCost": 17.5,
     "unpricedItemIds": [],
     "recipeSetIds": [
-      "RECIPE_COLLECTION_FRUIT_TEA",
-      "RECIPE_COLLECTION_ALPHA_NORMAL"
+      "RECIPE_COLLECTION_FRUIT_TEA"
     ]
   },
   {
@@ -1867,8 +1864,7 @@
     "addedValuePerCost": 46.88,
     "unpricedItemIds": [],
     "recipeSetIds": [
-      "RECIPE_COLLECTION_SPECIAL_PANCAKE",
-      "RECIPE_COLLECTION_ALPHA_HARD"
+      "RECIPE_COLLECTION_SPECIAL_PANCAKE"
     ]
   },
   {
@@ -1890,8 +1886,7 @@
     "addedValuePerCost": 6,
     "unpricedItemIds": [],
     "recipeSetIds": [
-      "RECIPE_COLLECTION_SIMPLE_BAKED_SWEETS",
-      "RECIPE_COLLECTION_ALPHA_HARD"
+      "RECIPE_COLLECTION_SIMPLE_BAKED_SWEETS"
     ]
   },
   {
@@ -3391,8 +3386,7 @@
     "addedValuePerCost": 139.12,
     "unpricedItemIds": [],
     "recipeSetIds": [
-      "RECIPE_COLLECTION_REFUEL_PAD",
-      "RECIPE_COLLECTION_ALPHA_NORMAL"
+      "RECIPE_COLLECTION_REFUEL_PAD"
     ]
   },
   {
@@ -4685,9 +4679,7 @@
     "addedValue": -21.8,
     "addedValuePerCost": -4.36,
     "unpricedItemIds": [],
-    "recipeSetIds": [
-      "RECIPE_COLLECTION_ALPHA_NORMAL"
-    ]
+    "recipeSetIds": []
   },
   {
     "id": "RECIPE_007",
@@ -4703,9 +4695,7 @@
     "addedValue": 43.4,
     "addedValuePerCost": 14.47,
     "unpricedItemIds": [],
-    "recipeSetIds": [
-      "RECIPE_COLLECTION_ALPHA_EASY"
-    ]
+    "recipeSetIds": []
   },
   {
     "id": "RECIPE_008",
@@ -4725,8 +4715,6 @@
     "addedValue": 15.4,
     "addedValuePerCost": 5.13,
     "unpricedItemIds": [],
-    "recipeSetIds": [
-      "RECIPE_COLLECTION_ALPHA_EASY"
-    ]
+    "recipeSetIds": []
   }
 ]

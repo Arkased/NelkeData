@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { CharacterCategory, CharacterType, Element, PlayType, Stat, BattleRole } from '../enums.js';
-import { isPlaceholder } from '../util.js';
+import type { Messages } from './messages.js';
 import { enumOrUnknown, stringShape, type ReadTable } from './xml.js';
 
 const NO_SKILL = 'SKILL_INVALID';
@@ -147,7 +147,7 @@ export interface StatGrowth {
 
 /** The characters and monsters of the game with their battle data. */
 export interface Characters {
-  /** The characters and monsters that have a name. */
+  /** The characters and monsters that are not placeholders. */
   characters: Character[];
   /** Maps a character id to its English name. */
   characterName: Map<string, string>;
@@ -174,12 +174,13 @@ export interface Characters {
 /**
  * Loads the characters, the monsters and their battle data.
  * @param read - the table reader of the saves folder
- * @param t - the English text of a label
+ * @param messages - the game texts
  * @returns the characters and the lookups
  * @sideEffects reads the character and battle tables through the table reader
  */
-export function loadCharacters(read: ReadTable, t: (label: string) => string): Characters {
-  const characters = read('character/character.xml', characterSchema).filter((c) => !isPlaceholder(t(c.CHARACTER_NAME_LABEL_ID)));
+export function loadCharacters(read: ReadTable, messages: Messages): Characters {
+  const { t } = messages;
+  const characters = read('character/character.xml', characterSchema).filter((c) => !messages.isPlaceholder(c.CHARACTER_NAME_LABEL_ID));
   const characterName = new Map(characters.map((c) => [c.CHARACTER_ID, t(c.CHARACTER_NAME_LABEL_ID)]));
   const characterById = new Map(characters.map((c) => [c.CHARACTER_ID, c]));
   const battleById = new Map(read('battle/btl_chara.xml', battleSchema).map((b) => [b.BTL_CHARACTER_ID, b]));
