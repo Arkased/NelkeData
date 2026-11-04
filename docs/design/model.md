@@ -63,7 +63,7 @@ The workbook cannot read the game files and has no image library, so the model m
 
 ## The package interface
 
-The index of `@nelke/model` exports only what a consumer needs: the schemas, the types, `readData` and the enums. The parse, the joins and the writer are internal to the package, and only its command uses them. So a consumer cannot import a module that reads the game files.
+The index of `@nelke/model` exports only what a consumer needs: the schemas, the types, `readData`, the enums and the layout of `data/` (the file names, the icon folder and the icon sizes). The layout has 1 definition, so the workbook and the site cannot name a folder that the model does not write. The parse, the joins and the writer are internal to the package, and only its command uses them. So a consumer cannot import a module that reads the game files.
 
 ## Rejected options
 
