@@ -38,9 +38,6 @@
       ".claude/worktrees"
     ]
   },
-  "worktrees": {
-    "minAgeHours": 2
-  },
   "processes": {
     "minAgeMinutes": 2,
     "serviceMarker": "/node_modules/nelkedata"
