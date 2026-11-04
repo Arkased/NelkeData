@@ -2,6 +2,7 @@ import { Element, Stat, type Character, type Monster } from '@nelke/model';
 import { range } from './format.js';
 import { required, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
+import { KeyHeader } from './sheetKeys.js';
 
 const ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
 
@@ -48,8 +49,8 @@ function foundIn(m: Monster, lookup: Lookup): string {
 export function monsterColumns(lookup: Lookup): Column<Monster>[] {
   return [
     iconColumn((m) => m.icon ?? ''),
-    { header: 'Name', width: 22, get: (m) => m.name },
-    { header: 'Name (JP)', width: 16, get: (m) => m.nameJp ?? '' },
+    { header: KeyHeader.Name, width: 22, get: (m) => m.name },
+    { header: KeyHeader.NameJp, width: 16, get: (m) => m.nameJp ?? '' },
     { header: 'Type', width: 9, get: (m) => m.type },
     { header: 'Rank', width: 6, get: (m) => m.rank ?? -1 },
     { header: 'Wage', width: 7, get: (m) => m.wage },
@@ -76,8 +77,8 @@ export function monsterColumns(lookup: Lookup): Column<Monster>[] {
 export function characterColumns(lookup: Lookup): Column<Character>[] {
   return [
     iconColumn((c) => c.icon ?? ''),
-    { header: 'Name', width: 22, get: (c) => c.name },
-    { header: 'Name (JP)', width: 16, get: (c) => c.nameJp ?? '' },
+    { header: KeyHeader.Name, width: 22, get: (c) => c.name },
+    { header: KeyHeader.NameJp, width: 16, get: (c) => c.nameJp ?? '' },
     { header: 'Type', width: 11, get: (c) => c.type },
     { header: 'Source Game', width: 36, get: (c) => c.sourceGame ?? '' },
     { header: 'Rank', width: 6, get: (c) => c.rank ?? '' },

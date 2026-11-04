@@ -1,7 +1,8 @@
 import type ExcelJS from 'exceljs';
+import { KeyHeader } from './sheetKeys.js';
 
 /** The header of a column that holds the PNG file name of an icon. */
-export const ICON = 'Icon';
+export const ICON: string = KeyHeader.Icon;
 
 /** The value of a cell. */
 export type CellValue = string | number | undefined;

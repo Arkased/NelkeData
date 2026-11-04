@@ -7,6 +7,7 @@ import { itemColumns } from './itemColumns.js';
 import { createLookup } from './lookup.js';
 import { recipeColumns } from './recipeColumns.js';
 import { addSheet, formatColumnWarning, type ColumnWarning, type SheetSpec } from './sheet.js';
+import { SheetName } from './sheetKeys.js';
 import { zoneColumns } from './zoneColumns.js';
 
 const OUT_ICON_DIR = 'icons';
@@ -43,16 +44,16 @@ export async function buildWorkbook(options: BuildOptions): Promise<void> {
     warnings.push(...addSheet(wb, { ...spec, iconSize: ICON_SIZE_WORKBOOK }));
     counts.push(`${spec.name}: ${spec.rows.length}`);
   };
-  add({ name: 'Items', columns: itemColumns(lookup), rows: data.items.toSorted(byName((i) => i.name)) });
+  add({ name: SheetName.Items, columns: itemColumns(lookup), rows: data.items.toSorted(byName((i) => i.name)) });
   add({
-    name: 'Recipes',
+    name: SheetName.Recipes,
     columns: recipeColumns(lookup),
     rows: data.recipes.toSorted(byName((r) => lookup.items.get(r.resultItemId)?.name ?? '')),
   });
-  add({ name: 'Zones', columns: zoneColumns(lookup), rows: data.areas });
-  add({ name: 'Monsters', columns: monsterColumns(lookup), rows: data.monsters });
+  add({ name: SheetName.Zones, columns: zoneColumns(lookup), rows: data.areas });
+  add({ name: SheetName.Monsters, columns: monsterColumns(lookup), rows: data.monsters });
   add({
-    name: 'Characters',
+    name: SheetName.Characters,
     columns: characterColumns(lookup),
     // Story NPCs with no face ("Old Man", "Young Woman") are generic roles, not named characters.
     rows: data.characters.filter((c) => !(c.type === CharacterType.Story && c.icon === null)).toSorted(byName((c) => c.name)),

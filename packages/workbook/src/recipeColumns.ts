@@ -1,6 +1,7 @@
 import type { Item, Recipe, RecipeSet, Research } from '@nelke/model';
 import { required, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
+import { KeyHeader } from './sheetKeys.js';
 
 /** How a recipe is unlocked, through the first recipe set that holds it. */
 interface Unlock {
@@ -40,7 +41,7 @@ export function recipeColumns(lookup: Lookup): Column<Recipe>[] {
   ]);
   return [
     iconColumn((r) => resultOf(r).icon ?? ''),
-    { header: 'Item', width: 28, get: (r) => resultOf(r).name },
+    { header: KeyHeader.Item, width: 28, get: (r) => resultOf(r).name },
     { header: 'Category', width: 14, get: (r) => resultOf(r).category },
     { header: 'Sub-category', width: 18, get: (r) => resultOf(r).subCategory ?? '' },
     { header: 'Rank', width: 7, get: (r) => resultOf(r).rank },

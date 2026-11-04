@@ -1,11 +1,4 @@
-/** The key columns of each sheet: the shortest list of columns whose values are unique in the sheet. */
-export const SHEET_KEYS: Readonly<Record<string, readonly string[]>> = {
-  Items: ['Name'],
-  Recipes: ['Item'],
-  Zones: ['Area', 'Spot'],
-  Monsters: ['Name', 'Name (JP)'],
-  Characters: ['Name', 'Name (JP)', 'Icon'],
-};
+import { SHEET_KEYS } from '@nelke/workbook';
 
 /** The cells of 1 sheet as text: the header row, and the data rows in sheet order. */
 export interface SheetRows {
@@ -26,25 +19,20 @@ export interface SheetDiff {
   removedKeys: string[];
   addedKeys: string[];
   orderChanged: boolean;
+  missingKeyColumns: string[];
   columnsRemoved: string[];
   columnsAdded: string[];
   changes: CellChange[];
 }
 
-function keyOf(sheet: string, header: string[], row: string[], keyColumns: readonly string[]): string {
-  return keyColumns
-    .map((column) => {
-      const index = header.indexOf(column);
-      if (index < 0) throw new Error(`${sheet}: key column "${column}" is not in the header`);
-      return row[index] ?? '';
-    })
-    .join(' / ');
+function keyOf(header: string[], row: string[], keyColumns: readonly string[]): string {
+  return JSON.stringify(keyColumns.map((column) => row[header.indexOf(column)] ?? ''));
 }
 
 function indexByKey(sheet: string, data: SheetRows, keyColumns: readonly string[]): Map<string, string[]> {
   const byKey = new Map<string, string[]>();
   for (const row of data.rows) {
-    const key = keyOf(sheet, data.header, row, keyColumns);
+    const key = keyOf(data.header, row, keyColumns);
     if (byKey.has(key)) throw new Error(`${sheet}: the key value ${key} occurs 2 times`);
     byKey.set(key, row);
   }
@@ -56,13 +44,19 @@ function indexByKey(sheet: string, data: SheetRows, keyColumns: readonly string[
  * @param sheet - The name of the sheet, which selects the key columns.
  * @param base - The cells of the baseline sheet.
  * @param next - The cells of the new sheet.
- * @returns The removed rows, the added rows, the order change, the column changes and the changed cells.
- * @throws {Error} When the sheet has no key, a key column is missing, or a key value occurs 2 times in 1 sheet.
+ * @returns The removed rows, the added rows, the order change, the key columns that are not in both sheets, the column changes and the changed cells. When a key column is missing, the rows are not paired.
+ * @throws {Error} When the sheet has no key, or a key value occurs 2 times in 1 sheet.
  * @sideEffects none
  */
 export function compareRows(sheet: string, base: SheetRows, next: SheetRows): SheetDiff {
-  const keyColumns = SHEET_KEYS[sheet];
+  const keyColumns = Object.entries(SHEET_KEYS).find(([name]) => name === sheet)?.[1];
   if (!keyColumns) throw new Error(`${sheet}: the sheet has no key`);
+  const columnsRemoved = base.header.filter((column) => !next.header.includes(column));
+  const columnsAdded = next.header.filter((column) => !base.header.includes(column));
+  const missingKeyColumns = keyColumns.filter((column) => !base.header.includes(column) || !next.header.includes(column));
+  if (missingKeyColumns.length > 0) {
+    return { removedKeys: [], addedKeys: [], orderChanged: false, missingKeyColumns, columnsRemoved, columnsAdded, changes: [] };
+  }
   const baseByKey = indexByKey(sheet, base, keyColumns);
   const nextByKey = indexByKey(sheet, next, keyColumns);
   const common = [...baseByKey.keys()].filter((key) => nextByKey.has(key));
@@ -82,8 +76,9 @@ export function compareRows(sheet: string, base: SheetRows, next: SheetRows): Sh
     removedKeys: [...baseByKey.keys()].filter((key) => !nextByKey.has(key)),
     addedKeys: [...nextByKey.keys()].filter((key) => !baseByKey.has(key)),
     orderChanged: common.join('\n') !== nextCommon.join('\n'),
-    columnsRemoved: base.header.filter((column) => !next.header.includes(column)),
-    columnsAdded: next.header.filter((column) => !base.header.includes(column)),
+    missingKeyColumns,
+    columnsRemoved,
+    columnsAdded,
     changes,
   };
 }
@@ -97,6 +92,7 @@ export function compareRows(sheet: string, base: SheetRows, next: SheetRows): Sh
  */
 export function formatSheetDiff(sheet: string, diff: SheetDiff): string[] {
   return [
+    ...diff.missingKeyColumns.map((c) => `${sheet}: key column missing in 1 sheet, rows not compared: ${c}`),
     ...diff.columnsRemoved.map((c) => `${sheet}: column removed: ${c}`),
     ...diff.columnsAdded.map((c) => `${sheet}: column added: ${c}`),
     ...diff.removedKeys.map((k) => `${sheet}: row removed: ${k}`),

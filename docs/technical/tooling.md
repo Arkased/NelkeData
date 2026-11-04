@@ -16,7 +16,7 @@ The files and commands of the tooling. The design is in [docs/design/tooling.md]
 | `tsconfig.json` | The project references to each package, for `tsc -b`. |
 | `eslint.config.js` | The presets, the few rules of the code standard, and the overrides for tests. |
 | `.prettierrc.json` | `singleQuote`, `printWidth` 140. |
-| `vitest.config.ts` | The test files: `packages/*/src/**/__tests__/*.test.ts` and `__tests__/*.test.ts`. |
+| `vitest.config.ts` | The test files: `packages/*/src/**/__tests__/*.test.ts`, `__tests__/*.test.ts` and `scripts/__tests__/*.test.ts`. |
 
 ## Scripts
 
