@@ -25,8 +25,7 @@ export type Recipe = z.infer<typeof recipeSchema>;
 /** The schema of a recipe set. */
 export const recipeSetSchema = z.strictObject({
   id: idSchema,
-  /** The English name; null when the game has a placeholder name. */
-  name: z.string().nullable(),
+  name: z.string(),
   recipeIds: z.array(idSchema),
   teacherId: idSchema.nullable(),
   /** The friendship level with the teacher; null when the set has no teacher. */

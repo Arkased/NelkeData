@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { isPlaceholder } from '../util.js';
 import type { Items } from './items.js';
+import type { Messages } from './messages.js';
 import type { ReadTable } from './xml.js';
 
 const NO_MATERIAL = 'ITEM_INVALID';
@@ -116,25 +116,29 @@ export function isEmptySlot(slot: Recipe['slots'][number]): boolean {
 
 /** The recipes, the recipe sets and the research that unlocks them. */
 export interface Recipes {
-  /** The recipes that have a name and a known result item. */
+  /** The recipes that are not placeholders. A recipe is a placeholder when its result or one of its materials is, or when its result is unknown. */
   recipes: Recipe[];
-  /** All the recipe sets. */
+  /** The recipe sets that are not placeholders. */
   recipeSets: RecipeSetRow[];
-  /** All the research rows. */
+  /** The research rows that are not placeholders. */
   research: ResearchRow[];
 }
 
 /**
  * Loads the recipes, the recipe sets and the research.
  * @param read - the table reader of the saves folder
- * @param t - the English text of a label
+ * @param messages - the game texts
  * @param items - the items that the recipes make
  * @returns the recipes, the sets and the research
  * @sideEffects reads the recipe, study and district tables through the table reader
  */
-export function loadRecipes(read: ReadTable, t: (label: string) => string, items: Items): Recipes {
+export function loadRecipes(read: ReadTable, messages: Messages, items: Items): Recipes {
+  const { t } = messages;
   const recipes = read('recipe/recipe.xml', recipeSchema).filter(
-    (r) => !isPlaceholder(t(r.RECIPE_NAME_LABEL_ID)) && items.itemById.has(r.ITEM_COMPLETION_ID),
+    (r) =>
+      !messages.isPlaceholder(r.RECIPE_NAME_LABEL_ID) &&
+      items.itemById.has(r.ITEM_COMPLETION_ID) &&
+      !r.slots.some((m) => items.placeholderIds.has(m.id)),
   );
   const prizeToCollection = new Map(
     read('study/stdy_prize.xml', prizeSchema).map((p) => [p.STDY_PRIZE_ID, p.STDY_PRIZE_RECIPE_COLLECTION]),
@@ -146,17 +150,22 @@ export function loadRecipes(read: ReadTable, t: (label: string) => string, items
       t(d.COMMERCIAL_DISTRICT_LABEL_ID),
     ]),
   );
-  const research = read('study/stdy_research.xml', researchSchema).map((r): ResearchRow => {
-    const collection = prizeToCollection.get(r.STDY_PRIZE_TAG);
-    const cond = condition.get(r.STDY_RES_COND_TAG);
-    return {
-      STDY_RES_ID: r.STDY_RES_ID,
-      STDY_RES_NAME_LABEL_ID: r.STDY_RES_NAME_LABEL_ID,
-      STDY_RES_CHARACTER_TAG_00: r.STDY_RES_CHARACTER_TAG_00,
-      recipeSetId: collection && collection !== NO_COLLECTION ? collection : '',
-      prerequisiteIds: cond?.researchIds ?? [],
-      district: cond && cond.STDY_COMMERCIAL_DISTRICT_ID !== NO_DISTRICT ? (district.get(cond.STDY_COMMERCIAL_DISTRICT_ID) ?? '') : null,
-    };
-  });
-  return { recipes, recipeSets: read('recipe/recipe_collection.xml', collectionSchema), research };
+  const research = read('study/stdy_research.xml', researchSchema)
+    .filter((r) => !messages.isPlaceholder(r.STDY_RES_NAME_LABEL_ID))
+    .map((r): ResearchRow => {
+      const collection = prizeToCollection.get(r.STDY_PRIZE_TAG);
+      const cond = condition.get(r.STDY_RES_COND_TAG);
+      return {
+        STDY_RES_ID: r.STDY_RES_ID,
+        STDY_RES_NAME_LABEL_ID: r.STDY_RES_NAME_LABEL_ID,
+        STDY_RES_CHARACTER_TAG_00: r.STDY_RES_CHARACTER_TAG_00,
+        recipeSetId: collection && collection !== NO_COLLECTION ? collection : '',
+        prerequisiteIds: cond?.researchIds ?? [],
+        district: cond && cond.STDY_COMMERCIAL_DISTRICT_ID !== NO_DISTRICT ? (district.get(cond.STDY_COMMERCIAL_DISTRICT_ID) ?? '') : null,
+      };
+    });
+  const recipeSets = read('recipe/recipe_collection.xml', collectionSchema).filter(
+    (c) => !messages.isPlaceholder(c.RECIPE_COLLECTION_NAME_LABEL_ID),
+  );
+  return { recipes, recipeSets, research };
 }

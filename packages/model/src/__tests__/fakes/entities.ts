@@ -55,7 +55,7 @@ export function fakeRecipe(o: Overrides<DirectData['recipes'][number]>): DirectD
  * @returns the recipe set
  */
 export function fakeRecipeSet(o: Overrides<DirectData['recipeSets'][number]>): DirectData['recipeSets'][number] {
-  return { name: null, recipeIds: [], teacherId: null, friendship: null, unlockEvent: null, ...o };
+  return { name: `Set ${o.id}`, recipeIds: [], teacherId: null, friendship: null, unlockEvent: null, ...o };
 }
 
 /**

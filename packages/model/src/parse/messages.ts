@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { isPlaceholder } from '../placeholder.js';
 import type { ReadTable } from './xml.js';
 
 // A row without text is a label with no text: the lookups return ''.
@@ -11,6 +12,8 @@ export interface Messages {
   t: (label: string) => string;
   /** Returns the Japanese text of a label, or '' when the label has none. */
   jp: (label: string) => string;
+  /** Tells whether the name that a label holds is a placeholder name. */
+  isPlaceholder: (label: string) => boolean;
 }
 
 /**
@@ -29,5 +32,6 @@ export function loadMessages(read: ReadTable): Messages {
   return {
     t: (label) => en.get(label) ?? '',
     jp: (label) => jp.get(label) ?? '',
+    isPlaceholder: (label) => isPlaceholder(en.get(label) ?? '', jp.get(label) ?? ''),
   };
 }
