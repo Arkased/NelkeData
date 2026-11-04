@@ -105,7 +105,7 @@ export function buildMonsters(game: Game): DirectData['monsters'] {
  * Makes the characters from the game tables: all the characters that are not monsters.
  * @param game - the game data
  * @returns the characters, in the order of the game table
- * @throws {Error} when a character that is not a monster has the type Monster or Boss
+ * @throws {Error} when a character that is not a monster has the type Monster or Boss, or has a category that the model does not know
  * @sideEffects requests the icon of each character from the icon set, which decodes it
  */
 export function buildCharacters(game: Game): DirectData['characters'] {
