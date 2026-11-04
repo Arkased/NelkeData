@@ -36,43 +36,38 @@ afterEach(() => {
 describe('checkLinks', () => {
   it('resolves a trailing slash to index.html', () => {
     write('items/index.html');
-    pageWith('<a href="/NelkeData/items/">Items</a><a href="/NelkeData/">Home</a>');
+    pageWith(`<a href="${BASE_PATH}items/">Items</a><a href="${BASE_PATH}">Home</a>`);
     expect(checkLinks(dist)).toEqual([]);
   });
 
   it('removes the query and the fragment', () => {
     write('items/index.html');
     write('app.css');
-    pageWith('<a href="/NelkeData/items/?q=1#top">A</a><link href="/NelkeData/app.css?v=2" rel="stylesheet" />');
+    pageWith(`<a href="${BASE_PATH}items/?q=1#top">A</a><link href="${BASE_PATH}app.css?v=2" rel="stylesheet" />`);
     expect(checkLinks(dist)).toEqual([]);
   });
 
   it('reads href of a and link and src of img and script', () => {
     pageWith(
-      '<a href="/NelkeData/a/">A</a><link href="/NelkeData/b.css" /><img src="/NelkeData/c.png" /><script src="/NelkeData/d.js"></script>',
+      `<a href="${BASE_PATH}a/">A</a><link href="${BASE_PATH}b.css" /><img src="${BASE_PATH}c.png" /><script src="${BASE_PATH}d.js"></script>`,
     );
     expect(checkLinks(dist)).toEqual([
-      'index.html: /NelkeData/a/',
-      'index.html: /NelkeData/b.css',
-      'index.html: /NelkeData/c.png',
-      'index.html: /NelkeData/d.js',
+      `index.html: ${BASE_PATH}a/`,
+      `index.html: ${BASE_PATH}b.css`,
+      `index.html: ${BASE_PATH}c.png`,
+      `index.html: ${BASE_PATH}d.js`,
     ]);
   });
 
   it('reports a missing target with the page file', () => {
-    write('items/index.html', '<a href="/NelkeData/gone/">Gone</a>');
-    expect(checkLinks(dist)).toEqual(['items/index.html: /NelkeData/gone/']);
+    write('items/index.html', `<a href="${BASE_PATH}gone/">Gone</a>`);
+    expect(checkLinks(dist)).toEqual([`items/index.html: ${BASE_PATH}gone/`]);
   });
 
   it('reports a URL with no trailing slash that points to a folder', () => {
     write('items/index.html');
-    pageWith('<a href="/NelkeData/items">Items</a>');
-    expect(checkLinks(dist)).toEqual(['index.html: /NelkeData/items']);
-  });
-
-  it('reports a URL under the exported base path with no target', () => {
-    pageWith(`<a href="${BASE_PATH}missing/">Missing</a>`);
-    expect(checkLinks(dist)).toEqual([`index.html: ${BASE_PATH}missing/`]);
+    pageWith(`<a href="${BASE_PATH}items">Items</a>`);
+    expect(checkLinks(dist)).toEqual([`index.html: ${BASE_PATH}items`]);
   });
 
   it('ignores URLs outside the base path', () => {
