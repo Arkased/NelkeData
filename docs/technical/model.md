@@ -8,7 +8,7 @@ The files, the fields and the commands of the data model. The design is in [docs
 | --- | --- |
 | Name | `@nelke/model` |
 | Folder | `packages/model/` |
-| Exports | The schemas, the types, `readData(dataDir)` and the enums of the game. |
+| Exports | The schemas, the types, `readData(dataDir)`, the enums of the game, and the layout of `data/`: the file names, `ICON_DIR` and `ICON_SIZES`. |
 | Command | `npm run model -- [extractedDir] [dataDir]`. The defaults are `extracted/` and `data/`. |
 
 ## Files of `data/`
