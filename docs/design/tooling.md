@@ -39,7 +39,9 @@ The packages come in 3 steps:
 | Items | `Name` |
 | Recipes | `Item` |
 | Zones | `Area`, `Spot` |
-| Monsters | `Name` |
-| Characters | `Name`, `Name (JP)` |
+| Monsters | `Name`, `Name (JP)` (2 monsters have the English name "Beast") |
+| Characters | `Name`, `Name (JP)`, `Icon` (the variants of 1 character, for example the 7 rows of Pamela, differ only in the icon) |
+
+A key with `Icon` changes when a game update changes the icon numbers. Such an update changes the workbook anyway, so a comparison across it is not a proof of no change.
 
 When a key value occurs 2 times in 1 sheet, the script stops with an error that names the sheet and the value, because a pair would be a guess. It prints each difference, writes the same text to a timestamped result file, and exits with 1 when it finds a difference. The issue of the change records the result in its Outcome. Each change of the workbook code that keeps the requirements runs it against a baseline workbook. The baseline comes from the build before the change.
