@@ -45,8 +45,8 @@ The terms follow the site: a zone holds areas ([decision 0006](../decisions/0006
 
 ## IDs and links
 
-- The ID of an entity is its ID in the game table, an integer. It is unique in its kind. A link field names the kind, for example `monsterId`.
-- The model stores each link in both directions. Only 1 side comes from the game tables. The inverse function makes the other side, so the 2 sides cannot differ. A test reads `data/` and makes sure that each link has its reverse.
+- The ID of an entity is the value that the other game tables use to refer to its row: the ID field of the row, or the row index when the game refers to the row by its index. It is an integer, unique in its kind. So the ID stays the same as long as the game reference stays the same. A row number that the model counts itself is not an ID. A link field names the kind, for example `monsterId`.
+- The model stores each link in both directions. Only 1 side comes from the game tables. The inverse function makes the other side, so the 2 sides cannot differ. When the reverse side holds 1 ID and 2 links give it different values, the inverse function throws, so no link loses its reverse in silence. A test reads `data/` and makes sure that each link has its reverse, from both sides.
 
 ## Slugs
 
@@ -54,7 +54,16 @@ The slug of an entity comes from its English name: the name in lower case, with 
 
 ## Icons
 
-The model decodes the icon textures to 128 × 128 PNG files in `data/icons/`, with the names that the workbook uses now (for example `item_l_012.png`). The site needs 128 px for screens with 2 device pixels for each CSS pixel. The workbook copies the same files to `output/icons/`.
+The model decodes the icon textures to PNG files in 2 sizes, with the names that the workbook uses now (for example `item_l_012.png`):
+
+- `data/icons/128/`: 128 × 128 px, for the site. The site needs 128 px for screens with 2 device pixels for each CSS pixel.
+- `data/icons/64/`: 64 × 64 px, for the workbook. The row "Icons" of [the workbook requirements](../requirements/workbook.md) asks for this size. The workbook copies these files to `output/icons/`.
+
+The workbook cannot read the game files and has no image library, so the model makes both sizes from the same decoded texture.
+
+## The package interface
+
+The index of `@nelke/model` exports only what a consumer needs: the schemas, the types, `readData` and the enums. The parse, the joins and the writer are internal to the package, and only its command uses them. So a consumer cannot import a module that reads the game files.
 
 ## Rejected options
 
