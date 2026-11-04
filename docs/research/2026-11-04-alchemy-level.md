@@ -36,7 +36,7 @@ Only `PACK01.PAK` holds tables. The other archives hold textures, models and 1 v
 - `out_constant/out_constant.xml` has the constants of the failure rule, for example `OC_ATELIER_MIX_FAILURE_LEVEL_DIFFERENCE_BORDER` = 10. The `.exe` has the field `OC_ITEM_RANK_ADJUSTMENT_COEFFICIENT`. It is not in any XML.
 - The `.exe` has no field name with `MIX_LV` for an item or a recipe. It has `AVUserDataMixLv`, `AVACMixGEMasterMixLv` and `AVACMixUPMasterMixLv`. These names belong to the save data and the achievements, not to a table.
 - `request/request_item_rank.xml` maps the request ranks A to E to item ranks 80, 50, 30, 16 and 1. These values are on the same scale as `ITEM_RANK`.
-- The 22 `.xml.e` files hold the same data as the plain XML. The size in the header (bytes 4 to 7) is equal to the size of the plain file in 15 of 22 cases. The 7 other files (`itemrecipedata`, `itemfactordata`, `itemfactordata_no`, `item_book`, `mixmotiondata`, `mixpanellineeffectdata`, `mixpanellineeffectdata_no`) have no plain XML. They are encrypted and compressed (entropy 7.98 bits per byte). We could not read them. Their names match the old-game `itemdata.xml`, so they probably are old-game data too.
+- 15 of the 22 `.xml.e` files hold the same data as their plain XML: the size in the header (bytes 4 to 7) is equal to the size of the plain file. The 7 other files (`itemrecipedata`, `itemfactordata`, `itemfactordata_no`, `item_book`, `mixmotiondata`, `mixpanellineeffectdata`, `mixpanellineeffectdata_no`) have no plain XML. They are encrypted and compressed (entropy 7.98 bits per byte). We could not read them. Their names match the old-game `itemdata.xml`, so they probably are old-game data too.
 
 ## Search of the fields
 
