@@ -3,6 +3,7 @@ extracted/
 output/
 node_modules/
 dist/
+data/
 package-lock.json
 *.md
 prototype/

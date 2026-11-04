@@ -1,0 +1,1258 @@
+[
+  {
+    "id": "STDY_RES_000",
+    "name": "Flammable Substance",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "flammable-substance",
+    "unlocksIds": [
+      "STDY_RES_005"
+    ]
+  },
+  {
+    "id": "STDY_RES_001",
+    "name": "Strong Wood",
+    "researcherId": "CHARACTER_ELIE",
+    "prerequisiteIds": [
+      "STDY_RES_022"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_SPRUCE",
+    "slug": "strong-wood",
+    "unlocksIds": [
+      "STDY_RES_006"
+    ]
+  },
+  {
+    "id": "STDY_RES_002",
+    "name": "Strong Board",
+    "researcherId": "CHARACTER_ULRIKA",
+    "prerequisiteIds": [
+      "STDY_RES_023"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_COMPRESSION_LUBMER",
+    "slug": "strong-board",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_003",
+    "name": "Puni Essence Production",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "puni-essence-production",
+    "unlocksIds": [
+      "STDY_RES_005"
+    ]
+  },
+  {
+    "id": "STDY_RES_004",
+    "name": "Way of Medicine",
+    "researcherId": "CHARACTER_ELIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "way-of-medicine",
+    "unlocksIds": [
+      "STDY_RES_005"
+    ]
+  },
+  {
+    "id": "STDY_RES_005",
+    "name": "All Purpose Essence",
+    "researcherId": "CHARACTER_JUDIE",
+    "prerequisiteIds": [
+      "STDY_RES_000",
+      "STDY_RES_003",
+      "STDY_RES_004"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "all-purpose-essence",
+    "unlocksIds": [
+      "STDY_RES_010",
+      "STDY_RES_011",
+      "STDY_RES_012"
+    ]
+  },
+  {
+    "id": "STDY_RES_006",
+    "name": "For Major Synthesis",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [
+      "STDY_RES_001"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_ALCHEMY_EQUIPMENT",
+    "slug": "for-major-synthesis",
+    "unlocksIds": [
+      "STDY_RES_007",
+      "STDY_RES_028",
+      "STDY_RES_047"
+    ]
+  },
+  {
+    "id": "STDY_RES_007",
+    "name": "Fresh Materials",
+    "researcherId": "CHARACTER_FIRIS",
+    "prerequisiteIds": [
+      "STDY_RES_006"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_ICEHOUSE_BOX",
+    "slug": "fresh-materials",
+    "unlocksIds": [
+      "STDY_RES_013"
+    ]
+  },
+  {
+    "id": "STDY_RES_008",
+    "name": "Useful Metal",
+    "researcherId": "CHARACTER_TOTORI",
+    "prerequisiteIds": [
+      "STDY_RES_013"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_LIQUID_METAL",
+    "slug": "useful-metal",
+    "unlocksIds": [
+      "STDY_RES_017"
+    ]
+  },
+  {
+    "id": "STDY_RES_009",
+    "name": "Magically Light",
+    "researcherId": "CHARACTER_SOPHIE",
+    "prerequisiteIds": [
+      "STDY_RES_027"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_MAGICAL_STONE",
+    "slug": "magically-light",
+    "unlocksIds": [
+      "STDY_RES_049"
+    ]
+  },
+  {
+    "id": "STDY_RES_010",
+    "name": "Applied Bomb Research",
+    "researcherId": "CHARACTER_JUDIE",
+    "prerequisiteIds": [
+      "STDY_RES_005"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "applied-bomb-research",
+    "unlocksIds": [
+      "STDY_RES_112"
+    ]
+  },
+  {
+    "id": "STDY_RES_011",
+    "name": "Various Usage",
+    "researcherId": "CHARACTER_VIO",
+    "prerequisiteIds": [
+      "STDY_RES_005"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "various-usage",
+    "unlocksIds": [
+      "STDY_RES_014"
+    ]
+  },
+  {
+    "id": "STDY_RES_012",
+    "name": "Super Puni Essence",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [
+      "STDY_RES_005"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "super-puni-essence",
+    "unlocksIds": [
+      "STDY_RES_119"
+    ]
+  },
+  {
+    "id": "STDY_RES_013",
+    "name": "Resistance Wall",
+    "researcherId": "CHARACTER_KREIN",
+    "prerequisiteIds": [
+      "STDY_RES_007"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_HEAT_RESIST_ALCHEMY_BOARD",
+    "slug": "resistance-wall",
+    "unlocksIds": [
+      "STDY_RES_008"
+    ]
+  },
+  {
+    "id": "STDY_RES_014",
+    "name": "Rare Materials",
+    "researcherId": "CHARACTER_SOPHIE",
+    "prerequisiteIds": [
+      "STDY_RES_011"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "rare-materials",
+    "unlocksIds": [
+      "STDY_RES_015",
+      "STDY_RES_114",
+      "STDY_RES_123"
+    ]
+  },
+  {
+    "id": "STDY_RES_015",
+    "name": "Mystery Sweetener",
+    "researcherId": "CHARACTER_LYDIE",
+    "prerequisiteIds": [
+      "STDY_RES_014"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "mystery-sweetener",
+    "unlocksIds": [
+      "STDY_RES_120"
+    ]
+  },
+  {
+    "id": "STDY_RES_016",
+    "name": "Electric Breakdown",
+    "researcherId": "CHARACTER_FIRIS",
+    "prerequisiteIds": [
+      "STDY_RES_123"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "electric-breakdown",
+    "unlocksIds": [
+      "STDY_RES_018",
+      "STDY_RES_115"
+    ]
+  },
+  {
+    "id": "STDY_RES_017",
+    "name": "Useful Metal!",
+    "researcherId": "CHARACTER_LOTTE",
+    "prerequisiteIds": [
+      "STDY_RES_008"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_ULTIMATE_STEEL_MATERIAL",
+    "slug": "useful-metal-stdy-res-017",
+    "unlocksIds": [
+      "STDY_RES_048"
+    ]
+  },
+  {
+    "id": "STDY_RES_018",
+    "name": "Smelly Liquid",
+    "researcherId": "CHARACTER_KREIN",
+    "prerequisiteIds": [
+      "STDY_RES_016"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "smelly-liquid",
+    "unlocksIds": [
+      "STDY_RES_019",
+      "STDY_RES_121",
+      "STDY_RES_124"
+    ]
+  },
+  {
+    "id": "STDY_RES_019",
+    "name": "Shiny Oil",
+    "researcherId": "CHARACTER_VIESE",
+    "prerequisiteIds": [
+      "STDY_RES_018"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "shiny-oil",
+    "unlocksIds": [
+      "STDY_RES_020",
+      "STDY_RES_116",
+      "STDY_RES_122"
+    ]
+  },
+  {
+    "id": "STDY_RES_020",
+    "name": "Effect On All",
+    "researcherId": "CHARACTER_TOTORI",
+    "prerequisiteIds": [
+      "STDY_RES_019"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "effect-on-all",
+    "unlocksIds": [
+      "STDY_RES_021",
+      "STDY_RES_024",
+      "STDY_RES_126"
+    ]
+  },
+  {
+    "id": "STDY_RES_021",
+    "name": "Uni Potential",
+    "researcherId": "CHARACTER_LOTTE",
+    "prerequisiteIds": [
+      "STDY_RES_020"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "uni-potential",
+    "unlocksIds": [
+      "STDY_RES_113",
+      "STDY_RES_117"
+    ]
+  },
+  {
+    "id": "STDY_RES_022",
+    "name": "Peaceful Land",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_FLUFFY_SOIL",
+    "slug": "peaceful-land",
+    "unlocksIds": [
+      "STDY_RES_001"
+    ]
+  },
+  {
+    "id": "STDY_RES_023",
+    "name": "Rainbow Shine",
+    "researcherId": "CHARACTER_JUDIE",
+    "prerequisiteIds": [
+      "STDY_RES_047"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_AURORA_CRYSTAL",
+    "slug": "rainbow-shine",
+    "unlocksIds": [
+      "STDY_RES_002"
+    ]
+  },
+  {
+    "id": "STDY_RES_024",
+    "name": "Pie Revenge",
+    "researcherId": "CHARACTER_RORONA",
+    "prerequisiteIds": [
+      "STDY_RES_020"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "pie-revenge",
+    "unlocksIds": [
+      "STDY_RES_127"
+    ]
+  },
+  {
+    "id": "STDY_RES_025",
+    "name": "Flame Essence",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [
+      "STDY_RES_125"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "flame-essence",
+    "unlocksIds": [
+      "STDY_RES_030"
+    ]
+  },
+  {
+    "id": "STDY_RES_026",
+    "name": "Colorful Town",
+    "researcherId": "CHARACTER_VIO",
+    "prerequisiteIds": [
+      "STDY_RES_028"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_COLORFUL_BRICK",
+    "slug": "colorful-town",
+    "unlocksIds": [
+      "STDY_RES_027"
+    ]
+  },
+  {
+    "id": "STDY_RES_027",
+    "name": "Pretty Wall",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [
+      "STDY_RES_026"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_HIGH_PRECISION_BLOCK",
+    "slug": "pretty-wall",
+    "unlocksIds": [
+      "STDY_RES_009"
+    ]
+  },
+  {
+    "id": "STDY_RES_028",
+    "name": "Vibrant Plant",
+    "researcherId": "CHARACTER_VIESE",
+    "prerequisiteIds": [
+      "STDY_RES_006"
+    ],
+    "district": null,
+    "recipeSetId": "RECIPE_COLLECTION_CONCENTRATED_NUTRITION_SOIL",
+    "slug": "vibrant-plant",
+    "unlocksIds": [
+      "STDY_RES_026"
+    ]
+  },
+  {
+    "id": "STDY_RES_029",
+    "name": "Water Essence",
+    "researcherId": "CHARACTER_STERA",
+    "prerequisiteIds": [
+      "STDY_RES_125"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "water-essence",
+    "unlocksIds": [
+      "STDY_RES_031"
+    ]
+  },
+  {
+    "id": "STDY_RES_030",
+    "name": "Sky Essence",
+    "researcherId": "CHARACTER_ESCHA",
+    "prerequisiteIds": [
+      "STDY_RES_025"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "sky-essence",
+    "unlocksIds": [
+      "STDY_RES_118"
+    ]
+  },
+  {
+    "id": "STDY_RES_031",
+    "name": "Land Essence",
+    "researcherId": "CHARACTER_AYESHA",
+    "prerequisiteIds": [
+      "STDY_RES_029"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "land-essence",
+    "unlocksIds": [
+      "STDY_RES_118"
+    ]
+  },
+  {
+    "id": "STDY_RES_032",
+    "name": "Using Rare Materials",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "using-rare-materials",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_033",
+    "name": "An Eye-Opening Cup",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "an-eye-opening-cup",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_034",
+    "name": "Unrivaled Item!",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "unrivaled-item",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_035",
+    "name": "Scents Everywhere",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "scents-everywhere",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_036",
+    "name": "Logical Reconsideration",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "logical-reconsideration",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_037",
+    "name": "Passion and Flow",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "passion-and-flow",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_038",
+    "name": "Revenge of the Best Pie",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "revenge-of-the-best-pie",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_039",
+    "name": "Elixir Evolved",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "elixir-evolved",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_040",
+    "name": "Pie Ingredient Gathering",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "pie-ingredient-gathering",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_041",
+    "name": "The Dragon Hourglass",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "the-dragon-hourglass",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_042",
+    "name": "Delicious Hourglass",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "delicious-hourglass",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_043",
+    "name": "Nutritious Dough",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "nutritious-dough",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_044",
+    "name": "A Pinch of Secret Flavors",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "a-pinch-of-secret-flavors",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_045",
+    "name": "Research Byproduct",
+    "researcherId": null,
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "research-byproduct",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_046",
+    "name": "Build More Buildings",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "build-more-buildings",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_047",
+    "name": "Rapid Construction",
+    "researcherId": "CHARACTER_RORONA",
+    "prerequisiteIds": [
+      "STDY_RES_006"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "rapid-construction",
+    "unlocksIds": [
+      "STDY_RES_023"
+    ]
+  },
+  {
+    "id": "STDY_RES_048",
+    "name": "Modernization Project",
+    "researcherId": "CHARACTER_ESCHA",
+    "prerequisiteIds": [
+      "STDY_RES_017"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "modernization-project",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_049",
+    "name": "Path to Master Crafts",
+    "researcherId": "CHARACTER_IRIS",
+    "prerequisiteIds": [
+      "STDY_RES_009"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "path-to-master-crafts",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_050",
+    "name": "Grand Manor",
+    "researcherId": "CHARACTER_MERURU",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "grand-manor",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_060",
+    "name": "Proper Home Cooking",
+    "researcherId": "CHARACTER_RORONA",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "proper-home-cooking",
+    "unlocksIds": [
+      "STDY_RES_061",
+      "STDY_RES_062"
+    ]
+  },
+  {
+    "id": "STDY_RES_061",
+    "name": "Fruits and Vegetables",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [
+      "STDY_RES_060"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "fruits-and-vegetables",
+    "unlocksIds": [
+      "STDY_RES_063"
+    ]
+  },
+  {
+    "id": "STDY_RES_062",
+    "name": "Hunting and Fishing",
+    "researcherId": "CHARACTER_VAIN",
+    "prerequisiteIds": [
+      "STDY_RES_060"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "hunting-and-fishing",
+    "unlocksIds": [
+      "STDY_RES_063"
+    ]
+  },
+  {
+    "id": "STDY_RES_063",
+    "name": "Sudden Pain Relief",
+    "researcherId": "CHARACTER_AYESHA",
+    "prerequisiteIds": [
+      "STDY_RES_061",
+      "STDY_RES_062"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "sudden-pain-relief",
+    "unlocksIds": [
+      "STDY_RES_064",
+      "STDY_RES_065",
+      "STDY_RES_066"
+    ]
+  },
+  {
+    "id": "STDY_RES_064",
+    "name": "Team Rorona's Dish",
+    "researcherId": "CHARACTER_VIESE",
+    "prerequisiteIds": [
+      "STDY_RES_063"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "team-rorona-s-dish",
+    "unlocksIds": [
+      "STDY_RES_067"
+    ]
+  },
+  {
+    "id": "STDY_RES_065",
+    "name": "Team Escha's Dish",
+    "researcherId": "CHARACTER_AYESHA",
+    "prerequisiteIds": [
+      "STDY_RES_063"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "team-escha-s-dish",
+    "unlocksIds": [
+      "STDY_RES_067"
+    ]
+  },
+  {
+    "id": "STDY_RES_066",
+    "name": "Team Lydie's Dish",
+    "researcherId": "CHARACTER_LYDIE",
+    "prerequisiteIds": [
+      "STDY_RES_063"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "team-lydie-s-dish",
+    "unlocksIds": [
+      "STDY_RES_067"
+    ]
+  },
+  {
+    "id": "STDY_RES_067",
+    "name": "The Finishing Touches",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [
+      "STDY_RES_064",
+      "STDY_RES_065",
+      "STDY_RES_066"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "the-finishing-touches",
+    "unlocksIds": [
+      "STDY_RES_068"
+    ]
+  },
+  {
+    "id": "STDY_RES_068",
+    "name": "De-Multiplication Tonic",
+    "researcherId": "CHARACTER_ELIE",
+    "prerequisiteIds": [
+      "STDY_RES_067"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "de-multiplication-tonic",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_100",
+    "name": "New Living Series",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "new-living-series",
+    "unlocksIds": [
+      "STDY_RES_103"
+    ]
+  },
+  {
+    "id": "STDY_RES_101",
+    "name": "Find the Secret Room!",
+    "researcherId": "CHARACTER_SOPHIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "find-the-secret-room",
+    "unlocksIds": [
+      "STDY_RES_103"
+    ]
+  },
+  {
+    "id": "STDY_RES_102",
+    "name": "Lost Mana?",
+    "researcherId": "CHARACTER_KREIN",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "lost-mana",
+    "unlocksIds": [
+      "STDY_RES_103"
+    ]
+  },
+  {
+    "id": "STDY_RES_103",
+    "name": "Dusky Barrier Breaker",
+    "researcherId": "CHARACTER_STERA",
+    "prerequisiteIds": [
+      "STDY_RES_100",
+      "STDY_RES_101",
+      "STDY_RES_102"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "dusky-barrier-breaker",
+    "unlocksIds": [
+      "STDY_RES_132"
+    ]
+  },
+  {
+    "id": "STDY_RES_104",
+    "name": "Mist Lifter Powder",
+    "researcherId": "CHARACTER_ELIE",
+    "prerequisiteIds": [
+      "STDY_RES_132"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "mist-lifter-powder",
+    "unlocksIds": [
+      "STDY_RES_105",
+      "STDY_RES_106",
+      "STDY_RES_107"
+    ]
+  },
+  {
+    "id": "STDY_RES_105",
+    "name": "Harvest Soil",
+    "researcherId": "CHARACTER_ESCHA",
+    "prerequisiteIds": [
+      "STDY_RES_104"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "harvest-soil",
+    "unlocksIds": [
+      "STDY_RES_108"
+    ]
+  },
+  {
+    "id": "STDY_RES_106",
+    "name": "First Rate Mana Booster",
+    "researcherId": "CHARACTER_VAIN",
+    "prerequisiteIds": [
+      "STDY_RES_104"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "first-rate-mana-booster",
+    "unlocksIds": [
+      "STDY_RES_108"
+    ]
+  },
+  {
+    "id": "STDY_RES_107",
+    "name": "1,000% Plant Food",
+    "researcherId": "CHARACTER_TOTORI",
+    "prerequisiteIds": [
+      "STDY_RES_104"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "1-000-plant-food",
+    "unlocksIds": [
+      "STDY_RES_108"
+    ]
+  },
+  {
+    "id": "STDY_RES_108",
+    "name": "Get Everyone Together!",
+    "researcherId": "CHARACTER_LYDIE",
+    "prerequisiteIds": [
+      "STDY_RES_105",
+      "STDY_RES_106",
+      "STDY_RES_107"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "get-everyone-together",
+    "unlocksIds": [
+      "STDY_RES_109"
+    ]
+  },
+  {
+    "id": "STDY_RES_109",
+    "name": "First Barrier: Time",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [
+      "STDY_RES_108"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "first-barrier-time",
+    "unlocksIds": [
+      "STDY_RES_110"
+    ]
+  },
+  {
+    "id": "STDY_RES_110",
+    "name": "Second Barrier: Space",
+    "researcherId": "CHARACTER_IRIS",
+    "prerequisiteIds": [
+      "STDY_RES_109"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "second-barrier-space",
+    "unlocksIds": [
+      "STDY_RES_111"
+    ]
+  },
+  {
+    "id": "STDY_RES_111",
+    "name": "Combined Synthesis",
+    "researcherId": "CHARACTER_AYESHA",
+    "prerequisiteIds": [
+      "STDY_RES_110"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "combined-synthesis",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_112",
+    "name": "Burned Wasteland",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [
+      "STDY_RES_010"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "burned-wasteland",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_113",
+    "name": "Dangerous Uni",
+    "researcherId": "CHARACTER_ELIE",
+    "prerequisiteIds": [
+      "STDY_RES_021"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "dangerous-uni",
+    "unlocksIds": [
+      "STDY_RES_125"
+    ]
+  },
+  {
+    "id": "STDY_RES_114",
+    "name": "Cold Limit Surpassed",
+    "researcherId": "CHARACTER_RORONA",
+    "prerequisiteIds": [
+      "STDY_RES_014"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "cold-limit-surpassed",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_115",
+    "name": "Electric Spark 1,000%!",
+    "researcherId": "CHARACTER_STERA",
+    "prerequisiteIds": [
+      "STDY_RES_016"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "electric-spark-1-000",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_116",
+    "name": "March On! Globe Cannon!",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [
+      "STDY_RES_019"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "march-on-globe-cannon",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_117",
+    "name": "It's Raining Uni",
+    "researcherId": "CHARACTER_JUDIE",
+    "prerequisiteIds": [
+      "STDY_RES_021"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "it-s-raining-uni",
+    "unlocksIds": [
+      "STDY_RES_125"
+    ]
+  },
+  {
+    "id": "STDY_RES_118",
+    "name": "Four Heavens Bomb",
+    "researcherId": "CHARACTER_KREIN",
+    "prerequisiteIds": [
+      "STDY_RES_030",
+      "STDY_RES_031"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "four-heavens-bomb",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_119",
+    "name": "Puni Essence Ointment",
+    "researcherId": "CHARACTER_AYESHA",
+    "prerequisiteIds": [
+      "STDY_RES_012"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "puni-essence-ointment",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_120",
+    "name": "Whole Lotta Sweets",
+    "researcherId": "CHARACTER_ELIE",
+    "prerequisiteIds": [
+      "STDY_RES_015"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "whole-lotta-sweets",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_121",
+    "name": "Dangerous Dark Water",
+    "researcherId": "CHARACTER_LILIE",
+    "prerequisiteIds": [
+      "STDY_RES_018"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "dangerous-dark-water",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_122",
+    "name": "Descending Aurora",
+    "researcherId": "CHARACTER_VAIN",
+    "prerequisiteIds": [
+      "STDY_RES_019"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "descending-aurora",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_123",
+    "name": "Simply Refreshing",
+    "researcherId": "CHARACTER_VAIN",
+    "prerequisiteIds": [
+      "STDY_RES_014"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "simply-refreshing",
+    "unlocksIds": [
+      "STDY_RES_016"
+    ]
+  },
+  {
+    "id": "STDY_RES_124",
+    "name": "Mysterious Perfume",
+    "researcherId": "CHARACTER_VIESE",
+    "prerequisiteIds": [
+      "STDY_RES_018"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "mysterious-perfume",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_125",
+    "name": "Knowledge Transition",
+    "researcherId": "CHARACTER_IRIS",
+    "prerequisiteIds": [
+      "STDY_RES_113",
+      "STDY_RES_117",
+      "STDY_RES_127"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "knowledge-transition",
+    "unlocksIds": [
+      "STDY_RES_025",
+      "STDY_RES_029"
+    ]
+  },
+  {
+    "id": "STDY_RES_126",
+    "name": "Take Orally--Or Don't",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [
+      "STDY_RES_020"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "take-orally-or-don-t",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_127",
+    "name": "A New Pie: Complete",
+    "researcherId": "CHARACTER_JUDIE",
+    "prerequisiteIds": [
+      "STDY_RES_024"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "a-new-pie-complete",
+    "unlocksIds": [
+      "STDY_RES_125"
+    ]
+  },
+  {
+    "id": "STDY_RES_128",
+    "name": "Cutting a Path",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [],
+    "district": "Riosmyste District",
+    "recipeSetId": null,
+    "slug": "cutting-a-path",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_129",
+    "name": "Escape from Humidity!",
+    "researcherId": "CHARACTER_MERURU",
+    "prerequisiteIds": [],
+    "district": "Aufgabe District",
+    "recipeSetId": null,
+    "slug": "escape-from-humidity",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_130",
+    "name": "Resilient Steel Frame",
+    "researcherId": "CHARACTER_TOTORI",
+    "prerequisiteIds": [],
+    "district": "Manachimie District",
+    "recipeSetId": null,
+    "slug": "resilient-steel-frame",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_131",
+    "name": "Hot Land",
+    "researcherId": "CHARACTER_ULRIKA",
+    "prerequisiteIds": [],
+    "district": "Abend District",
+    "recipeSetId": null,
+    "slug": "hot-land",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_132",
+    "name": "Opportunity Bears Fruit",
+    "researcherId": "CHARACTER_IRIS",
+    "prerequisiteIds": [
+      "STDY_RES_103"
+    ],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "opportunity-bears-fruit",
+    "unlocksIds": [
+      "STDY_RES_104"
+    ]
+  },
+  {
+    "id": "STDY_RES_140",
+    "name": "Light on Darkness!",
+    "researcherId": "CHARACTER_MARIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "light-on-darkness",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_141",
+    "name": "Storm for a Storm!",
+    "researcherId": "CHARACTER_FIRIS",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "storm-for-a-storm",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_142",
+    "name": "Peaceful Resolution",
+    "researcherId": "CHARACTER_MERURU",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "peaceful-resolution",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_143",
+    "name": "Shooting Star Detour",
+    "researcherId": "CHARACTER_JUDIE",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "shooting-star-detour",
+    "unlocksIds": []
+  },
+  {
+    "id": "STDY_RES_144",
+    "name": "Calm the King!",
+    "researcherId": "CHARACTER_ESCHA",
+    "prerequisiteIds": [],
+    "district": null,
+    "recipeSetId": null,
+    "slug": "calm-the-king",
+    "unlocksIds": []
+  }
+]

@@ -45,12 +45,12 @@ The terms follow the site: a zone holds areas ([decision 0006](../decisions/0006
 
 ## IDs and links
 
-- The ID of an entity is the value that the other game tables use to refer to its row: the ID field of the row, or the row index when the game refers to the row by its index. It is an integer, unique in its kind. So the ID stays the same as long as the game reference stays the same. A row number that the model counts itself is not an ID. A link field names the kind, for example `monsterId`.
+- The ID of an entity is the value that the other game tables use to refer to its row: the ID field of the row, or the row index when the game refers to the row by its index. It is a string, unique in its kind: every table of the game refers to a row by the tag in its ID field, for example `ITEM_MAT_ELEMENT_FIRE`. So the ID stays the same as long as the game reference stays the same. A row number that the model counts itself is not an ID. A link field names the kind, for example `monsterId`.
 - The model stores each link in both directions. Only 1 side comes from the game tables. The inverse function makes the other side, so the 2 sides cannot differ. When the reverse side holds 1 ID and 2 links give it different values, the inverse function throws, so no link loses its reverse in silence. A test reads `data/` and makes sure that each link has its reverse, from both sides.
 
 ## Slugs
 
-The slug of an entity comes from its English name: the name in lower case, with the accents removed, and each run of other characters than `a`–`z` and `0`–`9` changed to 1 `-`, with no `-` at the start or the end. When 2 or more entities of 1 kind have the same slug, the entity with the lowest ID keeps it, and each other entity gets `-<id>` at the end. So a slug does not change while the name does not change, and a new entity with the same name does not change the slug of the old one. An entity with no page has no slug.
+The slug of an entity comes from its English name: the name in lower case, with the accents removed, and each run of other characters than `a`–`z` and `0`–`9` changed to 1 `-`, with no `-` at the start or the end. When 2 or more entities of 1 kind have the same slug, the entity with the lowest ID (the order of the characters of the ID) keeps it, and each other entity gets `-<id>` at the end, with the ID written as a slug. So a slug does not change while the name does not change, and a new entity with the same name does not change the slug of the old one. An entity with no page has no slug.
 
 ## Icons
 

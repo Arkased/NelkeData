@@ -1,0 +1,329 @@
+[
+  {
+    "id": "EXPL_AREA_PLAIN",
+    "name": "Ferien Plains",
+    "task": null,
+    "difficulties": [
+      "F",
+      "F",
+      "F",
+      "E",
+      "E"
+    ],
+    "areaIds": [
+      "EXPL_RESEARCH_PLAIN_00",
+      "EXPL_RESEARCH_PLAIN_01",
+      "EXPL_RESEARCH_PLAIN_02",
+      "EXPL_RESEARCH_PLAIN_03",
+      "EXPL_RESEARCH_PLAIN_04",
+      "EXPL_RESEARCH_PLAIN_05",
+      "EXPL_RESEARCH_PLAIN_06"
+    ],
+    "specialItemIds": [
+      "ITEM_MAT_CHAIN_SPIDERWEB",
+      "ITEM_MAT_VINTAGE_POT",
+      "ITEM_MAT_PHLOGISTON",
+      "ITEM_MAT_SPIRIT_STONE",
+      "ITEM_MAT_FEST"
+    ],
+    "slug": "ferien-plains",
+    "encounters": [
+      {
+        "monsterId": "CHARACTER_PUNI0",
+        "levels": [
+          3
+        ],
+        "boss": false
+      },
+      {
+        "monsterId": "CHARACTER_PUNI7",
+        "levels": [
+          98
+        ],
+        "boss": true
+      },
+      {
+        "monsterId": "CHARACTER_HOMM0",
+        "levels": [
+          3
+        ],
+        "boss": false
+      },
+      {
+        "monsterId": "CHARACTER_GARGOYLE",
+        "levels": [
+          55
+        ],
+        "boss": true
+      }
+    ]
+  },
+  {
+    "id": "EXPL_AREA_FOREST",
+    "name": "Nearby Forest",
+    "task": {
+      "number": 1,
+      "name": "Develop into a Healthy Village"
+    },
+    "difficulties": [
+      "E",
+      "E",
+      "E",
+      "D",
+      "D"
+    ],
+    "areaIds": [
+      "EXPL_RESEARCH_FOREST_00",
+      "EXPL_RESEARCH_FOREST_01",
+      "EXPL_RESEARCH_FOREST_02",
+      "EXPL_RESEARCH_FOREST_03",
+      "EXPL_RESEARCH_FOREST_04",
+      "EXPL_RESEARCH_FOREST_05",
+      "EXPL_RESEARCH_FOREST_06"
+    ],
+    "specialItemIds": [
+      "ITEM_MAT_BEEHIVE",
+      "ITEM_MAT_SOFT_RIME_STONE",
+      "ITEM_MAT_DEEP_RED_SOIL",
+      "ITEM_MAT_ETERNAL_CRYSTAL",
+      "ITEM_MAT_RAIDEN_ORE",
+      "ITEM_MAT_KIMBER_ORE",
+      "ITEM_MAT_STEEL_ORE",
+      "ITEM_MAT_RIPPLE_ROCK",
+      "ITEM_MAT_SHINE_DISK"
+    ],
+    "slug": "nearby-forest",
+    "encounters": []
+  },
+  {
+    "id": "EXPL_AREA_OLDROAD",
+    "name": "Stille Path",
+    "task": {
+      "number": 2,
+      "name": "Develop into a Lively Village"
+    },
+    "difficulties": [
+      "D",
+      "D",
+      "D",
+      "C",
+      "C"
+    ],
+    "areaIds": [
+      "EXPL_RESEARCH_OLDROAD_00",
+      "EXPL_RESEARCH_OLDROAD_01",
+      "EXPL_RESEARCH_OLDROAD_02",
+      "EXPL_RESEARCH_OLDROAD_03",
+      "EXPL_RESEARCH_OLDROAD_04",
+      "EXPL_RESEARCH_OLDROAD_05",
+      "EXPL_RESEARCH_OLDROAD_06"
+    ],
+    "specialItemIds": [
+      "ITEM_MAT_CHAIN_SPIDERWEB",
+      "ITEM_MAT_GOLDEN_TREE_LEAF",
+      "ITEM_MAT_DARK_GERRN_SOIL",
+      "ITEM_MAT_ULTRAMARINE_SOIL",
+      "ITEM_MAT_PERMANENT_RIME",
+      "ITEM_MAT_MAGNETIC_METAL_ROCK",
+      "ITEM_MAT_SHINE_CRYSTAL",
+      "ITEM_MAT_LAKE_BED_PERCIPITATE",
+      "ITEM_MAT_ELTONA_CRYSTAL",
+      "ITEM_MAT_SILVER_LIQUID"
+    ],
+    "slug": "stille-path",
+    "encounters": []
+  },
+  {
+    "id": "EXPL_AREA_MOUNTAIN",
+    "name": "Grand Pass",
+    "task": {
+      "number": 3,
+      "name": "Develop into a Energetic Village"
+    },
+    "difficulties": [
+      "D",
+      "D",
+      "D",
+      "C",
+      "C"
+    ],
+    "areaIds": [
+      "EXPL_RESEARCH_MOUNTAIN_00",
+      "EXPL_RESEARCH_MOUNTAIN_01",
+      "EXPL_RESEARCH_MOUNTAIN_02",
+      "EXPL_RESEARCH_MOUNTAIN_03",
+      "EXPL_RESEARCH_MOUNTAIN_04",
+      "EXPL_RESEARCH_MOUNTAIN_05",
+      "EXPL_RESEARCH_MOUNTAIN_06"
+    ],
+    "specialItemIds": [
+      "ITEM_MAT_DEVIL_BIRD_FEATHER",
+      "ITEM_MAT_BEEHIVE",
+      "ITEM_MAT_BLACK__SAND",
+      "ITEM_MAT_SHINE_SAND",
+      "ITEM_MAT_FADENRITE",
+      "ITEM_MAT_MERMAID_TEAR",
+      "ITEM_MAT_ELTONA_CRYSTAL",
+      "ITEM_MAT_SILVER_LIQUID"
+    ],
+    "slug": "grand-pass",
+    "encounters": []
+  },
+  {
+    "id": "EXPL_AREA_HIGHLAND",
+    "name": "Nebel Highlands",
+    "task": {
+      "number": 4,
+      "name": "Develop into a Bustling Town"
+    },
+    "difficulties": [
+      "B",
+      "B",
+      "B",
+      "A",
+      "A"
+    ],
+    "areaIds": [
+      "EXPL_RESEARCH_HIGHLAND_00",
+      "EXPL_RESEARCH_HIGHLAND_01",
+      "EXPL_RESEARCH_HIGHLAND_02",
+      "EXPL_RESEARCH_HIGHLAND_03",
+      "EXPL_RESEARCH_HIGHLAND_04",
+      "EXPL_RESEARCH_HIGHLAND_05",
+      "EXPL_RESEARCH_HIGHLAND_06"
+    ],
+    "specialItemIds": [
+      "ITEM_MAT_CHAIN_SPIDERWEB",
+      "ITEM_MAT_DEVIL_BIRD_FEATHER",
+      "ITEM_MAT_WHITE_SAND",
+      "ITEM_MAT_BLACK__SAND",
+      "ITEM_MAT_RESTER_METEORITIC_IRON",
+      "ITEM_MAT_WICKED_FANG",
+      "ITEM_MAT_FADENRITE",
+      "ITEM_MAT_LAKE_BED_PERCIPITATE",
+      "ITEM_MAT_MAGNETIC_METAL_ROCK"
+    ],
+    "slug": "nebel-highlands",
+    "encounters": []
+  },
+  {
+    "id": "EXPL_AREA_SPRING",
+    "name": "Harvest Spring",
+    "task": {
+      "number": 5,
+      "name": "Develop into an Flowing Town"
+    },
+    "difficulties": [
+      "B",
+      "B",
+      "B",
+      "A",
+      "A"
+    ],
+    "areaIds": [
+      "EXPL_RESEARCH_SPRING_00",
+      "EXPL_RESEARCH_SPRING_01",
+      "EXPL_RESEARCH_SPRING_02",
+      "EXPL_RESEARCH_SPRING_03",
+      "EXPL_RESEARCH_SPRING_04",
+      "EXPL_RESEARCH_SPRING_05",
+      "EXPL_RESEARCH_SPRING_06"
+    ],
+    "specialItemIds": [
+      "ITEM_MAT_BABY_WYRM",
+      "ITEM_MAT_RAIDEN_DRAGOON",
+      "ITEM_MAT_BITTER_EARTHWORM",
+      "ITEM_MAT_ULTRAMARINE_SOIL",
+      "ITEM_MAT_BALLOON_FISH",
+      "ITEM_MAT_WASHER",
+      "ITEM_MAT_BUTTERFLY_FISH",
+      "ITEM_MAT_BOSS",
+      "ITEM_MAT_GOLDEN_SILK_THREAD",
+      "ITEM_MAT_ETERNAL_CRYSTAL",
+      "ITEM_MAT_KIMBER_ORE",
+      "ITEM_MAT_ELEMENTAL_STONE",
+      "ITEM_MAT_GRAVISTONE",
+      "ITEM_MAT_FADENRITE"
+    ],
+    "slug": "harvest-spring",
+    "encounters": []
+  },
+  {
+    "id": "EXPL_AREA_RUINS",
+    "name": "Neumont Ruins",
+    "task": {
+      "number": 6,
+      "name": "Develop into an Active Town"
+    },
+    "difficulties": [
+      "B",
+      "B",
+      "A",
+      "A",
+      "S"
+    ],
+    "areaIds": [
+      "EXPL_RESEARCH_RUINS_00",
+      "EXPL_RESEARCH_RUINS_01",
+      "EXPL_RESEARCH_RUINS_02",
+      "EXPL_RESEARCH_RUINS_03",
+      "EXPL_RESEARCH_RUINS_04",
+      "EXPL_RESEARCH_RUINS_05",
+      "EXPL_RESEARCH_RUINS_06",
+      "EXPL_RESEARCH_RUINS_07"
+    ],
+    "specialItemIds": [
+      "ITEM_MAT_WORLD_SOUL",
+      "ITEM_MAT_STERN_BUG",
+      "ITEM_MAT_GOLDEN_SCARAB",
+      "ITEM_MAT_DEEP_RED_SOIL",
+      "ITEM_MAT_DARK_GERRN_SOIL",
+      "ITEM_MAT_ULTRAMARINE_SOIL",
+      "ITEM_MAT_DRAGON_HORN",
+      "ITEM_MAT_STAR_FRAGMENT",
+      "ITEM_MAT_DUNKELHEIT",
+      "ITEM_MAT_ELTONA_CRYSTAL",
+      "ITEM_MAT_RESTER_METEORITIC_IRON"
+    ],
+    "slug": "neumont-ruins",
+    "encounters": []
+  },
+  {
+    "id": "EXPL_AREA_SNOW",
+    "name": "Lernenberg",
+    "task": {
+      "number": 7,
+      "name": "Develop into an Alchemy Town"
+    },
+    "difficulties": [
+      "B",
+      "B",
+      "A",
+      "A",
+      "S"
+    ],
+    "areaIds": [
+      "EXPL_RESEARCH_SNOW_00",
+      "EXPL_RESEARCH_SNOW_01",
+      "EXPL_RESEARCH_SNOW_02",
+      "EXPL_RESEARCH_SNOW_03",
+      "EXPL_RESEARCH_SNOW_04",
+      "EXPL_RESEARCH_SNOW_05",
+      "EXPL_RESEARCH_SNOW_06"
+    ],
+    "specialItemIds": [
+      "ITEM_MAT_PERMANENT_RIME",
+      "ITEM_MAT_DUNKELHEIT",
+      "ITEM_MAT_RESTER_METEORITIC_IRON",
+      "ITEM_MAT_KIMBER_ORE",
+      "ITEM_MAT_GRAVISTONE",
+      "ITEM_MAT_FADENRITE",
+      "ITEM_MAT_STAR_FRAGMENT",
+      "ITEM_MAT_SILVER_LIQUID",
+      "ITEM_MAT_ELTONA_CRYSTAL",
+      "ITEM_MAT_TWIN_COLOR_CORUNDUM"
+    ],
+    "slug": "lernenberg",
+    "encounters": []
+  }
+]
