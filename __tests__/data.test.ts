@@ -1,24 +1,32 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { ICON_DIR, readData, type ModelData } from '@nelke/model';
+import { ICON_DIR, ICON_SIZES, readData, type ModelData } from '@nelke/model';
 
 const dataDir = path.join(import.meta.dirname, '..', 'data');
+const iconDirs = ICON_SIZES.map((size) => path.join(dataDir, ICON_DIR, String(size)));
 const data = readData(dataDir);
 
-function ids(rows: readonly { id: number }[]): Set<number> {
-  return new Set(rows.map((r) => r.id));
+/** Writes a link as one text, so that the 2 sides of a link compare as lists of texts. */
+function key(...parts: unknown[]): string {
+  return JSON.stringify(parts);
 }
 
-/** Lists the links that do not name an entity, for the message of a failed test. */
-function missing(links: readonly number[], kind: readonly { id: number }[]): number[] {
-  const known = ids(kind);
-  return links.filter((id) => !known.has(id));
+/** Lists the links of 1 side of the table "Links" of the design, as sorted texts. */
+function links<T>(rows: readonly T[], of: (row: T) => string[]): string[] {
+  return rows.flatMap(of).toSorted();
 }
 
 describe('data/', () => {
   it('passes the schemas of the model', () => {
     expect(() => readData(dataDir)).not.toThrow();
+  });
+
+  it('has a unique ID for each entity of a kind', () => {
+    for (const [kind, rows] of Object.entries(data)) {
+      const ids = rows.map((e) => e.id);
+      expect(new Set(ids).size, kind).toBe(ids.length);
+    }
   });
 
   it('has a unique slug for each entity of a kind', () => {
@@ -29,61 +37,91 @@ describe('data/', () => {
     }
   });
 
-  it('names a file of data/icons/ in each icon', () => {
-    const files = new Set(fs.readdirSync(path.join(dataDir, ICON_DIR)));
+  it.each(iconDirs)('names a file of %s in each icon', (dir) => {
+    const files = new Set(fs.readdirSync(dir));
     const icons = [...data.items, ...data.monsters, ...data.characters].flatMap((e) => (e.icon === null ? [] : [e.icon]));
     expect(icons.filter((icon) => !files.has(icon))).toEqual([]);
   });
 
-  it('has the reverse of each link', () => {
-    const recipeOf = new Map(data.recipes.map((r) => [r.id, r]));
-    const itemOf = new Map(data.items.map((i) => [i.id, i]));
-    const setOf = new Map(data.recipeSets.map((s) => [s.id, s]));
-    const zoneOf = new Map(data.zones.map((z) => [z.id, z]));
-    const areaOf = new Map(data.areas.map((a) => [a.id, a]));
-    const monsterOf = new Map(data.monsters.map((m) => [m.id, m]));
-    const researchOf = new Map(data.research.map((r) => [r.id, r]));
-    const characterOf = new Map(data.characters.map((c) => [c.id, c]));
+  it.each(iconDirs)('has no file in %s that no icon names', (dir) => {
+    const named = new Set([...data.items, ...data.monsters, ...data.characters].flatMap((e) => (e.icon === null ? [] : [e.icon])));
+    expect(fs.readdirSync(dir).filter((file) => !named.has(file))).toEqual([]);
+  });
 
-    for (const item of data.items) {
-      if (item.recipeId !== null) expect(recipeOf.get(item.recipeId)?.resultItemId).toBe(item.id);
-      for (const id of item.usedInRecipeIds) expect(recipeOf.get(id)?.materials.map((m) => m.itemId)).toContain(item.id);
-      for (const g of item.gather) expect(areaOf.get(g.areaId)?.gather).toContainEqual({ itemId: item.id, rate: g.rate });
-      for (const id of item.specialZoneIds) expect(zoneOf.get(id)?.specialItemIds).toContain(item.id);
-      for (const { monsterId, ...drop } of item.drops) {
-        expect(monsterOf.get(monsterId)?.drops).toContainEqual({ itemId: item.id, ...drop });
-      }
-    }
-    for (const recipe of data.recipes) {
-      expect(itemOf.has(recipe.resultItemId)).toBe(true);
-      for (const id of recipe.recipeSetIds) expect(setOf.get(id)?.recipeIds).toContain(recipe.id);
-    }
-    for (const set of data.recipeSets) {
-      expect(missing(set.recipeIds, data.recipes)).toEqual([]);
-      for (const id of set.recipeIds) expect(recipeOf.get(id)?.recipeSetIds).toContain(set.id);
-      if (set.teacherId !== null) expect(characterOf.get(set.teacherId)?.recipeSetIds).toContain(set.id);
-      if (set.researchId !== null) expect(researchOf.get(set.researchId)?.recipeSetId).toBe(set.id);
-    }
-    for (const research of data.research) {
-      for (const id of research.prerequisiteIds) expect(researchOf.get(id)?.unlocksIds).toContain(research.id);
-      for (const id of research.unlocksIds) expect(researchOf.get(id)?.prerequisiteIds).toContain(research.id);
-    }
-    for (const zone of data.zones) {
-      for (const id of zone.areaIds) expect(areaOf.get(id)?.zoneId).toBe(zone.id);
-    }
-    for (const area of data.areas) {
-      expect(zoneOf.get(area.zoneId)?.areaIds).toContain(area.id);
-      for (const { monsterId, ...appearance } of area.monsters) {
-        expect(monsterOf.get(monsterId)?.areas).toContainEqual({ areaId: area.id, ...appearance });
-      }
-    }
-    for (const monster of data.monsters) {
-      for (const { areaId, ...appearance } of monster.areas) {
-        expect(areaOf.get(areaId)?.monsters).toContainEqual({ monsterId: monster.id, ...appearance });
-      }
-    }
-    for (const character of data.characters) {
-      for (const id of character.recipeSetIds) expect(setOf.get(id)?.teacherId).toBe(character.id);
-    }
+  describe('has both sides of each link, with the same values', () => {
+    it('Recipe.resultItemId and Item.recipeId', () => {
+      expect(links(data.recipes, (r) => [key(r.id, r.resultItemId)])).toEqual(
+        links(data.items, (i) => (i.recipeId === null ? [] : [key(i.recipeId, i.id)])),
+      );
+    });
+
+    it('Recipe.materials and Item.usedInRecipeIds', () => {
+      const direct = links(data.recipes, (r) => [...new Set(r.materials.map((m) => m.itemId))].map((id) => key(r.id, id)));
+      expect(links(data.items, (i) => i.usedInRecipeIds.map((id) => key(id, i.id)))).toEqual(direct);
+    });
+
+    it('RecipeSet.recipeIds and Recipe.recipeSetIds', () => {
+      expect(links(data.recipeSets, (s) => s.recipeIds.map((id) => key(s.id, id)))).toEqual(
+        links(data.recipes, (r) => r.recipeSetIds.map((id) => key(id, r.id))),
+      );
+    });
+
+    it('RecipeSet.teacherId and Character.recipeSetIds', () => {
+      expect(links(data.recipeSets, (s) => (s.teacherId === null ? [] : [key(s.id, s.teacherId)]))).toEqual(
+        links(data.characters, (c) => c.recipeSetIds.map((id) => key(id, c.id))),
+      );
+    });
+
+    it('Research.recipeSetId and RecipeSet.researchId', () => {
+      expect(links(data.research, (r) => (r.recipeSetId === null ? [] : [key(r.id, r.recipeSetId)]))).toEqual(
+        links(data.recipeSets, (s) => (s.researchId === null ? [] : [key(s.researchId, s.id)])),
+      );
+    });
+
+    it('Research.researcherId and Character.researchIds', () => {
+      expect(links(data.research, (r) => (r.researcherId === null ? [] : [key(r.id, r.researcherId)]))).toEqual(
+        links(data.characters, (c) => c.researchIds.map((id) => key(id, c.id))),
+      );
+    });
+
+    it('Research.prerequisiteIds and Research.unlocksIds', () => {
+      expect(links(data.research, (r) => r.prerequisiteIds.map((id) => key(r.id, id)))).toEqual(
+        links(data.research, (r) => r.unlocksIds.map((id) => key(id, r.id))),
+      );
+    });
+
+    it('Monster.zoneEncounters and Zone.encounters', () => {
+      expect(links(data.monsters, (m) => m.zoneEncounters.map((e) => key(m.id, e.zoneId, e.levels, e.boss)))).toEqual(
+        links(data.zones, (z) => z.encounters.map((e) => key(e.monsterId, z.id, e.levels, e.boss))),
+      );
+    });
+
+    it('Zone.areaIds and Area.zoneId', () => {
+      expect(links(data.zones, (z) => z.areaIds.map((id) => key(z.id, id)))).toEqual(links(data.areas, (a) => [key(a.zoneId, a.id)]));
+    });
+
+    it('Area.gather and Item.gather', () => {
+      expect(links(data.areas, (a) => a.gather.map((g) => key(a.id, g.itemId, g.rate)))).toEqual(
+        links(data.items, (i) => i.gather.map((g) => key(g.areaId, i.id, g.rate))),
+      );
+    });
+
+    it('Zone.specialItemIds and Item.specialZoneIds', () => {
+      expect(links(data.zones, (z) => z.specialItemIds.map((id) => key(z.id, id)))).toEqual(
+        links(data.items, (i) => i.specialZoneIds.map((id) => key(id, i.id))),
+      );
+    });
+
+    it('Area.monsters and Monster.areas', () => {
+      expect(links(data.areas, (a) => a.monsters.map((m) => key(a.id, m.monsterId, m.levels, m.areaLevel, m.boss)))).toEqual(
+        links(data.monsters, (m) => m.areas.map((a) => key(a.areaId, m.id, a.levels, a.areaLevel, a.boss))),
+      );
+    });
+
+    it('Monster.drops and Item.drops', () => {
+      expect(links(data.monsters, (m) => m.drops.map((d) => key(m.id, d.itemId, d.quantity, d.rate)))).toEqual(
+        links(data.items, (i) => i.drops.map((d) => key(d.monsterId, i.id, d.quantity, d.rate))),
+      );
+    });
   });
 });

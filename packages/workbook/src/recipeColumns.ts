@@ -1,5 +1,5 @@
 import type { Item, Recipe, RecipeSet, Research } from '@nelke/model';
-import { pick, type Lookup } from './lookup.js';
+import { required, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
 
 /** How a recipe is unlocked, through the first recipe set that holds it. */
@@ -15,15 +15,15 @@ interface Unlock {
  * @sideEffects none
  */
 export function recipeColumns(lookup: Lookup): Column<Recipe>[] {
-  const resultOf = (r: Recipe): Item => pick(lookup.items, r.resultItemId);
+  const resultOf = (r: Recipe): Item => required(lookup.items, r.resultItemId);
   const unlockOf = (r: Recipe): Unlock | undefined => {
     const setId = r.recipeSetIds[0];
     if (setId === undefined) return undefined;
-    const set = pick(lookup.recipeSets, setId);
-    return { set, research: set.researchId === null ? undefined : pick(lookup.research, set.researchId) };
+    const set = required(lookup.recipeSets, setId);
+    return { set, research: set.researchId === null ? undefined : required(lookup.research, set.researchId) };
   };
   const prereqs = (research: Research): string => {
-    const parts = research.prerequisiteIds.map((id) => pick(lookup.research, id).name);
+    const parts = research.prerequisiteIds.map((id) => required(lookup.research, id).name);
     if (research.district !== null) parts.push(`District: ${research.district}`);
     return parts.join(', ');
   };
@@ -33,7 +33,7 @@ export function recipeColumns(lookup: Lookup): Column<Recipe>[] {
       width: 22,
       get: (r) => {
         const m = r.materials[n - 1];
-        return m === undefined ? '' : pick(lookup.items, m.itemId).name;
+        return m === undefined ? '' : required(lookup.items, m.itemId).name;
       },
     },
     { header: `Qty ${n}`, width: 6, get: (r) => r.materials[n - 1]?.quantity ?? '' },
@@ -52,7 +52,7 @@ export function recipeColumns(lookup: Lookup): Column<Recipe>[] {
     {
       header: 'Unpriced Inputs',
       width: 24,
-      get: (r) => r.unpricedItemIds.map((id) => pick(lookup.items, id).name).join(', '),
+      get: (r) => r.unpricedItemIds.map((id) => required(lookup.items, id).name).join(', '),
     },
     ...materialColumns,
     { header: 'Recipe Set', width: 24, get: (r) => unlockOf(r)?.set.name ?? '' },
@@ -61,7 +61,7 @@ export function recipeColumns(lookup: Lookup): Column<Recipe>[] {
       width: 12,
       get: (r) => {
         const teacherId = unlockOf(r)?.set.teacherId;
-        return teacherId === undefined || teacherId === null ? '' : pick(lookup.characters, teacherId).name;
+        return teacherId === undefined || teacherId === null ? '' : required(lookup.characters, teacherId).name;
       },
     },
     { header: 'Friendship Lv', width: 9, get: (r) => unlockOf(r)?.set.friendship ?? '' },
@@ -71,7 +71,7 @@ export function recipeColumns(lookup: Lookup): Column<Recipe>[] {
       width: 12,
       get: (r) => {
         const researcherId = unlockOf(r)?.research?.researcherId;
-        return researcherId === undefined || researcherId === null ? '' : pick(lookup.characters, researcherId).name;
+        return researcherId === undefined || researcherId === null ? '' : required(lookup.characters, researcherId).name;
       },
     },
     {

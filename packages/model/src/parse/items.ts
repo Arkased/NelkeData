@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { Element, ItemCategory, Shop, ShopFlag } from '../enums.js';
 import { isPlaceholder } from '../util.js';
-import { enumOrUnknown, withRowIds, type ReadTable, type RowId } from './xml.js';
+import { enumOrUnknown, type ReadTable } from './xml.js';
 
 const CATEGORY_NAMES: Record<ItemCategory, string> = {
   [ItemCategory.Material]: 'Material',
@@ -66,7 +66,7 @@ const facilitySchema = z.object({
 });
 
 /** A row of item.xml. */
-export type Item = z.output<typeof itemSchema> & RowId;
+export type Item = z.output<typeof itemSchema>;
 
 /** The items of the game and the names of their categories. */
 export interface Items {
@@ -87,7 +87,7 @@ export interface Items {
  * @sideEffects reads the item and facility tables through the table reader
  */
 export function loadItems(read: ReadTable, t: (label: string) => string): Items {
-  const items = withRowIds(read('item/item.xml', itemSchema)).filter((i) => !isPlaceholder(t(i.ITEM_NAME_LABEL_ID)));
+  const items = read('item/item.xml', itemSchema).filter((i) => !isPlaceholder(t(i.ITEM_NAME_LABEL_ID)));
   const itemById = new Map(items.map((i) => [i.ITEM_ID, i]));
   const subCategory = new Map(
     read('item/item_sub_category.xml', subCategorySchema).map((s) => [s.ITEM__SUB_CATEGORY_ID, t(s.ITEM_SUB_CATEGORY_NAME_LABEL_ID)]),

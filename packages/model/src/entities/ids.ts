@@ -1,15 +1,13 @@
-import type { RowId } from '../parse/xml.js';
-
-/** Maps the tag of a game row to the ID of its entity. */
-export type IdMap = ReadonlyMap<string, number>;
+/** The IDs of the entities of 1 kind, to keep only the links that name an entity that the model holds. */
+export type IdSet = ReadonlySet<string>;
 
 /**
- * Makes the map from the tag of each row to its ID.
- * @param rows - the rows of 1 game table
- * @param tag - returns the tag of a row
- * @returns the map
+ * Collects the IDs of the rows of 1 game table.
+ * @param rows - the rows
+ * @param id - returns the ID field of a row
+ * @returns the set of IDs
  * @sideEffects none
  */
-export function idMap<T extends RowId>(rows: readonly T[], tag: (row: T) => string): IdMap {
-  return new Map(rows.map((row) => [tag(row), row.rowId]));
+export function idSet<T>(rows: readonly T[], id: (row: T) => string): IdSet {
+  return new Set(rows.map(id));
 }

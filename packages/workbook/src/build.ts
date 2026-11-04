@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import ExcelJS from 'exceljs';
-import { CharacterType, ICON_DIR, readData } from '@nelke/model';
+import { CharacterType, ICON_DIR, ICON_SIZE_WORKBOOK, readData } from '@nelke/model';
 import { characterColumns, monsterColumns } from './characterColumns.js';
 import { itemColumns } from './itemColumns.js';
 import { createLookup } from './lookup.js';
@@ -9,8 +9,7 @@ import { recipeColumns } from './recipeColumns.js';
 import { addSheet, formatColumnWarning, type ColumnWarning, type SheetSpec } from './sheet.js';
 import { zoneColumns } from './zoneColumns.js';
 
-// The row height of the sheets follows this size. The icon files of the data folder are larger.
-const ICON_SIZE = 64;
+const OUT_ICON_DIR = 'icons';
 
 /** Where to read the data and where to write the workbook. */
 export interface BuildOptions {
@@ -33,7 +32,7 @@ function byName<R>(get: (row: R) => string): (a: R, b: R) => number {
  */
 export async function buildWorkbook(options: BuildOptions): Promise<void> {
   const { dataDir, outFile } = options;
-  const outIconDir = path.join(path.dirname(outFile), ICON_DIR);
+  const outIconDir = path.join(path.dirname(outFile), OUT_ICON_DIR);
   const data = readData(dataDir);
   const lookup = createLookup(data);
 
@@ -41,7 +40,7 @@ export async function buildWorkbook(options: BuildOptions): Promise<void> {
   const warnings: ColumnWarning[] = [];
   const counts: string[] = [];
   const add = <R>(spec: Omit<SheetSpec<R>, 'iconSize'>): void => {
-    warnings.push(...addSheet(wb, { ...spec, iconSize: ICON_SIZE }));
+    warnings.push(...addSheet(wb, { ...spec, iconSize: ICON_SIZE_WORKBOOK }));
     counts.push(`${spec.name}: ${spec.rows.length}`);
   };
   add({ name: 'Items', columns: itemColumns(lookup), rows: data.items.toSorted(byName((i) => i.name)) });
@@ -61,7 +60,7 @@ export async function buildWorkbook(options: BuildOptions): Promise<void> {
   for (const w of warnings) console.warn(formatColumnWarning(w));
 
   fs.mkdirSync(outIconDir, { recursive: true });
-  fs.cpSync(path.join(dataDir, ICON_DIR), outIconDir, { recursive: true });
+  fs.cpSync(path.join(dataDir, ICON_DIR, String(ICON_SIZE_WORKBOOK)), outIconDir, { recursive: true });
   await wb.xlsx.writeFile(outFile);
   console.log(`${counts.join(', ')}, icons: ${fs.readdirSync(outIconDir).length}`);
   console.log(`wrote ${outFile} and ${outIconDir}`);

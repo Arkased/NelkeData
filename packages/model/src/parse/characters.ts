@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { CharacterCategory, CharacterType, Element, PlayType, Stat, BattleRole } from '../enums.js';
 import { isPlaceholder } from '../util.js';
-import { enumOrUnknown, stringShape, withRowIds, type ReadTable, type RowId } from './xml.js';
+import { enumOrUnknown, stringShape, type ReadTable } from './xml.js';
 
 const NO_SKILL = 'SKILL_INVALID';
 const NO_APTITUDE = 'PREPARATION_APTITUDE_INVALID';
@@ -123,7 +123,7 @@ const joinConditionSchema = z.object({
 });
 
 /** A named row of character.xml. */
-export type Character = z.output<typeof characterSchema> & RowId;
+export type Character = z.output<typeof characterSchema>;
 /** A row of btl_chara.xml. */
 export type Battle = z.output<typeof battleSchema>;
 /** An item that a monster drops. */
@@ -179,9 +179,7 @@ export interface Characters {
  * @sideEffects reads the character and battle tables through the table reader
  */
 export function loadCharacters(read: ReadTable, t: (label: string) => string): Characters {
-  const characters = withRowIds(read('character/character.xml', characterSchema)).filter(
-    (c) => !isPlaceholder(t(c.CHARACTER_NAME_LABEL_ID)),
-  );
+  const characters = read('character/character.xml', characterSchema).filter((c) => !isPlaceholder(t(c.CHARACTER_NAME_LABEL_ID)));
   const characterName = new Map(characters.map((c) => [c.CHARACTER_ID, t(c.CHARACTER_NAME_LABEL_ID)]));
   const characterById = new Map(characters.map((c) => [c.CHARACTER_ID, c]));
   const battleById = new Map(read('battle/btl_chara.xml', battleSchema).map((b) => [b.BTL_CHARACTER_ID, b]));

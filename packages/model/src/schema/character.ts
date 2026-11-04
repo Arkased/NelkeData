@@ -8,7 +8,7 @@ export const characterSchema = z.strictObject({
   slug: slugSchema,
   name: z.string(),
   nameJp: z.string().nullable(),
-  /** A file name in data/icons/. */
+  /** A file name in data/icons/128/ and in data/icons/64/. */
   icon: z.string().nullable(),
   type: z.enum([CharacterType.Main, CharacterType.Alchemist, CharacterType.Townsfolk, CharacterType.Story, CharacterType.Fairy]),
   /** The English name of the game that the character comes from. */
@@ -31,6 +31,8 @@ export const characterSchema = z.strictObject({
   description: z.string().nullable(),
   /** The recipe sets that the character teaches (the inverse of RecipeSet.teacherId). */
   recipeSetIds: z.array(idSchema),
+  /** The research that the character does (the inverse of Research.researcherId). */
+  researchIds: z.array(idSchema),
 });
 
 /** A character. */

@@ -8,7 +8,7 @@ export const itemSchema = z.strictObject({
   slug: slugSchema,
   name: z.string(),
   nameJp: z.string().nullable(),
-  /** A file name in data/icons/. */
+  /** A file name in data/icons/128/ and in data/icons/64/. */
   icon: z.string().nullable(),
   /** The English name of the category. */
   category: z.string(),

@@ -1,5 +1,6 @@
 import { Element, Stat, type Character, type Monster } from '@nelke/model';
-import { pick, range, type Lookup } from './lookup.js';
+import { range } from './format.js';
+import { required, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
 
 const ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
@@ -27,13 +28,13 @@ function growthText(c: Character | Monster): string {
 
 function foundIn(m: Monster, lookup: Lookup): string {
   const levelsByZone = new Map<string, number[]>();
-  const add = (zoneId: number, newLevels: readonly number[]): void => {
-    const name = pick(lookup.zones, zoneId).name;
+  const add = (zoneId: string, newLevels: readonly number[]): void => {
+    const name = required(lookup.zones, zoneId).name;
     const levels = levelsByZone.get(name) ?? [];
     levels.push(...newLevels);
     levelsByZone.set(name, levels);
   };
-  for (const a of m.areas) add(pick(lookup.areas, a.areaId).zoneId, a.levels);
+  for (const a of m.areas) add(required(lookup.areas, a.areaId).zoneId, a.levels);
   for (const e of m.zoneEncounters) add(e.zoneId, e.levels);
   return [...levelsByZone].map(([zone, levels]) => `${zone} (Lv ${range(levels)})`).join(', ');
 }
@@ -59,7 +60,7 @@ export function monsterColumns(lookup: Lookup): Column<Monster>[] {
     {
       header: 'Drops',
       width: 36,
-      get: (m) => m.drops.map((d) => `${pick(lookup.items, d.itemId).name} x${d.quantity} (${d.rate}%)`).join(', '),
+      get: (m) => m.drops.map((d) => `${required(lookup.items, d.itemId).name} x${d.quantity} (${d.rate}%)`).join(', '),
     },
     { header: 'Found In', width: 40, get: (m) => foundIn(m, lookup) },
     { header: 'Description', width: 80, get: (m) => m.description ?? '' },
@@ -108,7 +109,7 @@ export function characterColumns(lookup: Lookup): Column<Character>[] {
       width: 50,
       get: (c) =>
         c.recipeSetIds
-          .map((id) => pick(lookup.recipeSets, id))
+          .map((id) => required(lookup.recipeSets, id))
           .filter((set) => set.name !== null)
           .map((set) => `${set.name ?? ''} (FRD ${set.friendship ?? ''})`)
           .join(', '),

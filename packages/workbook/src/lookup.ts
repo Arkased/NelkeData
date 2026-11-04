@@ -1,29 +1,18 @@
-import {
-  required,
-  type Area,
-  type Character,
-  type Item,
-  type ModelData,
-  type Monster,
-  type Recipe,
-  type RecipeSet,
-  type Research,
-  type Zone,
-} from '@nelke/model';
+import type { Area, Character, Item, ModelData, Monster, Recipe, RecipeSet, Research, Zone } from '@nelke/model';
 
 /** The entities of the model by ID, for the cells that follow a link. */
 export interface Lookup {
-  items: ReadonlyMap<number, Item>;
-  recipes: ReadonlyMap<number, Recipe>;
-  recipeSets: ReadonlyMap<number, RecipeSet>;
-  research: ReadonlyMap<number, Research>;
-  zones: ReadonlyMap<number, Zone>;
-  areas: ReadonlyMap<number, Area>;
-  monsters: ReadonlyMap<number, Monster>;
-  characters: ReadonlyMap<number, Character>;
+  items: ReadonlyMap<string, Item>;
+  recipes: ReadonlyMap<string, Recipe>;
+  recipeSets: ReadonlyMap<string, RecipeSet>;
+  research: ReadonlyMap<string, Research>;
+  zones: ReadonlyMap<string, Zone>;
+  areas: ReadonlyMap<string, Area>;
+  monsters: ReadonlyMap<string, Monster>;
+  characters: ReadonlyMap<string, Character>;
 }
 
-function index<T extends { id: number }>(rows: readonly T[]): ReadonlyMap<number, T> {
+function index<T extends { id: string }>(rows: readonly T[]): ReadonlyMap<string, T> {
   return new Map(rows.map((row) => [row.id, row]));
 }
 
@@ -54,28 +43,8 @@ export function createLookup(data: ModelData): Lookup {
  * @throws {Error} when no entity has the ID
  * @sideEffects none
  */
-export function pick<T>(map: ReadonlyMap<number, T>, id: number): T {
-  return required(map, id);
-}
-
-/**
- * Formats a list of numbers as the lowest and the highest number.
- * @param nums - the numbers
- * @returns "5" for 1 value, "3-7" for a range
- * @sideEffects none
- */
-export function range(nums: readonly number[]): string {
-  const min = Math.min(...nums);
-  const max = Math.max(...nums);
-  return min === max ? `${nums[0] ?? ''}` : `${min}-${max}`;
-}
-
-/**
- * Formats the condition that opens a zone.
- * @param zone - the zone
- * @returns "After Task N: name", or "Start" for a zone that is open from the start
- * @sideEffects none
- */
-export function opensText(zone: Zone): string {
-  return zone.task ? `After Task ${zone.task.number}: ${zone.task.name}` : 'Start';
+export function required<T>(map: ReadonlyMap<string, T>, id: string): T {
+  const entity = map.get(id);
+  if (entity === undefined) throw new Error(`no entity with ID ${id}`);
+  return entity;
 }

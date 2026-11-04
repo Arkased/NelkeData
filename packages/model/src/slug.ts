@@ -14,13 +14,13 @@ export function slugify(name: string): string {
 }
 
 /**
- * Adds the slug to each entity of 1 kind. The entity with the lowest ID keeps the slug of its name; each other entity with the same slug gets "-<id>" at the end.
+ * Adds the slug to each entity of 1 kind. The entity with the lowest ID keeps the slug of its name; each other entity with the same slug gets "-<id>" at the end, with the ID written as a slug.
  * @param entities - the entities of 1 kind, with an ID and a name
  * @returns the entities with their slugs, in the order of the input
  * @sideEffects none
  */
-export function withSlugs<T extends { id: number; name: string }>(entities: readonly T[]): (T & { slug: string })[] {
-  const owner = new Map<string, number>();
+export function withSlugs<T extends { id: string; name: string }>(entities: readonly T[]): (T & { slug: string })[] {
+  const owner = new Map<string, string>();
   for (const { id, name } of entities) {
     const slug = slugify(name);
     const current = owner.get(slug);
@@ -28,6 +28,6 @@ export function withSlugs<T extends { id: number; name: string }>(entities: read
   }
   return entities.map((entity) => {
     const slug = slugify(entity.name);
-    return { ...entity, slug: owner.get(slug) === entity.id ? slug : `${slug}-${entity.id}` };
+    return { ...entity, slug: owner.get(slug) === entity.id ? slug : `${slug}-${slugify(entity.id)}` };
   });
 }

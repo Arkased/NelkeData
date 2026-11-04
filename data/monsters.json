@@ -1,6 +1,6 @@
 [
   {
-    "id": 132,
+    "id": "CHARACTER_PUNI0",
     "name": "Blue Puni",
     "nameJp": "青ぷにぷに",
     "icon": "monster_faceicon001.png",
@@ -61,14 +61,14 @@
     "exp": 9,
     "drops": [
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "quantity": 2,
         "rate": 100
       }
     ],
     "zoneEncounters": [
       {
-        "zoneId": 1,
+        "zoneId": "EXPL_AREA_PLAIN",
         "levels": [
           3
         ],
@@ -78,7 +78,7 @@
     "slug": "blue-puni",
     "areas": [
       {
-        "areaId": 1,
+        "areaId": "EXPL_RESEARCH_PLAIN_00",
         "levels": [
           1
         ],
@@ -86,7 +86,7 @@
         "boss": false
       },
       {
-        "areaId": 2,
+        "areaId": "EXPL_RESEARCH_PLAIN_01",
         "levels": [
           1
         ],
@@ -94,7 +94,7 @@
         "boss": false
       },
       {
-        "areaId": 7,
+        "areaId": "EXPL_RESEARCH_PLAIN_06",
         "levels": [
           1
         ],
@@ -104,7 +104,7 @@
     ]
   },
   {
-    "id": 133,
+    "id": "CHARACTER_PUNI1",
     "name": "Green Puni",
     "nameJp": "緑ぷにぷに",
     "icon": "monster_faceicon002.png",
@@ -165,7 +165,7 @@
     "exp": 9,
     "drops": [
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "quantity": 3,
         "rate": 100
       }
@@ -174,7 +174,7 @@
     "slug": "green-puni",
     "areas": [
       {
-        "areaId": 8,
+        "areaId": "EXPL_RESEARCH_FOREST_00",
         "levels": [
           7
         ],
@@ -182,7 +182,7 @@
         "boss": false
       },
       {
-        "areaId": 9,
+        "areaId": "EXPL_RESEARCH_FOREST_01",
         "levels": [
           7
         ],
@@ -190,7 +190,7 @@
         "boss": false
       },
       {
-        "areaId": 12,
+        "areaId": "EXPL_RESEARCH_FOREST_04",
         "levels": [
           12
         ],
@@ -198,7 +198,7 @@
         "boss": false
       },
       {
-        "areaId": 14,
+        "areaId": "EXPL_RESEARCH_FOREST_06",
         "levels": [
           7,
           12
@@ -209,7 +209,7 @@
     ]
   },
   {
-    "id": 134,
+    "id": "CHARACTER_PUNI2",
     "name": "Red Puni",
     "nameJp": "赤ぷにぷに",
     "icon": "monster_faceicon003.png",
@@ -270,12 +270,12 @@
     "exp": 9,
     "drops": [
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "quantity": 4,
         "rate": 100
       },
       {
-        "itemId": 63,
+        "itemId": "ITEM_MAT_RED_DEVIL",
         "quantity": 3,
         "rate": 100
       }
@@ -284,7 +284,7 @@
     "slug": "red-puni",
     "areas": [
       {
-        "areaId": 22,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_00",
         "levels": [
           20
         ],
@@ -292,7 +292,7 @@
         "boss": false
       },
       {
-        "areaId": 23,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_01",
         "levels": [
           20
         ],
@@ -300,7 +300,7 @@
         "boss": false
       },
       {
-        "areaId": 24,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_02",
         "levels": [
           25
         ],
@@ -308,7 +308,7 @@
         "boss": false
       },
       {
-        "areaId": 27,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_05",
         "levels": [
           31
         ],
@@ -316,7 +316,7 @@
         "boss": false
       },
       {
-        "areaId": 28,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_06",
         "levels": [
           20
         ],
@@ -326,7 +326,7 @@
     ]
   },
   {
-    "id": 135,
+    "id": "CHARACTER_PUNI3",
     "name": "Gold Puni",
     "nameJp": "金ぷにぷに",
     "icon": "monster_faceicon004.png",
@@ -387,7 +387,7 @@
     "exp": 11,
     "drops": [
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "quantity": 4,
         "rate": 100
       }
@@ -396,7 +396,7 @@
     "slug": "gold-puni",
     "areas": [
       {
-        "areaId": 26,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_04",
         "levels": [
           22
         ],
@@ -404,7 +404,7 @@
         "boss": false
       },
       {
-        "areaId": 26,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_04",
         "levels": [
           25
         ],
@@ -412,7 +412,7 @@
         "boss": true
       },
       {
-        "areaId": 27,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_05",
         "levels": [
           31
         ],
@@ -420,7 +420,7 @@
         "boss": false
       },
       {
-        "areaId": 28,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_06",
         "levels": [
           22
         ],
@@ -428,7 +428,7 @@
         "boss": false
       },
       {
-        "areaId": 28,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_06",
         "levels": [
           25
         ],
@@ -436,7 +436,7 @@
         "boss": true
       },
       {
-        "areaId": 29,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_00",
         "levels": [
           26
         ],
@@ -444,7 +444,7 @@
         "boss": false
       },
       {
-        "areaId": 30,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_01",
         "levels": [
           26
         ],
@@ -452,7 +452,7 @@
         "boss": false
       },
       {
-        "areaId": 34,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_05",
         "levels": [
           39
         ],
@@ -460,7 +460,7 @@
         "boss": false
       },
       {
-        "areaId": 35,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_06",
         "levels": [
           26
         ],
@@ -468,7 +468,7 @@
         "boss": false
       },
       {
-        "areaId": 48,
+        "areaId": "EXPL_RESEARCH_RUINS_05",
         "levels": [
           60
         ],
@@ -478,7 +478,7 @@
     ]
   },
   {
-    "id": 136,
+    "id": "CHARACTER_PUNI4",
     "name": "Black Puni",
     "nameJp": "黒ぷにぷに",
     "icon": "monster_faceicon005.png",
@@ -539,7 +539,7 @@
     "exp": 13,
     "drops": [
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "quantity": 6,
         "rate": 100
       }
@@ -548,7 +548,7 @@
     "slug": "black-puni",
     "areas": [
       {
-        "areaId": 36,
+        "areaId": "EXPL_RESEARCH_SPRING_00",
         "levels": [
           34
         ],
@@ -556,7 +556,7 @@
         "boss": false
       },
       {
-        "areaId": 37,
+        "areaId": "EXPL_RESEARCH_SPRING_01",
         "levels": [
           34
         ],
@@ -564,7 +564,7 @@
         "boss": false
       },
       {
-        "areaId": 38,
+        "areaId": "EXPL_RESEARCH_SPRING_02",
         "levels": [
           38
         ],
@@ -572,7 +572,7 @@
         "boss": false
       },
       {
-        "areaId": 41,
+        "areaId": "EXPL_RESEARCH_SPRING_05",
         "levels": [
           52
         ],
@@ -580,7 +580,7 @@
         "boss": false
       },
       {
-        "areaId": 42,
+        "areaId": "EXPL_RESEARCH_SPRING_06",
         "levels": [
           34,
           38
@@ -589,7 +589,7 @@
         "boss": false
       },
       {
-        "areaId": 48,
+        "areaId": "EXPL_RESEARCH_RUINS_05",
         "levels": [
           60
         ],
@@ -599,7 +599,7 @@
     ]
   },
   {
-    "id": 137,
+    "id": "CHARACTER_PUNI5",
     "name": "Fake Puni",
     "nameJp": "プニモドキ",
     "icon": "monster_faceicon006.png",
@@ -660,7 +660,7 @@
     "exp": 17,
     "drops": [
       {
-        "itemId": 39,
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
         "quantity": 4,
         "rate": 100
       }
@@ -669,7 +669,7 @@
     "slug": "fake-puni",
     "areas": [
       {
-        "areaId": 38,
+        "areaId": "EXPL_RESEARCH_SPRING_02",
         "levels": [
           36
         ],
@@ -677,7 +677,7 @@
         "boss": false
       },
       {
-        "areaId": 39,
+        "areaId": "EXPL_RESEARCH_SPRING_03",
         "levels": [
           36
         ],
@@ -685,7 +685,7 @@
         "boss": false
       },
       {
-        "areaId": 40,
+        "areaId": "EXPL_RESEARCH_SPRING_04",
         "levels": [
           36
         ],
@@ -693,7 +693,7 @@
         "boss": false
       },
       {
-        "areaId": 41,
+        "areaId": "EXPL_RESEARCH_SPRING_05",
         "levels": [
           52
         ],
@@ -701,7 +701,7 @@
         "boss": false
       },
       {
-        "areaId": 42,
+        "areaId": "EXPL_RESEARCH_SPRING_06",
         "levels": [
           36
         ],
@@ -709,7 +709,7 @@
         "boss": false
       },
       {
-        "areaId": 43,
+        "areaId": "EXPL_RESEARCH_RUINS_00",
         "levels": [
           47
         ],
@@ -717,7 +717,7 @@
         "boss": false
       },
       {
-        "areaId": 44,
+        "areaId": "EXPL_RESEARCH_RUINS_01",
         "levels": [
           47
         ],
@@ -725,7 +725,7 @@
         "boss": false
       },
       {
-        "areaId": 48,
+        "areaId": "EXPL_RESEARCH_RUINS_05",
         "levels": [
           60
         ],
@@ -733,7 +733,7 @@
         "boss": false
       },
       {
-        "areaId": 49,
+        "areaId": "EXPL_RESEARCH_RUINS_06",
         "levels": [
           47
         ],
@@ -743,7 +743,7 @@
     ]
   },
   {
-    "id": 138,
+    "id": "CHARACTER_PUNI6",
     "name": "Special Puni",
     "nameJp": "すぺしゃるぷに",
     "icon": "monster_faceicon007.png",
@@ -804,7 +804,7 @@
     "exp": 50,
     "drops": [
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "quantity": 8,
         "rate": 100
       }
@@ -813,7 +813,7 @@
     "slug": "special-puni",
     "areas": [
       {
-        "areaId": 50,
+        "areaId": "EXPL_RESEARCH_SNOW_00",
         "levels": [
           55
         ],
@@ -821,7 +821,7 @@
         "boss": false
       },
       {
-        "areaId": 51,
+        "areaId": "EXPL_RESEARCH_SNOW_01",
         "levels": [
           55
         ],
@@ -829,7 +829,7 @@
         "boss": false
       },
       {
-        "areaId": 55,
+        "areaId": "EXPL_RESEARCH_SNOW_05",
         "levels": [
           68
         ],
@@ -837,7 +837,7 @@
         "boss": false
       },
       {
-        "areaId": 56,
+        "areaId": "EXPL_RESEARCH_SNOW_06",
         "levels": [
           55
         ],
@@ -847,7 +847,7 @@
     ]
   },
   {
-    "id": 139,
+    "id": "CHARACTER_PUNI7",
     "name": "Master Puni",
     "nameJp": "ますたーぷに",
     "icon": "monster_faceicon008.png",
@@ -908,19 +908,19 @@
     "exp": 800,
     "drops": [
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "quantity": 9,
         "rate": 100
       },
       {
-        "itemId": 60,
+        "itemId": "ITEM_MAT_WORLD_SOUL",
         "quantity": 3,
         "rate": 100
       }
     ],
     "zoneEncounters": [
       {
-        "zoneId": 1,
+        "zoneId": "EXPL_AREA_PLAIN",
         "levels": [
           98
         ],
@@ -931,7 +931,7 @@
     "areas": []
   },
   {
-    "id": 140,
+    "id": "CHARACTER_HOMM0",
     "name": "Beast",
     "nameJp": "ケモノ",
     "icon": "monster_faceicon011.png",
@@ -992,14 +992,14 @@
     "exp": 10,
     "drops": [
       {
-        "itemId": 6,
+        "itemId": "ITEM_MAT_UNI",
         "quantity": 3,
         "rate": 100
       }
     ],
     "zoneEncounters": [
       {
-        "zoneId": 1,
+        "zoneId": "EXPL_AREA_PLAIN",
         "levels": [
           3
         ],
@@ -1009,7 +1009,7 @@
     "slug": "beast",
     "areas": [
       {
-        "areaId": 1,
+        "areaId": "EXPL_RESEARCH_PLAIN_00",
         "levels": [
           2
         ],
@@ -1017,7 +1017,7 @@
         "boss": false
       },
       {
-        "areaId": 2,
+        "areaId": "EXPL_RESEARCH_PLAIN_01",
         "levels": [
           2
         ],
@@ -1025,7 +1025,7 @@
         "boss": false
       },
       {
-        "areaId": 7,
+        "areaId": "EXPL_RESEARCH_PLAIN_06",
         "levels": [
           2
         ],
@@ -1035,7 +1035,7 @@
     ]
   },
   {
-    "id": 141,
+    "id": "CHARACTER_HOMM1",
     "name": "Guard",
     "nameJp": "ケモノ門番",
     "icon": "monster_faceicon009.png",
@@ -1096,7 +1096,7 @@
     "exp": 11,
     "drops": [
       {
-        "itemId": 68,
+        "itemId": "ITEM_MAT_WHIM_STRAWBERRY",
         "quantity": 3,
         "rate": 100
       }
@@ -1105,7 +1105,7 @@
     "slug": "guard",
     "areas": [
       {
-        "areaId": 15,
+        "areaId": "EXPL_RESEARCH_OLDROAD_00",
         "levels": [
           14
         ],
@@ -1113,7 +1113,7 @@
         "boss": false
       },
       {
-        "areaId": 16,
+        "areaId": "EXPL_RESEARCH_OLDROAD_01",
         "levels": [
           14
         ],
@@ -1121,7 +1121,7 @@
         "boss": false
       },
       {
-        "areaId": 20,
+        "areaId": "EXPL_RESEARCH_OLDROAD_05",
         "levels": [
           25
         ],
@@ -1129,7 +1129,7 @@
         "boss": false
       },
       {
-        "areaId": 21,
+        "areaId": "EXPL_RESEARCH_OLDROAD_06",
         "levels": [
           14
         ],
@@ -1139,7 +1139,7 @@
     ]
   },
   {
-    "id": 142,
+    "id": "CHARACTER_HOMM2",
     "name": "Beast",
     "nameJp": "ケモノ近衛",
     "icon": "monster_faceicon010.png",
@@ -1200,16 +1200,16 @@
     "exp": 13,
     "drops": [
       {
-        "itemId": 54,
+        "itemId": "ITEM_MAT_FRESH_MEAT",
         "quantity": 3,
         "rate": 100
       }
     ],
     "zoneEncounters": [],
-    "slug": "beast-142",
+    "slug": "beast-character-homm2",
     "areas": [
       {
-        "areaId": 29,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_00",
         "levels": [
           27
         ],
@@ -1217,7 +1217,7 @@
         "boss": false
       },
       {
-        "areaId": 30,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_01",
         "levels": [
           27
         ],
@@ -1225,7 +1225,7 @@
         "boss": false
       },
       {
-        "areaId": 31,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_02",
         "levels": [
           30
         ],
@@ -1233,7 +1233,7 @@
         "boss": false
       },
       {
-        "areaId": 34,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_05",
         "levels": [
           39
         ],
@@ -1241,7 +1241,7 @@
         "boss": false
       },
       {
-        "areaId": 35,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_06",
         "levels": [
           27
         ],
@@ -1251,7 +1251,7 @@
     ]
   },
   {
-    "id": 143,
+    "id": "CHARACTER_RABBIT0",
     "name": "Horned Beast",
     "nameJp": "ホーンビースト",
     "icon": "monster_faceicon012.png",
@@ -1312,7 +1312,7 @@
     "exp": 12,
     "drops": [
       {
-        "itemId": 17,
+        "itemId": "ITEM_MAT_TAR_NUT",
         "quantity": 3,
         "rate": 100
       }
@@ -1321,7 +1321,7 @@
     "slug": "horned-beast",
     "areas": [
       {
-        "areaId": 3,
+        "areaId": "EXPL_RESEARCH_PLAIN_02",
         "levels": [
           4
         ],
@@ -1329,7 +1329,7 @@
         "boss": false
       },
       {
-        "areaId": 4,
+        "areaId": "EXPL_RESEARCH_PLAIN_03",
         "levels": [
           4
         ],
@@ -1337,7 +1337,7 @@
         "boss": false
       },
       {
-        "areaId": 5,
+        "areaId": "EXPL_RESEARCH_PLAIN_04",
         "levels": [
           4
         ],
@@ -1345,7 +1345,7 @@
         "boss": false
       },
       {
-        "areaId": 5,
+        "areaId": "EXPL_RESEARCH_PLAIN_04",
         "levels": [
           8
         ],
@@ -1353,7 +1353,7 @@
         "boss": true
       },
       {
-        "areaId": 6,
+        "areaId": "EXPL_RESEARCH_PLAIN_05",
         "levels": [
           12
         ],
@@ -1361,7 +1361,7 @@
         "boss": false
       },
       {
-        "areaId": 7,
+        "areaId": "EXPL_RESEARCH_PLAIN_06",
         "levels": [
           4,
           12
@@ -1370,7 +1370,7 @@
         "boss": false
       },
       {
-        "areaId": 7,
+        "areaId": "EXPL_RESEARCH_PLAIN_06",
         "levels": [
           8
         ],
@@ -1380,7 +1380,7 @@
     ]
   },
   {
-    "id": 144,
+    "id": "CHARACTER_RABBIT1",
     "name": "Icicle Beast",
     "nameJp": "アイシクルラビット",
     "icon": "monster_faceicon013.png",
@@ -1441,7 +1441,7 @@
     "exp": 18,
     "drops": [
       {
-        "itemId": 21,
+        "itemId": "ITEM_MAT_SOFT_RIME_STONE",
         "quantity": 3,
         "rate": 100
       }
@@ -1450,7 +1450,7 @@
     "slug": "icicle-beast",
     "areas": [
       {
-        "areaId": 36,
+        "areaId": "EXPL_RESEARCH_SPRING_00",
         "levels": [
           35
         ],
@@ -1458,7 +1458,7 @@
         "boss": false
       },
       {
-        "areaId": 37,
+        "areaId": "EXPL_RESEARCH_SPRING_01",
         "levels": [
           35
         ],
@@ -1466,7 +1466,7 @@
         "boss": false
       },
       {
-        "areaId": 41,
+        "areaId": "EXPL_RESEARCH_SPRING_05",
         "levels": [
           52
         ],
@@ -1474,7 +1474,7 @@
         "boss": false
       },
       {
-        "areaId": 42,
+        "areaId": "EXPL_RESEARCH_SPRING_06",
         "levels": [
           35
         ],
@@ -1482,7 +1482,7 @@
         "boss": false
       },
       {
-        "areaId": 50,
+        "areaId": "EXPL_RESEARCH_SNOW_00",
         "levels": [
           56
         ],
@@ -1490,7 +1490,7 @@
         "boss": false
       },
       {
-        "areaId": 51,
+        "areaId": "EXPL_RESEARCH_SNOW_01",
         "levels": [
           56
         ],
@@ -1498,7 +1498,7 @@
         "boss": false
       },
       {
-        "areaId": 56,
+        "areaId": "EXPL_RESEARCH_SNOW_06",
         "levels": [
           56
         ],
@@ -1508,7 +1508,7 @@
     ]
   },
   {
-    "id": 145,
+    "id": "CHARACTER_RABBIT2",
     "name": "Fortunate Heart",
     "nameJp": "フォーチュンハート",
     "icon": "monster_faceicon014.png",
@@ -1569,7 +1569,7 @@
     "exp": 24,
     "drops": [
       {
-        "itemId": 11,
+        "itemId": "ITEM_MAT_DUNKELHEIT",
         "quantity": 3,
         "rate": 100
       }
@@ -1578,7 +1578,7 @@
     "slug": "fortunate-heart",
     "areas": [
       {
-        "areaId": 52,
+        "areaId": "EXPL_RESEARCH_SNOW_02",
         "levels": [
           57
         ],
@@ -1586,7 +1586,7 @@
         "boss": false
       },
       {
-        "areaId": 53,
+        "areaId": "EXPL_RESEARCH_SNOW_03",
         "levels": [
           57
         ],
@@ -1594,7 +1594,7 @@
         "boss": false
       },
       {
-        "areaId": 54,
+        "areaId": "EXPL_RESEARCH_SNOW_04",
         "levels": [
           57,
           60
@@ -1603,7 +1603,7 @@
         "boss": false
       },
       {
-        "areaId": 55,
+        "areaId": "EXPL_RESEARCH_SNOW_05",
         "levels": [
           68
         ],
@@ -1611,7 +1611,7 @@
         "boss": false
       },
       {
-        "areaId": 56,
+        "areaId": "EXPL_RESEARCH_SNOW_06",
         "levels": [
           57,
           60
@@ -1622,7 +1622,7 @@
     ]
   },
   {
-    "id": 146,
+    "id": "CHARACTER_FLOWER0",
     "name": "Cheery Flower",
     "nameJp": "チアーフラワー",
     "icon": "monster_faceicon015.png",
@@ -1683,7 +1683,7 @@
     "exp": 11,
     "drops": [
       {
-        "itemId": 18,
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
         "quantity": 3,
         "rate": 100
       }
@@ -1692,7 +1692,7 @@
     "slug": "cheery-flower",
     "areas": [
       {
-        "areaId": 3,
+        "areaId": "EXPL_RESEARCH_PLAIN_02",
         "levels": [
           6
         ],
@@ -1700,7 +1700,7 @@
         "boss": false
       },
       {
-        "areaId": 5,
+        "areaId": "EXPL_RESEARCH_PLAIN_04",
         "levels": [
           6
         ],
@@ -1708,7 +1708,7 @@
         "boss": false
       },
       {
-        "areaId": 5,
+        "areaId": "EXPL_RESEARCH_PLAIN_04",
         "levels": [
           8
         ],
@@ -1716,7 +1716,7 @@
         "boss": true
       },
       {
-        "areaId": 6,
+        "areaId": "EXPL_RESEARCH_PLAIN_05",
         "levels": [
           12
         ],
@@ -1724,7 +1724,7 @@
         "boss": false
       },
       {
-        "areaId": 7,
+        "areaId": "EXPL_RESEARCH_PLAIN_06",
         "levels": [
           6
         ],
@@ -1732,7 +1732,7 @@
         "boss": false
       },
       {
-        "areaId": 7,
+        "areaId": "EXPL_RESEARCH_PLAIN_06",
         "levels": [
           8
         ],
@@ -1742,7 +1742,7 @@
     ]
   },
   {
-    "id": 147,
+    "id": "CHARACTER_FLOWER1",
     "name": "Sunshade Grass",
     "nameJp": "ヒダマリグサ",
     "icon": "monster_faceicon016.png",
@@ -1803,7 +1803,7 @@
     "exp": 12,
     "drops": [
       {
-        "itemId": 87,
+        "itemId": "ITEM_MAT_WOUNDLESS_GRASS",
         "quantity": 3,
         "rate": 100
       }
@@ -1812,7 +1812,7 @@
     "slug": "sunshade-grass",
     "areas": [
       {
-        "areaId": 22,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_00",
         "levels": [
           21
         ],
@@ -1820,7 +1820,7 @@
         "boss": false
       },
       {
-        "areaId": 23,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_01",
         "levels": [
           21
         ],
@@ -1828,7 +1828,7 @@
         "boss": false
       },
       {
-        "areaId": 24,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_02",
         "levels": [
           21,
           25
@@ -1837,7 +1837,7 @@
         "boss": false
       },
       {
-        "areaId": 25,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_03",
         "levels": [
           21
         ],
@@ -1845,7 +1845,7 @@
         "boss": false
       },
       {
-        "areaId": 26,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_04",
         "levels": [
           21
         ],
@@ -1853,7 +1853,7 @@
         "boss": false
       },
       {
-        "areaId": 27,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_05",
         "levels": [
           31
         ],
@@ -1861,7 +1861,7 @@
         "boss": false
       },
       {
-        "areaId": 28,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_06",
         "levels": [
           21
         ],
@@ -1871,7 +1871,7 @@
     ]
   },
   {
-    "id": 148,
+    "id": "CHARACTER_FLOWER2",
     "name": "Aluma",
     "nameJp": "アリューマ",
     "icon": "monster_faceicon017.png",
@@ -1932,7 +1932,7 @@
     "exp": 16,
     "drops": [
       {
-        "itemId": 9,
+        "itemId": "ITEM_MAT_SAGE_HERB",
         "quantity": 3,
         "rate": 100
       }
@@ -1941,7 +1941,7 @@
     "slug": "aluma",
     "areas": [
       {
-        "areaId": 31,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_02",
         "levels": [
           28,
           30
@@ -1950,7 +1950,7 @@
         "boss": false
       },
       {
-        "areaId": 32,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_03",
         "levels": [
           28
         ],
@@ -1958,7 +1958,7 @@
         "boss": false
       },
       {
-        "areaId": 33,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_04",
         "levels": [
           28
         ],
@@ -1966,7 +1966,7 @@
         "boss": false
       },
       {
-        "areaId": 34,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_05",
         "levels": [
           39
         ],
@@ -1974,7 +1974,7 @@
         "boss": false
       },
       {
-        "areaId": 35,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_06",
         "levels": [
           28
         ],
@@ -1984,7 +1984,7 @@
     ]
   },
   {
-    "id": 149,
+    "id": "CHARACTER_PUPPET0",
     "name": "Dustshooter",
     "nameJp": "ダストシューター",
     "icon": "monster_faceicon018.png",
@@ -2045,7 +2045,7 @@
     "exp": 13,
     "drops": [
       {
-        "itemId": 81,
+        "itemId": "ITEM_MAT_VINTAGE_POT",
         "quantity": 3,
         "rate": 100
       }
@@ -2054,7 +2054,7 @@
     "slug": "dustshooter",
     "areas": [
       {
-        "areaId": 10,
+        "areaId": "EXPL_RESEARCH_FOREST_02",
         "levels": [
           10,
           12
@@ -2063,7 +2063,7 @@
         "boss": false
       },
       {
-        "areaId": 11,
+        "areaId": "EXPL_RESEARCH_FOREST_03",
         "levels": [
           10
         ],
@@ -2071,7 +2071,7 @@
         "boss": false
       },
       {
-        "areaId": 12,
+        "areaId": "EXPL_RESEARCH_FOREST_04",
         "levels": [
           10
         ],
@@ -2079,7 +2079,7 @@
         "boss": false
       },
       {
-        "areaId": 13,
+        "areaId": "EXPL_RESEARCH_FOREST_05",
         "levels": [
           19
         ],
@@ -2087,7 +2087,7 @@
         "boss": false
       },
       {
-        "areaId": 14,
+        "areaId": "EXPL_RESEARCH_FOREST_06",
         "levels": [
           10
         ],
@@ -2097,7 +2097,7 @@
     ]
   },
   {
-    "id": 150,
+    "id": "CHARACTER_PUPPET1",
     "name": "Seedcaster",
     "nameJp": "シードキャスター",
     "icon": "monster_faceicon019.png",
@@ -2158,7 +2158,7 @@
     "exp": 15,
     "drops": [
       {
-        "itemId": 19,
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
         "quantity": 3,
         "rate": 100
       }
@@ -2167,7 +2167,7 @@
     "slug": "seedcaster",
     "areas": [
       {
-        "areaId": 15,
+        "areaId": "EXPL_RESEARCH_OLDROAD_00",
         "levels": [
           14
         ],
@@ -2175,7 +2175,7 @@
         "boss": false
       },
       {
-        "areaId": 16,
+        "areaId": "EXPL_RESEARCH_OLDROAD_01",
         "levels": [
           14
         ],
@@ -2183,7 +2183,7 @@
         "boss": false
       },
       {
-        "areaId": 17,
+        "areaId": "EXPL_RESEARCH_OLDROAD_02",
         "levels": [
           17
         ],
@@ -2191,7 +2191,7 @@
         "boss": false
       },
       {
-        "areaId": 20,
+        "areaId": "EXPL_RESEARCH_OLDROAD_05",
         "levels": [
           25
         ],
@@ -2199,7 +2199,7 @@
         "boss": false
       },
       {
-        "areaId": 21,
+        "areaId": "EXPL_RESEARCH_OLDROAD_06",
         "levels": [
           14,
           17,
@@ -2211,7 +2211,7 @@
     ]
   },
   {
-    "id": 151,
+    "id": "CHARACTER_PUPPET2",
     "name": "Hidedecker",
     "nameJp": "ハイドデッカー",
     "icon": "monster_faceicon020.png",
@@ -2272,7 +2272,7 @@
     "exp": 22,
     "drops": [
       {
-        "itemId": 47,
+        "itemId": "ITEM_MAT_STERN_BUG",
         "quantity": 3,
         "rate": 100
       }
@@ -2281,7 +2281,7 @@
     "slug": "hidedecker",
     "areas": [
       {
-        "areaId": 45,
+        "areaId": "EXPL_RESEARCH_RUINS_02",
         "levels": [
           49
         ],
@@ -2289,7 +2289,7 @@
         "boss": false
       },
       {
-        "areaId": 46,
+        "areaId": "EXPL_RESEARCH_RUINS_03",
         "levels": [
           49
         ],
@@ -2297,7 +2297,7 @@
         "boss": false
       },
       {
-        "areaId": 47,
+        "areaId": "EXPL_RESEARCH_RUINS_04",
         "levels": [
           49,
           52
@@ -2306,7 +2306,7 @@
         "boss": false
       },
       {
-        "areaId": 48,
+        "areaId": "EXPL_RESEARCH_RUINS_05",
         "levels": [
           60
         ],
@@ -2314,7 +2314,7 @@
         "boss": false
       },
       {
-        "areaId": 49,
+        "areaId": "EXPL_RESEARCH_RUINS_06",
         "levels": [
           49,
           52
@@ -2325,7 +2325,7 @@
     ]
   },
   {
-    "id": 152,
+    "id": "CHARACTER_BAT0",
     "name": "Ravenous Bat",
     "nameJp": "ラべナスバット",
     "icon": "monster_faceicon021.png",
@@ -2386,7 +2386,7 @@
     "exp": 10,
     "drops": [
       {
-        "itemId": 26,
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
         "quantity": 3,
         "rate": 100
       }
@@ -2395,7 +2395,7 @@
     "slug": "ravenous-bat",
     "areas": [
       {
-        "areaId": 8,
+        "areaId": "EXPL_RESEARCH_FOREST_00",
         "levels": [
           8
         ],
@@ -2403,7 +2403,7 @@
         "boss": false
       },
       {
-        "areaId": 9,
+        "areaId": "EXPL_RESEARCH_FOREST_01",
         "levels": [
           8
         ],
@@ -2411,7 +2411,7 @@
         "boss": false
       },
       {
-        "areaId": 12,
+        "areaId": "EXPL_RESEARCH_FOREST_04",
         "levels": [
           11
         ],
@@ -2419,7 +2419,7 @@
         "boss": false
       },
       {
-        "areaId": 13,
+        "areaId": "EXPL_RESEARCH_FOREST_05",
         "levels": [
           19
         ],
@@ -2427,7 +2427,7 @@
         "boss": false
       },
       {
-        "areaId": 14,
+        "areaId": "EXPL_RESEARCH_FOREST_06",
         "levels": [
           8,
           11
@@ -2438,7 +2438,7 @@
     ]
   },
   {
-    "id": 153,
+    "id": "CHARACTER_BAT1",
     "name": "Demonic Hunter",
     "nameJp": "デモニックハンター",
     "icon": "monster_faceicon022.png",
@@ -2499,7 +2499,7 @@
     "exp": 18,
     "drops": [
       {
-        "itemId": 57,
+        "itemId": "ITEM_MAT_WICKED_FANG",
         "quantity": 6,
         "rate": 100
       }
@@ -2508,7 +2508,7 @@
     "slug": "demonic-hunter",
     "areas": [
       {
-        "areaId": 43,
+        "areaId": "EXPL_RESEARCH_RUINS_00",
         "levels": [
           48
         ],
@@ -2516,7 +2516,7 @@
         "boss": false
       },
       {
-        "areaId": 44,
+        "areaId": "EXPL_RESEARCH_RUINS_01",
         "levels": [
           48
         ],
@@ -2524,7 +2524,7 @@
         "boss": false
       },
       {
-        "areaId": 45,
+        "areaId": "EXPL_RESEARCH_RUINS_02",
         "levels": [
           52
         ],
@@ -2532,7 +2532,7 @@
         "boss": false
       },
       {
-        "areaId": 48,
+        "areaId": "EXPL_RESEARCH_RUINS_05",
         "levels": [
           60
         ],
@@ -2540,7 +2540,7 @@
         "boss": false
       },
       {
-        "areaId": 49,
+        "areaId": "EXPL_RESEARCH_RUINS_06",
         "levels": [
           48
         ],
@@ -2550,7 +2550,7 @@
     ]
   },
   {
-    "id": 154,
+    "id": "CHARACTER_BAT2",
     "name": "Cold Blood",
     "nameJp": "コールドブラッド",
     "icon": "monster_faceicon023.png",
@@ -2611,7 +2611,7 @@
     "exp": 22,
     "drops": [
       {
-        "itemId": 90,
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
         "quantity": 3,
         "rate": 100
       }
@@ -2620,7 +2620,7 @@
     "slug": "cold-blood",
     "areas": [
       {
-        "areaId": 52,
+        "areaId": "EXPL_RESEARCH_SNOW_02",
         "levels": [
           57,
           60
@@ -2629,7 +2629,7 @@
         "boss": false
       },
       {
-        "areaId": 53,
+        "areaId": "EXPL_RESEARCH_SNOW_03",
         "levels": [
           57
         ],
@@ -2637,7 +2637,7 @@
         "boss": false
       },
       {
-        "areaId": 54,
+        "areaId": "EXPL_RESEARCH_SNOW_04",
         "levels": [
           57,
           60
@@ -2646,7 +2646,7 @@
         "boss": false
       },
       {
-        "areaId": 55,
+        "areaId": "EXPL_RESEARCH_SNOW_05",
         "levels": [
           68
         ],
@@ -2654,7 +2654,7 @@
         "boss": false
       },
       {
-        "areaId": 56,
+        "areaId": "EXPL_RESEARCH_SNOW_06",
         "levels": [
           57,
           60
@@ -2665,7 +2665,7 @@
     ]
   },
   {
-    "id": 155,
+    "id": "CHARACTER_FUNGUS0",
     "name": "Ghost Mushroom",
     "nameJp": "オバケキノコ",
     "icon": "monster_faceicon024.png",
@@ -2726,7 +2726,7 @@
     "exp": 11,
     "drops": [
       {
-        "itemId": 91,
+        "itemId": "ITEM_MAT_FAIRY_PARASOL",
         "quantity": 3,
         "rate": 100
       }
@@ -2735,7 +2735,7 @@
     "slug": "ghost-mushroom",
     "areas": [
       {
-        "areaId": 10,
+        "areaId": "EXPL_RESEARCH_FOREST_02",
         "levels": [
           11,
           12
@@ -2744,7 +2744,7 @@
         "boss": false
       },
       {
-        "areaId": 11,
+        "areaId": "EXPL_RESEARCH_FOREST_03",
         "levels": [
           11
         ],
@@ -2752,7 +2752,7 @@
         "boss": false
       },
       {
-        "areaId": 12,
+        "areaId": "EXPL_RESEARCH_FOREST_04",
         "levels": [
           11,
           12
@@ -2761,7 +2761,7 @@
         "boss": false
       },
       {
-        "areaId": 13,
+        "areaId": "EXPL_RESEARCH_FOREST_05",
         "levels": [
           19
         ],
@@ -2769,7 +2769,7 @@
         "boss": false
       },
       {
-        "areaId": 14,
+        "areaId": "EXPL_RESEARCH_FOREST_06",
         "levels": [
           11,
           12
@@ -2780,7 +2780,7 @@
     ]
   },
   {
-    "id": 156,
+    "id": "CHARACTER_FUNGUS1",
     "name": "Antidote Mushroom",
     "nameJp": "ゲドクキノコ",
     "icon": "monster_faceicon025.png",
@@ -2841,7 +2841,7 @@
     "exp": 13,
     "drops": [
       {
-        "itemId": 89,
+        "itemId": "ITEM_MAT_MANDRAGORA_ROOT",
         "quantity": 3,
         "rate": 100
       }
@@ -2850,7 +2850,7 @@
     "slug": "antidote-mushroom",
     "areas": [
       {
-        "areaId": 17,
+        "areaId": "EXPL_RESEARCH_OLDROAD_02",
         "levels": [
           14,
           17
@@ -2859,7 +2859,7 @@
         "boss": false
       },
       {
-        "areaId": 18,
+        "areaId": "EXPL_RESEARCH_OLDROAD_03",
         "levels": [
           14
         ],
@@ -2867,7 +2867,7 @@
         "boss": false
       },
       {
-        "areaId": 19,
+        "areaId": "EXPL_RESEARCH_OLDROAD_04",
         "levels": [
           14
         ],
@@ -2875,7 +2875,7 @@
         "boss": false
       },
       {
-        "areaId": 19,
+        "areaId": "EXPL_RESEARCH_OLDROAD_04",
         "levels": [
           19
         ],
@@ -2883,7 +2883,7 @@
         "boss": true
       },
       {
-        "areaId": 20,
+        "areaId": "EXPL_RESEARCH_OLDROAD_05",
         "levels": [
           25
         ],
@@ -2891,7 +2891,7 @@
         "boss": false
       },
       {
-        "areaId": 21,
+        "areaId": "EXPL_RESEARCH_OLDROAD_06",
         "levels": [
           14,
           17
@@ -2900,7 +2900,7 @@
         "boss": false
       },
       {
-        "areaId": 21,
+        "areaId": "EXPL_RESEARCH_OLDROAD_06",
         "levels": [
           19
         ],
@@ -2910,7 +2910,7 @@
     ]
   },
   {
-    "id": 157,
+    "id": "CHARACTER_FUNGUS2",
     "name": "Mush-Wolf",
     "nameJp": "マッシュウルフ",
     "icon": "monster_faceicon026.png",
@@ -2971,7 +2971,7 @@
     "exp": 18,
     "drops": [
       {
-        "itemId": 14,
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
         "quantity": 3,
         "rate": 100
       }
@@ -2980,7 +2980,7 @@
     "slug": "mush-wolf",
     "areas": [
       {
-        "areaId": 31,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_02",
         "levels": [
           27,
           30
@@ -2989,7 +2989,7 @@
         "boss": false
       },
       {
-        "areaId": 32,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_03",
         "levels": [
           27
         ],
@@ -2997,7 +2997,7 @@
         "boss": false
       },
       {
-        "areaId": 33,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_04",
         "levels": [
           27
         ],
@@ -3005,7 +3005,7 @@
         "boss": false
       },
       {
-        "areaId": 34,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_05",
         "levels": [
           39
         ],
@@ -3013,7 +3013,7 @@
         "boss": false
       },
       {
-        "areaId": 35,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_06",
         "levels": [
           27
         ],
@@ -3023,7 +3023,7 @@
     ]
   },
   {
-    "id": 158,
+    "id": "CHARACTER_TURTLE0",
     "name": "Plains Turtle",
     "nameJp": "草原ガメ",
     "icon": "monster_faceicon027.png",
@@ -3084,7 +3084,7 @@
     "exp": 15,
     "drops": [
       {
-        "itemId": 15,
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
         "quantity": 3,
         "rate": 100
       }
@@ -3093,7 +3093,7 @@
     "slug": "plains-turtle",
     "areas": [
       {
-        "areaId": 3,
+        "areaId": "EXPL_RESEARCH_PLAIN_02",
         "levels": [
           3,
           4
@@ -3102,7 +3102,7 @@
         "boss": false
       },
       {
-        "areaId": 4,
+        "areaId": "EXPL_RESEARCH_PLAIN_03",
         "levels": [
           3,
           4
@@ -3111,7 +3111,7 @@
         "boss": false
       },
       {
-        "areaId": 5,
+        "areaId": "EXPL_RESEARCH_PLAIN_04",
         "levels": [
           3,
           4
@@ -3120,7 +3120,7 @@
         "boss": false
       },
       {
-        "areaId": 5,
+        "areaId": "EXPL_RESEARCH_PLAIN_04",
         "levels": [
           8
         ],
@@ -3128,7 +3128,7 @@
         "boss": true
       },
       {
-        "areaId": 6,
+        "areaId": "EXPL_RESEARCH_PLAIN_05",
         "levels": [
           12
         ],
@@ -3136,7 +3136,7 @@
         "boss": false
       },
       {
-        "areaId": 7,
+        "areaId": "EXPL_RESEARCH_PLAIN_06",
         "levels": [
           3,
           4,
@@ -3146,7 +3146,7 @@
         "boss": false
       },
       {
-        "areaId": 7,
+        "areaId": "EXPL_RESEARCH_PLAIN_06",
         "levels": [
           8
         ],
@@ -3156,7 +3156,7 @@
     ]
   },
   {
-    "id": 159,
+    "id": "CHARACTER_TURTLE1",
     "name": "Hidden Stone",
     "nameJp": "イワガクレ",
     "icon": "monster_faceicon028.png",
@@ -3217,7 +3217,7 @@
     "exp": 18,
     "drops": [
       {
-        "itemId": 93,
+        "itemId": "ITEM_MAT_GRAVISTONE",
         "quantity": 3,
         "rate": 100
       }
@@ -3226,7 +3226,7 @@
     "slug": "hidden-stone",
     "areas": [
       {
-        "areaId": 17,
+        "areaId": "EXPL_RESEARCH_OLDROAD_02",
         "levels": [
           13,
           15,
@@ -3236,7 +3236,7 @@
         "boss": false
       },
       {
-        "areaId": 18,
+        "areaId": "EXPL_RESEARCH_OLDROAD_03",
         "levels": [
           13,
           15
@@ -3245,7 +3245,7 @@
         "boss": false
       },
       {
-        "areaId": 19,
+        "areaId": "EXPL_RESEARCH_OLDROAD_04",
         "levels": [
           13,
           15
@@ -3254,7 +3254,7 @@
         "boss": false
       },
       {
-        "areaId": 20,
+        "areaId": "EXPL_RESEARCH_OLDROAD_05",
         "levels": [
           25
         ],
@@ -3262,7 +3262,7 @@
         "boss": false
       },
       {
-        "areaId": 21,
+        "areaId": "EXPL_RESEARCH_OLDROAD_06",
         "levels": [
           13,
           15,
@@ -3275,7 +3275,7 @@
     ]
   },
   {
-    "id": 160,
+    "id": "CHARACTER_TURTLE2",
     "name": "Spiked Turtle",
     "nameJp": "スパイクタートル",
     "icon": "monster_faceicon029.png",
@@ -3336,7 +3336,7 @@
     "exp": 25,
     "drops": [
       {
-        "itemId": 62,
+        "itemId": "ITEM_MAT_BLUE_DEVIL",
         "quantity": 3,
         "rate": 100
       }
@@ -3345,7 +3345,7 @@
     "slug": "spiked-turtle",
     "areas": [
       {
-        "areaId": 52,
+        "areaId": "EXPL_RESEARCH_SNOW_02",
         "levels": [
           57
         ],
@@ -3353,7 +3353,7 @@
         "boss": false
       },
       {
-        "areaId": 53,
+        "areaId": "EXPL_RESEARCH_SNOW_03",
         "levels": [
           57
         ],
@@ -3361,7 +3361,7 @@
         "boss": false
       },
       {
-        "areaId": 54,
+        "areaId": "EXPL_RESEARCH_SNOW_04",
         "levels": [
           57,
           60
@@ -3370,7 +3370,7 @@
         "boss": false
       },
       {
-        "areaId": 55,
+        "areaId": "EXPL_RESEARCH_SNOW_05",
         "levels": [
           68
         ],
@@ -3378,7 +3378,7 @@
         "boss": false
       },
       {
-        "areaId": 56,
+        "areaId": "EXPL_RESEARCH_SNOW_06",
         "levels": [
           57,
           60
@@ -3389,7 +3389,7 @@
     ]
   },
   {
-    "id": 161,
+    "id": "CHARACTER_JELLYFISH0",
     "name": "Mountain Jellyfish",
     "nameJp": "山クラゲ",
     "icon": "monster_faceicon030.png",
@@ -3450,7 +3450,7 @@
     "exp": 17,
     "drops": [
       {
-        "itemId": 88,
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
         "quantity": 3,
         "rate": 100
       }
@@ -3459,7 +3459,7 @@
     "slug": "mountain-jellyfish",
     "areas": [
       {
-        "areaId": 24,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_02",
         "levels": [
           20,
           21,
@@ -3469,7 +3469,7 @@
         "boss": false
       },
       {
-        "areaId": 25,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_03",
         "levels": [
           20,
           21
@@ -3478,7 +3478,7 @@
         "boss": false
       },
       {
-        "areaId": 26,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_04",
         "levels": [
           20,
           21
@@ -3487,7 +3487,7 @@
         "boss": false
       },
       {
-        "areaId": 27,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_05",
         "levels": [
           31
         ],
@@ -3495,7 +3495,7 @@
         "boss": false
       },
       {
-        "areaId": 28,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_06",
         "levels": [
           20,
           21
@@ -3506,7 +3506,7 @@
     ]
   },
   {
-    "id": 162,
+    "id": "CHARACTER_JELLYFISH1",
     "name": "Flower Parasol",
     "nameJp": "フラワーパラソル",
     "icon": "monster_faceicon031.png",
@@ -3567,7 +3567,7 @@
     "exp": 20,
     "drops": [
       {
-        "itemId": 40,
+        "itemId": "ITEM_MAT_BALLOON_FISH",
         "quantity": 3,
         "rate": 100
       }
@@ -3576,7 +3576,7 @@
     "slug": "flower-parasol",
     "areas": [
       {
-        "areaId": 38,
+        "areaId": "EXPL_RESEARCH_SPRING_02",
         "levels": [
           35
         ],
@@ -3584,7 +3584,7 @@
         "boss": false
       },
       {
-        "areaId": 39,
+        "areaId": "EXPL_RESEARCH_SPRING_03",
         "levels": [
           35
         ],
@@ -3592,7 +3592,7 @@
         "boss": false
       },
       {
-        "areaId": 40,
+        "areaId": "EXPL_RESEARCH_SPRING_04",
         "levels": [
           35,
           39
@@ -3601,7 +3601,7 @@
         "boss": false
       },
       {
-        "areaId": 41,
+        "areaId": "EXPL_RESEARCH_SPRING_05",
         "levels": [
           52
         ],
@@ -3609,7 +3609,7 @@
         "boss": false
       },
       {
-        "areaId": 42,
+        "areaId": "EXPL_RESEARCH_SPRING_06",
         "levels": [
           35,
           39
@@ -3620,7 +3620,7 @@
     ]
   },
   {
-    "id": 163,
+    "id": "CHARACTER_JELLYFISH2",
     "name": "Devil's Tentacle",
     "nameJp": "デビルズテンタクル",
     "icon": "monster_faceicon032.png",
@@ -3681,7 +3681,7 @@
     "exp": 35,
     "drops": [
       {
-        "itemId": 69,
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
         "quantity": 3,
         "rate": 100
       }
@@ -3690,7 +3690,7 @@
     "slug": "devil-s-tentacle",
     "areas": [
       {
-        "areaId": 45,
+        "areaId": "EXPL_RESEARCH_RUINS_02",
         "levels": [
           50
         ],
@@ -3698,7 +3698,7 @@
         "boss": false
       },
       {
-        "areaId": 46,
+        "areaId": "EXPL_RESEARCH_RUINS_03",
         "levels": [
           50
         ],
@@ -3706,7 +3706,7 @@
         "boss": false
       },
       {
-        "areaId": 47,
+        "areaId": "EXPL_RESEARCH_RUINS_04",
         "levels": [
           50,
           52
@@ -3715,7 +3715,7 @@
         "boss": false
       },
       {
-        "areaId": 48,
+        "areaId": "EXPL_RESEARCH_RUINS_05",
         "levels": [
           60
         ],
@@ -3723,7 +3723,7 @@
         "boss": false
       },
       {
-        "areaId": 49,
+        "areaId": "EXPL_RESEARCH_RUINS_06",
         "levels": [
           50,
           52
@@ -3734,7 +3734,7 @@
     ]
   },
   {
-    "id": 164,
+    "id": "CHARACTER_GOLEM0",
     "name": "Forest Guard",
     "nameJp": "森の番人",
     "icon": "monster_faceicon033.png",
@@ -3795,7 +3795,7 @@
     "exp": 20,
     "drops": [
       {
-        "itemId": 36,
+        "itemId": "ITEM_MAT_RUBBER_TREE",
         "quantity": 3,
         "rate": 100
       }
@@ -3804,7 +3804,7 @@
     "slug": "forest-guard",
     "areas": [
       {
-        "areaId": 12,
+        "areaId": "EXPL_RESEARCH_FOREST_04",
         "levels": [
           17
         ],
@@ -3814,7 +3814,7 @@
     ]
   },
   {
-    "id": 165,
+    "id": "CHARACTER_GOLEM1",
     "name": "Stone Breaker",
     "nameJp": "ストーンブレイカー",
     "icon": "monster_faceicon034.png",
@@ -3875,7 +3875,7 @@
     "exp": 30,
     "drops": [
       {
-        "itemId": 64,
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
         "quantity": 3,
         "rate": 100
       }
@@ -3884,7 +3884,7 @@
     "slug": "stone-breaker",
     "areas": [
       {
-        "areaId": 26,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_04",
         "levels": [
           30
         ],
@@ -3892,7 +3892,7 @@
         "boss": true
       },
       {
-        "areaId": 28,
+        "areaId": "EXPL_RESEARCH_MOUNTAIN_06",
         "levels": [
           30
         ],
@@ -3902,7 +3902,7 @@
     ]
   },
   {
-    "id": 166,
+    "id": "CHARACTER_GOLEM2",
     "name": "Magnagardener",
     "nameJp": "マグナガードナー",
     "icon": "monster_faceicon035.png",
@@ -3963,7 +3963,7 @@
     "exp": 60,
     "drops": [
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "quantity": 3,
         "rate": 100
       }
@@ -3972,7 +3972,7 @@
     "slug": "magnagardener",
     "areas": [
       {
-        "areaId": 45,
+        "areaId": "EXPL_RESEARCH_RUINS_02",
         "levels": [
           57
         ],
@@ -3982,7 +3982,7 @@
     ]
   },
   {
-    "id": 167,
+    "id": "CHARACTER_GRIFFON0",
     "name": "Crimson Raider",
     "nameJp": "クリムゾンレイダー",
     "icon": "monster_faceicon036.png",
@@ -4043,7 +4043,7 @@
     "exp": 32,
     "drops": [
       {
-        "itemId": 61,
+        "itemId": "ITEM_MAT_DEVIL_BIRD_FEATHER",
         "quantity": 3,
         "rate": 100
       }
@@ -4052,7 +4052,7 @@
     "slug": "crimson-raider",
     "areas": [
       {
-        "areaId": 19,
+        "areaId": "EXPL_RESEARCH_OLDROAD_04",
         "levels": [
           22
         ],
@@ -4060,7 +4060,7 @@
         "boss": true
       },
       {
-        "areaId": 21,
+        "areaId": "EXPL_RESEARCH_OLDROAD_06",
         "levels": [
           22
         ],
@@ -4070,7 +4070,7 @@
     ]
   },
   {
-    "id": 168,
+    "id": "CHARACTER_GRIFFON1",
     "name": "Bernfeld",
     "nameJp": "ベルンフェルト",
     "icon": "monster_faceicon037.png",
@@ -4131,7 +4131,7 @@
     "exp": 49,
     "drops": [
       {
-        "itemId": 57,
+        "itemId": "ITEM_MAT_WICKED_FANG",
         "quantity": 3,
         "rate": 100
       }
@@ -4140,7 +4140,7 @@
     "slug": "bernfeld",
     "areas": [
       {
-        "areaId": 38,
+        "areaId": "EXPL_RESEARCH_SPRING_02",
         "levels": [
           47
         ],
@@ -4148,7 +4148,7 @@
         "boss": false
       },
       {
-        "areaId": 42,
+        "areaId": "EXPL_RESEARCH_SPRING_06",
         "levels": [
           47
         ],
@@ -4158,7 +4158,7 @@
     ]
   },
   {
-    "id": 169,
+    "id": "CHARACTER_GRIFFON2",
     "name": "Bolt Eagle",
     "nameJp": "ボルトイーグル",
     "icon": "monster_faceicon038.png",
@@ -4219,12 +4219,12 @@
     "exp": 75,
     "drops": [
       {
-        "itemId": 39,
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
         "quantity": 3,
         "rate": 100
       },
       {
-        "itemId": 61,
+        "itemId": "ITEM_MAT_DEVIL_BIRD_FEATHER",
         "quantity": 3,
         "rate": 100
       }
@@ -4233,7 +4233,7 @@
     "slug": "bolt-eagle",
     "areas": [
       {
-        "areaId": 52,
+        "areaId": "EXPL_RESEARCH_SNOW_02",
         "levels": [
           63
         ],
@@ -4241,7 +4241,7 @@
         "boss": false
       },
       {
-        "areaId": 56,
+        "areaId": "EXPL_RESEARCH_SNOW_06",
         "levels": [
           63
         ],
@@ -4251,7 +4251,7 @@
     ]
   },
   {
-    "id": 170,
+    "id": "CHARACTER_BONEKNIGHT",
     "name": "Fallen Knight",
     "nameJp": "フォールンナイト",
     "icon": "monster_faceicon041.png",
@@ -4312,7 +4312,7 @@
     "exp": 60,
     "drops": [
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "quantity": 3,
         "rate": 100
       }
@@ -4321,7 +4321,7 @@
     "slug": "fallen-knight",
     "areas": [
       {
-        "areaId": 33,
+        "areaId": "EXPL_RESEARCH_HIGHLAND_04",
         "levels": [
           37
         ],
@@ -4331,7 +4331,7 @@
     ]
   },
   {
-    "id": 171,
+    "id": "CHARACTER_WYVERN_00",
     "name": "Flammecanne",
     "nameJp": "火竜フランカンネ",
     "icon": "monster_faceicon042.png",
@@ -4392,12 +4392,12 @@
     "exp": 92,
     "drops": [
       {
-        "itemId": 50,
+        "itemId": "ITEM_MAT_DRAGON_HORN",
         "quantity": 3,
         "rate": 100
       },
       {
-        "itemId": 52,
+        "itemId": "ITEM_MAT_DRAGON_SCALE",
         "quantity": 3,
         "rate": 100
       }
@@ -4406,7 +4406,7 @@
     "slug": "flammecanne",
     "areas": [
       {
-        "areaId": 40,
+        "areaId": "EXPL_RESEARCH_SPRING_04",
         "levels": [
           48
         ],
@@ -4416,7 +4416,7 @@
     ]
   },
   {
-    "id": 172,
+    "id": "CHARACTER_DEEPER_00",
     "name": "Valanar",
     "nameJp": "水竜ヴァラナル",
     "icon": "monster_faceicon047.png",
@@ -4477,12 +4477,12 @@
     "exp": 150,
     "drops": [
       {
-        "itemId": 60,
+        "itemId": "ITEM_MAT_WORLD_SOUL",
         "quantity": 3,
         "rate": 100
       },
       {
-        "itemId": 51,
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
         "quantity": 3,
         "rate": 100
       }
@@ -4491,7 +4491,7 @@
     "slug": "valanar",
     "areas": [
       {
-        "areaId": 54,
+        "areaId": "EXPL_RESEARCH_SNOW_04",
         "levels": [
           65
         ],
@@ -4499,7 +4499,7 @@
         "boss": true
       },
       {
-        "areaId": 56,
+        "areaId": "EXPL_RESEARCH_SNOW_06",
         "levels": [
           65
         ],
@@ -4509,7 +4509,7 @@
     ]
   },
   {
-    "id": 173,
+    "id": "CHARACTER_GARGOYLE",
     "name": "Clay Statue",
     "nameJp": "クレイスタチュー",
     "icon": "monster_faceicon043.png",
@@ -4570,14 +4570,14 @@
     "exp": 115,
     "drops": [
       {
-        "itemId": 60,
+        "itemId": "ITEM_MAT_WORLD_SOUL",
         "quantity": 3,
         "rate": 100
       }
     ],
     "zoneEncounters": [
       {
-        "zoneId": 1,
+        "zoneId": "EXPL_AREA_PLAIN",
         "levels": [
           55
         ],
@@ -4587,7 +4587,7 @@
     "slug": "clay-statue",
     "areas": [
       {
-        "areaId": 47,
+        "areaId": "EXPL_RESEARCH_RUINS_04",
         "levels": [
           58
         ],
@@ -4597,7 +4597,7 @@
     ]
   },
   {
-    "id": 199,
+    "id": "CHARACTER_WYVERN_02",
     "name": "Siegel",
     "nameJp": "ズィーゲル",
     "icon": "monster_faceicon053.png",

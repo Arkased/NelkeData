@@ -18,7 +18,7 @@ export function buildItems(game: Game): DirectData['items'] {
   const { t, jp } = messages;
   return withSlugs(
     items.items.map((i) => ({
-      id: i.rowId,
+      id: i.ITEM_ID,
       name: t(i.ITEM_NAME_LABEL_ID),
       nameJp: orNull(jp(i.ITEM_NAME_LABEL_ID)),
       icon: orNull(icons.ref(IconKind.Item, Number(i.ITEM_IMAGE_NUM))),

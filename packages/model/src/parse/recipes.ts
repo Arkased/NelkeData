@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { isPlaceholder } from '../util.js';
 import type { Items } from './items.js';
-import { withRowIds, type ReadTable, type RowId } from './xml.js';
+import type { ReadTable } from './xml.js';
 
 const NO_MATERIAL = 'ITEM_INVALID';
 const NO_RECIPE = 'RECIPE_INVALID';
@@ -86,13 +86,13 @@ const conditionSchema = z
 const districtSchema = z.object({ COMMERCIAL_DISTRICT_ID: z.string(), COMMERCIAL_DISTRICT_LABEL_ID: z.string() });
 
 /** A row of recipe.xml. */
-export type Recipe = z.output<typeof recipeSchema> & RowId;
+export type Recipe = z.output<typeof recipeSchema>;
 
 /** A row of recipe_collection.xml: a recipe set. The recipe ids leave out the empty slots. */
-export type RecipeSetRow = z.output<typeof collectionSchema> & RowId;
+export type RecipeSetRow = z.output<typeof collectionSchema>;
 
 /** A row of stdy_research.xml with the conditions that open it. */
-export interface ResearchRow extends RowId {
+export interface ResearchRow {
   STDY_RES_ID: string;
   STDY_RES_NAME_LABEL_ID: string;
   STDY_RES_CHARACTER_TAG_00: string;
@@ -133,7 +133,7 @@ export interface Recipes {
  * @sideEffects reads the recipe, study and district tables through the table reader
  */
 export function loadRecipes(read: ReadTable, t: (label: string) => string, items: Items): Recipes {
-  const recipes = withRowIds(read('recipe/recipe.xml', recipeSchema)).filter(
+  const recipes = read('recipe/recipe.xml', recipeSchema).filter(
     (r) => !isPlaceholder(t(r.RECIPE_NAME_LABEL_ID)) && items.itemById.has(r.ITEM_COMPLETION_ID),
   );
   const prizeToCollection = new Map(
@@ -146,11 +146,10 @@ export function loadRecipes(read: ReadTable, t: (label: string) => string, items
       t(d.COMMERCIAL_DISTRICT_LABEL_ID),
     ]),
   );
-  const research = withRowIds(read('study/stdy_research.xml', researchSchema)).map((r): ResearchRow => {
+  const research = read('study/stdy_research.xml', researchSchema).map((r): ResearchRow => {
     const collection = prizeToCollection.get(r.STDY_PRIZE_TAG);
     const cond = condition.get(r.STDY_RES_COND_TAG);
     return {
-      rowId: r.rowId,
       STDY_RES_ID: r.STDY_RES_ID,
       STDY_RES_NAME_LABEL_ID: r.STDY_RES_NAME_LABEL_ID,
       STDY_RES_CHARACTER_TAG_00: r.STDY_RES_CHARACTER_TAG_00,
@@ -159,5 +158,5 @@ export function loadRecipes(read: ReadTable, t: (label: string) => string, items
       district: cond && cond.STDY_COMMERCIAL_DISTRICT_ID !== NO_DISTRICT ? (district.get(cond.STDY_COMMERCIAL_DISTRICT_ID) ?? '') : null,
     };
   });
-  return { recipes, recipeSets: withRowIds(read('recipe/recipe_collection.xml', collectionSchema)), research };
+  return { recipes, recipeSets: read('recipe/recipe_collection.xml', collectionSchema), research };
 }

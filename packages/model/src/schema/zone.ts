@@ -14,6 +14,8 @@ export const zoneSchema = z.strictObject({
   areaIds: z.array(idSchema),
   /** The items of the special spots. */
   specialItemIds: z.array(idSchema),
+  /** The monsters that appear in the zone through an encounter that no area lists (the inverse of Monster.zoneEncounters). */
+  encounters: z.array(z.strictObject({ monsterId: idSchema, levels: z.array(z.int()), boss: z.boolean() })),
 });
 
 /** A zone. */

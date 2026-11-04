@@ -1,31 +1,31 @@
 [
   {
-    "id": 1,
+    "id": "RECIPE_COLLECTION_SILVALIA",
     "name": "Silvalia",
     "recipeIds": [
-      6
+      "RECIPE_SILVALIA"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 2,
+    "id": "RECIPE_COLLECTION_MOFFCLOTH",
     "name": "Moffcloth",
     "recipeIds": [
-      10
+      "RECIPE_MOFFCLOTH"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 3,
+    "id": "RECIPE_COLLECTION_ANIMAL_RESONATOR",
     "name": "Animal Resonator",
     "recipeIds": [
-      75
+      "RECIPE_ANIMAL_RESONATOR"
     ],
     "teacherId": null,
     "friendship": null,
@@ -33,10 +33,10 @@
     "researchId": null
   },
   {
-    "id": 4,
+    "id": "RECIPE_COLLECTION_MORGEN_ALCHEMIC_LIGHT",
     "name": "Morgen Light",
     "recipeIds": [
-      76
+      "RECIPE_MORGEN_ALCHEMIC_LIGHT"
     ],
     "teacherId": null,
     "friendship": null,
@@ -44,10 +44,10 @@
     "researchId": null
   },
   {
-    "id": 5,
+    "id": "RECIPE_COLLECTION_GRAVICRYSTAL",
     "name": "Gravicrystal",
     "recipeIds": [
-      77
+      "RECIPE_GRAVICRYSTAL"
     ],
     "teacherId": null,
     "friendship": null,
@@ -55,10 +55,10 @@
     "researchId": null
   },
   {
-    "id": 6,
+    "id": "RECIPE_COLLECTION_WIND_GODS_BAG",
     "name": "Wind God's Bag",
     "recipeIds": [
-      78
+      "RECIPE_WIND_GODS_BAG"
     ],
     "teacherId": null,
     "friendship": null,
@@ -66,10 +66,10 @@
     "researchId": null
   },
   {
-    "id": 7,
+    "id": "RECIPE_COLLECTION_DRAGON_SLEEP_INCENSE",
     "name": "Slumber Incense",
     "recipeIds": [
-      79
+      "RECIPE_DRAGON_SLEEP_INCENSE"
     ],
     "teacherId": null,
     "friendship": null,
@@ -77,804 +77,804 @@
     "researchId": null
   },
   {
-    "id": 8,
+    "id": "RECIPE_COLLECTION_SPRUCE",
     "name": "Spruce",
     "recipeIds": [
-      220
+      "RECIPE_SPRUCE"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 2
+    "researchId": "STDY_RES_001"
   },
   {
-    "id": 9,
+    "id": "RECIPE_COLLECTION_COMPRESSION_LUBMER",
     "name": "Dense Wood",
     "recipeIds": [
-      221
+      "RECIPE_COMPRESSION_LUBMER"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 3
+    "researchId": "STDY_RES_002"
   },
   {
-    "id": 10,
+    "id": "RECIPE_COLLECTION_LIQUID_METAL",
     "name": "Liquid Metal",
     "recipeIds": [
-      223
+      "RECIPE_LIQUID_METAL"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 9
+    "researchId": "STDY_RES_008"
   },
   {
-    "id": 11,
+    "id": "RECIPE_COLLECTION_ULTIMATE_STEEL_MATERIAL",
     "name": "Ultimate Steel",
     "recipeIds": [
-      224
+      "RECIPE_ULTIMATE_STEEL_MATERIAL"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 18
+    "researchId": "STDY_RES_017"
   },
   {
-    "id": 12,
+    "id": "RECIPE_COLLECTION_COLORFUL_BRICK",
     "name": "Colorful Brick",
     "recipeIds": [
-      226
+      "RECIPE_COLORFUL_BRICK"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 27
+    "researchId": "STDY_RES_026"
   },
   {
-    "id": 13,
+    "id": "RECIPE_COLLECTION_MAGICAL_STONE",
     "name": "Magic Stone",
     "recipeIds": [
-      227
+      "RECIPE_MAGICAL_STONE"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 10
+    "researchId": "STDY_RES_009"
   },
   {
-    "id": 14,
+    "id": "RECIPE_COLLECTION_HEAT_RESIST_ALCHEMY_BOARD",
     "name": "Fireproof Plate",
     "recipeIds": [
-      228
+      "RECIPE_HEAT_RESIST_ALCHEMY_BOARD"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 14
+    "researchId": "STDY_RES_013"
   },
   {
-    "id": 15,
+    "id": "RECIPE_COLLECTION_ALCHEMY_EQUIPMENT",
     "name": "Synthesis Piece",
     "recipeIds": [
-      229
+      "RECIPE_ALCHEMY_EQUIPMENT"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 7
+    "researchId": "STDY_RES_006"
   },
   {
-    "id": 16,
+    "id": "RECIPE_COLLECTION_ICEHOUSE_BOX",
     "name": "Ice Box",
     "recipeIds": [
-      231
+      "RECIPE_ICEHOUSE_BOX"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 8
+    "researchId": "STDY_RES_007"
   },
   {
-    "id": 17,
+    "id": "RECIPE_COLLECTION_CONCENTRATED_NUTRITION_SOIL",
     "name": "Fertilizer",
     "recipeIds": [
-      232
+      "RECIPE_CONCENTRATED_NUTRITION_SOIL"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 29
+    "researchId": "STDY_RES_028"
   },
   {
-    "id": 18,
+    "id": "RECIPE_COLLECTION_HIGH_PRECISION_BLOCK",
     "name": "Precision Block",
     "recipeIds": [
-      240
+      "RECIPE_HIGH_PRECISION_BLOCK"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 28
+    "researchId": "STDY_RES_027"
   },
   {
-    "id": 19,
+    "id": "RECIPE_COLLECTION_AURORA_CRYSTAL",
     "name": "Aurora Crystal",
     "recipeIds": [
-      241
+      "RECIPE_AURORA_CRYSTAL"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 24
+    "researchId": "STDY_RES_023"
   },
   {
-    "id": 20,
+    "id": "RECIPE_COLLECTION_FLOUR",
     "name": "Wheat Flour",
     "recipeIds": [
-      20
+      "RECIPE_FLOUR"
     ],
-    "teacherId": 5,
+    "teacherId": "CHARACTER_MARIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 21,
+    "id": "RECIPE_COLLECTION_SIMPLE_BAKED_SWEETS",
     "name": "Simple Sweets",
     "recipeIds": [
-      100
+      "RECIPE_SIMPLE_BAKED_SWEETS"
     ],
-    "teacherId": 5,
+    "teacherId": "CHARACTER_MARIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 22,
+    "id": "RECIPE_COLLECTION_FLAMME",
     "name": "Bomb",
     "recipeIds": [
-      45
+      "RECIPE_FLAMME"
     ],
-    "teacherId": 5,
+    "teacherId": "CHARACTER_MARIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 23,
+    "id": "RECIPE_COLLECTION_NEUTRALIZER_RED",
     "name": "Neutralizer-R",
     "recipeIds": [
-      2
+      "RECIPE_NEUTRALIZER_RED"
     ],
-    "teacherId": 5,
+    "teacherId": "CHARACTER_MARIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 24,
+    "id": "RECIPE_COLLECTION_TIMBER",
     "name": "Timber",
     "recipeIds": [
-      219
+      "RECIPE_TIMBER"
     ],
-    "teacherId": 6,
+    "teacherId": "CHARACTER_ELIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 25,
+    "id": "RECIPE_COLLECTION_BEER",
     "name": "Beer",
     "recipeIds": [
-      96
+      "RECIPE_BEER"
     ],
-    "teacherId": 5,
+    "teacherId": "CHARACTER_MARIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 26,
+    "id": "RECIPE_COLLECTION_TRADITIONAL_WHITE_BREAD",
     "name": "Traditional Bread",
     "recipeIds": [
-      90
+      "RECIPE_TRADITIONAL_WHITE_BREAD"
     ],
-    "teacherId": 6,
+    "teacherId": "CHARACTER_ELIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 27,
+    "id": "RECIPE_COLLECTION_PUNI_JELLY",
     "name": "Puni Jelly",
     "recipeIds": [
-      102
+      "RECIPE_PUNI_JELLY"
     ],
-    "teacherId": 6,
+    "teacherId": "CHARACTER_ELIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 28,
+    "id": "RECIPE_COLLECTION_INSECT_NET",
     "name": "Butterfly Net",
     "recipeIds": [
-      72
+      "RECIPE_INSECT_NET"
     ],
-    "teacherId": 6,
+    "teacherId": "CHARACTER_ELIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 29,
+    "id": "RECIPE_COLLECTION_DISTILLED_WATER",
     "name": "Distilled Water",
     "recipeIds": [
-      18
+      "RECIPE_DISTILLED_WATER"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 30,
+    "id": "RECIPE_COLLECTION_DISTORTED_STONE",
     "name": "Distorted Stone",
     "recipeIds": [
-      225
+      "RECIPE_DISTORTED_STONE"
     ],
-    "teacherId": 6,
+    "teacherId": "CHARACTER_ELIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 31,
+    "id": "RECIPE_COLLECTION_BLESSING_WINE",
     "name": "Blessed Wine",
     "recipeIds": [
-      97
+      "RECIPE_BLESSING_WINE"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 32,
+    "id": "RECIPE_COLLECTION_HEALING_AROMA",
     "name": "Healing Aroma",
     "recipeIds": [
-      124
+      "RECIPE_HEALING_AROMA"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 33,
+    "id": "RECIPE_COLLECTION_PURE_INCENSE_BURNER",
     "name": "Pure Incense",
     "recipeIds": [
-      117
+      "RECIPE_PURE_INCENSE_BURNER"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 34,
+    "id": "RECIPE_COLLECTION_MAGICAL_PAINT",
     "name": "Magical Paint",
     "recipeIds": [
-      125
+      "RECIPE_MAGICAL_PAINT"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 35,
+    "id": "RECIPE_COLLECTION_HEALING_SALVE",
     "name": "Healing Salve",
     "recipeIds": [
-      52
+      "RECIPE_HEALING_SALVE"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 36,
+    "id": "RECIPE_COLLECTION_SHOVEL",
     "name": "Shovel",
     "recipeIds": [
-      73
+      "RECIPE_SHOVEL"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 37,
+    "id": "RECIPE_COLLECTION_INGOT",
     "name": "Ingot",
     "recipeIds": [
-      5
+      "RECIPE_INGOT"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 38,
+    "id": "RECIPE_COLLECTION_NEUTRALIZER_GREEN",
     "name": "Neutralizer-G",
     "recipeIds": [
-      3
+      "RECIPE_NEUTRALIZER_GREEN"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 39,
+    "id": "RECIPE_COLLECTION_FLUFFY_SOIL",
     "name": "Rich Soil",
     "recipeIds": [
-      237
+      "RECIPE_FLUFFY_SOIL"
     ],
     "teacherId": null,
     "friendship": null,
     "unlockEvent": null,
-    "researchId": 23
+    "researchId": "STDY_RES_022"
   },
   {
-    "id": 40,
+    "id": "RECIPE_COLLECTION_APPLE_TART",
     "name": "Apple Tart",
     "recipeIds": [
-      94
+      "RECIPE_APPLE_TART"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 41,
+    "id": "RECIPE_COLLECTION_ABRASIVE",
     "name": "Polishing Powder",
     "recipeIds": [
-      14
+      "RECIPE_ABRASIVE"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 42,
+    "id": "RECIPE_COLLECTION_ZETTEL",
     "name": "Zettel",
     "recipeIds": [
-      17
+      "RECIPE_ZETTEL"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 43,
+    "id": "RECIPE_COLLECTION_POLISHED_CRYSTAL",
     "name": "Polished Crystal",
     "recipeIds": [
-      30
+      "RECIPE_POLISHED_CRYSTAL"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 44,
+    "id": "RECIPE_COLLECTION_LACHELN",
     "name": "Ice Bomb",
     "recipeIds": [
-      46
+      "RECIPE_LACHELN"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 45,
+    "id": "RECIPE_COLLECTION_FRUIT_TEA",
     "name": "Fruit Tea",
     "recipeIds": [
-      53
+      "RECIPE_FRUIT_TEA"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 3,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 46,
+    "id": "RECIPE_COLLECTION_NEUTRALIZER_BLUE",
     "name": "Neutralizer-B",
     "recipeIds": [
-      1
+      "RECIPE_NEUTRALIZER_BLUE"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 47,
+    "id": "RECIPE_COLLECTION_CLOTH",
     "name": "Cloth",
     "recipeIds": [
-      9
+      "RECIPE_CLOTH"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 48,
+    "id": "RECIPE_COLLECTION_PURE_OIL",
     "name": "Pure Oil",
     "recipeIds": [
-      19
+      "RECIPE_PURE_OIL"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 49,
+    "id": "RECIPE_COLLECTION_CRYSTAL_BALL",
     "name": "Crystal Ball",
     "recipeIds": [
-      122
+      "RECIPE_CRYSTAL_BALL"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 50,
+    "id": "RECIPE_COLLECTION_DONNER_STONE",
     "name": "Lightning Bomb",
     "recipeIds": [
-      47
+      "RECIPE_DONNER_STONE"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 51,
+    "id": "RECIPE_COLLECTION_NECTAR",
     "name": "Nectar",
     "recipeIds": [
-      54
+      "RECIPE_NECTAR"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 52,
+    "id": "RECIPE_COLLECTION_NEUTRALIZER_YELLOW",
     "name": "Neutralizer-Y",
     "recipeIds": [
-      4
+      "RECIPE_NEUTRALIZER_YELLOW"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 53,
+    "id": "RECIPE_COLLECTION_ALCHEMIC_CLAY",
     "name": "Alchemic Clay",
     "recipeIds": [
-      16
+      "RECIPE_ALCHEMIC_CLAY"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 54,
+    "id": "RECIPE_COLLECTION_ALCHEMIC_CHARCOAL",
     "name": "Alchemy Coal",
     "recipeIds": [
-      34
+      "RECIPE_ALCHEMIC_CHARCOAL"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 55,
+    "id": "RECIPE_COLLECTION_IRON_BOARD",
     "name": "Iron Board",
     "recipeIds": [
-      222
+      "RECIPE_IRON_BOARD"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 56,
+    "id": "RECIPE_COLLECTION_HONEY",
     "name": "Honey",
     "recipeIds": [
-      31
+      "RECIPE_HONEY"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 57,
+    "id": "RECIPE_COLLECTION_AWAKENING_POCKET_WATCH",
     "name": "Pocket Watch",
     "recipeIds": [
-      118
+      "RECIPE_AWAKENING_POCKET_WATCH"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 58,
+    "id": "RECIPE_COLLECTION_GLOBE",
     "name": "Globe",
     "recipeIds": [
-      48
+      "RECIPE_GLOBE"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 59,
+    "id": "RECIPE_COLLECTION_SOFT_WIND_AROMA",
     "name": "Breezy Aroma",
     "recipeIds": [
-      55
+      "RECIPE_SOFT_WIND_AROMA"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 60,
+    "id": "RECIPE_COLLECTION_DIAMOND",
     "name": "Diamond",
     "recipeIds": [
-      15
+      "RECIPE_DIAMOND"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 61,
+    "id": "RECIPE_COLLECTION_COMET",
     "name": "Comet",
     "recipeIds": [
-      13
+      "RECIPE_COMET"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 62,
+    "id": "RECIPE_COLLECTION_SUPER_HARD_ALLOY",
     "name": "Tough Alloy",
     "recipeIds": [
-      239
+      "RECIPE_SUPER_HARD_ALLOY"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 63,
+    "id": "RECIPE_COLLECTION_ALCHEMY_DROP",
     "name": "Alchemy Drops",
     "recipeIds": [
-      101
+      "RECIPE_ALCHEMY_DROP"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 64,
+    "id": "RECIPE_COLLECTION_DISCHARGE_TUBE",
     "name": "Discharge Tube",
     "recipeIds": [
-      126
+      "RECIPE_DISCHARGE_TUBE"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 65,
+    "id": "RECIPE_COLLECTION_MAIDEN_SPEAR",
     "name": "Maiden's Spear",
     "recipeIds": [
-      146
+      "RECIPE_MAIDEN_SPEAR"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 66,
+    "id": "RECIPE_COLLECTION_BATTLE_MAIL",
     "name": "Battle Mail",
     "recipeIds": [
-      152
+      "RECIPE_BATTLE_MAIL"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 67,
+    "id": "RECIPE_COLLECTION_SINGLE_SCAT",
     "name": "Scattershot",
     "recipeIds": [
-      142
+      "RECIPE_SINGLE_SCAT"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 3,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 68,
+    "id": "RECIPE_COLLECTION_KRAFT",
     "name": "Craft",
     "recipeIds": [
-      49
+      "RECIPE_KRAFT"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 69,
+    "id": "RECIPE_COLLECTION_VEGETABLE_MANJU",
     "name": "Veggie Bun",
     "recipeIds": [
-      92
+      "RECIPE_VEGETABLE_MANJU"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 70,
+    "id": "RECIPE_COLLECTION_MUSIC_BOX",
     "name": "Music Box",
     "recipeIds": [
-      123
+      "RECIPE_MUSIC_BOX"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 71,
+    "id": "RECIPE_COLLECTION_ARMORED_BUNKER",
     "name": "Armored Bunker",
     "recipeIds": [
-      148
+      "RECIPE_ARMORED_BUNKER"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 72,
+    "id": "RECIPE_COLLECTION_CRYSTAL_FANG",
     "name": "Crystal Fang",
     "recipeIds": [
-      145
+      "RECIPE_CRYSTAL_FANG"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 73,
+    "id": "RECIPE_COLLECTION_RECLAMATION_CONVENIENCE_TOOL",
     "name": "Reclamation Tool",
     "recipeIds": [
-      74
+      "RECIPE_RECLAMATION_CONVENIENCE_TOOL"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 74,
+    "id": "RECIPE_COLLECTION_METEOR",
     "name": "Meteor",
     "recipeIds": [
-      50
+      "RECIPE_METEOR"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 3,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 75,
+    "id": "RECIPE_COLLECTION_HAY_FORK",
     "name": "Pitchfork",
     "recipeIds": [
-      233
+      "RECIPE_HAY_FORK"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 76,
+    "id": "RECIPE_COLLECTION_SPECIAL_PANCAKE",
     "name": "Deluxe Pancakes",
     "recipeIds": [
-      99
+      "RECIPE_SPECIAL_PANCAKE"
     ],
-    "teacherId": 16,
+    "teacherId": "CHARACTER_VAIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 77,
+    "id": "RECIPE_COLLECTION_ETHER_INK",
     "name": "Ether Ink",
     "recipeIds": [
-      116
+      "RECIPE_ETHER_INK"
     ],
-    "teacherId": 16,
+    "teacherId": "CHARACTER_VAIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 78,
+    "id": "RECIPE_COLLECTION_MAIDEN_ARMOR",
     "name": "Maiden Armor",
     "recipeIds": [
-      156
+      "RECIPE_MAIDEN_ARMOR"
     ],
-    "teacherId": 16,
+    "teacherId": "CHARACTER_VAIN",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 79,
+    "id": "RECIPE_COLLECTION_SHOOTING_STAR",
     "name": "Shooting Star",
     "recipeIds": [
-      150
+      "RECIPE_SHOOTING_STAR"
     ],
-    "teacherId": 16,
+    "teacherId": "CHARACTER_VAIN",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 80,
+    "id": "RECIPE_COLLECTION_DARKNESS_WATER",
     "name": "Dark Water",
     "recipeIds": [
-      57
+      "RECIPE_DARKNESS_WATER"
     ],
-    "teacherId": 16,
+    "teacherId": "CHARACTER_VAIN",
     "friendship": 4,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -883,265 +883,265 @@
     "researchId": null
   },
   {
-    "id": 81,
+    "id": "RECIPE_COLLECTION_SPIRIT_WEAVE_CURTAIN",
     "name": "Spirit Weave",
     "recipeIds": [
-      58
+      "RECIPE_SPIRIT_WEAVE_CURTAIN"
     ],
-    "teacherId": 16,
+    "teacherId": "CHARACTER_VAIN",
     "friendship": 3,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 82,
+    "id": "RECIPE_COLLECTION_TEDDY_BEAR",
     "name": "Bear Doll",
     "recipeIds": [
-      129
+      "RECIPE_TEDDY_BEAR"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 83,
+    "id": "RECIPE_COLLECTION_BLOODY_CLAW",
     "name": "Bloody Claw",
     "recipeIds": [
-      149
+      "RECIPE_BLOODY_CLAW"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 84,
+    "id": "RECIPE_COLLECTION_DRAGOON_MAIL",
     "name": "Dragoon Mail",
     "recipeIds": [
-      155
+      "RECIPE_DRAGOON_MAIL"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 85,
+    "id": "RECIPE_COLLECTION_UNIVERSE_MANUSCRIPT",
     "name": "Codex of Creation",
     "recipeIds": [
-      59
+      "RECIPE_UNIVERSE_MANUSCRIPT"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 3,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 86,
+    "id": "RECIPE_COLLECTION_BLITZ_CORE_",
     "name": "Blitz Core: Void",
     "recipeIds": [
-      51
+      "RECIPE_BLITZ_CORE_"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 5,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 87,
+    "id": "RECIPE_COLLECTION_RUBY",
     "name": "Ruby",
     "recipeIds": [
-      24
+      "RECIPE_RUBY"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 88,
+    "id": "RECIPE_COLLECTION_RAINBOW_PAINT",
     "name": "Rainbow Paint",
     "recipeIds": [
-      242
+      "RECIPE_RAINBOW_PAINT"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 89,
+    "id": "RECIPE_COLLECTION_JIGGLY_PUDDING",
     "name": "Jiggly Pudding",
     "recipeIds": [
-      98
+      "RECIPE_JIGGLY_PUDDING"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 90,
+    "id": "RECIPE_COLLECTION_GENUG_WATERING_POT",
     "name": "Genug Water Pot",
     "recipeIds": [
-      119
+      "RECIPE_GENUG_WATERING_POT"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 91,
+    "id": "RECIPE_COLLECTION_CLAIOMH_SOLAIS",
     "name": "Claiomh Solais",
     "recipeIds": [
-      143
+      "RECIPE_CLAIOMH_SOLAIS"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 92,
+    "id": "RECIPE_COLLECTION_CLOTH_SKIRT",
     "name": "Cloth Skirt",
     "recipeIds": [
-      193
+      "RECIPE_CLOTH_SKIRT"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 93,
+    "id": "RECIPE_COLLECTION_LEATHER_COAT",
     "name": "Leather Coat",
     "recipeIds": [
-      195
+      "RECIPE_LEATHER_COAT"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 94,
+    "id": "RECIPE_COLLECTION_FADEN_COAT",
     "name": "Farden Coat",
     "recipeIds": [
-      196
+      "RECIPE_FADEN_COAT"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 3,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 95,
+    "id": "RECIPE_COLLECTION_ELIXIR",
     "name": "Elixir",
     "recipeIds": [
-      56
+      "RECIPE_ELIXIR"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 96,
+    "id": "RECIPE_COLLECTION_WATER_PUMP",
     "name": "Water Pump",
     "recipeIds": [
-      238
+      "RECIPE_WATER_PUMP"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 97,
+    "id": "RECIPE_COLLECTION_PRIMITIVE_POWER_MEAT",
     "name": "Strength Meat",
     "recipeIds": [
-      104
+      "RECIPE_PRIMITIVE_POWER_MEAT"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 98,
+    "id": "RECIPE_COLLECTION_GRAMOPHONE",
     "name": "Gramophone",
     "recipeIds": [
-      128
+      "RECIPE_GRAMOPHONE"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 99,
+    "id": "RECIPE_COLLECTION_VALKYRIA_SUIT",
     "name": "Valkyrie Cloth",
     "recipeIds": [
-      157
+      "RECIPE_VALKYRIA_SUIT"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 100,
+    "id": "RECIPE_COLLECTION_DURABLE_SHIRT",
     "name": "Sturdy Shirt",
     "recipeIds": [
-      198
+      "RECIPE_DURABLE_SHIRT"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 101,
+    "id": "RECIPE_COLLECTION_HIDE_HOOD",
     "name": "Concealing Skin",
     "recipeIds": [
-      197
+      "RECIPE_HIDE_HOOD"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 102,
+    "id": "RECIPE_COLLECTION_NIGHT_SHADE",
     "name": "Nightshade",
     "recipeIds": [
-      201
+      "RECIPE_NIGHT_SHADE"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 3,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 103,
+    "id": "RECIPE_COLLECTION_STYLISH_SHIRT",
     "name": "Stylish Shirt",
     "recipeIds": [
-      199
+      "RECIPE_STYLISH_SHIRT"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 3,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 104,
+    "id": "RECIPE_COLLECTION_DRAGON_NOSTRUM",
     "name": "Dragon's Secret",
     "recipeIds": [
-      60
+      "RECIPE_DRAGON_NOSTRUM"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 3,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1150,111 +1150,111 @@
     "researchId": null
   },
   {
-    "id": 105,
+    "id": "RECIPE_COLLECTION_FLUGEL",
     "name": "Flugel",
     "recipeIds": [
-      11
+      "RECIPE_FLUGEL"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 106,
+    "id": "RECIPE_COLLECTION_DISPLAY_CABINET",
     "name": "Store Shelf",
     "recipeIds": [
-      235
+      "RECIPE_DISPLAY_CABINET"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 107,
+    "id": "RECIPE_COLLECTION_STAMINA_BREAD",
     "name": "Stamina Bread",
     "recipeIds": [
-      91
+      "RECIPE_STAMINA_BREAD"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 108,
+    "id": "RECIPE_COLLECTION_BLACK_WHITE_TAROT",
     "name": "B/W Tarot",
     "recipeIds": [
-      131
+      "RECIPE_BLACK_WHITE_TAROT"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 109,
+    "id": "RECIPE_COLLECTION_METEORITIC_IRON_ARMOR",
     "name": "Meteorite Armor",
     "recipeIds": [
-      153
+      "RECIPE_METEORITIC_IRON_ARMOR"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 110,
+    "id": "RECIPE_COLLECTION_GORGEOUS_SHEER_SILK",
     "name": "Gorgeous Dress",
     "recipeIds": [
-      194
+      "RECIPE_GORGEOUS_SHEER_SILK"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 111,
+    "id": "RECIPE_COLLECTION_GRANAT",
     "name": "Granate",
     "recipeIds": [
-      208
+      "RECIPE_GRANAT"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 2,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 112,
+    "id": "RECIPE_COLLECTION_GOLD_EISEN",
     "name": "Gold Eisen",
     "recipeIds": [
-      7
+      "RECIPE_GOLD_EISEN"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 113,
+    "id": "RECIPE_COLLECTION_IRON_WOOD",
     "name": "Petrified Wood",
     "recipeIds": [
-      236
+      "RECIPE_IRON_WOOD"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 0,
     "unlockEvent": null,
     "researchId": null
   },
   {
-    "id": 114,
+    "id": "RECIPE_COLLECTION_LIVING_PIE",
     "name": "Living Pie",
     "recipeIds": [
-      95
+      "RECIPE_LIVING_PIE"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 3,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1263,12 +1263,12 @@
     "researchId": null
   },
   {
-    "id": 115,
+    "id": "RECIPE_COLLECTION_SPECULATOR_DICE",
     "name": "Speculator Dice",
     "recipeIds": [
-      121
+      "RECIPE_SPECULATOR_DICE"
     ],
-    "teacherId": 5,
+    "teacherId": "CHARACTER_MARIE",
     "friendship": 4,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1277,12 +1277,12 @@
     "researchId": null
   },
   {
-    "id": 116,
+    "id": "RECIPE_COLLECTION_STROHM_DRILL",
     "name": "Storm Drill",
     "recipeIds": [
-      144
+      "RECIPE_STROHM_DRILL"
     ],
-    "teacherId": 6,
+    "teacherId": "CHARACTER_ELIE",
     "friendship": 4,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1291,12 +1291,12 @@
     "researchId": null
   },
   {
-    "id": 117,
+    "id": "RECIPE_COLLECTION_NICE_WIG",
     "name": "Fantastic Wig",
     "recipeIds": [
-      202
+      "RECIPE_NICE_WIG"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 4,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1305,12 +1305,12 @@
     "researchId": null
   },
   {
-    "id": 118,
+    "id": "RECIPE_COLLECTION_BRIDE_BLOUSE",
     "name": "Bridal Blouse",
     "recipeIds": [
-      200
+      "RECIPE_BRIDE_BLOUSE"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 4,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1319,12 +1319,12 @@
     "researchId": null
   },
   {
-    "id": 119,
+    "id": "RECIPE_COLLECTION_SMARAGD",
     "name": "Smaragd",
     "recipeIds": [
-      26
+      "RECIPE_SMARAGD"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1333,12 +1333,12 @@
     "researchId": null
   },
   {
-    "id": 120,
+    "id": "RECIPE_COLLECTION_FISHING_ROD",
     "name": "Fishing Pole",
     "recipeIds": [
-      71
+      "RECIPE_FISHING_ROD"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 4,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1347,12 +1347,12 @@
     "researchId": null
   },
   {
-    "id": 121,
+    "id": "RECIPE_COLLECTION_HARMONIUM",
     "name": "Harmonium",
     "recipeIds": [
-      8
+      "RECIPE_HARMONIUM"
     ],
-    "teacherId": 29,
+    "teacherId": "CHARACTER_FIRIS",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1361,12 +1361,12 @@
     "researchId": null
   },
   {
-    "id": 122,
+    "id": "RECIPE_COLLECTION_SAPPHIRE",
     "name": "Sapphire",
     "recipeIds": [
-      25
+      "RECIPE_SAPPHIRE"
     ],
-    "teacherId": 30,
+    "teacherId": "CHARACTER_LYDIE",
     "friendship": 4,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1375,12 +1375,12 @@
     "researchId": null
   },
   {
-    "id": 123,
+    "id": "RECIPE_COLLECTION_CLOTH_MANNEQUIN",
     "name": "Display Mannequin",
     "recipeIds": [
-      234
+      "RECIPE_CLOTH_MANNEQUIN"
     ],
-    "teacherId": 31,
+    "teacherId": "CHARACTER_SUE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_060",
@@ -1389,12 +1389,12 @@
     "researchId": null
   },
   {
-    "id": 124,
+    "id": "RECIPE_COLLECTION_FULL_AUTOMATIC_MUSHROOM_HOTPOT",
     "name": "Mushroom Stew",
     "recipeIds": [
-      103
+      "RECIPE_FULL_AUTOMATIC_MUSHROOM_HOTPOT"
     ],
-    "teacherId": 5,
+    "teacherId": "CHARACTER_MARIE",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1403,12 +1403,12 @@
     "researchId": null
   },
   {
-    "id": 125,
+    "id": "RECIPE_COLLECTION_HOLY_CRYSTAL_WEIGHT",
     "name": "Crystal Weight",
     "recipeIds": [
-      130
+      "RECIPE_HOLY_CRYSTAL_WEIGHT"
     ],
-    "teacherId": 6,
+    "teacherId": "CHARACTER_ELIE",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1417,12 +1417,12 @@
     "researchId": null
   },
   {
-    "id": 126,
+    "id": "RECIPE_COLLECTION_HEAVEN_AND_EARTH_COLLAPSE_AX",
     "name": "World Splitter",
     "recipeIds": [
-      147
+      "RECIPE_HEAVEN_AND_EARTH_COLLAPSE_AX"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1431,12 +1431,12 @@
     "researchId": null
   },
   {
-    "id": 127,
+    "id": "RECIPE_COLLECTION_GNADE_RING",
     "name": "Gnade Ring",
     "recipeIds": [
-      23
+      "RECIPE_GNADE_RING"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1445,12 +1445,12 @@
     "researchId": null
   },
   {
-    "id": 128,
+    "id": "RECIPE_COLLECTION_MYTHICAL_RING",
     "name": "Mythical Ring",
     "recipeIds": [
-      206
+      "RECIPE_MYTHICAL_RING"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1459,12 +1459,12 @@
     "researchId": null
   },
   {
-    "id": 129,
+    "id": "RECIPE_COLLECTION_REFUEL_PAD",
     "name": "Refuel Pads",
     "recipeIds": [
-      181
+      "RECIPE_REFUEL_PAD"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1473,12 +1473,12 @@
     "researchId": null
   },
   {
-    "id": 130,
+    "id": "RECIPE_COLLECTION_REFRESH_MEDICINE",
     "name": "Refresh Medicine",
     "recipeIds": [
-      171
+      "RECIPE_REFRESH_MEDICINE"
     ],
-    "teacherId": 29,
+    "teacherId": "CHARACTER_FIRIS",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1487,12 +1487,12 @@
     "researchId": null
   },
   {
-    "id": 131,
+    "id": "RECIPE_COLLECTION_COUGH_DROP",
     "name": "Cough Drop",
     "recipeIds": [
-      168
+      "RECIPE_COUGH_DROP"
     ],
-    "teacherId": 30,
+    "teacherId": "CHARACTER_LYDIE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1501,12 +1501,12 @@
     "researchId": null
   },
   {
-    "id": 132,
+    "id": "RECIPE_COLLECTION_SPECULATOR_MEDICINE",
     "name": "Berg Medicine",
     "recipeIds": [
-      173
+      "RECIPE_SPECULATOR_MEDICINE"
     ],
-    "teacherId": 31,
+    "teacherId": "CHARACTER_SUE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1515,12 +1515,12 @@
     "researchId": null
   },
   {
-    "id": 133,
+    "id": "RECIPE_COLLECTION_MEDICATED_HERB_TEA",
     "name": "Medical Herb Tea",
     "recipeIds": [
-      169
+      "RECIPE_MEDICATED_HERB_TEA"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1529,12 +1529,12 @@
     "researchId": null
   },
   {
-    "id": 134,
+    "id": "RECIPE_COLLECTION_VELVETIS",
     "name": "Velvetis",
     "recipeIds": [
-      12
+      "RECIPE_VELVETIS"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1543,12 +1543,12 @@
     "researchId": null
   },
   {
-    "id": 135,
+    "id": "RECIPE_COLLECTION_MEDICINE_BASE",
     "name": "Medicine Base",
     "recipeIds": [
-      32
+      "RECIPE_MEDICINE_BASE"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1557,12 +1557,12 @@
     "researchId": null
   },
   {
-    "id": 136,
+    "id": "RECIPE_COLLECTION_PURE_POISON",
     "name": "Pure Poison",
     "recipeIds": [
-      21
+      "RECIPE_PURE_POISON"
     ],
-    "teacherId": 16,
+    "teacherId": "CHARACTER_VAIN",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_070",
@@ -1571,12 +1571,12 @@
     "researchId": null
   },
   {
-    "id": 137,
+    "id": "RECIPE_COLLECTION_WORLD_APPLE_STORY",
     "name": "Apple Story",
     "recipeIds": [
-      105
+      "RECIPE_WORLD_APPLE_STORY"
     ],
-    "teacherId": 24,
+    "teacherId": "CHARACTER_ESCHA",
     "friendship": 4,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1585,12 +1585,12 @@
     "researchId": null
   },
   {
-    "id": 138,
+    "id": "RECIPE_COLLECTION_MIRAGE_MIRROR",
     "name": "Mirage Mirror",
     "recipeIds": [
-      120
+      "RECIPE_MIRAGE_MIRROR"
     ],
-    "teacherId": 16,
+    "teacherId": "CHARACTER_VAIN",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1599,12 +1599,12 @@
     "researchId": null
   },
   {
-    "id": 139,
+    "id": "RECIPE_COLLECTION_ALCHEMY_MAIL",
     "name": "Alchemic Mail",
     "recipeIds": [
-      154
+      "RECIPE_ALCHEMY_MAIL"
     ],
-    "teacherId": 21,
+    "teacherId": "CHARACTER_TOTORI",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1613,12 +1613,12 @@
     "researchId": null
   },
   {
-    "id": 140,
+    "id": "RECIPE_COLLECTION_HOLLOW_RING",
     "name": "Hollow Ring",
     "recipeIds": [
-      22
+      "RECIPE_HOLLOW_RING"
     ],
-    "teacherId": 22,
+    "teacherId": "CHARACTER_MERURU",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1627,12 +1627,12 @@
     "researchId": null
   },
   {
-    "id": 141,
+    "id": "RECIPE_COLLECTION_GLASS_TIARA",
     "name": "Glass Tiara",
     "recipeIds": [
-      203
+      "RECIPE_GLASS_TIARA"
     ],
-    "teacherId": 23,
+    "teacherId": "CHARACTER_AYESHA",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1641,12 +1641,12 @@
     "researchId": null
   },
   {
-    "id": 142,
+    "id": "RECIPE_COLLECTION_SPIRIT_EARRINGS",
     "name": "Spirit Earrings",
     "recipeIds": [
-      204
+      "RECIPE_SPIRIT_EARRINGS"
     ],
-    "teacherId": 20,
+    "teacherId": "CHARACTER_RORONA",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1655,12 +1655,12 @@
     "researchId": null
   },
   {
-    "id": 143,
+    "id": "RECIPE_COLLECTION_ROBRANT",
     "name": "Vitality Pill",
     "recipeIds": [
-      177
+      "RECIPE_ROBRANT"
     ],
-    "teacherId": 24,
+    "teacherId": "CHARACTER_ESCHA",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1669,12 +1669,12 @@
     "researchId": null
   },
   {
-    "id": 144,
+    "id": "RECIPE_COLLECTION_PAINKILLER_BAND",
     "name": "Heal Bandage",
     "recipeIds": [
-      180
+      "RECIPE_PAINKILLER_BAND"
     ],
-    "teacherId": 26,
+    "teacherId": "CHARACTER_STERA",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1683,12 +1683,12 @@
     "researchId": null
   },
   {
-    "id": 145,
+    "id": "RECIPE_COLLECTION_TEETHING_FEVER_SYRUP",
     "name": "Migraine Syrup",
     "recipeIds": [
-      172
+      "RECIPE_TEETHING_FEVER_SYRUP"
     ],
-    "teacherId": 27,
+    "teacherId": "CHARACTER_LOTTE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1697,12 +1697,12 @@
     "researchId": null
   },
   {
-    "id": 146,
+    "id": "RECIPE_COLLECTION_EPIPHANY_EYE_DROPS",
     "name": "Eye-Opener",
     "recipeIds": [
-      170
+      "RECIPE_EPIPHANY_EYE_DROPS"
     ],
-    "teacherId": 17,
+    "teacherId": "CHARACTER_ROZE",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1711,12 +1711,12 @@
     "researchId": null
   },
   {
-    "id": 147,
+    "id": "RECIPE_COLLECTION_WITCHS_BREW",
     "name": "Witch Salve",
     "recipeIds": [
-      174
+      "RECIPE_WITCHS_BREW"
     ],
-    "teacherId": 18,
+    "teacherId": "CHARACTER_ULRIKA",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1725,12 +1725,12 @@
     "researchId": null
   },
   {
-    "id": 148,
+    "id": "RECIPE_COLLECTION_ORIGIN_ASH",
     "name": "Ashes of Origin",
     "recipeIds": [
-      29
+      "RECIPE_ORIGIN_ASH"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1739,12 +1739,12 @@
     "researchId": null
   },
   {
-    "id": 149,
+    "id": "RECIPE_COLLECTION_CRIMSON_STONE",
     "name": "Crimson Stone",
     "recipeIds": [
-      28
+      "RECIPE_CRIMSON_STONE"
     ],
-    "teacherId": 15,
+    "teacherId": "CHARACTER_IRIS",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1753,12 +1753,12 @@
     "researchId": null
   },
   {
-    "id": 150,
+    "id": "RECIPE_COLLECTION_PRECISION_EQUIPMENT_SET",
     "name": "Instrument Set",
     "recipeIds": [
-      230
+      "RECIPE_PRECISION_EQUIPMENT_SET"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_080",
@@ -1767,12 +1767,12 @@
     "researchId": null
   },
   {
-    "id": 151,
+    "id": "RECIPE_COLLECTION_GOLDEN_EXTRACT_SOUP",
     "name": "Golden Soup",
     "recipeIds": [
-      93
+      "RECIPE_GOLDEN_EXTRACT_SOUP"
     ],
-    "teacherId": 5,
+    "teacherId": "CHARACTER_MARIE",
     "friendship": 7,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1781,12 +1781,12 @@
     "researchId": null
   },
   {
-    "id": 152,
+    "id": "RECIPE_COLLECTION_GOLDEN_PUNI_STATUE",
     "name": "Gold Puni Statue",
     "recipeIds": [
-      127
+      "RECIPE_GOLDEN_PUNI_STATUE"
     ],
-    "teacherId": 6,
+    "teacherId": "CHARACTER_ELIE",
     "friendship": 7,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1795,12 +1795,12 @@
     "researchId": null
   },
   {
-    "id": 153,
+    "id": "RECIPE_COLLECTION_GUARDIAN_GODDESS_SHIELD",
     "name": "Goddess Shield",
     "recipeIds": [
-      151
+      "RECIPE_GUARDIAN_GODDESS_SHIELD"
     ],
-    "teacherId": 7,
+    "teacherId": "CHARACTER_LILIE",
     "friendship": 7,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1809,12 +1809,12 @@
     "researchId": null
   },
   {
-    "id": 154,
+    "id": "RECIPE_COLLECTION_SUN_FLOWER",
     "name": "Sun Flower",
     "recipeIds": [
-      207
+      "RECIPE_SUN_FLOWER"
     ],
-    "teacherId": 8,
+    "teacherId": "CHARACTER_JUDIE",
     "friendship": 7,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1823,12 +1823,12 @@
     "researchId": null
   },
   {
-    "id": 155,
+    "id": "RECIPE_COLLECTION_AERIS_BROOCH",
     "name": "Ares Brooch",
     "recipeIds": [
-      205
+      "RECIPE_AERIS_BROOCH"
     ],
-    "teacherId": 9,
+    "teacherId": "CHARACTER_VIO",
     "friendship": 7,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1837,12 +1837,12 @@
     "researchId": null
   },
   {
-    "id": 156,
+    "id": "RECIPE_COLLECTION_MIRACLE_DRUG_DRACHEN",
     "name": "Drachen Elixir",
     "recipeIds": [
-      178
+      "RECIPE_MIRACLE_DRUG_DRACHEN"
     ],
-    "teacherId": 28,
+    "teacherId": "CHARACTER_SOPHIE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1851,12 +1851,12 @@
     "researchId": null
   },
   {
-    "id": 157,
+    "id": "RECIPE_COLLECTION_DOCTOR_AWAY",
     "name": "No-Doc",
     "recipeIds": [
-      182
+      "RECIPE_DOCTOR_AWAY"
     ],
-    "teacherId": 29,
+    "teacherId": "CHARACTER_FIRIS",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1865,12 +1865,12 @@
     "researchId": null
   },
   {
-    "id": 158,
+    "id": "RECIPE_COLLECTION_COMMON_COLD_MEDICINE",
     "name": "Cold Medicine",
     "recipeIds": [
-      175
+      "RECIPE_COMMON_COLD_MEDICINE"
     ],
-    "teacherId": 30,
+    "teacherId": "CHARACTER_LYDIE",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1879,12 +1879,12 @@
     "researchId": null
   },
   {
-    "id": 159,
+    "id": "RECIPE_COLLECTION_SACRED_MIRACULOUS_MEDICINE",
     "name": "Mystery Elixir",
     "recipeIds": [
-      179
+      "RECIPE_SACRED_MIRACULOUS_MEDICINE"
     ],
-    "teacherId": 31,
+    "teacherId": "CHARACTER_SUE",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1893,12 +1893,12 @@
     "researchId": null
   },
   {
-    "id": 160,
+    "id": "RECIPE_COLLECTION_FORBIDDEN_CAPSULE",
     "name": "Forbidden Capsule",
     "recipeIds": [
-      176
+      "RECIPE_FORBIDDEN_CAPSULE"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 5,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1907,12 +1907,12 @@
     "researchId": null
   },
   {
-    "id": 161,
+    "id": "RECIPE_COLLECTION_PHILOSOPHERS_STONE",
     "name": "Philosopher's Stone",
     "recipeIds": [
-      27
+      "RECIPE_PHILOSOPHERS_STONE"
     ],
-    "teacherId": 10,
+    "teacherId": "CHARACTER_KREIN",
     "friendship": 0,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1921,12 +1921,12 @@
     "researchId": null
   },
   {
-    "id": 162,
+    "id": "RECIPE_COLLECTION_GOLD_BULLION",
     "name": "Gold Nugget",
     "recipeIds": [
-      33
+      "RECIPE_GOLD_BULLION"
     ],
-    "teacherId": 13,
+    "teacherId": "CHARACTER_VIESE",
     "friendship": 7,
     "unlockEvent": {
       "id": "EVENT_MM01_090",
@@ -1935,7 +1935,7 @@
     "researchId": null
   },
   {
-    "id": 163,
+    "id": "RECIPE_COLLECTION_RESERVE_00",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -1944,7 +1944,7 @@
     "researchId": null
   },
   {
-    "id": 164,
+    "id": "RECIPE_COLLECTION_RESERVE_01",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -1953,7 +1953,7 @@
     "researchId": null
   },
   {
-    "id": 165,
+    "id": "RECIPE_COLLECTION_RESERVE_02",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -1962,7 +1962,7 @@
     "researchId": null
   },
   {
-    "id": 166,
+    "id": "RECIPE_COLLECTION_RESERVE_03",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -1971,7 +1971,7 @@
     "researchId": null
   },
   {
-    "id": 167,
+    "id": "RECIPE_COLLECTION_RESERVE_04",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -1980,7 +1980,7 @@
     "researchId": null
   },
   {
-    "id": 168,
+    "id": "RECIPE_COLLECTION_RESERVE_05",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -1989,7 +1989,7 @@
     "researchId": null
   },
   {
-    "id": 169,
+    "id": "RECIPE_COLLECTION_RESERVE_06",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -1998,7 +1998,7 @@
     "researchId": null
   },
   {
-    "id": 170,
+    "id": "RECIPE_COLLECTION_RESERVE_07",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2007,7 +2007,7 @@
     "researchId": null
   },
   {
-    "id": 171,
+    "id": "RECIPE_COLLECTION_RESERVE_08",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2016,7 +2016,7 @@
     "researchId": null
   },
   {
-    "id": 172,
+    "id": "RECIPE_COLLECTION_RESERVE_09",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2025,7 +2025,7 @@
     "researchId": null
   },
   {
-    "id": 173,
+    "id": "RECIPE_COLLECTION_RESERVE_10",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2034,7 +2034,7 @@
     "researchId": null
   },
   {
-    "id": 174,
+    "id": "RECIPE_COLLECTION_RESERVE_11",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2043,7 +2043,7 @@
     "researchId": null
   },
   {
-    "id": 175,
+    "id": "RECIPE_COLLECTION_RESERVE_12",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2052,7 +2052,7 @@
     "researchId": null
   },
   {
-    "id": 176,
+    "id": "RECIPE_COLLECTION_RESERVE_13",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2061,7 +2061,7 @@
     "researchId": null
   },
   {
-    "id": 177,
+    "id": "RECIPE_COLLECTION_RESERVE_14",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2070,7 +2070,7 @@
     "researchId": null
   },
   {
-    "id": 178,
+    "id": "RECIPE_COLLECTION_RESERVE_15",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2079,7 +2079,7 @@
     "researchId": null
   },
   {
-    "id": 179,
+    "id": "RECIPE_COLLECTION_RESERVE_16",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2088,7 +2088,7 @@
     "researchId": null
   },
   {
-    "id": 180,
+    "id": "RECIPE_COLLECTION_RESERVE_17",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2097,7 +2097,7 @@
     "researchId": null
   },
   {
-    "id": 181,
+    "id": "RECIPE_COLLECTION_RESERVE_18",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2106,7 +2106,7 @@
     "researchId": null
   },
   {
-    "id": 182,
+    "id": "RECIPE_COLLECTION_RESERVE_19",
     "name": null,
     "recipeIds": [],
     "teacherId": null,
@@ -2115,12 +2115,12 @@
     "researchId": null
   },
   {
-    "id": 183,
+    "id": "RECIPE_COLLECTION_ALPHA_EASY",
     "name": null,
     "recipeIds": [
-      268,
-      31,
-      269
+      "RECIPE_007",
+      "RECIPE_HONEY",
+      "RECIPE_008"
     ],
     "teacherId": null,
     "friendship": null,
@@ -2128,12 +2128,12 @@
     "researchId": null
   },
   {
-    "id": 184,
+    "id": "RECIPE_COLLECTION_ALPHA_NORMAL",
     "name": null,
     "recipeIds": [
-      53,
-      181,
-      267
+      "RECIPE_FRUIT_TEA",
+      "RECIPE_REFUEL_PAD",
+      "RECIPE_006"
     ],
     "teacherId": null,
     "friendship": null,
@@ -2141,12 +2141,12 @@
     "researchId": null
   },
   {
-    "id": 185,
+    "id": "RECIPE_COLLECTION_ALPHA_HARD",
     "name": null,
     "recipeIds": [
-      100,
-      18,
-      99
+      "RECIPE_SIMPLE_BAKED_SWEETS",
+      "RECIPE_DISTILLED_WATER",
+      "RECIPE_SPECIAL_PANCAKE"
     ],
     "teacherId": null,
     "friendship": null,
@@ -2154,7 +2154,7 @@
     "researchId": null
   },
   {
-    "id": 186,
+    "id": "RECIPE_COLLECTION_006",
     "name": "Apcol",
     "recipeIds": [],
     "teacherId": null,
@@ -2163,7 +2163,7 @@
     "researchId": null
   },
   {
-    "id": 187,
+    "id": "RECIPE_COLLECTION_007",
     "name": "Flour",
     "recipeIds": [],
     "teacherId": null,
@@ -2172,7 +2172,7 @@
     "researchId": null
   },
   {
-    "id": 188,
+    "id": "RECIPE_COLLECTION_008",
     "name": "Uni Pouch",
     "recipeIds": [],
     "teacherId": null,

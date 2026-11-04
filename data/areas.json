@@ -1,41 +1,41 @@
 [
   {
-    "id": 1,
+    "id": "EXPL_RESEARCH_PLAIN_00",
     "name": "Fellowship Plains",
     "route": 0,
     "gather": [
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 19
       },
       {
-        "itemId": 10,
+        "itemId": "ITEM_MAT_WHEAT",
         "rate": 16
       },
       {
-        "itemId": 6,
+        "itemId": "ITEM_MAT_UNI",
         "rate": 15
       },
       {
-        "itemId": 37,
+        "itemId": "ITEM_MAT_EICHE",
         "rate": 14
       },
       {
-        "itemId": 66,
+        "itemId": "ITEM_MAT_FRAGRANT_WOOD_CHIP",
         "rate": 13
       },
       {
-        "itemId": 18,
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
         "rate": 12
       },
       {
-        "itemId": 86,
+        "itemId": "ITEM_MAT_PURPLE_GRAPE",
         "rate": 11
       }
     ],
     "monsters": [
       {
-        "monsterId": 132,
+        "monsterId": "CHARACTER_PUNI0",
         "levels": [
           1
         ],
@@ -43,7 +43,7 @@
         "boss": false
       },
       {
-        "monsterId": 140,
+        "monsterId": "CHARACTER_HOMM0",
         "levels": [
           2
         ],
@@ -52,45 +52,45 @@
       }
     ],
     "slug": "fellowship-plains",
-    "zoneId": 1
+    "zoneId": "EXPL_AREA_PLAIN"
   },
   {
-    "id": 2,
+    "id": "EXPL_RESEARCH_PLAIN_01",
     "name": "Fellowship Plains: Interior",
     "route": 1,
     "gather": [
       {
-        "itemId": 38,
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
         "rate": 33
       },
       {
-        "itemId": 5,
+        "itemId": "ITEM_MAT_TAUN",
         "rate": 25
       },
       {
-        "itemId": 17,
+        "itemId": "ITEM_MAT_TAR_NUT",
         "rate": 22
       },
       {
-        "itemId": 66,
+        "itemId": "ITEM_MAT_FRAGRANT_WOOD_CHIP",
         "rate": 8
       },
       {
-        "itemId": 6,
+        "itemId": "ITEM_MAT_UNI",
         "rate": 6
       },
       {
-        "itemId": 10,
+        "itemId": "ITEM_MAT_WHEAT",
         "rate": 4
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 132,
+        "monsterId": "CHARACTER_PUNI0",
         "levels": [
           1
         ],
@@ -98,7 +98,7 @@
         "boss": false
       },
       {
-        "monsterId": 140,
+        "monsterId": "CHARACTER_HOMM0",
         "levels": [
           2
         ],
@@ -107,45 +107,45 @@
       }
     ],
     "slug": "fellowship-plains-interior",
-    "zoneId": 1
+    "zoneId": "EXPL_AREA_PLAIN"
   },
   {
-    "id": 3,
+    "id": "EXPL_RESEARCH_PLAIN_02",
     "name": "Highview Plains",
     "route": 2,
     "gather": [
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 33
       },
       {
-        "itemId": 15,
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
         "rate": 25
       },
       {
-        "itemId": 20,
+        "itemId": "ITEM_MAT_PHLOGISTON",
         "rate": 22
       },
       {
-        "itemId": 66,
+        "itemId": "ITEM_MAT_FRAGRANT_WOOD_CHIP",
         "rate": 8
       },
       {
-        "itemId": 38,
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
         "rate": 6
       },
       {
-        "itemId": 37,
+        "itemId": "ITEM_MAT_EICHE",
         "rate": 4
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 143,
+        "monsterId": "CHARACTER_RABBIT0",
         "levels": [
           4
         ],
@@ -153,7 +153,7 @@
         "boss": false
       },
       {
-        "monsterId": 158,
+        "monsterId": "CHARACTER_TURTLE0",
         "levels": [
           3,
           4
@@ -162,7 +162,7 @@
         "boss": false
       },
       {
-        "monsterId": 146,
+        "monsterId": "CHARACTER_FLOWER0",
         "levels": [
           6
         ],
@@ -171,41 +171,41 @@
       }
     ],
     "slug": "highview-plains",
-    "zoneId": 1
+    "zoneId": "EXPL_AREA_PLAIN"
   },
   {
-    "id": 4,
+    "id": "EXPL_RESEARCH_PLAIN_03",
     "name": "Highview Plains: Interior",
     "route": 3,
     "gather": [
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "rate": 26
       },
       {
-        "itemId": 65,
+        "itemId": "ITEM_MAT_APPLE",
         "rate": 24
       },
       {
-        "itemId": 25,
+        "itemId": "ITEM_MAT_FEST",
         "rate": 22
       },
       {
-        "itemId": 10,
+        "itemId": "ITEM_MAT_WHEAT",
         "rate": 12
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 10
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 6
       }
     ],
     "monsters": [
       {
-        "monsterId": 143,
+        "monsterId": "CHARACTER_RABBIT0",
         "levels": [
           4
         ],
@@ -213,7 +213,7 @@
         "boss": false
       },
       {
-        "monsterId": 158,
+        "monsterId": "CHARACTER_TURTLE0",
         "levels": [
           3,
           4
@@ -223,41 +223,41 @@
       }
     ],
     "slug": "highview-plains-interior",
-    "zoneId": 1
+    "zoneId": "EXPL_AREA_PLAIN"
   },
   {
-    "id": 5,
+    "id": "EXPL_RESEARCH_PLAIN_04",
     "name": "Insight Prairie",
     "route": 4,
     "gather": [
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 26
       },
       {
-        "itemId": 31,
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
         "rate": 24
       },
       {
-        "itemId": 81,
+        "itemId": "ITEM_MAT_VINTAGE_POT",
         "rate": 22
       },
       {
-        "itemId": 5,
+        "itemId": "ITEM_MAT_TAUN",
         "rate": 12
       },
       {
-        "itemId": 86,
+        "itemId": "ITEM_MAT_PURPLE_GRAPE",
         "rate": 10
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 6
       }
     ],
     "monsters": [
       {
-        "monsterId": 143,
+        "monsterId": "CHARACTER_RABBIT0",
         "levels": [
           4
         ],
@@ -265,7 +265,7 @@
         "boss": false
       },
       {
-        "monsterId": 158,
+        "monsterId": "CHARACTER_TURTLE0",
         "levels": [
           3,
           4
@@ -274,7 +274,7 @@
         "boss": false
       },
       {
-        "monsterId": 146,
+        "monsterId": "CHARACTER_FLOWER0",
         "levels": [
           6
         ],
@@ -282,7 +282,7 @@
         "boss": false
       },
       {
-        "monsterId": 146,
+        "monsterId": "CHARACTER_FLOWER0",
         "levels": [
           8
         ],
@@ -290,7 +290,7 @@
         "boss": true
       },
       {
-        "monsterId": 143,
+        "monsterId": "CHARACTER_RABBIT0",
         "levels": [
           8
         ],
@@ -298,7 +298,7 @@
         "boss": true
       },
       {
-        "monsterId": 158,
+        "monsterId": "CHARACTER_TURTLE0",
         "levels": [
           8
         ],
@@ -307,29 +307,29 @@
       }
     ],
     "slug": "insight-prairie",
-    "zoneId": 1
+    "zoneId": "EXPL_AREA_PLAIN"
   },
   {
-    "id": 6,
+    "id": "EXPL_RESEARCH_PLAIN_05",
     "name": "Bestial Plains",
     "route": 5,
     "gather": [
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 16
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 15
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 14
       }
     ],
     "monsters": [
       {
-        "monsterId": 143,
+        "monsterId": "CHARACTER_RABBIT0",
         "levels": [
           12
         ],
@@ -337,7 +337,7 @@
         "boss": false
       },
       {
-        "monsterId": 158,
+        "monsterId": "CHARACTER_TURTLE0",
         "levels": [
           12
         ],
@@ -345,7 +345,7 @@
         "boss": false
       },
       {
-        "monsterId": 146,
+        "monsterId": "CHARACTER_FLOWER0",
         "levels": [
           12
         ],
@@ -354,45 +354,45 @@
       }
     ],
     "slug": "bestial-plains",
-    "zoneId": 1
+    "zoneId": "EXPL_AREA_PLAIN"
   },
   {
-    "id": 7,
+    "id": "EXPL_RESEARCH_PLAIN_06",
     "name": "Bountiful Plains",
     "route": 6,
     "gather": [
       {
-        "itemId": 31,
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
         "rate": 16
       },
       {
-        "itemId": 20,
+        "itemId": "ITEM_MAT_PHLOGISTON",
         "rate": 15
       },
       {
-        "itemId": 38,
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
         "rate": 14
       },
       {
-        "itemId": 81,
+        "itemId": "ITEM_MAT_VINTAGE_POT",
         "rate": 13
       },
       {
-        "itemId": 15,
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
         "rate": 12
       },
       {
-        "itemId": 25,
+        "itemId": "ITEM_MAT_FEST",
         "rate": 11
       },
       {
-        "itemId": 59,
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
         "rate": 10
       }
     ],
     "monsters": [
       {
-        "monsterId": 132,
+        "monsterId": "CHARACTER_PUNI0",
         "levels": [
           1
         ],
@@ -400,7 +400,7 @@
         "boss": false
       },
       {
-        "monsterId": 140,
+        "monsterId": "CHARACTER_HOMM0",
         "levels": [
           2
         ],
@@ -408,7 +408,7 @@
         "boss": false
       },
       {
-        "monsterId": 143,
+        "monsterId": "CHARACTER_RABBIT0",
         "levels": [
           4,
           12
@@ -417,7 +417,7 @@
         "boss": false
       },
       {
-        "monsterId": 158,
+        "monsterId": "CHARACTER_TURTLE0",
         "levels": [
           3,
           4,
@@ -427,7 +427,7 @@
         "boss": false
       },
       {
-        "monsterId": 146,
+        "monsterId": "CHARACTER_FLOWER0",
         "levels": [
           6
         ],
@@ -435,7 +435,7 @@
         "boss": false
       },
       {
-        "monsterId": 146,
+        "monsterId": "CHARACTER_FLOWER0",
         "levels": [
           8
         ],
@@ -443,7 +443,7 @@
         "boss": true
       },
       {
-        "monsterId": 143,
+        "monsterId": "CHARACTER_RABBIT0",
         "levels": [
           8
         ],
@@ -451,7 +451,7 @@
         "boss": true
       },
       {
-        "monsterId": 158,
+        "monsterId": "CHARACTER_TURTLE0",
         "levels": [
           8
         ],
@@ -460,49 +460,49 @@
       }
     ],
     "slug": "bountiful-plains",
-    "zoneId": 1
+    "zoneId": "EXPL_AREA_PLAIN"
   },
   {
-    "id": 8,
+    "id": "EXPL_RESEARCH_FOREST_00",
     "name": "Verdure Forest",
     "route": 0,
     "gather": [
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 22
       },
       {
-        "itemId": 26,
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
         "rate": 20
       },
       {
-        "itemId": 21,
+        "itemId": "ITEM_MAT_SOFT_RIME_STONE",
         "rate": 18
       },
       {
-        "itemId": 56,
+        "itemId": "ITEM_MAT_WOOL",
         "rate": 16
       },
       {
-        "itemId": 82,
+        "itemId": "ITEM_MAT_BEEHIVE",
         "rate": 14
       },
       {
-        "itemId": 65,
+        "itemId": "ITEM_MAT_APPLE",
         "rate": 5
       },
       {
-        "itemId": 6,
+        "itemId": "ITEM_MAT_UNI",
         "rate": 3
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 133,
+        "monsterId": "CHARACTER_PUNI1",
         "levels": [
           7
         ],
@@ -510,7 +510,7 @@
         "boss": false
       },
       {
-        "monsterId": 152,
+        "monsterId": "CHARACTER_BAT0",
         "levels": [
           8
         ],
@@ -519,49 +519,49 @@
       }
     ],
     "slug": "verdure-forest",
-    "zoneId": 2
+    "zoneId": "EXPL_AREA_FOREST"
   },
   {
-    "id": 9,
+    "id": "EXPL_RESEARCH_FOREST_01",
     "name": "Verdure Forest: Interior",
     "route": 1,
     "gather": [
       {
-        "itemId": 23,
+        "itemId": "ITEM_MAT_BROKEN_STONE",
         "rate": 23
       },
       {
-        "itemId": 22,
+        "itemId": "ITEM_MAT_RAIDEN_ORE",
         "rate": 21
       },
       {
-        "itemId": 58,
+        "itemId": "ITEM_MAT_PENDELOOK",
         "rate": 19
       },
       {
-        "itemId": 7,
+        "itemId": "ITEM_MAT_NECTAR_FRUIT",
         "rate": 17
       },
       {
-        "itemId": 31,
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
         "rate": 8
       },
       {
-        "itemId": 38,
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
         "rate": 6
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 4
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 133,
+        "monsterId": "CHARACTER_PUNI1",
         "levels": [
           7
         ],
@@ -569,7 +569,7 @@
         "boss": false
       },
       {
-        "monsterId": 152,
+        "monsterId": "CHARACTER_BAT0",
         "levels": [
           8
         ],
@@ -578,49 +578,49 @@
       }
     ],
     "slug": "verdure-forest-interior",
-    "zoneId": 2
+    "zoneId": "EXPL_AREA_FOREST"
   },
   {
-    "id": 10,
+    "id": "EXPL_RESEARCH_FOREST_02",
     "name": "Emerald Forest",
     "route": 2,
     "gather": [
       {
-        "itemId": 74,
+        "itemId": "ITEM_MAT_JUNK",
         "rate": 23
       },
       {
-        "itemId": 27,
+        "itemId": "ITEM_MAT_KIMBER_ORE",
         "rate": 21
       },
       {
-        "itemId": 24,
+        "itemId": "ITEM_MAT_SUN_CRYSTAL",
         "rate": 19
       },
       {
-        "itemId": 53,
+        "itemId": "ITEM_MAT_CHARIOT_MILK",
         "rate": 17
       },
       {
-        "itemId": 25,
+        "itemId": "ITEM_MAT_FEST",
         "rate": 8
       },
       {
-        "itemId": 5,
+        "itemId": "ITEM_MAT_TAUN",
         "rate": 6
       },
       {
-        "itemId": 6,
+        "itemId": "ITEM_MAT_UNI",
         "rate": 4
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 149,
+        "monsterId": "CHARACTER_PUPPET0",
         "levels": [
           10,
           12
@@ -629,7 +629,7 @@
         "boss": false
       },
       {
-        "monsterId": 155,
+        "monsterId": "CHARACTER_FUNGUS0",
         "levels": [
           11,
           12
@@ -639,49 +639,49 @@
       }
     ],
     "slug": "emerald-forest",
-    "zoneId": 2
+    "zoneId": "EXPL_AREA_FOREST"
   },
   {
-    "id": 11,
+    "id": "EXPL_RESEARCH_FOREST_03",
     "name": "Emerald Forest: Interior",
     "route": 3,
     "gather": [
       {
-        "itemId": 32,
+        "itemId": "ITEM_MAT_STEEL_ORE",
         "rate": 23
       },
       {
-        "itemId": 73,
+        "itemId": "ITEM_MAT_SHINE_DISK",
         "rate": 21
       },
       {
-        "itemId": 36,
+        "itemId": "ITEM_MAT_RUBBER_TREE",
         "rate": 19
       },
       {
-        "itemId": 76,
+        "itemId": "ITEM_MAT_WHITE_PRINCESS_GRASS",
         "rate": 17
       },
       {
-        "itemId": 26,
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
         "rate": 8
       },
       {
-        "itemId": 21,
+        "itemId": "ITEM_MAT_SOFT_RIME_STONE",
         "rate": 6
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 4
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 149,
+        "monsterId": "CHARACTER_PUPPET0",
         "levels": [
           10
         ],
@@ -689,7 +689,7 @@
         "boss": false
       },
       {
-        "monsterId": 155,
+        "monsterId": "CHARACTER_FUNGUS0",
         "levels": [
           11
         ],
@@ -698,49 +698,49 @@
       }
     ],
     "slug": "emerald-forest-interior",
-    "zoneId": 2
+    "zoneId": "EXPL_AREA_FOREST"
   },
   {
-    "id": 12,
+    "id": "EXPL_RESEARCH_FOREST_04",
     "name": "Sunny Woods",
     "route": 4,
     "gather": [
       {
-        "itemId": 29,
+        "itemId": "ITEM_MAT_RIPPLE_ROCK",
         "rate": 23
       },
       {
-        "itemId": 19,
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
         "rate": 21
       },
       {
-        "itemId": 61,
+        "itemId": "ITEM_MAT_DEVIL_BIRD_FEATHER",
         "rate": 19
       },
       {
-        "itemId": 91,
+        "itemId": "ITEM_MAT_FAIRY_PARASOL",
         "rate": 17
       },
       {
-        "itemId": 81,
+        "itemId": "ITEM_MAT_VINTAGE_POT",
         "rate": 8
       },
       {
-        "itemId": 6,
+        "itemId": "ITEM_MAT_UNI",
         "rate": 6
       },
       {
-        "itemId": 31,
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
         "rate": 4
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 149,
+        "monsterId": "CHARACTER_PUPPET0",
         "levels": [
           10
         ],
@@ -748,7 +748,7 @@
         "boss": false
       },
       {
-        "monsterId": 155,
+        "monsterId": "CHARACTER_FUNGUS0",
         "levels": [
           11,
           12
@@ -757,7 +757,7 @@
         "boss": false
       },
       {
-        "monsterId": 133,
+        "monsterId": "CHARACTER_PUNI1",
         "levels": [
           12
         ],
@@ -765,7 +765,7 @@
         "boss": false
       },
       {
-        "monsterId": 152,
+        "monsterId": "CHARACTER_BAT0",
         "levels": [
           11
         ],
@@ -773,7 +773,7 @@
         "boss": false
       },
       {
-        "monsterId": 164,
+        "monsterId": "CHARACTER_GOLEM0",
         "levels": [
           17
         ],
@@ -782,33 +782,33 @@
       }
     ],
     "slug": "sunny-woods",
-    "zoneId": 2
+    "zoneId": "EXPL_AREA_FOREST"
   },
   {
-    "id": 13,
+    "id": "EXPL_RESEARCH_FOREST_05",
     "name": "Bestial Forest",
     "route": 5,
     "gather": [
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 16
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 15
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 14
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 13
       }
     ],
     "monsters": [
       {
-        "monsterId": 152,
+        "monsterId": "CHARACTER_BAT0",
         "levels": [
           19
         ],
@@ -816,7 +816,7 @@
         "boss": false
       },
       {
-        "monsterId": 149,
+        "monsterId": "CHARACTER_PUPPET0",
         "levels": [
           19
         ],
@@ -824,7 +824,7 @@
         "boss": false
       },
       {
-        "monsterId": 155,
+        "monsterId": "CHARACTER_FUNGUS0",
         "levels": [
           19
         ],
@@ -833,69 +833,69 @@
       }
     ],
     "slug": "bestial-forest",
-    "zoneId": 2
+    "zoneId": "EXPL_AREA_FOREST"
   },
   {
-    "id": 14,
+    "id": "EXPL_RESEARCH_FOREST_06",
     "name": "Bountiful Forest",
     "route": 6,
     "gather": [
       {
-        "itemId": 61,
+        "itemId": "ITEM_MAT_DEVIL_BIRD_FEATHER",
         "rate": 30
       },
       {
-        "itemId": 58,
+        "itemId": "ITEM_MAT_PENDELOOK",
         "rate": 29
       },
       {
-        "itemId": 22,
+        "itemId": "ITEM_MAT_RAIDEN_ORE",
         "rate": 28
       },
       {
-        "itemId": 26,
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
         "rate": 27
       },
       {
-        "itemId": 24,
+        "itemId": "ITEM_MAT_SUN_CRYSTAL",
         "rate": 26
       },
       {
-        "itemId": 27,
+        "itemId": "ITEM_MAT_KIMBER_ORE",
         "rate": 25
       },
       {
-        "itemId": 74,
+        "itemId": "ITEM_MAT_JUNK",
         "rate": 24
       },
       {
-        "itemId": 32,
+        "itemId": "ITEM_MAT_STEEL_ORE",
         "rate": 23
       },
       {
-        "itemId": 73,
+        "itemId": "ITEM_MAT_SHINE_DISK",
         "rate": 22
       },
       {
-        "itemId": 29,
+        "itemId": "ITEM_MAT_RIPPLE_ROCK",
         "rate": 21
       },
       {
-        "itemId": 19,
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
         "rate": 20
       },
       {
-        "itemId": 21,
+        "itemId": "ITEM_MAT_SOFT_RIME_STONE",
         "rate": 19
       },
       {
-        "itemId": 23,
+        "itemId": "ITEM_MAT_BROKEN_STONE",
         "rate": 18
       }
     ],
     "monsters": [
       {
-        "monsterId": 133,
+        "monsterId": "CHARACTER_PUNI1",
         "levels": [
           7,
           12
@@ -904,7 +904,7 @@
         "boss": false
       },
       {
-        "monsterId": 152,
+        "monsterId": "CHARACTER_BAT0",
         "levels": [
           8,
           11
@@ -913,7 +913,7 @@
         "boss": false
       },
       {
-        "monsterId": 149,
+        "monsterId": "CHARACTER_PUPPET0",
         "levels": [
           10
         ],
@@ -921,7 +921,7 @@
         "boss": false
       },
       {
-        "monsterId": 155,
+        "monsterId": "CHARACTER_FUNGUS0",
         "levels": [
           11,
           12
@@ -931,45 +931,45 @@
       }
     ],
     "slug": "bountiful-forest",
-    "zoneId": 2
+    "zoneId": "EXPL_AREA_FOREST"
   },
   {
-    "id": 15,
+    "id": "EXPL_RESEARCH_OLDROAD_00",
     "name": "Shady Road",
     "route": 0,
     "gather": [
       {
-        "itemId": 70,
+        "itemId": "ITEM_MAT_SCRAP_METAL",
         "rate": 22
       },
       {
-        "itemId": 30,
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
         "rate": 20
       },
       {
-        "itemId": 12,
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
         "rate": 18
       },
       {
-        "itemId": 68,
+        "itemId": "ITEM_MAT_WHIM_STRAWBERRY",
         "rate": 16
       },
       {
-        "itemId": 94,
+        "itemId": "ITEM_MAT_CARROT",
         "rate": 14
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 150,
+        "monsterId": "CHARACTER_PUPPET1",
         "levels": [
           14
         ],
@@ -977,7 +977,7 @@
         "boss": false
       },
       {
-        "monsterId": 141,
+        "monsterId": "CHARACTER_HOMM1",
         "levels": [
           14
         ],
@@ -986,49 +986,49 @@
       }
     ],
     "slug": "shady-road",
-    "zoneId": 3
+    "zoneId": "EXPL_AREA_OLDROAD"
   },
   {
-    "id": 16,
+    "id": "EXPL_RESEARCH_OLDROAD_01",
     "name": "Shady Road: Interior",
     "route": 1,
     "gather": [
       {
-        "itemId": 77,
+        "itemId": "ITEM_MAT_DEEP_RED_SOIL",
         "rate": 22
       },
       {
-        "itemId": 33,
+        "itemId": "ITEM_MAT_STAR_FRAGMENT",
         "rate": 20
       },
       {
-        "itemId": 93,
+        "itemId": "ITEM_MAT_GRAVISTONE",
         "rate": 18
       },
       {
-        "itemId": 67,
+        "itemId": "ITEM_MAT_TREE_BULLET_NUT",
         "rate": 16
       },
       {
-        "itemId": 89,
+        "itemId": "ITEM_MAT_MANDRAGORA_ROOT",
         "rate": 14
       },
       {
-        "itemId": 22,
+        "itemId": "ITEM_MAT_RAIDEN_ORE",
         "rate": 5
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 3
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 150,
+        "monsterId": "CHARACTER_PUPPET1",
         "levels": [
           14
         ],
@@ -1036,7 +1036,7 @@
         "boss": false
       },
       {
-        "monsterId": 141,
+        "monsterId": "CHARACTER_HOMM1",
         "levels": [
           14
         ],
@@ -1045,49 +1045,49 @@
       }
     ],
     "slug": "shady-road-interior",
-    "zoneId": 3
+    "zoneId": "EXPL_AREA_OLDROAD"
   },
   {
-    "id": 17,
+    "id": "EXPL_RESEARCH_OLDROAD_02",
     "name": "Dark Path",
     "route": 2,
     "gather": [
       {
-        "itemId": 78,
+        "itemId": "ITEM_MAT_DARK_GERRN_SOIL",
         "rate": 22
       },
       {
-        "itemId": 72,
+        "itemId": "ITEM_MAT_ULTRAMARINE_SOIL",
         "rate": 20
       },
       {
-        "itemId": 90,
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
         "rate": 18
       },
       {
-        "itemId": 83,
+        "itemId": "ITEM_MAT_LEAF_LETTUCE",
         "rate": 16
       },
       {
-        "itemId": 79,
+        "itemId": "ITEM_MAT_UNKNOWN_EGG",
         "rate": 14
       },
       {
-        "itemId": 27,
+        "itemId": "ITEM_MAT_KIMBER_ORE",
         "rate": 5
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 3
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 159,
+        "monsterId": "CHARACTER_TURTLE1",
         "levels": [
           13,
           15,
@@ -1097,7 +1097,7 @@
         "boss": false
       },
       {
-        "monsterId": 156,
+        "monsterId": "CHARACTER_FUNGUS1",
         "levels": [
           14,
           17
@@ -1106,7 +1106,7 @@
         "boss": false
       },
       {
-        "monsterId": 150,
+        "monsterId": "CHARACTER_PUPPET1",
         "levels": [
           17
         ],
@@ -1115,49 +1115,49 @@
       }
     ],
     "slug": "dark-path",
-    "zoneId": 3
+    "zoneId": "EXPL_AREA_OLDROAD"
   },
   {
-    "id": 18,
+    "id": "EXPL_RESEARCH_OLDROAD_03",
     "name": "Dark Path: Interior",
     "route": 3,
     "gather": [
       {
-        "itemId": 28,
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
         "rate": 22
       },
       {
-        "itemId": 84,
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
         "rate": 20
       },
       {
-        "itemId": 16,
+        "itemId": "ITEM_MAT_STRANGE_LIQUID",
         "rate": 18
       },
       {
-        "itemId": 80,
+        "itemId": "ITEM_MAT_ANIMAL_LEATHER",
         "rate": 16
       },
       {
-        "itemId": 13,
+        "itemId": "ITEM_MAT_DARK_NIGHT_MUSHROOM",
         "rate": 14
       },
       {
-        "itemId": 24,
+        "itemId": "ITEM_MAT_SUN_CRYSTAL",
         "rate": 5
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 3
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 159,
+        "monsterId": "CHARACTER_TURTLE1",
         "levels": [
           13,
           15
@@ -1166,7 +1166,7 @@
         "boss": false
       },
       {
-        "monsterId": 156,
+        "monsterId": "CHARACTER_FUNGUS1",
         "levels": [
           14
         ],
@@ -1175,49 +1175,49 @@
       }
     ],
     "slug": "dark-path-interior",
-    "zoneId": 3
+    "zoneId": "EXPL_AREA_OLDROAD"
   },
   {
-    "id": 19,
+    "id": "EXPL_RESEARCH_OLDROAD_04",
     "name": "Oblivion Road",
     "route": 4,
     "gather": [
       {
-        "itemId": 64,
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
         "rate": 22
       },
       {
-        "itemId": 69,
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
         "rate": 20
       },
       {
-        "itemId": 35,
+        "itemId": "ITEM_MAT_SHINE_SAND",
         "rate": 18
       },
       {
-        "itemId": 50,
+        "itemId": "ITEM_MAT_DRAGON_HORN",
         "rate": 16
       },
       {
-        "itemId": 55,
+        "itemId": "ITEM_MAT_STRONG_BONE",
         "rate": 14
       },
       {
-        "itemId": 30,
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
         "rate": 5
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 3
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 159,
+        "monsterId": "CHARACTER_TURTLE1",
         "levels": [
           13,
           15
@@ -1226,7 +1226,7 @@
         "boss": false
       },
       {
-        "monsterId": 156,
+        "monsterId": "CHARACTER_FUNGUS1",
         "levels": [
           14
         ],
@@ -1234,7 +1234,7 @@
         "boss": false
       },
       {
-        "monsterId": 156,
+        "monsterId": "CHARACTER_FUNGUS1",
         "levels": [
           19
         ],
@@ -1242,7 +1242,7 @@
         "boss": true
       },
       {
-        "monsterId": 167,
+        "monsterId": "CHARACTER_GRIFFON0",
         "levels": [
           22
         ],
@@ -1251,33 +1251,33 @@
       }
     ],
     "slug": "oblivion-road",
-    "zoneId": 3
+    "zoneId": "EXPL_AREA_OLDROAD"
   },
   {
-    "id": 20,
+    "id": "EXPL_RESEARCH_OLDROAD_05",
     "name": "Bestial Road",
     "route": 5,
     "gather": [
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 16
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 15
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 14
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 13
       }
     ],
     "monsters": [
       {
-        "monsterId": 150,
+        "monsterId": "CHARACTER_PUPPET1",
         "levels": [
           25
         ],
@@ -1285,7 +1285,7 @@
         "boss": false
       },
       {
-        "monsterId": 159,
+        "monsterId": "CHARACTER_TURTLE1",
         "levels": [
           25
         ],
@@ -1293,7 +1293,7 @@
         "boss": false
       },
       {
-        "monsterId": 141,
+        "monsterId": "CHARACTER_HOMM1",
         "levels": [
           25
         ],
@@ -1301,7 +1301,7 @@
         "boss": false
       },
       {
-        "monsterId": 156,
+        "monsterId": "CHARACTER_FUNGUS1",
         "levels": [
           25
         ],
@@ -1310,77 +1310,77 @@
       }
     ],
     "slug": "bestial-road",
-    "zoneId": 3
+    "zoneId": "EXPL_AREA_OLDROAD"
   },
   {
-    "id": 21,
+    "id": "EXPL_RESEARCH_OLDROAD_06",
     "name": "Bountiful Road",
     "route": 6,
     "gather": [
       {
-        "itemId": 50,
+        "itemId": "ITEM_MAT_DRAGON_HORN",
         "rate": 30
       },
       {
-        "itemId": 35,
+        "itemId": "ITEM_MAT_SHINE_SAND",
         "rate": 29
       },
       {
-        "itemId": 16,
+        "itemId": "ITEM_MAT_STRANGE_LIQUID",
         "rate": 28
       },
       {
-        "itemId": 93,
+        "itemId": "ITEM_MAT_GRAVISTONE",
         "rate": 27
       },
       {
-        "itemId": 90,
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
         "rate": 26
       },
       {
-        "itemId": 30,
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
         "rate": 25
       },
       {
-        "itemId": 69,
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
         "rate": 24
       },
       {
-        "itemId": 84,
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
         "rate": 23
       },
       {
-        "itemId": 78,
+        "itemId": "ITEM_MAT_DARK_GERRN_SOIL",
         "rate": 22
       },
       {
-        "itemId": 72,
+        "itemId": "ITEM_MAT_ULTRAMARINE_SOIL",
         "rate": 21
       },
       {
-        "itemId": 77,
+        "itemId": "ITEM_MAT_DEEP_RED_SOIL",
         "rate": 20
       },
       {
-        "itemId": 33,
+        "itemId": "ITEM_MAT_STAR_FRAGMENT",
         "rate": 19
       },
       {
-        "itemId": 64,
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
         "rate": 18
       },
       {
-        "itemId": 28,
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
         "rate": 17
       },
       {
-        "itemId": 70,
+        "itemId": "ITEM_MAT_SCRAP_METAL",
         "rate": 16
       }
     ],
     "monsters": [
       {
-        "monsterId": 150,
+        "monsterId": "CHARACTER_PUPPET1",
         "levels": [
           14,
           17,
@@ -1390,7 +1390,7 @@
         "boss": false
       },
       {
-        "monsterId": 141,
+        "monsterId": "CHARACTER_HOMM1",
         "levels": [
           14
         ],
@@ -1398,7 +1398,7 @@
         "boss": false
       },
       {
-        "monsterId": 159,
+        "monsterId": "CHARACTER_TURTLE1",
         "levels": [
           13,
           15,
@@ -1409,7 +1409,7 @@
         "boss": false
       },
       {
-        "monsterId": 156,
+        "monsterId": "CHARACTER_FUNGUS1",
         "levels": [
           14,
           17
@@ -1418,7 +1418,7 @@
         "boss": false
       },
       {
-        "monsterId": 156,
+        "monsterId": "CHARACTER_FUNGUS1",
         "levels": [
           19
         ],
@@ -1426,7 +1426,7 @@
         "boss": true
       },
       {
-        "monsterId": 167,
+        "monsterId": "CHARACTER_GRIFFON0",
         "levels": [
           22
         ],
@@ -1435,49 +1435,49 @@
       }
     ],
     "slug": "bountiful-road",
-    "zoneId": 3
+    "zoneId": "EXPL_AREA_OLDROAD"
   },
   {
-    "id": 22,
+    "id": "EXPL_RESEARCH_MOUNTAIN_00",
     "name": "Windless Ridge",
     "route": 0,
     "gather": [
       {
-        "itemId": 85,
+        "itemId": "ITEM_MAT_FADENRITE",
         "rate": 23
       },
       {
-        "itemId": 87,
+        "itemId": "ITEM_MAT_WOUNDLESS_GRASS",
         "rate": 21
       },
       {
-        "itemId": 27,
+        "itemId": "ITEM_MAT_KIMBER_ORE",
         "rate": 19
       },
       {
-        "itemId": 74,
+        "itemId": "ITEM_MAT_JUNK",
         "rate": 17
       },
       {
-        "itemId": 55,
+        "itemId": "ITEM_MAT_STRONG_BONE",
         "rate": 10
       },
       {
-        "itemId": 76,
+        "itemId": "ITEM_MAT_WHITE_PRINCESS_GRASS",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 134,
+        "monsterId": "CHARACTER_PUNI2",
         "levels": [
           20
         ],
@@ -1485,7 +1485,7 @@
         "boss": false
       },
       {
-        "monsterId": 147,
+        "monsterId": "CHARACTER_FLOWER1",
         "levels": [
           21
         ],
@@ -1494,45 +1494,45 @@
       }
     ],
     "slug": "windless-ridge",
-    "zoneId": 4
+    "zoneId": "EXPL_AREA_MOUNTAIN"
   },
   {
-    "id": 23,
+    "id": "EXPL_RESEARCH_MOUNTAIN_01",
     "name": "Windless Ridge: Interior",
     "route": 1,
     "gather": [
       {
-        "itemId": 52,
+        "itemId": "ITEM_MAT_DRAGON_SCALE",
         "rate": 23
       },
       {
-        "itemId": 88,
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
         "rate": 21
       },
       {
-        "itemId": 8,
+        "itemId": "ITEM_MAT_HONEY_POPPY",
         "rate": 19
       },
       {
-        "itemId": 51,
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
         "rate": 17
       },
       {
-        "itemId": 68,
+        "itemId": "ITEM_MAT_WHIM_STRAWBERRY",
         "rate": 10
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 6
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 134,
+        "monsterId": "CHARACTER_PUNI2",
         "levels": [
           20
         ],
@@ -1540,7 +1540,7 @@
         "boss": false
       },
       {
-        "monsterId": 147,
+        "monsterId": "CHARACTER_FLOWER1",
         "levels": [
           21
         ],
@@ -1549,45 +1549,45 @@
       }
     ],
     "slug": "windless-ridge-interior",
-    "zoneId": 4
+    "zoneId": "EXPL_AREA_MOUNTAIN"
   },
   {
-    "id": 24,
+    "id": "EXPL_RESEARCH_MOUNTAIN_02",
     "name": "Hazy Mountain Pass",
     "route": 2,
     "gather": [
       {
-        "itemId": 71,
+        "itemId": "ITEM_MAT_BLACK__SAND",
         "rate": 23
       },
       {
-        "itemId": 9,
+        "itemId": "ITEM_MAT_SAGE_HERB",
         "rate": 21
       },
       {
-        "itemId": 31,
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
         "rate": 19
       },
       {
-        "itemId": 93,
+        "itemId": "ITEM_MAT_GRAVISTONE",
         "rate": 17
       },
       {
-        "itemId": 91,
+        "itemId": "ITEM_MAT_FAIRY_PARASOL",
         "rate": 10
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 6
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 147,
+        "monsterId": "CHARACTER_FLOWER1",
         "levels": [
           21,
           25
@@ -1596,7 +1596,7 @@
         "boss": false
       },
       {
-        "monsterId": 161,
+        "monsterId": "CHARACTER_JELLYFISH0",
         "levels": [
           20,
           21,
@@ -1606,7 +1606,7 @@
         "boss": false
       },
       {
-        "monsterId": 134,
+        "monsterId": "CHARACTER_PUNI2",
         "levels": [
           25
         ],
@@ -1615,45 +1615,45 @@
       }
     ],
     "slug": "hazy-mountain-pass",
-    "zoneId": 4
+    "zoneId": "EXPL_AREA_MOUNTAIN"
   },
   {
-    "id": 25,
+    "id": "EXPL_RESEARCH_MOUNTAIN_03",
     "name": "Hazy Mountain Pass: Interior",
     "route": 3,
     "gather": [
       {
-        "itemId": 63,
+        "itemId": "ITEM_MAT_RED_DEVIL",
         "rate": 23
       },
       {
-        "itemId": 57,
+        "itemId": "ITEM_MAT_WICKED_FANG",
         "rate": 21
       },
       {
-        "itemId": 84,
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
         "rate": 19
       },
       {
-        "itemId": 38,
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
         "rate": 17
       },
       {
-        "itemId": 94,
+        "itemId": "ITEM_MAT_CARROT",
         "rate": 10
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 6
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 147,
+        "monsterId": "CHARACTER_FLOWER1",
         "levels": [
           21
         ],
@@ -1661,7 +1661,7 @@
         "boss": false
       },
       {
-        "monsterId": 161,
+        "monsterId": "CHARACTER_JELLYFISH0",
         "levels": [
           20,
           21
@@ -1671,49 +1671,49 @@
       }
     ],
     "slug": "hazy-mountain-pass-interior",
-    "zoneId": 4
+    "zoneId": "EXPL_AREA_MOUNTAIN"
   },
   {
-    "id": 26,
+    "id": "EXPL_RESEARCH_MOUNTAIN_04",
     "name": "Venture Mountain Pass",
     "route": 4,
     "gather": [
       {
-        "itemId": 54,
+        "itemId": "ITEM_MAT_FRESH_MEAT",
         "rate": 23
       },
       {
-        "itemId": 14,
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
         "rate": 21
       },
       {
-        "itemId": 19,
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
         "rate": 19
       },
       {
-        "itemId": 64,
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
         "rate": 17
       },
       {
-        "itemId": 12,
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
         "rate": 8
       },
       {
-        "itemId": 89,
+        "itemId": "ITEM_MAT_MANDRAGORA_ROOT",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 2
       }
     ],
     "monsters": [
       {
-        "monsterId": 161,
+        "monsterId": "CHARACTER_JELLYFISH0",
         "levels": [
           20,
           21
@@ -1722,7 +1722,7 @@
         "boss": false
       },
       {
-        "monsterId": 147,
+        "monsterId": "CHARACTER_FLOWER1",
         "levels": [
           21
         ],
@@ -1730,7 +1730,7 @@
         "boss": false
       },
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           22
         ],
@@ -1738,7 +1738,7 @@
         "boss": false
       },
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           25
         ],
@@ -1746,7 +1746,7 @@
         "boss": true
       },
       {
-        "monsterId": 165,
+        "monsterId": "CHARACTER_GOLEM1",
         "levels": [
           30
         ],
@@ -1755,33 +1755,33 @@
       }
     ],
     "slug": "venture-mountain-pass",
-    "zoneId": 4
+    "zoneId": "EXPL_AREA_MOUNTAIN"
   },
   {
-    "id": 27,
+    "id": "EXPL_RESEARCH_MOUNTAIN_05",
     "name": "Bestial Mountain Pass",
     "route": 5,
     "gather": [
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 16
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 15
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 14
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 13
       }
     ],
     "monsters": [
       {
-        "monsterId": 147,
+        "monsterId": "CHARACTER_FLOWER1",
         "levels": [
           31
         ],
@@ -1789,7 +1789,7 @@
         "boss": false
       },
       {
-        "monsterId": 161,
+        "monsterId": "CHARACTER_JELLYFISH0",
         "levels": [
           31
         ],
@@ -1797,7 +1797,7 @@
         "boss": false
       },
       {
-        "monsterId": 134,
+        "monsterId": "CHARACTER_PUNI2",
         "levels": [
           31
         ],
@@ -1805,7 +1805,7 @@
         "boss": false
       },
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           31
         ],
@@ -1814,49 +1814,49 @@
       }
     ],
     "slug": "bestial-mountain-pass",
-    "zoneId": 4
+    "zoneId": "EXPL_AREA_MOUNTAIN"
   },
   {
-    "id": 28,
+    "id": "EXPL_RESEARCH_MOUNTAIN_06",
     "name": "Bountiful Mountain Pass",
     "route": 6,
     "gather": [
       {
-        "itemId": 88,
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
         "rate": 16
       },
       {
-        "itemId": 51,
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
         "rate": 15
       },
       {
-        "itemId": 85,
+        "itemId": "ITEM_MAT_FADENRITE",
         "rate": 14
       },
       {
-        "itemId": 71,
+        "itemId": "ITEM_MAT_BLACK__SAND",
         "rate": 13
       },
       {
-        "itemId": 52,
+        "itemId": "ITEM_MAT_DRAGON_SCALE",
         "rate": 12
       },
       {
-        "itemId": 27,
+        "itemId": "ITEM_MAT_KIMBER_ORE",
         "rate": 11
       },
       {
-        "itemId": 31,
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
         "rate": 10
       },
       {
-        "itemId": 64,
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
         "rate": 9
       }
     ],
     "monsters": [
       {
-        "monsterId": 134,
+        "monsterId": "CHARACTER_PUNI2",
         "levels": [
           20
         ],
@@ -1864,7 +1864,7 @@
         "boss": false
       },
       {
-        "monsterId": 147,
+        "monsterId": "CHARACTER_FLOWER1",
         "levels": [
           21
         ],
@@ -1872,7 +1872,7 @@
         "boss": false
       },
       {
-        "monsterId": 161,
+        "monsterId": "CHARACTER_JELLYFISH0",
         "levels": [
           20,
           21
@@ -1881,7 +1881,7 @@
         "boss": false
       },
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           22
         ],
@@ -1889,7 +1889,7 @@
         "boss": false
       },
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           25
         ],
@@ -1897,7 +1897,7 @@
         "boss": true
       },
       {
-        "monsterId": 165,
+        "monsterId": "CHARACTER_GOLEM1",
         "levels": [
           30
         ],
@@ -1906,45 +1906,45 @@
       }
     ],
     "slug": "bountiful-mountain-pass",
-    "zoneId": 4
+    "zoneId": "EXPL_AREA_MOUNTAIN"
   },
   {
-    "id": 29,
+    "id": "EXPL_RESEARCH_HIGHLAND_00",
     "name": "Vista Hill",
     "route": 0,
     "gather": [
       {
-        "itemId": 41,
+        "itemId": "ITEM_MAT_BUTTERFLY_FISH",
         "rate": 25
       },
       {
-        "itemId": 25,
+        "itemId": "ITEM_MAT_FEST",
         "rate": 24
       },
       {
-        "itemId": 69,
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
         "rate": 23
       },
       {
-        "itemId": 10,
+        "itemId": "ITEM_MAT_WHEAT",
         "rate": 10
       },
       {
-        "itemId": 6,
+        "itemId": "ITEM_MAT_UNI",
         "rate": 8
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           26
         ],
@@ -1952,7 +1952,7 @@
         "boss": false
       },
       {
-        "monsterId": 142,
+        "monsterId": "CHARACTER_HOMM2",
         "levels": [
           27
         ],
@@ -1961,45 +1961,45 @@
       }
     ],
     "slug": "vista-hill",
-    "zoneId": 5
+    "zoneId": "EXPL_AREA_HIGHLAND"
   },
   {
-    "id": 30,
+    "id": "EXPL_RESEARCH_HIGHLAND_01",
     "name": "Vista Hill: Interior",
     "route": 1,
     "gather": [
       {
-        "itemId": 50,
+        "itemId": "ITEM_MAT_DRAGON_HORN",
         "rate": 25
       },
       {
-        "itemId": 30,
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
         "rate": 24
       },
       {
-        "itemId": 20,
+        "itemId": "ITEM_MAT_PHLOGISTON",
         "rate": 23
       },
       {
-        "itemId": 67,
+        "itemId": "ITEM_MAT_TREE_BULLET_NUT",
         "rate": 10
       },
       {
-        "itemId": 18,
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
         "rate": 8
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 6
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           26
         ],
@@ -2007,7 +2007,7 @@
         "boss": false
       },
       {
-        "monsterId": 142,
+        "monsterId": "CHARACTER_HOMM2",
         "levels": [
           27
         ],
@@ -2016,45 +2016,45 @@
       }
     ],
     "slug": "vista-hill-interior",
-    "zoneId": 5
+    "zoneId": "EXPL_AREA_HIGHLAND"
   },
   {
-    "id": 31,
+    "id": "EXPL_RESEARCH_HIGHLAND_02",
     "name": "Wind Chime Highlands",
     "route": 2,
     "gather": [
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "rate": 23
       },
       {
-        "itemId": 28,
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
         "rate": 21
       },
       {
-        "itemId": 88,
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
         "rate": 19
       },
       {
-        "itemId": 31,
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
         "rate": 17
       },
       {
-        "itemId": 9,
+        "itemId": "ITEM_MAT_SAGE_HERB",
         "rate": 10
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 6
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 148,
+        "monsterId": "CHARACTER_FLOWER2",
         "levels": [
           28,
           30
@@ -2063,7 +2063,7 @@
         "boss": false
       },
       {
-        "monsterId": 157,
+        "monsterId": "CHARACTER_FUNGUS2",
         "levels": [
           27,
           30
@@ -2072,7 +2072,7 @@
         "boss": false
       },
       {
-        "monsterId": 142,
+        "monsterId": "CHARACTER_HOMM2",
         "levels": [
           30
         ],
@@ -2081,45 +2081,45 @@
       }
     ],
     "slug": "wind-chime-highlands",
-    "zoneId": 5
+    "zoneId": "EXPL_AREA_HIGHLAND"
   },
   {
-    "id": 32,
+    "id": "EXPL_RESEARCH_HIGHLAND_03",
     "name": "Wind Chime Highlands: Interior",
     "route": 3,
     "gather": [
       {
-        "itemId": 42,
+        "itemId": "ITEM_MAT_WASHER",
         "rate": 25
       },
       {
-        "itemId": 85,
+        "itemId": "ITEM_MAT_FADENRITE",
         "rate": 24
       },
       {
-        "itemId": 57,
+        "itemId": "ITEM_MAT_WICKED_FANG",
         "rate": 23
       },
       {
-        "itemId": 76,
+        "itemId": "ITEM_MAT_WHITE_PRINCESS_GRASS",
         "rate": 10
       },
       {
-        "itemId": 87,
+        "itemId": "ITEM_MAT_WOUNDLESS_GRASS",
         "rate": 8
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 148,
+        "monsterId": "CHARACTER_FLOWER2",
         "levels": [
           28
         ],
@@ -2127,7 +2127,7 @@
         "boss": false
       },
       {
-        "monsterId": 157,
+        "monsterId": "CHARACTER_FUNGUS2",
         "levels": [
           27
         ],
@@ -2136,45 +2136,45 @@
       }
     ],
     "slug": "wind-chime-highlands-interior",
-    "zoneId": 5
+    "zoneId": "EXPL_AREA_HIGHLAND"
   },
   {
-    "id": 33,
+    "id": "EXPL_RESEARCH_HIGHLAND_04",
     "name": "Wild Blue Yonder",
     "route": 4,
     "gather": [
       {
-        "itemId": 75,
+        "itemId": "ITEM_MAT_WHITE_SAND",
         "rate": 25
       },
       {
-        "itemId": 19,
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
         "rate": 24
       },
       {
-        "itemId": 8,
+        "itemId": "ITEM_MAT_HONEY_POPPY",
         "rate": 23
       },
       {
-        "itemId": 89,
+        "itemId": "ITEM_MAT_MANDRAGORA_ROOT",
         "rate": 10
       },
       {
-        "itemId": 57,
+        "itemId": "ITEM_MAT_WICKED_FANG",
         "rate": 8
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 6
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 148,
+        "monsterId": "CHARACTER_FLOWER2",
         "levels": [
           28
         ],
@@ -2182,7 +2182,7 @@
         "boss": false
       },
       {
-        "monsterId": 157,
+        "monsterId": "CHARACTER_FUNGUS2",
         "levels": [
           27
         ],
@@ -2190,7 +2190,7 @@
         "boss": false
       },
       {
-        "monsterId": 170,
+        "monsterId": "CHARACTER_BONEKNIGHT",
         "levels": [
           37
         ],
@@ -2199,33 +2199,33 @@
       }
     ],
     "slug": "wild-blue-yonder",
-    "zoneId": 5
+    "zoneId": "EXPL_AREA_HIGHLAND"
   },
   {
-    "id": 34,
+    "id": "EXPL_RESEARCH_HIGHLAND_05",
     "name": "Bestial Highlands",
     "route": 5,
     "gather": [
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 16
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 15
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 14
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 13
       }
     ],
     "monsters": [
       {
-        "monsterId": 142,
+        "monsterId": "CHARACTER_HOMM2",
         "levels": [
           39
         ],
@@ -2233,7 +2233,7 @@
         "boss": false
       },
       {
-        "monsterId": 148,
+        "monsterId": "CHARACTER_FLOWER2",
         "levels": [
           39
         ],
@@ -2241,7 +2241,7 @@
         "boss": false
       },
       {
-        "monsterId": 157,
+        "monsterId": "CHARACTER_FUNGUS2",
         "levels": [
           39
         ],
@@ -2249,7 +2249,7 @@
         "boss": false
       },
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           39
         ],
@@ -2258,49 +2258,49 @@
       }
     ],
     "slug": "bestial-highlands",
-    "zoneId": 5
+    "zoneId": "EXPL_AREA_HIGHLAND"
   },
   {
-    "id": 35,
+    "id": "EXPL_RESEARCH_HIGHLAND_06",
     "name": "Bountiful Highlands",
     "route": 6,
     "gather": [
       {
-        "itemId": 75,
+        "itemId": "ITEM_MAT_WHITE_SAND",
         "rate": 16
       },
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "rate": 15
       },
       {
-        "itemId": 42,
+        "itemId": "ITEM_MAT_WASHER",
         "rate": 14
       },
       {
-        "itemId": 41,
+        "itemId": "ITEM_MAT_BUTTERFLY_FISH",
         "rate": 13
       },
       {
-        "itemId": 50,
+        "itemId": "ITEM_MAT_DRAGON_HORN",
         "rate": 12
       },
       {
-        "itemId": 69,
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
         "rate": 11
       },
       {
-        "itemId": 85,
+        "itemId": "ITEM_MAT_FADENRITE",
         "rate": 10
       },
       {
-        "itemId": 28,
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
         "rate": 9
       }
     ],
     "monsters": [
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           26
         ],
@@ -2308,7 +2308,7 @@
         "boss": false
       },
       {
-        "monsterId": 142,
+        "monsterId": "CHARACTER_HOMM2",
         "levels": [
           27
         ],
@@ -2316,7 +2316,7 @@
         "boss": false
       },
       {
-        "monsterId": 148,
+        "monsterId": "CHARACTER_FLOWER2",
         "levels": [
           28
         ],
@@ -2324,7 +2324,7 @@
         "boss": false
       },
       {
-        "monsterId": 157,
+        "monsterId": "CHARACTER_FUNGUS2",
         "levels": [
           27
         ],
@@ -2333,45 +2333,45 @@
       }
     ],
     "slug": "bountiful-highlands",
-    "zoneId": 5
+    "zoneId": "EXPL_AREA_HIGHLAND"
   },
   {
-    "id": 36,
+    "id": "EXPL_RESEARCH_SPRING_00",
     "name": "Life Spring",
     "route": 0,
     "gather": [
       {
-        "itemId": 46,
+        "itemId": "ITEM_MAT_BABY_WYRM",
         "rate": 25
       },
       {
-        "itemId": 26,
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
         "rate": 24
       },
       {
-        "itemId": 84,
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
         "rate": 23
       },
       {
-        "itemId": 20,
+        "itemId": "ITEM_MAT_PHLOGISTON",
         "rate": 10
       },
       {
-        "itemId": 18,
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
         "rate": 8
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 136,
+        "monsterId": "CHARACTER_PUNI4",
         "levels": [
           34
         ],
@@ -2379,7 +2379,7 @@
         "boss": false
       },
       {
-        "monsterId": 144,
+        "monsterId": "CHARACTER_RABBIT1",
         "levels": [
           35
         ],
@@ -2388,45 +2388,45 @@
       }
     ],
     "slug": "life-spring",
-    "zoneId": 6
+    "zoneId": "EXPL_AREA_SPRING"
   },
   {
-    "id": 37,
+    "id": "EXPL_RESEARCH_SPRING_01",
     "name": "Life Spring: Interior",
     "route": 1,
     "gather": [
       {
-        "itemId": 39,
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
         "rate": 25
       },
       {
-        "itemId": 19,
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
         "rate": 24
       },
       {
-        "itemId": 63,
+        "itemId": "ITEM_MAT_RED_DEVIL",
         "rate": 23
       },
       {
-        "itemId": 8,
+        "itemId": "ITEM_MAT_HONEY_POPPY",
         "rate": 10
       },
       {
-        "itemId": 54,
+        "itemId": "ITEM_MAT_FRESH_MEAT",
         "rate": 8
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 6
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 136,
+        "monsterId": "CHARACTER_PUNI4",
         "levels": [
           34
         ],
@@ -2434,7 +2434,7 @@
         "boss": false
       },
       {
-        "monsterId": 144,
+        "monsterId": "CHARACTER_RABBIT1",
         "levels": [
           35
         ],
@@ -2443,45 +2443,45 @@
       }
     ],
     "slug": "life-spring-interior",
-    "zoneId": 6
+    "zoneId": "EXPL_AREA_SPRING"
   },
   {
-    "id": 38,
+    "id": "EXPL_RESEARCH_SPRING_02",
     "name": "Guardian Stream",
     "route": 2,
     "gather": [
       {
-        "itemId": 45,
+        "itemId": "ITEM_MAT_BITTER_EARTHWORM",
         "rate": 23
       },
       {
-        "itemId": 33,
+        "itemId": "ITEM_MAT_STAR_FRAGMENT",
         "rate": 21
       },
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "rate": 19
       },
       {
-        "itemId": 30,
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
         "rate": 17
       },
       {
-        "itemId": 51,
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
         "rate": 10
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 6
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 162,
+        "monsterId": "CHARACTER_JELLYFISH1",
         "levels": [
           35
         ],
@@ -2489,7 +2489,7 @@
         "boss": false
       },
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           36
         ],
@@ -2497,7 +2497,7 @@
         "boss": false
       },
       {
-        "monsterId": 136,
+        "monsterId": "CHARACTER_PUNI4",
         "levels": [
           38
         ],
@@ -2505,7 +2505,7 @@
         "boss": false
       },
       {
-        "monsterId": 168,
+        "monsterId": "CHARACTER_GRIFFON1",
         "levels": [
           47
         ],
@@ -2514,45 +2514,45 @@
       }
     ],
     "slug": "guardian-stream",
-    "zoneId": 6
+    "zoneId": "EXPL_AREA_SPRING"
   },
   {
-    "id": 39,
+    "id": "EXPL_RESEARCH_SPRING_03",
     "name": "Guardian Stream: Interior",
     "route": 3,
     "gather": [
       {
-        "itemId": 40,
+        "itemId": "ITEM_MAT_BALLOON_FISH",
         "rate": 23
       },
       {
-        "itemId": 85,
+        "itemId": "ITEM_MAT_FADENRITE",
         "rate": 21
       },
       {
-        "itemId": 28,
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
         "rate": 19
       },
       {
-        "itemId": 38,
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
         "rate": 17
       },
       {
-        "itemId": 5,
+        "itemId": "ITEM_MAT_TAUN",
         "rate": 10
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 162,
+        "monsterId": "CHARACTER_JELLYFISH1",
         "levels": [
           35
         ],
@@ -2560,7 +2560,7 @@
         "boss": false
       },
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           36
         ],
@@ -2569,45 +2569,45 @@
       }
     ],
     "slug": "guardian-stream-interior",
-    "zoneId": 6
+    "zoneId": "EXPL_AREA_SPRING"
   },
   {
-    "id": 40,
+    "id": "EXPL_RESEARCH_SPRING_04",
     "name": "Lost Spring",
     "route": 4,
     "gather": [
       {
-        "itemId": 48,
+        "itemId": "ITEM_MAT_RAIDEN_DRAGOON",
         "rate": 25
       },
       {
-        "itemId": 42,
+        "itemId": "ITEM_MAT_WASHER",
         "rate": 24
       },
       {
-        "itemId": 50,
+        "itemId": "ITEM_MAT_DRAGON_HORN",
         "rate": 23
       },
       {
-        "itemId": 94,
+        "itemId": "ITEM_MAT_CARROT",
         "rate": 10
       },
       {
-        "itemId": 14,
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
         "rate": 8
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 6
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 162,
+        "monsterId": "CHARACTER_JELLYFISH1",
         "levels": [
           35,
           39
@@ -2616,7 +2616,7 @@
         "boss": false
       },
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           36
         ],
@@ -2624,7 +2624,7 @@
         "boss": false
       },
       {
-        "monsterId": 171,
+        "monsterId": "CHARACTER_WYVERN_00",
         "levels": [
           48
         ],
@@ -2633,33 +2633,33 @@
       }
     ],
     "slug": "lost-spring",
-    "zoneId": 6
+    "zoneId": "EXPL_AREA_SPRING"
   },
   {
-    "id": 41,
+    "id": "EXPL_RESEARCH_SPRING_05",
     "name": "Bestial Spring",
     "route": 5,
     "gather": [
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 16
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 15
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 14
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 13
       }
     ],
     "monsters": [
       {
-        "monsterId": 136,
+        "monsterId": "CHARACTER_PUNI4",
         "levels": [
           52
         ],
@@ -2667,7 +2667,7 @@
         "boss": false
       },
       {
-        "monsterId": 144,
+        "monsterId": "CHARACTER_RABBIT1",
         "levels": [
           52
         ],
@@ -2675,7 +2675,7 @@
         "boss": false
       },
       {
-        "monsterId": 162,
+        "monsterId": "CHARACTER_JELLYFISH1",
         "levels": [
           52
         ],
@@ -2683,7 +2683,7 @@
         "boss": false
       },
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           52
         ],
@@ -2692,49 +2692,49 @@
       }
     ],
     "slug": "bestial-spring",
-    "zoneId": 6
+    "zoneId": "EXPL_AREA_SPRING"
   },
   {
-    "id": 42,
+    "id": "EXPL_RESEARCH_SPRING_06",
     "name": "Bountiful Spring",
     "route": 6,
     "gather": [
       {
-        "itemId": 46,
+        "itemId": "ITEM_MAT_BABY_WYRM",
         "rate": 16
       },
       {
-        "itemId": 39,
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
         "rate": 15
       },
       {
-        "itemId": 45,
+        "itemId": "ITEM_MAT_BITTER_EARTHWORM",
         "rate": 14
       },
       {
-        "itemId": 40,
+        "itemId": "ITEM_MAT_BALLOON_FISH",
         "rate": 13
       },
       {
-        "itemId": 48,
+        "itemId": "ITEM_MAT_RAIDEN_DRAGOON",
         "rate": 12
       },
       {
-        "itemId": 42,
+        "itemId": "ITEM_MAT_WASHER",
         "rate": 11
       },
       {
-        "itemId": 51,
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
         "rate": 10
       },
       {
-        "itemId": 30,
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
         "rate": 9
       }
     ],
     "monsters": [
       {
-        "monsterId": 136,
+        "monsterId": "CHARACTER_PUNI4",
         "levels": [
           34,
           38
@@ -2743,7 +2743,7 @@
         "boss": false
       },
       {
-        "monsterId": 144,
+        "monsterId": "CHARACTER_RABBIT1",
         "levels": [
           35
         ],
@@ -2751,7 +2751,7 @@
         "boss": false
       },
       {
-        "monsterId": 162,
+        "monsterId": "CHARACTER_JELLYFISH1",
         "levels": [
           35,
           39
@@ -2760,7 +2760,7 @@
         "boss": false
       },
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           36
         ],
@@ -2768,7 +2768,7 @@
         "boss": false
       },
       {
-        "monsterId": 168,
+        "monsterId": "CHARACTER_GRIFFON1",
         "levels": [
           47
         ],
@@ -2777,45 +2777,45 @@
       }
     ],
     "slug": "bountiful-spring",
-    "zoneId": 6
+    "zoneId": "EXPL_AREA_SPRING"
   },
   {
-    "id": 43,
+    "id": "EXPL_RESEARCH_RUINS_00",
     "name": "Dawn Ruins",
     "route": 0,
     "gather": [
       {
-        "itemId": 11,
+        "itemId": "ITEM_MAT_DUNKELHEIT",
         "rate": 25
       },
       {
-        "itemId": 48,
+        "itemId": "ITEM_MAT_RAIDEN_DRAGOON",
         "rate": 24
       },
       {
-        "itemId": 25,
+        "itemId": "ITEM_MAT_FEST",
         "rate": 23
       },
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "rate": 10
       },
       {
-        "itemId": 67,
+        "itemId": "ITEM_MAT_TREE_BULLET_NUT",
         "rate": 8
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 6
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           47
         ],
@@ -2823,7 +2823,7 @@
         "boss": false
       },
       {
-        "monsterId": 153,
+        "monsterId": "CHARACTER_BAT1",
         "levels": [
           48
         ],
@@ -2832,45 +2832,45 @@
       }
     ],
     "slug": "dawn-ruins",
-    "zoneId": 7
+    "zoneId": "EXPL_AREA_RUINS"
   },
   {
-    "id": 44,
+    "id": "EXPL_RESEARCH_RUINS_01",
     "name": "Dawn Ruins: Interior",
     "route": 1,
     "gather": [
       {
-        "itemId": 60,
+        "itemId": "ITEM_MAT_WORLD_SOUL",
         "rate": 25
       },
       {
-        "itemId": 46,
+        "itemId": "ITEM_MAT_BABY_WYRM",
         "rate": 24
       },
       {
-        "itemId": 20,
+        "itemId": "ITEM_MAT_PHLOGISTON",
         "rate": 23
       },
       {
-        "itemId": 69,
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
         "rate": 10
       },
       {
-        "itemId": 18,
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
         "rate": 8
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 6
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           47
         ],
@@ -2878,7 +2878,7 @@
         "boss": false
       },
       {
-        "monsterId": 153,
+        "monsterId": "CHARACTER_BAT1",
         "levels": [
           48
         ],
@@ -2887,45 +2887,45 @@
       }
     ],
     "slug": "dawn-ruins-interior",
-    "zoneId": 7
+    "zoneId": "EXPL_AREA_RUINS"
   },
   {
-    "id": 45,
+    "id": "EXPL_RESEARCH_RUINS_02",
     "name": "Midnight Ruins",
     "route": 2,
     "gather": [
       {
-        "itemId": 44,
+        "itemId": "ITEM_MAT_BOSS",
         "rate": 23
       },
       {
-        "itemId": 58,
+        "itemId": "ITEM_MAT_PENDELOOK",
         "rate": 21
       },
       {
-        "itemId": 64,
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
         "rate": 19
       },
       {
-        "itemId": 69,
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
         "rate": 17
       },
       {
-        "itemId": 14,
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
         "rate": 10
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 6
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 151,
+        "monsterId": "CHARACTER_PUPPET2",
         "levels": [
           49
         ],
@@ -2933,7 +2933,7 @@
         "boss": false
       },
       {
-        "monsterId": 163,
+        "monsterId": "CHARACTER_JELLYFISH2",
         "levels": [
           50
         ],
@@ -2941,7 +2941,7 @@
         "boss": false
       },
       {
-        "monsterId": 153,
+        "monsterId": "CHARACTER_BAT1",
         "levels": [
           52
         ],
@@ -2949,7 +2949,7 @@
         "boss": false
       },
       {
-        "monsterId": 166,
+        "monsterId": "CHARACTER_GOLEM2",
         "levels": [
           57
         ],
@@ -2958,45 +2958,45 @@
       }
     ],
     "slug": "midnight-ruins",
-    "zoneId": 7
+    "zoneId": "EXPL_AREA_RUINS"
   },
   {
-    "id": 46,
+    "id": "EXPL_RESEARCH_RUINS_03",
     "name": "Midnight Ruins: Interior",
     "route": 3,
     "gather": [
       {
-        "itemId": 39,
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
         "rate": 25
       },
       {
-        "itemId": 75,
+        "itemId": "ITEM_MAT_WHITE_SAND",
         "rate": 24
       },
       {
-        "itemId": 35,
+        "itemId": "ITEM_MAT_SHINE_SAND",
         "rate": 23
       },
       {
-        "itemId": 45,
+        "itemId": "ITEM_MAT_BITTER_EARTHWORM",
         "rate": 10
       },
       {
-        "itemId": 76,
+        "itemId": "ITEM_MAT_WHITE_PRINCESS_GRASS",
         "rate": 8
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 6
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 151,
+        "monsterId": "CHARACTER_PUPPET2",
         "levels": [
           49
         ],
@@ -3004,7 +3004,7 @@
         "boss": false
       },
       {
-        "monsterId": 163,
+        "monsterId": "CHARACTER_JELLYFISH2",
         "levels": [
           50
         ],
@@ -3013,45 +3013,45 @@
       }
     ],
     "slug": "midnight-ruins-interior",
-    "zoneId": 7
+    "zoneId": "EXPL_AREA_RUINS"
   },
   {
-    "id": 47,
+    "id": "EXPL_RESEARCH_RUINS_04",
     "name": "Eternal Ruins",
     "route": 4,
     "gather": [
       {
-        "itemId": 47,
+        "itemId": "ITEM_MAT_STERN_BUG",
         "rate": 25
       },
       {
-        "itemId": 50,
+        "itemId": "ITEM_MAT_DRAGON_HORN",
         "rate": 24
       },
       {
-        "itemId": 42,
+        "itemId": "ITEM_MAT_WASHER",
         "rate": 23
       },
       {
-        "itemId": 91,
+        "itemId": "ITEM_MAT_FAIRY_PARASOL",
         "rate": 10
       },
       {
-        "itemId": 57,
+        "itemId": "ITEM_MAT_WICKED_FANG",
         "rate": 8
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 6
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 151,
+        "monsterId": "CHARACTER_PUPPET2",
         "levels": [
           49,
           52
@@ -3060,7 +3060,7 @@
         "boss": false
       },
       {
-        "monsterId": 163,
+        "monsterId": "CHARACTER_JELLYFISH2",
         "levels": [
           50,
           52
@@ -3069,7 +3069,7 @@
         "boss": false
       },
       {
-        "monsterId": 173,
+        "monsterId": "CHARACTER_GARGOYLE",
         "levels": [
           58
         ],
@@ -3078,33 +3078,33 @@
       }
     ],
     "slug": "eternal-ruins",
-    "zoneId": 7
+    "zoneId": "EXPL_AREA_RUINS"
   },
   {
-    "id": 48,
+    "id": "EXPL_RESEARCH_RUINS_05",
     "name": "Bestial Ruins",
     "route": 5,
     "gather": [
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 16
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 15
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 14
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 13
       }
     ],
     "monsters": [
       {
-        "monsterId": 135,
+        "monsterId": "CHARACTER_PUNI3",
         "levels": [
           60
         ],
@@ -3112,7 +3112,7 @@
         "boss": false
       },
       {
-        "monsterId": 136,
+        "monsterId": "CHARACTER_PUNI4",
         "levels": [
           60
         ],
@@ -3120,7 +3120,7 @@
         "boss": false
       },
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           60
         ],
@@ -3128,7 +3128,7 @@
         "boss": false
       },
       {
-        "monsterId": 153,
+        "monsterId": "CHARACTER_BAT1",
         "levels": [
           60
         ],
@@ -3136,7 +3136,7 @@
         "boss": false
       },
       {
-        "monsterId": 151,
+        "monsterId": "CHARACTER_PUPPET2",
         "levels": [
           60
         ],
@@ -3144,7 +3144,7 @@
         "boss": false
       },
       {
-        "monsterId": 163,
+        "monsterId": "CHARACTER_JELLYFISH2",
         "levels": [
           60
         ],
@@ -3153,49 +3153,49 @@
       }
     ],
     "slug": "bestial-ruins",
-    "zoneId": 7
+    "zoneId": "EXPL_AREA_RUINS"
   },
   {
-    "id": 49,
+    "id": "EXPL_RESEARCH_RUINS_06",
     "name": "Bountiful Ruins",
     "route": 6,
     "gather": [
       {
-        "itemId": 60,
+        "itemId": "ITEM_MAT_WORLD_SOUL",
         "rate": 16
       },
       {
-        "itemId": 44,
+        "itemId": "ITEM_MAT_BOSS",
         "rate": 15
       },
       {
-        "itemId": 47,
+        "itemId": "ITEM_MAT_STERN_BUG",
         "rate": 14
       },
       {
-        "itemId": 35,
+        "itemId": "ITEM_MAT_SHINE_SAND",
         "rate": 13
       },
       {
-        "itemId": 75,
+        "itemId": "ITEM_MAT_WHITE_SAND",
         "rate": 12
       },
       {
-        "itemId": 84,
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
         "rate": 11
       },
       {
-        "itemId": 27,
+        "itemId": "ITEM_MAT_KIMBER_ORE",
         "rate": 10
       },
       {
-        "itemId": 11,
+        "itemId": "ITEM_MAT_DUNKELHEIT",
         "rate": 9
       }
     ],
     "monsters": [
       {
-        "monsterId": 137,
+        "monsterId": "CHARACTER_PUNI5",
         "levels": [
           47
         ],
@@ -3203,7 +3203,7 @@
         "boss": false
       },
       {
-        "monsterId": 153,
+        "monsterId": "CHARACTER_BAT1",
         "levels": [
           48
         ],
@@ -3211,7 +3211,7 @@
         "boss": false
       },
       {
-        "monsterId": 151,
+        "monsterId": "CHARACTER_PUPPET2",
         "levels": [
           49,
           52
@@ -3220,7 +3220,7 @@
         "boss": false
       },
       {
-        "monsterId": 163,
+        "monsterId": "CHARACTER_JELLYFISH2",
         "levels": [
           50,
           52
@@ -3230,45 +3230,45 @@
       }
     ],
     "slug": "bountiful-ruins",
-    "zoneId": 7
+    "zoneId": "EXPL_AREA_RUINS"
   },
   {
-    "id": 50,
+    "id": "EXPL_RESEARCH_SNOW_00",
     "name": "Snowy Mountain",
     "route": 0,
     "gather": [
       {
-        "itemId": 43,
+        "itemId": "ITEM_MAT_SCISSORS_STONE",
         "rate": 25
       },
       {
-        "itemId": 51,
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
         "rate": 24
       },
       {
-        "itemId": 52,
+        "itemId": "ITEM_MAT_DRAGON_SCALE",
         "rate": 23
       },
       {
-        "itemId": 50,
+        "itemId": "ITEM_MAT_DRAGON_HORN",
         "rate": 10
       },
       {
-        "itemId": 13,
+        "itemId": "ITEM_MAT_DARK_NIGHT_MUSHROOM",
         "rate": 8
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 138,
+        "monsterId": "CHARACTER_PUNI6",
         "levels": [
           55
         ],
@@ -3276,7 +3276,7 @@
         "boss": false
       },
       {
-        "monsterId": 144,
+        "monsterId": "CHARACTER_RABBIT1",
         "levels": [
           56
         ],
@@ -3285,45 +3285,45 @@
       }
     ],
     "slug": "snowy-mountain",
-    "zoneId": 8
+    "zoneId": "EXPL_AREA_SNOW"
   },
   {
-    "id": 51,
+    "id": "EXPL_RESEARCH_SNOW_01",
     "name": "Snowy Mountain: Interior",
     "route": 1,
     "gather": [
       {
-        "itemId": 21,
+        "itemId": "ITEM_MAT_SOFT_RIME_STONE",
         "rate": 25
       },
       {
-        "itemId": 90,
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
         "rate": 24
       },
       {
-        "itemId": 8,
+        "itemId": "ITEM_MAT_HONEY_POPPY",
         "rate": 23
       },
       {
-        "itemId": 54,
+        "itemId": "ITEM_MAT_FRESH_MEAT",
         "rate": 10
       },
       {
-        "itemId": 14,
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
         "rate": 8
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 6
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 138,
+        "monsterId": "CHARACTER_PUNI6",
         "levels": [
           55
         ],
@@ -3331,7 +3331,7 @@
         "boss": false
       },
       {
-        "monsterId": 144,
+        "monsterId": "CHARACTER_RABBIT1",
         "levels": [
           56
         ],
@@ -3340,45 +3340,45 @@
       }
     ],
     "slug": "snowy-mountain-interior",
-    "zoneId": 8
+    "zoneId": "EXPL_AREA_SNOW"
   },
   {
-    "id": 52,
+    "id": "EXPL_RESEARCH_SNOW_02",
     "name": "Lernenberg: Foothills",
     "route": 2,
     "gather": [
       {
-        "itemId": 62,
+        "itemId": "ITEM_MAT_BLUE_DEVIL",
         "rate": 23
       },
       {
-        "itemId": 75,
+        "itemId": "ITEM_MAT_WHITE_SAND",
         "rate": 21
       },
       {
-        "itemId": 64,
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
         "rate": 19
       },
       {
-        "itemId": 47,
+        "itemId": "ITEM_MAT_STERN_BUG",
         "rate": 17
       },
       {
-        "itemId": 12,
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
         "rate": 10
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 6
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 160,
+        "monsterId": "CHARACTER_TURTLE2",
         "levels": [
           57
         ],
@@ -3386,7 +3386,7 @@
         "boss": false
       },
       {
-        "monsterId": 154,
+        "monsterId": "CHARACTER_BAT2",
         "levels": [
           57,
           60
@@ -3395,7 +3395,7 @@
         "boss": false
       },
       {
-        "monsterId": 145,
+        "monsterId": "CHARACTER_RABBIT2",
         "levels": [
           57
         ],
@@ -3403,7 +3403,7 @@
         "boss": false
       },
       {
-        "monsterId": 169,
+        "monsterId": "CHARACTER_GRIFFON2",
         "levels": [
           63
         ],
@@ -3412,45 +3412,45 @@
       }
     ],
     "slug": "lernenberg-foothills",
-    "zoneId": 8
+    "zoneId": "EXPL_AREA_SNOW"
   },
   {
-    "id": 53,
+    "id": "EXPL_RESEARCH_SNOW_03",
     "name": "Lernenberg: Mountainside",
     "route": 3,
     "gather": [
       {
-        "itemId": 34,
+        "itemId": "ITEM_MAT_TWIN_COLOR_CORUNDUM",
         "rate": 25
       },
       {
-        "itemId": 39,
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
         "rate": 24
       },
       {
-        "itemId": 43,
+        "itemId": "ITEM_MAT_SCISSORS_STONE",
         "rate": 23
       },
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "rate": 10
       },
       {
-        "itemId": 91,
+        "itemId": "ITEM_MAT_FAIRY_PARASOL",
         "rate": 8
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 6
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 160,
+        "monsterId": "CHARACTER_TURTLE2",
         "levels": [
           57
         ],
@@ -3458,7 +3458,7 @@
         "boss": false
       },
       {
-        "monsterId": 154,
+        "monsterId": "CHARACTER_BAT2",
         "levels": [
           57
         ],
@@ -3466,7 +3466,7 @@
         "boss": false
       },
       {
-        "monsterId": 145,
+        "monsterId": "CHARACTER_RABBIT2",
         "levels": [
           57
         ],
@@ -3475,45 +3475,45 @@
       }
     ],
     "slug": "lernenberg-mountainside",
-    "zoneId": 8
+    "zoneId": "EXPL_AREA_SNOW"
   },
   {
-    "id": 54,
+    "id": "EXPL_RESEARCH_SNOW_04",
     "name": "Lernenberg: Summit",
     "route": 4,
     "gather": [
       {
-        "itemId": 49,
+        "itemId": "ITEM_MAT_GOLDEN_SCARAB",
         "rate": 25
       },
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "rate": 24
       },
       {
-        "itemId": 60,
+        "itemId": "ITEM_MAT_WORLD_SOUL",
         "rate": 23
       },
       {
-        "itemId": 33,
+        "itemId": "ITEM_MAT_STAR_FRAGMENT",
         "rate": 10
       },
       {
-        "itemId": 69,
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
         "rate": 8
       },
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 6
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 4
       }
     ],
     "monsters": [
       {
-        "monsterId": 160,
+        "monsterId": "CHARACTER_TURTLE2",
         "levels": [
           57,
           60
@@ -3522,7 +3522,7 @@
         "boss": false
       },
       {
-        "monsterId": 154,
+        "monsterId": "CHARACTER_BAT2",
         "levels": [
           57,
           60
@@ -3531,7 +3531,7 @@
         "boss": false
       },
       {
-        "monsterId": 145,
+        "monsterId": "CHARACTER_RABBIT2",
         "levels": [
           57,
           60
@@ -3540,7 +3540,7 @@
         "boss": false
       },
       {
-        "monsterId": 172,
+        "monsterId": "CHARACTER_DEEPER_00",
         "levels": [
           65
         ],
@@ -3549,33 +3549,33 @@
       }
     ],
     "slug": "lernenberg-summit",
-    "zoneId": 8
+    "zoneId": "EXPL_AREA_SNOW"
   },
   {
-    "id": 55,
+    "id": "EXPL_RESEARCH_SNOW_05",
     "name": "Bestial Mountain",
     "route": 5,
     "gather": [
       {
-        "itemId": 4,
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
         "rate": 16
       },
       {
-        "itemId": 3,
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
         "rate": 15
       },
       {
-        "itemId": 2,
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
         "rate": 14
       },
       {
-        "itemId": 1,
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
         "rate": 13
       }
     ],
     "monsters": [
       {
-        "monsterId": 138,
+        "monsterId": "CHARACTER_PUNI6",
         "levels": [
           68
         ],
@@ -3583,7 +3583,7 @@
         "boss": false
       },
       {
-        "monsterId": 160,
+        "monsterId": "CHARACTER_TURTLE2",
         "levels": [
           68
         ],
@@ -3591,7 +3591,7 @@
         "boss": false
       },
       {
-        "monsterId": 154,
+        "monsterId": "CHARACTER_BAT2",
         "levels": [
           68
         ],
@@ -3599,7 +3599,7 @@
         "boss": false
       },
       {
-        "monsterId": 145,
+        "monsterId": "CHARACTER_RABBIT2",
         "levels": [
           68
         ],
@@ -3608,49 +3608,49 @@
       }
     ],
     "slug": "bestial-mountain",
-    "zoneId": 8
+    "zoneId": "EXPL_AREA_SNOW"
   },
   {
-    "id": 56,
+    "id": "EXPL_RESEARCH_SNOW_06",
     "name": "Bountiful Mountain",
     "route": 6,
     "gather": [
       {
-        "itemId": 90,
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
         "rate": 16
       },
       {
-        "itemId": 43,
+        "itemId": "ITEM_MAT_SCISSORS_STONE",
         "rate": 15
       },
       {
-        "itemId": 34,
+        "itemId": "ITEM_MAT_TWIN_COLOR_CORUNDUM",
         "rate": 14
       },
       {
-        "itemId": 49,
+        "itemId": "ITEM_MAT_GOLDEN_SCARAB",
         "rate": 13
       },
       {
-        "itemId": 39,
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
         "rate": 12
       },
       {
-        "itemId": 92,
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
         "rate": 11
       },
       {
-        "itemId": 60,
+        "itemId": "ITEM_MAT_WORLD_SOUL",
         "rate": 10
       },
       {
-        "itemId": 33,
+        "itemId": "ITEM_MAT_STAR_FRAGMENT",
         "rate": 9
       }
     ],
     "monsters": [
       {
-        "monsterId": 138,
+        "monsterId": "CHARACTER_PUNI6",
         "levels": [
           55
         ],
@@ -3658,7 +3658,7 @@
         "boss": false
       },
       {
-        "monsterId": 144,
+        "monsterId": "CHARACTER_RABBIT1",
         "levels": [
           56
         ],
@@ -3666,7 +3666,7 @@
         "boss": false
       },
       {
-        "monsterId": 160,
+        "monsterId": "CHARACTER_TURTLE2",
         "levels": [
           57,
           60
@@ -3675,7 +3675,7 @@
         "boss": false
       },
       {
-        "monsterId": 154,
+        "monsterId": "CHARACTER_BAT2",
         "levels": [
           57,
           60
@@ -3684,7 +3684,7 @@
         "boss": false
       },
       {
-        "monsterId": 145,
+        "monsterId": "CHARACTER_RABBIT2",
         "levels": [
           57,
           60
@@ -3693,7 +3693,7 @@
         "boss": false
       },
       {
-        "monsterId": 169,
+        "monsterId": "CHARACTER_GRIFFON2",
         "levels": [
           63
         ],
@@ -3701,7 +3701,7 @@
         "boss": false
       },
       {
-        "monsterId": 172,
+        "monsterId": "CHARACTER_DEEPER_00",
         "levels": [
           65
         ],
@@ -3710,15 +3710,15 @@
       }
     ],
     "slug": "bountiful-mountain",
-    "zoneId": 8
+    "zoneId": "EXPL_AREA_SNOW"
   },
   {
-    "id": 57,
+    "id": "EXPL_RESEARCH_RUINS_07",
     "name": "Dimension Gate",
     "route": 7,
     "gather": [],
     "monsters": [],
     "slug": "dimension-gate",
-    "zoneId": 7
+    "zoneId": "EXPL_AREA_RUINS"
   }
 ]

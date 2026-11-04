@@ -8,7 +8,7 @@ export const monsterSchema = z.strictObject({
   slug: slugSchema,
   name: z.string(),
   nameJp: z.string().nullable(),
-  /** A file name in data/icons/. */
+  /** A file name in data/icons/128/ and in data/icons/64/. */
   icon: z.string().nullable(),
   type: z.enum([CharacterType.Monster, CharacterType.Boss]),
   rank: z.number().nullable(),

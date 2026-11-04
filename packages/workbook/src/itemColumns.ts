@@ -1,5 +1,5 @@
 import { Element, Shop, type Item } from '@nelke/model';
-import { pick, type Lookup } from './lookup.js';
+import { required, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
 
 const ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
@@ -28,13 +28,13 @@ function gatherPlaces(item: Item, lookup: Lookup): GatherPlaces | undefined {
   };
   const opens = (task: number): string => (task ? `after Task ${task}` : 'start');
   for (const { areaId, rate } of item.gather) {
-    const area = pick(lookup.areas, areaId);
-    const zone = pick(lookup.zones, area.zoneId);
+    const area = required(lookup.areas, areaId);
+    const zone = required(lookup.zones, area.zoneId);
     const task = zone.task?.number ?? 0;
     add(`${zone.name} - ${area.name} (${rate}%, ${opens(task)})`, task);
   }
   for (const zoneId of item.specialZoneIds) {
-    const zone = pick(lookup.zones, zoneId);
+    const zone = required(lookup.zones, zoneId);
     const task = zone.task?.number ?? 0;
     add(`${zone.name} (special spot, ${opens(task)})`, task);
   }
@@ -74,7 +74,7 @@ export function itemColumns(lookup: Lookup): Column<Item>[] {
     {
       header: 'Dropped By',
       width: 30,
-      get: (i) => i.drops.map((d) => `${pick(lookup.monsters, d.monsterId).name} x${d.quantity} (${d.rate}%)`).join(', '),
+      get: (i) => i.drops.map((d) => `${required(lookup.monsters, d.monsterId).name} x${d.quantity} (${d.rate}%)`).join(', '),
     },
     { header: 'Description', width: 80, get: (i) => i.description ?? '' },
   ];

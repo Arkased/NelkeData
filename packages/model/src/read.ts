@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { DATA_FILES, modelSchema, type ModelData } from './schema/index.js';
+import { DATA_FILES } from './files.js';
+import { modelSchema, type ModelData } from './schema/index.js';
 
 /**
  * Reads the entities from the data folder and checks them against the schemas.

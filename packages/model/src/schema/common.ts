@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import { Stat } from '../enums.js';
 
-/** The ID of an entity: the 1-based row number in its game table. */
-export const idSchema = z.int().positive();
+/** The ID of an entity: the value that the other game tables use to refer to its row. It is unique in its kind. */
+export const idSchema = z.string().min(1);
 
 /** The URL slug of an entity. */
 export const slugSchema = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);

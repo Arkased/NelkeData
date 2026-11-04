@@ -13,7 +13,7 @@ The files, the fields and the commands of the data model. The design is in [docs
 
 ## Files of `data/`
 
-Each file is a JSON array of the entities of 1 kind, sorted by ID, written with an indent of 2 spaces and a final newline. 2 runs on the same game files write the same bytes. Prettier does not format `data/`.
+Each file is a JSON array of the entities of 1 kind, in the order of the game table, written with an indent of 2 spaces and a final newline. 2 runs on the same game files write the same bytes. Prettier does not format `data/`.
 
 | File | Kind |
 | --- | --- |
@@ -32,7 +32,7 @@ Each file is a JSON array of the entities of 1 kind, sorted by ID, written with 
 
 | Field | Type | On |
 | --- | --- | --- |
-| `id` | integer, the value that the game tables use to refer to the row (design section "IDs and links") | Each kind |
+| `id` | string, the value that the game tables use to refer to the row (design section "IDs and links") | Each kind |
 | `slug` | string, the rule of the design section "Slugs" | Item, Research, Zone, Area, Monster, Character |
 | `name` | string, English | Each kind with a name |
 | `nameJp` | string, Japanese | Item, Monster, Character |

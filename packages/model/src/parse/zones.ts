@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { EncounterSymbol } from '../enums.js';
 import { listFor, required } from '../util.js';
 import type { Story } from './story.js';
-import { withRowIds, type ReadTable, type RowId } from './xml.js';
+import type { ReadTable } from './xml.js';
 
 const zoneSchema = z
   .object({
@@ -55,7 +55,7 @@ const groupSchema = z
 const encounterSchema = z.object({ AREA_TAG: z.string(), ENCOUNT_TABLE: z.string(), REQ_LV: z.string() });
 
 /** A top-level exploration area of the game (a zone of the model). */
-export interface ZoneRow extends RowId {
+export interface ZoneRow {
   expl_area: string;
   area_collect: string;
   task_id: string;
@@ -68,7 +68,7 @@ export interface ZoneRow extends RowId {
 }
 
 /** A spot of an exploration area of the game (an area of the model). */
-export interface AreaRow extends RowId {
+export interface AreaRow {
   expl_research: string;
   expl_rootnumber: string;
   zone: ZoneRow;
@@ -117,7 +117,7 @@ export interface Zones {
  */
 export function loadZones(read: ReadTable, t: (label: string) => string, story: Story): Zones {
   // A zone opens when its main task (task_id) is complete; the first zone is open from the start.
-  const zoneRows = withRowIds(read('expl_area/expl_area.xml', zoneSchema));
+  const zoneRows = read('expl_area/expl_area.xml', zoneSchema);
   const zoneInfo = (a: (typeof zoneRows)[number]): ZoneRow => {
     const task = a.task_id ? required(story.mainTask, a.task_id) : undefined;
     return { ...a, name: t(a.area_name), task: task?.num ?? 0, taskName: task?.name ?? '' };
@@ -127,7 +127,7 @@ export function loadZones(read: ReadTable, t: (label: string) => string, story: 
   // Keyed by the "EA03" prefix: some tables spell the area tags differently (EA03_MOUNTAN).
   const zoneByPrefix = new Map(zones.map((z) => [z.area_collect.slice(0, 4), z]));
   const areaById = new Map<string, AreaRow>();
-  for (const s of withRowIds(read('expl_research/expl_research.xml', areaSchema))) {
+  for (const s of read('expl_research/expl_research.xml', areaSchema)) {
     const zone = zoneById.get(s.expl_area);
     if (zone) areaById.set(s.expl_research, { ...s, zone, name: t(s.map_name) });
   }

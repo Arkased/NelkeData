@@ -1,6 +1,6 @@
 import path from 'node:path';
-import { createIconSet, type IconSet } from '@nelke/extract';
 import { loadCharacters, type Characters } from './characters.js';
+import { createIcons, type Icons } from './icons.js';
 import { loadItems, type Items } from './items.js';
 import { loadMessages, type Messages } from './messages.js';
 import { loadRecipes, type Recipes } from './recipes.js';
@@ -11,7 +11,7 @@ import { loadZones, type Zones } from './zones.js';
 /** All the game data that the entities are made of. */
 export interface Game {
   messages: Messages;
-  icons: IconSet;
+  icons: Icons;
   story: Story;
   items: Items;
   characters: Characters;
@@ -22,15 +22,15 @@ export interface Game {
 /**
  * Loads the game data from the extracted game files.
  * @param extractedDir - the extracted folder; it holds saves/ (the XML tables) and data/ (the textures)
- * @param iconSize - the icon width in pixels
+ * @param iconSizes - the icon widths in pixels
  * @returns the game data
  * @sideEffects reads the extracted game files
  */
-export function loadGame(extractedDir: string, iconSize: number): Game {
+export function loadGame(extractedDir: string, iconSizes: readonly number[]): Game {
   const savesDir = path.join(extractedDir, 'saves');
   const read = createTableReader(savesDir);
   const messages = loadMessages(read);
-  const icons = createIconSet(savesDir, path.join(extractedDir, 'data'), iconSize);
+  const icons = createIcons(savesDir, path.join(extractedDir, 'data'), iconSizes);
   const story = loadStory(read, messages.t);
   const items = loadItems(read, messages.t);
   const characters = loadCharacters(read, messages.t);

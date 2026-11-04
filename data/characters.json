@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "CHARACTER_NELKE",
     "name": "Nelke",
     "nameJp": "ネルケ",
     "icon": "npc_faceicon000.png",
@@ -67,10 +67,11 @@
       "turn": 1
     },
     "slug": "nelke",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 2,
+    "id": "CHARACTER_MISTY",
     "name": "Misty",
     "nameJp": "ミスティ",
     "icon": "npc_faceicon001.png",
@@ -137,10 +138,11 @@
       "turn": 1
     },
     "slug": "misty",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 3,
+    "id": "CHARACTER_KNOSS",
     "name": "Knoss",
     "nameJp": "クノス",
     "icon": "npc_faceicon002.png",
@@ -207,10 +209,11 @@
       "turn": 1
     },
     "slug": "knoss",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 4,
+    "id": "CHARACTER_LOTOS",
     "name": "Lotos",
     "nameJp": "ロータス",
     "icon": "npc_faceicon003.png",
@@ -277,10 +280,11 @@
       "turn": 1
     },
     "slug": "lotos",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 5,
+    "id": "CHARACTER_MARIE",
     "name": "Marie",
     "nameJp": "マリー",
     "icon": "npc_faceicon004.png",
@@ -367,18 +371,29 @@
     },
     "slug": "marie",
     "recipeSetIds": [
-      20,
-      21,
-      22,
-      23,
-      25,
-      115,
-      124,
-      151
+      "RECIPE_COLLECTION_FLOUR",
+      "RECIPE_COLLECTION_SIMPLE_BAKED_SWEETS",
+      "RECIPE_COLLECTION_FLAMME",
+      "RECIPE_COLLECTION_NEUTRALIZER_RED",
+      "RECIPE_COLLECTION_BEER",
+      "RECIPE_COLLECTION_SPECULATOR_DICE",
+      "RECIPE_COLLECTION_FULL_AUTOMATIC_MUSHROOM_HOTPOT",
+      "RECIPE_COLLECTION_GOLDEN_EXTRACT_SOUP"
+    ],
+    "researchIds": [
+      "STDY_RES_000",
+      "STDY_RES_022",
+      "STDY_RES_025",
+      "STDY_RES_067",
+      "STDY_RES_100",
+      "STDY_RES_112",
+      "STDY_RES_126",
+      "STDY_RES_128",
+      "STDY_RES_140"
     ]
   },
   {
-    "id": 6,
+    "id": "CHARACTER_ELIE",
     "name": "Elie",
     "nameJp": "エリー",
     "icon": "npc_faceicon005.png",
@@ -465,18 +480,26 @@
     },
     "slug": "elie",
     "recipeSetIds": [
-      24,
-      26,
-      27,
-      28,
-      30,
-      116,
-      125,
-      152
+      "RECIPE_COLLECTION_TIMBER",
+      "RECIPE_COLLECTION_TRADITIONAL_WHITE_BREAD",
+      "RECIPE_COLLECTION_PUNI_JELLY",
+      "RECIPE_COLLECTION_INSECT_NET",
+      "RECIPE_COLLECTION_DISTORTED_STONE",
+      "RECIPE_COLLECTION_STROHM_DRILL",
+      "RECIPE_COLLECTION_HOLY_CRYSTAL_WEIGHT",
+      "RECIPE_COLLECTION_GOLDEN_PUNI_STATUE"
+    ],
+    "researchIds": [
+      "STDY_RES_001",
+      "STDY_RES_004",
+      "STDY_RES_068",
+      "STDY_RES_104",
+      "STDY_RES_113",
+      "STDY_RES_120"
     ]
   },
   {
-    "id": 7,
+    "id": "CHARACTER_LILIE",
     "name": "Lilie",
     "nameJp": "リリー",
     "icon": "npc_faceicon006.png",
@@ -563,22 +586,33 @@
     },
     "slug": "lilie",
     "recipeSetIds": [
-      29,
-      31,
-      32,
-      33,
-      34,
-      35,
-      36,
-      37,
-      38,
-      117,
-      126,
-      153
+      "RECIPE_COLLECTION_DISTILLED_WATER",
+      "RECIPE_COLLECTION_BLESSING_WINE",
+      "RECIPE_COLLECTION_HEALING_AROMA",
+      "RECIPE_COLLECTION_PURE_INCENSE_BURNER",
+      "RECIPE_COLLECTION_MAGICAL_PAINT",
+      "RECIPE_COLLECTION_HEALING_SALVE",
+      "RECIPE_COLLECTION_SHOVEL",
+      "RECIPE_COLLECTION_INGOT",
+      "RECIPE_COLLECTION_NEUTRALIZER_GREEN",
+      "RECIPE_COLLECTION_NICE_WIG",
+      "RECIPE_COLLECTION_HEAVEN_AND_EARTH_COLLAPSE_AX",
+      "RECIPE_COLLECTION_GUARDIAN_GODDESS_SHIELD"
+    ],
+    "researchIds": [
+      "STDY_RES_003",
+      "STDY_RES_006",
+      "STDY_RES_012",
+      "STDY_RES_027",
+      "STDY_RES_046",
+      "STDY_RES_061",
+      "STDY_RES_109",
+      "STDY_RES_116",
+      "STDY_RES_121"
     ]
   },
   {
-    "id": 8,
+    "id": "CHARACTER_JUDIE",
     "name": "Judie",
     "nameJp": "ユーディー",
     "icon": "npc_faceicon007.png",
@@ -665,20 +699,28 @@
     },
     "slug": "judie",
     "recipeSetIds": [
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46,
-      47,
-      118,
-      154
+      "RECIPE_COLLECTION_APPLE_TART",
+      "RECIPE_COLLECTION_ABRASIVE",
+      "RECIPE_COLLECTION_ZETTEL",
+      "RECIPE_COLLECTION_POLISHED_CRYSTAL",
+      "RECIPE_COLLECTION_LACHELN",
+      "RECIPE_COLLECTION_FRUIT_TEA",
+      "RECIPE_COLLECTION_NEUTRALIZER_BLUE",
+      "RECIPE_COLLECTION_CLOTH",
+      "RECIPE_COLLECTION_BRIDE_BLOUSE",
+      "RECIPE_COLLECTION_SUN_FLOWER"
+    ],
+    "researchIds": [
+      "STDY_RES_005",
+      "STDY_RES_010",
+      "STDY_RES_023",
+      "STDY_RES_117",
+      "STDY_RES_127",
+      "STDY_RES_143"
     ]
   },
   {
-    "id": 9,
+    "id": "CHARACTER_VIO",
     "name": "Viorate",
     "nameJp": "ヴィオラート",
     "icon": "npc_faceicon008.png",
@@ -765,21 +807,25 @@
     },
     "slug": "viorate",
     "recipeSetIds": [
-      48,
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55,
-      119,
-      128,
-      155
+      "RECIPE_COLLECTION_PURE_OIL",
+      "RECIPE_COLLECTION_CRYSTAL_BALL",
+      "RECIPE_COLLECTION_DONNER_STONE",
+      "RECIPE_COLLECTION_NECTAR",
+      "RECIPE_COLLECTION_NEUTRALIZER_YELLOW",
+      "RECIPE_COLLECTION_ALCHEMIC_CLAY",
+      "RECIPE_COLLECTION_ALCHEMIC_CHARCOAL",
+      "RECIPE_COLLECTION_IRON_BOARD",
+      "RECIPE_COLLECTION_SMARAGD",
+      "RECIPE_COLLECTION_MYTHICAL_RING",
+      "RECIPE_COLLECTION_AERIS_BROOCH"
+    ],
+    "researchIds": [
+      "STDY_RES_011",
+      "STDY_RES_026"
     ]
   },
   {
-    "id": 10,
+    "id": "CHARACTER_KREIN",
     "name": "Klein",
     "nameJp": "クレイン",
     "icon": "npc_faceicon009.png",
@@ -866,21 +912,27 @@
     },
     "slug": "klein",
     "recipeSetIds": [
-      2,
-      63,
-      64,
-      65,
-      66,
-      67,
-      68,
-      133,
-      134,
-      160,
-      161
+      "RECIPE_COLLECTION_MOFFCLOTH",
+      "RECIPE_COLLECTION_ALCHEMY_DROP",
+      "RECIPE_COLLECTION_DISCHARGE_TUBE",
+      "RECIPE_COLLECTION_MAIDEN_SPEAR",
+      "RECIPE_COLLECTION_BATTLE_MAIL",
+      "RECIPE_COLLECTION_SINGLE_SCAT",
+      "RECIPE_COLLECTION_KRAFT",
+      "RECIPE_COLLECTION_MEDICATED_HERB_TEA",
+      "RECIPE_COLLECTION_VELVETIS",
+      "RECIPE_COLLECTION_FORBIDDEN_CAPSULE",
+      "RECIPE_COLLECTION_PHILOSOPHERS_STONE"
+    ],
+    "researchIds": [
+      "STDY_RES_013",
+      "STDY_RES_018",
+      "STDY_RES_102",
+      "STDY_RES_118"
     ]
   },
   {
-    "id": 11,
+    "id": "CHARACTER_RYTA",
     "name": "Lita",
     "nameJp": "リイタ",
     "icon": "npc_faceicon010.png",
@@ -964,10 +1016,11 @@
       "turn": 1
     },
     "slug": "lita",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 12,
+    "id": "CHARACTER_FELT",
     "name": "Felt",
     "nameJp": "フェルト",
     "icon": "npc_faceicon011.png",
@@ -1051,10 +1104,11 @@
       "turn": 1
     },
     "slug": "felt",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 13,
+    "id": "CHARACTER_VIESE",
     "name": "Viese",
     "nameJp": "ヴィーゼ",
     "icon": "npc_faceicon012.png",
@@ -1141,20 +1195,26 @@
     },
     "slug": "viese",
     "recipeSetIds": [
-      69,
-      70,
-      71,
-      72,
-      73,
-      74,
-      75,
-      105,
-      135,
-      162
+      "RECIPE_COLLECTION_VEGETABLE_MANJU",
+      "RECIPE_COLLECTION_MUSIC_BOX",
+      "RECIPE_COLLECTION_ARMORED_BUNKER",
+      "RECIPE_COLLECTION_CRYSTAL_FANG",
+      "RECIPE_COLLECTION_RECLAMATION_CONVENIENCE_TOOL",
+      "RECIPE_COLLECTION_METEOR",
+      "RECIPE_COLLECTION_HAY_FORK",
+      "RECIPE_COLLECTION_FLUGEL",
+      "RECIPE_COLLECTION_MEDICINE_BASE",
+      "RECIPE_COLLECTION_GOLD_BULLION"
+    ],
+    "researchIds": [
+      "STDY_RES_019",
+      "STDY_RES_028",
+      "STDY_RES_064",
+      "STDY_RES_124"
     ]
   },
   {
-    "id": 14,
+    "id": "CHARACTER_EDGE",
     "name": "Edge",
     "nameJp": "エッジ",
     "icon": "npc_faceicon013.png",
@@ -1238,10 +1298,11 @@
       "turn": 1
     },
     "slug": "edge",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 15,
+    "id": "CHARACTER_IRIS",
     "name": "Iris",
     "nameJp": "イリス",
     "icon": "npc_faceicon014.png",
@@ -1328,20 +1389,26 @@
     },
     "slug": "iris",
     "recipeSetIds": [
-      107,
-      108,
-      109,
-      110,
-      111,
-      112,
-      113,
-      127,
-      148,
-      149
+      "RECIPE_COLLECTION_STAMINA_BREAD",
+      "RECIPE_COLLECTION_BLACK_WHITE_TAROT",
+      "RECIPE_COLLECTION_METEORITIC_IRON_ARMOR",
+      "RECIPE_COLLECTION_GORGEOUS_SHEER_SILK",
+      "RECIPE_COLLECTION_GRANAT",
+      "RECIPE_COLLECTION_GOLD_EISEN",
+      "RECIPE_COLLECTION_IRON_WOOD",
+      "RECIPE_COLLECTION_GNADE_RING",
+      "RECIPE_COLLECTION_ORIGIN_ASH",
+      "RECIPE_COLLECTION_CRIMSON_STONE"
+    ],
+    "researchIds": [
+      "STDY_RES_049",
+      "STDY_RES_110",
+      "STDY_RES_125",
+      "STDY_RES_132"
     ]
   },
   {
-    "id": 16,
+    "id": "CHARACTER_VAIN",
     "name": "Vayne",
     "nameJp": "ヴェイン",
     "icon": "npc_faceicon015.png",
@@ -1428,18 +1495,24 @@
     },
     "slug": "vayne",
     "recipeSetIds": [
-      76,
-      77,
-      78,
-      79,
-      80,
-      81,
-      136,
-      138
+      "RECIPE_COLLECTION_SPECIAL_PANCAKE",
+      "RECIPE_COLLECTION_ETHER_INK",
+      "RECIPE_COLLECTION_MAIDEN_ARMOR",
+      "RECIPE_COLLECTION_SHOOTING_STAR",
+      "RECIPE_COLLECTION_DARKNESS_WATER",
+      "RECIPE_COLLECTION_SPIRIT_WEAVE_CURTAIN",
+      "RECIPE_COLLECTION_PURE_POISON",
+      "RECIPE_COLLECTION_MIRAGE_MIRROR"
+    ],
+    "researchIds": [
+      "STDY_RES_062",
+      "STDY_RES_106",
+      "STDY_RES_122",
+      "STDY_RES_123"
     ]
   },
   {
-    "id": 17,
+    "id": "CHARACTER_ROZE",
     "name": "Raze",
     "nameJp": "ロゼ",
     "icon": "npc_faceicon016.png",
@@ -1526,20 +1599,21 @@
     },
     "slug": "raze",
     "recipeSetIds": [
-      97,
-      98,
-      99,
-      100,
-      101,
-      102,
-      103,
-      104,
-      106,
-      146
-    ]
+      "RECIPE_COLLECTION_PRIMITIVE_POWER_MEAT",
+      "RECIPE_COLLECTION_GRAMOPHONE",
+      "RECIPE_COLLECTION_VALKYRIA_SUIT",
+      "RECIPE_COLLECTION_DURABLE_SHIRT",
+      "RECIPE_COLLECTION_HIDE_HOOD",
+      "RECIPE_COLLECTION_NIGHT_SHADE",
+      "RECIPE_COLLECTION_STYLISH_SHIRT",
+      "RECIPE_COLLECTION_DRAGON_NOSTRUM",
+      "RECIPE_COLLECTION_DISPLAY_CABINET",
+      "RECIPE_COLLECTION_EPIPHANY_EYE_DROPS"
+    ],
+    "researchIds": []
   },
   {
-    "id": 18,
+    "id": "CHARACTER_ULRIKA",
     "name": "Ulrika",
     "nameJp": "ウルリカ",
     "icon": "npc_faceicon017.png",
@@ -1626,11 +1700,15 @@
     },
     "slug": "ulrika",
     "recipeSetIds": [
-      147
+      "RECIPE_COLLECTION_WITCHS_BREW"
+    ],
+    "researchIds": [
+      "STDY_RES_002",
+      "STDY_RES_131"
     ]
   },
   {
-    "id": 19,
+    "id": "CHARACTER_URXU",
     "name": "Uryu",
     "nameJp": "うりゅ",
     "icon": "npc_faceicon018.png",
@@ -1663,10 +1741,11 @@
       "turn": 0
     },
     "slug": "uryu",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 20,
+    "id": "CHARACTER_RORONA",
     "name": "Rorona",
     "nameJp": "ロロナ",
     "icon": "npc_faceicon019.png",
@@ -1753,19 +1832,25 @@
     },
     "slug": "rorona",
     "recipeSetIds": [
-      82,
-      83,
-      84,
-      85,
-      86,
-      87,
-      88,
-      114,
-      142
+      "RECIPE_COLLECTION_TEDDY_BEAR",
+      "RECIPE_COLLECTION_BLOODY_CLAW",
+      "RECIPE_COLLECTION_DRAGOON_MAIL",
+      "RECIPE_COLLECTION_UNIVERSE_MANUSCRIPT",
+      "RECIPE_COLLECTION_BLITZ_CORE_",
+      "RECIPE_COLLECTION_RUBY",
+      "RECIPE_COLLECTION_RAINBOW_PAINT",
+      "RECIPE_COLLECTION_LIVING_PIE",
+      "RECIPE_COLLECTION_SPIRIT_EARRINGS"
+    ],
+    "researchIds": [
+      "STDY_RES_024",
+      "STDY_RES_047",
+      "STDY_RES_060",
+      "STDY_RES_114"
     ]
   },
   {
-    "id": 21,
+    "id": "CHARACTER_TOTORI",
     "name": "Totori",
     "nameJp": "トトリ",
     "icon": "npc_faceicon020.png",
@@ -1852,11 +1937,17 @@
     },
     "slug": "totori",
     "recipeSetIds": [
-      139
+      "RECIPE_COLLECTION_ALCHEMY_MAIL"
+    ],
+    "researchIds": [
+      "STDY_RES_008",
+      "STDY_RES_020",
+      "STDY_RES_107",
+      "STDY_RES_130"
     ]
   },
   {
-    "id": 22,
+    "id": "CHARACTER_MERURU",
     "name": "Meruru",
     "nameJp": "メルル",
     "icon": "npc_faceicon021.png",
@@ -1943,11 +2034,16 @@
     },
     "slug": "meruru",
     "recipeSetIds": [
-      140
+      "RECIPE_COLLECTION_HOLLOW_RING"
+    ],
+    "researchIds": [
+      "STDY_RES_050",
+      "STDY_RES_129",
+      "STDY_RES_142"
     ]
   },
   {
-    "id": 23,
+    "id": "CHARACTER_AYESHA",
     "name": "Ayesha",
     "nameJp": "アーシャ",
     "icon": "npc_faceicon022.png",
@@ -2034,19 +2130,26 @@
     },
     "slug": "ayesha",
     "recipeSetIds": [
-      89,
-      90,
-      91,
-      92,
-      93,
-      94,
-      95,
-      96,
-      141
+      "RECIPE_COLLECTION_JIGGLY_PUDDING",
+      "RECIPE_COLLECTION_GENUG_WATERING_POT",
+      "RECIPE_COLLECTION_CLAIOMH_SOLAIS",
+      "RECIPE_COLLECTION_CLOTH_SKIRT",
+      "RECIPE_COLLECTION_LEATHER_COAT",
+      "RECIPE_COLLECTION_FADEN_COAT",
+      "RECIPE_COLLECTION_ELIXIR",
+      "RECIPE_COLLECTION_WATER_PUMP",
+      "RECIPE_COLLECTION_GLASS_TIARA"
+    ],
+    "researchIds": [
+      "STDY_RES_031",
+      "STDY_RES_063",
+      "STDY_RES_065",
+      "STDY_RES_111",
+      "STDY_RES_119"
     ]
   },
   {
-    "id": 24,
+    "id": "CHARACTER_ESCHA",
     "name": "Escha",
     "nameJp": "エスカ",
     "icon": "npc_faceicon023.png",
@@ -2133,12 +2236,18 @@
     },
     "slug": "escha",
     "recipeSetIds": [
-      137,
-      143
+      "RECIPE_COLLECTION_WORLD_APPLE_STORY",
+      "RECIPE_COLLECTION_ROBRANT"
+    ],
+    "researchIds": [
+      "STDY_RES_030",
+      "STDY_RES_048",
+      "STDY_RES_105",
+      "STDY_RES_144"
     ]
   },
   {
-    "id": 25,
+    "id": "CHARACTER_LOGY",
     "name": "Logy",
     "nameJp": "ロジー",
     "icon": "npc_faceicon024.png",
@@ -2224,10 +2333,11 @@
       "turn": 1
     },
     "slug": "logy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 26,
+    "id": "CHARACTER_STERA",
     "name": "Shallistera",
     "nameJp": "シャリステラ",
     "icon": "npc_faceicon025.png",
@@ -2314,11 +2424,16 @@
     },
     "slug": "shallistera",
     "recipeSetIds": [
-      144
+      "RECIPE_COLLECTION_PAINKILLER_BAND"
+    ],
+    "researchIds": [
+      "STDY_RES_029",
+      "STDY_RES_103",
+      "STDY_RES_115"
     ]
   },
   {
-    "id": 27,
+    "id": "CHARACTER_LOTTE",
     "name": "Shallotte",
     "nameJp": "シャルロッテ",
     "icon": "npc_faceicon026.png",
@@ -2405,11 +2520,15 @@
     },
     "slug": "shallotte",
     "recipeSetIds": [
-      145
+      "RECIPE_COLLECTION_TEETHING_FEVER_SYRUP"
+    ],
+    "researchIds": [
+      "STDY_RES_017",
+      "STDY_RES_021"
     ]
   },
   {
-    "id": 28,
+    "id": "CHARACTER_SOPHIE",
     "name": "Sophie",
     "nameJp": "ソフィー",
     "icon": "npc_faceicon027.png",
@@ -2496,22 +2615,27 @@
     },
     "slug": "sophie",
     "recipeSetIds": [
-      1,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62,
-      120,
-      129,
-      150,
-      156
+      "RECIPE_COLLECTION_SILVALIA",
+      "RECIPE_COLLECTION_HONEY",
+      "RECIPE_COLLECTION_AWAKENING_POCKET_WATCH",
+      "RECIPE_COLLECTION_GLOBE",
+      "RECIPE_COLLECTION_SOFT_WIND_AROMA",
+      "RECIPE_COLLECTION_DIAMOND",
+      "RECIPE_COLLECTION_COMET",
+      "RECIPE_COLLECTION_SUPER_HARD_ALLOY",
+      "RECIPE_COLLECTION_FISHING_ROD",
+      "RECIPE_COLLECTION_REFUEL_PAD",
+      "RECIPE_COLLECTION_PRECISION_EQUIPMENT_SET",
+      "RECIPE_COLLECTION_MIRACLE_DRUG_DRACHEN"
+    ],
+    "researchIds": [
+      "STDY_RES_009",
+      "STDY_RES_014",
+      "STDY_RES_101"
     ]
   },
   {
-    "id": 29,
+    "id": "CHARACTER_FIRIS",
     "name": "Firis",
     "nameJp": "フィリス",
     "icon": "npc_faceicon028.png",
@@ -2598,13 +2722,18 @@
     },
     "slug": "firis",
     "recipeSetIds": [
-      121,
-      130,
-      157
+      "RECIPE_COLLECTION_HARMONIUM",
+      "RECIPE_COLLECTION_REFRESH_MEDICINE",
+      "RECIPE_COLLECTION_DOCTOR_AWAY"
+    ],
+    "researchIds": [
+      "STDY_RES_007",
+      "STDY_RES_016",
+      "STDY_RES_141"
     ]
   },
   {
-    "id": 30,
+    "id": "CHARACTER_LYDIE",
     "name": "Lydie",
     "nameJp": "リディー",
     "icon": "npc_faceicon029.png",
@@ -2691,13 +2820,18 @@
     },
     "slug": "lydie",
     "recipeSetIds": [
-      122,
-      131,
-      158
+      "RECIPE_COLLECTION_SAPPHIRE",
+      "RECIPE_COLLECTION_COUGH_DROP",
+      "RECIPE_COLLECTION_COMMON_COLD_MEDICINE"
+    ],
+    "researchIds": [
+      "STDY_RES_015",
+      "STDY_RES_066",
+      "STDY_RES_108"
     ]
   },
   {
-    "id": 31,
+    "id": "CHARACTER_SUE",
     "name": "Suelle",
     "nameJp": "スール",
     "icon": "npc_faceicon030.png",
@@ -2784,13 +2918,14 @@
     },
     "slug": "suelle",
     "recipeSetIds": [
-      123,
-      132,
-      159
-    ]
+      "RECIPE_COLLECTION_CLOTH_MANNEQUIN",
+      "RECIPE_COLLECTION_SPECULATOR_MEDICINE",
+      "RECIPE_COLLECTION_SACRED_MIRACULOUS_MEDICINE"
+    ],
+    "researchIds": []
   },
   {
-    "id": 32,
+    "id": "CHARACTER_HAGEL",
     "name": "Hagel",
     "nameJp": "ハゲル",
     "icon": "npc_faceicon031.png",
@@ -2870,10 +3005,11 @@
       "turn": 1
     },
     "slug": "hagel",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 33,
+    "id": "CHARACTER_PAMELA",
     "name": "Pamela",
     "nameJp": "パメラ",
     "icon": "npc_faceicon032.png",
@@ -2953,10 +3089,11 @@
       "turn": 1
     },
     "slug": "pamela",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 34,
+    "id": "CHARACTER_ENDERK",
     "name": "Enderk",
     "nameJp": "エンデルク",
     "icon": "npc_faceicon033.png",
@@ -3038,10 +3175,11 @@
       "turn": 1
     },
     "slug": "enderk",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 35,
+    "id": "CHARACTER_PEPERON",
     "name": "Pepperoni",
     "nameJp": "ペペロン",
     "icon": "npc_faceicon034.png",
@@ -3123,10 +3261,11 @@
       "turn": 1
     },
     "slug": "pepperoni",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 36,
+    "id": "CHARACTER_STERK",
     "name": "Sterk",
     "nameJp": "ステルク",
     "icon": "npc_faceicon035.png",
@@ -3208,10 +3347,11 @@
       "turn": 1
     },
     "slug": "sterk",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 37,
+    "id": "CHARACTER_BARTHOLOMAUS",
     "name": "Bartel",
     "nameJp": "バルテル",
     "icon": "npc_faceicon036.png",
@@ -3293,10 +3433,11 @@
       "turn": 1
     },
     "slug": "bartel",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 38,
+    "id": "CHARACTER_NORN",
     "name": "Norn",
     "nameJp": "ノルン",
     "icon": "npc_faceicon037.png",
@@ -3378,10 +3519,11 @@
       "turn": 1
     },
     "slug": "norn",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 39,
+    "id": "CHARACTER_FAIRY_GREEN",
     "name": "Fairy",
     "nameJp": "妖精さん",
     "icon": "npc_faceicon038.png",
@@ -3412,10 +3554,11 @@
       "turn": 0
     },
     "slug": "fairy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 40,
+    "id": "CHARACTER_FAIRY_TALK",
     "name": "Talkative Fairy",
     "nameJp": "おしゃべり妖精さん",
     "icon": null,
@@ -3449,10 +3592,11 @@
       "turn": 10
     },
     "slug": "talkative-fairy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 41,
+    "id": "CHARACTER_FAIRY_SERIOUS",
     "name": "Diligent Fairy",
     "nameJp": "まじめな妖精さん",
     "icon": null,
@@ -3486,10 +3630,11 @@
       "turn": 20
     },
     "slug": "diligent-fairy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 42,
+    "id": "CHARACTER_FAIRY_NEW",
     "name": "Rookie Fairy",
     "nameJp": "新人妖精さん",
     "icon": null,
@@ -3523,10 +3668,11 @@
       "turn": 0
     },
     "slug": "rookie-fairy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 43,
+    "id": "CHARACTER_FAIRY_LIGHTBLUE",
     "name": "Fairy (Water)",
     "nameJp": "妖精さん（水）",
     "icon": null,
@@ -3557,10 +3703,11 @@
       "turn": 0
     },
     "slug": "fairy-water",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 44,
+    "id": "CHARACTER_FAIRY_VETERAN",
     "name": "Veteran Fairy",
     "nameJp": "ベテラン妖精さん",
     "icon": null,
@@ -3594,10 +3741,11 @@
       "turn": 0
     },
     "slug": "veteran-fairy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 45,
+    "id": "CHARACTER_FAIRY_SUPER",
     "name": "Super Fairy",
     "nameJp": "スーパー妖精さん",
     "icon": null,
@@ -3631,10 +3779,11 @@
       "turn": 30
     },
     "slug": "super-fairy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 46,
+    "id": "CHARACTER_FAIRY_BOSS",
     "name": "Boss",
     "nameJp": "ボス",
     "icon": "npc_faceicon045.png",
@@ -3665,10 +3814,11 @@
       "turn": 0
     },
     "slug": "boss",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 47,
+    "id": "CHARACTER_SCHIA",
     "name": "Schia",
     "nameJp": "シア",
     "icon": "npc_faceicon046.png",
@@ -3748,10 +3898,11 @@
       "turn": 1
     },
     "slug": "schia",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 48,
+    "id": "CHARACTER_KREIS",
     "name": "Kreis",
     "nameJp": "クライス",
     "icon": "npc_faceicon047.png",
@@ -3831,10 +3982,11 @@
       "turn": 1
     },
     "slug": "kreis",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 49,
+    "id": "CHARACTER_RUWEN",
     "name": "Ruven",
     "nameJp": "ルーウェン",
     "icon": "npc_faceicon054.png",
@@ -3914,10 +4066,11 @@
       "turn": 1
     },
     "slug": "ruven",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 50,
+    "id": "CHARACTER_MY",
     "name": "My",
     "nameJp": "ミュー",
     "icon": "npc_faceicon048.png",
@@ -3997,10 +4150,11 @@
       "turn": 1
     },
     "slug": "my",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 51,
+    "id": "CHARACTER_SCHWALBE",
     "name": "Schwalbe",
     "nameJp": "シュワルベ",
     "icon": "npc_faceicon049.png",
@@ -4080,10 +4234,11 @@
       "turn": 1
     },
     "slug": "schwalbe",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 52,
+    "id": "CHARACTER_INGRID",
     "name": "Ingrid",
     "nameJp": "イングリド",
     "icon": "npc_faceicon050.png",
@@ -4163,10 +4318,11 @@
       "turn": 1
     },
     "slug": "ingrid",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 53,
+    "id": "CHARACTER_DIO",
     "name": "Dio",
     "nameJp": "ディオ",
     "icon": "npc_faceicon051.png",
@@ -4246,10 +4402,11 @@
       "turn": 1
     },
     "slug": "dio",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 54,
+    "id": "CHARACTER_FLEA",
     "name": "Flea",
     "nameJp": "フレア",
     "icon": "npc_faceicon052.png",
@@ -4329,10 +4486,11 @@
       "turn": 1
     },
     "slug": "flea",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 55,
+    "id": "CHARACTER_DORNIER",
     "name": "Dornie",
     "nameJp": "ドルニエ",
     "icon": "npc_faceicon053.png",
@@ -4412,10 +4570,11 @@
       "turn": 1
     },
     "slug": "dornie",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 56,
+    "id": "CHARACTER_EISEL",
     "name": "Eisel",
     "nameJp": "アイゼル",
     "icon": "npc_faceicon055.png",
@@ -4495,10 +4654,11 @@
       "turn": 1
     },
     "slug": "eisel",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 57,
+    "id": "CHARACTER_NORDIS",
     "name": "Nordis",
     "nameJp": "ノルディス",
     "icon": "npc_faceicon056.png",
@@ -4578,10 +4738,11 @@
       "turn": 1
     },
     "slug": "nordis",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 58,
+    "id": "CHARACTER_HERMINA",
     "name": "Hermina",
     "nameJp": "ヘルミーナ",
     "icon": "npc_faceicon057.png",
@@ -4661,10 +4822,11 @@
       "turn": 1
     },
     "slug": "hermina",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 59,
+    "id": "CHARACTER_SPHERE",
     "name": "Sphere",
     "nameJp": "スフィア",
     "icon": "npc_faceicon058.png",
@@ -4744,10 +4906,11 @@
       "turn": 1
     },
     "slug": "sphere",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 60,
+    "id": "CHARACTER_LAPIS",
     "name": "Lapis",
     "nameJp": "ラピス",
     "icon": "npc_faceicon059.png",
@@ -4827,10 +4990,11 @@
       "turn": 1
     },
     "slug": "lapis",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 61,
+    "id": "CHARACTER_NANAMI",
     "name": "Nanami",
     "nameJp": "ナナミ",
     "icon": "npc_faceicon060.png",
@@ -4910,10 +5074,11 @@
       "turn": 1
     },
     "slug": "nanami",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 62,
+    "id": "CHARACTER_ZELDALIA",
     "name": "Zeldalia",
     "nameJp": "ゼルダリア",
     "icon": null,
@@ -4990,10 +5155,11 @@
       "turn": 0
     },
     "slug": "zeldalia",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 63,
+    "id": "CHARACTER_NEL",
     "name": "Nel",
     "nameJp": "ネル",
     "icon": "npc_faceicon062.png",
@@ -5073,10 +5239,11 @@
       "turn": 1
     },
     "slug": "nel",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 64,
+    "id": "CHARACTER_ANA",
     "name": "Ana",
     "nameJp": "アナ",
     "icon": "npc_faceicon063.png",
@@ -5156,10 +5323,11 @@
       "turn": 1
     },
     "slug": "ana",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 65,
+    "id": "CHARACTER_PHENYL",
     "name": "Phenyl",
     "nameJp": "フェニル",
     "icon": "npc_faceicon064.png",
@@ -5239,10 +5407,11 @@
       "turn": 1
     },
     "slug": "phenyl",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 66,
+    "id": "CHARACTER_PHILO",
     "name": "Jess",
     "nameJp": "フィロ",
     "icon": "npc_faceicon065.png",
@@ -5322,10 +5491,11 @@
       "turn": 1
     },
     "slug": "jess",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 67,
+    "id": "CHARACTER_GUNNAR",
     "name": "Flay",
     "nameJp": "グンナル",
     "icon": "npc_faceicon066.png",
@@ -5405,10 +5575,11 @@
       "turn": 1
     },
     "slug": "flay",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 68,
+    "id": "CHARACTER_LOXIS",
     "name": "Roxis",
     "nameJp": "ロクシス",
     "icon": "npc_faceicon067.png",
@@ -5488,10 +5659,11 @@
       "turn": 1
     },
     "slug": "roxis",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 69,
+    "id": "CHARACTER_ANNA",
     "name": "Anna",
     "nameJp": "アンナ",
     "icon": "npc_faceicon068.png",
@@ -5571,10 +5743,11 @@
       "turn": 1
     },
     "slug": "anna",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 70,
+    "id": "CHARACTER_NIKE",
     "name": "Nikki",
     "nameJp": "ニケ",
     "icon": "npc_faceicon069.png",
@@ -5654,10 +5827,11 @@
       "turn": 1
     },
     "slug": "nikki",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 71,
+    "id": "CHARACTER_MUPE",
     "name": "Muppy",
     "nameJp": "ムーペ",
     "icon": "npc_faceicon070.png",
@@ -5737,10 +5911,11 @@
       "turn": 1
     },
     "slug": "muppy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 72,
+    "id": "CHARACTER_ISOLDE",
     "name": "Isolde",
     "nameJp": "イゾルデ",
     "icon": "npc_faceicon071.png",
@@ -5820,10 +5995,11 @@
       "turn": 1
     },
     "slug": "isolde",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 73,
+    "id": "CHARACTER_LILIA",
     "name": "Lily",
     "nameJp": "リリア",
     "icon": "npc_faceicon072.png",
@@ -5903,10 +6079,11 @@
       "turn": 1
     },
     "slug": "lily",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 74,
+    "id": "CHARACTER_WUIM",
     "name": "Whim",
     "nameJp": "ウィム",
     "icon": "npc_faceicon073.png",
@@ -5986,10 +6163,11 @@
       "turn": 1
     },
     "slug": "whim",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 75,
+    "id": "CHARACTER_CUDERIA",
     "name": "Cordelia",
     "nameJp": "クーデリア",
     "icon": "npc_faceicon074.png",
@@ -6069,10 +6247,11 @@
       "turn": 1
     },
     "slug": "cordelia",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 76,
+    "id": "CHARACTER_LIONELA",
     "name": "Lionela",
     "nameJp": "リオネラ",
     "icon": "npc_faceicon075.png",
@@ -6152,10 +6331,11 @@
       "turn": 1
     },
     "slug": "lionela",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 77,
+    "id": "CHARACTER_YKSEL",
     "name": "Iksel",
     "nameJp": "イクセル",
     "icon": "npc_faceicon076.png",
@@ -6235,10 +6415,11 @@
       "turn": 1
     },
     "slug": "iksel",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 78,
+    "id": "CHARACTER_GIO",
     "name": "Gio",
     "nameJp": "ジオ",
     "icon": "npc_faceicon077.png",
@@ -6318,10 +6499,11 @@
       "turn": 1
     },
     "slug": "gio",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 79,
+    "id": "CHARACTER_TIFANA",
     "name": "Tiffani",
     "nameJp": "ティファナ",
     "icon": "npc_faceicon078.png",
@@ -6401,10 +6583,11 @@
       "turn": 1
     },
     "slug": "tiffani",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 80,
+    "id": "CHARACTER_ESTY",
     "name": "Esty",
     "nameJp": "エスティ",
     "icon": "npc_faceicon079.png",
@@ -6484,10 +6667,11 @@
       "turn": 1
     },
     "slug": "esty",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 81,
+    "id": "CHARACTER_JEENO",
     "name": "Gino",
     "nameJp": "ジーノ",
     "icon": "npc_faceicon080.png",
@@ -6567,10 +6751,11 @@
       "turn": 1
     },
     "slug": "gino",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 82,
+    "id": "CHARACTER_MERVIA",
     "name": "Melvia",
     "nameJp": "メルヴィア",
     "icon": "npc_faceicon081.png",
@@ -6650,10 +6835,11 @@
       "turn": 1
     },
     "slug": "melvia",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 83,
+    "id": "CHARACTER_MIMI",
     "name": "Mimi",
     "nameJp": "ミミ",
     "icon": "npc_faceicon082.png",
@@ -6733,10 +6919,11 @@
       "turn": 1
     },
     "slug": "mimi",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 84,
+    "id": "CHARACTER_MARC",
     "name": "Marc",
     "nameJp": "マーク",
     "icon": "npc_faceicon083.png",
@@ -6816,10 +7003,11 @@
       "turn": 1
     },
     "slug": "marc",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 85,
+    "id": "CHARACTER_CECI",
     "name": "Ceci",
     "nameJp": "ツェツィ",
     "icon": "npc_faceicon084.png",
@@ -6899,10 +7087,11 @@
       "turn": 1
     },
     "slug": "ceci",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 86,
+    "id": "CHARACTER_GERHARD",
     "name": "Gerard",
     "nameJp": "ゲラルド",
     "icon": "npc_faceicon085.png",
@@ -6982,10 +7171,11 @@
       "turn": 1
     },
     "slug": "gerard",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 87,
+    "id": "CHARACTER_CHIM_MALE",
     "name": "Chim",
     "nameJp": "ちむ",
     "icon": "npc_faceicon086.png",
@@ -7064,11 +7254,12 @@
       "population": 0,
       "turn": 1
     },
-    "slug": "chim",
-    "recipeSetIds": []
+    "slug": "chim-character-chim-male",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 88,
+    "id": "CHARACTER_CHIM_FEMALE",
     "name": "Chim",
     "nameJp": "ちむ",
     "icon": "npc_faceicon087.png",
@@ -7147,11 +7338,12 @@
       "population": 0,
       "turn": 1
     },
-    "slug": "chim-88",
-    "recipeSetIds": []
+    "slug": "chim",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 89,
+    "id": "CHARACTER_PIANA",
     "name": "Piana",
     "nameJp": "ピアニャ",
     "icon": "npc_faceicon088.png",
@@ -7231,10 +7423,11 @@
       "turn": 1
     },
     "slug": "piana",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 90,
+    "id": "CHARACTER_KAENA",
     "name": "Keina",
     "nameJp": "ケイナ",
     "icon": "npc_faceicon089.png",
@@ -7314,10 +7507,11 @@
       "turn": 1
     },
     "slug": "keina",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 91,
+    "id": "CHARACTER_RUFES",
     "name": "Rufus",
     "nameJp": "ルーフェス",
     "icon": "npc_faceicon090.png",
@@ -7397,10 +7591,11 @@
       "turn": 1
     },
     "slug": "rufus",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 92,
+    "id": "CHARACTER_FILLY",
     "name": "Filly",
     "nameJp": "フィリー",
     "icon": "npc_faceicon091.png",
@@ -7480,10 +7675,11 @@
       "turn": 1
     },
     "slug": "filly",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 93,
+    "id": "CHARACTER_NIO",
     "name": "Nio",
     "nameJp": "ニオ",
     "icon": "npc_faceicon092.png",
@@ -7563,10 +7759,11 @@
       "turn": 1
     },
     "slug": "nio",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 94,
+    "id": "CHARACTER_KEITHGRIF",
     "name": "Keithgriff",
     "nameJp": "キースグリフ",
     "icon": "npc_faceicon093.png",
@@ -7646,10 +7843,11 @@
       "turn": 1
     },
     "slug": "keithgriff",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 95,
+    "id": "CHARACTER_JURIS",
     "name": "Juris",
     "nameJp": "ユーリス",
     "icon": "npc_faceicon094.png",
@@ -7729,10 +7927,11 @@
       "turn": 1
     },
     "slug": "juris",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 96,
+    "id": "CHARACTER_ODILEIA",
     "name": "Odelia",
     "nameJp": "オディーリア",
     "icon": "npc_faceicon095.png",
@@ -7812,10 +8011,11 @@
       "turn": 1
     },
     "slug": "odelia",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 97,
+    "id": "CHARACTER_HARRY",
     "name": "Harry",
     "nameJp": "ハリー",
     "icon": "npc_faceicon096.png",
@@ -7895,10 +8095,11 @@
       "turn": 1
     },
     "slug": "harry",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 98,
+    "id": "CHARACTER_MERIETTA",
     "name": "Marietta",
     "nameJp": "メリエッタ",
     "icon": "npc_faceicon097.png",
@@ -7978,10 +8179,11 @@
       "turn": 1
     },
     "slug": "marietta",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 99,
+    "id": "CHARACTER_ERNIE",
     "name": "Ernie",
     "nameJp": "アーニー",
     "icon": "npc_faceicon098.png",
@@ -8061,10 +8263,11 @@
       "turn": 1
     },
     "slug": "ernie",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 100,
+    "id": "CHARACTER_NANACA",
     "name": "Nanaca",
     "nameJp": "ナナカ",
     "icon": "npc_faceicon099.png",
@@ -8144,10 +8347,11 @@
       "turn": 1
     },
     "slug": "nanaca",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 101,
+    "id": "CHARACTER_AWIN",
     "name": "Awin",
     "nameJp": "アウィン",
     "icon": "npc_faceicon100.png",
@@ -8227,10 +8431,11 @@
       "turn": 1
     },
     "slug": "awin",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 102,
+    "id": "CHARACTER_REYFER",
     "name": "Reyfer",
     "nameJp": "レイファー",
     "icon": "npc_faceicon101.png",
@@ -8310,10 +8515,11 @@
       "turn": 1
     },
     "slug": "reyfer",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 103,
+    "id": "CHARACTER_KATLA",
     "name": "Katla",
     "nameJp": "カトラ",
     "icon": "npc_faceicon102.png",
@@ -8393,10 +8599,11 @@
       "turn": 1
     },
     "slug": "katla",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 104,
+    "id": "CHARACTER_LINCA",
     "name": "Linca",
     "nameJp": "リンカ",
     "icon": "npc_faceicon103.png",
@@ -8476,10 +8683,11 @@
       "turn": 1
     },
     "slug": "linca",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 105,
+    "id": "CHARACTER_MARION",
     "name": "Marion",
     "nameJp": "マリオン",
     "icon": "npc_faceicon104.png",
@@ -8559,10 +8767,11 @@
       "turn": 1
     },
     "slug": "marion",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 106,
+    "id": "CHARACTER_WILBELL",
     "name": "Wilbell",
     "nameJp": "ウィルベル",
     "icon": "npc_faceicon105.png",
@@ -8642,10 +8851,11 @@
       "turn": 1
     },
     "slug": "wilbell",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 107,
+    "id": "CHARACTER_JURIE",
     "name": "Jurie",
     "nameJp": "ユリエ",
     "icon": "npc_faceicon106.png",
@@ -8725,10 +8935,11 @@
       "turn": 1
     },
     "slug": "jurie",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 108,
+    "id": "CHARACTER_MIRUCA",
     "name": "Miruca",
     "nameJp": "ミルカ",
     "icon": "npc_faceicon107.png",
@@ -8808,10 +9019,11 @@
       "turn": 1
     },
     "slug": "miruca",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 109,
+    "id": "CHARACTER_ROSEMIA",
     "name": "Rosemia",
     "nameJp": "ローゼミア",
     "icon": "npc_faceicon108.png",
@@ -8891,10 +9103,11 @@
       "turn": 1
     },
     "slug": "rosemia",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 110,
+    "id": "CHARACTER_PLACHTA",
     "name": "Plachta",
     "nameJp": "プラフタ",
     "icon": "npc_faceicon109.png",
@@ -8974,10 +9187,11 @@
       "turn": 1
     },
     "slug": "plachta",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 111,
+    "id": "CHARACTER_MONIKA",
     "name": "Monika",
     "nameJp": "モニカ",
     "icon": "npc_faceicon110.png",
@@ -9057,10 +9271,11 @@
       "turn": 1
     },
     "slug": "monika",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 112,
+    "id": "CHARACTER_OSKAR",
     "name": "Oskar",
     "nameJp": "オスカー",
     "icon": "npc_faceicon115.png",
@@ -9140,10 +9355,11 @@
       "turn": 1
     },
     "slug": "oskar",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 113,
+    "id": "CHARACTER_FRITZ",
     "name": "Fritz",
     "nameJp": "フリッツ",
     "icon": "npc_faceicon111.png",
@@ -9223,10 +9439,11 @@
       "turn": 1
     },
     "slug": "fritz",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 114,
+    "id": "CHARACTER_CORNERIA",
     "name": "Corneria",
     "nameJp": "コルネリア",
     "icon": "npc_faceicon112.png",
@@ -9306,10 +9523,11 @@
       "turn": 1
     },
     "slug": "corneria",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 115,
+    "id": "CHARACTER_LEON",
     "name": "Leon",
     "nameJp": "レオン",
     "icon": "npc_faceicon113.png",
@@ -9389,10 +9607,11 @@
       "turn": 1
     },
     "slug": "leon",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 116,
+    "id": "CHARACTER_TESS",
     "name": "Tess",
     "nameJp": "テス",
     "icon": "npc_faceicon114.png",
@@ -9472,10 +9691,11 @@
       "turn": 1
     },
     "slug": "tess",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 117,
+    "id": "CHARACTER_LIANE",
     "name": "Liane",
     "nameJp": "リアーネ",
     "icon": "npc_faceicon116.png",
@@ -9555,10 +9775,11 @@
       "turn": 1
     },
     "slug": "liane",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 118,
+    "id": "CHARACTER_ILMERIA",
     "name": "Ilmeria",
     "nameJp": "イルメリア",
     "icon": "npc_faceicon117.png",
@@ -9638,10 +9859,11 @@
       "turn": 1
     },
     "slug": "ilmeria",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 119,
+    "id": "CHARACTER_DROSSEL",
     "name": "Drossel",
     "nameJp": "ドロッセル",
     "icon": "npc_faceicon118.png",
@@ -9721,10 +9943,11 @@
       "turn": 1
     },
     "slug": "drossel",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 120,
+    "id": "CHARACTER_REVY",
     "name": "Revy",
     "nameJp": "レヴィ",
     "icon": "npc_faceicon119.png",
@@ -9804,10 +10027,11 @@
       "turn": 1
     },
     "slug": "revy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 121,
+    "id": "CHARACTER_ANGRIFF",
     "name": "Angriff",
     "nameJp": "アングリフ",
     "icon": "npc_faceicon120.png",
@@ -9887,10 +10111,11 @@
       "turn": 1
     },
     "slug": "angriff",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 122,
+    "id": "CHARACTER_LUCIA",
     "name": "Lucia",
     "nameJp": "ルーシャ",
     "icon": "npc_faceicon121.png",
@@ -9970,10 +10195,11 @@
       "turn": 1
     },
     "slug": "lucia",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 123,
+    "id": "CHARACTER_NPC_YOUNGMAN",
     "name": "Young Man",
     "nameJp": "お兄さん",
     "icon": null,
@@ -10004,10 +10230,11 @@
       "turn": 0
     },
     "slug": "young-man",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 124,
+    "id": "CHARACTER_NPC_YOUNGWOMEN",
     "name": "Young Woman",
     "nameJp": "お姉さん",
     "icon": null,
@@ -10038,10 +10265,11 @@
       "turn": 0
     },
     "slug": "young-woman",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 125,
+    "id": "CHARACTER_NPC_UNCLE",
     "name": "Middle-aged Man",
     "nameJp": "おじさん",
     "icon": null,
@@ -10072,10 +10300,11 @@
       "turn": 0
     },
     "slug": "middle-aged-man",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 126,
+    "id": "CHARACTER_NPC_AUNT",
     "name": "Middle-aged Woman",
     "nameJp": "おばさん",
     "icon": null,
@@ -10106,10 +10335,11 @@
       "turn": 0
     },
     "slug": "middle-aged-woman",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 127,
+    "id": "CHARACTER_NPC_OLDMAN",
     "name": "Old Man",
     "nameJp": "おじいさん",
     "icon": null,
@@ -10140,10 +10370,11 @@
       "turn": 0
     },
     "slug": "old-man",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 128,
+    "id": "CHARACTER_NPC_OLDWOMEN",
     "name": "Old Woman",
     "nameJp": "おばあさん",
     "icon": null,
@@ -10174,10 +10405,11 @@
       "turn": 0
     },
     "slug": "old-woman",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 129,
+    "id": "CHARACTER_NPC_BOY",
     "name": "Boy",
     "nameJp": "男の子",
     "icon": null,
@@ -10208,10 +10440,11 @@
       "turn": 0
     },
     "slug": "boy",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 130,
+    "id": "CHARACTER_NPC_GIRL",
     "name": "Girl",
     "nameJp": "女の子",
     "icon": null,
@@ -10242,10 +10475,11 @@
       "turn": 0
     },
     "slug": "girl",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 131,
+    "id": "CHARACTER_HELPER",
     "name": "Hired Help",
     "nameJp": "臨時お手伝いさん",
     "icon": null,
@@ -10276,10 +10510,11 @@
       "turn": 0
     },
     "slug": "hired-help",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 174,
+    "id": "CHARACTER_DLC00",
     "name": "Gust",
     "nameJp": "がすとちゃん",
     "icon": "npc_faceicon149.png",
@@ -10359,10 +10594,11 @@
       "turn": 0
     },
     "slug": "gust",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 175,
+    "id": "CHARACTER_DLC01",
     "name": "Ares",
     "nameJp": "アレス",
     "icon": "npc_faceicon150.png",
@@ -10442,10 +10678,11 @@
       "turn": 0
     },
     "slug": "ares",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 176,
+    "id": "CHARACTER_DLC02",
     "name": "Keaton",
     "nameJp": "キートン",
     "icon": "npc_faceicon151.png",
@@ -10525,10 +10762,11 @@
       "turn": 0
     },
     "slug": "keaton",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 177,
+    "id": "CHARACTER_DLC03",
     "name": "Noir",
     "nameJp": "ノア",
     "icon": "npc_faceicon152.png",
@@ -10608,10 +10846,11 @@
       "turn": 0
     },
     "slug": "noir",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 178,
+    "id": "CHARACTER_DLC04",
     "name": "Robin",
     "nameJp": "ロビン",
     "icon": "npc_faceicon153.png",
@@ -10691,10 +10930,11 @@
       "turn": 0
     },
     "slug": "robin",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 179,
+    "id": "CHARACTER_DLC05",
     "name": "Shunsuke Kamoi",
     "nameJp": "鴨居俊祐",
     "icon": "npc_faceicon154.png",
@@ -10774,10 +11014,11 @@
       "turn": 0
     },
     "slug": "shunsuke-kamoi",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 180,
+    "id": "CHARACTER_DLC06",
     "name": "Aeon",
     "nameJp": "イオン",
     "icon": "npc_faceicon155.png",
@@ -10857,10 +11098,11 @@
       "turn": 0
     },
     "slug": "aeon",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 181,
+    "id": "CHARACTER_DLC07",
     "name": "Delta",
     "nameJp": "デルタ",
     "icon": "npc_faceicon156.png",
@@ -10940,10 +11182,11 @@
       "turn": 0
     },
     "slug": "delta",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 182,
+    "id": "CHARACTER_DLC08",
     "name": "Cas",
     "nameJp": "キャス",
     "icon": "npc_faceicon157.png",
@@ -11023,10 +11266,11 @@
       "turn": 0
     },
     "slug": "cas",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 183,
+    "id": "CHARACTER_DLC09",
     "name": "Arshes",
     "nameJp": "アーシェス",
     "icon": "npc_faceicon158.png",
@@ -11106,10 +11350,11 @@
       "turn": 0
     },
     "slug": "arshes",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 184,
+    "id": "CHARACTER_DLC10",
     "name": "Hinako",
     "nameJp": "日菜子",
     "icon": "npc_faceicon159.png",
@@ -11189,10 +11434,11 @@
       "turn": 0
     },
     "slug": "hinako",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 185,
+    "id": "CHARACTER_DLC11",
     "name": "Yuzuki",
     "nameJp": "夕月",
     "icon": "npc_faceicon160.png",
@@ -11272,10 +11518,11 @@
       "turn": 0
     },
     "slug": "yuzuki",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 186,
+    "id": "CHARACTER_DLC12",
     "name": "Raimu",
     "nameJp": "来夢",
     "icon": "npc_faceicon161.png",
@@ -11355,10 +11602,11 @@
       "turn": 0
     },
     "slug": "raimu",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 187,
+    "id": "CHARACTER_DLC13",
     "name": "Arnice ",
     "nameJp": "アーナス",
     "icon": "npc_faceicon162.png",
@@ -11438,10 +11686,11 @@
       "turn": 0
     },
     "slug": "arnice",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 188,
+    "id": "CHARACTER_DLC14",
     "name": "Lilysse ",
     "nameJp": "リュリーティス",
     "icon": "npc_faceicon163.png",
@@ -11521,10 +11770,11 @@
       "turn": 0
     },
     "slug": "lilysse",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 189,
+    "id": "CHARACTER_DLC15",
     "name": "Aluche",
     "nameJp": "アルーシェ",
     "icon": "npc_faceicon164.png",
@@ -11604,10 +11854,11 @@
       "turn": 0
     },
     "slug": "aluche",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 190,
+    "id": "CHARACTER_DLC16",
     "name": "Liliana",
     "nameJp": "リリアーナ",
     "icon": "npc_faceicon165.png",
@@ -11687,10 +11938,11 @@
       "turn": 0
     },
     "slug": "liliana",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 191,
+    "id": "CHARACTER_DLC17",
     "name": "Ruenheid",
     "nameJp": "ルーエンハイド",
     "icon": "npc_faceicon122.png",
@@ -11770,10 +12022,11 @@
       "turn": 0
     },
     "slug": "ruenheid",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 192,
+    "id": "CHARACTER_DLC18",
     "name": "Lender",
     "nameJp": "金貸し",
     "icon": null,
@@ -11837,10 +12090,11 @@
       "turn": 0
     },
     "slug": "lender",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 193,
+    "id": "CHARACTER_DLC19",
     "name": "Carpenter",
     "nameJp": "大工",
     "icon": null,
@@ -11904,10 +12158,11 @@
       "turn": 0
     },
     "slug": "carpenter",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 194,
+    "id": "CHARACTER_LISETTE",
     "name": "Lise",
     "nameJp": "リーズ",
     "icon": "npc_faceicon124.png",
@@ -11984,10 +12239,11 @@
       "turn": 0
     },
     "slug": "lise",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 195,
+    "id": "CHARACTER_ANNIE",
     "name": "Annie",
     "nameJp": "アニー",
     "icon": "npc_faceicon166.png",
@@ -12064,10 +12320,11 @@
       "turn": 0
     },
     "slug": "annie",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 196,
+    "id": "CHARACTER_LINA",
     "name": "Lina",
     "nameJp": "リーナ",
     "icon": "npc_faceicon167.png",
@@ -12144,10 +12401,11 @@
       "turn": 0
     },
     "slug": "lina",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 197,
+    "id": "CHARACTER_DOUGLAS",
     "name": "Dagllas",
     "nameJp": "ダグラス",
     "icon": "npc_faceicon168.png",
@@ -12224,10 +12482,11 @@
       "turn": 0
     },
     "slug": "dagllas",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 198,
+    "id": "CHARACTER_INGRID_A3",
     "name": "Ingrid",
     "nameJp": "イングリド",
     "icon": "npc_faceicon169.png",
@@ -12303,11 +12562,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "ingrid-198",
-    "recipeSetIds": []
+    "slug": "ingrid-character-ingrid-a3",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 200,
+    "id": "CHARACTER_HERMINA_A4",
     "name": "Hermina",
     "nameJp": "ヘルミーナ",
     "icon": "npc_faceicon170.png",
@@ -12383,11 +12643,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "hermina-200",
-    "recipeSetIds": []
+    "slug": "hermina-character-hermina-a4",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 201,
+    "id": "CHARACTER_VIOLA",
     "name": "Veola",
     "nameJp": "ビオラ",
     "icon": "npc_faceicon124.png",
@@ -12464,10 +12725,11 @@
       "turn": 0
     },
     "slug": "veola",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 202,
+    "id": "CHARACTER_ARLINE",
     "name": "Arlin",
     "nameJp": "アーリン",
     "icon": "npc_faceicon171.png",
@@ -12544,10 +12806,11 @@
       "turn": 0
     },
     "slug": "arlin",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 203,
+    "id": "CHARACTER_FEE",
     "name": "Fee",
     "nameJp": "フィー",
     "icon": "npc_faceicon172.png",
@@ -12624,10 +12887,11 @@
       "turn": 0
     },
     "slug": "fee",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 204,
+    "id": "CHARACTER_PAMELA_A4",
     "name": "Pamela",
     "nameJp": "パメラ",
     "icon": "npc_faceicon173.png",
@@ -12703,11 +12967,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "pamela-204",
-    "recipeSetIds": []
+    "slug": "pamela-character-pamela-a4",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 205,
+    "id": "CHARACTER_PAMELA_A6",
     "name": "Pamela",
     "nameJp": "パメラ",
     "icon": "npc_faceicon174.png",
@@ -12783,11 +13048,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "pamela-205",
-    "recipeSetIds": []
+    "slug": "pamela-character-pamela-a6",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 206,
+    "id": "CHARACTER_PAMELA_A8",
     "name": "Pamela",
     "nameJp": "パメラ",
     "icon": "npc_faceicon175.png",
@@ -12863,11 +13129,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "pamela-206",
-    "recipeSetIds": []
+    "slug": "pamela-character-pamela-a8",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 207,
+    "id": "CHARACTER_PAMELA_A9",
     "name": "Pamela",
     "nameJp": "パメラ",
     "icon": "npc_faceicon176.png",
@@ -12943,11 +13210,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "pamela-207",
-    "recipeSetIds": []
+    "slug": "pamela-character-pamela-a9",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 208,
+    "id": "CHARACTER_PAMELA_A12",
     "name": "Pamela",
     "nameJp": "パメラ",
     "icon": "npc_faceicon177.png",
@@ -13023,11 +13291,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "pamela-208",
-    "recipeSetIds": []
+    "slug": "pamela-character-pamela-a12",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 209,
+    "id": "CHARACTER_PAMELA_A17",
     "name": "Pamela",
     "nameJp": "パメラ",
     "icon": "npc_faceicon178.png",
@@ -13103,11 +13372,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "pamela-209",
-    "recipeSetIds": []
+    "slug": "pamela-character-pamela-a17",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 210,
+    "id": "CHARACTER_HAGEL_A1",
     "name": "Weapon Shopkeeper",
     "nameJp": "武器屋の親父",
     "icon": "npc_faceicon179.png",
@@ -13184,10 +13454,11 @@
       "turn": 0
     },
     "slug": "weapon-shopkeeper",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 211,
+    "id": "CHARACTER_HAGEL_A3",
     "name": "Gerhard",
     "nameJp": "ゲルハルト",
     "icon": "npc_faceicon180.png",
@@ -13264,10 +13535,11 @@
       "turn": 0
     },
     "slug": "gerhard",
-    "recipeSetIds": []
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 212,
+    "id": "CHARACTER_HAGEL_A7",
     "name": "Hagel",
     "nameJp": "ハゲル",
     "icon": "npc_faceicon181.png",
@@ -13343,11 +13615,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "hagel-212",
-    "recipeSetIds": []
+    "slug": "hagel-character-hagel-a7",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 213,
+    "id": "CHARACTER_HAGEL_A8",
     "name": "Hagel",
     "nameJp": "ハゲル",
     "icon": "npc_faceicon182.png",
@@ -13423,11 +13696,12 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "hagel-213",
-    "recipeSetIds": []
+    "slug": "hagel-character-hagel-a8",
+    "recipeSetIds": [],
+    "researchIds": []
   },
   {
-    "id": 214,
+    "id": "CHARACTER_HAGEL_A11",
     "name": "Hagel",
     "nameJp": "ハゲル",
     "icon": "npc_faceicon183.png",
@@ -13503,7 +13777,8 @@
       "population": 0,
       "turn": 0
     },
-    "slug": "hagel-214",
-    "recipeSetIds": []
+    "slug": "hagel-character-hagel-a11",
+    "recipeSetIds": [],
+    "researchIds": []
   }
 ]

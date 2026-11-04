@@ -12,5 +12,5 @@ const outDir = dataDir ?? path.join(repoRoot, 'data');
 const { data, icons } = buildModel(extractedDir ?? path.join(repoRoot, 'extracted'));
 writeData(outDir, data, icons);
 const counts = Object.entries(data).map(([kind, rows]) => `${kind}: ${rows.length}`);
-console.log(`${counts.join(', ')}, icons: ${icons.size}`);
+console.log(`${counts.join(', ')}, icons: ${[...icons].map(([size, images]) => `${images.size} of ${size} px`).join(', ')}`);
 console.log(`wrote ${outDir}`);

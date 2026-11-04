@@ -1,7 +1,7 @@
 import { CharacterType, Difficulty, Element, Stat } from '../../enums.js';
 import type { DirectData } from '../../inverse.js';
 
-type Overrides<T> = Partial<T> & { id: number };
+type Overrides<T> = Partial<T> & { id: string };
 
 const STATS = Object.values(Stat);
 const zeroStats = Object.fromEntries(STATS.map((stat) => [stat, 0])) as Record<Stat, number>;
@@ -38,7 +38,7 @@ export function fakeItem(o: Overrides<DirectData['items'][number]>): DirectData[
  */
 export function fakeRecipe(o: Overrides<DirectData['recipes'][number]>): DirectData['recipes'][number] {
   return {
-    resultItemId: 1,
+    resultItemId: 'i1',
     materials: [],
     synthesisCost: 1,
     inputCost: 0,

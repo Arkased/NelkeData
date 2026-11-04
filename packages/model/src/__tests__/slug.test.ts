@@ -22,18 +22,29 @@ describe('slugify', () => {
 describe('withSlugs', () => {
   it('keeps the slug of the lowest ID and adds the ID to the others', () => {
     const slugs = withSlugs([
-      { id: 7, name: 'Gold Ore' },
-      { id: 3, name: 'Gold  Ore' },
-      { id: 9, name: 'Gold-Ore' },
+      { id: 'ITEM_G', name: 'Gold Ore' },
+      { id: 'ITEM_C', name: 'Gold  Ore' },
+      { id: 'ITEM_K', name: 'Gold-Ore' },
     ]).map((e) => e.slug);
-    expect(slugs).toEqual(['gold-ore-7', 'gold-ore', 'gold-ore-9']);
+    expect(slugs).toEqual(['gold-ore-item-g', 'gold-ore', 'gold-ore-item-k']);
   });
 
   it('keeps the order of the input', () => {
     const ids = withSlugs([
-      { id: 2, name: 'B' },
-      { id: 1, name: 'A' },
+      { id: 'B', name: 'B' },
+      { id: 'A', name: 'A' },
     ]).map((e) => e.id);
-    expect(ids).toEqual([2, 1]);
+    expect(ids).toEqual(['B', 'A']);
+  });
+
+  it('gives the same slugs on 2 runs, whatever the order of the input', () => {
+    const entities = [
+      { id: 'ITEM_G', name: 'Gold Ore' },
+      { id: 'ITEM_C', name: 'Gold Ore' },
+      { id: 'ITEM_K', name: 'Iron' },
+    ];
+    const slugsOf = (list: typeof entities): Map<string, string> => new Map(withSlugs(list).map((e) => [e.id, e.slug]));
+    expect(slugsOf(entities)).toEqual(slugsOf(entities));
+    expect(slugsOf(entities.toReversed())).toEqual(slugsOf(entities));
   });
 });

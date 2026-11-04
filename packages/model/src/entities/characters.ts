@@ -5,7 +5,6 @@ import type { Game } from '../parse/game.js';
 import type { Character as CharacterRow, Characters } from '../parse/characters.js';
 import { withSlugs } from '../slug.js';
 import { getOrCreate, orNull, required } from '../util.js';
-import type { IdMap } from './ids.js';
 import { storyEventOf } from './story.js';
 
 const NO_RANK = '-1';
@@ -13,11 +12,6 @@ const NO_RANK = '-1';
 const MONSTER_FACE_BASE = 200;
 const STATS = Object.values(Stat);
 const ELEMENTS = Object.values(Element);
-
-/** The IDs of the entities that the characters and the monsters link to. */
-export interface CharacterLinks {
-  itemIds: IdMap;
-}
 
 function recordOf<K extends string, V>(keys: readonly K[], value: (key: K) => V): Record<K, V> {
   const record: Partial<Record<K, V>> = {};
@@ -45,7 +39,7 @@ function commonFields(
   game: Game,
   c: CharacterRow,
 ): {
-  id: number;
+  id: string;
   name: string;
   nameJp: string | null;
   icon: string | null;
@@ -56,7 +50,7 @@ function commonFields(
 } {
   const { characters, messages } = game;
   return {
-    id: c.rowId,
+    id: c.CHARACTER_ID,
     name: required(characters.characterName, c.CHARACTER_ID),
     nameJp: orNull(messages.jp(c.CHARACTER_NAME_LABEL_ID)),
     icon: iconOf(game, c),
@@ -69,11 +63,11 @@ function commonFields(
 
 // Lists the zones where a monster appears through an encounter group that no area lists, with the levels.
 function zoneEncountersOf(game: Game, c: CharacterRow): DirectData['monsters'][number]['zoneEncounters'] {
-  const found = new Map<string, { zoneId: number; levels: number[]; boss: boolean }>();
+  const found = new Map<string, { zoneId: string; levels: number[]; boss: boolean }>();
   for (const { group, zone } of game.zones.zoneEncounters) {
     const boss = game.zones.isBossGroup(group);
     for (const member of group.members.filter((m) => m.id === c.BTL_CHARACTER_ID)) {
-      getOrCreate(found, `${zone.rowId}:${boss}`, () => ({ zoneId: zone.rowId, levels: [], boss })).levels.push(member.lv);
+      getOrCreate(found, `${zone.expl_area}:${boss}`, () => ({ zoneId: zone.expl_area, levels: [], boss })).levels.push(member.lv);
     }
   }
   return [...found.values()].map((e) => ({ ...e, levels: [...new Set(e.levels)].toSorted((x, y) => x - y) }));
@@ -82,12 +76,11 @@ function zoneEncountersOf(game: Game, c: CharacterRow): DirectData['monsters'][n
 /**
  * Makes the monsters from the game tables: the characters of the categories Monster and Boss.
  * @param game - the game data
- * @param links - the IDs of the items
  * @returns the monsters, in the order of the game table
- * @throws {Error} when a monster drops an item that the model does not hold
+ * @throws {Error} when a character of a monster category has a type other than Monster or Boss
  * @sideEffects requests the icon of each monster from the icon set, which decodes it
  */
-export function buildMonsters(game: Game, links: CharacterLinks): DirectData['monsters'] {
+export function buildMonsters(game: Game): DirectData['monsters'] {
   const { characters } = game;
   return withSlugs(
     characters.characters.filter(characters.isMonster).map((c) => {
@@ -100,9 +93,7 @@ export function buildMonsters(game: Game, links: CharacterLinks): DirectData['mo
         wage: Number(c.CHARACTER_SUBMONEY),
         elementDef: battle ? recordOf(ELEMENTS, (element) => characters.elementDef(c, element) ?? 0) : null,
         exp: battle ? Number(battle.battle_exp) : null,
-        drops: battle
-          ? characters.dropsOf(battle).map((d) => ({ itemId: required(links.itemIds, d.id), quantity: d.num, rate: d.rate }))
-          : [],
+        drops: battle ? characters.dropsOf(battle).map((d) => ({ itemId: d.id, quantity: d.num, rate: d.rate })) : [],
         zoneEncounters: zoneEncountersOf(game, c),
       };
     }),
@@ -113,7 +104,7 @@ export function buildMonsters(game: Game, links: CharacterLinks): DirectData['mo
  * Makes the characters from the game tables: all the characters that are not monsters.
  * @param game - the game data
  * @returns the characters, in the order of the game table
- * @throws {Error} when a character has a category that is not known
+ * @throws {Error} when a character that is not a monster has the type Monster or Boss
  * @sideEffects requests the icon of each character from the icon set, which decodes it
  */
 export function buildCharacters(game: Game): DirectData['characters'] {

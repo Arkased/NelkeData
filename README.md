@@ -22,7 +22,7 @@ Do these steps to make the workbook again:
    ```
    npm run model
    ```
-   The command takes 2 optional arguments, `[extractedDir] [dataDir]`. They default to `extracted/` and `data/`. It writes one JSON file for each kind of entity and the icons (128 × 128 PNG) to `data/`. The files in `data/` are in git. Run the command again after a change to the model, and commit the changed files.
+   The command takes 2 optional arguments, `[extractedDir] [dataDir]`. They default to `extracted/` and `data/`. It writes one JSON file for each kind of entity and the icons (PNG, 128 × 128 in `data/icons/128/` and 64 × 64 in `data/icons/64/`) to `data/`. The files in `data/` are in git. Run the command again after a change to the model, and commit the changed files.
 4. Build the workbook from the data files:
    ```
    npm run workbook
@@ -59,7 +59,7 @@ Each sheet has a frozen header row and a filter on all columns.
 
 ## Icons in Google Sheets
 
-The build writes 491 icons (128 × 128 PNG) to `output/icons/`. Column A (`Icon`) of the Items, Recipes, Monsters and Characters sheets holds the file name of the icon of the row, for example `item_l_012.png`. Some cells are empty: these rows have no icon. An xlsx file that Google Sheets imports cannot hold pictures in cells, so do these steps after the import:
+The build writes 491 icons (64 × 64 PNG) to `output/icons/`. Column A (`Icon`) of the Items, Recipes, Monsters and Characters sheets holds the file name of the icon of the row, for example `item_l_012.png`. Some cells are empty: these rows have no icon. An xlsx file that Google Sheets imports cannot hold pictures in cells, so do these steps after the import:
 
 1. Upload the folder `output/icons/` to Google Drive.
 2. Open the Google Sheets file. Select **Extensions > Apps Script**.
