@@ -1,5 +1,5 @@
 {
   "extends": "../tsconfig.base.json",
-  "compilerOptions": { "rootDir": ".", "outDir": "dist", "lib": ["ES2023", "DOM"] },
-  "include": ["*.ts"]
+  "compilerOptions": { "rootDir": "..", "outDir": "dist", "lib": ["ES2023", "DOM"] },
+  "include": ["*.ts", "../packages/site/src/base.ts"]
 }

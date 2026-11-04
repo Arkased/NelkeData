@@ -20,7 +20,7 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | File | Holds |
 | --- | --- |
 | `src/base.ts` | The site origin and the base path. The only place that holds them. |
-| `astro.config.mjs` | `site` and `base` (both from `src/base.ts`), `trailingSlash` and the static output. |
+| `astro.config.ts` | `site` and `base` (both from `src/base.ts`), `trailingSlash` and the static output. |
 | `src/url.ts` | `pageUrl(path)`: the URL of a page under the base path. The only place that adds the base path. |
 | `src/styles/global.css` | The CSS custom properties (colors, spacing, text sizes, radii), `scrollbar-gutter: stable` on the root element, and the base rules. |
 | `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS, the header, the `<main>` slot and the footer. |

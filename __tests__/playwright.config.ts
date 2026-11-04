@@ -1,4 +1,5 @@
 import { defineConfig } from '@playwright/test';
+import { BASE_PATH } from '../packages/site/src/base.js';
 
 const PORT = 4321;
 
@@ -8,12 +9,11 @@ export default defineConfig({
   fullyParallel: true,
   workers: 4,
   reporter: 'list',
-  // CHROMIUM_PATH points to an installed Chromium when the one that matches this Playwright version is not installed.
-  use: { baseURL: `http://localhost:${PORT}/NelkeData/`, launchOptions: { executablePath: process.env.CHROMIUM_PATH } },
+  use: { baseURL: `http://localhost:${PORT}${BASE_PATH}` },
   webServer: {
     command: `npx astro preview --root packages/site --port ${PORT}`,
     cwd: '..',
-    url: `http://localhost:${PORT}/NelkeData/`,
+    url: `http://localhost:${PORT}${BASE_PATH}`,
     reuseExistingServer: false,
   },
 });

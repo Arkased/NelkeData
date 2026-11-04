@@ -2,8 +2,8 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'node-html-parser';
+import { BASE_PATH } from '../src/base.js';
 
-const BASE = '/NelkeData/';
 const LINK_SELECTORS = [
   { selector: 'a', attribute: 'href' },
   { selector: 'link', attribute: 'href' },
@@ -33,7 +33,7 @@ function listHtml(dir: string): string[] {
  * @sideEffects none
  */
 function targetOf(url: string, distDir: string): string {
-  const path = decodeURIComponent(url.slice(BASE.length).replace(/[?#].*$/, ''));
+  const path = decodeURIComponent(url.slice(BASE_PATH.length).replace(/[?#].*$/, ''));
   return join(distDir, path.endsWith('/') || path === '' ? `${path}index.html` : path);
 }
 
@@ -50,7 +50,7 @@ export function checkLinks(distDir: string): string[] {
     for (const { selector, attribute } of LINK_SELECTORS) {
       for (const element of root.querySelectorAll(selector)) {
         const url = element.getAttribute(attribute);
-        if (!url?.startsWith(BASE)) continue;
+        if (!url?.startsWith(BASE_PATH)) continue;
         const target = targetOf(url, distDir);
         if (!existsSync(target) || !statSync(target).isFile()) {
           missing.push(`${relative(distDir, file).split(sep).join('/')}: ${url}`);

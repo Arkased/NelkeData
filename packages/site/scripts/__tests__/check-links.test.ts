@@ -2,6 +2,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { BASE_PATH } from '../../src/base.js';
 import { checkLinks } from '../check-links.js';
 
 let dist: string;
@@ -67,6 +68,11 @@ describe('checkLinks', () => {
     write('items/index.html');
     pageWith('<a href="/NelkeData/items">Items</a>');
     expect(checkLinks(dist)).toEqual(['index.html: /NelkeData/items']);
+  });
+
+  it('reports a URL under the exported base path with no target', () => {
+    pageWith(`<a href="${BASE_PATH}missing/">Missing</a>`);
+    expect(checkLinks(dist)).toEqual([`index.html: ${BASE_PATH}missing/`]);
   });
 
   it('ignores URLs outside the base path', () => {
