@@ -119,7 +119,10 @@ export interface Zones {
 export function loadZones(read: ReadTable, messages: Messages, story: Story): Zones {
   const { t } = messages;
   // A zone opens when its main task (task_id) is complete; the first zone is open from the start.
-  const zoneRows = read('expl_area/expl_area.xml', zoneSchema).filter((a) => !messages.isPlaceholder(a.area_name));
+  const allZoneRows = read('expl_area/expl_area.xml', zoneSchema);
+  const zoneRows = allZoneRows.filter((a) => !messages.isPlaceholder(a.area_name));
+  // The rows of a dropped zone are dropped too, so no link can point to it.
+  const droppedPrefixes = new Set(allZoneRows.filter((a) => messages.isPlaceholder(a.area_name)).map((a) => a.area_collect.slice(0, 4)));
   const zoneInfo = (a: (typeof zoneRows)[number]): ZoneRow => {
     const task = a.task_id ? required(story.mainTask, a.task_id) : undefined;
     return { ...a, name: t(a.area_name), task: task?.num ?? 0, taskName: task?.name ?? '' };
@@ -140,7 +143,9 @@ export function loadZones(read: ReadTable, messages: Messages, story: Story): Zo
     if (areaById.has(c.AREA_TAG)) listFor(collectByArea, c.AREA_TAG).push(c);
   }
   for (const c of read('expl_collect/unique_collect.xml', uniqueCollectSchema)) {
-    const zone = required(zoneByPrefix, c.AREA_TAG.slice(0, 4));
+    const prefix = c.AREA_TAG.slice(0, 4);
+    if (droppedPrefixes.has(prefix) && !zoneByPrefix.has(prefix)) continue;
+    const zone = required(zoneByPrefix, prefix);
     listFor(uniqueByZone, zone.expl_area).push(c.ITEM_TAG);
   }
 

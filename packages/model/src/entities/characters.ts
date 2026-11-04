@@ -6,6 +6,7 @@ import type { Character as CharacterRow, Characters } from '../parse/characters.
 import { descriptionOrNull } from '../placeholder.js';
 import { withSlugs } from '../slug.js';
 import { getOrCreate, orNull, required } from '../util.js';
+import { withoutPlaceholders } from './ids.js';
 import { storyEventOf } from './story.js';
 
 const NO_RANK = '-1';
@@ -94,7 +95,13 @@ export function buildMonsters(game: Game): DirectData['monsters'] {
         wage: Number(c.CHARACTER_SUBMONEY),
         elementDef: battle ? recordOf(ELEMENTS, (element) => characters.elementDef(c, element) ?? 0) : null,
         exp: battle ? Number(battle.battle_exp) : null,
-        drops: battle ? characters.dropsOf(battle).map((d) => ({ itemId: d.id, quantity: d.num, rate: d.rate })) : [],
+        drops: battle
+          ? withoutPlaceholders(characters.dropsOf(battle), (d) => d.id, game.items.placeholderIds).map((d) => ({
+              itemId: d.id,
+              quantity: d.num,
+              rate: d.rate,
+            }))
+          : [],
         zoneEncounters: zoneEncountersOf(game, c),
       };
     }),

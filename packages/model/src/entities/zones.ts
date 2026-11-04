@@ -3,7 +3,7 @@ import type { DirectData } from '../inverse.js';
 import type { Game } from '../parse/game.js';
 import { withSlugs } from '../slug.js';
 import { getOrCreate } from '../util.js';
-import type { IdSet } from './ids.js';
+import { withoutPlaceholders, type IdSet } from './ids.js';
 
 const DIFFICULTY_PREFIX = 'EXPL_AREA_DIFFICULTY_';
 const DIFFICULTIES = new Map<string, Difficulty>(Object.values(Difficulty).map((d) => [d, d]));
@@ -29,6 +29,7 @@ function difficultyOf(tag: string): Difficulty {
  */
 export function buildZones(game: Game): DirectData['zones'] {
   const { zones, areas, uniqueByZone } = game.zones;
+  const { placeholderIds } = game.items;
   return withSlugs(
     zones.map((z) => ({
       id: z.expl_area,
@@ -36,7 +37,7 @@ export function buildZones(game: Game): DirectData['zones'] {
       task: z.task ? { number: z.task, name: z.taskName } : null,
       difficulties: z.difficulties.map(difficultyOf),
       areaIds: areas.filter((a) => a.zone.expl_area === z.expl_area).map((a) => a.expl_research),
-      specialItemIds: [...new Set(uniqueByZone.get(z.expl_area) ?? [])],
+      specialItemIds: [...new Set(withoutPlaceholders(uniqueByZone.get(z.expl_area) ?? [], (id) => id, placeholderIds))],
     })),
   );
 }
@@ -52,6 +53,7 @@ export function buildZones(game: Game): DirectData['zones'] {
 export function buildAreas(game: Game, links: ZoneLinks): DirectData['areas'] {
   const { areas, collectByArea, encountersByArea, isBossGroup } = game.zones;
   const { characterOfBattleId } = game.characters;
+  const { placeholderIds } = game.items;
   const monsterIdOf = (battleId: string): string => {
     const character = characterOfBattleId(battleId);
     if (character === undefined) throw new Error(`unknown battle character ${battleId}`);
@@ -74,7 +76,7 @@ export function buildAreas(game: Game, links: ZoneLinks): DirectData['areas'] {
         id: a.expl_research,
         name: a.name,
         route: Number(a.expl_rootnumber),
-        gather: (collectByArea.get(a.expl_research) ?? []).map((c) => ({
+        gather: withoutPlaceholders(collectByArea.get(a.expl_research) ?? [], (c) => c.ITEM_TAG, placeholderIds).map((c) => ({
           itemId: c.ITEM_TAG,
           rate: Number(c.RATE),
         })),
