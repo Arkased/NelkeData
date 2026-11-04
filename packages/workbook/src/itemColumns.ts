@@ -1,6 +1,7 @@
 import { Element, Shop, type Item } from '@nelke/model';
 import { required, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
+import { KeyHeader } from './sheetKeys.js';
 
 const ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
 
@@ -51,7 +52,7 @@ export function itemColumns(lookup: Lookup): Column<Item>[] {
   const reduceColumn = (e: Element): Column<Item> => ({ header: `Reduce: ${e}`, width: 8, get: (i) => i.reduce[e] });
   return [
     iconColumn((i) => i.icon ?? ''),
-    { header: 'Name', width: 28, get: (i) => i.name },
+    { header: KeyHeader.Name, width: 28, get: (i) => i.name },
     { header: 'Name (JP)', width: 18, get: (i) => i.nameJp ?? '' },
     { header: 'Category', width: 14, get: (i) => i.category },
     { header: 'Sub-category', width: 18, get: (i) => i.subCategory ?? '' },

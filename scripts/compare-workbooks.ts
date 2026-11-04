@@ -1,18 +1,25 @@
 // Usage: tsx scripts/compare-workbooks.ts <baseline.xlsx> <new.xlsx> [result.txt]
 // Writes the same lines to the result file, which defaults to compare-<yyyymmdd-hhmmss>.txt next to the new workbook.
-// Compares the cell values of 2 workbooks sheet by sheet, and the PNG file names in the icons/ folders next to them.
+// Pairs the rows of each sheet of 2 workbooks by the key of the sheet and compares the cells of each pair,
+// and compares the PNG file names in the icons/ folders next to them.
 // Prints each difference and exits with 1 when there is one.
 import fs from 'node:fs';
 import path from 'node:path';
 import ExcelJS from 'exceljs';
+import { compareRows, formatSheetDiff, type SheetRows } from './compare-rows.js';
 
 function iconNames(xlsx: string): Set<string> {
   const dir = path.join(path.dirname(xlsx), 'icons');
   return new Set(fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.png')) : []);
 }
 
-function cellValue(cell: ExcelJS.Cell): string {
-  return JSON.stringify(cell.value ?? null);
+function sheetRows(sheet: ExcelJS.Worksheet): SheetRows {
+  const rows: string[][] = [];
+  for (let r = 1; r <= sheet.rowCount; r++) {
+    rows.push(Array.from({ length: sheet.columnCount }, (_, c) => JSON.stringify(sheet.getCell(r, c + 1).value ?? null)));
+  }
+  const header = (rows.shift() ?? []).map((v) => String(JSON.parse(v) ?? ''));
+  return { header, rows };
 }
 
 async function compareSheets(baselineFile: string, newFile: string): Promise<string[]> {
@@ -26,18 +33,7 @@ async function compareSheets(baselineFile: string, newFile: string): Promise<str
   if (baseNames.join('|') !== nextNames.join('|')) diffs.push(`sheets differ: [${baseNames.join(', ')}] vs [${nextNames.join(', ')}]`);
   for (const a of base.worksheets) {
     const b = next.getWorksheet(a.name);
-    if (!b) continue;
-    if (a.rowCount !== b.rowCount) diffs.push(`${a.name}: ${a.rowCount} rows vs ${b.rowCount} rows`);
-    if (a.columnCount !== b.columnCount) diffs.push(`${a.name}: ${a.columnCount} columns vs ${b.columnCount} columns`);
-    const rows = Math.max(a.rowCount, b.rowCount);
-    const columns = Math.max(a.columnCount, b.columnCount);
-    for (let r = 1; r <= rows; r++) {
-      for (let c = 1; c <= columns; c++) {
-        const x = cellValue(a.getCell(r, c));
-        const y = cellValue(b.getCell(r, c));
-        if (x !== y) diffs.push(`${a.name} ${a.getCell(r, c).address}: ${x} vs ${y}`);
-      }
-    }
+    if (b) diffs.push(...formatSheetDiff(a.name, compareRows(a.name, sheetRows(a), sheetRows(b))));
   }
   return diffs;
 }

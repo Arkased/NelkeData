@@ -1,7 +1,5 @@
 import type ExcelJS from 'exceljs';
-
-/** The header of a column that holds the PNG file name of an icon. */
-export const ICON = 'Icon';
+import { KeyHeader } from './sheetKeys.js';
 
 /** The value of a cell. */
 export type CellValue = string | number | undefined;
@@ -51,7 +49,7 @@ export type ColumnWarning = SingleValueWarning | DuplicateWarning;
  * @sideEffects none
  */
 export function iconColumn<R>(get: (row: R) => string): Column<R> {
-  return { header: ICON, width: 9, get };
+  return { header: KeyHeader.Icon, width: 9, get };
 }
 
 /**
@@ -66,12 +64,12 @@ export function findRedundantColumns<R>(sheet: string, columns: readonly Column<
   const values = columns.map((col) => rows.map((r) => JSON.stringify(col.get(r) ?? '')));
   const warnings: ColumnWarning[] = [];
   columns.forEach((col, i) => {
-    if (col.header === ICON) return;
+    if (col.header === (KeyHeader.Icon as string)) return;
     const mine = values[i] ?? [];
     if (rows.length > 1 && new Set(mine).size === 1) {
       warnings.push({ sheet, column: col.header, kind: ColumnWarningKind.SingleValue, value: mine[0] ?? '' });
     }
-    const twin = values.findIndex((v, j) => j < i && columns[j]?.header !== ICON && v.join('\n') === mine.join('\n'));
+    const twin = values.findIndex((v, j) => j < i && columns[j]?.header !== KeyHeader.Icon && v.join('\n') === mine.join('\n'));
     const twinColumn = columns[twin];
     if (twinColumn) warnings.push({ sheet, column: col.header, kind: ColumnWarningKind.Duplicate, twin: twinColumn.header });
   });
@@ -111,7 +109,7 @@ export interface SheetSpec<R> {
  */
 export function addSheet<R>(wb: ExcelJS.Workbook, spec: SheetSpec<R>): ColumnWarning[] {
   const { name, columns, rows, iconSize } = spec;
-  const hasIcon = columns[0]?.header === ICON;
+  const hasIcon = columns[0]?.header === KeyHeader.Icon;
   const ws = wb.addWorksheet(name, { views: [{ state: 'frozen', xSplit: hasIcon ? 2 : 1, ySplit: 1 }] });
   ws.columns = columns.map(({ header, width }) => ({ header, width }));
   for (const row of rows) {

@@ -2,6 +2,7 @@ import type { Area, Zone } from '@nelke/model';
 import { opensText, range } from './format.js';
 import { required, type Lookup } from './lookup.js';
 import type { Column } from './sheet.js';
+import { KeyHeader } from './sheetKeys.js';
 
 /** The appearances of 1 monster in 1 area, merged by monster name. */
 interface Appearance {
@@ -35,8 +36,8 @@ function monstersText(area: Area, boss: boolean, lookup: Lookup): string {
 export function zoneColumns(lookup: Lookup): Column<Area>[] {
   const zoneOf = (a: Area): Zone => required(lookup.zones, a.zoneId);
   return [
-    { header: 'Area', width: 20, get: (a) => zoneOf(a).name },
-    { header: 'Spot', width: 24, get: (a) => a.name },
+    { header: KeyHeader.Area, width: 20, get: (a) => zoneOf(a).name },
+    { header: KeyHeader.Spot, width: 24, get: (a) => a.name },
     { header: 'Route', width: 7, get: (a) => a.route },
     { header: 'Opens', width: 34, get: (a) => opensText(zoneOf(a)) },
     { header: 'Difficulty by Area Lv', width: 14, get: (a) => zoneOf(a).difficulties.join(' ') },
