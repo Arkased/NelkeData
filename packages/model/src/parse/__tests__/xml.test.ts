@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { decodeXml, parseElements } from '../parse/xml.js';
+import { decodeXml, parseElements } from '../xml.js';
 
 describe('decodeXml', () => {
   it('turns a line break tag into a space', () => {
