@@ -8,8 +8,10 @@ const zeroStats = Object.fromEntries(STATS.map((stat) => [stat, 0])) as Record<S
 
 /**
  * Makes an item with the game side of its links empty.
+ *
  * @param o - the fields to set; the ID is required
  * @returns the item
+ * @sideEffects none
  */
 export function fakeItem(o: Overrides<DirectData['items'][number]>): DirectData['items'][number] {
   return {
@@ -33,8 +35,10 @@ export function fakeItem(o: Overrides<DirectData['items'][number]>): DirectData[
 
 /**
  * Makes a recipe with no material.
+ *
  * @param o - the fields to set; the ID is required
  * @returns the recipe
+ * @sideEffects none
  */
 export function fakeRecipe(o: Overrides<DirectData['recipes'][number]>): DirectData['recipes'][number] {
   return {
@@ -51,8 +55,10 @@ export function fakeRecipe(o: Overrides<DirectData['recipes'][number]>): DirectD
 
 /**
  * Makes a recipe set with no recipe and no teacher.
+ *
  * @param o - the fields to set; the ID is required
  * @returns the recipe set
+ * @sideEffects none
  */
 export function fakeRecipeSet(o: Overrides<DirectData['recipeSets'][number]>): DirectData['recipeSets'][number] {
   return { name: `Set ${o.id}`, recipeIds: [], teacherId: null, friendship: null, unlockEvent: null, ...o };
@@ -60,8 +66,10 @@ export function fakeRecipeSet(o: Overrides<DirectData['recipeSets'][number]>): D
 
 /**
  * Makes a research with no link.
+ *
  * @param o - the fields to set; the ID is required
  * @returns the research
+ * @sideEffects none
  */
 export function fakeResearch(o: Overrides<DirectData['research'][number]>): DirectData['research'][number] {
   return {
@@ -77,8 +85,10 @@ export function fakeResearch(o: Overrides<DirectData['research'][number]>): Dire
 
 /**
  * Makes a zone with no area.
+ *
  * @param o - the fields to set; the ID is required
  * @returns the zone
+ * @sideEffects none
  */
 export function fakeZone(o: Overrides<DirectData['zones'][number]>): DirectData['zones'][number] {
   return {
@@ -94,8 +104,10 @@ export function fakeZone(o: Overrides<DirectData['zones'][number]>): DirectData[
 
 /**
  * Makes an area with no gather item and no monster.
+ *
  * @param o - the fields to set; the ID is required
  * @returns the area
+ * @sideEffects none
  */
 export function fakeArea(o: Overrides<DirectData['areas'][number]>): DirectData['areas'][number] {
   return { slug: `area-${o.id}`, name: `Area ${o.id}`, route: 1, gather: [], monsters: [], ...o };
@@ -103,8 +115,10 @@ export function fakeArea(o: Overrides<DirectData['areas'][number]>): DirectData[
 
 /**
  * Makes a monster with no drop.
+ *
  * @param o - the fields to set; the ID is required
  * @returns the monster
+ * @sideEffects none
  */
 export function fakeMonster(o: Overrides<DirectData['monsters'][number]>): DirectData['monsters'][number] {
   return {
@@ -128,8 +142,10 @@ export function fakeMonster(o: Overrides<DirectData['monsters'][number]>): Direc
 
 /**
  * Makes a character with no skill and no join condition.
+ *
  * @param o - the fields to set; the ID is required
  * @returns the character
+ * @sideEffects none
  */
 export function fakeCharacter(o: Overrides<DirectData['characters'][number]>): DirectData['characters'][number] {
   return {
@@ -156,8 +172,10 @@ export function fakeCharacter(o: Overrides<DirectData['characters'][number]>): D
 
 /**
  * Makes an empty set of entities.
+ *
  * @param o - the kinds to set
  * @returns the entities
+ * @sideEffects none
  */
 export function fakeDirectData(o: Partial<DirectData>): DirectData {
   return { items: [], recipes: [], recipeSets: [], research: [], zones: [], areas: [], monsters: [], characters: [], ...o };
