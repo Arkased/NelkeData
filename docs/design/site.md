@@ -110,6 +110,24 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 | Entity page | The same detail panel as the modal, on a full page. | The page for a direct visit, a search engine and a new tab. |
 | Entity link | The icon of the entity, and its name. | It opens the entity in the modal. An entity with no page is plain text. |
 
+## Build and deploy
+
+The site is the package `@nelke/site`: an Astro project with static output ([decision 0002](../decisions/0002-stack.md)). The build writes only HTML, CSS, JS, fonts and images to `packages/site/dist/`. The site reads the entities only through the files of `data/` and the schemas of `@nelke/model`.
+
+- **Base path.** GitHub Pages serves the site under `/NelkeData/`. Each internal URL comes from 1 function that adds the base path. No component writes a root-relative URL by hand. So a change of the host changes 1 setting.
+- **Layout.** 1 layout component holds the `<html>` element, the fonts, the global CSS, the header and the footer. Each page uses it and gives only its title and its content. The title of the page is `<page name> · Westwald Archive`. The root page has the title `Westwald Archive`.
+- **Global CSS.** 1 file holds the colors, the 4 px spacing scale, the 3 text sizes and the radii as CSS custom properties. The values come from `prototype/style.css`. A component uses only these properties for these values.
+- **Category links of the header.** 1 list in 1 module names the category pages that exist, in the order Items, Areas, Monsters, Characters, Research. Each page item adds its row in the change that adds the page. So the header never links to a page that does not exist, and the link check passes after each change. The menu button for a narrow window comes with the first row. For the same reason, the About link of the footer comes in the change that adds the About page.
+- **Link check.** After the build, a script reads each HTML file of `dist/`. It collects each `href` and `src` that starts with the base path, and fails when no file of `dist/` matches it. It parses the HTML with a parser library, not with a regular expression, because attribute quotes and entities are easy to get wrong.
+- **UI test.** A Playwright test opens the built site in `astro preview`, at 360, 768, 1280 and 1920 px, each width in its own browser context at the same time. It checks the rules of the requirements that a script can check: the site name and the tagline in the header, the legal notice in the footer, the title of the page, and no horizontal scroll. Each page item adds the checks of its page.
+- **Deploy.** A GitHub Actions workflow runs on each push to `main` that changes `data/`, `packages/site/` or the workflow itself, and on a manual start. It installs the packages, builds the site, runs the link check and the UI test, and deploys `dist/` to GitHub Pages with the official Pages actions. A failed step stops the deploy, so the live site stays at the last good build.
+
+Rejected options:
+
+- A push of the build output to a `gh-pages` branch. The official Pages actions need no extra branch and no token with write access to the code.
+- A link check through a crawler of the live site. It finds a broken link only after the deploy.
+- The UI test in `npm run check`. It needs a browser and a full build, so it is too slow for each commit. The deploy workflow runs it on each change of the site, and an agent runs it on its own change of the site.
+
 ## Pages
 
 The site has no landing page. The root URL shows the Items page.
