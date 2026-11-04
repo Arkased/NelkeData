@@ -34,6 +34,22 @@ export function parseElements(text: string): Record<string, string>[] {
   );
 }
 
+/** The row number of a row in its game table. It is the ID of the entity that the row makes. */
+export interface RowId {
+  /** The 1-based position of the row in the table, placeholder rows included. */
+  rowId: number;
+}
+
+/**
+ * Adds the row number to each row of a game table.
+ * @param rows - the rows of the table, in file order
+ * @returns the rows with their numbers
+ * @sideEffects none
+ */
+export function withRowIds<T extends object>(rows: readonly T[]): (T & RowId)[] {
+  return rows.map((row, index) => ({ ...row, rowId: index + 1 }));
+}
+
 /**
  * Builds the shape of a Zod object that requires each named field to be a string.
  * @param keys - the field names

@@ -1,42 +1,29 @@
 import { z } from 'zod';
-import { CharacterCategory, Element, PlayType, Stat } from './enums.js';
-import type { Story } from './story.js';
-import { isPlaceholder, listFor } from './util.js';
-import { enumOrUnknown, stringShape, type ReadTable } from './xml.js';
+import { CharacterCategory, CharacterType, Element, PlayType, Stat, BattleRole } from '../enums.js';
+import { isPlaceholder } from '../util.js';
+import { enumOrUnknown, stringShape, withRowIds, type ReadTable, type RowId } from './xml.js';
 
 const NO_SKILL = 'SKILL_INVALID';
 const NO_APTITUDE = 'PREPARATION_APTITUDE_INVALID';
 const NO_DROP = 'ITEM_NONE';
 
-/** The stats, in column order, with the English status names of the game. */
-export const STATS: readonly [Stat, string][] = [
-  [Stat.Hp, 'HP'],
-  [Stat.Str, 'STR'],
-  [Stat.Vit, 'CON'],
-  [Stat.Int, 'INT'],
-  [Stat.Dex, 'DEX'],
-  [Stat.Luck, 'LUC'],
-  [Stat.Agi, 'AGI'],
-  [Stat.Chr, 'CHM'],
-];
-
 /** The elements of btl_chara element_1..4, in order. element_0 is "no element" and is always 0. */
-export const ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
+const BATTLE_ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
 
-const CHARACTER_TYPES: Record<CharacterCategory, string> = {
-  [CharacterCategory.MainA]: 'Main',
-  [CharacterCategory.MainB]: 'Main',
-  [CharacterCategory.Alchemist]: 'Alchemist',
-  [CharacterCategory.Townsfolk]: 'Townsfolk',
-  [CharacterCategory.Story]: 'Story',
-  [CharacterCategory.Fairy]: 'Fairy',
-  [CharacterCategory.Monster]: 'Monster',
-  [CharacterCategory.Boss]: 'Boss',
+const CHARACTER_TYPES: Record<CharacterCategory, CharacterType> = {
+  [CharacterCategory.MainA]: CharacterType.Main,
+  [CharacterCategory.MainB]: CharacterType.Main,
+  [CharacterCategory.Alchemist]: CharacterType.Alchemist,
+  [CharacterCategory.Townsfolk]: CharacterType.Townsfolk,
+  [CharacterCategory.Story]: CharacterType.Story,
+  [CharacterCategory.Fairy]: CharacterType.Fairy,
+  [CharacterCategory.Monster]: CharacterType.Monster,
+  [CharacterCategory.Boss]: CharacterType.Boss,
 };
 
-const PLAY_TYPE_NAMES: Record<PlayType, string> = {
-  [PlayType.Attacker]: 'Attacker',
-  [PlayType.Supporter]: 'Supporter',
+const BATTLE_ROLES: Record<PlayType, BattleRole> = {
+  [PlayType.Attacker]: BattleRole.Attacker,
+  [PlayType.Supporter]: BattleRole.Supporter,
 };
 
 const characterSchema = z
@@ -136,13 +123,27 @@ const joinConditionSchema = z.object({
 });
 
 /** A named row of character.xml. */
-export type Character = z.output<typeof characterSchema>;
+export type Character = z.output<typeof characterSchema> & RowId;
 /** A row of btl_chara.xml. */
 export type Battle = z.output<typeof battleSchema>;
 /** An item that a monster drops. */
 export type Drop = Battle['drops'][number];
 /** The join condition of a character. */
 export type JoinCondition = z.output<typeof joinConditionSchema>;
+
+/** The skills of a character. */
+export interface CharacterSkills {
+  /** The skills that the character learns at a level, in slot order. */
+  learned: { name: string; level: number }[];
+  /** The skill that the character learns at a story event, with the ID of the event. */
+  eventSkill: { name: string; eventId: string } | null;
+}
+
+/** The growth of a stat for each level. */
+export interface StatGrowth {
+  min: number;
+  max: number;
+}
 
 /** The characters and monsters of the game with their battle data. */
 export interface Characters {
@@ -152,34 +153,37 @@ export interface Characters {
   characterName: Map<string, string>;
   isMonster: (c: Character) => boolean;
   battleOf: (c: Character) => Battle | undefined;
-  /** Returns the name of the character of a battle character id, or the id itself when unknown. */
-  nameOfBattleId: (id: string) => string;
-  typeOf: (c: Character) => string;
-  playRoleOf: (c: Character) => string;
+  /** Returns the character of a battle character id, or undefined when the id is unknown or the character has no name. */
+  characterOfBattleId: (id: string) => Character | undefined;
+  /** Returns the type of a character; throws when the category of the game is not known. */
+  typeOf: (c: Character) => CharacterType;
+  playRoleOf: (c: Character) => BattleRole | null;
   baseStat: (c: Character, stat: Stat) => number;
-  growthText: (c: Character) => string;
-  skillsText: (c: Character) => string;
-  aptitudesText: (c: Character) => string;
+  /** Returns the growth of each stat for each level, or null when the character has no growth type. */
+  growthOf: (c: Character) => Record<Stat, StatGrowth> | null;
+  skillsOf: (c: Character) => CharacterSkills;
+  /** Returns the names of the aptitudes of a character; an unknown aptitude shows as its id. */
+  aptitudesOf: (c: Character) => string[];
   sourceGame: (c: Character) => string;
   joinConditionOf: (c: Character) => JoinCondition | undefined;
-  /** Returns the defense of a monster against an element, or '' when it has no battle data. */
-  elementDef: (c: Character, element: Element) => number | '';
+  /** Returns the defense of a monster against an element, or null when it has no battle data. */
+  elementDef: (c: Character, element: Element) => number | null;
   dropsOf: (b: Battle) => Drop[];
-  /** Maps an item id to the monsters that drop it, as text. */
-  droppedBy: Map<string, string[]>;
 }
 
 /**
  * Loads the characters, the monsters and their battle data.
  * @param read - the table reader of the saves folder
  * @param t - the English text of a label
- * @param eventLabel - the label of a story event
  * @returns the characters and the lookups
  * @sideEffects reads the character and battle tables through the table reader
  */
-export function loadCharacters(read: ReadTable, t: (label: string) => string, eventLabel: Story['eventLabel']): Characters {
-  const characters = read('character/character.xml', characterSchema).filter((c) => !isPlaceholder(t(c.CHARACTER_NAME_LABEL_ID)));
+export function loadCharacters(read: ReadTable, t: (label: string) => string): Characters {
+  const characters = withRowIds(read('character/character.xml', characterSchema)).filter(
+    (c) => !isPlaceholder(t(c.CHARACTER_NAME_LABEL_ID)),
+  );
   const characterName = new Map(characters.map((c) => [c.CHARACTER_ID, t(c.CHARACTER_NAME_LABEL_ID)]));
+  const characterById = new Map(characters.map((c) => [c.CHARACTER_ID, c]));
   const battleById = new Map(read('battle/btl_chara.xml', battleSchema).map((b) => [b.BTL_CHARACTER_ID, b]));
   const archetype = new Map(read('character/para_archetype.xml', archetypeSchema).map((a) => [a.PARA_ARCHETYPE_ID, a]));
   const growtype = new Map(read('character/para_growtype.xml', growtypeSchema).map((g) => [g.PARA_GROWTYPE_ID, g]));
@@ -193,63 +197,43 @@ export function loadCharacters(read: ReadTable, t: (label: string) => string, ev
     ]),
   );
 
-  const isMonster = (c: Character): boolean =>
-    c.CHARACTER_CATEGORY_ID === CharacterCategory.Monster || c.CHARACTER_CATEGORY_ID === CharacterCategory.Boss;
   const battleOf = (c: Character): Battle | undefined => battleById.get(c.BTL_CHARACTER_ID);
-  const dropsOf = (b: Battle): Drop[] => b.drops.filter((d) => d.id && d.id !== NO_DROP);
   const skillName = (id: string): string => skill.get(id) ?? '';
-
-  const droppedBy = new Map<string, string[]>();
-  for (const c of characters.filter(isMonster)) {
-    const battle = battleOf(c);
-    if (!battle) continue;
-    for (const d of dropsOf(battle)) listFor(droppedBy, d.id).push(`${characterName.get(c.CHARACTER_ID) ?? ''} x${d.num} (${d.rate}%)`);
-  }
 
   return {
     characters,
     characterName,
-    isMonster,
+    isMonster: (c) => c.CHARACTER_CATEGORY_ID === CharacterCategory.Monster || c.CHARACTER_CATEGORY_ID === CharacterCategory.Boss,
     battleOf,
-    nameOfBattleId: (id) => characterName.get(battleById.get(id)?.CHARACTER_ID ?? '') ?? id,
-    typeOf: (c) =>
-      typeof c.CHARACTER_CATEGORY_ID === 'string'
-        ? CHARACTER_TYPES[c.CHARACTER_CATEGORY_ID]
-        : `Category ${c.CHARACTER_CATEGORY_ID.unknown}`,
+    characterOfBattleId: (id) => characterById.get(battleById.get(id)?.CHARACTER_ID ?? ''),
+    typeOf: (c) => {
+      if (typeof c.CHARACTER_CATEGORY_ID !== 'string') throw new Error(`unknown character category ${c.CHARACTER_CATEGORY_ID.unknown}`);
+      return CHARACTER_TYPES[c.CHARACTER_CATEGORY_ID];
+    },
     playRoleOf: (c) => {
       const role = battleOf(c)?.BTL_PLAY_TYPE_ID;
-      return role === undefined ? '' : PLAY_TYPE_NAMES[role];
+      return role === undefined ? null : BATTLE_ROLES[role];
     },
     baseStat: (c, stat) => Number(archetype.get(c.PARA_ARCHETYPE_ID)?.[archetypeKey(stat)] ?? 0),
-    growthText: (c) => {
+    growthOf: (c) => {
       const g = growtype.get(c.PARA_GROWTYPE_ID);
-      if (!g) return '';
-      return STATS.map(([stat, label]) => ({ label, min: Number(g[growMinKey(stat)]), max: Number(g[growMaxKey(stat)]) }))
-        .filter(({ max }) => max > 0)
-        .map(({ label, min, max }) => `${label} ${min === max ? min : `${min}-${max}`}`)
-        .join(', ');
+      if (!g) return null;
+      return Object.fromEntries(
+        allStats.map((stat) => [stat, { min: Number(g[growMinKey(stat)]), max: Number(g[growMaxKey(stat)]) }]),
+      ) as Record<Stat, StatGrowth>;
     },
-    skillsText: (c) => {
-      const list = c.skills
-        .filter((s) => s.id !== NO_SKILL)
-        .sort((a, b) => Number(a.level) - Number(b.level))
-        .map((s) => `${skillName(s.id)} (Lv ${s.level})`);
-      if (c.CHARACTER_SKILL5_ID !== NO_SKILL)
-        list.push(`${skillName(c.CHARACTER_SKILL5_ID)} (${eventLabel(c.CHARACTER_SKILL5_LEARNING_EVENT)})`);
-      return list.join(', ');
-    },
-    aptitudesText: (c) =>
-      c.aptitudeIds
-        .filter((a) => a !== NO_APTITUDE)
-        .map((a) => aptitude.get(a) ?? a)
-        .join(', '),
+    skillsOf: (c) => ({
+      learned: c.skills.filter((s) => s.id !== NO_SKILL).map((s) => ({ name: skillName(s.id), level: Number(s.level) })),
+      eventSkill:
+        c.CHARACTER_SKILL5_ID === NO_SKILL ? null : { name: skillName(c.CHARACTER_SKILL5_ID), eventId: c.CHARACTER_SKILL5_LEARNING_EVENT },
+    }),
+    aptitudesOf: (c) => c.aptitudeIds.filter((a) => a !== NO_APTITUDE).map((a) => aptitude.get(a) ?? a),
     sourceGame: (c) => product.get(c.PRODUCT_ID) ?? '',
     joinConditionOf: (c) => joinCondition.get(c.CHARACTER_APP_CON_ID),
     elementDef: (c, element) => {
       const b = battleOf(c);
-      return b ? Number(b.elementDefs[ELEMENTS.indexOf(element)]) : '';
+      return b ? Number(b.elementDefs[BATTLE_ELEMENTS.indexOf(element)]) : null;
     },
-    dropsOf,
-    droppedBy,
+    dropsOf: (b) => b.drops.filter((d) => d.id && d.id !== NO_DROP),
   };
 }

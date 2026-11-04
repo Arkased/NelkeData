@@ -18,15 +18,20 @@ Do these steps to make the workbook again:
    npm run extract -- extract "$GAME/PACK01.PAK" extracted "^.saves.[^.]*\.xml$"
    npm run extract -- extract "$GAME/PACK00_01.PAK" extracted "item_l_[0-9]+\.g1t|npc_faceicon[0-9]+\.g1t|monster_faceicon[0-9]+\.g1t"
    ```
-3. Build the workbook:
+3. Build the data files from the extracted game files:
+   ```
+   npm run model
+   ```
+   The command takes 2 optional arguments, `[extractedDir] [dataDir]`. They default to `extracted/` and `data/`. It writes one JSON file for each kind of entity and the icons (128 × 128 PNG) to `data/`. The files in `data/` are in git. Run the command again after a change to the model, and commit the changed files.
+4. Build the workbook from the data files:
    ```
    npm run workbook
    ```
-   The command takes 2 optional arguments, `[extractedDir] [outFile]`. They default to `extracted/` and `output/nelke_data.xlsx`.
+   The command takes 2 optional arguments, `[dataDir] [outFile]`. They default to `data/` and `output/nelke_data.xlsx`. It does not read the game files.
 
 The output is `output/nelke_data.xlsx` and the icon folder `output/icons/`.
 
-The build prints a warning for each column that has 1 value only, and for each column that is the same as another column. Remove such a column from the column lists in `packages/workbook/src/`.
+The workbook build prints a warning for each column that has 1 value only, and for each column that is the same as another column. Remove such a column from the column lists in `packages/workbook/src/`.
 
 Check the code with:
 
@@ -54,7 +59,7 @@ Each sheet has a frozen header row and a filter on all columns.
 
 ## Icons in Google Sheets
 
-The build writes 491 icons (64 × 64 PNG) to `output/icons/`. Column A (`Icon`) of the Items, Recipes, Monsters and Characters sheets holds the file name of the icon of the row, for example `item_l_012.png`. Some cells are empty: these rows have no icon. An xlsx file that Google Sheets imports cannot hold pictures in cells, so do these steps after the import:
+The build writes 491 icons (128 × 128 PNG) to `output/icons/`. Column A (`Icon`) of the Items, Recipes, Monsters and Characters sheets holds the file name of the icon of the row, for example `item_l_012.png`. Some cells are empty: these rows have no icon. An xlsx file that Google Sheets imports cannot hold pictures in cells, so do these steps after the import:
 
 1. Upload the folder `output/icons/` to Google Drive.
 2. Open the Google Sheets file. Select **Extensions > Apps Script**.

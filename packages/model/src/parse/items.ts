@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { Element, ItemCategory, ShopFlag } from './enums.js';
-import { isPlaceholder } from './util.js';
-import { enumOrUnknown, type ReadTable } from './xml.js';
+import { Element, ItemCategory, Shop, ShopFlag } from '../enums.js';
+import { isPlaceholder } from '../util.js';
+import { enumOrUnknown, withRowIds, type ReadTable, type RowId } from './xml.js';
 
 const CATEGORY_NAMES: Record<ItemCategory, string> = {
   [ItemCategory.Material]: 'Material',
@@ -11,13 +11,12 @@ const CATEGORY_NAMES: Record<ItemCategory, string> = {
   [ItemCategory.BattleItem]: 'Battle Item',
 };
 
-/** The shops that sell items, in column order, with their names. */
-export const SHOPS: readonly [ShopFlag, string][] = [
-  [ShopFlag.General, 'General Store'],
-  [ShopFlag.Weapon, 'Weapon/Armor Shop'],
-  [ShopFlag.Grocery, 'Grocery Store'],
-  [ShopFlag.Clothing, 'Clothing Store'],
-  [ShopFlag.Medicine, 'Medicine Shop'],
+const SHOPS: readonly [ShopFlag, Shop][] = [
+  [ShopFlag.General, Shop.General],
+  [ShopFlag.Weapon, Shop.Weapon],
+  [ShopFlag.Grocery, Shop.Grocery],
+  [ShopFlag.Clothing, Shop.Clothing],
+  [ShopFlag.Medicine, Shop.Medicine],
 ];
 
 const FARM_CATEGORY = '2';
@@ -48,7 +47,7 @@ const itemSchema = z
   .transform((i) => ({
     ...i,
     /** The shops that sell the item, in SHOPS order. */
-    shops: SHOPS.map(([flag]) => flag).filter((flag) => i[flag] === '1'),
+    shops: SHOPS.filter(([flag]) => i[flag] === '1').map(([, shop]) => shop),
     /** The elements that the Reduce command gives for 1 of the item. */
     reduce: {
       [Element.Fire]: i.ITEM_DI_ACQ_FIREELEMENT,
@@ -67,15 +66,13 @@ const facilitySchema = z.object({
 });
 
 /** A row of item.xml. */
-export type Item = z.output<typeof itemSchema>;
+export type Item = z.output<typeof itemSchema> & RowId;
 
 /** The items of the game and the names of their categories. */
 export interface Items {
   /** The items that have a name. */
   items: Item[];
   itemById: Map<string, Item>;
-  /** Returns the English name of an item, or the id itself when the item is unknown. */
-  itemName: (id: string) => string;
   categoryOf: (item: Item) => string;
   subCategoryOf: (item: Item) => string;
   /** Maps a growing area type (FARM_ID) to the name of the level 0 farm facility of that sub-category. */
@@ -90,7 +87,7 @@ export interface Items {
  * @sideEffects reads the item and facility tables through the table reader
  */
 export function loadItems(read: ReadTable, t: (label: string) => string): Items {
-  const items = read('item/item.xml', itemSchema).filter((i) => !isPlaceholder(t(i.ITEM_NAME_LABEL_ID)));
+  const items = withRowIds(read('item/item.xml', itemSchema)).filter((i) => !isPlaceholder(t(i.ITEM_NAME_LABEL_ID)));
   const itemById = new Map(items.map((i) => [i.ITEM_ID, i]));
   const subCategory = new Map(
     read('item/item_sub_category.xml', subCategorySchema).map((s) => [s.ITEM__SUB_CATEGORY_ID, t(s.ITEM_SUB_CATEGORY_NAME_LABEL_ID)]),
@@ -104,10 +101,6 @@ export function loadItems(read: ReadTable, t: (label: string) => string): Items 
   return {
     items,
     itemById,
-    itemName: (id) => {
-      const item = itemById.get(id);
-      return item ? t(item.ITEM_NAME_LABEL_ID) : id;
-    },
     categoryOf: (i) =>
       typeof i.ITEM_CATEGORY_ID === 'string' ? CATEGORY_NAMES[i.ITEM_CATEGORY_ID] : `Category ${i.ITEM_CATEGORY_ID.unknown}`,
     subCategoryOf: (i) => subCategory.get(i.ITEM_SUB_CATEGORY_ID) ?? '',

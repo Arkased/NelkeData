@@ -1,110 +1,118 @@
-import { IconKind } from '@nelke/extract';
-import { ELEMENTS, STATS, type Character } from './characters.js';
-import { Stat } from './enums.js';
-import type { Game } from './game.js';
+import { Element, Stat, type Character, type Monster } from '@nelke/model';
+import { pick, range, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
-import { range } from './util.js';
 
-const NO_RANK = '-1';
-// Monsters use the monster face list, where number 200 is the first entry.
-const MONSTER_FACE_BASE = 200;
+const ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
 
-/**
- * Creates the function that finds the icon file name of a character or monster.
- * @param game - the game data
- * @returns the function; characters use the NPC face list at their illustration number
- * @sideEffects none
- */
-export function characterIconOf(game: Game): (c: Character) => string {
-  const { icons, characters } = game;
-  return (c) =>
-    characters.isMonster(c)
-      ? icons.ref(IconKind.Monster, Number(c.CHARACTER_ANILLUSTRATION_NUM) - MONSTER_FACE_BASE)
-      : icons.ref(IconKind.Npc, Number(c.CHARACTER_ANILLUSTRATION_NUM));
+/** The stats, in column order, with the English status names of the game. */
+const STATS: readonly [Stat, string][] = [
+  [Stat.Hp, 'HP'],
+  [Stat.Str, 'STR'],
+  [Stat.Vit, 'CON'],
+  [Stat.Int, 'INT'],
+  [Stat.Dex, 'DEX'],
+  [Stat.Luck, 'LUC'],
+  [Stat.Agi, 'AGI'],
+  [Stat.Chr, 'CHM'],
+];
+
+function growthText(c: Character | Monster): string {
+  if (c.growth === null) return '';
+  const { growth } = c;
+  return STATS.map(([stat, label]) => ({ label, ...growth[stat] }))
+    .filter(({ max }) => max > 0)
+    .map(({ label, min, max }) => `${label} ${min === max ? min : `${min}-${max}`}`)
+    .join(', ');
+}
+
+function foundIn(m: Monster, lookup: Lookup): string {
+  const levelsByZone = new Map<string, number[]>();
+  const add = (zoneId: number, newLevels: readonly number[]): void => {
+    const name = pick(lookup.zones, zoneId).name;
+    const levels = levelsByZone.get(name) ?? [];
+    levels.push(...newLevels);
+    levelsByZone.set(name, levels);
+  };
+  for (const a of m.areas) add(pick(lookup.areas, a.areaId).zoneId, a.levels);
+  for (const e of m.zoneEncounters) add(e.zoneId, e.levels);
+  return [...levelsByZone].map(([zone, levels]) => `${zone} (Lv ${range(levels)})`).join(', ');
 }
 
 /**
  * Builds the columns of the Monsters sheet.
- * @param game - the game data
+ * @param lookup - the entities by ID
  * @returns the columns
  * @sideEffects none
  */
-export function monsterColumns(game: Game): Column<Character>[] {
-  const { messages, items, characters, zones } = game;
-  const { t, jp } = messages;
+export function monsterColumns(lookup: Lookup): Column<Monster>[] {
   return [
-    iconColumn(characterIconOf(game)),
-    { header: 'Name', width: 22, get: (c) => characters.characterName.get(c.CHARACTER_ID) },
-    { header: 'Name (JP)', width: 16, get: (c) => jp(c.CHARACTER_NAME_LABEL_ID) },
-    { header: 'Type', width: 9, get: characters.typeOf },
-    { header: 'Rank', width: 6, get: (c) => Number(c.CHARACTER_RANK_ID) },
-    { header: 'Wage', width: 7, get: (c) => Number(c.CHARACTER_SUBMONEY) },
-    ...STATS.map(([stat, label]): Column<Character> => ({ header: label, width: 6, get: (c) => characters.baseStat(c, stat) })),
-    { header: 'Growth / Lv', width: 40, get: characters.growthText },
-    ...ELEMENTS.map((e): Column<Character> => ({ header: `${e} DEF`, width: 7, get: (c) => characters.elementDef(c, e) })),
-    {
-      header: 'EXP',
-      width: 6,
-      get: (c) => {
-        const b = characters.battleOf(c);
-        return b ? Number(b.battle_exp) : '';
-      },
-    },
+    iconColumn((m) => m.icon ?? ''),
+    { header: 'Name', width: 22, get: (m) => m.name },
+    { header: 'Name (JP)', width: 16, get: (m) => m.nameJp ?? '' },
+    { header: 'Type', width: 9, get: (m) => m.type },
+    { header: 'Rank', width: 6, get: (m) => m.rank ?? -1 },
+    { header: 'Wage', width: 7, get: (m) => m.wage },
+    ...STATS.map(([stat, label]): Column<Monster> => ({ header: label, width: 6, get: (m) => m.stats[stat] })),
+    { header: 'Growth / Lv', width: 40, get: growthText },
+    ...ELEMENTS.map((e): Column<Monster> => ({ header: `${e} DEF`, width: 7, get: (m) => m.elementDef?.[e] ?? '' })),
+    { header: 'EXP', width: 6, get: (m) => m.exp ?? '' },
     {
       header: 'Drops',
       width: 36,
-      get: (c) => {
-        const b = characters.battleOf(c);
-        return b
-          ? characters
-              .dropsOf(b)
-              .map((d) => `${items.itemName(d.id)} x${d.num} (${d.rate}%)`)
-              .join(', ')
-          : '';
-      },
+      get: (m) => m.drops.map((d) => `${pick(lookup.items, d.itemId).name} x${d.quantity} (${d.rate}%)`).join(', '),
     },
-    {
-      header: 'Found In',
-      width: 40,
-      get: (c) => [...(zones.habitat.get(c.BTL_CHARACTER_ID) ?? [])].map(([area, lvs]) => `${area} (Lv ${range(lvs)})`).join(', '),
-    },
-    { header: 'Description', width: 80, get: (c) => t(c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID) },
+    { header: 'Found In', width: 40, get: (m) => foundIn(m, lookup) },
+    { header: 'Description', width: 80, get: (m) => m.description ?? '' },
   ];
 }
 
 /**
  * Builds the columns of the Characters sheet.
- * @param game - the game data
+ * @param lookup - the entities by ID
  * @returns the columns
  * @sideEffects none
  */
-export function characterColumns(game: Game): Column<Character>[] {
-  const { messages, story, characters, recipes } = game;
-  const { t, jp } = messages;
-  const joinOf = characters.joinConditionOf;
+export function characterColumns(lookup: Lookup): Column<Character>[] {
   return [
-    iconColumn(characterIconOf(game)),
-    { header: 'Name', width: 22, get: (c) => characters.characterName.get(c.CHARACTER_ID) },
-    { header: 'Name (JP)', width: 16, get: (c) => jp(c.CHARACTER_NAME_LABEL_ID) },
-    { header: 'Type', width: 11, get: characters.typeOf },
-    { header: 'Source Game', width: 36, get: characters.sourceGame },
-    { header: 'Rank', width: 6, get: (c) => (c.CHARACTER_RANK_ID === NO_RANK ? '' : Number(c.CHARACTER_RANK_ID)) },
-    { header: 'Aptitudes', width: 26, get: characters.aptitudesText },
+    iconColumn((c) => c.icon ?? ''),
+    { header: 'Name', width: 22, get: (c) => c.name },
+    { header: 'Name (JP)', width: 16, get: (c) => c.nameJp ?? '' },
+    { header: 'Type', width: 11, get: (c) => c.type },
+    { header: 'Source Game', width: 36, get: (c) => c.sourceGame ?? '' },
+    { header: 'Rank', width: 6, get: (c) => c.rank ?? '' },
+    { header: 'Aptitudes', width: 26, get: (c) => c.aptitudes.join(', ') },
     // CHM is 1 for every character, and the element DEF values are the same for every character.
     ...STATS.filter(([stat]) => stat !== Stat.Chr).map(([stat, label]): Column<Character> => ({
       header: label,
       width: 6,
-      get: (c) => characters.baseStat(c, stat),
+      get: (c) => c.stats[stat],
     })),
-    { header: 'Growth / Lv', width: 40, get: characters.growthText },
-    { header: 'Skills', width: 50, get: characters.skillsText },
-    { header: 'Battle Role', width: 10, get: characters.playRoleOf },
-    { header: 'Friendship Start', width: 9, get: (c) => Number(c.CHARA_COMPANION_INITIAL) },
-    { header: 'Friendship Max', width: 9, get: (c) => Number(c.CHARA_COMPANION_MAX) },
-    { header: 'Join Event', width: 30, get: (c) => story.eventLabel(joinOf(c)?.CHARACTER_APP_EVENT ?? '') },
-    { header: 'Join Population', width: 10, get: (c) => Number(joinOf(c)?.CHARACTER_APP_POPULATION ?? 0) },
-    { header: 'Join Turn', width: 7, get: (c) => Number(joinOf(c)?.CHARACTER_APP_CTURN ?? 0) },
-    { header: 'Recipe Sets Taught', width: 50, get: (c) => (recipes.setsTaughtBy.get(c.CHARACTER_ID) ?? []).join(', ') },
-    { header: 'Description', width: 80, get: (c) => t(c.CHARACTER_ANILLUSTRATION_DESCRIPTION_LABEL_ID) },
+    { header: 'Growth / Lv', width: 40, get: growthText },
+    {
+      header: 'Skills',
+      width: 50,
+      get: (c) => {
+        const learned = c.skills.toSorted((a, b) => a.level - b.level).map((s) => `${s.name} (Lv ${s.level})`);
+        if (c.eventSkill) learned.push(`${c.eventSkill.name} (${c.eventSkill.event?.label ?? ''})`);
+        return learned.join(', ');
+      },
+    },
+    { header: 'Battle Role', width: 10, get: (c) => c.battleRole ?? '' },
+    { header: 'Friendship Start', width: 9, get: (c) => c.friendshipStart },
+    { header: 'Friendship Max', width: 9, get: (c) => c.friendshipMax },
+    { header: 'Join Event', width: 30, get: (c) => c.join?.event?.label ?? '' },
+    { header: 'Join Population', width: 10, get: (c) => c.join?.population ?? 0 },
+    { header: 'Join Turn', width: 7, get: (c) => c.join?.turn ?? 0 },
+    {
+      header: 'Recipe Sets Taught',
+      width: 50,
+      get: (c) =>
+        c.recipeSetIds
+          .map((id) => pick(lookup.recipeSets, id))
+          .filter((set) => set.name !== null)
+          .map((set) => `${set.name ?? ''} (FRD ${set.friendship ?? ''})`)
+          .join(', '),
+    },
+    { header: 'Description', width: 80, get: (c) => c.description ?? '' },
   ];
 }

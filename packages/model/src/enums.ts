@@ -54,6 +54,43 @@ export enum Element {
   Earth = 'Earth',
 }
 
+/** The shops that sell items. */
+export enum Shop {
+  General = 'general',
+  Weapon = 'weapon',
+  Grocery = 'grocery',
+  Clothing = 'clothing',
+  Medicine = 'medicine',
+}
+
+/** The types of character and monster that the model tells apart. */
+export enum CharacterType {
+  Main = 'Main',
+  Alchemist = 'Alchemist',
+  Townsfolk = 'Townsfolk',
+  Story = 'Story',
+  Fairy = 'Fairy',
+  Monster = 'Monster',
+  Boss = 'Boss',
+}
+
+/** The roles of a character in a battle. */
+export enum BattleRole {
+  Attacker = 'Attacker',
+  Supporter = 'Supporter',
+}
+
+/** The difficulty ranks of an exploration area, from the hardest to the easiest. */
+export enum Difficulty {
+  S = 'S',
+  A = 'A',
+  B = 'B',
+  C = 'C',
+  D = 'D',
+  E = 'E',
+  F = 'F',
+}
+
 /** The encounter group types of encount_group.xml that the workbook tells apart. */
 export enum EncounterSymbol {
   Normal = 'BTL_ENCOUNT_SYMBOL_TYPE_NORMAL',

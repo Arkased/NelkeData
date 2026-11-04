@@ -13,6 +13,7 @@
   "scripts": {
     "check": "tsc -b && eslint . && prettier --check . && vitest run",
     "extract": "tsx packages/extract/src/cli.ts",
+    "model": "tsx packages/model/src/cli.ts",
     "workbook": "tsx packages/workbook/src/main.ts"
   },
   "license": "ISC",

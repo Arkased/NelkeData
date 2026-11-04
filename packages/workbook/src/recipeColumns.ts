@@ -1,76 +1,87 @@
-import { IconKind } from '@nelke/extract';
-import type { Game } from './game.js';
-import type { Item } from './items.js';
-import { isEmptySlot, type Recipe, type Unlock } from './recipes.js';
+import type { Item, Recipe, RecipeSet, Research } from '@nelke/model';
+import { pick, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
-import { required, round } from './util.js';
+
+/** How a recipe is unlocked, through the first recipe set that holds it. */
+interface Unlock {
+  set: RecipeSet;
+  research: Research | undefined;
+}
 
 /**
  * Builds the columns of the Recipes sheet.
- * @param game - the game data
+ * @param lookup - the entities by ID
  * @returns the columns
  * @sideEffects none
  */
-export function recipeColumns(game: Game): Column<Recipe>[] {
-  const { icons, items, recipes } = game;
-  const { unlock } = recipes;
-  const resultOf = (r: Recipe): Item => required(items.itemById, r.ITEM_COMPLETION_ID);
-  const unlockOf = (r: Recipe): Unlock | undefined => unlock.get(r.RECIPE_ID);
-  const materialColumns = ([1, 2, 3, 4] as const).flatMap((n): Column<Recipe>[] => {
-    const slot = (r: Recipe): Recipe['slots'][number] | undefined => r.slots[n - 1];
-    return [
-      {
-        header: `Material ${n}`,
-        width: 22,
-        get: (r) => {
-          const s = slot(r);
-          return s === undefined || isEmptySlot(s) ? '' : items.itemName(s.id);
-        },
-      },
-      {
-        header: `Qty ${n}`,
-        width: 6,
-        get: (r) => {
-          const s = slot(r);
-          return s === undefined || isEmptySlot(s) ? '' : s.num;
-        },
-      },
-    ];
-  });
-  return [
-    iconColumn((r) => icons.ref(IconKind.Item, Number(resultOf(r).ITEM_IMAGE_NUM))),
-    { header: 'Item', width: 28, get: (r) => items.itemName(r.ITEM_COMPLETION_ID) },
-    { header: 'Category', width: 14, get: (r) => items.categoryOf(resultOf(r)) },
-    { header: 'Sub-category', width: 18, get: (r) => items.subCategoryOf(resultOf(r)) },
-    { header: 'Rank', width: 7, get: (r) => Number(resultOf(r).ITEM_RANK) },
-    { header: 'Price', width: 9, get: (r) => recipes.priceOf(r.ITEM_COMPLETION_ID) },
-    { header: 'Synthesis Cost', width: 10, get: (r) => Number(r.ITEM_COMP_MH) },
-    { header: 'Input Cost', width: 10, get: recipes.inputCost },
-    { header: 'Added Value', width: 10, get: recipes.addedValue },
+export function recipeColumns(lookup: Lookup): Column<Recipe>[] {
+  const resultOf = (r: Recipe): Item => pick(lookup.items, r.resultItemId);
+  const unlockOf = (r: Recipe): Unlock | undefined => {
+    const setId = r.recipeSetIds[0];
+    if (setId === undefined) return undefined;
+    const set = pick(lookup.recipeSets, setId);
+    return { set, research: set.researchId === null ? undefined : pick(lookup.research, set.researchId) };
+  };
+  const prereqs = (research: Research): string => {
+    const parts = research.prerequisiteIds.map((id) => pick(lookup.research, id).name);
+    if (research.district !== null) parts.push(`District: ${research.district}`);
+    return parts.join(', ');
+  };
+  const materialColumns = ([1, 2, 3, 4] as const).flatMap((n): Column<Recipe>[] => [
     {
-      header: 'Added Value / Synth Cost',
-      width: 12,
+      header: `Material ${n}`,
+      width: 22,
       get: (r) => {
-        const value = recipes.addedValue(r);
-        return value !== '' && Number(r.ITEM_COMP_MH) > 0 ? round(value / Number(r.ITEM_COMP_MH)) : '';
+        const m = r.materials[n - 1];
+        return m === undefined ? '' : pick(lookup.items, m.itemId).name;
       },
     },
+    { header: `Qty ${n}`, width: 6, get: (r) => r.materials[n - 1]?.quantity ?? '' },
+  ]);
+  return [
+    iconColumn((r) => resultOf(r).icon ?? ''),
+    { header: 'Item', width: 28, get: (r) => resultOf(r).name },
+    { header: 'Category', width: 14, get: (r) => resultOf(r).category },
+    { header: 'Sub-category', width: 18, get: (r) => resultOf(r).subCategory ?? '' },
+    { header: 'Rank', width: 7, get: (r) => resultOf(r).rank },
+    { header: 'Price', width: 9, get: (r) => resultOf(r).price },
+    { header: 'Synthesis Cost', width: 10, get: (r) => r.synthesisCost },
+    { header: 'Input Cost', width: 10, get: (r) => r.inputCost },
+    { header: 'Added Value', width: 10, get: (r) => r.addedValue ?? '' },
+    { header: 'Added Value / Synth Cost', width: 12, get: (r) => r.addedValuePerCost ?? '' },
     {
       header: 'Unpriced Inputs',
       width: 24,
-      get: (r) =>
-        recipes
-          .unpricedInputs(r)
-          .map((m) => items.itemName(m.id))
-          .join(', '),
+      get: (r) => r.unpricedItemIds.map((id) => pick(lookup.items, id).name).join(', '),
     },
     ...materialColumns,
-    { header: 'Recipe Set', width: 24, get: (r) => unlockOf(r)?.set ?? '' },
-    { header: 'Taught By', width: 12, get: (r) => unlockOf(r)?.teacher ?? '' },
-    { header: 'Friendship Lv', width: 9, get: (r) => unlockOf(r)?.friendship ?? '' },
-    { header: 'Research', width: 26, get: (r) => unlockOf(r)?.research ?? '' },
-    { header: 'Researcher', width: 12, get: (r) => unlockOf(r)?.researcher ?? '' },
-    { header: 'Research Prereqs', width: 30, get: (r) => unlockOf(r)?.prereqs ?? '' },
-    { header: 'Unlock Event', width: 36, get: (r) => unlockOf(r)?.event ?? '' },
+    { header: 'Recipe Set', width: 24, get: (r) => unlockOf(r)?.set.name ?? '' },
+    {
+      header: 'Taught By',
+      width: 12,
+      get: (r) => {
+        const teacherId = unlockOf(r)?.set.teacherId;
+        return teacherId === undefined || teacherId === null ? '' : pick(lookup.characters, teacherId).name;
+      },
+    },
+    { header: 'Friendship Lv', width: 9, get: (r) => unlockOf(r)?.set.friendship ?? '' },
+    { header: 'Research', width: 26, get: (r) => unlockOf(r)?.research?.name ?? '' },
+    {
+      header: 'Researcher',
+      width: 12,
+      get: (r) => {
+        const researcherId = unlockOf(r)?.research?.researcherId;
+        return researcherId === undefined || researcherId === null ? '' : pick(lookup.characters, researcherId).name;
+      },
+    },
+    {
+      header: 'Research Prereqs',
+      width: 30,
+      get: (r) => {
+        const research = unlockOf(r)?.research;
+        return research ? prereqs(research) : '';
+      },
+    },
+    { header: 'Unlock Event', width: 36, get: (r) => unlockOf(r)?.set.unlockEvent?.label ?? '' },
   ];
 }

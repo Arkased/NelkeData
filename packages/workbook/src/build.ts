@@ -1,20 +1,21 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import ExcelJS from 'exceljs';
-import { characterColumns, characterIconOf, monsterColumns } from './characterColumns.js';
-import { CharacterCategory } from './enums.js';
-import { loadGame } from './game.js';
+import { CharacterType, ICON_DIR, readData } from '@nelke/model';
+import { characterColumns, monsterColumns } from './characterColumns.js';
 import { itemColumns } from './itemColumns.js';
+import { createLookup } from './lookup.js';
 import { recipeColumns } from './recipeColumns.js';
 import { addSheet, formatColumnWarning, type ColumnWarning, type SheetSpec } from './sheet.js';
 import { zoneColumns } from './zoneColumns.js';
 
+// The row height of the sheets follows this size. The icon files of the data folder are larger.
 const ICON_SIZE = 64;
 
-/** Where to read the game files and where to write the workbook. */
+/** Where to read the data and where to write the workbook. */
 export interface BuildOptions {
-  /** The extracted folder; it holds saves/ and data/. */
-  extractedDir: string;
+  /** The data folder; it holds the JSON files and icons/. */
+  dataDir: string;
   /** The xlsx file to write. The icons go to the icons/ folder next to it. */
   outFile: string;
 }
@@ -24,21 +25,17 @@ function byName<R>(get: (row: R) => string): (a: R, b: R) => number {
 }
 
 /**
- * Builds the workbook of the game data and its icon files.
- * @param options - the game files and the output file
+ * Builds the workbook of the game data and copies its icon files.
+ * @param options - the data folder and the output file
  * @returns a promise that resolves when the files are written
- * @sideEffects reads the extracted game files; writes the xlsx file and the icons folder; prints the column warnings and a summary
+ * @throws {Error} when the data does not match the schemas of the model
+ * @sideEffects reads the data folder; writes the xlsx file and the icons folder; prints the column warnings and a summary
  */
 export async function buildWorkbook(options: BuildOptions): Promise<void> {
-  const { extractedDir, outFile } = options;
-  const iconDir = path.join(path.dirname(outFile), 'icons');
-  const game = loadGame(extractedDir, ICON_SIZE);
-  const { messages, items, recipes, zones, characters, icons } = game;
-  const characterIcon = characterIconOf(game);
-  // Story NPCs with no face ("Old Man", "Young Woman") are generic roles, not named characters.
-  const isGenericNpc = (c: (typeof characters.characters)[number]): boolean =>
-    c.CHARACTER_CATEGORY_ID === CharacterCategory.Story && !characterIcon(c);
-  const nameOf = (c: (typeof characters.characters)[number]): string => characters.characterName.get(c.CHARACTER_ID) ?? '';
+  const { dataDir, outFile } = options;
+  const outIconDir = path.join(path.dirname(outFile), ICON_DIR);
+  const data = readData(dataDir);
+  const lookup = createLookup(data);
 
   const wb = new ExcelJS.Workbook();
   const warnings: ColumnWarning[] = [];
@@ -47,28 +44,25 @@ export async function buildWorkbook(options: BuildOptions): Promise<void> {
     warnings.push(...addSheet(wb, { ...spec, iconSize: ICON_SIZE }));
     counts.push(`${spec.name}: ${spec.rows.length}`);
   };
-  add({
-    name: 'Items',
-    columns: itemColumns(game),
-    rows: items.items.toSorted(byName((i) => messages.t(i.ITEM_NAME_LABEL_ID))),
-  });
+  add({ name: 'Items', columns: itemColumns(lookup), rows: data.items.toSorted(byName((i) => i.name)) });
   add({
     name: 'Recipes',
-    columns: recipeColumns(game),
-    rows: recipes.recipes.toSorted(byName((r) => items.itemName(r.ITEM_COMPLETION_ID))),
+    columns: recipeColumns(lookup),
+    rows: data.recipes.toSorted(byName((r) => lookup.items.get(r.resultItemId)?.name ?? '')),
   });
-  add({ name: 'Zones', columns: zoneColumns(game), rows: zones.spots });
-  add({ name: 'Monsters', columns: monsterColumns(game), rows: characters.characters.filter(characters.isMonster) });
+  add({ name: 'Zones', columns: zoneColumns(lookup), rows: data.areas });
+  add({ name: 'Monsters', columns: monsterColumns(lookup), rows: data.monsters });
   add({
     name: 'Characters',
-    columns: characterColumns(game),
-    rows: characters.characters.filter((c) => !characters.isMonster(c) && !isGenericNpc(c)).toSorted(byName(nameOf)),
+    columns: characterColumns(lookup),
+    // Story NPCs with no face ("Old Man", "Young Woman") are generic roles, not named characters.
+    rows: data.characters.filter((c) => !(c.type === CharacterType.Story && c.icon === null)).toSorted(byName((c) => c.name)),
   });
   for (const w of warnings) console.warn(formatColumnWarning(w));
 
-  fs.mkdirSync(iconDir, { recursive: true });
-  for (const [name, png] of icons.images) fs.writeFileSync(path.join(iconDir, name), png);
+  fs.mkdirSync(outIconDir, { recursive: true });
+  fs.cpSync(path.join(dataDir, ICON_DIR), outIconDir, { recursive: true });
   await wb.xlsx.writeFile(outFile);
-  console.log(`${counts.join(', ')}, icons: ${icons.images.size}`);
-  console.log(`wrote ${outFile} and ${iconDir}`);
+  console.log(`${counts.join(', ')}, icons: ${fs.readdirSync(outIconDir).length}`);
+  console.log(`wrote ${outFile} and ${outIconDir}`);
 }

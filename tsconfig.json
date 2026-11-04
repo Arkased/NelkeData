@@ -1,4 +1,10 @@
 {
   "files": [],
-  "references": [{ "path": "packages/extract" }, { "path": "packages/workbook" }, { "path": "scripts" }]
+  "references": [
+    { "path": "packages/extract" },
+    { "path": "packages/model" },
+    { "path": "packages/workbook" },
+    { "path": "scripts" },
+    { "path": "__tests__" }
+  ]
 }

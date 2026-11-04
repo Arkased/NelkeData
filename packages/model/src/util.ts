@@ -19,25 +19,13 @@ export function round(n: number): number {
 }
 
 /**
- * Removes the repeated values of a list, keeping the first of each.
- * @param list - the values
- * @returns the distinct values in first-seen order
+ * Turns an empty text into null, the value of the model for a missing text.
+ * @param text - the text
+ * @returns the text, or null when it is empty
  * @sideEffects none
  */
-export function unique<T>(list: readonly T[]): T[] {
-  return [...new Set(list)];
-}
-
-/**
- * Formats the span of a list of numbers as "min-max", or as the number alone when all are equal.
- * @param nums - the numbers, at least 1
- * @returns the text of the span
- * @sideEffects none
- */
-export function range(nums: readonly number[]): string {
-  const min = Math.min(...nums);
-  const max = Math.max(...nums);
-  return min === max ? `${nums[0] ?? ''}` : `${min}-${max}`;
+export function orNull(text: string): string | null {
+  return text === '' ? null : text;
 }
 
 /**
