@@ -1,0 +1,14 @@
+---
+/** The props of a section. */
+interface Props {
+  /** The section title. */
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section>
+  <h2 class="section-title">{title}</h2>
+  <slot />
+</section>

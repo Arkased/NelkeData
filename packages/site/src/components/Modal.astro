@@ -1,0 +1,56 @@
+---
+---
+
+<div class="overlay" hidden data-overlay>
+  <div class="modal" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="modal-body" data-modal-body></div>
+  </div>
+</div>
+
+<script>
+  import '../scripts/modal';
+</script>
+
+<style>
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(40, 24, 10, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--g);
+  }
+  .modal {
+    width: min(760px, 100%);
+    max-height: calc(100dvh - 2 * var(--g));
+    display: flex;
+    flex-direction: column;
+    background: var(--cream-2);
+    border: 1px solid var(--brown);
+    border-radius: var(--radius);
+  }
+  .modal:focus {
+    outline: none;
+  }
+  .modal-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: var(--g);
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  @media (max-width: 640px) {
+    .overlay {
+      padding: 0;
+      align-items: stretch;
+    }
+    .modal {
+      width: 100%;
+      border-radius: 0;
+      max-height: none;
+      height: 100dvh;
+    }
+  }
+</style>

@@ -1,19 +1,49 @@
 ---
+import { uiIconUrl } from '../icons';
+import { CATEGORY_LINKS } from '../nav';
 import { pageUrl } from '../url';
+
+/** The props of the header. */
+interface Props {
+  /** The key of the category page that the page belongs to; its link is marked as the current one. */
+  category?: string;
+}
+
+const { category } = Astro.props;
 ---
 
 <header class="hdr">
   <div class="hdr-bar">
     <div class="brand">
       <a class="site-name" href={pageUrl('')}>
-        Westwald Archive
+        {' '}
+        Westwald Archive{' '}
       </a>
       <small class="tagline">
         Unofficial fansite for <i>Nelke &amp; the Legendary Alchemists</i>
       </small>
     </div>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-menu>
+      Menu
+    </button>
   </div>
+  <nav class="nav" id="nav" aria-label="Pages" data-nav>
+    {CATEGORY_LINKS.map((link) => (
+      <a href={pageUrl(link.path)} aria-current={link.key === category ? 'page' : undefined}>
+        <img class="cat" src={uiIconUrl(link.icon)} alt="" width="24" height="24" />
+        <span>{link.label}</span>
+      </a>
+    ))}
+  </nav>
 </header>
+
+<script>
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  menu?.addEventListener('click', () => {
+    menu.setAttribute('aria-expanded', String(nav?.classList.toggle('open') ?? false));
+  });
+</script>
 
 <style>
   .hdr {
@@ -47,14 +77,73 @@ import { pageUrl } from '../url';
     line-height: 1.2;
     white-space: nowrap;
   }
-  @media (max-width: 599px) {
-    .tagline {
-      flex-basis: 100%;
-    }
-  }
   .tagline {
     font-size: var(--text-small);
     line-height: 1.4;
     opacity: 0.85;
+  }
+  .menu-btn {
+    display: none;
+    min-height: 28px;
+    padding: 0 var(--s3);
+    background: var(--brown-dark);
+    border: 1px solid var(--gold);
+    border-radius: var(--s2);
+    color: var(--cream);
+    font-weight: 700;
+  }
+  .nav {
+    display: flex;
+    gap: var(--s2);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--s2);
+  }
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    min-height: 44px;
+    padding: 0 var(--s4);
+    font-weight: 700;
+    background: var(--cream-2);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .nav a:hover {
+    background: var(--gold-soft);
+  }
+  .nav a[aria-current] {
+    background: var(--gold);
+    border-color: var(--warm);
+  }
+  .nav img {
+    width: 24px;
+    height: 24px;
+    flex: none;
+    object-fit: contain;
+  }
+  @media (max-width: 640px) {
+    .hdr-bar {
+      padding: var(--s2) var(--s3);
+    }
+  }
+  @media (max-width: 599px) {
+    .tagline {
+      flex-basis: 100%;
+    }
+    .menu-btn {
+      display: block;
+    }
+    .nav {
+      display: none;
+      flex-direction: column;
+    }
+    .nav.open {
+      display: flex;
+    }
+    .nav a {
+      justify-content: flex-start;
+    }
   }
 </style>

@@ -1,0 +1,20 @@
+---
+/** The props of a stat. */
+interface Props {
+  /** The small label above the value. */
+  label: string;
+  /** A name for the UI test to find the stat. */
+  id: string;
+  /** A tone for the value: `good` is green, `bad` is red. */
+  tone?: 'good' | 'bad';
+}
+
+const { label, id, tone } = Astro.props;
+---
+
+<div class:list={['stat', tone]} data-stat={id}>
+  <small class="cap">{label}</small>
+  <b class="val">
+    <slot />
+  </b>
+</div>

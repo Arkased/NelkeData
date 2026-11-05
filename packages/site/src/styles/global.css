@@ -47,6 +47,9 @@
   --text-body: 14px;
   --text-title: 20px;
 
+  --good: #2f7d2f;
+  --bad: #b32d1a;
+
   --radius: 12px;
 
   --font: 'Source Sans 3', sans-serif;
@@ -89,6 +92,76 @@ h2,
 h3,
 p {
   margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* A section title: bold brown text with a thin rule under it. The space above and below the text is the same. */
+.section-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--text-body);
+  line-height: 1.2;
+  color: var(--brown);
+  padding: var(--s1) 0;
+  margin-bottom: var(--s4);
+  border-bottom: 1px solid var(--line);
+}
+
+/* The 1 style of a small label. */
+.cap {
+  font-size: var(--text-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink-soft);
+  line-height: 1.2;
+}
+
+/* A plain button with a thin border. */
+.btn {
+  min-height: 40px;
+  padding: 0 var(--s4);
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--cream-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+.btn:hover {
+  background: var(--gold-soft);
+}
+
+/* A unit with a game icon: the icon, then the number. */
+.unit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.ico {
+  width: 1.1em;
+  height: 1.1em;
+  object-fit: contain;
+  flex: none;
+}
+
+main > * + * {
+  margin-top: var(--g);
 }
 
 .page {

@@ -1,0 +1,22 @@
+---
+import { uiIconUrl } from '../icons';
+import { UiIcon } from '../ui-icon';
+
+/** The props of a friendship level. */
+interface Props {
+  level: number;
+}
+
+const { level } = Astro.props;
+// A level above 10 uses 1 sprite for each digit.
+const sprites = level <= 10 ? [level] : [...String(level)].map(Number);
+---
+
+<span class="fr" role="img" aria-label={`Friendship ${level}`}>
+  <img class="hb" src={uiIconUrl(UiIcon.Friendship)} alt="" width="36" height="31" />
+  <span class="fd">
+    {sprites.map((digit) => (
+      <img src={uiIconUrl(`favc-${digit}`)} alt="" />
+    ))}
+  </span>
+</span>

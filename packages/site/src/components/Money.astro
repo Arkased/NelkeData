@@ -1,0 +1,17 @@
+---
+import { formatNumber } from '../format';
+import { uiIconUrl } from '../icons';
+import { UiIcon } from '../ui-icon';
+
+/** The props of a money value. */
+interface Props {
+  amount: number;
+}
+
+const { amount } = Astro.props;
+---
+
+<span class="unit">
+  <img class="ico" src={uiIconUrl(UiIcon.Coin)} alt="Cole" width="16" height="16" />
+  {formatNumber(amount)}
+</span>

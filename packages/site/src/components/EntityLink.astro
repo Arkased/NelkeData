@@ -1,0 +1,22 @@
+---
+import { entityUrl, type EntityKind } from '../entity';
+import { entityIconUrl } from '../icons';
+
+/** The props of an entity link. */
+interface Props {
+  kind: EntityKind;
+  slug: string;
+  name: string;
+  /** The file name in `data/icons/128/`, or null when the entity has no icon. */
+  icon?: string | null;
+}
+
+const { kind, slug, name, icon = null } = Astro.props;
+const href = entityUrl(kind, slug);
+const Tag = href === null ? 'span' : 'a';
+---
+
+<Tag class="tl" href={href} data-modal={href === null ? undefined : ''}>
+  {icon !== null && <img class="ico" src={entityIconUrl(icon)} alt="" width="24" height="24" loading="lazy" />}
+  {name}
+</Tag>
