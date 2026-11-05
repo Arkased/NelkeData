@@ -120,21 +120,12 @@ Only the latest load of the modal acts. Esc, Back or a newer click cancels the l
 
 ## Build and deploy
 
-The site is the package `@nelke/site`: an Astro project with static output ([decision 0002](../decisions/0002-stack.md)). The build writes only HTML, CSS, JS, fonts and images to `packages/site/dist/`. The site reads the entities only through the files of `data/` and the schemas of `@nelke/model`.
+The site is the approved prototype in `prototype/` ([decision 0013](../decisions/0013-prototype-is-the-site.md)): 1 HTML page, its JS, its data copy `data.js`, its CSS, its fonts and its images. The pages are `#/` routes of the 1 HTML page. The site has no build step.
 
-- **Base path.** GitHub Pages serves the site under `/NelkeData/`. 1 module holds the base path. The Astro config, the link check and the UI test read it from there. Each internal URL comes from 1 function that adds the base path. No component writes a root-relative URL by hand. So a change of the host changes 1 setting.
-- **Layout.** 1 layout component holds the `<html>` element, the fonts, the global CSS, the header and the footer. Each page uses it and gives its content, and its name when it has one. The title of the page is `<page name> · Westwald Archive`. The title of the root page is `Westwald Archive`.
-- **Global CSS.** 1 file holds the colors, the 4 px spacing scale, the 3 text sizes and the radii as CSS custom properties. The values come from `prototype/style.css`. A component uses only these properties for these values.
-- **Category links of the header.** The header links only to the category pages that exist, in the order Items, Areas, Monsters, Characters, Research. The first page item (the Items page) adds the list of these links, and each later page item adds its row. So the header never links to a page that does not exist, and the link check passes after each change. The menu button for a narrow window comes with the list. For the same reason, the About link of the footer comes in the change that adds the About page.
-- **Link check.** After the build, a script reads each HTML file of `dist/`. It collects each `href` and `src` that starts with the base path, and fails when no file of `dist/` matches it. It parses the HTML with a parser library, not with a regular expression, because attribute quotes and entities are easy to get wrong.
-- **UI test.** A Playwright test opens the built site in `astro preview`, at 360, 768, 1280 and 1920 px, each width in its own browser context at the same time. It checks the rules of the requirements that a script can check: the site name and the tagline in the header, the legal notice in the footer, the title of the page, and no horizontal scroll. Each page item adds the checks of its page.
-- **Deploy.** A GitHub Actions workflow runs on each push to `main` that changes `data/`, `packages/site/` or the workflow itself, and on a manual start. It installs the packages, builds the site, runs the link check and the UI test, and deploys `dist/` to GitHub Pages with the official Pages actions. A failed step stops the deploy, so the live site stays at the last good build.
+- **Deploy.** A GitHub Actions workflow runs on each push to `main` that changes `prototype/` or the workflow itself, and on a manual start. It uploads only the site files of `prototype/` (`index.html`, `app.js`, `data.js`, `style.css`, `fonts/`, `img/`) and deploys them to GitHub Pages with the official Pages actions. The scripts and the packages of the prototype are not deployed.
+- **Change of the site.** A change of the site is a change of `prototype/`.
 
-Rejected options:
-
-- A push of the build output to a `gh-pages` branch. The official Pages actions need no extra branch and no token with write access to the code.
-- A link check through a crawler of the live site. It finds a broken link only after the deploy.
-- The UI test in `npm run check`. It needs a browser and a full build, so it is too slow for each commit. The deploy workflow runs it on each change of the site, and an agent runs it on its own change of the site.
+Rejected option: a push of the site files to a `gh-pages` branch. The official Pages actions need no extra branch and no token with write access to the code.
 
 ## Pages
 

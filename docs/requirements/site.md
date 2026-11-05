@@ -2,29 +2,27 @@
 
 A static website for lookups of the game data of _Nelke & the Legendary Alchemists_. It is for players who want to find, for example, where to gather an item, what a recipe needs, or what a monster drops. The categories come from [decision 0001](../decisions/0001-site-categories.md) and [decision 0008](../decisions/0008-recipes-in-items.md). The look and the structure of the pages come from [decision 0005](../decisions/0005-icon-grids.md) and [decision 0007](../decisions/0007-clear-data-and-filters.md).
 
-The owner approved these requirements and the layouts of the HTML prototype (#11) on 2026-11-02. A new page (for example the buildings) needs its own requirement rows, its own prototype and a separate approval.
+The owner approved these requirements and the layouts of the HTML prototype (#11) on 2026-11-02. The approved prototype in `prototype/` is the live site ([decision 0013](../decisions/0013-prototype-is-the-site.md)). A new page (for example the buildings) needs its own requirement rows, its own prototype and a separate approval.
 
 ## General
 
 | Name | Contract | Proof |
 | --- | --- | --- |
-| Host | The site is on GitHub Pages at `https://arkased.github.io/NelkeData/`. Each push to `main` that changes `data/` or `packages/site/` deploys it. | The run of the deploy workflow passes, and the root URL loads the Items page. |
+| Host | The site is on GitHub Pages at `https://arkased.github.io/NelkeData/`. Each push to `main` that changes `prototype/` deploys the files of the prototype. | The run of the deploy workflow passes, and the root URL loads the Items page. |
 | Site name | The site is "Westwald Archive", with the tagline "Unofficial fansite for _Nelke & the Legendary Alchemists_". The header of each page shows both, and the title of each page ends with the name. ([decision 0011](../decisions/0011-site-name.md)) | A UI test finds the name and the tagline in the header of each page. |
 | Legal notice | Each page has a short notice in the footer (the About page has it in its section "Legal"), on the model of [the legal page of Barrel Wisdom](https://barrelwisdom.com/blog/legal), a fan site for Gust games since 2021: "Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of _Nelke & the Legendary Alchemists_." | A UI test finds the notice on each page. |
 | About page | 1 page tells the player 3 things. 1. Contact: the issues of the GitHub repository `Arkased/NelkeData`. 2. Source: a link to the repository, and the origin of the data (the files of the Steam version of the game). 3. Legal: the legal notice of the row above. The footer of each other page links to it. The owner approved the layout of the prototype on 2026-11-03. | A UI test finds the 3 parts and the footer link. |
-| Static | The site is static files only. It needs no server and no database. | The build output is only HTML, CSS, JS and images. |
-| Same data | Each value on the site is the same as the value in the workbook. The site shows only the data that helps a player. The workbook keeps all columns. | The site and the workbook read the same files of `data/`. A test compares a sample of entities. |
+| Static | The site is static files only. It needs no server and no database. | The deployed files are only HTML, CSS, JS, fonts and images. |
+| Same data | Each value on the site is the same as the value in the workbook. The site shows only the data that helps a player. The workbook keeps all columns. | A comparison of 3 entities of each page of the site with `data/` and the workbook finds no difference. |
 | Own look | A clear and organized view of the data comes first. The site has its own look in the colors of the game, so it does not look official ([decision 0009](../decisions/0009-own-look.md)). It uses no UI texture of the game for its frame parts: the background, the panels, the name plates, the header bars, the buttons and the tabs. Its typeface is not a font of the game. It uses the game icons that carry data: the items, the monsters, the characters, the shops, the categories, the elements, the money, the synthesis cost and the friendship hearts. | The owner approves the prototype. A test finds no UI texture of the game in the CSS. |
 | No spreadsheet look | No page shows rows of labels and values, or tables. A category is a grid of icons. A detail is a composed panel: for example the name, element icons and material slots. | The owner approves the prototype. |
-| Icon grid and modal | A category page shows the game icons of its entities in a grid, in the order of the game. A click on an icon opens the detail in a modal, and the URL changes to the URL of the entity. Back closes the modal. Each entity also has its own page for a direct visit. | A UI test opens an icon, checks the URL, and goes back. |
+| Icon grid and detail | A category page shows the game icons of its entities in a grid, in the order of the game. A click on an icon opens the detail of the entity. | The owner approves the prototype. |
 | Filters | Each category page has filters. The grid shows only the icons that match all the selected filters. The filters are in the URL. | A UI test selects 2 filters. |
 | Placeholder data | An entity with placeholder data does not show on the site: for example an item with the name "Item 015", or with no name. The workbook drops it too. | A test makes sure that no name on the site matches the placeholder patterns. |
 | Numbers | A rate, a price or a ratio shows with at most 1 decimal, with no floating-point error. | A test of the number format. |
 | Names | The name of an entity shows under its icon in each grid. | A UI test. |
 | Units | Each value shows in 1 format with its unit, on all pages. The formats are in `docs/design/site.md`, section "UI standard". | The audit of the UI test. |
-| Links | Each mention of an entity that has a page is a link to that page. A mention of an entity with no page is plain text. | A build check finds each internal link, and fails when a link has no target. |
-| Stable URLs | The URL of a page comes from the English name of its entity. It does not change between builds while the name does not change. When 2 entities have the same name, each URL is still unique. | A test builds the URLs 2 times and compares them. A test makes sure that all URLs are unique. |
-| Any width | The layout adapts to the width of the window, at each width from 360 px (a small phone) up. The page has no horizontal scroll. Only a research tree scrolls horizontally, inside its own box. | UI tests at 360, 768, 1280 and 1920 px. |
+| Any width | The layout adapts to the width of the window, at each width from 360 px (a small phone) up. The page has no horizontal scroll. Only a research tree scrolls horizontally, inside its own box. | The owner approves the prototype. |
 
 ## Items (priority 1)
 

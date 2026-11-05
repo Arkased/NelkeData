@@ -44,3 +44,4 @@ A decision that replaces an earlier one sets the status of the earlier record to
 | [0010](0010-no-search-box.md) | The site has no search box | accepted |
 | [0011](0011-site-name.md) | The name of the site is Westwald Archive | accepted |
 | [0012](0012-synthesis-level.md) | The synthesis level comes from the item rank | accepted |
+| [0013](0013-prototype-is-the-site.md) | The approved prototype is the live site | accepted |
