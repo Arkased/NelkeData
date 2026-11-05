@@ -351,14 +351,14 @@ await step('synthesis level of a craftable item', async () => {
     ok((await stat.count()) === 1, `${name}: 1 "Synth. Lv." stat in the synthesis section`);
     ok(((await stat.locator('.val').innerText().catch(() => '')) || '').trim() === `Lv ${lv}`, `${name}: synthesis level Lv ${lv}`);
   }
-  // The level of each craftable item in data.js equals Math.max(1, Math.floor(rank / 4)) (the rule of the README). The items of data.js carry no rank,
-  // so the test compares with synthesisLevel of data/recipes.json, matched by resultItemId; a rank in data.js is used first.
+  // The level of each craftable item in data.js (syn.lv) equals Math.max(1, Math.floor(rank / 4)) (the rule of the README). The items of data.js carry
+  // no rank, so the test takes the rank of each item with a recipe from data/items.json, matched by item id. It fails when an item has no rank,
+  // when there are no craftable items, or when a level differs.
   const fs = await import('node:fs');
-  const recipes = JSON.parse(fs.readFileSync(fileURLToPath(new URL('../../data/recipes.json', import.meta.url)), 'utf8'));
-  const levelOf = new Map(recipes.map((r) => [r.resultItemId, r.synthesisLevel]));
-  const crafts = await page.evaluate(() => window.DATA.items.filter((i) => i.syn).map((i) => ({ id: i.id, lv: i.syn.lv, rank: i.rank })));
-  const wrong = crafts.filter((c) => c.lv !== (Number.isInteger(c.rank) ? Math.max(1, Math.floor(c.rank / 4)) : levelOf.get(c.id)));
-  ok(crafts.length > 0 && wrong.length === 0, `each of the ${crafts.length} craftable items has the level of its rank${wrong.length ? ': ' + wrong.slice(0, 4).map((c) => c.id + ' ' + c.lv).join('; ') : ''}`);
+  const rankOf = new Map(JSON.parse(fs.readFileSync(fileURLToPath(new URL('../../data/items.json', import.meta.url)), 'utf8')).map((i) => [i.id, i.rank]));
+  const crafts = await page.evaluate(() => window.DATA.items.filter((i) => i.syn).map((i) => ({ id: i.id, lv: i.syn.lv })));
+  const wrong = crafts.filter((c) => !Number.isInteger(rankOf.get(c.id)) || c.lv !== Math.max(1, Math.floor(rankOf.get(c.id) / 4)));
+  ok(crafts.length > 0 && wrong.length === 0, `each of the ${crafts.length} craftable items has the level of its rank${wrong.length ? ': ' + wrong.slice(0, 4).map((c) => `${c.id} lv ${c.lv} rank ${rankOf.get(c.id)}`).join('; ') : ''}`);
 });
 
 await step('Master Puni has its zone', async () => {
