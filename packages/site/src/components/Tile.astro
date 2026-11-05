@@ -14,10 +14,12 @@ interface Props {
   qty?: number;
   /** Extra attributes of the tile, for example the filter values of a grid cell. */
   attrs?: Record<string, string>;
+  /** False for an entity of a kind with pages that has no page itself, for example a character with no join event. */
+  linked?: boolean;
 }
 
-const { kind, slug, name, icon, qty = 1, attrs = {} } = Astro.props;
-const href = entityUrl(kind, slug);
+const { kind, slug, name, icon, qty = 1, attrs = {}, linked = true } = Astro.props;
+const href = linked ? entityUrl(kind, slug) : null;
 const Tag = href === null ? 'div' : 'a';
 ---
 

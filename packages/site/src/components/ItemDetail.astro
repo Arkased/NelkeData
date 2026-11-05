@@ -1,5 +1,6 @@
 ---
 import { Element, type Item, type Research } from '@nelke/model';
+import { hasCharacterPage } from '../characters';
 import { areaById, characterById, itemById, monsterById, recipeById, recipeSetById, researchById, zoneById } from '../data';
 import { EntityKind, entityUrl } from '../entity';
 import { formatNumber, formatRate } from '../format';
@@ -205,7 +206,12 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
                   <small class="cap">Taught by</small>
                   <span class="uv">
                     <Icon icon={u.teacher.icon} class="face" />
-                    <EntityLink kind={EntityKind.Character} slug={u.teacher.slug} name={u.teacher.name} />
+                    <EntityLink
+                      kind={EntityKind.Character}
+                      slug={u.teacher.slug}
+                      name={u.teacher.name}
+                      linked={hasCharacterPage(u.teacher)}
+                    />
                     {u.set.friendship !== null && u.set.friendship > 0 && <Friendship level={u.set.friendship} />}
                   </span>
                 </div>

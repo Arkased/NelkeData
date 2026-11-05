@@ -12,11 +12,13 @@ interface Props {
   icon?: string | null;
   /** The UI icon of the game for an entity that has no icon of its own; `icon` wins when both are set. */
   uiIcon?: UiIcon;
+  /** False for an entity of a kind with pages that has no page itself, for example a character with no join event. */
+  linked?: boolean;
 }
 
-const { kind, slug, name, icon = null, uiIcon } = Astro.props;
+const { kind, slug, name, icon = null, uiIcon, linked = true } = Astro.props;
 const iconUrl = icon !== null ? entityIconUrl(icon) : uiIcon === undefined ? null : uiIconUrl(uiIcon);
-const href = entityUrl(kind, slug);
+const href = linked ? entityUrl(kind, slug) : null;
 const Tag = href === null ? 'span' : 'a';
 ---
 

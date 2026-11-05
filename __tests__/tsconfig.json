@@ -4,6 +4,7 @@
   "include": [
     "*.ts",
     "../packages/site/src/base.ts",
+    "../packages/site/src/characters.ts",
     "../packages/site/src/format.ts",
     "../packages/site/src/nav.ts",
     "../packages/site/src/stat-tone.ts",
