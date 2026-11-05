@@ -7,6 +7,8 @@ export const recipeSchema = z.strictObject({
   resultItemId: idSchema,
   materials: z.array(z.strictObject({ itemId: idSchema, quantity: z.number() })),
   synthesisCost: z.number(),
+  /** The minimum alchemy level: the rank of the result item divided by 4, rounded down, at least 1. */
+  synthesisLevel: z.int().min(1),
   /** The price of the materials. */
   inputCost: z.number(),
   /** The price of the result minus the input cost; null when the result has no price. */

@@ -45,6 +45,7 @@ export function fakeRecipe(o: Overrides<DirectData['recipes'][number]>): DirectD
     resultItemId: 'i1',
     materials: [],
     synthesisCost: 1,
+    synthesisLevel: 1,
     inputCost: 0,
     addedValue: null,
     addedValuePerCost: null,
