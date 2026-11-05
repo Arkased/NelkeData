@@ -15,12 +15,13 @@ export function formatNumber(value: number): string {
 }
 
 /**
- * Formats the levels of a monster in an area as 1 value: `Lv 3` for 1 level, `Lv 3–8` for a range.
- * @param levels - the levels of the monster, at least 1
- * @returns the text
+ * Formats the levels of an appearance as the badge text of a tile or an entry.
+ * @param levels - the levels at which the monster appears
+ * @returns `Lv 5` for 1 level, `Lv 3–8` for a range, or null when there is no level
  * @sideEffects none
  */
-export function formatLevels(levels: readonly number[]): string {
+export function formatLevelRange(levels: readonly number[]): string | null {
+  if (levels.length === 0) return null;
   const low = Math.min(...levels);
   const high = Math.max(...levels);
   return low === high ? `Lv ${low}` : `Lv ${low}–${high}`;

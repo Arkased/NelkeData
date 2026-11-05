@@ -1,0 +1,25 @@
+---
+import type { Monster } from '@nelke/model';
+import EntityPage from '../../components/EntityPage.astro';
+import MonsterDetail from '../../components/MonsterDetail.astro';
+import { data } from '../../data';
+import Base from '../../layouts/Base.astro';
+import { CategoryKey } from '../../nav';
+
+/** Returns the page of each monster. */
+export function getStaticPaths() {
+  return data.monsters.map((monster) => ({ params: { slug: monster.slug }, props: { monster } }));
+}
+
+interface Props {
+  monster: Monster;
+}
+
+const { monster } = Astro.props;
+---
+
+<Base name={monster.name} category={CategoryKey.Monsters}>
+  <EntityPage>
+    <MonsterDetail monster={monster} />
+  </EntityPage>
+</Base>

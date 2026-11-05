@@ -11,6 +11,8 @@ export enum UiIcon {
   CategoryCraftable = 'cat-11',
   CategoryItems = 'cat-15',
   CategoryAreas = 'cat-16',
+  NavMonsters = 'nav-monsters',
+  NavCharacters = 'nav-characters',
   ShopGeneral = 'shop-general',
   ShopWeapon = 'shop-weapon',
   ShopGrocery = 'shop-grocery',

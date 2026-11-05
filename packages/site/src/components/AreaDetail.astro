@@ -2,7 +2,7 @@
 import type { Area } from '@nelke/model';
 import { itemById, monsterById, zoneById } from '../data';
 import { EntityKind } from '../entity';
-import { formatLevels, formatRate } from '../format';
+import { formatLevelRange, formatRate } from '../format';
 import ElementStat from './ElementStat.astro';
 import EntityLink from './EntityLink.astro';
 import Group from './Group.astro';
@@ -29,7 +29,7 @@ const gather = area.gather
   .map((g) => ({ item: required(itemById.get(g.itemId), 'item'), badge: formatRate(g.rate) }));
 const appearances = area.monsters.map((m) => ({
   monster: required(monsterById.get(m.monsterId), 'monster'),
-  badge: formatLevels(m.levels),
+  badge: formatLevelRange(m.levels),
   boss: m.boss,
   areaLevel: m.areaLevel,
 }));

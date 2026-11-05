@@ -10,6 +10,8 @@ export const NAV_BREAKPOINT = 600;
 export enum CategoryKey {
   Items = 'items',
   Areas = 'areas',
+  Monsters = 'monsters',
+  Characters = 'characters',
 }
 
 /** A link of the header to a category page. */
@@ -25,4 +27,6 @@ export interface CategoryLink {
 export const CATEGORY_LINKS: readonly CategoryLink[] = [
   { key: CategoryKey.Items, label: 'Items', path: '', icon: UiIcon.CategoryItems },
   { key: CategoryKey.Areas, label: 'Areas', path: 'areas/', icon: UiIcon.CategoryAreas },
+  { key: CategoryKey.Monsters, label: 'Monsters', path: 'monsters/', icon: UiIcon.NavMonsters },
+  { key: CategoryKey.Characters, label: 'Characters', path: 'characters/', icon: UiIcon.NavCharacters },
 ];

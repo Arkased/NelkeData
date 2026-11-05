@@ -239,7 +239,7 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
         <Group title="Gather">
           <div class="cols">
             {gathers.map((g) => (
-              <AreaEntry area={g.area} zone={g.zone} badge={g.rate} />
+              <AreaEntry kind={EntityKind.Area} slug={g.area.slug} name={g.area.name} zone={g.zone} badge={g.rate} />
             ))}
           </div>
         </Group>
@@ -257,13 +257,7 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
         <Group title="Special spots">
           <div class="cols">
             {specialZones.map((zone) => (
-              <div class="link">
-                <span class="lt">
-                  <b>
-                    <EntityLink kind={EntityKind.Zone} slug={zone.slug} name={zone.name} />
-                  </b>
-                </span>
-              </div>
+              <AreaEntry kind={EntityKind.Zone} slug={zone.slug} name={zone.name} />
             ))}
           </div>
         </Group>
