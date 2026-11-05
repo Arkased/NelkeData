@@ -2,6 +2,14 @@ import path from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
 import { isPlaceholder, ItemCategoryName, readData, Shop } from '@nelke/model';
 import { BASE_PATH } from '../packages/site/src/base.js';
+import {
+  CharacterGroup,
+  GAME_START_EVENT_ID,
+  groupOf,
+  hasCharacterPage,
+  START_POPULATION,
+  START_TURN,
+} from '../packages/site/src/characters.js';
 import { formatNumber as format } from '../packages/site/src/format.js';
 import { NAV_BREAKPOINT } from '../packages/site/src/nav.js';
 import { StatTone } from '../packages/site/src/stat-tone.js';
@@ -233,7 +241,7 @@ test.describe('header', () => {
     await expect(nav).toBeHidden();
     await menu.click();
     await expect(nav).toBeVisible();
-    await expect(nav.getByRole('link')).toHaveText(['Items']);
+    await expect(nav.getByRole('link')).toHaveText(['Items', 'Characters']);
     await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
   });
 
@@ -243,7 +251,7 @@ test.describe('header', () => {
     const nav = page.getByRole('navigation', { name: 'Pages' });
     await expect(page.getByRole('button', { name: 'Menu' })).toBeHidden();
     await expect(nav).toBeVisible();
-    await expect(nav.getByRole('link')).toHaveText(['Items']);
+    await expect(nav.getByRole('link')).toHaveText(['Items', 'Characters']);
     await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
   });
 });
@@ -429,3 +437,117 @@ test.describe('names and links', () => {
     await expect(page.locator('[data-section="how-to-get"] .mini').first()).not.toHaveAttribute('href', /.+/);
   });
 });
+
+const pagedCharacters = data.characters.filter(hasCharacterPage);
+const characterPath = (slug: string) => `characters/${slug}/`;
+
+for (const width of WIDTHS) {
+  test.describe(`characters at ${width} px`, () => {
+    test.beforeEach(async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+    });
+
+    test('the Alchemist filter shows only alchemists and puts the group in the URL', async ({ page }) => {
+      await page.goto('characters/');
+      await openFilters(page);
+      await page.getByRole('button', { name: CharacterGroup.Alchemist, exact: true }).click();
+      const alchemists = pagedCharacters.filter((c) => groupOf(c) === CharacterGroup.Alchemist);
+      expect(alchemists.length).toBeGreaterThan(0);
+      expect(alchemists.length).toBeLessThan(pagedCharacters.length);
+      const visible = page.locator('[data-grid] a.mini:visible');
+      await expect(visible).toHaveCount(alchemists.length);
+      expect(await visible.evaluateAll((tiles) => tiles.map((tile) => (tile as HTMLElement).dataset.group))).toEqual(
+        alchemists.map(() => CharacterGroup.Alchemist),
+      );
+      expect(new URL(page.url()).search).toBe(`?group=${CharacterGroup.Alchemist}`);
+      await noHorizontalScroll(page);
+    });
+
+    test('a character of a story event shows the characters that join with it', async ({ page }) => {
+      const character = pagedCharacters.find(
+        (c) => c.join?.event?.id !== GAME_START_EVENT_ID && pagedCharacters.some((o) => o !== c && o.join?.event?.id === c.join?.event?.id),
+      );
+      if (!character) throw new Error('No character of a story event');
+      const others = pagedCharacters.filter((o) => o !== character && o.join?.event?.id === character.join?.event?.id);
+      await page.goto(characterPath(character.slug));
+      await expect(page.getByRole('heading', { name: 'Joins with', level: 3 })).toBeVisible();
+      await expect(page.locator('[data-section="joins-with"] .mini')).toHaveCount(
+        data.characters.filter((o) => o !== character && o.join?.event?.id === character.join?.event?.id).length,
+      );
+      await expect(page.locator('[data-section="joins-with"] a.mini')).toHaveCount(others.length);
+      await noHorizontalScroll(page);
+    });
+
+    test('an alchemist shows Teaches with a link to an item page', async ({ page }) => {
+      const teacher = pagedCharacters.find((c) => groupOf(c) === CharacterGroup.Alchemist && c.recipeSetIds.length > 0);
+      if (!teacher) throw new Error('No alchemist that teaches');
+      await page.goto(characterPath(teacher.slug));
+      await expect(page.getByRole('heading', { name: 'Teaches', level: 2 })).toBeVisible();
+      await expect(page.locator('[data-section="teaches"] a.mini').first()).toHaveAttribute('href', new RegExp(`^${BASE_PATH}items/`));
+      await noHorizontalScroll(page);
+    });
+
+    test('the join turn is marked as not confirmed', async ({ page }) => {
+      const character = pagedCharacters.find((c) => (c.join?.turn ?? 0) > START_TURN);
+      if (!character) throw new Error('No character with a join turn above the start');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('[data-stat="turn"] .cap')).toContainText('(not confirmed)');
+      await expect(page.locator('[data-stat="turn"] .val')).toHaveText(`Turn ${character.join?.turn}`);
+    });
+
+    test('the detail shows the description and the source game in italics', async ({ page }) => {
+      const character = pagedCharacters.find((c) => c.description !== null && c.sourceGame !== null);
+      if (!character) throw new Error('No character with a description and a source game');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('p.desc')).toHaveText(character.description ?? '');
+      const game = page.locator('[data-fact="source-game"]');
+      await expect(game).toHaveText(character.sourceGame ?? '');
+      expect(await game.evaluate((el) => el.tagName)).toBe('I');
+      await noHorizontalScroll(page);
+    });
+
+    test('the skills show their level, and an event skill shows Learned at an event', async ({ page }) => {
+      const leveled = pagedCharacters.find((c) => c.skills.length > 0);
+      const skill = leveled?.skills[0];
+      if (!leveled || !skill) throw new Error('No character with a skill');
+      await page.goto(characterPath(leveled.slug));
+      const lines = page.locator('[data-section="skills"] .link');
+      await expect(lines.first()).toContainText(skill.name);
+      await expect(lines.first()).toContainText(`Lv ${skill.level}`);
+      const eventful = pagedCharacters.find((c) => c.eventSkill !== null);
+      if (!eventful) throw new Error('No character with an event skill');
+      await page.goto(characterPath(eventful.slug));
+      await expect(page.locator('[data-section="skills"]')).toContainText(eventful.eventSkill?.name ?? '');
+      await expect(page.locator('[data-section="skills"]')).toContainText('Learned at an event');
+    });
+
+    test('the Town population stat shows for a population above the start', async ({ page }) => {
+      const character = pagedCharacters.find((c) => (c.join?.population ?? 0) > START_POPULATION);
+      if (!character) throw new Error('No character with a population above the start');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('[data-stat="population"] .cap')).toHaveText('Town population');
+      await expect(page.locator('[data-stat="population"] .val')).toHaveText(`${format(character.join?.population ?? 0)} people`);
+    });
+
+    test('the Town population stat is absent for a population at or below the start', async ({ page }) => {
+      const character = pagedCharacters.find((c) => c.join !== null && c.join.population <= START_POPULATION);
+      if (!character) throw new Error('No character with a population at or below the start');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('[data-stat="population"]')).toHaveCount(0);
+    });
+
+    test('the Turn stat is absent for a turn at or below the start', async ({ page }) => {
+      const character = pagedCharacters.find((c) => c.join !== null && c.join.turn <= START_TURN);
+      if (!character) throw new Error('No character with a turn at or below the start');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('[data-stat="turn"]')).toHaveCount(0);
+    });
+
+    test('each character has its own URL', async ({ page }) => {
+      await page.goto('characters/');
+      const hrefs = await page.locator('[data-grid] a.mini').evaluateAll((tiles) => tiles.map((tile) => tile.getAttribute('href')));
+      expect(hrefs).toHaveLength(pagedCharacters.length);
+      expect(new Set(hrefs).size).toBe(hrefs.length);
+    });
+  });
+}

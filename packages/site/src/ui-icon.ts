@@ -10,6 +10,7 @@ export enum UiIcon {
   CategoryResearch = 'cat-10',
   CategoryCraftable = 'cat-11',
   CategoryItems = 'cat-15',
+  NavCharacters = 'nav-characters',
   ShopGeneral = 'shop-general',
   ShopWeapon = 'shop-weapon',
   ShopGrocery = 'shop-grocery',

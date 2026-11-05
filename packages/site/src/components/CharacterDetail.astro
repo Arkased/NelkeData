@@ -1,0 +1,152 @@
+---
+import type { Character } from '@nelke/model';
+import { GAME_START_EVENT_ID, groupOf, START_POPULATION, START_TURN } from '../characters';
+import { data, itemById, recipeById, recipeSetById } from '../data';
+import { EntityKind } from '../entity';
+import { formatNumber } from '../format';
+import Friendship from './Friendship.astro';
+import Group from './Group.astro';
+import Icon from './Icon.astro';
+import Section from './Section.astro';
+import Stat from './Stat.astro';
+import Tile from './Tile.astro';
+
+/** The props of the character detail. */
+interface Props {
+  character: Character;
+}
+
+const { character } = Astro.props;
+
+function required<T>(row: T | undefined, what: string): T {
+  if (row === undefined) throw new Error(`${character.id}: missing ${what}`);
+  return row;
+}
+
+const joinEvent = character.join?.event ?? null;
+const inStoryEvent = joinEvent !== null && joinEvent.id !== GAME_START_EVENT_ID;
+const joinsWith = inStoryEvent
+  ? data.characters.filter((other) => other.id !== character.id && other.join?.event?.id === joinEvent.id)
+  : [];
+const population = character.join !== null && character.join.population > START_POPULATION ? character.join.population : null;
+const turn = character.join !== null && character.join.turn > START_TURN ? character.join.turn : null;
+const hasSkills = character.skills.length > 0 || character.eventSkill !== null;
+const hasJoin = inStoryEvent || population !== null || turn !== null;
+
+const teaches = character.recipeSetIds.map((id) => {
+  const set = required(recipeSetById.get(id), 'recipe set');
+  const items = set.recipeIds.map((recipeId) => required(itemById.get(required(recipeById.get(recipeId), 'recipe').resultItemId), 'item'));
+  const friendship = set.friendship ?? 0;
+  return { set, items, friendship, showTitle: items.length >= 2 || items[0]?.name !== set.name || friendship > 0 };
+});
+---
+
+<div class="mhead">
+  <h1 class="name">{character.name}</h1>
+</div>
+
+<div class="top">
+  <Icon icon={character.icon} class="big" />
+  <div class="facts">
+    <span class="catline" data-fact="group">
+      {groupOf(character)}
+    </span>
+    {character.sourceGame !== null && (
+      <i class="game" data-fact="source-game">
+        {character.sourceGame}
+      </i>
+    )}
+  </div>
+</div>
+
+{character.description !== null && <p class="desc">{character.description}</p>}
+
+{hasSkills && (
+  <Section title="Skills">
+    <div class="cols" data-section="skills">
+      {character.skills.map((skill) => (
+        <div class="link">
+          <b>{skill.name}</b>
+          <span class="pct">Lv {skill.level}</span>
+        </div>
+      ))}
+      {character.eventSkill !== null && (
+        <div class="link">
+          <b>{character.eventSkill.name}</b>
+          <span class="pct">Learned at an event</span>
+        </div>
+      )}
+    </div>
+  </Section>
+)}
+
+{hasJoin && (
+  <Section title="Joins the town">
+    <div class="groups" data-section="joins">
+      {inStoryEvent && <p class="uv">Joins in a story event</p>}
+      {joinsWith.length > 0 && (
+        <Group title="Joins with">
+          <div class="minis" data-section="joins-with">
+            {joinsWith.map((other) => (
+              <Tile kind={EntityKind.Character} slug={other.slug} name={other.name} icon={other.icon} />
+            ))}
+          </div>
+        </Group>
+      )}
+      {(population !== null || turn !== null) && (
+        <div class="syn-stats">
+          {population !== null && (
+            <Stat label="Town population" id="population">
+              {formatNumber(population)} people
+            </Stat>
+          )}
+          {turn !== null && (
+            <Stat label="Turn (not confirmed)" id="turn">
+              Turn {formatNumber(turn)}
+            </Stat>
+          )}
+        </div>
+      )}
+    </div>
+  </Section>
+)}
+
+{teaches.length > 0 && (
+  <Section title="Teaches">
+    <div class="groups teaches" data-section="teaches">
+      {teaches.map((t) => (
+        <div class="grp">
+          {t.showTitle && (
+            <h3 class="sub teach-title">
+              {t.set.name}
+              {t.friendship > 0 && <Friendship level={t.friendship} />}
+            </h3>
+          )}
+          <div class="minis">
+            {t.items.map((item) => (
+              <Tile kind={EntityKind.Item} slug={item.slug} name={item.name} icon={item.icon} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+)}
+
+<style>
+  .game {
+    color: var(--ink-soft);
+  }
+  /* The gap between the groups is wider than the gap inside a group, so a title reads with its own tiles. */
+  .teaches {
+    gap: var(--s8);
+  }
+  .teaches .grp {
+    gap: var(--s1);
+  }
+  .teach-title {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+  }
+</style>

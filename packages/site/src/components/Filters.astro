@@ -6,7 +6,8 @@ import type { UiIcon } from '../ui-icon';
 interface FilterOption {
   value: string;
   label: string;
-  icon: UiIcon;
+  /** The icon of the game for the option; absent when the game has none. */
+  icon?: UiIcon;
 }
 
 /** A group of toggles. */
@@ -44,7 +45,7 @@ const { groups } = Astro.props;
         <div class="opts" data-param={group.param}>
           {group.options.map((option) => (
             <button class="toggle" type="button" data-value={option.value} aria-pressed="false">
-              <img class="cat" src={uiIconUrl(option.icon)} alt="" width="24" height="24" />
+              {option.icon !== undefined && <img class="cat" src={uiIconUrl(option.icon)} alt="" width="24" height="24" />}
               <span>{option.label}</span>
             </button>
           ))}
