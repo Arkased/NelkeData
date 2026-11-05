@@ -1,0 +1,4720 @@
+[
+  {
+    "id": "RECIPE_NEUTRALIZER_BLUE",
+    "resultItemId": "ITEM_MIX_NEUTRALIZER_BLUE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_TAR_NUT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 10,
+    "addedValue": 86,
+    "addedValuePerCost": 21.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_NEUTRALIZER_BLUE"
+    ]
+  },
+  {
+    "id": "RECIPE_NEUTRALIZER_RED",
+    "resultItemId": "ITEM_MIX_NEUTRALIZER_RED",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 8,
+    "addedValue": 79,
+    "addedValuePerCost": 19.75,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_NEUTRALIZER_RED"
+    ]
+  },
+  {
+    "id": "RECIPE_NEUTRALIZER_GREEN",
+    "resultItemId": "ITEM_MIX_NEUTRALIZER_GREEN",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_TAUN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 10,
+    "addedValue": 78,
+    "addedValuePerCost": 19.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_NEUTRALIZER_GREEN"
+    ]
+  },
+  {
+    "id": "RECIPE_NEUTRALIZER_YELLOW",
+    "resultItemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RAIDEN_ORE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 38,
+    "addedValue": 131,
+    "addedValuePerCost": 21.83,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_NEUTRALIZER_YELLOW"
+    ]
+  },
+  {
+    "id": "RECIPE_INGOT",
+    "resultItemId": "ITEM_MIX_INGOT",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 52,
+    "addedValue": 182,
+    "addedValuePerCost": 26,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_INGOT"
+    ]
+  },
+  {
+    "id": "RECIPE_SILVALIA",
+    "resultItemId": "ITEM_MIX_SILVALIA",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_STEEL_ORE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 104,
+    "addedValue": 321,
+    "addedValuePerCost": 29.18,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SILVALIA"
+    ]
+  },
+  {
+    "id": "RECIPE_GOLD_EISEN",
+    "resultItemId": "ITEM_MIX_GOLD_EISEN",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_KIMBER_ORE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_DEEP_RED_SOIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 10
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 14,
+    "inputCost": 152,
+    "addedValue": 870.67,
+    "addedValuePerCost": 62.19,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GOLD_EISEN"
+    ]
+  },
+  {
+    "id": "RECIPE_HARMONIUM",
+    "resultItemId": "ITEM_MIX_HARMONIUM",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 10
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 6
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 198,
+    "addedValue": 1164.67,
+    "addedValuePerCost": 68.51,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HARMONIUM"
+    ]
+  },
+  {
+    "id": "RECIPE_CLOTH",
+    "resultItemId": "ITEM_MIX_CLOTH",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 54,
+    "addedValue": 155,
+    "addedValuePerCost": 22.14,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_CLOTH"
+    ]
+  },
+  {
+    "id": "RECIPE_MOFFCLOTH",
+    "resultItemId": "ITEM_MIX_MOFFCLOTH",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WOOL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 22,
+    "addedValue": 379.33,
+    "addedValuePerCost": 54.19,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MOFFCLOTH"
+    ]
+  },
+  {
+    "id": "RECIPE_FLUGEL",
+    "resultItemId": "ITEM_MIX_FLUGEL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ANIMAL_LEATHER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 10
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 18,
+    "addedValue": 506,
+    "addedValuePerCost": 63.25,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FLUGEL"
+    ]
+  },
+  {
+    "id": "RECIPE_VELVETIS",
+    "resultItemId": "ITEM_MIX_VELVETIS",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_DRAGON_SCALE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 10
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 146,
+    "addedValue": 2162,
+    "addedValuePerCost": 135.13,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_VELVETIS"
+    ]
+  },
+  {
+    "id": "RECIPE_COMET",
+    "resultItemId": "ITEM_MIX_COMET",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SUN_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 147,
+    "addedValue": 100,
+    "addedValuePerCost": 14.29,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_COMET"
+    ]
+  },
+  {
+    "id": "RECIPE_ABRASIVE",
+    "resultItemId": "ITEM_MIX_ABRASIVE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_FEST",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 23,
+    "addedValue": 74,
+    "addedValuePerCost": 18.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ABRASIVE"
+    ]
+  },
+  {
+    "id": "RECIPE_DIAMOND",
+    "resultItemId": "ITEM_MIX_DIAMOND",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_KIMBER_ORE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CLAY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 356,
+    "addedValue": 409.33,
+    "addedValuePerCost": 34.11,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DIAMOND"
+    ]
+  },
+  {
+    "id": "RECIPE_ALCHEMIC_CLAY",
+    "resultItemId": "ITEM_MIX_ALCHEMIC_CLAY",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PENDELOOK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_JUNK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 84,
+    "addedValue": 196,
+    "addedValuePerCost": 24.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ALCHEMIC_CLAY"
+    ]
+  },
+  {
+    "id": "RECIPE_ZETTEL",
+    "resultItemId": "ITEM_MIX_ZETTEL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_TAUN",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_BEEHIVE",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 57,
+    "addedValue": 230,
+    "addedValuePerCost": 28.75,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ZETTEL"
+    ]
+  },
+  {
+    "id": "RECIPE_DISTILLED_WATER",
+    "resultItemId": "ITEM_MIX_DISTILLED_WATER",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 4
+      },
+      {
+        "itemId": "ITEM_MAT_FRAGRANT_WOOD_CHIP",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 14,
+    "addedValue": 78,
+    "addedValuePerCost": 19.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DISTILLED_WATER"
+    ]
+  },
+  {
+    "id": "RECIPE_PURE_OIL",
+    "resultItemId": "ITEM_MIX_PURE_OIL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_TAR_NUT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_BLUE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 122,
+    "addedValue": 196,
+    "addedValuePerCost": 24.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_PURE_OIL"
+    ]
+  },
+  {
+    "id": "RECIPE_FLOUR",
+    "resultItemId": "ITEM_MIX_FLOUR",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WHEAT",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 2,
+    "inputCost": 2,
+    "addedValue": 33,
+    "addedValuePerCost": 16.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FLOUR"
+    ]
+  },
+  {
+    "id": "RECIPE_PURE_POISON",
+    "resultItemId": "ITEM_MIX_PURE_POISON",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_DARK_NIGHT_MUSHROOM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_STRANGE_LIQUID",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 230,
+    "addedValue": 1600,
+    "addedValuePerCost": 123.08,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_PURE_POISON"
+    ]
+  },
+  {
+    "id": "RECIPE_HOLLOW_RING",
+    "resultItemId": "ITEM_MIX_HOLLOW_RING",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_HARMONIUM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_SMARAGD",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_WORLD_SOUL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 38,
+    "inputCost": 3368,
+    "addedValue": 4760,
+    "addedValuePerCost": 125.26,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HOLLOW_RING"
+    ]
+  },
+  {
+    "id": "RECIPE_GNADE_RING",
+    "resultItemId": "ITEM_MIX_GNADE_RING",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_HARMONIUM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_SALE_GRANAT",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 32,
+    "inputCost": 3313.33,
+    "addedValue": 3538.67,
+    "addedValuePerCost": 110.58,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GNADE_RING"
+    ]
+  },
+  {
+    "id": "RECIPE_RUBY",
+    "resultItemId": "ITEM_MIX_RUBY",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CLAY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_RED",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 15,
+    "inputCost": 521,
+    "addedValue": 771,
+    "addedValuePerCost": 51.4,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_RUBY"
+    ]
+  },
+  {
+    "id": "RECIPE_SAPPHIRE",
+    "resultItemId": "ITEM_MIX_SAPPHIRE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CLAY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_BLUE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 684,
+    "addedValue": 1052,
+    "addedValuePerCost": 55.37,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SAPPHIRE"
+    ]
+  },
+  {
+    "id": "RECIPE_SMARAGD",
+    "resultItemId": "ITEM_MIX_SMARAGD",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CLAY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_GREEN",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 676,
+    "addedValue": 1145.33,
+    "addedValuePerCost": 60.28,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SMARAGD"
+    ]
+  },
+  {
+    "id": "RECIPE_PHILOSOPHERS_STONE",
+    "resultItemId": "ITEM_MIX_PHILOSOPHERS_STONE",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_CRIMSON_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_DIAMOND",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ORIGIN_ASH",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 27,
+    "inputCost": 3394.33,
+    "addedValue": 7737.67,
+    "addedValuePerCost": 286.58,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_PHILOSOPHERS_STONE"
+    ]
+  },
+  {
+    "id": "RECIPE_CRIMSON_STONE",
+    "resultItemId": "ITEM_MIX_CRIMSON_STONE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_TWIN_COLOR_CORUNDUM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_HORN",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 194,
+    "addedValue": 1464,
+    "addedValuePerCost": 122,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_CRIMSON_STONE"
+    ]
+  },
+  {
+    "id": "RECIPE_ORIGIN_ASH",
+    "resultItemId": "ITEM_MIX_ORIGIN_ASH",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 85,
+    "addedValue": 831,
+    "addedValuePerCost": 103.88,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ORIGIN_ASH"
+    ]
+  },
+  {
+    "id": "RECIPE_POLISHED_CRYSTAL",
+    "resultItemId": "ITEM_MIX_POLISHED_CRYSTAL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_CLOTH",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 241,
+    "addedValue": 162,
+    "addedValuePerCost": 18,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_POLISHED_CRYSTAL"
+    ]
+  },
+  {
+    "id": "RECIPE_HONEY",
+    "resultItemId": "ITEM_MIX_HONEY",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_BEEHIVE",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_VINTAGE_POT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 54,
+    "addedValue": 184,
+    "addedValuePerCost": 23,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HONEY"
+    ]
+  },
+  {
+    "id": "RECIPE_MEDICINE_BASE",
+    "resultItemId": "ITEM_MIX_MEDICINE_BASE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_TAUN",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WOUNDLESS_GRASS",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_SAGE_HERB",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_STRONG_BONE",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 156,
+    "addedValue": 1314,
+    "addedValuePerCost": 119.45,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MEDICINE_BASE"
+    ]
+  },
+  {
+    "id": "RECIPE_GOLD_BULLION",
+    "resultItemId": "ITEM_MIX_GOLD_BULLION",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_PHILOSOPHERS_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SCARAB",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CHARCOAL",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 39,
+    "inputCost": 11745,
+    "addedValue": 4687,
+    "addedValuePerCost": 120.18,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GOLD_BULLION"
+    ]
+  },
+  {
+    "id": "RECIPE_ALCHEMIC_CHARCOAL",
+    "resultItemId": "ITEM_MIX_ALCHEMIC_CHARCOAL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RUBBER_TREE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_PHLOGISTON",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 80,
+    "addedValue": 424,
+    "addedValuePerCost": 35.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ALCHEMIC_CHARCOAL"
+    ]
+  },
+  {
+    "id": "RECIPE_FLAMME",
+    "resultItemId": "ITEM_USE_FLAMME",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PHLOGISTON",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_TAR_NUT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_RED",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 127,
+    "addedValue": 126,
+    "addedValuePerCost": 18,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FLAMME"
+    ]
+  },
+  {
+    "id": "RECIPE_LACHELN",
+    "resultItemId": "ITEM_USE_LACHELN",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SOFT_RIME_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_BLUE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 165,
+    "addedValue": 185,
+    "addedValuePerCost": 20.56,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_LACHELN"
+    ]
+  },
+  {
+    "id": "RECIPE_DONNER_STONE",
+    "resultItemId": "ITEM_USE_DONNER_STONE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RAIDEN_ORE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_BROKEN_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_GREEN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 180,
+    "addedValue": 235,
+    "addedValuePerCost": 23.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DONNER_STONE"
+    ]
+  },
+  {
+    "id": "RECIPE_GLOBE",
+    "resultItemId": "ITEM_USE_GLOBE",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_ZETTEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 463,
+    "addedValue": 326.33,
+    "addedValuePerCost": 27.19,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GLOBE"
+    ]
+  },
+  {
+    "id": "RECIPE_KRAFT",
+    "resultItemId": "ITEM_USE_KRAFT",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_UNI",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_INGOT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_RED",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 339,
+    "addedValue": 623.67,
+    "addedValuePerCost": 56.7,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_KRAFT"
+    ]
+  },
+  {
+    "id": "RECIPE_METEOR",
+    "resultItemId": "ITEM_USE_METEOR",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_COMET",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_STAR_FRAGMENT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_FLUGEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_USE_KRAFT",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 25,
+    "inputCost": 1855.67,
+    "addedValue": 1968.33,
+    "addedValuePerCost": 78.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_METEOR"
+    ]
+  },
+  {
+    "id": "RECIPE_BLITZ_CORE_",
+    "resultItemId": "ITEM_USE_BLITZ_CORE_",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_SAND",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 682,
+    "addedValue": 944.67,
+    "addedValuePerCost": 55.57,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_BLITZ_CORE_"
+    ]
+  },
+  {
+    "id": "RECIPE_HEALING_SALVE",
+    "resultItemId": "ITEM_USE_HEALING_SALVE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_TAUN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 5,
+    "inputCost": 46,
+    "addedValue": 108,
+    "addedValuePerCost": 21.6,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HEALING_SALVE"
+    ]
+  },
+  {
+    "id": "RECIPE_FRUIT_TEA",
+    "resultItemId": "ITEM_USE_FRUIT_TEA",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_NECTAR_FRUIT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_PURPLE_GRAPE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_WHITE_PRINCESS_GRASS",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 85,
+    "addedValue": 105,
+    "addedValuePerCost": 17.5,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FRUIT_TEA"
+    ]
+  },
+  {
+    "id": "RECIPE_NECTAR",
+    "resultItemId": "ITEM_USE_NECTAR",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PENDELOOK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_FAIRY_PARASOL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_CHARIOT_MILK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 98,
+    "addedValue": 229,
+    "addedValuePerCost": 25.44,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_NECTAR"
+    ]
+  },
+  {
+    "id": "RECIPE_SOFT_WIND_AROMA",
+    "resultItemId": "ITEM_USE_SOFT_WIND_AROMA",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_PURE_OIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RUBBER_TREE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_WHITE_PRINCESS_GRASS",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 341,
+    "addedValue": 123,
+    "addedValuePerCost": 12.3,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SOFT_WIND_AROMA"
+    ]
+  },
+  {
+    "id": "RECIPE_ELIXIR",
+    "resultItemId": "ITEM_USE_ELIXIR",
+    "materials": [
+      {
+        "itemId": "ITEM_USE_NECTAR",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SAGE_HERB",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 538,
+    "addedValue": 1079.33,
+    "addedValuePerCost": 59.96,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ELIXIR"
+    ]
+  },
+  {
+    "id": "RECIPE_DARKNESS_WATER",
+    "resultItemId": "ITEM_USE_DARKNESS_WATER",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_PURE_POISON",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 1887,
+    "addedValue": -368.33,
+    "addedValuePerCost": -21.67,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DARKNESS_WATER"
+    ]
+  },
+  {
+    "id": "RECIPE_SPIRIT_WEAVE_CURTAIN",
+    "resultItemId": "ITEM_USE_SPIRIT_WEAVE_CURTAIN",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_CLOTH",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_GRAVISTONE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 531,
+    "addedValue": 901,
+    "addedValuePerCost": 56.31,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SPIRIT_WEAVE_CURTAIN"
+    ]
+  },
+  {
+    "id": "RECIPE_UNIVERSE_MANUSCRIPT",
+    "resultItemId": "ITEM_USE_UNIVERSE_MANUSCRIPT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_ZETTEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_PENDELOOK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 460,
+    "addedValue": 1005.33,
+    "addedValuePerCost": 62.83,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_UNIVERSE_MANUSCRIPT"
+    ]
+  },
+  {
+    "id": "RECIPE_DRAGON_NOSTRUM",
+    "resultItemId": "ITEM_USE_DRAGON_NOSTRUM",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_DRAGON_HORN",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MIX_DISTILLED_WATER",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 498,
+    "addedValue": 2692,
+    "addedValuePerCost": 134.6,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DRAGON_NOSTRUM"
+    ]
+  },
+  {
+    "id": "RECIPE_FISHING_ROD",
+    "resultItemId": "ITEM_SEA_FISHING_ROD",
+    "materials": [
+      {
+        "itemId": "ITEM_BUILD_SPRUCE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_BABY_WYRM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_BITTER_EARTHWORM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RUBBER_TREE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 153,
+    "addedValue": 2031,
+    "addedValuePerCost": 126.94,
+    "unpricedItemIds": [
+      "ITEM_BUILD_SPRUCE"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FISHING_ROD"
+    ]
+  },
+  {
+    "id": "RECIPE_INSECT_NET",
+    "resultItemId": "ITEM_SEA_INSECT_NET",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 34,
+    "addedValue": 60,
+    "addedValuePerCost": 15,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_INSECT_NET"
+    ]
+  },
+  {
+    "id": "RECIPE_SHOVEL",
+    "resultItemId": "ITEM_SEA_SHOVEL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_INGOT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 241,
+    "addedValue": 119,
+    "addedValuePerCost": 13.22,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SHOVEL"
+    ]
+  },
+  {
+    "id": "RECIPE_RECLAMATION_CONVENIENCE_TOOL",
+    "resultItemId": "ITEM_SEA_RECLAMATION_CONVENIENCE_TOOL",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_SILVALIA",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RUBBER_TREE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 838,
+    "addedValue": 1046,
+    "addedValuePerCost": 58.11,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_RECLAMATION_CONVENIENCE_TOOL"
+    ]
+  },
+  {
+    "id": "RECIPE_ANIMAL_RESONATOR",
+    "resultItemId": "ITEM_SEA_ANIMAL_RESONATOR",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_GOLD_EISEN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_HORN",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WOOL",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 1152.67,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ANIMAL_RESONATOR"
+    ]
+  },
+  {
+    "id": "RECIPE_MORGEN_ALCHEMIC_LIGHT",
+    "resultItemId": "ITEM_SEA_MORGEN_ALCHEMIC_LIGHT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SOFT_RIME_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 444,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MORGEN_ALCHEMIC_LIGHT"
+    ]
+  },
+  {
+    "id": "RECIPE_GRAVICRYSTAL",
+    "resultItemId": "ITEM_SEA_GRAVICRYSTAL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_GRAVISTONE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_DISTILLED_WATER",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_TAR_NUT",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 670,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GRAVICRYSTAL"
+    ]
+  },
+  {
+    "id": "RECIPE_WIND_GODS_BAG",
+    "resultItemId": "ITEM_SEA_WIND_GODS_BAG",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MOFFCLOTH",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_PENDELOOK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_GREEN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 20
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 528.33,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_WIND_GODS_BAG"
+    ]
+  },
+  {
+    "id": "RECIPE_DRAGON_SLEEP_INCENSE",
+    "resultItemId": "ITEM_SEA_DRAGON_SLEEP_INCENSE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ULTRAMARINE_SOIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_HONEY_POPPY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_USE_SOFT_WIND_AROMA",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_PURE_OIL",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 851,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DRAGON_SLEEP_INCENSE"
+    ]
+  },
+  {
+    "id": "RECIPE_TRADITIONAL_WHITE_BREAD",
+    "resultItemId": "ITEM_SALE_TRADITIONAL_WHITE_BREAD",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_FLOUR",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 5,
+    "inputCost": 43,
+    "addedValue": 92,
+    "addedValuePerCost": 18.4,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_TRADITIONAL_WHITE_BREAD"
+    ]
+  },
+  {
+    "id": "RECIPE_STAMINA_BREAD",
+    "resultItemId": "ITEM_SALE_STAMINA_BREAD",
+    "materials": [
+      {
+        "itemId": "ITEM_SALE_TRADITIONAL_WHITE_BREAD",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_LEAF_LETTUCE",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_FRESH_MEAT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WASHER",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 438,
+    "addedValue": 1712,
+    "addedValuePerCost": 107,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_STAMINA_BREAD"
+    ]
+  },
+  {
+    "id": "RECIPE_VEGETABLE_MANJU",
+    "resultItemId": "ITEM_SALE_VEGETABLE_MANJU",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_FLOUR",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_LEAF_LETTUCE",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      },
+      {
+        "itemId": "ITEM_MAT_UNKNOWN_EGG",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 171,
+    "addedValue": 527.67,
+    "addedValuePerCost": 52.77,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_VEGETABLE_MANJU"
+    ]
+  },
+  {
+    "id": "RECIPE_GOLDEN_EXTRACT_SOUP",
+    "resultItemId": "ITEM_SALE_GOLDEN_EXTRACT_SOUP",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SCISSORS_STONE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 10
+      },
+      {
+        "itemId": "ITEM_MAT_RED_DEVIL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 22,
+    "inputCost": 370,
+    "addedValue": 6574,
+    "addedValuePerCost": 298.82,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GOLDEN_EXTRACT_SOUP"
+    ]
+  },
+  {
+    "id": "RECIPE_APPLE_TART",
+    "resultItemId": "ITEM_SALE_APPLE_TART",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_FLOUR",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_APPLE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_PURPLE_GRAPE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 153,
+    "addedValue": 113,
+    "addedValuePerCost": 16.14,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_APPLE_TART"
+    ]
+  },
+  {
+    "id": "RECIPE_LIVING_PIE",
+    "resultItemId": "ITEM_SALE_LIVING_PIE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MIX_FLOUR",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_FRESH_MEAT",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 22,
+    "inputCost": 438,
+    "addedValue": 2488,
+    "addedValuePerCost": 113.09,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_LIVING_PIE"
+    ]
+  },
+  {
+    "id": "RECIPE_BEER",
+    "resultItemId": "ITEM_SALE_BEER",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WHEAT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_FRAGRANT_WOOD_CHIP",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 3,
+    "inputCost": 9,
+    "addedValue": 50,
+    "addedValuePerCost": 16.67,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_BEER"
+    ]
+  },
+  {
+    "id": "RECIPE_BLESSING_WINE",
+    "resultItemId": "ITEM_SALE_BLESSING_WINE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PURPLE_GRAPE",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MIX_DISTILLED_WATER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 122,
+    "addedValue": 97,
+    "addedValuePerCost": 16.17,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_BLESSING_WINE"
+    ]
+  },
+  {
+    "id": "RECIPE_JIGGLY_PUDDING",
+    "resultItemId": "ITEM_SALE_JIGGLY_PUDDING",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_UNKNOWN_EGG",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MIX_HONEY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_NECTAR_FRUIT",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 15,
+    "inputCost": 404,
+    "addedValue": 853.33,
+    "addedValuePerCost": 56.89,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_JIGGLY_PUDDING"
+    ]
+  },
+  {
+    "id": "RECIPE_SPECIAL_PANCAKE",
+    "resultItemId": "ITEM_SALE_SPECIAL_PANCAKE",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_HONEY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_UNKNOWN_EGG",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_FLOUR",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_CHARIOT_MILK",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 343,
+    "addedValue": 515.67,
+    "addedValuePerCost": 46.88,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SPECIAL_PANCAKE"
+    ]
+  },
+  {
+    "id": "RECIPE_SIMPLE_BAKED_SWEETS",
+    "resultItemId": "ITEM_SALE_SIMPLE_BAKED_SWEETS",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_FLOUR",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_UNI",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 4,
+    "inputCost": 88,
+    "addedValue": 24,
+    "addedValuePerCost": 6,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SIMPLE_BAKED_SWEETS"
+    ]
+  },
+  {
+    "id": "RECIPE_ALCHEMY_DROP",
+    "resultItemId": "ITEM_SALE_ALCHEMY_DROP",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WHIM_STRAWBERRY",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_BEEHIVE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ZETTEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_CARROT",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 343,
+    "addedValue": 417,
+    "addedValuePerCost": 41.7,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ALCHEMY_DROP"
+    ]
+  },
+  {
+    "id": "RECIPE_PUNI_JELLY",
+    "resultItemId": "ITEM_SALE_PUNI_JELLY",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_APPLE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 72,
+    "addedValue": 129,
+    "addedValuePerCost": 18.43,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_PUNI_JELLY"
+    ]
+  },
+  {
+    "id": "RECIPE_FULL_AUTOMATIC_MUSHROOM_HOTPOT",
+    "resultItemId": "ITEM_SALE_FULL_AUTOMATIC_MUSHROOM_HOTPOT",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_FAIRY_PARASOL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_CARROT",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MIX_INGOT",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 424,
+    "addedValue": 2174,
+    "addedValuePerCost": 135.88,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FULL_AUTOMATIC_MUSHROOM_HOTPOT"
+    ]
+  },
+  {
+    "id": "RECIPE_PRIMITIVE_POWER_MEAT",
+    "resultItemId": "ITEM_SALE_PRIMITIVE_POWER_MEAT",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_FRESH_MEAT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_HONEY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 10
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 341,
+    "addedValue": 1015,
+    "addedValuePerCost": 63.44,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_PRIMITIVE_POWER_MEAT"
+    ]
+  },
+  {
+    "id": "RECIPE_WORLD_APPLE_STORY",
+    "resultItemId": "ITEM_SALE_WORLD_APPLE_STORY",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_APPLE",
+        "quantity": 4
+      },
+      {
+        "itemId": "ITEM_SALE_MAGICAL_PAINT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_SUN_CRYSTAL",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 24,
+    "inputCost": 834,
+    "addedValue": 3392,
+    "addedValuePerCost": 141.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_WORLD_APPLE_STORY"
+    ]
+  },
+  {
+    "id": "RECIPE_ETHER_INK",
+    "resultItemId": "ITEM_SALE_ETHER_INK",
+    "materials": [
+      {
+        "itemId": "ITEM_SALE_MAGICAL_PAINT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WHIM_STRAWBERRY",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 355,
+    "addedValue": 750.33,
+    "addedValuePerCost": 57.72,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ETHER_INK"
+    ]
+  },
+  {
+    "id": "RECIPE_PURE_INCENSE_BURNER",
+    "resultItemId": "ITEM_SALE_PURE_INCENSE_BURNER",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_FRAGRANT_WOOD_CHIP",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_VINTAGE_POT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 48,
+    "addedValue": 122,
+    "addedValuePerCost": 20.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_PURE_INCENSE_BURNER"
+    ]
+  },
+  {
+    "id": "RECIPE_AWAKENING_POCKET_WATCH",
+    "resultItemId": "ITEM_SALE_AWAKENING_POCKET_WATCH",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SHINE_DISK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_JUNK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 148,
+    "addedValue": 305,
+    "addedValuePerCost": 27.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_AWAKENING_POCKET_WATCH"
+    ]
+  },
+  {
+    "id": "RECIPE_GENUG_WATERING_POT",
+    "resultItemId": "ITEM_SALE_GENUG_WATERING_POT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_DISTILLED_WATER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_KIMBER_ORE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 412,
+    "addedValue": 992,
+    "addedValuePerCost": 62,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GENUG_WATERING_POT"
+    ]
+  },
+  {
+    "id": "RECIPE_MIRAGE_MIRROR",
+    "resultItemId": "ITEM_SALE_MIRAGE_MIRROR",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ULTRAMARINE_SOIL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_SALE_GRANAT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 32,
+    "inputCost": 2550.67,
+    "addedValue": 10797.33,
+    "addedValuePerCost": 337.42,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MIRAGE_MIRROR"
+    ]
+  },
+  {
+    "id": "RECIPE_SPECULATOR_DICE",
+    "resultItemId": "ITEM_SALE_SPECULATOR_DICE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_STRONG_BONE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_RAIDEN_ORE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WHITE_SAND",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 450,
+    "addedValue": 2100,
+    "addedValuePerCost": 110.53,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SPECULATOR_DICE"
+    ]
+  },
+  {
+    "id": "RECIPE_CRYSTAL_BALL",
+    "resultItemId": "ITEM_SALE_CRYSTAL_BALL",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 500,
+    "addedValue": 30,
+    "addedValuePerCost": 2.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_CRYSTAL_BALL"
+    ]
+  },
+  {
+    "id": "RECIPE_MUSIC_BOX",
+    "resultItemId": "ITEM_SALE_MUSIC_BOX",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SHINE_DISK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SCRAP_METAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_PURE_OIL",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 418,
+    "addedValue": 668.67,
+    "addedValuePerCost": 51.44,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MUSIC_BOX"
+    ]
+  },
+  {
+    "id": "RECIPE_HEALING_AROMA",
+    "resultItemId": "ITEM_SALE_HEALING_AROMA",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_FRAGRANT_WOOD_CHIP",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_APPLE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 5,
+    "inputCost": 21,
+    "addedValue": 119,
+    "addedValuePerCost": 23.8,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HEALING_AROMA"
+    ]
+  },
+  {
+    "id": "RECIPE_MAGICAL_PAINT",
+    "resultItemId": "ITEM_SALE_MAGICAL_PAINT",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_VEGETABLE_OIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_RED",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 125,
+    "addedValue": 150,
+    "addedValuePerCost": 21.43,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MAGICAL_PAINT"
+    ]
+  },
+  {
+    "id": "RECIPE_DISCHARGE_TUBE",
+    "resultItemId": "ITEM_SALE_DISCHARGE_TUBE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_JUNK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SCRAP_METAL",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 179,
+    "addedValue": 817,
+    "addedValuePerCost": 62.85,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DISCHARGE_TUBE"
+    ]
+  },
+  {
+    "id": "RECIPE_GOLDEN_PUNI_STATUE",
+    "resultItemId": "ITEM_SALE_GOLDEN_PUNI_STATUE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PUNIPUNI_BALL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_GOLD_EISEN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_GOLD_BULLION",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 52,
+    "inputCost": 17653.67,
+    "addedValue": 6818.33,
+    "addedValuePerCost": 131.12,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GOLDEN_PUNI_STATUE"
+    ]
+  },
+  {
+    "id": "RECIPE_GRAMOPHONE",
+    "resultItemId": "ITEM_SALE_GRAMOPHONE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_STEEL_ORE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_DISK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_COMET",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 595,
+    "addedValue": 909,
+    "addedValuePerCost": 56.81,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GRAMOPHONE"
+    ]
+  },
+  {
+    "id": "RECIPE_TEDDY_BEAR",
+    "resultItemId": "ITEM_SALE_TEDDY_BEAR",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WOOL",
+        "quantity": 4
+      },
+      {
+        "itemId": "ITEM_SALE_MAGICAL_PAINT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ANIMAL_LEATHER",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 355,
+    "addedValue": 703.67,
+    "addedValuePerCost": 54.13,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_TEDDY_BEAR"
+    ]
+  },
+  {
+    "id": "RECIPE_HOLY_CRYSTAL_WEIGHT",
+    "resultItemId": "ITEM_SALE_HOLY_CRYSTAL_WEIGHT",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_SALE_CRYSTAL_BALL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 24,
+    "inputCost": 811,
+    "addedValue": 3385,
+    "addedValuePerCost": 141.04,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HOLY_CRYSTAL_WEIGHT"
+    ]
+  },
+  {
+    "id": "RECIPE_BLACK_WHITE_TAROT",
+    "resultItemId": "ITEM_SALE_BLACK_WHITE_TAROT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_ZETTEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_BLACK__SAND",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_WHITE_SAND",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 15,
+    "inputCost": 406,
+    "addedValue": 870,
+    "addedValuePerCost": 58,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_BLACK_WHITE_TAROT"
+    ]
+  },
+  {
+    "id": "RECIPE_SINGLE_SCAT",
+    "resultItemId": "ITEM_SALE_SINGLE_SCAT",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_TREE_BULLET_NUT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_USE_FLAMME",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 359,
+    "addedValue": 718.33,
+    "addedValuePerCost": 55.26,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SINGLE_SCAT"
+    ]
+  },
+  {
+    "id": "RECIPE_CLAIOMH_SOLAIS",
+    "resultItemId": "ITEM_SALE_CLAIOMH_SOLAIS",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_SILVALIA",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 6
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 6
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 487,
+    "addedValue": 1074.33,
+    "addedValuePerCost": 63.2,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_CLAIOMH_SOLAIS"
+    ]
+  },
+  {
+    "id": "RECIPE_STROHM_DRILL",
+    "resultItemId": "ITEM_SALE_STROHM_DRILL",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_GOLD_EISEN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 21,
+    "inputCost": 1143.67,
+    "addedValue": 1778.33,
+    "addedValuePerCost": 84.68,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_STROHM_DRILL"
+    ]
+  },
+  {
+    "id": "RECIPE_CRYSTAL_FANG",
+    "resultItemId": "ITEM_SALE_CRYSTAL_FANG",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RIPPLE_ROCK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_PENDELOOK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 14,
+    "inputCost": 483,
+    "addedValue": 661,
+    "addedValuePerCost": 47.21,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_CRYSTAL_FANG"
+    ]
+  },
+  {
+    "id": "RECIPE_MAIDEN_SPEAR",
+    "resultItemId": "ITEM_SALE_MAIDEN_SPEAR",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_INGOT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_BUILD_TIMBER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_UNI",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 261,
+    "addedValue": 645.67,
+    "addedValuePerCost": 58.7,
+    "unpricedItemIds": [
+      "ITEM_BUILD_TIMBER"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MAIDEN_SPEAR"
+    ]
+  },
+  {
+    "id": "RECIPE_HEAVEN_AND_EARTH_COLLAPSE_AX",
+    "resultItemId": "ITEM_SALE_HEAVEN_AND_EARTH_COLLAPSE_AX",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_CRIMSON_STONE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WICKED_FANG",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 23,
+    "inputCost": 3345,
+    "addedValue": 1201,
+    "addedValuePerCost": 52.22,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HEAVEN_AND_EARTH_COLLAPSE_AX"
+    ]
+  },
+  {
+    "id": "RECIPE_ARMORED_BUNKER",
+    "resultItemId": "ITEM_SALE_ARMORED_BUNKER",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_INGOT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SCRAP_METAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RIPPLE_ROCK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 326,
+    "addedValue": 722,
+    "addedValuePerCost": 55.54,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ARMORED_BUNKER"
+    ]
+  },
+  {
+    "id": "RECIPE_BLOODY_CLAW",
+    "resultItemId": "ITEM_SALE_BLOODY_CLAW",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_SILVALIA",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_STRONG_BONE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_RED",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 622,
+    "addedValue": 998,
+    "addedValuePerCost": 58.71,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_BLOODY_CLAW"
+    ]
+  },
+  {
+    "id": "RECIPE_SHOOTING_STAR",
+    "resultItemId": "ITEM_SALE_SHOOTING_STAR",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SUN_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RUBBER_TREE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_BLUE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_SILVALIA",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 591,
+    "addedValue": 859.67,
+    "addedValuePerCost": 53.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SHOOTING_STAR"
+    ]
+  },
+  {
+    "id": "RECIPE_GUARDIAN_GODDESS_SHIELD",
+    "resultItemId": "ITEM_SALE_GUARDIAN_GODDESS_SHIELD",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_DARK_GERRN_SOIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_SMARAGD",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 27,
+    "inputCost": 2016.33,
+    "addedValue": 8459.67,
+    "addedValuePerCost": 313.32,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GUARDIAN_GODDESS_SHIELD"
+    ]
+  },
+  {
+    "id": "RECIPE_BATTLE_MAIL",
+    "resultItemId": "ITEM_SALE_BATTLE_MAIL",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MOFFCLOTH",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 455.33,
+    "addedValue": 475.34,
+    "addedValuePerCost": 39.61,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_BATTLE_MAIL"
+    ]
+  },
+  {
+    "id": "RECIPE_METEORITIC_IRON_ARMOR",
+    "resultItemId": "ITEM_SALE_METEORITIC_IRON_ARMOR",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_GOLD_EISEN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 1093.67,
+    "addedValue": 622.33,
+    "addedValuePerCost": 32.75,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_METEORITIC_IRON_ARMOR"
+    ]
+  },
+  {
+    "id": "RECIPE_ALCHEMY_MAIL",
+    "resultItemId": "ITEM_SALE_ALCHEMY_MAIL",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_HARMONIUM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_SCALE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_CARROT",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 22,
+    "inputCost": 1530.67,
+    "addedValue": 2475.33,
+    "addedValuePerCost": 112.52,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ALCHEMY_MAIL"
+    ]
+  },
+  {
+    "id": "RECIPE_DRAGOON_MAIL",
+    "resultItemId": "ITEM_SALE_DRAGOON_MAIL",
+    "materials": [
+      {
+        "itemId": "ITEM_SALE_BATTLE_MAIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ANIMAL_LEATHER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_HORN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 1002.67,
+    "addedValue": 524,
+    "addedValuePerCost": 32.75,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DRAGOON_MAIL"
+    ]
+  },
+  {
+    "id": "RECIPE_MAIDEN_ARMOR",
+    "resultItemId": "ITEM_SALE_MAIDEN_ARMOR",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MOFFCLOTH",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_SCRAP_METAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 4
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 530.33,
+    "addedValue": 767,
+    "addedValuePerCost": 47.94,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MAIDEN_ARMOR"
+    ]
+  },
+  {
+    "id": "RECIPE_VALKYRIA_SUIT",
+    "resultItemId": "ITEM_SALE_VALKYRIA_SUIT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_FLUGEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_SILVALIA",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 6
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 949,
+    "addedValue": 719,
+    "addedValuePerCost": 39.94,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_VALKYRIA_SUIT"
+    ]
+  },
+  {
+    "id": "RECIPE_COUGH_DROP",
+    "resultItemId": "ITEM_SALE_COUGH_DROP",
+    "materials": [
+      {
+        "itemId": "ITEM_SALE_ALCHEMY_DROP",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_TAUN",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_HONEY",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_HONEY_POPPY",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 21,
+    "inputCost": 1275,
+    "addedValue": 2705,
+    "addedValuePerCost": 128.81,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_COUGH_DROP"
+    ]
+  },
+  {
+    "id": "RECIPE_MEDICATED_HERB_TEA",
+    "resultItemId": "ITEM_SALE_MEDICATED_HERB_TEA",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_SAGE_HERB",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_MEDICINE_BASE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_STERN_BUG",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 23,
+    "inputCost": 1706,
+    "addedValue": 2390,
+    "addedValuePerCost": 103.91,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MEDICATED_HERB_TEA"
+    ]
+  },
+  {
+    "id": "RECIPE_EPIPHANY_EYE_DROPS",
+    "resultItemId": "ITEM_SALE_EPIPHANY_EYE_DROPS",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RED_DEVIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_BLUE_DEVIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_MEDICINE_BASE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_BLUE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 25,
+    "inputCost": 3115,
+    "addedValue": 1529,
+    "addedValuePerCost": 61.16,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_EPIPHANY_EYE_DROPS"
+    ]
+  },
+  {
+    "id": "RECIPE_REFRESH_MEDICINE",
+    "resultItemId": "ITEM_SALE_REFRESH_MEDICINE",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MEDICINE_BASE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_HONEY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      },
+      {
+        "itemId": "ITEM_MAT_CARROT",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 1727,
+    "addedValue": 1243,
+    "addedValuePerCost": 73.12,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_REFRESH_MEDICINE"
+    ]
+  },
+  {
+    "id": "RECIPE_TEETHING_FEVER_SYRUP",
+    "resultItemId": "ITEM_SALE_TEETHING_FEVER_SYRUP",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_MANDRAGORA_ROOT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_HONEY",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WOUNDLESS_GRASS",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_DISTILLED_WATER",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 738,
+    "addedValue": 2934,
+    "addedValuePerCost": 146.7,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_TEETHING_FEVER_SYRUP"
+    ]
+  },
+  {
+    "id": "RECIPE_SPECULATOR_MEDICINE",
+    "resultItemId": "ITEM_SALE_SPECULATOR_MEDICINE",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MEDICINE_BASE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_TAUN",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_UNKNOWN_EGG",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_PURE_OIL",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 23,
+    "inputCost": 2147,
+    "addedValue": 2257,
+    "addedValuePerCost": 98.13,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SPECULATOR_MEDICINE"
+    ]
+  },
+  {
+    "id": "RECIPE_WITCHS_BREW",
+    "resultItemId": "ITEM_SALE_WITCHS_BREW",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_PURE_POISON",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ORIGIN_ASH",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_MANDRAGORA_ROOT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_BLUE_DEVIL",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 26,
+    "inputCost": 3727,
+    "addedValue": 1397,
+    "addedValuePerCost": 53.73,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_WITCHS_BREW"
+    ]
+  },
+  {
+    "id": "RECIPE_COMMON_COLD_MEDICINE",
+    "resultItemId": "ITEM_SALE_COMMON_COLD_MEDICINE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
+        "quantity": 3
+      },
+      {
+        "itemId": "ITEM_MAT_SCISSORS_STONE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_TWIN_COLOR_CORUNDUM",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 27,
+    "inputCost": 497,
+    "addedValue": 8695,
+    "addedValuePerCost": 322.04,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_COMMON_COLD_MEDICINE"
+    ]
+  },
+  {
+    "id": "RECIPE_FORBIDDEN_CAPSULE",
+    "resultItemId": "ITEM_SALE_FORBIDDEN_CAPSULE",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_PHILOSOPHERS_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_BOSS",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SCARAB",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_STRANGE_LIQUID",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 37,
+    "inputCost": 11342,
+    "addedValue": 3370,
+    "addedValuePerCost": 91.08,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FORBIDDEN_CAPSULE"
+    ]
+  },
+  {
+    "id": "RECIPE_ROBRANT",
+    "resultItemId": "ITEM_SALE_ROBRANT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MEDICINE_BASE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WICKED_FANG",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_SAGE_HERB",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 21,
+    "inputCost": 1676,
+    "addedValue": 2090,
+    "addedValuePerCost": 99.52,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ROBRANT"
+    ]
+  },
+  {
+    "id": "RECIPE_MIRACLE_DRUG_DRACHEN",
+    "resultItemId": "ITEM_SALE_MIRACLE_DRUG_DRACHEN",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MEDICINE_BASE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_HORN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_SCALE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 25,
+    "inputCost": 3062,
+    "addedValue": 6654,
+    "addedValuePerCost": 266.16,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MIRACLE_DRUG_DRACHEN"
+    ]
+  },
+  {
+    "id": "RECIPE_SACRED_MIRACULOUS_MEDICINE",
+    "resultItemId": "ITEM_SALE_SACRED_MIRACULOUS_MEDICINE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SCARAB",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ORIGIN_ASH",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_MEDICINE_BASE",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 30,
+    "inputCost": 3999,
+    "addedValue": 7749,
+    "addedValuePerCost": 258.3,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SACRED_MIRACULOUS_MEDICINE"
+    ]
+  },
+  {
+    "id": "RECIPE_PAINKILLER_BAND",
+    "resultItemId": "ITEM_SALE_PAINKILLER_BAND",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WOUNDLESS_GRASS",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_MOFFCLOTH",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ROYAL_CROWN",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_GREEN",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 1020.67,
+    "addedValue": 2551.33,
+    "addedValuePerCost": 127.57,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_PAINKILLER_BAND"
+    ]
+  },
+  {
+    "id": "RECIPE_REFUEL_PAD",
+    "resultItemId": "ITEM_SALE_REFUEL_PAD",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WHITE_PRINCESS_GRASS",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_TAUN",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_ZETTEL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_RED",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 707,
+    "addedValue": 2365,
+    "addedValuePerCost": 139.12,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_REFUEL_PAD"
+    ]
+  },
+  {
+    "id": "RECIPE_DOCTOR_AWAY",
+    "resultItemId": "ITEM_SALE_DOCTOR_AWAY",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MEDICINE_BASE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_VELVETIS",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 27,
+    "inputCost": 3968,
+    "addedValue": 6780,
+    "addedValuePerCost": 251.11,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DOCTOR_AWAY"
+    ]
+  },
+  {
+    "id": "RECIPE_CLOTH_SKIRT",
+    "resultItemId": "ITEM_SALE_CLOTH_SKIRT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_CLOTH",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_DEEP_RED_SOIL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 578,
+    "addedValue": 1162,
+    "addedValuePerCost": 64.56,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_CLOTH_SKIRT"
+    ]
+  },
+  {
+    "id": "RECIPE_GORGEOUS_SHEER_SILK",
+    "resultItemId": "ITEM_SALE_GORGEOUS_SHEER_SILK",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_FLUGEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_BUTTERFLY_FISH",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 731,
+    "addedValue": 935.67,
+    "addedValuePerCost": 49.25,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GORGEOUS_SHEER_SILK"
+    ]
+  },
+  {
+    "id": "RECIPE_LEATHER_COAT",
+    "resultItemId": "ITEM_SALE_LEATHER_COAT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_ZETTEL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ANIMAL_LEATHER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_STEEL_ORE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 696,
+    "addedValue": 1266.67,
+    "addedValuePerCost": 63.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_LEATHER_COAT"
+    ]
+  },
+  {
+    "id": "RECIPE_FADEN_COAT",
+    "resultItemId": "ITEM_SALE_FADEN_COAT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_CLOTH",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ANIMAL_LEATHER",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 578,
+    "addedValue": 1143.33,
+    "addedValuePerCost": 63.52,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FADEN_COAT"
+    ]
+  },
+  {
+    "id": "RECIPE_HIDE_HOOD",
+    "resultItemId": "ITEM_SALE_HIDE_HOOD",
+    "materials": [
+      {
+        "itemId": "ITEM_SALE_MAGICAL_PAINT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ANIMAL_LEATHER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_MOFFCLOTH",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DEVIL_BIRD_FEATHER",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 1031.33,
+    "addedValue": 856.67,
+    "addedValuePerCost": 45.09,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HIDE_HOOD"
+    ]
+  },
+  {
+    "id": "RECIPE_DURABLE_SHIRT",
+    "resultItemId": "ITEM_SALE_DURABLE_SHIRT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MOFFCLOTH",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_RIPPLE_ROCK",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_TAUN",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 904.67,
+    "addedValue": 688.66,
+    "addedValuePerCost": 38.26,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DURABLE_SHIRT"
+    ]
+  },
+  {
+    "id": "RECIPE_STYLISH_SHIRT",
+    "resultItemId": "ITEM_SALE_STYLISH_SHIRT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_MOFFCLOTH",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_SALE_MAGICAL_PAINT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 1128.67,
+    "addedValue": 879.33,
+    "addedValuePerCost": 43.97,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_STYLISH_SHIRT"
+    ]
+  },
+  {
+    "id": "RECIPE_BRIDE_BLOUSE",
+    "resultItemId": "ITEM_SALE_BRIDE_BLOUSE",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_FLUGEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DEVIL_BIRD_FEATHER",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 775,
+    "addedValue": 1791,
+    "addedValuePerCost": 89.55,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_BRIDE_BLOUSE"
+    ]
+  },
+  {
+    "id": "RECIPE_NIGHT_SHADE",
+    "resultItemId": "ITEM_SALE_NIGHT_SHADE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_BLACK__SAND",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WICKED_FANG",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_FLUGEL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 18,
+    "inputCost": 711,
+    "addedValue": 851.67,
+    "addedValuePerCost": 47.32,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_NIGHT_SHADE"
+    ]
+  },
+  {
+    "id": "RECIPE_NICE_WIG",
+    "resultItemId": "ITEM_SALE_NICE_WIG",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WOOL",
+        "quantity": 4
+      },
+      {
+        "itemId": "ITEM_MIX_GOLD_EISEN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RED_DEVIL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 21,
+    "inputCost": 1128.67,
+    "addedValue": 1977.33,
+    "addedValuePerCost": 94.16,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_NICE_WIG"
+    ]
+  },
+  {
+    "id": "RECIPE_GLASS_TIARA",
+    "resultItemId": "ITEM_SALE_GLASS_TIARA",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_VELVETIS",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 24,
+    "inputCost": 2775,
+    "addedValue": 1777,
+    "addedValuePerCost": 74.04,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GLASS_TIARA"
+    ]
+  },
+  {
+    "id": "RECIPE_SPIRIT_EARRINGS",
+    "resultItemId": "ITEM_SALE_SPIRIT_EARRINGS",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PENDELOOK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_SAPPHIRE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_INGOT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 26,
+    "inputCost": 2009,
+    "addedValue": 3149,
+    "addedValuePerCost": 121.12,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SPIRIT_EARRINGS"
+    ]
+  },
+  {
+    "id": "RECIPE_AERIS_BROOCH",
+    "resultItemId": "ITEM_SALE_AERIS_BROOCH",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_SAPPHIRE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_SMARAGD",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_RUBY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 43,
+    "inputCost": 4849.33,
+    "addedValue": 14830.67,
+    "addedValuePerCost": 344.9,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_AERIS_BROOCH"
+    ]
+  },
+  {
+    "id": "RECIPE_MYTHICAL_RING",
+    "resultItemId": "ITEM_SALE_MYTHICAL_RING",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WORLD_SOUL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_HARMONIUM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 22,
+    "inputCost": 1436.67,
+    "addedValue": 2581.33,
+    "addedValuePerCost": 117.33,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MYTHICAL_RING"
+    ]
+  },
+  {
+    "id": "RECIPE_SUN_FLOWER",
+    "resultItemId": "ITEM_SALE_SUN_FLOWER",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_CRIMSON_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_VELVETIS",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_BLOOD_CLOT",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 28,
+    "inputCost": 4076,
+    "addedValue": 6732,
+    "addedValuePerCost": 240.43,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SUN_FLOWER"
+    ]
+  },
+  {
+    "id": "RECIPE_GRANAT",
+    "resultItemId": "ITEM_SALE_GRANAT",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CLAY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
+        "quantity": 2
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 589,
+    "addedValue": 1361.67,
+    "addedValuePerCost": 68.08,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_GRANAT"
+    ]
+  },
+  {
+    "id": "RECIPE_TIMBER",
+    "resultItemId": "ITEM_BUILD_TIMBER",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_TAR_NUT",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 3,
+    "inputCost": 24,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_TIMBER"
+    ]
+  },
+  {
+    "id": "RECIPE_SPRUCE",
+    "resultItemId": "ITEM_BUILD_SPRUCE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_BUILD_TIMBER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ABRASIVE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 111,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      "ITEM_BUILD_TIMBER"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SPRUCE"
+    ]
+  },
+  {
+    "id": "RECIPE_COMPRESSION_LUBMER",
+    "resultItemId": "ITEM_BUILD_COMPRESSION_LUBMER",
+    "materials": [
+      {
+        "itemId": "ITEM_BUILD_TIMBER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_YELLOW",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 190,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      "ITEM_BUILD_TIMBER"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_COMPRESSION_LUBMER"
+    ]
+  },
+  {
+    "id": "RECIPE_IRON_BOARD",
+    "resultItemId": "ITEM_BUILD_IRON_BOARD",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_KIMBER_ORE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SUN_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 100,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_IRON_BOARD"
+    ]
+  },
+  {
+    "id": "RECIPE_LIQUID_METAL",
+    "resultItemId": "ITEM_BUILD_LIQUID_METAL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_STRANGE_LIQUID",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 10,
+    "inputCost": 102,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_LIQUID_METAL"
+    ]
+  },
+  {
+    "id": "RECIPE_ULTIMATE_STEEL_MATERIAL",
+    "resultItemId": "ITEM_BUILD_ULTIMATE_STEEL_MATERIAL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RAIDEN_DRAGOON",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CHARCOAL",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 665,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ULTIMATE_STEEL_MATERIAL"
+    ]
+  },
+  {
+    "id": "RECIPE_DISTORTED_STONE",
+    "resultItemId": "ITEM_BUILD_DISTORTED_STONE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_BROKEN_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_FEST",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 8,
+    "inputCost": 77,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DISTORTED_STONE"
+    ]
+  },
+  {
+    "id": "RECIPE_COLORFUL_BRICK",
+    "resultItemId": "ITEM_BUILD_COLORFUL_BRICK",
+    "materials": [
+      {
+        "itemId": "ITEM_SALE_MAGICAL_PAINT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_RAIDEN_ORE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_BUILD_DISTORTED_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 313,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      "ITEM_BUILD_DISTORTED_STONE"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_COLORFUL_BRICK"
+    ]
+  },
+  {
+    "id": "RECIPE_MAGICAL_STONE",
+    "resultItemId": "ITEM_BUILD_MAGICAL_STONE",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_BUILD_DISTORTED_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 113,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      "ITEM_BUILD_DISTORTED_STONE"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_MAGICAL_STONE"
+    ]
+  },
+  {
+    "id": "RECIPE_HEAT_RESIST_ALCHEMY_BOARD",
+    "resultItemId": "ITEM_BUILD_HEAT_RESIST_ALCHEMY_BOARD",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_SILVALIA",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CHARCOAL",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 929,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HEAT_RESIST_ALCHEMY_BOARD"
+    ]
+  },
+  {
+    "id": "RECIPE_ALCHEMY_EQUIPMENT",
+    "resultItemId": "ITEM_BUILD_ALCHEMY_EQUIPMENT",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_INGOT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_JUNK",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 15,
+    "inputCost": 682,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ALCHEMY_EQUIPMENT"
+    ]
+  },
+  {
+    "id": "RECIPE_PRECISION_EQUIPMENT_SET",
+    "resultItemId": "ITEM_BUILD_PRECISION_EQUIPMENT_SET",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_POLISHED_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_BUILD_IRON_BOARD",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 481,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      "ITEM_BUILD_IRON_BOARD"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_PRECISION_EQUIPMENT_SET"
+    ]
+  },
+  {
+    "id": "RECIPE_ICEHOUSE_BOX",
+    "resultItemId": "ITEM_ICEHOUSE_BOX",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_VINTAGE_POT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 89,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_ICEHOUSE_BOX"
+    ]
+  },
+  {
+    "id": "RECIPE_CONCENTRATED_NUTRITION_SOIL",
+    "resultItemId": "ITEM_BUILD_CONCENTRATED_NUTRITION_SOIL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_DARK_GERRN_SOIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DEEP_RED_SOIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ULTRAMARINE_SOIL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 12,
+    "inputCost": 164,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_CONCENTRATED_NUTRITION_SOIL"
+    ]
+  },
+  {
+    "id": "RECIPE_HAY_FORK",
+    "resultItemId": "ITEM_BUILD_HAY_FORK",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RUBBER_TREE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_KIMBER_ORE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 7,
+    "inputCost": 60,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HAY_FORK"
+    ]
+  },
+  {
+    "id": "RECIPE_CLOTH_MANNEQUIN",
+    "resultItemId": "ITEM_BUILD_CLOTH_MANNEQUIN",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CLAY",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_EICHE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_BALLOON_FISH",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 13,
+    "inputCost": 357,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_CLOTH_MANNEQUIN"
+    ]
+  },
+  {
+    "id": "RECIPE_DISPLAY_CABINET",
+    "resultItemId": "ITEM_BUILD_DISPLAY_CABINET",
+    "materials": [
+      {
+        "itemId": "ITEM_BUILD_TIMBER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 9,
+    "inputCost": 62,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      "ITEM_BUILD_TIMBER"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_DISPLAY_CABINET"
+    ]
+  },
+  {
+    "id": "RECIPE_IRON_WOOD",
+    "resultItemId": "ITEM_BUILD_IRON_WOOD",
+    "materials": [
+      {
+        "itemId": "ITEM_BUILD_TIMBER",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_GOLD_EISEN",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 1022.67,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [
+      "ITEM_BUILD_TIMBER"
+    ],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_IRON_WOOD"
+    ]
+  },
+  {
+    "id": "RECIPE_FLUFFY_SOIL",
+    "resultItemId": "ITEM_BUILD_FLUFFY_SOIL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_FRAGRANT_WOOD_CHIP",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_FEST",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 6,
+    "inputCost": 37,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_FLUFFY_SOIL"
+    ]
+  },
+  {
+    "id": "RECIPE_WATER_PUMP",
+    "resultItemId": "ITEM_BUILD_WATER_PUMP",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_SILVALIA",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_JUNK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 17,
+    "inputCost": 535,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_WATER_PUMP"
+    ]
+  },
+  {
+    "id": "RECIPE_SUPER_HARD_ALLOY",
+    "resultItemId": "ITEM_BUILD_SUPER_HARD_ALLOY",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_RIPPLE_ROCK",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_DIAMOND",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 806.33,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_SUPER_HARD_ALLOY"
+    ]
+  },
+  {
+    "id": "RECIPE_HIGH_PRECISION_BLOCK",
+    "resultItemId": "ITEM_BUILD_HIGH_PRECISION_BLOCK",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CHARCOAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 16,
+    "inputCost": 560,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_HIGH_PRECISION_BLOCK"
+    ]
+  },
+  {
+    "id": "RECIPE_AURORA_CRYSTAL",
+    "resultItemId": "ITEM_BUILD_AURORA_CRYSTAL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_SALE_MAGICAL_PAINT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 11,
+    "inputCost": 307,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_AURORA_CRYSTAL"
+    ]
+  },
+  {
+    "id": "RECIPE_RAINBOW_PAINT",
+    "resultItemId": "ITEM_BUILD_RAINBOW_PAINT",
+    "materials": [
+      {
+        "itemId": "ITEM_SALE_MAGICAL_PAINT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_SAND",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 5
+      }
+    ],
+    "synthesisCost": 19,
+    "inputCost": 668,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": [
+      "RECIPE_COLLECTION_RAINBOW_PAINT"
+    ]
+  },
+  {
+    "id": "RECIPE_CHAINSWORD",
+    "resultItemId": "ITEM_REC_CHAINSWORD",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MIX_INGOT",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_AIR",
+        "quantity": 20
+      }
+    ],
+    "synthesisCost": 20,
+    "inputCost": 522,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": "RECIPE_HOT_DRYING_LIGHT",
+    "resultItemId": "ITEM_REC_HOT_DRYING_LIGHT",
+    "materials": [
+      {
+        "itemId": "ITEM_SALE_DISCHARGE_TUBE",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_DISK",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_FIRE",
+        "quantity": 30
+      }
+    ],
+    "synthesisCost": 39,
+    "inputCost": 2218,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": "RECIPE_CORROSION_PROOF_STEEL_FRAME",
+    "resultItemId": "ITEM_REC_CORROSION_PROOF_STEEL_FRAME",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_HARMONIUM",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_WATER",
+        "quantity": 40
+      }
+    ],
+    "synthesisCost": 34,
+    "inputCost": 1497.67,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": "RECIPE_MOUNTAIN_DESTROY_FLAMME",
+    "resultItemId": "ITEM_REC_MOUNTAIN_DESTROY_FLAMME",
+    "materials": [
+      {
+        "itemId": "ITEM_MIX_CRIMSON_STONE",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_ALCHEMIC_CHARCOAL",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MIX_NEUTRALIZER_RED",
+        "quantity": 4
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENT_SOIL",
+        "quantity": 50
+      }
+    ],
+    "synthesisCost": 39,
+    "inputCost": 2510,
+    "addedValue": null,
+    "addedValuePerCost": null,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": "RECIPE_006",
+    "resultItemId": "ITEM_MIX_APCALL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_BUSHBERRY",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WHEAT",
+        "quantity": 1
+      },
+      {
+        "itemId": "ITEM_MAT_DRINKABLE_WATER",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 5,
+    "inputCost": 61,
+    "addedValue": -21.8,
+    "addedValuePerCost": -4.36,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": "RECIPE_007",
+    "resultItemId": "ITEM_MIX_WEIZENMEHL",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_WHEAT",
+        "quantity": 3
+      }
+    ],
+    "synthesisCost": 3,
+    "inputCost": 3,
+    "addedValue": 43.4,
+    "addedValuePerCost": 14.47,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  },
+  {
+    "id": "RECIPE_008",
+    "resultItemId": "ITEM_MIX_UNI_BAG",
+    "materials": [
+      {
+        "itemId": "ITEM_MAT_UNI",
+        "quantity": 2
+      },
+      {
+        "itemId": "ITEM_MAT_WHEAT",
+        "quantity": 1
+      }
+    ],
+    "synthesisCost": 3,
+    "inputCost": 19,
+    "addedValue": 15.4,
+    "addedValuePerCost": 5.13,
+    "unpricedItemIds": [],
+    "recipeSetIds": []
+  }
+]

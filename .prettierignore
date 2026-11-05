@@ -6,6 +6,7 @@ dist/
 dist-tsc/
 .astro/
 test-results/
+data/
 package-lock.json
 *.md
 prototype/

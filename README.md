@@ -18,15 +18,20 @@ Do these steps to make the workbook again:
    npm run extract -- extract "$GAME/PACK01.PAK" extracted "^.saves.[^.]*\.xml$"
    npm run extract -- extract "$GAME/PACK00_01.PAK" extracted "item_l_[0-9]+\.g1t|npc_faceicon[0-9]+\.g1t|monster_faceicon[0-9]+\.g1t"
    ```
-3. Build the workbook:
+3. Build the data files from the extracted game files:
+   ```
+   npm run model
+   ```
+   The command takes 2 optional arguments, `[extractedDir] [dataDir]`. They default to `extracted/` and `data/`. It writes one JSON file for each kind of entity and the icons (PNG, 128 × 128 in `data/icons/128/` and 64 × 64 in `data/icons/64/`) to `data/`. The files in `data/` are in git. Run the command again after a change to the model, and commit the changed files.
+4. Build the workbook from the data files:
    ```
    npm run workbook
    ```
-   The command takes 2 optional arguments, `[extractedDir] [outFile]`. They default to `extracted/` and `output/nelke_data.xlsx`.
+   The command takes 2 optional arguments, `[dataDir] [outFile]`. They default to `data/` and `output/nelke_data.xlsx`. It does not read the game files.
 
 The output is `output/nelke_data.xlsx` and the icon folder `output/icons/`.
 
-The build prints a warning for each column that has 1 value only, and for each column that is the same as another column. Remove such a column from the column lists in `packages/workbook/src/`.
+The workbook build prints a warning for each column that has 1 value only, and for each column that is the same as another column. Remove such a column from the column lists in `packages/workbook/src/`.
 
 Check the code with:
 

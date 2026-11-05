@@ -1,49 +1,82 @@
-import { IconKind } from '@nelke/extract';
-import { Element } from './enums.js';
-import type { Game } from './game.js';
-import { ELEMENTS } from './characters.js';
-import { SHOPS, type Item } from './items.js';
+import { Element, Shop, type Item } from '@nelke/model';
+import { required, type Lookup } from './lookup.js';
 import { iconColumn, type Column } from './sheet.js';
+import { KeyHeader } from './sheetKeys.js';
 
-const NO_FARM = '-1';
+const ELEMENTS: readonly Element[] = [Element.Fire, Element.Water, Element.Wind, Element.Earth];
+
+/** The shops in column order, with their names. */
+const SHOP_NAMES: readonly [Shop, string][] = [
+  [Shop.General, 'General Store'],
+  [Shop.Weapon, 'Weapon/Armor Shop'],
+  [Shop.Grocery, 'Grocery Store'],
+  [Shop.Clothing, 'Clothing Store'],
+  [Shop.Medicine, 'Medicine Shop'],
+];
+
+/** The places where an item is gathered, as text, and the lowest main task number that opens one. */
+interface GatherPlaces {
+  texts: string[];
+  task: number;
+}
+
+function gatherPlaces(item: Item, lookup: Lookup): GatherPlaces | undefined {
+  const texts: string[] = [];
+  const tasks: number[] = [];
+  const add = (text: string, task: number): void => {
+    if (!texts.includes(text)) texts.push(text);
+    tasks.push(task);
+  };
+  const opens = (task: number): string => (task ? `after Task ${task}` : 'start');
+  for (const { areaId, rate } of item.gather) {
+    const area = required(lookup.areas, areaId);
+    const zone = required(lookup.zones, area.zoneId);
+    const task = zone.task?.number ?? 0;
+    add(`${zone.name} - ${area.name} (${rate}%, ${opens(task)})`, task);
+  }
+  for (const zoneId of item.specialZoneIds) {
+    const zone = required(lookup.zones, zoneId);
+    const task = zone.task?.number ?? 0;
+    add(`${zone.name} (special spot, ${opens(task)})`, task);
+  }
+  return tasks.length === 0 ? undefined : { texts, task: Math.min(...tasks) };
+}
 
 /**
  * Builds the columns of the Items sheet.
- * @param game - the game data
+ * @param lookup - the entities by ID
  * @returns the columns
  * @sideEffects none
  */
-export function itemColumns(game: Game): Column<Item>[] {
-  const { messages, icons, items, zones, characters } = game;
-  const { t, jp } = messages;
-  const reduceColumn = (e: Element): Column<Item> => ({ header: `Reduce: ${e}`, width: 8, get: (i) => Number(i.reduce[e]) });
+export function itemColumns(lookup: Lookup): Column<Item>[] {
+  const reduceColumn = (e: Element): Column<Item> => ({ header: `Reduce: ${e}`, width: 8, get: (i) => i.reduce[e] });
   return [
-    iconColumn((i) => icons.ref(IconKind.Item, Number(i.ITEM_IMAGE_NUM))),
-    { header: 'Name', width: 28, get: (i) => t(i.ITEM_NAME_LABEL_ID) },
-    { header: 'Name (JP)', width: 18, get: (i) => jp(i.ITEM_NAME_LABEL_ID) },
-    { header: 'Category', width: 14, get: items.categoryOf },
-    { header: 'Sub-category', width: 18, get: items.subCategoryOf },
-    { header: 'Rank', width: 7, get: (i) => Number(i.ITEM_RANK) },
-    { header: 'Price', width: 9, get: (i) => Number(i.ITEM_SELLING_PRICE) },
-    { header: 'Base Sales', width: 9, get: (i) => Number(i.ITEM_BASIC_SALES_NUM) },
+    iconColumn((i) => i.icon ?? ''),
+    { header: KeyHeader.Name, width: 28, get: (i) => i.name },
+    { header: 'Name (JP)', width: 18, get: (i) => i.nameJp ?? '' },
+    { header: 'Category', width: 14, get: (i) => i.category },
+    { header: 'Sub-category', width: 18, get: (i) => i.subCategory ?? '' },
+    { header: 'Rank', width: 7, get: (i) => i.rank },
+    { header: 'Price', width: 9, get: (i) => i.price },
+    { header: 'Base Sales', width: 9, get: (i) => i.baseSales },
     {
       header: 'Sold In',
       width: 26,
       get: (i) =>
-        SHOPS.filter(([flag]) => i.shops.includes(flag))
+        SHOP_NAMES.filter(([shop]) => i.shops.includes(shop))
           .map(([, name]) => name)
           .join(', '),
     },
     ...ELEMENTS.map(reduceColumn),
+    { header: 'Growing Area', width: 16, get: (i) => i.growingArea ?? '' },
+    { header: 'Base Yield', width: 8, get: (i) => i.baseYield ?? '' },
+    { header: 'Gathered At', width: 60, get: (i) => (gatherPlaces(i, lookup)?.texts ?? []).join('; ') },
+    { header: 'First Gather Task', width: 9, get: (i) => gatherPlaces(i, lookup)?.task ?? '' },
     {
-      header: 'Growing Area',
-      width: 16,
-      get: (i) => (i.FARM_ID === NO_FARM ? '' : (items.farm.get(i.FARM_ID) ?? `Farm ${i.FARM_ID}`)),
+      header: 'Dropped By',
+      width: 30,
+      get: (i) => i.drops.map((d) => `${required(lookup.monsters, d.monsterId).name} x${d.quantity} (${d.rate}%)`).join(', '),
     },
-    { header: 'Base Yield', width: 8, get: (i) => (i.FARM_ID === NO_FARM ? '' : Number(i.ITEM_BASIC_CULTIVATION_NUM)) },
-    { header: 'Gathered At', width: 60, get: (i) => (zones.gather.get(i.ITEM_ID)?.texts ?? []).join('; ') },
-    { header: 'First Gather Task', width: 9, get: (i) => zones.gather.get(i.ITEM_ID)?.task ?? '' },
-    { header: 'Dropped By', width: 30, get: (i) => (characters.droppedBy.get(i.ITEM_ID) ?? []).join(', ') },
-    { header: 'Description', width: 80, get: (i) => t(i.ITEM_DESCRIPTION_LABEL_ID) },
+    { header: 'Description', width: 80, get: (i) => i.description ?? '' },
   ];
 }
