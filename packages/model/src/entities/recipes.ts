@@ -12,6 +12,19 @@ export interface RecipeLinks {
   characterIds: IdSet;
 }
 
+/** The number of item ranks for each level of synthesis (README.md, section "Synthesis level"). */
+export const RANKS_PER_SYNTHESIS_LEVEL = 4;
+
+/**
+ * Returns the minimum alchemy level of a recipe from the rank of its result item.
+ * @param rank - the rank of the result item
+ * @returns the rank divided by the ranks for each level, rounded down, and at least 1
+ * @sideEffects none
+ */
+export function synthesisLevelOf(rank: number): number {
+  return Math.max(1, Math.floor(rank / RANKS_PER_SYNTHESIS_LEVEL));
+}
+
 /**
  * Makes the recipes from the game tables. The recipe value fields follow README.md, section "Recipe value".
  * @param game - the game data
@@ -33,6 +46,7 @@ export function buildRecipes(game: Game): DirectData['recipes'] {
       resultItemId: r.ITEM_COMPLETION_ID,
       materials: materials.map((m) => ({ itemId: m.id, quantity: m.num })),
       synthesisCost,
+      synthesisLevel: synthesisLevelOf(Number(itemById.get(r.ITEM_COMPLETION_ID)?.ITEM_RANK ?? 0)),
       inputCost,
       addedValue,
       addedValuePerCost: addedValue !== null && synthesisCost > 0 ? round(addedValue / synthesisCost) : null,

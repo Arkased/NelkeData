@@ -1,0 +1,322 @@
+/* The styles of the entity detail. They are global because the modal of the Items page shows a detail that another page rendered. */
+.mhead {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+.name {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 var(--s2);
+  text-align: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--text-title);
+  line-height: 1.15;
+  color: var(--brown-dark);
+  overflow-wrap: anywhere;
+}
+.close {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: var(--text-title);
+  line-height: 1;
+}
+.top {
+  display: flex;
+  gap: var(--s4);
+  align-items: center;
+}
+.top > .slot {
+  width: 112px;
+  flex: none;
+}
+.facts {
+  display: grid;
+  gap: var(--s2);
+  justify-items: start;
+  min-width: 0;
+}
+.catline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.price {
+  font-weight: 700;
+  font-size: var(--text-title);
+  line-height: 1.2;
+}
+.sold {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1) var(--s2);
+}
+.shop {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  min-height: 32px;
+  padding: 0 var(--s3) 0 var(--s2);
+  background: var(--cream-2);
+  border: 2px solid var(--line);
+  border-radius: var(--s4);
+  font-size: var(--text-small);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.reduce {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1) var(--s2);
+}
+.els {
+  display: inline-flex;
+  flex-wrap: wrap;
+  min-width: 0;
+  align-items: center;
+  gap: var(--s1);
+}
+.el {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  height: 28px;
+  padding: 0 var(--s2) 0 var(--s1);
+  border-radius: 14px;
+  font-size: var(--text-small);
+  font-weight: 700;
+}
+.el img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+a.el:hover,
+a.el:focus-visible {
+  background: var(--gold-hover);
+}
+.desc {
+  background: var(--cream-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  line-height: 1.5;
+}
+.minis {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--s3) var(--s2);
+  align-items: start;
+}
+.cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--s2);
+}
+.groups {
+  display: grid;
+  gap: var(--s4);
+}
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s3);
+  min-height: 48px;
+  padding: var(--s2) var(--s3);
+  font-weight: 700;
+  background: var(--cream-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+.lt {
+  display: grid;
+  min-width: 0;
+}
+.lt small {
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+.pct {
+  font-weight: 700;
+  color: var(--warm);
+  flex: none;
+  white-space: nowrap;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 var(--s3);
+  background: var(--cream-2);
+  border: 2px solid var(--line);
+  border-radius: var(--s4);
+  font-weight: 700;
+}
+/* Synthesis: 3 rows (the materials, the stats, the unlock) in 1 box. */
+.syn {
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s4);
+  display: grid;
+  gap: var(--s4);
+  background: var(--cream-2);
+}
+.syn-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s4);
+  align-items: flex-end;
+}
+.syn-stats .stat {
+  flex: 1 1 auto;
+}
+.per {
+  margin: 0 var(--s1);
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+.unlock {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--s3) var(--s4);
+  padding: var(--s3);
+  background: var(--cream);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+.ul {
+  display: grid;
+  gap: var(--s1);
+  align-content: start;
+  min-width: 0;
+}
+.uv {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 32px;
+  font-weight: 700;
+}
+.uv .slot {
+  width: 32px;
+  flex: none;
+}
+.uv.wrap {
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s3);
+}
+@media (max-width: 640px) {
+  .top > .slot {
+    width: 88px;
+  }
+  .syn {
+    padding: var(--s3);
+  }
+}
+.tl {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-weight: 700;
+}
+a.tl {
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a.tl:hover {
+  color: var(--warm);
+  text-decoration-color: var(--warm);
+}
+.tl .ico {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+.stat {
+  display: grid;
+  gap: var(--s1);
+  justify-items: start;
+  align-content: end;
+  min-width: 0;
+}
+.stat .val {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  height: var(--s6);
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: var(--s6);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.stat.good .val {
+  color: var(--good);
+}
+.stat.bad .val {
+  color: var(--bad);
+}
+.fr {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: 36px;
+  height: 31px;
+}
+.hb {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.fd {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+.fd img {
+  width: 34px;
+  height: auto;
+  flex: none;
+  margin: 0 -7px;
+  max-width: none;
+}
+.grp {
+  display: grid;
+  gap: var(--s3);
+  align-content: start;
+}
+.sub {
+  font-family: var(--font);
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--brown-dark);
+}
+.detail {
+  display: grid;
+  gap: var(--s4);
+  align-content: start;
+}

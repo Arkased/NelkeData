@@ -1,0 +1,14 @@
+---
+/** The props of a group inside a section. */
+interface Props {
+  /** The sub-title. */
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="grp">
+  <h3 class="sub">{title}</h3>
+  <slot />
+</div>

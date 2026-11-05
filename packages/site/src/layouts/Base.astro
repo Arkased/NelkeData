@@ -1,15 +1,22 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Modal from '../components/Modal.astro';
+import type { CategoryKey } from '../nav';
 import '../styles/global.css';
+import '../styles/detail.css';
 
+/** The props of the layout. */
 interface Props {
-  /** The name of the page; the root page has none. */
+  /** The name of the page; the title is `<name> · Westwald Archive`. The root page has none. */
   name?: string;
+  /** The key of the category page that the page belongs to, for the header. */
+  category?: CategoryKey;
   /** False on the About page, which shows the notice in its own section. */
   showLegal?: boolean;
 }
-const { name, showLegal = true } = Astro.props;
+
+const { name, category, showLegal = true } = Astro.props;
 const siteName = 'Westwald Archive';
 const title = name ? `${name} · ${siteName}` : siteName;
 ---
@@ -22,11 +29,12 @@ const title = name ? `${name} · ${siteName}` : siteName;
   </head>
   <body>
     <div class="page">
-      <Header />
+      <Header category={category} />
       <main>
         <slot />
       </main>
       <Footer showLegal={showLegal} />
     </div>
+    <Modal />
   </body>
 </html>

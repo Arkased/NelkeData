@@ -1,0 +1,117 @@
+---
+import { entityUrl, type EntityKind } from '../entity';
+import { formatNumber } from '../format';
+import Icon from './Icon.astro';
+
+/** The props of a tile. */
+interface Props {
+  kind: EntityKind;
+  slug: string;
+  name: string;
+  /** The file name in `data/icons/128/`, or null when the entity has no icon. */
+  icon: string | null;
+  /** The quantity, shown as a badge on the icon from 2 up. */
+  qty?: number;
+  /** Extra attributes of the tile, for example the filter values of a grid cell. */
+  attrs?: Record<string, string>;
+}
+
+const { kind, slug, name, icon, qty = 1, attrs = {} } = Astro.props;
+const href = entityUrl(kind, slug);
+const Tag = href === null ? 'div' : 'a';
+---
+
+<Tag class="mini" href={href} data-modal={href === null ? undefined : ''} {...attrs}>
+  <Icon icon={icon}>{qty >= 2 && <b class="qty">×{formatNumber(qty)}</b>}</Icon>
+  <span class="nm">{name}</span>
+</Tag>
+
+<style is:global>
+  /* The tile: icon, name (2 lines at most). The tiles of a row start at the top. */
+  .mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s1);
+    width: 100%;
+    min-width: 0;
+    padding: var(--s1) var(--s1) var(--s2);
+    border-radius: var(--radius);
+    text-align: center;
+    font-size: var(--text-small);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  a.mini:hover,
+  a.mini:focus-visible {
+    background: var(--gold-hover);
+    outline: none;
+  }
+  a.mini:focus-visible {
+    box-shadow: 0 0 0 3px var(--warm);
+  }
+  .mini .slot {
+    width: 64px;
+    flex: none;
+  }
+  .mini .nm {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    hyphens: auto;
+    max-width: 100%;
+  }
+  /* The quantity badge: on the bottom right corner of the item icon, as in the material slots of the game. */
+  .qty {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    min-width: 24px;
+    padding: 0 var(--s1);
+    border-radius: var(--s2);
+    background: var(--brown-dark);
+    box-shadow: 0 0 0 2px var(--gold-soft);
+    color: var(--cream-3);
+    font-size: var(--text-small);
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .slot {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    min-width: 0;
+    border-radius: var(--radius);
+  }
+  .slot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  /* The face files are 128 px canvases with a baked frame. The art is cropped inside that frame, equally on all sides. */
+  .slot.crop-monster,
+  .slot.crop-character {
+    overflow: hidden;
+  }
+  .slot.crop-monster img {
+    width: 188.235%;
+    height: 188.235%;
+    left: -5.882%;
+    top: -5.882%;
+    max-width: none;
+    object-fit: fill;
+  }
+  .slot.crop-character img {
+    width: 123.077%;
+    height: 123.077%;
+    left: -4.808%;
+    top: -4.808%;
+    max-width: none;
+    object-fit: fill;
+  }
+</style>

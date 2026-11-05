@@ -1,0 +1,25 @@
+---
+import type { Item } from '@nelke/model';
+import EntityPage from '../../components/EntityPage.astro';
+import ItemDetail from '../../components/ItemDetail.astro';
+import { data } from '../../data';
+import Base from '../../layouts/Base.astro';
+import { CategoryKey } from '../../nav';
+
+/** Returns the page of each item. */
+export function getStaticPaths() {
+  return data.items.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+interface Props {
+  item: Item;
+}
+
+const { item } = Astro.props;
+---
+
+<Base name={item.name} category={CategoryKey.Items}>
+  <EntityPage>
+    <ItemDetail item={item} />
+  </EntityPage>
+</Base>
