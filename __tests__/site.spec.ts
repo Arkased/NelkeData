@@ -4,9 +4,12 @@ import { isPlaceholder, ItemCategoryName, readData, Shop } from '@nelke/model';
 import { BASE_PATH } from '../packages/site/src/base.js';
 import { formatNumber as format } from '../packages/site/src/format.js';
 import { NAV_BREAKPOINT } from '../packages/site/src/nav.js';
+import { groupRareFinds } from '../packages/site/src/rare-finds.js';
 import { StatTone } from '../packages/site/src/stat-tone.js';
 
 const WIDTHS = [360, 768, 1280, 1920];
+/** The Investigation Lv 1 to 5 of the game: 1 difficulty cell for each. */
+const DIFFICULTY_CELLS = 5;
 const LEGAL_NOTICE =
   'Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists.';
 
@@ -183,6 +186,78 @@ for (const width of WIDTHS) {
       await expect(page.locator('.page')).not.toHaveAttribute('inert');
     });
 
+    test('the Areas page shows each zone with its areas', async ({ page }) => {
+      await page.goto('areas/');
+      await expect(page).toHaveTitle('Areas · Westwald Archive');
+      const panels = page.locator('[data-zone-panel]');
+      await expect(panels).toHaveCount(data.zones.length);
+      for (const [index, zone] of data.zones.entries()) {
+        const panel = panels.nth(index);
+        await expect(panel.getByRole('heading', { name: zone.name, level: 2 })).toBeVisible();
+        await expect(panel.locator('a.area-btn')).toHaveText(zone.areaIds.map((id) => data.areas.find((a) => a.id === id)?.name ?? ''));
+      }
+      await noHorizontalScroll(page);
+    });
+
+    test('an area opens in the modal with the URL of the area, and Back closes it', async ({ page }) => {
+      const zone = data.zones[0];
+      const area = data.areas.find((a) => a.id === zone?.areaIds[0]);
+      if (!zone || !area) throw new Error('No zone with an area');
+      await page.goto('areas/');
+      await page.locator('[data-zone-panel]').first().getByRole('link', { name: area.name, exact: true }).click();
+      const dialog = page.getByRole('dialog');
+      await expect(dialog.getByRole('heading', { name: area.name, level: 1 })).toBeVisible();
+      expect(new URL(page.url()).pathname).toBe(`${BASE_PATH}areas/${area.slug}/`);
+      await noHorizontalScroll(page);
+      await page.goBack();
+      await expect(dialog).toBeHidden();
+      expect(new URL(page.url()).pathname).toBe(`${BASE_PATH}areas/`);
+    });
+
+    test('an area detail shows its difficulty cells, a gather item link and a monster', async ({ page }) => {
+      const area = data.areas.find((a) => a.gather.length > 0 && a.monsters.some((m) => !m.boss && m.areaLevel <= 1));
+      if (!area) throw new Error('No area with gather items and monsters');
+      const zone = data.zones.find((z) => z.id === area.zoneId);
+      const gather = data.items.find((i) => i.id === area.gather[0]?.itemId);
+      const monster = data.monsters.find((m) => m.id === area.monsters.find((a) => !a.boss && a.areaLevel <= 1)?.monsterId);
+      await page.goto(`areas/${area.slug}/`);
+      await expect(page).toHaveTitle(`${area.name} · Westwald Archive`);
+      const cells = page.locator('[data-stat="difficulty"] [data-difficulty-cell]');
+      await expect(cells).toHaveCount(DIFFICULTY_CELLS);
+      await expect(cells).toHaveText((zone?.difficulties ?? []).map((rank, index) => `${rank}${index + 1}`));
+      const panel = page.locator('[data-section="area-panel"]');
+      await expect(panel.getByRole('heading', { name: 'Gather', level: 3 })).toBeVisible();
+      await expect(panel.locator(`a.mini[href="${BASE_PATH}items/${gather?.slug}/"]`)).toHaveCount(1);
+      await expect(panel.getByRole('heading', { name: 'Monsters', level: 3, exact: true })).toBeVisible();
+      await expect(panel.locator('.mini', { hasText: monster?.name ?? '' }).first()).toContainText(/Lv \d/);
+      await noHorizontalScroll(page);
+    });
+
+    test('a zone detail shows its rare finds, a column for each kind', async ({ page }) => {
+      const zone = data.zones.find((z) => z.specialItems.length > 0);
+      if (!zone) throw new Error('No zone with rare finds');
+      const columns = groupRareFinds(zone.specialItems);
+      await page.goto(`zones/${zone.slug}/`);
+      await expect(page).toHaveTitle(`${zone.name} · Westwald Archive`);
+      const rare = page.locator('[data-section="rare-finds"]');
+      await expect(rare.getByRole('heading', { level: 3 })).toHaveText(columns.map((c) => c.kind));
+      await expect(rare.locator('.spot .cap')).toHaveText(columns.flatMap((c) => c.spots.map((s) => s.caption)));
+      await expect(rare.locator('a.mini')).toHaveCount(zone.specialItems.length);
+      await expect(page.locator('[data-section="areas"] a')).toHaveCount(zone.areaIds.length);
+      await noHorizontalScroll(page);
+    });
+
+    test('an item page links to an area page', async ({ page }) => {
+      const item = itemByName('Fire Element');
+      const first = item.gather.toSorted((a, b) => b.rate - a.rate)[0];
+      const area = data.areas.find((a) => a.id === first?.areaId);
+      if (!area) throw new Error('No area for the gather item');
+      await page.goto(itemPath('Fire Element'));
+      const entry = page.locator('[data-section="how-to-get"] [data-area-entry]').first();
+      await expect(entry.getByRole('link', { name: area.name, exact: true })).toHaveAttribute('href', `${BASE_PATH}areas/${area.slug}/`);
+      await noHorizontalScroll(page);
+    });
+
     test('a craftable item page has the Synthesis section and no horizontal scroll', async ({ page }) => {
       await page.goto(itemPath('Iron Board'));
       await expect(page).toHaveTitle('Iron Board · Westwald Archive');
@@ -233,7 +308,7 @@ test.describe('header', () => {
     await expect(nav).toBeHidden();
     await menu.click();
     await expect(nav).toBeVisible();
-    await expect(nav.getByRole('link')).toHaveText(['Items']);
+    await expect(nav.getByRole('link')).toHaveText(['Items', 'Areas']);
     await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
   });
 
@@ -243,7 +318,7 @@ test.describe('header', () => {
     const nav = page.getByRole('navigation', { name: 'Pages' });
     await expect(page.getByRole('button', { name: 'Menu' })).toBeHidden();
     await expect(nav).toBeVisible();
-    await expect(nav.getByRole('link')).toHaveText(['Items']);
+    await expect(nav.getByRole('link')).toHaveText(['Items', 'Areas']);
     await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
   });
 });
@@ -316,8 +391,6 @@ test.describe('item pages', () => {
     const area = data.areas.find((a) => a.id === first?.areaId);
     await expect(how.locator('.link').first()).toContainText(area?.name ?? '');
     await expect(how).not.toContainText('100%');
-    // An area has no page yet, so its name is plain text.
-    await expect(how.locator('.link a')).toHaveCount(0);
   });
 
   test('a drop item shows its monster with no quantity badge', async ({ page }) => {

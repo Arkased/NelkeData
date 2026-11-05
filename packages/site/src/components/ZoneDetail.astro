@@ -1,0 +1,42 @@
+---
+import type { Zone } from '@nelke/model';
+import { areaById } from '../data';
+import { EntityKind } from '../entity';
+import ElementStat from './ElementStat.astro';
+import EntityLink from './EntityLink.astro';
+import OpensStat from './OpensStat.astro';
+import RareFinds from './RareFinds.astro';
+import Section from './Section.astro';
+
+/** The props of the zone detail. */
+interface Props {
+  zone: Zone;
+}
+
+const { zone } = Astro.props;
+const areas = zone.areaIds.map((id) => {
+  const area = areaById.get(id);
+  if (area === undefined) throw new Error(`${zone.id}: missing area ${id}`);
+  return area;
+});
+---
+
+<div class="mhead">
+  <h1 class="name">{zone.name}</h1>
+</div>
+
+<div class="stats">
+  <OpensStat zone={zone} />
+  <ElementStat zone={zone} />
+</div>
+
+<div class="panel" data-section="zone-panel">
+  <Section title="Areas">
+    <div class="chips" data-section="areas">
+      {areas.map((area) => (
+        <EntityLink kind={EntityKind.Area} slug={area.slug} name={area.name} />
+      ))}
+    </div>
+  </Section>
+  <RareFinds zone={zone} />
+</div>

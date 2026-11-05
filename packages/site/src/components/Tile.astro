@@ -12,17 +12,19 @@ interface Props {
   icon: string | null;
   /** The quantity, shown as a badge on the icon from 2 up. */
   qty?: number;
+  /** A rate or a level as a badge on the icon, in the same place as the quantity. A tile has a quantity or a badge, never both. */
+  badge?: string | null;
   /** Extra attributes of the tile, for example the filter values of a grid cell. */
   attrs?: Record<string, string>;
 }
 
-const { kind, slug, name, icon, qty = 1, attrs = {} } = Astro.props;
+const { kind, slug, name, icon, qty = 1, badge = null, attrs = {} } = Astro.props;
 const href = entityUrl(kind, slug);
 const Tag = href === null ? 'div' : 'a';
 ---
 
 <Tag class="mini" href={href} data-modal={href === null ? undefined : ''} {...attrs}>
-  <Icon icon={icon}>{qty >= 2 && <b class="qty">×{formatNumber(qty)}</b>}</Icon>
+  <Icon icon={icon}>{badge !== null ? <b class="qty">{badge}</b> : qty >= 2 && <b class="qty">×{formatNumber(qty)}</b>}</Icon>
   <span class="nm">{name}</span>
 </Tag>
 

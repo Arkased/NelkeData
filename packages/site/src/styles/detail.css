@@ -169,8 +169,8 @@ a.el:focus-visible {
   border-radius: var(--s4);
   font-weight: 700;
 }
-/* Synthesis: 3 rows (the materials, the stats, the unlock) in 1 box. */
-.syn {
+/* A panel: the related parts of a detail in 1 box, for example the synthesis or the gather items and the monsters of an area. */
+.panel {
   border: 2px solid var(--line);
   border-radius: var(--radius);
   padding: var(--s4);
@@ -178,14 +178,39 @@ a.el:focus-visible {
   gap: var(--s4);
   background: var(--cream-2);
 }
-.syn-stats {
+/* A row of stats; the values start on 1 line. */
+.stats {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s3) var(--s4);
-  align-items: flex-end;
+  align-items: flex-start;
 }
-.syn-stats .stat {
+.stats .stat {
   flex: 1 1 auto;
+}
+/* A difficulty cell: the rank, with the Investigation Lv under it. */
+.dcell {
+  display: grid;
+  justify-items: center;
+}
+.dcell small {
+  font-size: var(--text-small);
+  line-height: 1;
+  color: var(--ink-soft);
+}
+/* The rare finds: 1 row of columns, one for each kind. */
+.rare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s4);
+  align-items: start;
+}
+.spot {
+  display: grid;
+  gap: var(--s2);
+}
+.spot + .spot {
+  margin-top: var(--s2);
 }
 .per {
   margin: 0 var(--s1);
@@ -226,7 +251,7 @@ a.el:focus-visible {
   .top > .slot {
     width: 88px;
   }
-  .syn {
+  .panel {
     padding: var(--s3);
   }
 }
@@ -269,6 +294,13 @@ a.tl:hover {
   line-height: var(--s6);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+.stat .val.wrap {
+  flex-wrap: wrap;
+  height: auto;
+  min-height: var(--s6);
+  white-space: normal;
+  gap: 0 var(--s3);
 }
 .stat.good .val {
   color: var(--good);

@@ -1,0 +1,25 @@
+---
+import type { Area } from '@nelke/model';
+import AreaDetail from '../../components/AreaDetail.astro';
+import EntityPage from '../../components/EntityPage.astro';
+import { data } from '../../data';
+import Base from '../../layouts/Base.astro';
+import { CategoryKey } from '../../nav';
+
+/** Returns the page of each area. */
+export function getStaticPaths() {
+  return data.areas.map((area) => ({ params: { slug: area.slug }, props: { area } }));
+}
+
+interface Props {
+  area: Area;
+}
+
+const { area } = Astro.props;
+---
+
+<Base name={area.name} category={CategoryKey.Areas}>
+  <EntityPage>
+    <AreaDetail area={area} />
+  </EntityPage>
+</Base>

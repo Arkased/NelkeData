@@ -3,12 +3,22 @@
 interface Props {
   /** The heading of the section. */
   title: string;
+  /** The URL of the entity page that the title links to, which opens in the modal; null or no value for a plain title. */
+  href?: string | null;
 }
 
-const { title } = Astro.props;
+const { title, href = null } = Astro.props;
 ---
 
 <section>
-  <h2 class="section-title">{title}</h2>
+  <h2 class="section-title">
+    {href === null ? (
+      title
+    ) : (
+      <a class="text-link" href={href} data-modal>
+        {title}
+      </a>
+    )}
+  </h2>
   <slot />
 </section>

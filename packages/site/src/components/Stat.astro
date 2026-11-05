@@ -9,14 +9,16 @@ interface Props {
   id: string;
   /** A tone for the value: `good` is green, `bad` is red. */
   tone?: StatTone;
+  /** True when the value may wrap onto more lines, for a text or a list. */
+  wrap?: boolean;
 }
 
-const { label, id, tone } = Astro.props;
+const { label, id, tone, wrap = false } = Astro.props;
 ---
 
 <div class:list={['stat', tone]} data-stat={id}>
   <small class="cap">{label}</small>
-  <b class="val">
+  <b class:list={['val', { wrap }]}>
     <slot />
   </b>
 </div>

@@ -1,12 +1,14 @@
 ---
 import { Element, type Item, type Research } from '@nelke/model';
 import { areaById, characterById, itemById, monsterById, recipeById, recipeSetById, researchById, zoneById } from '../data';
+import { elementItem } from '../elements';
 import { EntityKind, entityUrl } from '../entity';
 import { formatNumber, formatRate } from '../format';
 import { entityIconUrl, uiIconUrl } from '../icons';
 import { categoryIconOf, SHOPS } from '../item-filters';
 import { StatTone } from '../stat-tone';
 import { UiIcon } from '../ui-icon';
+import AreaEntry from './AreaEntry.astro';
 import EntityLink from './EntityLink.astro';
 import Friendship from './Friendship.astro';
 import Group from './Group.astro';
@@ -24,14 +26,6 @@ interface Props {
 
 const { item } = Astro.props;
 
-/** The item of each element, by ID. */
-const ELEMENT_ITEM_IDS: Record<Element, string> = {
-  [Element.Fire]: 'ITEM_MAT_ELEMENT_FIRE',
-  [Element.Water]: 'ITEM_MAT_ELEMENT_WATER',
-  [Element.Wind]: 'ITEM_MAT_ELEMENT_AIR',
-  [Element.Earth]: 'ITEM_MAT_ELEMENT_SOIL',
-};
-
 function required<T>(row: T | undefined, what: string): T {
   if (row === undefined) throw new Error(`${item.id}: missing ${what}`);
   return row;
@@ -47,7 +41,7 @@ const categoryText =
 const elements = Object.values(Element)
   .map((element) => ({
     value: item.reduce[element] ?? 0,
-    target: required(itemById.get(ELEMENT_ITEM_IDS[element]), `${element} element item`),
+    target: elementItem(element),
   }))
   .filter((e) => e.value > 0);
 
@@ -140,14 +134,14 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
 
 {recipe !== null && (
   <Section title="Synthesis">
-    <div class="syn" data-section="synthesis">
+    <div class="panel" data-section="synthesis">
       <div class="minis">
         {recipe.materials.map((m) => {
           const material = required(itemById.get(m.itemId), 'material');
           return <Tile kind={EntityKind.Item} slug={material.slug} name={material.name} icon={material.icon} qty={m.quantity} />;
         })}
       </div>
-      <div class="syn-stats">
+      <div class="stats">
         <Stat label="Synth. Lv." id="synth-level">
           Lv {recipe.synthesisLevel}
         </Stat>
@@ -245,17 +239,7 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
         <Group title="Gather">
           <div class="cols">
             {gathers.map((g) => (
-              <div class="link">
-                <span class="lt">
-                  <b>
-                    <EntityLink kind={EntityKind.Area} slug={g.area.slug} name={g.area.name} />
-                  </b>
-                  <small>
-                    <EntityLink kind={EntityKind.Zone} slug={g.zone.slug} name={g.zone.name} />
-                  </small>
-                </span>
-                {g.rate !== null && <span class="pct">{g.rate}</span>}
-              </div>
+              <AreaEntry area={g.area} zone={g.zone} badge={g.rate} />
             ))}
           </div>
         </Group>

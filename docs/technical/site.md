@@ -32,15 +32,25 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/about.astro` | The About page at `/NelkeData/about/`, with the title `About · Westwald Archive`. 1 panel with the sections Contact, Source and Legal. The legal notice text is 1 constant, which the footer and this page share. |
 | `src/data.ts` | `readData()` of `@nelke/model` on the `data/` folder of the repo, 1 time for each build, and the lookups by ID. |
 | `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
-| `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`) and `ItemDetail`. |
-| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page. |
+| `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`), `ItemDetail`, `AreaDetail` and `ZoneDetail`. |
+| `src/components/AreaEntry.astro` | 1 area entry: the area link, its zone link and the rate badge. The Gather group of `ItemDetail` uses it. |
+| `src/components/RareFinds.astro` | The "Rare finds" section of a zone: a group for each `GatherKind`, a column for each chest or spot, its items with the rate. `AreaDetail` and `ZoneDetail` use it. |
+| `src/components/OpensStat.astro` | The stat "Opens" of an area or a zone. |
+| `src/components/ElementStat.astro` | The stat "Area element": a link to the element item for each element. |
+| `src/components/ZonePanel.astro` | 1 zone on the Areas page: the zone name as a link and the buttons of its areas. |
+| `src/pages/areas/index.astro` | The Areas page: 1 `ZonePanel` for each zone. |
+| `src/pages/areas/[slug].astro` | The page of each area (`AreaDetail`). |
+| `src/pages/zones/[slug].astro` | The page of each zone (`ZoneDetail`). |
+| `src/rare-finds.ts` | `groupRareFinds(zone)`: the special items of a zone by kind and by chest or spot, with the captions "Chest N" and "Spot N". |
+| `src/elements.ts` | `elementItem(element)`: the element item, which gives the icon and the page of an element. |
+| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page (items, areas and zones have one), or null for a kind with no page. |
 | `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |
 | `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |
 | `src/ui-icon.ts` | `UiIcon`: the names of the UI icons of the game that carry data. |
-| `src/format.ts` | `formatNumber` and `formatRate`: the number and percent text of the site. |
+| `src/format.ts` | `formatNumber` and `formatRate`, `formatLevels`: the number, percent and level range text of the site. |
 | `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. It uses `ItemCategoryName` of `@nelke/model` directly, with no lookup from a name back to an ID. |
 | `src/stat-tone.ts` | `StatTone`: the tones (good, bad) of the value of a stat. |
-| `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) as PNG files. |
+| `src/assets/ui/` | The UI icons of the game (category incl. `cat-16` Areas, shop, coin, cost, friendship) as PNG files. |
 | `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |
 | `scripts/check-links.ts` | The link check of `dist/`. |
 | `../../__tests__/site.spec.ts` | The UI test (Playwright). |

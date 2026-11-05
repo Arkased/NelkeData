@@ -15,6 +15,18 @@ export function formatNumber(value: number): string {
 }
 
 /**
+ * Formats the levels of a monster in an area as 1 value: `Lv 3` for 1 level, `Lv 3–8` for a range.
+ * @param levels - the levels of the monster, at least 1
+ * @returns the text
+ * @sideEffects none
+ */
+export function formatLevels(levels: readonly number[]): string {
+  const low = Math.min(...levels);
+  const high = Math.max(...levels);
+  return low === high ? `Lv ${low}` : `Lv ${low}–${high}`;
+}
+
+/**
  * Formats a rate in percent, or returns null for a rate of 100%, which tells nothing.
  * @param rate - the rate as a percent number
  * @returns the text, for example `12.5%`, or null for a certain rate

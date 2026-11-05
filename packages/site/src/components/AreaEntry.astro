@@ -1,0 +1,27 @@
+---
+import type { Area, Zone } from '@nelke/model';
+import { EntityKind } from '../entity';
+import EntityLink from './EntityLink.astro';
+
+/** The props of an area entry. */
+interface Props {
+  area: Area;
+  zone: Zone;
+  /** The rate or the level range, as text; null or no value for no badge. */
+  badge?: string | null;
+}
+
+const { area, zone, badge = null } = Astro.props;
+---
+
+<div class="link" data-area-entry>
+  <span class="lt">
+    <b>
+      <EntityLink kind={EntityKind.Area} slug={area.slug} name={area.name} />
+    </b>
+    <small>
+      <EntityLink kind={EntityKind.Zone} slug={zone.slug} name={zone.name} />
+    </small>
+  </span>
+  {badge !== null && <span class="pct">{badge}</span>}
+</div>

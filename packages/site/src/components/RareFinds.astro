@@ -1,0 +1,49 @@
+---
+import type { Zone } from '@nelke/model';
+import { itemById } from '../data';
+import { EntityKind } from '../entity';
+import { formatRate } from '../format';
+import { groupRareFinds } from '../rare-finds';
+import Group from './Group.astro';
+import Section from './Section.astro';
+import Tile from './Tile.astro';
+
+/** The props of the rare finds of a zone. */
+interface Props {
+  zone: Zone;
+}
+
+const { zone } = Astro.props;
+const columns = groupRareFinds(zone.specialItems).map((column) => ({
+  ...column,
+  spots: column.spots.map((spot) => ({
+    ...spot,
+    items: spot.items.map((find) => {
+      const item = itemById.get(find.itemId);
+      if (item === undefined) throw new Error(`${zone.id}: missing item ${find.itemId}`);
+      return { item, badge: formatRate(find.rate) };
+    }),
+  })),
+}));
+---
+
+{columns.length > 0 && (
+  <Section title="Rare finds">
+    <div class="rare" data-section="rare-finds">
+      {columns.map((column) => (
+        <Group title={column.kind}>
+          {column.spots.map((spot) => (
+            <div class="spot">
+              <small class="cap">{spot.caption}</small>
+              <div class="minis">
+                {spot.items.map(({ item, badge }) => (
+                  <Tile kind={EntityKind.Item} slug={item.slug} name={item.name} icon={item.icon} badge={badge} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </Group>
+      ))}
+    </div>
+  </Section>
+)}
