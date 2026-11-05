@@ -42,7 +42,7 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/areas/[slug].astro` | The page of each area (`AreaDetail`). |
 | `src/pages/zones/[slug].astro` | The page of each zone (`ZoneDetail`). |
 | `src/rare-finds.ts` | `groupRareFinds(specialItems)`: the special items of a zone by kind and by chest or spot, with the captions "Chest N" and "Spot N". |
-| `src/elements.ts` | `elementItem(element)`: the element item (looked up by the private table `ELEMENT_ITEM_IDS`), which gives the icon and the page of an element (the item detail and the monster detail share it). |
+| `src/elements.ts` | `elementItem(element)`: the element item (looked up by the private table `ELEMENT_ITEM_IDS`), which gives the icon and the page of an element (the item detail, the monster detail and `ElementStat` of the area and zone details use it). |
 | `src/pages/monsters/index.astro` | The Monsters page at `/NelkeData/monsters/`, with the title `Monsters · Westwald Archive`, and the filter "Type" (`type` in the query; the toggles have no icon). |
 | `src/pages/monsters/[slug].astro` | The page of each monster (`getStaticPaths` from the monsters of `data/`), with the title `<monster name> · Westwald Archive`. |
 | `src/components/MonsterDetail.astro` | The monster detail: the type, the element DEF line, the description, the drops and "Found in". |
