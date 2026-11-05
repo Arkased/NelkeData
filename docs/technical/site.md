@@ -42,12 +42,11 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/areas/[slug].astro` | The page of each area (`AreaDetail`). |
 | `src/pages/zones/[slug].astro` | The page of each zone (`ZoneDetail`). |
 | `src/rare-finds.ts` | `groupRareFinds(specialItems)`: the special items of a zone by kind and by chest or spot, with the captions "Chest N" and "Spot N". |
-| `src/elements.ts` | `elementItem(element)`: the element item (by `ELEMENT_ITEM_IDS`), which gives the icon and the page of an element. |
+| `src/elements.ts` | `elementItem(element)`: the element item (looked up by the private table `ELEMENT_ITEM_IDS`), which gives the icon and the page of an element (the item detail and the monster detail share it). |
 | `src/pages/monsters/index.astro` | The Monsters page at `/NelkeData/monsters/`, with the title `Monsters · Westwald Archive`, and the filter "Type" (`type` in the query; the toggles have no icon). |
 | `src/pages/monsters/[slug].astro` | The page of each monster (`getStaticPaths` from the monsters of `data/`), with the title `<monster name> · Westwald Archive`. |
 | `src/components/MonsterDetail.astro` | The monster detail: the type, the element DEF line, the description, the drops and "Found in". |
 | `src/appearances.ts` | `mergeLevels(rows, idOf)`: merges the rows of the same area or zone (1 row for each boss flag) into 1 entry with all levels. |
-| `src/element-items.ts` | `ELEMENT_ITEM_IDS`: the item of each element, whose icon is the element icon (the item detail and the monster detail share it). |
 | `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page (items, areas, zones, monsters and characters have one), or null for a kind with no page and for an entity with no page (a character with no join event, by the rule of `hasCharacterPage`). The tile and the link need no extra argument. |
 | `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |
 | `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |

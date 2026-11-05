@@ -1,6 +1,13 @@
-import type { Element, Item } from '@nelke/model';
+import { Element, type Item } from '@nelke/model';
 import { itemById } from './data.js';
-import { ELEMENT_ITEM_IDS } from './element-items.js';
+
+/** The item of each element, by ID. Its icon is the icon of the element. */
+const ELEMENT_ITEM_IDS: Record<Element, string> = {
+  [Element.Fire]: 'ITEM_MAT_ELEMENT_FIRE',
+  [Element.Water]: 'ITEM_MAT_ELEMENT_WATER',
+  [Element.Wind]: 'ITEM_MAT_ELEMENT_AIR',
+  [Element.Earth]: 'ITEM_MAT_ELEMENT_SOIL',
+};
 
 /**
  * Returns the element item of an element, which gives the icon and the page of the element.
