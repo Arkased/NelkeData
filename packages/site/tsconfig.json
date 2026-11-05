@@ -1,0 +1,5 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": { "rootDir": ".", "outDir": "dist-tsc" },
+  "include": ["astro.config.ts", "src/**/*.ts", "scripts/**/*.ts"]
+}

@@ -1,12 +1,26 @@
 import eslint from '@eslint/js';
+import astro from 'eslint-plugin-astro';
 import jsdoc from 'eslint-plugin-jsdoc';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/dist/', 'extracted/', 'output/', 'node_modules/', '.claude/', 'prototype/'] },
+  {
+    ignores: [
+      '**/dist/',
+      '**/dist-tsc/',
+      '**/.astro/',
+      '**/test-results/',
+      'extracted/',
+      'output/',
+      'node_modules/',
+      '.claude/',
+      'prototype/',
+    ],
+  },
   eslint.configs.recommended,
   tseslint.configs.strictTypeChecked,
   tseslint.configs.stylisticTypeChecked,
+  ...astro.configs.recommended,
   {
     languageOptions: {
       parserOptions: {
@@ -45,7 +59,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.js'],
+    files: ['**/*.js', '**/*.mjs', '**/*.astro'],
     ...tseslint.configs.disableTypeChecked,
   },
 );

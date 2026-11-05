@@ -13,10 +13,10 @@ The files and commands of the tooling. The design is in [docs/design/tooling.md]
 | --- | --- |
 | `package.json` | The workspaces (`packages/*`), the dev dependencies and the scripts. |
 | `tsconfig.base.json` | The shared compiler options: `strict`, `noUncheckedIndexedAccess`, `module` and `moduleResolution` `NodeNext`, `target` `ES2023`. |
-| `tsconfig.json` | The project references to each package, for `tsc -b`. |
+| `tsconfig.json` | The project references to each package, to `packages/site`, to `scripts` and to `__tests__`, for `tsc -b`. |
 | `eslint.config.js` | The presets, the few rules of the code standard, and the overrides for tests. |
-| `.prettierrc.json` | `singleQuote`, `printWidth` 140. |
-| `vitest.config.ts` | The test files: `packages/*/src/**/__tests__/*.test.ts`, `__tests__/*.test.ts` and `scripts/__tests__/*.test.ts`. |
+| `.prettierrc.json` | `singleQuote`, `printWidth` 140, the plugin `prettier-plugin-astro` and an override that sets the `astro` parser for `*.astro`. |
+| `vitest.config.ts` | The test files: `packages/*/src/**/__tests__/*.test.ts`, `packages/*/scripts/__tests__/*.test.ts`, `__tests__/*.test.ts` and `scripts/__tests__/*.test.ts`. |
 
 ## Scripts
 

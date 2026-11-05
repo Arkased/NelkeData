@@ -5,6 +5,11 @@ extracted/
 output/
 # Compiled output of tsc -b.
 dist/
+# The tsc output of the site package, kept apart from the Astro output in dist/.
+dist-tsc/
+# Astro generated types and the Playwright results.
+.astro/
+test-results/
 *.tsbuildinfo
 # Screenshots of the UI test of the prototype.
 prototype/shots/

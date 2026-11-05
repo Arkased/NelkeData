@@ -1,0 +1,60 @@
+---
+import { pageUrl } from '../url';
+---
+
+<header class="hdr">
+  <div class="hdr-bar">
+    <div class="brand">
+      <a class="site-name" href={pageUrl('')}>
+        Westwald Archive
+      </a>
+      <small class="tagline">
+        Unofficial fansite for <i>Nelke &amp; the Legendary Alchemists</i>
+      </small>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  .hdr-bar {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s3);
+    padding: var(--s2) var(--s4);
+    border-radius: var(--radius);
+    background: var(--brown);
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    column-gap: var(--s3);
+    row-gap: var(--s1);
+    min-width: 0;
+    color: var(--cream);
+  }
+  .site-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: var(--text-title);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  @media (max-width: 599px) {
+    .tagline {
+      flex-basis: 100%;
+    }
+  }
+  .tagline {
+    font-size: var(--text-small);
+    line-height: 1.4;
+    opacity: 0.85;
+  }
+</style>

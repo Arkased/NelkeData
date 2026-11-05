@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.base.json",
-  "compilerOptions": { "rootDir": ".", "outDir": "dist" },
-  "include": ["./*.ts"],
+  "compilerOptions": { "rootDir": "..", "outDir": "dist", "lib": ["ES2023", "DOM"] },
+  "include": ["*.ts", "../packages/site/src/base.ts"],
   "references": [{ "path": "../packages/model" }]
 }
