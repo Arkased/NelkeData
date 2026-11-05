@@ -80,7 +80,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 - The friendship level uses the heart icon of the game, never an emoji or a font glyph.
 - "Joins the town" on a character shows the conditions of `character/character_app_con.xml`: the town population and the turn. A character whose join event is not the game start (`EVENT_MS01_010`) joins in a story event. The event has no name in the game files, so the section says "Joins in a story event" and shows the tiles of the other characters with the same event, under "Joins with". 100 characters join this way, for example Gino with Melvia, Mimi, Marc, Gerard, the 2 Chims and Piana.
 - A short list of values is 1 line in the top block of the detail, not a section. For example the element DEF of a monster is 1 line of element icons, each with its value.
-- The related parts of a detail are in 1 panel: on an area, the difficulty, the gather items and the monsters of the area; on a zone, its areas and its treasure.
+- The related parts of a detail are in 1 panel: on an area, the gather items and the monsters of the area; on a zone, its areas and its treasure.
 - The parts of 1 row align on 1 baseline. A header row of a detail (for example the researchers and the stats of a research) stays on 1 row at 768 px and wider.
 - The page shows no count of the visible entities.
 - A fact shows 1 time on a page. The terms of a calculation are the exception: the "Selling price" stat of the recipe value repeats the price of the top block, because the requirement "Recipe value" asks for the full calculation in 1 place.
