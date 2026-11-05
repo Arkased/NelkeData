@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { GatherKind } from '../enums.js';
 import { addInverseLinks } from '../inverse.js';
 import {
   fakeArea,
@@ -67,7 +68,16 @@ describe('addInverseLinks', () => {
     const model = addInverseLinks(
       fakeDirectData({
         items: [fakeItem({ id: 'a' })],
-        zones: [fakeZone({ id: 'z', areaIds: ['p'], specialItemIds: ['a'] })],
+        zones: [
+          fakeZone({
+            id: 'z',
+            areaIds: ['p'],
+            specialItems: [
+              { itemId: 'a', kind: GatherKind.Treasure, spot: 1, rate: 50 },
+              { itemId: 'a', kind: GatherKind.Digging, spot: 1, rate: 100 },
+            ],
+          }),
+        ],
         areas: [fakeArea({ id: 'p' })],
       }),
     );

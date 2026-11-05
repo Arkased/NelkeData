@@ -109,6 +109,22 @@ export enum Difficulty {
   F = 'F',
 }
 
+/** The kinds of rare find of a zone: the chests and the gather tools. */
+export enum GatherKind {
+  Treasure = 'Treasure',
+  BugNet = 'Bug Net',
+  Digging = 'Digging',
+  Fishing = 'Fishing',
+}
+
+/** The gimmick types of expl_gimmick.xml that hold rare finds. */
+export enum GimmickType {
+  Box = 'EXPL_GIMMICK_TYPE_BOX',
+  Bug = 'EXPL_GIMMICK_TYPE_BUG',
+  Dig = 'EXPL_GIMMICK_TYPE_DIG',
+  Fish = 'EXPL_GIMMICK_TYPE_FISH',
+}
+
 /** The encounter group types of encount_group.xml that the workbook tells apart. */
 export enum EncounterSymbol {
   Normal = 'BTL_ENCOUNT_SYMBOL_TYPE_NORMAL',

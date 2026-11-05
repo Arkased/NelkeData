@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { EncounterSymbol } from '../enums.js';
+import { Element, EncounterSymbol, GatherKind, GimmickType } from '../enums.js';
 import { listFor, required } from '../util.js';
 import type { Messages } from './messages.js';
 import type { Story } from './story.js';
@@ -12,13 +12,24 @@ const zoneSchema = z
     // The first zone has no task: it is open from the start.
     task_id: z.string().default(''),
     area_collect: z.string(),
+    // The flags of the elements, in the order Fire, Water, Wind, Earth. A zone with no flag leaves them out.
+    ele_00: z.string().default('0'),
+    ele_01: z.string().default('0'),
+    ele_02: z.string().default('0'),
+    ele_03: z.string().default('0'),
     diff_00: z.string(),
     diff_01: z.string(),
     diff_02: z.string(),
     diff_03: z.string(),
     diff_04: z.string(),
   })
-  .transform((a) => ({ ...a, difficulties: [a.diff_00, a.diff_01, a.diff_02, a.diff_03, a.diff_04] }));
+  .transform((a) => ({
+    ...a,
+    difficulties: [a.diff_00, a.diff_01, a.diff_02, a.diff_03, a.diff_04],
+    elements: [Element.Fire, Element.Water, Element.Wind, Element.Earth].filter(
+      (_, i) => [a.ele_00, a.ele_01, a.ele_02, a.ele_03][i] === '1',
+    ),
+  }));
 
 const areaSchema = z.object({
   expl_research: z.string(),
@@ -28,7 +39,17 @@ const areaSchema = z.object({
 });
 
 const collectSchema = z.object({ AREA_TAG: z.string(), ITEM_TAG: z.string(), RATE: z.string() });
-const uniqueCollectSchema = z.object({ AREA_TAG: z.string(), ITEM_TAG: z.string() });
+const uniqueCollectSchema = z.object({ COLLECT_ITEM_TAG: z.string(), AREA_TAG: z.string(), ITEM_TAG: z.string(), RATE_03: z.string() });
+
+// A gimmick is a chest or a gather point of a zone. It names the table (table_01) of the items that it gives.
+const gimmickSchema = z.object({ type: z.enum(GimmickType), table_01: z.string() });
+
+const GATHER_KINDS: Record<GimmickType, GatherKind> = {
+  [GimmickType.Box]: GatherKind.Treasure,
+  [GimmickType.Bug]: GatherKind.BugNet,
+  [GimmickType.Dig]: GatherKind.Digging,
+  [GimmickType.Fish]: GatherKind.Fishing,
+};
 
 const groupSchema = z
   .object({
@@ -61,6 +82,8 @@ export interface ZoneRow {
   area_collect: string;
   task_id: string;
   difficulties: string[];
+  /** The elements of the zone (ele_00 to ele_03). */
+  elements: Element[];
   name: string;
   /** The number of the main task that opens the zone, 0 for a zone open from the start. */
   task: number;
@@ -82,6 +105,15 @@ export interface Collect {
   RATE: string;
 }
 
+/** A rare find of a zone: an item in the table of a chest or a gather point. */
+export interface SpecialFind {
+  ITEM_TAG: string;
+  kind: GatherKind;
+  /** The number of the chest or the spot in the zone, from 1. */
+  spot: number;
+  rate: number;
+}
+
 /** A row of encount_group.xml. */
 export type EncounterGroup = z.output<typeof groupSchema>;
 
@@ -99,13 +131,47 @@ export interface Zones {
   areas: AreaRow[];
   /** Maps an area id to the items that it gives. */
   collectByArea: Map<string, Collect[]>;
-  /** Maps a zone id to the item ids of its special spots, in file order, repeats included. */
-  uniqueByZone: Map<string, string[]>;
+  /** Maps a zone id to its rare finds, in the order of the gimmick table. */
+  specialByZone: Map<string, SpecialFind[]>;
   /** Maps an area id to its encounters. */
   encountersByArea: Map<string, Encounter[]>;
   /** The encounter groups that no area lists, with the zone that holds them, in file order. */
   zoneEncounters: { group: EncounterGroup; zone: ZoneRow }[];
   isBossGroup: (g: EncounterGroup) => boolean;
+}
+
+/**
+ * Loads the rare finds of the zones from the gimmicks and their item tables.
+ * @param read - the table reader of the saves folder
+ * @param zoneByPrefix - the zones by the 4-character prefix of their tags
+ * @param droppedPrefixes - the prefixes of the zones that were dropped
+ * @returns the rare finds of each zone
+ * @throws {Error} when a gimmick names a zone that the game does not list
+ * @sideEffects reads the gimmick table and the unique collect table through the table reader
+ */
+function loadSpecial(read: ReadTable, zoneByPrefix: Map<string, ZoneRow>, droppedPrefixes: Set<string>): Map<string, SpecialFind[]> {
+  const itemsByTable = new Map<string, { ITEM_TAG: string; rate: number }[]>();
+  for (const c of read('expl_collect/unique_collect.xml', uniqueCollectSchema)) {
+    listFor(itemsByTable, c.COLLECT_ITEM_TAG).push({ ITEM_TAG: c.ITEM_TAG, rate: Number(c.RATE_03) });
+  }
+  const specialByZone = new Map<string, SpecialFind[]>();
+  // A second gimmick can use the table of another one (the same chest at another place), so a table counts once for each zone and kind.
+  const seenTables = new Set<string>();
+  const spotCount = new Map<string, number>();
+  for (const g of read('expl_gimmick/expl_gimmick.xml', gimmickSchema)) {
+    const prefix = g.table_01.slice(0, 4);
+    if (droppedPrefixes.has(prefix) && !zoneByPrefix.has(prefix)) continue;
+    const zone = required(zoneByPrefix, prefix);
+    const kind = GATHER_KINDS[g.type];
+    const tableKey = `${zone.expl_area}:${kind}:${g.table_01}`;
+    if (seenTables.has(tableKey)) continue;
+    seenTables.add(tableKey);
+    const countKey = `${zone.expl_area}:${kind}`;
+    const spot = (spotCount.get(countKey) ?? 0) + 1;
+    spotCount.set(countKey, spot);
+    for (const item of itemsByTable.get(g.table_01) ?? []) listFor(specialByZone, zone.expl_area).push({ ...item, kind, spot });
+  }
+  return specialByZone;
 }
 
 /**
@@ -138,16 +204,10 @@ export function loadZones(read: ReadTable, messages: Messages, story: Story): Zo
   }
 
   const collectByArea = new Map<string, Collect[]>();
-  const uniqueByZone = new Map<string, string[]>();
   for (const c of read('expl_collect/area_collect.xml', collectSchema)) {
     if (areaById.has(c.AREA_TAG)) listFor(collectByArea, c.AREA_TAG).push(c);
   }
-  for (const c of read('expl_collect/unique_collect.xml', uniqueCollectSchema)) {
-    const prefix = c.AREA_TAG.slice(0, 4);
-    if (droppedPrefixes.has(prefix) && !zoneByPrefix.has(prefix)) continue;
-    const zone = required(zoneByPrefix, prefix);
-    listFor(uniqueByZone, zone.expl_area).push(c.ITEM_TAG);
-  }
+  const specialByZone = loadSpecial(read, zoneByPrefix, droppedPrefixes);
 
   // Encounters: an area lists encounter groups (area_encount); a group lists up to 3 monsters with levels.
   const groups = new Map(read('expl_encount/encount_group.xml', groupSchema).map((g) => [g.ENCOUNT_TABLE, g]));
@@ -169,7 +229,7 @@ export function loadZones(read: ReadTable, messages: Messages, story: Story): Zo
     zones,
     areas: [...areaById.values()],
     collectByArea,
-    uniqueByZone,
+    specialByZone,
     encountersByArea,
     zoneEncounters,
     isBossGroup: (g) => g.ENCOUNT_SYMBOL_TYPE === EncounterSymbol.Boss,
