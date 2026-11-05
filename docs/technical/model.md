@@ -22,7 +22,6 @@ Each file is a JSON array of the entities of 1 kind, in the order of the game ta
 | `recipe-sets.json` | Recipe set |
 | `research.json` | Research |
 | `zones.json` | Zone |
-| `research-trees.json` | Research tree |
 | `areas.json` | Area |
 | `monsters.json` | Monster |
 | `characters.json` | Character |
@@ -50,7 +49,7 @@ Each row is 1 link. The "From the game" side comes from the tables. The inverse 
 | `RecipeSet.recipeIds` | `Recipe.recipeSetIds` (6 recipes are in more than 1 set) |
 | `RecipeSet.teacherId` (a character) | `Character.recipeSetIds` |
 | `Research.recipeSetId` | `RecipeSet.researchId` (`null` when no research gives the set) |
-| `Research.researcherIds` (characters) | `Character.researchIds` |
+| `Research.researcherId` (a character) | `Character.researchIds` |
 | `Monster.zoneEncounters[].zoneId` (with the levels and the boss flag; an encounter group of the zone that no area lists, for example a boss of Ferien Plains at Lv 98) | `Zone.encounters[].monsterId` (with the same values) |
 | `Research.prerequisiteIds` | `Research.unlocksIds` |
 | `Zone.areaIds` | `Area.zoneId` |
@@ -71,9 +70,6 @@ The fields of each kind are the facts that the workbook shows now, as typed valu
 - `Recipe.synthesisLevel` is the minimum alchemy level: `Math.max(1, Math.floor(rank / 4))`, with the `rank` of the result item. The rule is in `README.md`, section "Synthesis level". The workbook does not show it.
 - `Zone.elements` is the list of the elements of the zone (`ele_00` to `ele_03` of `expl_area/expl_area.xml`), as `Element` values.
 - `Zone.specialItems` is the list of the rare finds: `{ itemId, kind, spot, rate }`. `kind` is the enum `GatherKind` (`Treasure`, `Bug Net`, `Digging`, `Fishing`), from the `type` of `expl_gimmick/expl_gimmick.xml`. `spot` is the number of the chest or the spot in the zone, from 1. `rate` is the percent rate of the item in its gimmick table (`table_01`). The inverse link `Item.specialZoneIds` comes from it. The workbook shows the same values as before.
-- `Research.researcherIds` is the list of the researchers (`STDY_RES_CHARACTER_TAG_00` and `_01`). The inverse link `Character.researchIds` comes from it.
-- The research facts of `study/stdy_research.xml` and `study/stdy_prize.xml`: `friendship` (`STDY_FRIEND_POINT`, the total friendship that the research needs), `duration` (`STDY_RES_DURATION`, turns), `money` (`STDY_RES_MONEY_NUM`), `materials` (`[{ itemId, quantity }]` from `STDY_RES_ITEM_NAME_00` to `_03`), `prizeItems` (`[{ itemId, quantity }]` from `STDY_PRIZE_ITEM_NAME_*`), and `bonus` (`{ itemId, quantity, friendship, type }` or `null`, from `STDY_PRIZE_BONUS_ITEM`, `STDY_PRIZE_BONUS_ITEM_NUM`, `STDY_BONUS_FRIEND_POINT` and the name of the type of `STDY_BONUS_TAG` when the game has 1). A missing value is `null`. `bonus` is `null` only when the game has no bonus item, no bonus friendship and no bonus type. `bonus.quantity` is `null` when `bonus.itemId` is `null`. The page decides what of a bonus shows; the model keeps each value of the game.
-- `data/research-trees.json` holds the 4 trees: `{ id, name, nodes }`. `id` is the enum `ResearchTree` (`main`, `attack`, `support`, `emergency`), from the file names `study/stdy_tree_<id>.xml`. `name` is the tree name of the design. `nodes` is `[{ researchId, row, column }]`, with the row and the column of the grid of the game, from 0.
 - A story event is `{ id, label }`. The label follows the rule of `README.md`, section "Recipe unlock".
 - The task that opens a zone is `{ number, name }`, or `null` when the zone is open from the start.
 
