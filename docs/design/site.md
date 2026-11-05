@@ -11,7 +11,7 @@ The orchestrator made these rules. They are not owner requirements, and the orch
 | Name | Rule |
 | --- | --- |
 | Static | The site is static files only, with no server and no database. |
-| Same data | Each value on the site is the same as the value in the workbook. The site shows only the data that helps a player. |
+| Same data | The site reads its own data copy `prototype/data.js`. Each value is the same as the value in `data/`, except where an owner requirement changes what shows (for example no gather items on a Bestial spot, no join conditions that each player meets). The site shows only the data that helps a player. |
 | Order | A grid shows its entities in the order of the game. |
 | Names | The name of an entity shows under its icon in each grid. |
 | Header and footer | The header of each page shows the site name and the tagline. The footer of each page shows the legal notice and a link to the About page. |

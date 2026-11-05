@@ -11,15 +11,8 @@ The code is TypeScript in ESM, in npm workspaces. Each package holds 1 concern:
 | `@nelke/extract` | `packages/extract/` | The PAK archives and the G1T textures of the game. | The game install | `extracted/` |
 | `@nelke/model` | `packages/model/` | The entities, their IDs and their links in both directions. | `extracted/` | `data/` |
 | `@nelke/workbook` | `packages/workbook/` | The xlsx workbook. | `data/` | `output/` |
-| `@nelke/site` | `packages/site/` | The website. | `data/` | `packages/site/dist/` |
 
-The flow is 1 direction only: game install → `extracted/` → `data/` → workbook and site. The workbook and the site do not depend on each other. They do not read the game files. So a change of the site cannot change the workbook, and the workbook builds with only `data/`.
-
-The packages come in 3 steps:
-
-1. The tooling item moves the code of `tools/` to TypeScript. `pak.js`, `g1t.js` and `icons.js` go to `@nelke/extract`. `build.js` goes to `@nelke/workbook` and is split by concern. In this step the workbook still reads `extracted/`.
-2. The model item moves the parse and the joins out of `@nelke/workbook` into `@nelke/model`. After this step the workbook reads only `data/`.
-3. The site item adds `@nelke/site`.
+The flow is 1 direction only: game install → `extracted/` → `data/` → workbook. The workbook does not read the game files, and it builds with only `data/`. The website is the prototype in `prototype/`, with its own data copy ([decision 0013](../decisions/0013-prototype-is-the-site.md)). It is not a package.
 
 ## Run and check
 
