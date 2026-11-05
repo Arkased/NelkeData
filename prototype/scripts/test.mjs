@@ -351,8 +351,14 @@ await step('synthesis level of a craftable item', async () => {
     ok((await stat.count()) === 1, `${name}: 1 "Synth. Lv." stat in the synthesis section`);
     ok(((await stat.locator('.val').innerText().catch(() => '')) || '').trim() === `Lv ${lv}`, `${name}: synthesis level Lv ${lv}`);
   }
-  // Each craftable item has a level that follows the rule of the README, and no other item has one.
-  ok(await page.evaluate(() => window.DATA.items.every((i) => !i.syn || (Number.isInteger(i.syn.lv) && i.syn.lv >= 1))), 'each synthesis has a level of 1 or more');
+  // The level of each craftable item in data.js equals Math.max(1, Math.floor(rank / 4)) (the rule of the README). The items of data.js carry no rank,
+  // so the test compares with synthesisLevel of data/recipes.json, matched by resultItemId; a rank in data.js is used first.
+  const fs = await import('node:fs');
+  const recipes = JSON.parse(fs.readFileSync(fileURLToPath(new URL('../../data/recipes.json', import.meta.url)), 'utf8'));
+  const levelOf = new Map(recipes.map((r) => [r.resultItemId, r.synthesisLevel]));
+  const crafts = await page.evaluate(() => window.DATA.items.filter((i) => i.syn).map((i) => ({ id: i.id, lv: i.syn.lv, rank: i.rank })));
+  const wrong = crafts.filter((c) => c.lv !== (Number.isInteger(c.rank) ? Math.max(1, Math.floor(c.rank / 4)) : levelOf.get(c.id)));
+  ok(crafts.length > 0 && wrong.length === 0, `each of the ${crafts.length} craftable items has the level of its rank${wrong.length ? ': ' + wrong.slice(0, 4).map((c) => c.id + ' ' + c.lv).join('; ') : ''}`);
 });
 
 await step('Master Puni has its zone', async () => {

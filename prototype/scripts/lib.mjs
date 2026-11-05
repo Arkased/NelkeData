@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const url = 'file:///' + path.resolve(root, 'index.html').replace(/\\/g, '/');
-/** Starts the full Chromium that Playwright installed for its own version (no absolute path); CHROMIUM_PATH picks another file. */
-export const launch = () => chromium.launch({ executablePath: process.env.CHROMIUM_PATH || chromium.executablePath() });
+/** Starts the full Chromium that Playwright installed for its own version (no absolute path). */
+export const launch = () => chromium.launch({ executablePath: chromium.executablePath() });
 
 /** Opens a page at a width and collects the console errors in page.errs. */
 export async function newPage(browser, width) {

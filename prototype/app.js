@@ -22,7 +22,7 @@
   for (const z of D.zones) {
     for (const a of z.areas) for (const m of a.mons) (HABITAT.get(m.m) || HABITAT.set(m.m, []).get(m.m)).push({ area: a.id, lo: m.lo, hi: m.hi });
     // A monster that the zone itself meets (no area of the zone): the habitat is the zone.
-    for (const m of z.mons || []) (HABITAT.get(m.m) || HABITAT.set(m.m, []).get(m.m)).push({ area: z.id, lo: m.lo, hi: m.hi });
+    for (const m of z.mons || []) (HABITAT.get(m.m) || HABITAT.set(m.m, []).get(m.m)).push({ zone: z.id, lo: m.lo, hi: m.hi });
   }
   /** Monster id -> the items it drops. */
   const DROPS = new Map();
@@ -564,7 +564,7 @@
     if (drops.length) h += bar('Drops') + `<div class="minis">${drops.map((d) => itemEnt(d.id, dropOpts(d))).join('')}</div>`;
     const hab = HABITAT.get(id) || [];
     if (hab.length) {
-      h += bar('Found in') + `<div class="cols">${hab.map((x) => { const a = AREA.get(x.area); if (!a) { const z = ZONE.get(x.area); return `<a class="link" href="#/areas/${z.id}"><span class="lt"><b>${esc(z.n)}</b></span><span class="pct">${lvRange(x.lo, x.hi)}</span></a>`; } return `<a class="link" href="#/areas/${a.id}"><span class="lt"><b>${esc(a.n)}</b><small>${esc(a.zone.n)}</small></span><span class="pct">${lvRange(x.lo, x.hi)}</span></a>`; }).join('')}</div>`;
+      h += bar('Found in') + `<div class="cols">${hab.map((x) => { if (x.zone) { const z = ZONE.get(x.zone); return `<a class="link" href="#/areas/${z.id}"><span class="lt"><b>${esc(z.n)}</b></span><span class="pct">${lvRange(x.lo, x.hi)}</span></a>`; } const a = AREA.get(x.area); return `<a class="link" href="#/areas/${a.id}"><span class="lt"><b>${esc(a.n)}</b><small>${esc(a.zone.n)}</small></span><span class="pct">${lvRange(x.lo, x.hi)}</span></a>`; }).join('')}</div>`;
     }
     return h;
   }
