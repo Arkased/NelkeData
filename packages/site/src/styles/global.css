@@ -100,3 +100,28 @@ p {
 .page > * + * {
   margin-top: var(--g);
 }
+
+.section-title {
+  display: flex;
+  align-items: center;
+  padding: var(--s1) 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--text-body);
+  line-height: 1.2;
+  color: var(--brown);
+  border-bottom: 1px solid var(--line);
+}
+
+.text-link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.text-link:hover {
+  color: var(--warm);
+  text-decoration-color: var(--warm);
+}
