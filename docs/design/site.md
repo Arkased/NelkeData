@@ -112,6 +112,12 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 
 The modal gets its content from the entity page: a click fetches the HTML of the entity page and shows its detail panel. So the markup of a detail exists 1 time, and the list page does not hold the detail of each entity. Without JavaScript, each icon is a plain link to the entity page.
 
+Only the latest load of the modal acts. Esc, Back or a newer click cancels the load before it. When a load fails:
+
+1. The modal logs the error with `console.error`, for each load.
+2. When the load is the latest, a click opens the entity page (`location.href`), and Back or Forward reloads the page.
+3. When the load is cancelled, the modal does nothing more.
+
 ## Build and deploy
 
 The site is the package `@nelke/site`: an Astro project with static output ([decision 0002](../decisions/0002-stack.md)). The build writes only HTML, CSS, JS, fonts and images to `packages/site/dist/`. The site reads the entities only through the files of `data/` and the schemas of `@nelke/model`.
