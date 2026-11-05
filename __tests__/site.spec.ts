@@ -41,14 +41,9 @@ for (const width of WIDTHS) {
 
     const main = page.locator('main');
     await expect(main.getByRole('heading', { level: 2 })).toHaveText(['Contact', 'Source', 'Legal']);
-    await expect(main.getByRole('link', { name: 'issues of the GitHub repository' })).toHaveAttribute(
-      'href',
-      'https://github.com/Arkased/NelkeData/issues',
-    );
-    await expect(main.getByRole('link', { name: 'https://github.com/Arkased/NelkeData' })).toHaveAttribute(
-      'href',
-      'https://github.com/Arkased/NelkeData',
-    );
+    const section = (title: string) => main.locator('section', { has: page.getByRole('heading', { name: title }) });
+    await expect(section('Contact').locator('a[href="https://github.com/Arkased/NelkeData/issues"]')).toHaveCount(1);
+    await expect(section('Source').locator('a[href="https://github.com/Arkased/NelkeData"]')).toHaveCount(1);
     await expect(main.locator('section', { hasText: 'Legal' })).toContainText(LEGAL_NOTICE);
 
     await expect(page.locator('footer')).toHaveCount(0);
