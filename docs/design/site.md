@@ -83,7 +83,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 - The related parts of a detail are in 1 panel: on an area, the difficulty, the gather items and the monsters of the area; on a zone, its areas and its treasure.
 - The parts of 1 row align on 1 baseline. A header row of a detail (for example the researchers and the stats of a research) stays on 1 row at 768 px and wider.
 - The page shows no count of the visible entities.
-- A fact shows 1 time on a page.
+- A fact shows 1 time on a page. The terms of a calculation are the exception: the "Selling price" stat of the recipe value repeats the price of the top block, because the requirement "Recipe value" asks for the full calculation in 1 place.
 - A fact of an area does not show on the page of an item, for example the condition that opens the area.
 
 ### Self-review
@@ -157,7 +157,7 @@ The blocks, in order. A block or a line with no data does not show.
    - The materials as item tiles, with the quantity badge for 2 or more.
    - 1 row of stats: "Synth. Lv." (the level format), "Synthesis cost", "Selling price", "Material cost", "Added value" (green when above 0, red when below 0) and "Value per cost" (money per synthesis cost). When the added value is `null`, the row shows only "Synth. Lv.", "Synthesis cost" and "Material cost".
    - "Counted as 0 (no price)": the links to the materials with no price.
-   - The unlock lines: "Recipe set" (only when its name is not the name of the item), "Taught by" (the face of the teacher, the name and the friendship heart when the level is above 0), "Research" (the name of the research, with the name of the researcher), and "Event" (the label of the story event; the ID never shows).
+   - The unlock lines: "Recipe set" (only when its name is not the name of the item), "Taught by" (the face of the teacher, the name and the friendship heart when the level is above 0), "Research" (the research, with its icon by the rule of "Icons"; the researchers show only on the research detail), and "Event" (the label of the story event; the ID never shows).
 5. **How to get**, with these groups in order: "Gather" (each area with its zone name under it and the rate, the highest rate first, and no rate for 100%), "Monster drops" (monster tiles, no badge), "Special spots" (each zone whose special spot items hold the item), and "Farm" (the growing area).
 6. **Used in:** the tiles of each item whose recipe uses the item as a material, with no badge.
 

@@ -11,17 +11,20 @@ interface Props {
   name?: string;
   /** The key of the category page that the page belongs to, for the header. */
   category?: string;
+  /** False on the About page, which shows the notice in its own section. */
+  showLegal?: boolean;
 }
 
-const { name, category } = Astro.props;
+const { name, category, showLegal = true } = Astro.props;
 const siteName = 'Westwald Archive';
+const title = name ? `${name} · ${siteName}` : siteName;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{name === undefined ? siteName : `${name} · ${siteName}`}</title>
+    <title>{title}</title>
   </head>
   <body>
     <div class="page">
@@ -29,7 +32,7 @@ const siteName = 'Westwald Archive';
       <main>
         <slot />
       </main>
-      <Footer />
+      <Footer showLegal={showLegal} />
     </div>
     <Modal />
   </body>
