@@ -342,6 +342,37 @@ await step('no dangling links', async () => {
   ok(bad.length === 0, `no dangling or empty spots${bad.length ? ': ' + bad.slice(0, 4).join('; ') : ''}`);
 });
 
+await step('synthesis level of a craftable item', async () => {
+  for (const [name, lv] of [['Bomb', 3], ['Wheat Flour', 1], ['Maiden Armor', 11]]) {
+    const id = await page.evaluate((n) => window.DATA.items.find((i) => i.n === n)?.id, name);
+    await go(`#/items/${id}`);
+    await page.waitForSelector('.modal .syn');
+    const stat = page.locator('.modal .syn-stats .stat', { hasText: 'Synth. Lv.' });
+    ok((await stat.count()) === 1, `${name}: 1 "Synth. Lv." stat in the synthesis section`);
+    ok(((await stat.locator('.val').innerText().catch(() => '')) || '').trim() === `Lv ${lv}`, `${name}: synthesis level Lv ${lv}`);
+  }
+  // The level of each craftable item in data.js (syn.lv) equals Math.max(1, Math.floor(rank / 4)) (the rule of the README). The items of data.js carry
+  // no rank, so the test takes the rank of each item with a recipe from data/items.json, matched by item id. It fails when an item has no rank,
+  // when there are no craftable items, or when a level differs.
+  const fs = await import('node:fs');
+  const rankOf = new Map(JSON.parse(fs.readFileSync(fileURLToPath(new URL('../../data/items.json', import.meta.url)), 'utf8')).map((i) => [i.id, i.rank]));
+  const crafts = await page.evaluate(() => window.DATA.items.filter((i) => i.syn).map((i) => ({ id: i.id, lv: i.syn.lv })));
+  const wrong = crafts.filter((c) => !Number.isInteger(rankOf.get(c.id)) || c.lv !== Math.max(1, Math.floor(rankOf.get(c.id) / 4)));
+  ok(crafts.length > 0 && wrong.length === 0, `each of the ${crafts.length} craftable items has the level of its rank${wrong.length ? ': ' + wrong.slice(0, 4).map((c) => `${c.id} lv ${c.lv} rank ${rankOf.get(c.id)}`).join('; ') : ''}`);
+});
+
+await step('Master Puni has its zone', async () => {
+  await go('#/monsters/CHARACTER_PUNI7');
+  await page.waitForSelector('.modal .top');
+  const found = page.locator('.modal a.link[href="#/areas/EXPL_AREA_PLAIN"]');
+  ok((await found.count()) === 1, 'Master Puni: Found in the zone Ferien Plains');
+  ok(/Lv 98/.test(await found.innerText().catch(() => '')), 'Master Puni: level 98');
+  await go('#/areas/EXPL_AREA_PLAIN');
+  await page.waitForSelector('.modal .top, .modal .panel');
+  ok((await page.locator('.modal a.mini[href="#/monsters/CHARACTER_PUNI7"]').count()) === 1, 'the zone Ferien Plains lists Master Puni as a boss');
+  await closeEsc();
+});
+
 await step('monsters page and modal', async () => {
   await navTo('Monsters');
   await page.waitForSelector('#grid .cell');
