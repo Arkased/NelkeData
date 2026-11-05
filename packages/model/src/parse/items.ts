@@ -1,15 +1,7 @@
 import { z } from 'zod';
-import { Element, ItemCategory, Shop, ShopFlag } from '../enums.js';
+import { CATEGORY_NAMES, Element, ItemCategory, Shop, ShopFlag } from '../enums.js';
 import type { Messages } from './messages.js';
 import { enumOrUnknown, type ReadTable } from './xml.js';
-
-const CATEGORY_NAMES: Record<ItemCategory, string> = {
-  [ItemCategory.Material]: 'Material',
-  [ItemCategory.Construction]: 'Construction',
-  [ItemCategory.Merchandise]: 'Merchandise',
-  [ItemCategory.Element]: 'Element',
-  [ItemCategory.BattleItem]: 'Battle Item',
-};
 
 const SHOPS: readonly [ShopFlag, Shop][] = [
   [ShopFlag.General, Shop.General],

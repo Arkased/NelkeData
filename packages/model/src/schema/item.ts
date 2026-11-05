@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { Element, Shop } from '../enums.js';
+import { CATEGORY_NAMES, Element, Shop } from '../enums.js';
 import { idSchema, slugSchema } from './common.js';
 
 /** The schema of an item. */
@@ -11,7 +11,7 @@ export const itemSchema = z.strictObject({
   /** A file name in data/icons/128/ and in data/icons/64/. */
   icon: z.string().nullable(),
   /** The English name of the category. */
-  category: z.string(),
+  category: z.enum(Object.values(CATEGORY_NAMES)),
   /** The English name of the sub-category. */
   subCategory: z.string().nullable(),
   rank: z.number(),

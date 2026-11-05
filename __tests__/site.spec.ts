@@ -1,9 +1,9 @@
 import path from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
-import { isPlaceholder, readData, Shop } from '@nelke/model';
+import { CATEGORY_NAMES, isPlaceholder, ItemCategory, readData, Shop } from '@nelke/model';
 import { BASE_PATH } from '../packages/site/src/base.js';
 import { formatNumber as format } from '../packages/site/src/format.js';
-import { ItemCategory } from '../packages/site/src/item-category.js';
+import { NAV_BREAKPOINT } from '../packages/site/src/nav.js';
 import { StatTone } from '../packages/site/src/stat-tone.js';
 
 const WIDTHS = [360, 768, 1280, 1920];
@@ -21,8 +21,7 @@ const recipeOf = (name: string) => {
   if (!recipe) throw new Error(`No recipe for ${name}`);
   return recipe;
 };
-/** The Merchandise category as the plain string that `Item.category` holds. */
-const MERCHANDISE: string = ItemCategory.Merchandise;
+const MERCHANDISE = CATEGORY_NAMES[ItemCategory.Merchandise];
 const itemPath = (name: string) => `items/${itemByName(name).slug}/`;
 const stat = (page: Page, id: string) => page.locator(`[data-stat="${id}"] .val`);
 
@@ -56,21 +55,6 @@ for (const width of WIDTHS) {
       await expect(page.locator('[data-grid] a.mini')).toHaveCount(data.items.length);
     });
 
-    test('header has only the Items link, behind the menu button on a narrow window', async ({ page }) => {
-      await page.goto('./');
-      const nav = page.getByRole('navigation', { name: 'Pages' });
-      const menu = page.getByRole('button', { name: 'Menu' });
-      // The button and the links are 2 forms of the same navigation: exactly 1 of the 2 shows without a click.
-      if (await menu.isVisible()) {
-        await expect(nav).toBeHidden();
-        await menu.click();
-      } else {
-        await expect(nav).toBeVisible();
-      }
-      await expect(nav.getByRole('link')).toHaveText(['Items']);
-      await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
-    });
-
     test('every grid cell shows the name of its item under the icon', async ({ page }) => {
       await page.goto('./');
       const names = await page.locator('[data-grid] a.mini .nm').allTextContents();
@@ -94,20 +78,20 @@ for (const width of WIDTHS) {
     test('2 filters combine and stay in the URL', async ({ page }) => {
       await page.goto('./');
       await openFilters(page);
-      await page.getByRole('button', { name: ItemCategory.Merchandise }).click();
+      await page.getByRole('button', { name: MERCHANDISE }).click();
       await page.getByRole('button', { name: 'Weapon/Armor Shop' }).click();
       const expected = data.items.filter((i) => i.category === MERCHANDISE && i.shops.includes(Shop.Weapon));
       expect(expected.length).toBeGreaterThan(0);
       await expect(page.locator('[data-grid] a.mini:visible')).toHaveCount(expected.length);
-      expect(new URL(page.url()).search).toBe(`?cat=${ItemCategory.Merchandise}&shop=${Shop.Weapon}`);
+      expect(new URL(page.url()).search).toBe(`?cat=${MERCHANDISE}&shop=${Shop.Weapon}`);
       await page.reload();
       await openFilters(page);
       await expect(page.locator('[data-grid] a.mini:visible')).toHaveCount(expected.length);
-      await expect(page.getByRole('button', { name: ItemCategory.Merchandise })).toHaveAttribute('aria-pressed', 'true');
+      await expect(page.getByRole('button', { name: MERCHANDISE })).toHaveAttribute('aria-pressed', 'true');
     });
 
     test('a filter with no match shows the empty state with a clear button', async ({ page }) => {
-      await page.goto(`./?cat=${ItemCategory.Construction}&shop=${Shop.General}`);
+      await page.goto(`./?cat=${CATEGORY_NAMES[ItemCategory.Construction]}&shop=${Shop.General}`);
       await expect(page.getByText('Nothing matches the filters.')).toBeVisible();
       await page.locator('[data-empty]').getByRole('button', { name: 'Clear filters' }).click();
       await expect(page.locator('[data-grid] a.mini:visible')).toHaveCount(data.items.length);
@@ -154,6 +138,20 @@ for (const width of WIDTHS) {
     });
 
     test('Esc before the load of a link in the modal ends leaves the list, with no item URL', async ({ page }) => {
+      // The handler of a load runs after the page reads the text of the response; the URL is recorded in the task after that run.
+      await page.addInitScript(() => {
+        const { value: read } = Object.getOwnPropertyDescriptor(Response.prototype, 'text') as {
+          value: (this: Response) => Promise<string>;
+        };
+        Response.prototype.text = async function text(this: Response) {
+          const result = await read.call(this);
+          setTimeout(() => {
+            (window as unknown as { handledUrls: string[] }).handledUrls.push(this.url);
+          });
+          return result;
+        };
+        (window as unknown as { handledUrls: string[] }).handledUrls = [];
+      });
       await page.goto('./');
       await page.getByRole('link', { name: 'Iron Board', exact: true }).click();
       const dialog = page.getByRole('dialog');
@@ -176,8 +174,10 @@ for (const width of WIDTHS) {
       const loaded = page.waitForResponse(materialPage);
       release();
       await loaded;
-      // 2 frames let the handler of the finished load run.
-      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      // The handler of the cancelled load has ended when the page recorded the URL of its response.
+      await expect
+        .poll(() => page.evaluate(() => (window as unknown as { handledUrls: string[] }).handledUrls.map((url) => new URL(url).pathname)))
+        .toContain(`${BASE_PATH}items/${material.slug}/`);
       await expect(dialog).toBeHidden();
       expect(new URL(page.url()).pathname).toBe(BASE_PATH);
       await expect(page.locator('.page')).not.toHaveAttribute('inert');
@@ -220,6 +220,33 @@ for (const width of WIDTHS) {
     expect(overflow).toBeLessThanOrEqual(0);
   });
 }
+
+test.describe('header', () => {
+  const HEIGHT = 900;
+
+  test('below the breakpoint the Items link is behind the Menu button, until a click', async ({ page }) => {
+    await page.setViewportSize({ width: NAV_BREAKPOINT - 1, height: HEIGHT });
+    await page.goto('./');
+    const nav = page.getByRole('navigation', { name: 'Pages' });
+    const menu = page.getByRole('button', { name: 'Menu' });
+    await expect(menu).toBeVisible();
+    await expect(nav).toBeHidden();
+    await menu.click();
+    await expect(nav).toBeVisible();
+    await expect(nav.getByRole('link')).toHaveText(['Items']);
+    await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
+  });
+
+  test('at the breakpoint the Items link shows and there is no Menu button', async ({ page }) => {
+    await page.setViewportSize({ width: NAV_BREAKPOINT, height: HEIGHT });
+    await page.goto('./');
+    const nav = page.getByRole('navigation', { name: 'Pages' });
+    await expect(page.getByRole('button', { name: 'Menu' })).toBeHidden();
+    await expect(nav).toBeVisible();
+    await expect(nav.getByRole('link')).toHaveText(['Items']);
+    await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
+  });
+});
 
 test.describe('item pages', () => {
   test('a craftable item with no price shows Synth. Lv., the cost, the material cost and the materials with quantities', async ({

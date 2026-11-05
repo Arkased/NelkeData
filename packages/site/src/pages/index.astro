@@ -1,5 +1,5 @@
 ---
-import { Shop } from '@nelke/model';
+import { CATEGORY_NAMES, Shop } from '@nelke/model';
 import Filters from '../components/Filters.astro';
 import IconGrid from '../components/IconGrid.astro';
 import Tile from '../components/Tile.astro';
@@ -12,7 +12,11 @@ import { UiIcon } from '../ui-icon';
 
 const shops = Object.values(Shop).filter((shop) => data.items.some((item) => item.shops.includes(shop)));
 const groups = [
-  { param: 'cat', label: 'Category', options: ITEM_CATEGORIES.map((c) => ({ value: c.name, label: c.name, icon: c.icon })) },
+  {
+    param: 'cat',
+    label: 'Category',
+    options: ITEM_CATEGORIES.map((c) => ({ value: CATEGORY_NAMES[c.category], label: CATEGORY_NAMES[c.category], icon: c.icon })),
+  },
   { param: 'shop', label: 'Sold at', options: shops.map((shop) => ({ value: shop, label: SHOPS[shop].label, icon: SHOPS[shop].icon })) },
   { param: 'craft', label: 'Synthesis', options: [{ value: '1', label: 'Craftable', icon: UiIcon.CategoryCraftable }] },
 ];
@@ -29,7 +33,7 @@ const groups = [
         icon={item.icon}
         attrs={{
           'data-filterable': '',
-          'data-cat': filterCategoryOf(item),
+          'data-cat': CATEGORY_NAMES[filterCategoryOf(item)],
           'data-shop': item.shops.join(' '),
           ...(item.recipeId === null ? {} : { 'data-craft': '1' }),
         }}

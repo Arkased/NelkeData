@@ -85,13 +85,17 @@ if (overlay && modal && body && page) {
     const link = event.target.closest<HTMLAnchorElement>('a[data-modal]');
     if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    show(link.href)
-      .then((shown) => {
-        if (!shown) return;
+    const shown = show(link.href);
+    // show() has counted this load already, so a later count means that Esc or a newer load replaced it.
+    const mine = request;
+    shown
+      .then((isShown) => {
+        if (!isShown) return;
         depth += 1;
         history.pushState({ depth }, '', link.href);
       })
       .catch((error: unknown) => {
+        if (mine !== request) return;
         console.error(error);
         location.href = link.href;
       });
@@ -106,7 +110,10 @@ if (overlay && modal && body && page) {
     depth = typeof state === 'object' && state !== null && 'depth' in state && typeof state.depth === 'number' ? state.depth : 0;
     if (location.pathname === entryPath) hide();
     else {
-      show(location.href).catch((error: unknown) => {
+      const shown = show(location.href);
+      const mine = request;
+      shown.catch((error: unknown) => {
+        if (mine !== request) return;
         console.error(error);
         location.reload();
       });

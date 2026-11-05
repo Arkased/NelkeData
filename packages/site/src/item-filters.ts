@@ -1,16 +1,15 @@
-import { Shop, type Item } from '@nelke/model';
-import { ItemCategory } from './item-category.js';
+import { CATEGORY_NAMES, ItemCategory, Shop, type Item } from '@nelke/model';
 import { UiIcon } from './ui-icon.js';
 
-/** The item categories of the game by the name that the data holds. */
-const CATEGORY_BY_NAME = new Map<string, ItemCategory>(Object.values(ItemCategory).map((c) => [c, c]));
+/** The reverse of CATEGORY_NAMES: the item category of the game by the name that the data holds. */
+const CATEGORY_BY_NAME = new Map<string, ItemCategory>(Object.values(ItemCategory).map((c) => [CATEGORY_NAMES[c], c]));
 
 /** The item categories of the filter, in the order of the game, with the icon of the game category. */
-export const ITEM_CATEGORIES: readonly { name: ItemCategory; icon: UiIcon }[] = [
-  { name: ItemCategory.Material, icon: UiIcon.CategoryMaterial },
-  { name: ItemCategory.Merchandise, icon: UiIcon.CategoryMerchandise },
-  { name: ItemCategory.BattleItem, icon: UiIcon.CategoryBattleItem },
-  { name: ItemCategory.Construction, icon: UiIcon.CategoryConstruction },
+export const ITEM_CATEGORIES: readonly { category: ItemCategory; icon: UiIcon }[] = [
+  { category: ItemCategory.Material, icon: UiIcon.CategoryMaterial },
+  { category: ItemCategory.Merchandise, icon: UiIcon.CategoryMerchandise },
+  { category: ItemCategory.BattleItem, icon: UiIcon.CategoryBattleItem },
+  { category: ItemCategory.Construction, icon: UiIcon.CategoryConstruction },
 ];
 
 /** The name and the icon of each shop. */
@@ -43,7 +42,7 @@ export function filterCategoryOf(item: Item): ItemCategory {
  * @sideEffects none
  */
 export function categoryIconOf(item: Item): UiIcon {
-  const category = ITEM_CATEGORIES.find((c) => c.name === filterCategoryOf(item));
+  const category = ITEM_CATEGORIES.find((c) => c.category === filterCategoryOf(item));
   if (category === undefined) throw new Error(`Unknown item category ${item.category}`);
   return category.icon;
 }

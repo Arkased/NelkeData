@@ -7,6 +7,15 @@ export enum ItemCategory {
   BattleItem = '7',
 }
 
+/** The English name of each item category, as `Item.category` holds it. */
+export const CATEGORY_NAMES: Record<ItemCategory, string> = {
+  [ItemCategory.Material]: 'Material',
+  [ItemCategory.Construction]: 'Construction',
+  [ItemCategory.Merchandise]: 'Merchandise',
+  [ItemCategory.Element]: 'Element',
+  [ItemCategory.BattleItem]: 'Battle Item',
+};
+
 /** The character category ids of character.xml. */
 export enum CharacterCategory {
   MainA = '0',

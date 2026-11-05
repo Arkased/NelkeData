@@ -1,5 +1,11 @@
 import { UiIcon } from './ui-icon.js';
 
+/**
+ * The window width in px from which the header shows the links of the pages; below it, they are behind the Menu button.
+ * CSS cannot read a constant in a media query: `Header.astro` has the same value as `max-width: NAV_BREAKPOINT - 1`.
+ */
+export const NAV_BREAKPOINT = 600;
+
 /** The category pages of the site, as the header marks the current one. */
 export enum CategoryKey {
   Items = 'items',

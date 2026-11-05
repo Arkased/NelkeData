@@ -64,6 +64,7 @@ The fields of each kind are the facts that the workbook shows now, as typed valu
 
 - A number is a number, never text. A rate is a percent number with the value of the game, for example `12.5`.
 - A fixed set of names (a shop, an element, a stat) is a string enum of `packages/model/src/enums.ts`.
+- `Item.category` is one of the values of `CATEGORY_NAMES` (`Record<ItemCategory, string>` in `packages/model/src/enums.ts`, exported from the index of `@nelke/model` with `ItemCategory`). The item schema accepts only these names, so a category that the game adds fails the read. The site uses the same source.
 - A missing value is `null`, never `0` or `""`, when the game has no value. A value of `0` in the game stays `0`.
 - The recipe value fields of a recipe: `inputCost`, `addedValue` (`null` when the price of the result is 0), `addedValuePerCost` (`null` when `addedValue` is `null`) and `unpricedItemIds`. They have the values that the workbook shows now.
 - `Recipe.synthesisLevel` is the minimum alchemy level: `Math.max(1, Math.floor(rank / 4))`, with the `rank` of the result item. The rule is in `README.md`, section "Synthesis level". The workbook does not show it.

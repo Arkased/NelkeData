@@ -34,12 +34,11 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
 | `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`) and `ItemDetail`. |
 | `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page. |
-| `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. |
+| `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |
 | `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |
 | `src/ui-icon.ts` | `UiIcon`: the names of the UI icons of the game that carry data. |
 | `src/format.ts` | `formatNumber` and `formatRate`: the number and percent text of the site. |
-| `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. |
-| `src/item-category.ts` | `ItemCategory`: the item categories of the game data. |
+| `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. It uses `ItemCategory` and `CATEGORY_NAMES` of `@nelke/model`, with 1 reverse lookup from the name to the category. |
 | `src/stat-tone.ts` | `StatTone`: the tones (good, bad) of the value of a stat. |
 | `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) as PNG files. |
 | `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |
