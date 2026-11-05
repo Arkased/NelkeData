@@ -7,6 +7,7 @@ import { data } from '../data';
 import { EntityKind } from '../entity';
 import { filterCategoryOf, ITEM_CATEGORIES, SHOPS } from '../item-filters';
 import Base from '../layouts/Base.astro';
+import { CategoryKey } from '../nav';
 import { UiIcon } from '../ui-icon';
 
 const shops = Object.values(Shop).filter((shop) => data.items.some((item) => item.shops.includes(shop)));
@@ -17,7 +18,7 @@ const groups = [
 ];
 ---
 
-<Base category="items">
+<Base category={CategoryKey.Items}>
   <Filters groups={groups} />
   <IconGrid>
     {data.items.map((item) => (

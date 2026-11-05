@@ -4,6 +4,7 @@ import EntityPage from '../../components/EntityPage.astro';
 import ItemDetail from '../../components/ItemDetail.astro';
 import { data } from '../../data';
 import Base from '../../layouts/Base.astro';
+import { CategoryKey } from '../../nav';
 
 /** Returns the page of each item. */
 export function getStaticPaths() {
@@ -17,7 +18,7 @@ interface Props {
 const { item } = Astro.props;
 ---
 
-<Base name={item.name} category="items">
+<Base name={item.name} category={CategoryKey.Items}>
   <EntityPage>
     <ItemDetail item={item} />
   </EntityPage>

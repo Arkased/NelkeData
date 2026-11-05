@@ -1,10 +1,12 @@
 ---
-import { Element, type Item } from '@nelke/model';
-import { areaById, characterById, data, itemById, monsterById, recipeById, recipeSetById, researchById, zoneById } from '../data';
+import { Element, type Item, type Research } from '@nelke/model';
+import { areaById, characterById, itemById, monsterById, recipeById, recipeSetById, researchById, zoneById } from '../data';
 import { EntityKind, entityUrl } from '../entity';
 import { formatNumber, formatRate } from '../format';
 import { entityIconUrl, uiIconUrl } from '../icons';
 import { categoryIconOf, SHOPS } from '../item-filters';
+import { StatTone } from '../stat-tone';
+import { UiIcon } from '../ui-icon';
 import EntityLink from './EntityLink.astro';
 import Friendship from './Friendship.astro';
 import Group from './Group.astro';
@@ -22,6 +24,14 @@ interface Props {
 
 const { item } = Astro.props;
 
+/** The item of each element, by ID. */
+const ELEMENT_ITEM_IDS: Record<Element, string> = {
+  [Element.Fire]: 'ITEM_MAT_ELEMENT_FIRE',
+  [Element.Water]: 'ITEM_MAT_ELEMENT_WATER',
+  [Element.Wind]: 'ITEM_MAT_ELEMENT_AIR',
+  [Element.Earth]: 'ITEM_MAT_ELEMENT_SOIL',
+};
+
 function required<T>(row: T | undefined, what: string): T {
   if (row === undefined) throw new Error(`${item.id}: missing ${what}`);
   return row;
@@ -35,21 +45,33 @@ const categoryText =
       : `${item.category} · ${item.subCategory}`;
 
 const elements = Object.values(Element)
-  .map((element) => ({ value: item.reduce[element] ?? 0, item: data.items.find((i) => i.name === `${element} Element`) }))
-  .filter((e) => e.value > 0 && e.item !== undefined);
+  .map((element) => ({
+    value: item.reduce[element] ?? 0,
+    target: required(itemById.get(ELEMENT_ITEM_IDS[element]), `${element} element item`),
+  }))
+  .filter((e) => e.value > 0);
+
+/**
+ * Returns the icon file of a research by the rule of the design: the icon of its output. The data model holds no prize item and no bonus item, so the output is the first item of the prize recipe set.
+ * @param research - the research
+ * @returns the file name in `data/icons/128/`, or null when the research has no output; the link then shows the research icon of the game
+ */
+function researchIconOf(research: Research): string | null {
+  const set = research.recipeSetId === null ? undefined : recipeSetById.get(research.recipeSetId);
+  const firstRecipe = recipeById.get(set?.recipeIds[0] ?? '');
+  return itemById.get(firstRecipe?.resultItemId ?? '')?.icon ?? null;
+}
 
 const recipe = item.recipeId === null ? null : required(recipeById.get(item.recipeId), 'recipe');
 const unlocks = (recipe?.recipeSetIds ?? []).map((id) => {
   const set = required(recipeSetById.get(id), 'recipe set');
   const research = set.researchId === null ? null : required(researchById.get(set.researchId), 'research');
-  const firstRecipe = recipeById.get(set.recipeIds[0] ?? '');
   return {
     set,
     showSetName: set.name !== item.name,
     teacher: set.teacherId === null ? null : required(characterById.get(set.teacherId), 'teacher'),
     research,
-    researcher: research?.researcherId == null ? null : characterById.get(research.researcherId),
-    researchIcon: itemById.get(firstRecipe?.resultItemId ?? '')?.icon ?? null,
+    researchIcon: research === null ? null : researchIconOf(research),
     event: set.unlockEvent !== null && set.unlockEvent.label !== set.unlockEvent.id ? set.unlockEvent.label : null,
   };
 });
@@ -99,7 +121,7 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
         <small class="cap">Reduces into</small>
         <span class="els">
           {elements.map((element) => {
-            const target = required(element.item, 'element item');
+            const target = element.target;
             const href = entityUrl(EntityKind.Item, target.slug);
             return (
               <a class="el" href={href} data-modal title={target.name}>
@@ -141,7 +163,11 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
           <Money amount={recipe.inputCost} />
         </Stat>
         {recipe.addedValue !== null && (
-          <Stat label="Added value" id="added-value" tone={recipe.addedValue > 0 ? 'good' : recipe.addedValue < 0 ? 'bad' : undefined}>
+          <Stat
+            label="Added value"
+            id="added-value"
+            tone={recipe.addedValue > 0 ? StatTone.Good : recipe.addedValue < 0 ? StatTone.Bad : undefined}
+          >
             <Money amount={recipe.addedValue} />
           </Stat>
         )}
@@ -188,8 +214,13 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
                 <div class="ul">
                   <small class="cap">Research</small>
                   <span class="uv wrap">
-                    <EntityLink kind={EntityKind.Research} slug={u.research.slug} name={u.research.name} icon={u.researchIcon} />
-                    {u.researcher != null && <span class="note">{u.researcher.name}</span>}
+                    <EntityLink
+                      kind={EntityKind.Research}
+                      slug={u.research.slug}
+                      name={u.research.name}
+                      icon={u.researchIcon}
+                      uiIcon={UiIcon.CategoryResearch}
+                    />
                   </span>
                 </div>
               )}

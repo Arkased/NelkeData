@@ -1,4 +1,6 @@
 ---
+import type { StatTone } from '../stat-tone';
+
 /** The props of a stat. */
 interface Props {
   /** The small label above the value. */
@@ -6,7 +8,7 @@ interface Props {
   /** A name for the UI test to find the stat. */
   id: string;
   /** A tone for the value: `good` is green, `bad` is red. */
-  tone?: 'good' | 'bad';
+  tone?: StatTone;
 }
 
 const { label, id, tone } = Astro.props;

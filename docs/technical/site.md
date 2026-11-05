@@ -23,15 +23,25 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `astro.config.ts` | `site` and `base` (both from `src/base.ts`), `trailingSlash` and the static output. |
 | `src/url.ts` | `pageUrl(path)`: the URL of a page under the base path. The only place that adds the base path. |
 | `src/styles/global.css` | The CSS custom properties (colors, spacing, text sizes, radii), `scrollbar-gutter: stable` on the root element, and the base rules. |
-| `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS, the header, the `<main>` slot and the footer. |
-| `src/components/Header.astro` | The site name and the tagline. |
+| `src/styles/detail.css` | The CSS of the entity detail panel (top block, stats, groups), which the entity page and the modal share. |
+| `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS and `detail.css`, the header, the `<main>` slot, the footer and the modal. |
+| `src/components/Header.astro` | The site name, the tagline, the links to the category pages (current one marked) and the menu button below 600 px. |
 | `src/components/Footer.astro` | The legal notice and the link "About" to `pageUrl('about/')`. A prop of the layout leaves both out on the About page. |
 | `src/components/Section.astro` | 1 section: the prop `title` as a section title (`h2.section-title`), then the default slot for the content. |
 | `src/pages/index.astro` | The root page. |
 | `src/pages/about.astro` | The About page at `/NelkeData/about/`, with the title `About · Westwald Archive`. 1 panel with the sections Contact, Source and Legal. The legal notice text is 1 constant, which the footer and this page share. |
 | `src/data.ts` | `readData()` of `@nelke/model` on the `data/` folder of the repo, 1 time for each build, and the lookups by ID. |
 | `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
-| `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `Tile`, `Section`, `Stat`) and `ItemDetail`. |
+| `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`) and `ItemDetail`. |
+| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page. |
+| `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. |
+| `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |
+| `src/ui-icon.ts` | `UiIcon`: the names of the UI icons of the game that carry data. |
+| `src/format.ts` | `formatNumber` and `formatRate`: the number and percent text of the site. |
+| `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. |
+| `src/item-category.ts` | `ItemCategory`: the item categories of the game data. |
+| `src/stat-tone.ts` | `StatTone`: the tones (good, bad) of the value of a stat. |
+| `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) as PNG files. |
 | `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |
 | `scripts/check-links.ts` | The link check of `dist/`. |
 | `../../__tests__/site.spec.ts` | The UI test (Playwright). |

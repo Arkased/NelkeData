@@ -26,11 +26,15 @@
   --ink-soft: #7d5a3a;
   --cream: #fff6d8;
   --cream-2: #fffbec;
+  --cream-3: #fff0c4;
+  --white: #fff;
   --line: #d9bc83;
   --brown: #8a5a3a;
   --brown-dark: #5a3418;
   --gold: #f3b61f;
   --gold-soft: #ffe28a;
+  --gold-hover: rgba(243, 182, 31, 0.28);
+  --scrim: rgba(40, 24, 10, 0.55);
   --warm: #a0561b;
   --page: #f1e4c0;
 

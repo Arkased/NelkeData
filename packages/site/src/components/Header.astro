@@ -1,12 +1,12 @@
 ---
 import { uiIconUrl } from '../icons';
-import { CATEGORY_LINKS } from '../nav';
+import { CATEGORY_LINKS, type CategoryKey } from '../nav';
 import { pageUrl } from '../url';
 
 /** The props of the header. */
 interface Props {
   /** The key of the category page that the page belongs to; its link is marked as the current one. */
-  category?: string;
+  category?: CategoryKey;
 }
 
 const { category } = Astro.props;

@@ -104,7 +104,7 @@
 }
 a.el:hover,
 a.el:focus-visible {
-  background: rgba(243, 182, 31, 0.28);
+  background: var(--gold-hover);
 }
 .desc {
   background: var(--cream-2);
@@ -191,11 +191,6 @@ a.el:focus-visible {
   margin: 0 var(--s1);
   font-size: var(--text-small);
   color: var(--ink-soft);
-}
-.note {
-  font-size: var(--text-small);
-  color: var(--ink-soft);
-  font-weight: 700;
 }
 .unlock {
   display: grid;

@@ -36,12 +36,13 @@ if (overlay && modal && body && page) {
   /**
    * Shows the detail of an entity page in the modal, with the close button next to its title.
    * @param url - the URL of the entity page
+   * @returns false when a newer load or a close replaced this load, so nothing was shown
    */
-  const show = async (url: string): Promise<void> => {
+  const show = async (url: string): Promise<boolean> => {
     request += 1;
     const mine = request;
     const loaded = await load(url);
-    if (mine !== request) return;
+    if (mine !== request) return false;
     if (overlay.hidden) opener = document.activeElement;
     body.innerHTML = loaded.html;
     const head = body.querySelector('.mhead');
@@ -53,6 +54,7 @@ if (overlay && modal && body && page) {
     document.body.style.overflow = 'hidden';
     document.title = loaded.title;
     modal.focus({ preventScroll: true });
+    return true;
   };
 
   const hide = (): void => {
@@ -68,6 +70,8 @@ if (overlay && modal && body && page) {
   };
 
   const close = (): void => {
+    // A load that is still running must not show or push after the close, also while the history jump is pending.
+    request += 1;
     if (depth > 0) history.go(-depth);
     else hide();
   };
@@ -82,7 +86,8 @@ if (overlay && modal && body && page) {
     if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     show(link.href)
-      .then(() => {
+      .then((shown) => {
+        if (!shown) return;
         depth += 1;
         history.pushState({ depth }, '', link.href);
       })

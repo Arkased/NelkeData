@@ -1,6 +1,12 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": { "rootDir": "..", "outDir": "dist", "lib": ["ES2023", "DOM"] },
-  "include": ["*.ts", "../packages/site/src/base.ts"],
+  "include": [
+    "*.ts",
+    "../packages/site/src/base.ts",
+    "../packages/site/src/format.ts",
+    "../packages/site/src/item-category.ts",
+    "../packages/site/src/stat-tone.ts"
+  ],
   "references": [{ "path": "../packages/model" }]
 }

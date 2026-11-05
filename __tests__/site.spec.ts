@@ -2,10 +2,11 @@ import path from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
 import { isPlaceholder, readData, Shop } from '@nelke/model';
 import { BASE_PATH } from '../packages/site/src/base.js';
+import { formatNumber as format } from '../packages/site/src/format.js';
+import { ItemCategory } from '../packages/site/src/item-category.js';
+import { StatTone } from '../packages/site/src/stat-tone.js';
 
 const WIDTHS = [360, 768, 1280, 1920];
-/** The width from which the filter groups and the category links show with no button. */
-const NARROW_BELOW = 600;
 const LEGAL_NOTICE =
   'Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of Nelke & the Legendary Alchemists.';
 
@@ -20,8 +21,8 @@ const recipeOf = (name: string) => {
   if (!recipe) throw new Error(`No recipe for ${name}`);
   return recipe;
 };
-const NUMBER_FORMAT = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
-const format = (n: number) => NUMBER_FORMAT.format(Math.round(n * 10) / 10);
+/** The Merchandise category as the plain string that `Item.category` holds. */
+const MERCHANDISE: string = ItemCategory.Merchandise;
 const itemPath = (name: string) => `items/${itemByName(name).slug}/`;
 const stat = (page: Page, id: string) => page.locator(`[data-stat="${id}"] .val`);
 
@@ -59,12 +60,12 @@ for (const width of WIDTHS) {
       await page.goto('./');
       const nav = page.getByRole('navigation', { name: 'Pages' });
       const menu = page.getByRole('button', { name: 'Menu' });
-      if (width < NARROW_BELOW) {
-        await expect(menu).toBeVisible();
+      // The button and the links are 2 forms of the same navigation: exactly 1 of the 2 shows without a click.
+      if (await menu.isVisible()) {
         await expect(nav).toBeHidden();
         await menu.click();
       } else {
-        await expect(menu).toBeHidden();
+        await expect(nav).toBeVisible();
       }
       await expect(nav.getByRole('link')).toHaveText(['Items']);
       await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
@@ -93,20 +94,20 @@ for (const width of WIDTHS) {
     test('2 filters combine and stay in the URL', async ({ page }) => {
       await page.goto('./');
       await openFilters(page);
-      await page.getByRole('button', { name: 'Merchandise' }).click();
+      await page.getByRole('button', { name: ItemCategory.Merchandise }).click();
       await page.getByRole('button', { name: 'Weapon/Armor Shop' }).click();
-      const expected = data.items.filter((i) => i.category === 'Merchandise' && i.shops.includes(Shop.Weapon));
+      const expected = data.items.filter((i) => i.category === MERCHANDISE && i.shops.includes(Shop.Weapon));
       expect(expected.length).toBeGreaterThan(0);
       await expect(page.locator('[data-grid] a.mini:visible')).toHaveCount(expected.length);
-      expect(new URL(page.url()).search).toBe(`?cat=Merchandise&shop=${Shop.Weapon}`);
+      expect(new URL(page.url()).search).toBe(`?cat=${ItemCategory.Merchandise}&shop=${Shop.Weapon}`);
       await page.reload();
       await openFilters(page);
       await expect(page.locator('[data-grid] a.mini:visible')).toHaveCount(expected.length);
-      await expect(page.getByRole('button', { name: 'Merchandise' })).toHaveAttribute('aria-pressed', 'true');
+      await expect(page.getByRole('button', { name: ItemCategory.Merchandise })).toHaveAttribute('aria-pressed', 'true');
     });
 
     test('a filter with no match shows the empty state with a clear button', async ({ page }) => {
-      await page.goto(`./?cat=Construction&shop=${Shop.General}`);
+      await page.goto(`./?cat=${ItemCategory.Construction}&shop=${Shop.General}`);
       await expect(page.getByText('Nothing matches the filters.')).toBeVisible();
       await page.locator('[data-empty]').getByRole('button', { name: 'Clear filters' }).click();
       await expect(page.locator('[data-grid] a.mini:visible')).toHaveCount(data.items.length);
@@ -150,6 +151,36 @@ for (const width of WIDTHS) {
       await expect(dialog.getByRole('heading', { name: 'Iron Board', level: 1 })).toBeVisible();
       await page.goBack();
       await expect(dialog).toBeHidden();
+    });
+
+    test('Esc before the load of a link in the modal ends leaves the list, with no item URL', async ({ page }) => {
+      await page.goto('./');
+      await page.getByRole('link', { name: 'Iron Board', exact: true }).click();
+      const dialog = page.getByRole('dialog');
+      await expect(dialog).toBeVisible();
+      const material = itemByName(data.items.find((i) => i.id === recipeOf('Iron Board').materials[0]?.itemId)?.name ?? '');
+      const materialPage = new RegExp(`/items/${material.slug}/$`);
+      let release!: () => void;
+      const gate = new Promise<void>((resolve) => {
+        release = resolve;
+      });
+      await page.route(materialPage, async (route) => {
+        await gate;
+        await route.continue();
+      });
+      await dialog.locator('[data-section="synthesis"] a.mini', { hasText: material.name }).first().click();
+      await page.keyboard.press('Escape');
+      await expect(dialog).toBeHidden();
+      expect(new URL(page.url()).pathname).toBe(BASE_PATH);
+
+      const loaded = page.waitForResponse(materialPage);
+      release();
+      await loaded;
+      // 2 frames let the handler of the finished load run.
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      await expect(dialog).toBeHidden();
+      expect(new URL(page.url()).pathname).toBe(BASE_PATH);
+      await expect(page.locator('.page')).not.toHaveAttribute('inert');
     });
 
     test('a craftable item page has the Synthesis section and no horizontal scroll', async ({ page }) => {
@@ -236,7 +267,7 @@ test.describe('item pages', () => {
 
   test('a loss shows the added value in red and a research recipe shows the research and the unpriced materials', async ({ page }) => {
     await page.goto(itemPath('Dark Water'));
-    await expect(page.locator('[data-stat="added-value"]')).toHaveClass(/bad/);
+    await expect(page.locator('[data-stat="added-value"]')).toHaveClass(new RegExp(StatTone.Bad));
     await page.goto(itemPath('Spruce'));
     await expect(page.locator('[data-section="unlock"]').getByText('Research', { exact: true })).toBeVisible();
     await expect(page.getByText('Counted as 0 (no price)')).toBeVisible();
@@ -294,6 +325,30 @@ test.describe('item pages', () => {
     await page.goto(`items/${item.slug}/`);
     await expect(page.locator('[data-fact="price"]')).toHaveText(format(item.price));
     await expect(page.locator('[data-fact="sold-at"] .shop')).toHaveCount(item.shops.length);
+  });
+
+  test('the top block shows the category line, the price, "Sold at", "Reduces into" and the description', async ({ page }) => {
+    const item = data.items.find(
+      (i) => i.price > 0 && i.shops.length > 0 && Object.values(i.reduce).some((v) => v > 0) && i.description !== null,
+    );
+    if (!item) throw new Error('No item with a price, shops, a reduce and a description');
+    await page.goto(`items/${item.slug}/`);
+    const top = page.locator('.top');
+    await expect(top.locator('.catline')).toContainText(item.category);
+    await expect(top.locator('[data-fact="price"]')).toHaveText(format(item.price));
+    await expect(top.locator('[data-fact="sold-at"]')).toContainText('Sold at');
+    await expect(top.locator('[data-fact="sold-at"] .shop')).toHaveCount(item.shops.length);
+    await expect(top.locator('[data-fact="reduces-into"]')).toContainText('Reduces into');
+    await expect(top.locator('[data-fact="reduces-into"] a.el')).toHaveCount(Object.values(item.reduce).filter((v) => v > 0).length);
+    await expect(page.locator('.desc')).toHaveText(item.description ?? '');
+  });
+
+  test('an item with no price, no shop and no reduce shows only the category line', async ({ page }) => {
+    const item = data.items.find((i) => i.price === 0 && i.shops.length === 0 && Object.values(i.reduce).every((v) => v === 0));
+    if (!item) throw new Error('No item without price, shops and reduce');
+    await page.goto(`items/${item.slug}/`);
+    await expect(page.locator('.top .catline')).toBeVisible();
+    await expect(page.locator('[data-fact]')).toHaveCount(0);
   });
 
   test('the values of the recipes match data/recipes.json', async ({ page }) => {
