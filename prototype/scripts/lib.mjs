@@ -5,7 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const url = 'file:///' + path.resolve(root, 'index.html').replace(/\\/g, '/');
-export const launch = () => chromium.launch({ executablePath: 'C:/Users/Kevin Liu/AppData/Local/ms-playwright/chromium-1232/chrome-win64/chrome.exe' });
+/** Starts the full Chromium that Playwright installed for its own version (no absolute path); CHROMIUM_PATH picks another file. */
+export const launch = () => chromium.launch({ executablePath: process.env.CHROMIUM_PATH || chromium.executablePath() });
 
 /** Opens a page at a width and collects the console errors in page.errs. */
 export async function newPage(browser, width) {
@@ -160,8 +161,8 @@ export function auditFn() {
     const sl = e.parentElement.getBoundingClientRect(), b = e.getBoundingClientRect();
     if (!e.parentElement.matches('.slot') || b.right > sl.right + 1 || b.bottom > sl.bottom + 1 || sl.right - b.right > 8 || sl.bottom - b.bottom > 8) out.units.push(`quantity badge is not on the bottom right corner of the icon: "${t}"`);
   }
-  // The values of the synthesis stats have their unit.
-  for (const e of document.querySelectorAll('.syn-stats .val')) if (!e.querySelector('.money, .cost')) out.money.push(`synthesis value without unit: ${desc(e)}`);
+  // The values of the synthesis stats have their unit: the coin or the cost icon, or "Lv" for the synthesis level.
+  for (const e of document.querySelectorAll('.syn-stats .val')) if (!e.querySelector('.money, .cost') && !/^Lv \d+$/.test(e.textContent.trim())) out.money.push(`synthesis value without unit: ${desc(e)}`);
   // From 768 px the header row of a research detail (the researchers, the friendship, the stats) is 1 row: its children have the same top (±4 px).
   out.rows = [];
   if (innerWidth >= 768) {

@@ -342,6 +342,31 @@ await step('no dangling links', async () => {
   ok(bad.length === 0, `no dangling or empty spots${bad.length ? ': ' + bad.slice(0, 4).join('; ') : ''}`);
 });
 
+await step('synthesis level of a craftable item', async () => {
+  for (const [name, lv] of [['Bomb', 3], ['Wheat Flour', 1], ['Maiden Armor', 11]]) {
+    const id = await page.evaluate((n) => window.DATA.items.find((i) => i.n === n)?.id, name);
+    await go(`#/items/${id}`);
+    await page.waitForSelector('.modal .syn');
+    const stat = page.locator('.modal .syn-stats .stat', { hasText: 'Synth. Lv.' });
+    ok((await stat.count()) === 1, `${name}: 1 "Synth. Lv." stat in the synthesis section`);
+    ok(((await stat.locator('.val').innerText().catch(() => '')) || '').trim() === `Lv ${lv}`, `${name}: synthesis level Lv ${lv}`);
+  }
+  // Each craftable item has a level that follows the rule of the README, and no other item has one.
+  ok(await page.evaluate(() => window.DATA.items.every((i) => !i.syn || (Number.isInteger(i.syn.lv) && i.syn.lv >= 1))), 'each synthesis has a level of 1 or more');
+});
+
+await step('Master Puni has its zone', async () => {
+  await go('#/monsters/CHARACTER_PUNI7');
+  await page.waitForSelector('.modal .top');
+  const found = page.locator('.modal a.link[href="#/areas/EXPL_AREA_PLAIN"]');
+  ok((await found.count()) === 1, 'Master Puni: Found in the zone Ferien Plains');
+  ok(/Lv 98/.test(await found.innerText().catch(() => '')), 'Master Puni: level 98');
+  await go('#/areas/EXPL_AREA_PLAIN');
+  await page.waitForSelector('.modal .top, .modal .panel');
+  ok((await page.locator('.modal a.mini[href="#/monsters/CHARACTER_PUNI7"]').count()) === 1, 'the zone Ferien Plains lists Master Puni as a boss');
+  await closeEsc();
+});
+
 await step('monsters page and modal', async () => {
   await navTo('Monsters');
   await page.waitForSelector('#grid .cell');
