@@ -171,10 +171,78 @@ The area, zone, monster, character and research of these blocks are plain text w
 
 The synthesis level is `Recipe.synthesisLevel` of the model: the rule of `README.md`, section "Synthesis level" ([decision 0012](../decisions/0012-synthesis-level.md)).
 
+### Rules for the next pages
+
+- **Kinds with pages.** Each page item adds its kind to the constant of the kinds with pages (`PAGE_FOLDERS`), its row to the category links of the header, its UI icon and its UI tests. The folders: `areas/`, `zones/`, `monsters/`, `characters/`, `research/`.
+- **Filter icons.** A filter option has an icon only when the game has 1 for it. The monster type and the character group have no game icon, so their toggles show the name only.
+- **Header icons.** Areas uses the category icon `cat-16` of the prototype. Monsters and Characters use `nav-monsters` and `nav-characters`. Research uses `cat-10`. The files come from `prototype/img/ui/`.
+- **Area entry.** An area in a list (the Gather group of an item, "Found in" of a monster) is 1 entry: the area name as a link, the zone name under it in the small label size, and 1 badge (a rate or a level range).
+
 ### Areas page
 
-- **Blocks, in order:** Header. 1 panel for each top-level zone, in the order of the game.
-- **Zone panel:** The name of the zone as a section title, and the names of its areas as plain buttons. A click on an area opens its detail in the modal.
+- **URLs:** the Areas page is `/NelkeData/areas/`. The page of an area is `/NelkeData/areas/<slug>/`, and the page of a zone is `/NelkeData/zones/<slug>/`.
+- **Blocks, in order:** Header. 1 panel for each zone, in the order of `data/zones.json`. The page has no filters.
+- **Zone panel:** the name of the zone as a section title. The title is a link to the zone, so a click opens the zone in the modal. Under it, the names of its areas as plain buttons, in the order of `Zone.areaIds`. A click on an area opens its detail in the modal.
+
+### Area detail
+
+1. **Head:** the name of the area.
+2. **Top:** 1 row of stats: "Zone" (link to the zone), "Opens" ("From the start", or "After task N: <name>" from `Zone.task`), "Difficulty by Investigation Lv" (5 cells, each the letter of `Zone.difficulties` with the level 1 to 5 under it), and "Area element" (the icon and the name of each element of `Zone.elements`).
+3. **1 panel** with these groups in order:
+   - "Gather": the item tiles of `Area.gather`, with the rate badge, the highest rate first.
+   - "Monsters": the monster tiles with `boss` false and `areaLevel` 1 or less, with the level badge.
+   - "Monsters from Investigation Lv N": 1 group for each `areaLevel` above 1, in the order of the level.
+   - "Bosses": the monster tiles with `boss` true, with the level badge.
+4. **Rare finds** of the zone of the area: the same row as on the zone detail.
+
+### Zone detail
+
+1. **Head:** the name of the zone.
+2. **Top:** the stats "Opens" and "Area element", with the formats of the area detail.
+3. **Areas:** the links to the areas of the zone.
+4. **Rare finds:** 1 row of columns in the order Treasure, Bug Net, Digging, Fishing, from `Zone.specialItems`. A column with no item does not show. In a column, each spot is 1 group with the caption "Chest N" (Treasure) or "Spot N" (the tools), and the item tiles with the rate badge.
+
+### Monsters page
+
+- **URLs:** `/NelkeData/monsters/` and `/NelkeData/monsters/<slug>/`.
+- **Filters:** "Type" with the toggles "Monsters" and "Bosses" (`Monster.type`), in the query parameter `type`.
+- **Grid:** each monster in the order of `data/monsters.json`, with the icon and the name. No badge.
+
+### Monster detail
+
+1. **Head:** the name of the monster.
+2. **Top:** the icon at 112 px, and next to it these lines: the type ("Monster" or "Boss"), and "Element DEF" as 1 line of element icons, each with its value.
+3. **Description**, as 1 paragraph.
+4. **Drops:** the item tiles of `Monster.drops`, with the quantity badge for 2 or more. A drop rate of 100% does not show.
+5. **Found in:** 1 area entry for each `Monster.areas`, with the level range badge, and 1 zone entry for each `Monster.zoneEncounters` (the zone name as a link, with the level range badge).
+
+### Characters page
+
+- **URLs:** `/NelkeData/characters/` and `/NelkeData/characters/<slug>/`, with the `slug` of the model. The slug rule of the model makes the URL of a shared name unique.
+- **Grid:** each character with a join event (`Character.join.event` is not `null`), in the order of `data/characters.json`, with the face icon and the name. A character with no join event has no page.
+- **Filters:** "Group" with the toggles "Alchemist" and "Townsfolk", in the query parameter `group`. The group of a character is Alchemist when `Character.type` is `Alchemist`, and Townsfolk for each other type.
+
+### Character detail
+
+1. **Head:** the name of the character.
+2. **Top:** the face icon at 112 px, and next to it these lines: the group, and the source game in italics.
+3. **Description**, as 1 paragraph.
+4. **Skills:** 1 line for each skill: the name and its level ("Lv N"). The event skill shows its name and "Learned at an event".
+5. **Joins the town:**
+   - When the join event is not the game start (`EVENT_MS01_010`), the line "Joins in a story event", and the sub-title "Joins with" with the face tiles of the other characters with the same join event.
+   - The stats "Town population" ("N people") and "Turn (not confirmed)" ("Turn N"). The rule "A condition that each player meets does not show" applies to both.
+   - The section does not show when it has no line.
+6. **Teaches:** 1 group for each recipe set of `Character.recipeSetIds`: the item tiles of the results of its recipes. The sub-title of the group shows when the set has 2 or more recipes, or a name that is not the name of its item, or a friendship level above 0. It holds the set name and the friendship heart.
+
+### Research detail
+
+1. **Head:** the name of the research.
+2. **Top:** 1 row: the face and the name of each researcher (links), and the stats "Total friendship" (the heart with `Research.friendship`), "Duration" (the turns format) and "Research fee" (the money format).
+3. **Materials:** the item tiles of `Research.materials`, with the quantity badge.
+4. **Requires:** the tiles of the prerequisite research.
+5. **Gives:** the rules of "Research tree page". The sub-title "Recipe set: <name>" holds the result tiles of the prize recipe set. The sub-title "Item" holds the prize item tiles, and shows only when the research also gives a recipe set or a bonus. The sub-title "Bonus" follows the rule of "Research tree page".
+
+The research icon rule of "Icons" is 1 shared function. The item detail and the research tiles use it.
 
 ### About page
 
@@ -191,7 +259,8 @@ Each detail is 1 panel. The prototype composes each panel from the parts of "Vis
 ### Research tree page
 
 - **Purpose:** Browse the research as the game shows it: a grid of nodes with lines from left to right.
-- **Blocks, in order:** Header. 1 tab for each of the 4 trees, with the name of the tree in the game. Tree box.
+- **URLs:** the tree page is `/NelkeData/research/`, and the page of a research is `/NelkeData/research/<slug>/`. The selected tab is the query parameter `tree` (`main`, `attack`, `support`, `emergency`). No parameter selects Main.
+- **Blocks, in order:** Header. 1 tab for each of the 4 trees: "Main", "Attack", "Town Building" and "Emergency". The game message files do not hold the names of the trees, so the names are the names of the approved prototype. Tree box.
 - **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The icon is on a beige square with round corners, in the same color as the background of the character face icons. The game uses the even rows for the nodes and the odd rows for the lines only. Each line is 1 prerequisite of `study/stdy_conditions.xml`: it leaves the right side of the prerequisite and enters the left side of the research that needs it. The lines that enter 1 node join before the node, so 3 prerequisites show as 3 lines that meet. No line shows that is not a prerequisite. The link types of the tree files only confirm the drawing. The box has the full width of the content column, the same as the tab panel above it. It scrolls horizontally inside the page. The page itself does not scroll horizontally.
 - **Research detail, "Gives":** the prize items, and the items that the recipes of the prize recipe set make. The bonus item of `study/stdy_prize.xml` (`STDY_PRIZE_BONUS_ITEM`) is a tile with its quantity under the sub-title "Bonus". When `STDY_BONUS_FRIEND_POINT` is above 0, the sub-title also shows that friendship value. A bonus with no item (cost down, construction expenses up) shows the name of its type in the game when the game has 1, else it does not show. A sub-title never shows with nothing under it.
 - **Interactions:** A click on a node opens the research in the modal.
