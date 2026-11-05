@@ -9,6 +9,7 @@ export const NAV_BREAKPOINT = 600;
 /** The category pages of the site, as the header marks the current one. */
 export enum CategoryKey {
   Items = 'items',
+  Monsters = 'monsters',
 }
 
 /** A link of the header to a category page. */
@@ -21,4 +22,7 @@ export interface CategoryLink {
 }
 
 /** The category pages that exist, in the order Items, Areas, Monsters, Characters, Research. Each page item adds its row. */
-export const CATEGORY_LINKS: readonly CategoryLink[] = [{ key: CategoryKey.Items, label: 'Items', path: '', icon: UiIcon.CategoryItems }];
+export const CATEGORY_LINKS: readonly CategoryLink[] = [
+  { key: CategoryKey.Items, label: 'Items', path: '', icon: UiIcon.CategoryItems },
+  { key: CategoryKey.Monsters, label: 'Monsters', path: 'monsters/', icon: UiIcon.NavMonsters },
+];

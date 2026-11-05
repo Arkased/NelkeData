@@ -32,6 +32,10 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/about.astro` | The About page at `/NelkeData/about/`, with the title `About · Westwald Archive`. 1 panel with the sections Contact, Source and Legal. The legal notice text is 1 constant, which the footer and this page share. |
 | `src/data.ts` | `readData()` of `@nelke/model` on the `data/` folder of the repo, 1 time for each build, and the lookups by ID. |
 | `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
+| `src/pages/monsters/index.astro` | The Monsters page at `/NelkeData/monsters/`, with the title `Monsters · Westwald Archive`, and the filter "Type" (`type` in the query; the toggles have no icon). |
+| `src/pages/monsters/[slug].astro` | The page of each monster (`getStaticPaths` from the monsters of `data/`), with the title `<monster name> · Westwald Archive`. |
+| `src/components/MonsterDetail.astro` | The monster detail: the type, the element DEF line, the description, the drops and "Found in". |
+| `src/element-items.ts` | `ELEMENT_ITEM_IDS`: the item of each element, whose icon is the element icon (the item detail and the monster detail share it). |
 | `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`) and `ItemDetail`. |
 | `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page. |
 | `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |

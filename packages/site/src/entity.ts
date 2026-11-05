@@ -13,6 +13,7 @@ export enum EntityKind {
 /** The kinds that have a page, with the folder of their pages under the base path. A page item adds its kind here. */
 const PAGE_FOLDERS: Partial<Record<EntityKind, string>> = {
   [EntityKind.Item]: 'items/',
+  [EntityKind.Monster]: 'monsters/',
 };
 
 /**

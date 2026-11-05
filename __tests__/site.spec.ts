@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
-import { isPlaceholder, ItemCategoryName, readData, Shop } from '@nelke/model';
+import { CharacterType, isPlaceholder, ItemCategoryName, readData, Shop } from '@nelke/model';
 import { BASE_PATH } from '../packages/site/src/base.js';
 import { formatNumber as format } from '../packages/site/src/format.js';
 import { NAV_BREAKPOINT } from '../packages/site/src/nav.js';
@@ -233,7 +233,7 @@ test.describe('header', () => {
     await expect(nav).toBeHidden();
     await menu.click();
     await expect(nav).toBeVisible();
-    await expect(nav.getByRole('link')).toHaveText(['Items']);
+    await expect(nav.getByRole('link')).toHaveText(['Items', 'Monsters']);
     await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
   });
 
@@ -243,7 +243,7 @@ test.describe('header', () => {
     const nav = page.getByRole('navigation', { name: 'Pages' });
     await expect(page.getByRole('button', { name: 'Menu' })).toBeHidden();
     await expect(nav).toBeVisible();
-    await expect(nav.getByRole('link')).toHaveText(['Items']);
+    await expect(nav.getByRole('link')).toHaveText(['Items', 'Monsters']);
     await expect(nav.getByRole('link', { name: 'Items' })).toHaveAttribute('aria-current', 'page');
   });
 });
@@ -426,6 +426,59 @@ test.describe('names and links', () => {
     await expect(how.locator('.minis a.mini').first()).toHaveAttribute('href', new RegExp(`^${BASE_PATH}items/`));
     await expect(how.locator('[data-section="unlock"] a')).toHaveCount(0);
     await page.goto(itemPath('Uni'));
-    await expect(page.locator('[data-section="how-to-get"] .mini').first()).not.toHaveAttribute('href', /.+/);
+    await expect(page.locator('[data-section="how-to-get"] a.mini').first()).toHaveAttribute('href', new RegExp(`^${BASE_PATH}monsters/`));
+    await page.goto(itemPath('Fire Element'));
+    await expect(page.locator('[data-section="how-to-get"] .link span.tl').first()).toBeVisible();
+    await expect(page.locator('[data-section="how-to-get"] .link a')).toHaveCount(0);
   });
 });
+
+/** The monster with the most areas, so that its detail shows each block. */
+const detailMonster = data.monsters
+  .filter((m) => m.elementDef !== null && m.drops.length > 0 && m.areas.length > 0)
+  .toSorted((a, b) => b.areas.length - a.areas.length)[0];
+const monsterPath = (slug: string) => `monsters/${slug}/`;
+
+for (const width of WIDTHS) {
+  test.describe(`monsters at ${width} px`, () => {
+    test.beforeEach(async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+    });
+
+    test('the Bosses filter shows only bosses and puts type= in the URL', async ({ page }) => {
+      await page.goto('monsters/');
+      await expect(page.locator('[data-grid] a.mini')).toHaveCount(data.monsters.length);
+      await openFilters(page);
+      await page.getByRole('button', { name: 'Bosses', exact: true }).click();
+      const bosses = data.monsters.filter((m) => m.type === CharacterType.Boss);
+      expect(bosses.length).toBeGreaterThan(0);
+      expect(bosses.length).toBeLessThan(data.monsters.length);
+      await expect(page.locator('[data-grid] a.mini:visible')).toHaveCount(bosses.length);
+      expect(new URL(page.url()).search).toBe(`?type=${CharacterType.Boss}`);
+      await noHorizontalScroll(page);
+    });
+
+    test('a monster detail shows the element DEF, a drop link to its item and a Found in area', async ({ page }) => {
+      if (!detailMonster) throw new Error('No monster with element DEF, a drop and an area');
+      await page.goto(monsterPath(detailMonster.slug));
+      await expect(page).toHaveTitle(`${detailMonster.name} · Westwald Archive`);
+      await expect(page.getByRole('heading', { name: detailMonster.name, level: 1 })).toBeVisible();
+      await expect(page.locator('[data-fact="element-def"] .el')).toHaveCount(Object.keys(detailMonster.elementDef ?? {}).length);
+      const drop = data.items.find((i) => i.id === detailMonster.drops[0]?.itemId);
+      await expect(page.locator('[data-section="drops"] a.mini').first()).toHaveAttribute('href', `${BASE_PATH}items/${drop?.slug}/`);
+      const area = data.areas.find((a) => a.id === detailMonster.areas[0]?.areaId);
+      await expect(page.getByRole('heading', { name: 'Found in', level: 2 })).toBeVisible();
+      await expect(page.locator('[data-section="found-in"] .link').first()).toContainText(area?.name ?? '');
+      await expect(page.locator('[data-section="found-in"] .link a')).toHaveCount(0);
+      await noHorizontalScroll(page);
+    });
+
+    test('a monster icon opens the modal with its URL', async ({ page }) => {
+      if (!detailMonster) throw new Error('No monster');
+      await page.goto('monsters/');
+      await page.getByRole('link', { name: detailMonster.name, exact: true }).click();
+      await expect(page.getByRole('dialog').getByRole('heading', { name: detailMonster.name })).toBeVisible();
+      expect(new URL(page.url()).pathname).toBe(`${BASE_PATH}${monsterPath(detailMonster.slug)}`);
+    });
+  });
+}
