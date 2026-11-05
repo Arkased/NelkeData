@@ -136,6 +136,10 @@ Elements have price 0, so they add 0 to the input cost. When the result has pric
 
 The `Reduce:` columns of the Items sheet are the `ITEM_DI_ACQ_*ELEMENT` values: the elements that the Reduce command gives for the item. The tutorial text `REDUCTION_TUTORIAL_TEXT_003` states that the kind and amount of elements change with the material.
 
+## Synthesis level
+
+The minimum alchemy level of an item ("Synth. Lv." in the game) is `ITEM_RANK` of `item/item.xml` ÷ 4, rounded down, and minimum 1. No game file stores the level. The divisor fits `OC_ITEM_RANK_ADJUSTMENT_COEFFICIENT` = 400 in `out_constant/out_constant.xml`. 7 items in the game confirm the rule ([the research note](docs/research/2026-11-04-alchemy-level.md)).
+
 ## Recipe unlock
 
 A recipe unlocks through its recipe set (`recipe/recipe_collection.xml`). A set has these conditions:

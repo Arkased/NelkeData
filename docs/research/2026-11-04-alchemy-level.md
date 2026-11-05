@@ -69,20 +69,27 @@ Sample values (result item, `ITEM_RANK`, `ITEM_COMP_MH` = synthesis cost, `ITEM_
 | Berg Medicine        | `ITEM_SALE_SPECULATOR_MEDICINE` | 73  | 23             | 4404  |
 | Gold Puni Statue     | `ITEM_SALE_GOLDEN_PUNI_STATUE` | 199  | 52             | 24472 |
 
+## Check in the game
+
+The owner read the "Synth. Lv." of 7 items in the game. The rank is not the level. No stored field holds the level. This rule gives all 7 values:
+
+**Synth. Lv. = `ITEM_RANK` ÷ 4, rounded down, and minimum 1.**
+
+| Item (English name) | `ITEM_ID`                              | Rank | Rank ÷ 4 | Synth. Lv. in the game |
+| ------------------- | -------------------------------------- | ---- | -------- | ---------------------- |
+| Wheat Flour         | `ITEM_MIX_FLOUR`                       | 2    | 0.5      | 1                      |
+| Timber              | `ITEM_BUILD_TIMBER`                    | 4    | 1        | 1                      |
+| Bomb                | `ITEM_USE_FLAMME`                      | 15   | 3.75     | 3                      |
+| Iron Board          | `ITEM_BUILD_IRON_BOARD`                | 22   | 5.5      | 5                      |
+| Veggie Bun          | `ITEM_SALE_VEGETABLE_MANJU`            | 25   | 6.25     | 6                      |
+| Maiden Armor        | `ITEM_SALE_MAIDEN_ARMOR`               | 46   | 11.5     | 11                     |
+| Fireproof Plate     | `ITEM_BUILD_HEAT_RESIST_ALCHEMY_BOARD` | 59   | 14.75    | 14                     |
+
+- Iron Board (5.5 → 5) and Maiden Armor (11.5 → 11) show that the game rounds down, not to the nearest value.
+- Wheat Flour (0.5 → 1) shows the minimum of 1.
+- The divisor fits the constant `OC_ITEM_RANK_ADJUSTMENT_COEFFICIENT` = 400 in `out_constant/out_constant.xml`: rank × 100 ÷ 400 = rank ÷ 4. No file states the formula. The constant and the 7 matches are the proof.
+- No item above rank 59 was checked. The highest rank, 199 (Gold Puni Statue), gives level 49, so the level of each item stays below the alchemist maximum of 99.
+
 ## Result
 
-Candidate source, not confirmed in the game: `ITEM_RANK` in `extracted/saves/item/item.xml`. It joins to the recipe through `ITEM_COMPLETION_ID` of `recipe/recipe.xml` (`ITEM_ID` = `ITEM_COMPLETION_ID`).
-
-Reasons:
-
-- The game says that an item has a level that it compares with the level of the alchemist.
-- Each craftable item has a rank greater than 0. Each item with rank 0 is not craftable.
-- The rank rises with the synthesis cost and with the price.
-
-Doubts:
-
-- No file names the field "Synth. Lv.". The link rests on the tutorial text, the scale and the fit with the recipes.
-- The alchemist level goes to 99 (`CHARACTER_LEVEL`). The item rank goes to 199. The game may show the rank in a different way (for example with a correction from `OC_ITEM_RANK_ADJUSTMENT_COEFFICIENT`, which has no value in the XML).
-- The 7 encrypted files could hold a better table. We could not read them.
-
-Next step for the owner: open the item info of the 6 sample items in the game. Compare the shown "Synth. Lv." with the Rank column above. If the values are equal, the site can show `ITEM_RANK` as the alchemy level. If they differ by a fixed factor or offset, the correction is in the `.exe` code and needs a new research item.
+The source of the alchemy level of an item is `ITEM_RANK` in `extracted/saves/item/item.xml`, with the rule above. It joins to the recipe through `ITEM_COMPLETION_ID` of `recipe/recipe.xml` (`ITEM_ID` = `ITEM_COMPLETION_ID`). [Decision 0012](../decisions/0012-synthesis-level.md) records it.
