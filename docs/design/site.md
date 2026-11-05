@@ -4,6 +4,28 @@ The page and UI layouts of the website. [The site requirements](../requirements/
 
 The owner approved the layouts of the prototype (#11) on 2026-11-02: the Items, Areas, Monsters, Characters and Research pages, and their details. The owner approved the About page and the header with the site name (#15) on 2026-11-03. A new page (for example the buildings) needs its own prototype and a separate approval before it is built.
 
+## Design requirements
+
+The orchestrator made these rules. They are not owner requirements, and the orchestrator changes them when a better design exists.
+
+| Name | Rule |
+| --- | --- |
+| Static | The site is static files only, with no server and no database. |
+| Same data | Each value on the site is the same as the value in the workbook. The site shows only the data that helps a player. |
+| Order | A grid shows its entities in the order of the game. |
+| Names | The name of an entity shows under its icon in each grid. |
+| Header and footer | The header of each page shows the site name and the tagline. The footer of each page shows the legal notice and a link to the About page. |
+| Numbers | A rate, a price or a ratio shows with at most 1 decimal. |
+| Units | Each value shows in 1 format with its unit, by the section "UI standard". |
+| Width | The layout works at each width from 360 px up, with no horizontal scroll of the page. Only a research tree scrolls horizontally, inside its own box. |
+| Item contents | The item detail shows the name, the category, the price and the description. "How to get" shows the gather areas with rates and the special gather points. "Used in" shows the items whose recipes use the item. The recipe value shows the materials that have no price, as 1 calculation. The unlock shows the recipe set, the teacher, the research and the story event. |
+| Research contents | The research tree page has 1 tab for each of the 4 trees. The research detail shows the researchers, the money, the materials and the prerequisite research. |
+| Area contents | The area detail shows each spot: the difficulty, the gather items with rates, the special spot items, and the monsters and bosses with levels. |
+| Monster contents | The Monsters page has a filter for monsters and bosses. The detail shows the description, the element DEF, the drops and the areas with levels. |
+| Character contents | The Characters page shows only the characters that can join the town. The detail shows the description, the source game, the skills, the join conditions and the recipe sets that the character teaches. The join turn is marked as not confirmed. |
+
+The proof of the owner requirements of the site: the owner approved the prototype, and the prototype is the live site.
+
 ## Visual style
 
 The site has its own plain look in the colors of the game: cream, warm brown and gold ([decision 0009](../decisions/0009-own-look.md)). It uses no UI texture of the game for a frame part, so it does not look official. CSS draws each part with colors, borders and radii only. The game icons that carry data stay: the items, the monsters, the characters, the shops, the categories, the elements, the money, the synthesis cost and the friendship heart with its digits.

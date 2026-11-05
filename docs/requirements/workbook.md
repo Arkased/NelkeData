@@ -1,11 +1,10 @@
 # Workbook
 
-An xlsx workbook of the game data, for players who want to sort and filter in a spreadsheet. The owner publishes it on Google Sheets. The columns and their sources are in `README.md`.
+A spreadsheet of the game data, for players who sort and filter. The source of each row is the owner's words in the chat (dates in UTC). The rules that the orchestrator made, and the proof of each row, are in [the tooling design](../design/tooling.md), section "Design requirements". The columns and their sources are in `README.md`.
 
-| Name | Contract | Proof |
+| Name | Requirement | Source |
 | --- | --- | --- |
-| Sheets | The workbook has 5 sheets: Items, Recipes, Zones, Monsters and Characters, with the columns that `README.md` gives. Each sheet has a frozen header row and a filter on all columns. | The compare script against the baseline workbook. |
-| No change of output | A change of the code that does not change a requirement keeps each cell value of each sheet the same. | `scripts/compare-workbooks.ts` compares the new workbook with a baseline workbook, cell by cell, and exits with 1 on a difference. |
-| Placeholder data | The workbook has no row for an entity with placeholder data, by the same rule as the site (`docs/requirements/site.md`, row "Placeholder data"). | A test makes sure that no name in the workbook matches the placeholder patterns. |
-| Icons | The build writes 1 PNG of 64 × 64 px to `output/icons/` for each icon that a row names. | The compare script also compares the icon file names. |
-| Warnings | The build prints a warning for each column with 1 value only, and for each column that is the same as another column. | A unit test. |
+| Google Sheets | The workbook is a Google spreadsheet with sort and filter. | 2026-11-01: "produce google spreadsheets with sort/filter capabilities". |
+| Sheets | The workbook has sheets for items, recipes, zones, monsters and characters. The item sheet has no synthesis data. | 2026-11-01: "Just recipies and items for now"; "Can you also add sheets for zones, monsters, and characters?"; "item sheet should not have any synth info". |
+| No redundant columns | No column has identical values or repeats the data of another column. | 2026-11-01: "there are some redundant columns (identical values or duplicated info)". |
+| Icons | The sheets show the icons of the items in the cells. | 2026-11-01: "if you could in-line item icons as well that would be nice"; "there's no way to get the images into the sheet? I can hand it off to a GDrive agent to format". |

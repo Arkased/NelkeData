@@ -1,6 +1,6 @@
 # Data model
 
-How the game data becomes entities with IDs and links, for the workbook and the site. The requirement "Same data" of [the site requirements](../requirements/site.md) asks for 1 source of the values. [Decision 0002](../decisions/0002-stack.md) puts the entities in the package `@nelke/model`. [Decision 0003](../decisions/0003-data-in-git.md) puts its output in `data/`, in git.
+How the game data becomes entities with IDs and links, for the workbook and the site. The design requirement "Same data" of [the site design](site.md) asks for 1 source of the values. [Decision 0002](../decisions/0002-stack.md) puts the entities in the package `@nelke/model`. [Decision 0003](../decisions/0003-data-in-git.md) puts its output in `data/`, in git.
 
 ## Flow
 
@@ -30,7 +30,7 @@ The model holds the facts of the game as typed fields, and the values that more 
 
 ## Placeholders
 
-The row "Placeholder data" of [the site requirements](../requirements/site.md) asks that no consumer shows a placeholder, and the row of the same name in [the workbook requirements](../requirements/workbook.md) asks the same of the workbook. 1 function of the model applies 1 rule to each kind with a name. A row is a placeholder when 1 of these is true:
+The row "Bad data" of [the site requirements](../requirements/site.md) asks that no placeholder shows, and the design requirement "Placeholder data" of [the tooling design](tooling.md) asks the same of the workbook. 1 function of the model applies 1 rule to each kind with a name. A row is a placeholder when 1 of these is true:
 
 1. The English name is empty or only white space.
 2. The English name starts with `*`. The game marks the rows that it does not use this way, for example `*Unneccesary`.
@@ -68,7 +68,7 @@ The slug of an entity comes from its English name: the name in lower case, with 
 The model decodes the icon textures to PNG files in 2 sizes, with the names that the workbook uses now (for example `item_l_012.png`):
 
 - `data/icons/128/`: 128 × 128 px, for the site. The site needs 128 px for screens with 2 device pixels for each CSS pixel.
-- `data/icons/64/`: 64 × 64 px, for the workbook. The row "Icons" of [the workbook requirements](../requirements/workbook.md) asks for this size. The workbook copies these files to `output/icons/`.
+- `data/icons/64/`: 64 × 64 px, for the workbook. The design requirement "Icons" of [the tooling design](tooling.md) sets this size. The workbook copies these files to `output/icons/`.
 
 The workbook cannot read the game files and has no image library, so the model makes both sizes from the same decoded texture.
 

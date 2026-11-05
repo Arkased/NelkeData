@@ -1,59 +1,51 @@
 # Website
 
-A static website for lookups of the game data of _Nelke & the Legendary Alchemists_. It is for players who want to find, for example, where to gather an item, what a recipe needs, or what a monster drops. The categories come from [decision 0001](../decisions/0001-site-categories.md) and [decision 0008](../decisions/0008-recipes-in-items.md). The look and the structure of the pages come from [decision 0005](../decisions/0005-icon-grids.md) and [decision 0007](../decisions/0007-clear-data-and-filters.md).
-
-The owner approved these requirements and the layouts of the HTML prototype (#11) on 2026-11-02. The approved prototype in `prototype/` is the live site ([decision 0013](../decisions/0013-prototype-is-the-site.md)). A new page (for example the buildings) needs its own requirement rows, its own prototype and a separate approval.
+A website for lookups of the game data of _Nelke & the Legendary Alchemists_, for players. The source of each row is the owner's words in the chat (dates in UTC). The rules that the orchestrator made, and the proof of each row, are in [the site design](../design/site.md), section "Design requirements".
 
 ## General
 
-| Name | Contract | Proof |
+| Name | Requirement | Source |
 | --- | --- | --- |
-| Host | The site is on GitHub Pages at `https://arkased.github.io/NelkeData/`. Each push to `main` that changes `prototype/` deploys the files of the prototype. | The run of the deploy workflow passes, and the root URL loads the Items page. |
-| Site name | The site is "Westwald Archive", with the tagline "Unofficial fansite for _Nelke & the Legendary Alchemists_". The header of each page shows both, and the title of each page ends with the name. ([decision 0011](../decisions/0011-site-name.md)) | A UI test finds the name and the tagline in the header of each page. |
-| Legal notice | Each page has a short notice in the footer (the About page has it in its section "Legal"), on the model of [the legal page of Barrel Wisdom](https://barrelwisdom.com/blog/legal), a fan site for Gust games since 2021: "Unofficial fan site. We claim no affiliation with Koei Tecmo. The game data, images and texts are owned by Koei Tecmo, the copyright holder of _Nelke & the Legendary Alchemists_." | A UI test finds the notice on each page. |
-| About page | 1 page tells the player 3 things. 1. Contact: the issues of the GitHub repository `Arkased/NelkeData`. 2. Source: a link to the repository, and the origin of the data (the files of the Steam version of the game). 3. Legal: the legal notice of the row above. The footer of each other page links to it. The owner approved the layout of the prototype on 2026-11-03. | A UI test finds the 3 parts and the footer link. |
-| Static | The site is static files only. It needs no server and no database. | The deployed files are only HTML, CSS, JS, fonts and images. |
-| Same data | Each value on the site is the same as the value in the workbook. The site shows only the data that helps a player. The workbook keeps all columns. | A comparison of 3 entities of each page of the site with `data/` and the workbook finds no difference. |
-| Own look | A clear and organized view of the data comes first. The site has its own look in the colors of the game, so it does not look official ([decision 0009](../decisions/0009-own-look.md)). It uses no UI texture of the game for its frame parts: the background, the panels, the name plates, the header bars, the buttons and the tabs. Its typeface is not a font of the game. It uses the game icons that carry data: the items, the monsters, the characters, the shops, the categories, the elements, the money, the synthesis cost and the friendship hearts. | The owner approves the prototype. A test finds no UI texture of the game in the CSS. |
-| No spreadsheet look | No page shows rows of labels and values, or tables. A category is a grid of icons. A detail is a composed panel: for example the name, element icons and material slots. | The owner approves the prototype. |
-| Icon grid and detail | A category page shows the game icons of its entities in a grid, in the order of the game. A click on an icon opens the detail of the entity. | The owner approves the prototype. |
-| Filters | Each category page has filters. The grid shows only the icons that match all the selected filters. The filters are in the URL. | A UI test selects 2 filters. |
-| Placeholder data | An entity with placeholder data does not show on the site: for example an item with the name "Item 015", or with no name. The workbook drops it too. | A test makes sure that no name on the site matches the placeholder patterns. |
-| Numbers | A rate, a price or a ratio shows with at most 1 decimal, with no floating-point error. | A test of the number format. |
-| Names | The name of an entity shows under its icon in each grid. | A UI test. |
-| Units | Each value shows in 1 format with its unit, on all pages. The formats are in `docs/design/site.md`, section "UI standard". | The audit of the UI test. |
-| Any width | The layout adapts to the width of the window, at each width from 360 px (a small phone) up. The page has no horizontal scroll. Only a research tree scrolls horizontally, inside its own box. | The owner approves the prototype. |
+| Live site | The approved HTML prototype in `prototype/` is the live site ([decision 0013](../decisions/0013-prototype-is-the-site.md)). | Owner answer "1" to the question "Source of the live site", 2026-11-05: "Publish the prototype as the live site". |
+| Host | The site is on GitHub Pages. | 2026-11-02: "I think we will just build it ourselves and host on gh pages". |
+| New pages | The layouts of the drafted pages are approved. Another page (for example the buildings) needs a separate approval. | 2026-11-03: "layouts are approved for drafted pages, for other pages (buildings, etc.) need separate approval". |
+| Priority | Items and recipes come first. The other pages have a lower priority. | 2026-11-02: "recipes and items (specifically gatherables) should be on separate pages … we can make pages for the other data but its lower prio". |
+| Site name | The site is "Westwald Archive", with the tagline "Unofficial fansite for _Nelke & the Legendary Alchemists_". The name makes clear that the site is not official content. | 2026-11-03: "I need a site name that distinguishes it from official content"; "westwald archive and the tagline should be unoffocial fansite for <game title>". |
+| Legal notice | The site has a legal notice on the model of [the legal page of Barrel Wisdom](https://barrelwisdom.com/blog/legal). | 2026-11-03: "this has been up since 2021 and can probably be followed, https://barrelwisdom.com/blog/legal". |
+| About page | 1 page gives the contact, the source and the legal notice. | 2026-11-03: "probably an about page with contact/source/legal disclaimers". The owner approved its layout (answer "1" to the question "Layout of the About page and the new header", 2026-11-03). |
+| Own look | The site must not look official. It keeps the layout of the prototype with its own styling and a typeface that is not a font of the game. A clear and organized view of the data comes before game assets. | 2026-11-03: "making a fan site LOOK official could increase likelihood of enforcement"; "ok keep the layout but change the styling"; "typeface should be diff from game too". 2026-11-02: "I don't think literall EVERY UI element should be ripped from game assets, you should prioritize organized and clear representation of data". |
+| No lists or tables | The pages are grids of icons, not lists, tables or a spreadsheet look. | 2026-11-02: "I fundamentally do not want to structure the pages into lists or tables"; "no spreadsheet look, grid of icons please". |
+| Tiles and modals | The layout follows Barrel Wisdom: tile entries that open a modal. | 2026-11-02: "you should adopt the layout from barel wisdom (tile entries with modals)". |
+| Filters | The pages use filters, not tabs. The shop that sells an item is a filter. | 2026-11-02: "categories should also consider what store the good is sold in, I'm not sure a tab based approach is ideal. Might want filters instead". |
+| No search box | The site has no search box. Players use the filters and the find command of the browser. | Owner answer "1" to the question "Keep or remove the search box", 2026-11-03. |
+| Bad data | Placeholder data does not show. | 2026-11-02: "bad data should be filtered". |
+| Numbers | No floating-point errors show. | 2026-11-02: "fix the floats". |
+| Units | The units and the counts are consistent, with unit icons. The orchestrator sets the standards. | 2026-11-03: "unit icons are missing in places, unit counts are inconsistent … You need to set standards and fix these". |
+| Any width | The width of the page adapts to the screen. | 2026-11-02: "can we make screen width dynamic? why are you restricting to 360 px". |
 
-## Items (priority 1)
+## Items and recipes
 
-| Name | Contract | Proof |
+| Name | Requirement | Source |
 | --- | --- | --- |
-| Item grid | 1 page shows the icons of all items (305 in the game data, with the placeholder items). There is no separate recipe page. The filters are the item category of the game, the shop that sells the item, and "Craftable" (the items that a recipe makes, 169 at present). The element items are not a separate category. | A UI test selects "Craftable" and finds 1 recipe item. |
-| Item detail | The top of the detail shows the name, the category, the price, the shops that sell the item ("Sold at", with the shop icons) and the description. The elements that the Reduce command gives show as a small note, not as a section. | A UI test of 1 item with each kind of data. |
-| How to get | The detail shows each way to get the item: the areas where you gather it, with the rate; the special gather points of an area; the monsters that drop it; the farm that grows it. Each area and monster is a link. A fact of the area itself, for example the task that opens it, does not show here. | A UI test of 1 gather item and 1 drop. |
-| Used in | The detail shows each item whose recipe uses the item as a material, as links. | A UI test of 1 material. |
+| 1 item page | Items and recipes are on 1 page, with a filter. The elements are not a separate category. | 2026-11-02: "I'm not sure it makes sense to split recipies and items anymore, might make more sense to unify and have a filter"; "element shouldn't have it's own category". |
+| Shops | The item shows the shops that sell it, with shop icons. A shop is not a way to get the item. | 2026-11-03: "there should be icons for stores"; "shops is not an acquisition method". |
+| Reduce | The Reduce elements show, as a small note, not as a full row. | 2026-11-02: "reduce elements are important". 2026-11-03: "the count reduction is a side note and should not take a full row". |
+| How to get | The detail shows the ways to get the item. A farm ("grown in") is one of them, not a fact at the top. The open conditions of an area do not show on the item. A drop shows no count. | 2026-11-03: "grown in is an acquisition method, why is it at the top?"; "area unlock conditions should not be on item acquisition pages"; "for items x3 drops implies three monsters not three items per drop, just remove the count". |
+| Synthesis | A craftable item has an optional section with the synthesis data: the synthesis cost, the minimum alchemy level, and the material counts as "x3". | 2026-11-02: "synth cost is a first-class recipe property"; "There should be an alchemy level property (min req)"; "for craftable items include an optional section with crafting info". 2026-11-03: "I think the x-count representation (e.g., x3) is better". |
+| Recipe value | A recipe shows the cost of the inputs, the added value, and the added value per synthesis cost, in a clear form. | 2026-11-01: "for recipies I am aditionally interested in cost of inputs/output, added value (profit), and added value per synth cost". 2026-11-02: "recipe price computation can be on the page or modal"; "the recipe value is unclear". |
+| Unlock | The recipe shows how it unlocks, with the friendship level icon. | 2026-11-01: "unlock is generally tied to a zone or event, can you look into it". 2026-11-03: "recipie friendship level icon". |
 
-## Synthesis (priority 1)
+## Research
 
-The detail of an item that a recipe makes has a section "Synthesis". The detail of any other item does not have it.
-
-| Name | Contract | Proof |
+| Name | Requirement | Source |
 | --- | --- | --- |
-| Synthesis | The section shows the synthesis cost and the minimum alchemy level, and the materials as icons with names (links), each with the quantity that the recipe needs. | A UI test of 1 craftable item and 1 item that is not craftable. |
-| Recipe value | The section shows the price of the result, the input cost, the added value, the added value per synthesis cost, and the materials that have no price. It shows them as 1 clear calculation: the result price minus the input cost is the added value, and the added value divided by the synthesis cost is the value per synthesis cost. The formulas are the formulas of the workbook (`README.md`, section "Recipe value"). | A test compares the values with the workbook. |
-| Unlock | The section shows how the recipe unlocks: the recipe set, the teacher (link) and the friendship level, the research (link), and the story event. | A UI test. |
+| Research trees | The research trees have the layout of the game, with horizontal scroll, and the tree names of the game. | 2026-11-02: "horizontal scroll will probably be needed for browsing the research trees (please emulate ingame layouts here)". 2026-11-03: "research tree names seem wrong". |
+| Research detail | A research shows its duration in turns and the friendship level that it needs. It is defined by its output, not by its people. | 2026-11-03: "duration of research is turns, and why are there no freindship level reqs on research?"; "research is better defined by output not people". |
 
-## Research (priority 2)
+## Areas, monsters and characters
 
-| Name | Contract | Proof |
+| Name | Requirement | Source |
 | --- | --- | --- |
-| Research trees | 1 page shows the 4 research trees of the game, 1 tab each, with the names of the game. Each tree has the layout of the game: the nodes in the columns and rows of the game data, with the lines between them. | A UI test finds 1 node in its column. The owner approved the layout. |
-| Research detail | A click on a node opens the research in the modal. It shows the researchers, the friendship level that the research needs with the researcher, the duration in turns, the money, the materials (links), the prerequisite research (links), and what it gives (the recipe set with links to the items that its recipes make, and the bonus). | A UI test. |
-
-## Areas, Monsters and Characters (priority 2)
-
-| Name | Contract | Proof |
-| --- | --- | --- |
-| Areas | 1 page shows all areas, grouped under their top-level zones in the order of the game. The page is not an icon grid: each zone is 1 game panel that holds the names of its areas. An interior is a separate area from the area outside it. The area detail shows the dispatch data of the area, and each spot of the area: the difficulty, the gather items with rates (links), the special spot items (links), and the monsters and bosses with levels (links). A Bountiful spot shows no monsters, and a Bestial spot shows no gather items. | A UI test. |
-| Monsters | 1 page shows the icons of all monsters, with a filter for monsters and bosses. The detail shows the name, the description, the element DEF, the drops (links) and the areas with levels (links). | A UI test. |
-| Characters | 1 page shows the face icons of all characters that can join the town, with a filter for the group: Alchemist or Townsfolk. The detail shows the name, the description, the source game, the skills, the join conditions (the event, the town population and the turn), and the recipe sets that the character teaches, with links to the items that the recipes make. The meaning of the join turn is not confirmed, so the detail marks it as not confirmed. | A UI test. |
+| Areas | The areas are grouped under their top-level zones, not in a grid. An interior is a separate area. An area shows its dispatch data. A Bountiful area shows no monsters, and a Bestial area shows no gather items. Bug Net, Digging and Treasure share 1 row. | 2026-11-02: "areas should be grouped based on top level zones first, should not be a grid layout". 2026-11-03: "interior is a distinct zone from non-interior, do not group them"; "areas should include dispatch info"; "bountiful zones do not have monsters and bestial zones do not have gathers"; "bug net/digging and treasure should be in the same row". |
+| Monsters | A monster shows no rank. | 2026-11-03: "remove monster rank". |
+| Characters | The characters are Alchemists and Townsfolk, and both show. Nelke, Misty, Knoss and Lotos are Townsfolk. The join population and the join turn show. A join on turn 1 does not show. | 2026-11-03: "townsfolk vs alchemist is a distinction, both need to be included"; "nelke misty knoss lotos are townfolk"; "Turn 1 join should be omitted". 2026-11-02: "why is join pop and join turn excluded". |
