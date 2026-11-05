@@ -1,4 +1,4 @@
-import { CharacterType, Difficulty, Element, Stat } from '../../enums.js';
+import { CharacterType, Difficulty, Element, ItemCategoryName, Stat } from '../../enums.js';
 import type { DirectData } from '../../inverse.js';
 
 type Overrides<T> = Partial<T> & { id: string };
@@ -19,7 +19,7 @@ export function fakeItem(o: Overrides<DirectData['items'][number]>): DirectData[
     name: `Item ${o.id}`,
     nameJp: null,
     icon: null,
-    category: 'Material',
+    category: ItemCategoryName.Material,
     subCategory: null,
     rank: 1,
     price: 10,

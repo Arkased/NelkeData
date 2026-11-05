@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CATEGORY_NAMES, Element, ItemCategory, Shop, ShopFlag } from '../enums.js';
+import { CATEGORY_NAMES, Element, ItemCategory, ItemCategoryName, Shop, ShopFlag } from '../enums.js';
 import type { Messages } from './messages.js';
 import { enumOrUnknown, type ReadTable } from './xml.js';
 
@@ -67,7 +67,8 @@ export interface Items {
   itemById: Map<string, Item>;
   /** The IDs of the placeholder items, which the recipes must not use. */
   placeholderIds: ReadonlySet<string>;
-  categoryOf: (item: Item) => string;
+  /** Returns the name of the category of an item; throws when the game category is not in `CATEGORY_NAMES`. */
+  categoryOf: (item: Item) => ItemCategoryName;
   subCategoryOf: (item: Item) => string;
   /** Maps a growing area type (FARM_ID) to the name of the level 0 farm facility of that sub-category. */
   farm: Map<string, string>;
@@ -98,8 +99,10 @@ export function loadItems(read: ReadTable, messages: Messages): Items {
     items,
     itemById,
     placeholderIds: new Set(rows.filter((i) => messages.isPlaceholder(i.ITEM_NAME_LABEL_ID)).map((i) => i.ITEM_ID)),
-    categoryOf: (i) =>
-      typeof i.ITEM_CATEGORY_ID === 'string' ? CATEGORY_NAMES[i.ITEM_CATEGORY_ID] : `Category ${i.ITEM_CATEGORY_ID.unknown}`,
+    categoryOf: (i) => {
+      if (typeof i.ITEM_CATEGORY_ID !== 'string') throw new Error(`item ${i.ITEM_ID}: unknown category ${i.ITEM_CATEGORY_ID.unknown}`);
+      return CATEGORY_NAMES[i.ITEM_CATEGORY_ID];
+    },
     subCategoryOf: (i) => subCategory.get(i.ITEM_SUB_CATEGORY_ID) ?? '',
     farm,
   };

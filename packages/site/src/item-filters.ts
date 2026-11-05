@@ -1,15 +1,12 @@
-import { CATEGORY_NAMES, ItemCategory, Shop, type Item } from '@nelke/model';
+import { ItemCategoryName, Shop, type Item } from '@nelke/model';
 import { UiIcon } from './ui-icon.js';
 
-/** The reverse of CATEGORY_NAMES: the item category of the game by the name that the data holds. */
-const CATEGORY_BY_NAME = new Map<string, ItemCategory>(Object.values(ItemCategory).map((c) => [CATEGORY_NAMES[c], c]));
-
 /** The item categories of the filter, in the order of the game, with the icon of the game category. */
-export const ITEM_CATEGORIES: readonly { category: ItemCategory; icon: UiIcon }[] = [
-  { category: ItemCategory.Material, icon: UiIcon.CategoryMaterial },
-  { category: ItemCategory.Merchandise, icon: UiIcon.CategoryMerchandise },
-  { category: ItemCategory.BattleItem, icon: UiIcon.CategoryBattleItem },
-  { category: ItemCategory.Construction, icon: UiIcon.CategoryConstruction },
+export const ITEM_CATEGORIES: readonly { category: ItemCategoryName; icon: UiIcon }[] = [
+  { category: ItemCategoryName.Material, icon: UiIcon.CategoryMaterial },
+  { category: ItemCategoryName.Merchandise, icon: UiIcon.CategoryMerchandise },
+  { category: ItemCategoryName.BattleItem, icon: UiIcon.CategoryBattleItem },
+  { category: ItemCategoryName.Construction, icon: UiIcon.CategoryConstruction },
 ];
 
 /** The name and the icon of each shop. */
@@ -24,14 +21,11 @@ export const SHOPS: Record<Shop, { label: string; icon: UiIcon }> = {
 /**
  * Returns the item category of the filter for an item: the element items are in Material.
  * @param item - the item
- * @returns the category
- * @throws {Error} when the category of the item is not one of the game
+ * @returns the category name
  * @sideEffects none
  */
-export function filterCategoryOf(item: Item): ItemCategory {
-  const category = CATEGORY_BY_NAME.get(item.category);
-  if (category === undefined) throw new Error(`Unknown item category ${item.category}`);
-  return category === ItemCategory.Element ? ItemCategory.Material : category;
+export function filterCategoryOf(item: Item): ItemCategoryName {
+  return item.category === ItemCategoryName.Element ? ItemCategoryName.Material : item.category;
 }
 
 /**

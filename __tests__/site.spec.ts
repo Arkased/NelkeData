@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
-import { CATEGORY_NAMES, isPlaceholder, ItemCategory, readData, Shop } from '@nelke/model';
+import { isPlaceholder, ItemCategoryName, readData, Shop } from '@nelke/model';
 import { BASE_PATH } from '../packages/site/src/base.js';
 import { formatNumber as format } from '../packages/site/src/format.js';
 import { NAV_BREAKPOINT } from '../packages/site/src/nav.js';
@@ -21,7 +21,7 @@ const recipeOf = (name: string) => {
   if (!recipe) throw new Error(`No recipe for ${name}`);
   return recipe;
 };
-const MERCHANDISE = CATEGORY_NAMES[ItemCategory.Merchandise];
+const MERCHANDISE = ItemCategoryName.Merchandise;
 const itemPath = (name: string) => `items/${itemByName(name).slug}/`;
 const stat = (page: Page, id: string) => page.locator(`[data-stat="${id}"] .val`);
 
@@ -91,7 +91,7 @@ for (const width of WIDTHS) {
     });
 
     test('a filter with no match shows the empty state with a clear button', async ({ page }) => {
-      await page.goto(`./?cat=${CATEGORY_NAMES[ItemCategory.Construction]}&shop=${Shop.General}`);
+      await page.goto(`./?cat=${ItemCategoryName.Construction}&shop=${Shop.General}`);
       await expect(page.getByText('Nothing matches the filters.')).toBeVisible();
       await page.locator('[data-empty]').getByRole('button', { name: 'Clear filters' }).click();
       await expect(page.locator('[data-grid] a.mini:visible')).toHaveCount(data.items.length);

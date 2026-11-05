@@ -38,7 +38,7 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |
 | `src/ui-icon.ts` | `UiIcon`: the names of the UI icons of the game that carry data. |
 | `src/format.ts` | `formatNumber` and `formatRate`: the number and percent text of the site. |
-| `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. It uses `ItemCategory` and `CATEGORY_NAMES` of `@nelke/model`, with 1 reverse lookup from the name to the category. |
+| `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. It uses `ItemCategoryName` of `@nelke/model` directly, with no lookup from a name back to an ID. |
 | `src/stat-tone.ts` | `StatTone`: the tones (good, bad) of the value of a stat. |
 | `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) as PNG files. |
 | `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |

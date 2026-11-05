@@ -95,8 +95,8 @@ if (overlay && modal && body && page) {
         history.pushState({ depth }, '', link.href);
       })
       .catch((error: unknown) => {
-        if (mine !== request) return;
         console.error(error);
+        if (mine !== request) return;
         location.href = link.href;
       });
   });
@@ -113,8 +113,8 @@ if (overlay && modal && body && page) {
       const shown = show(location.href);
       const mine = request;
       shown.catch((error: unknown) => {
-        if (mine !== request) return;
         console.error(error);
+        if (mine !== request) return;
         location.reload();
       });
     }
