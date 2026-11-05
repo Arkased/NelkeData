@@ -14,10 +14,16 @@ function captionOf(kind: GatherKind, spot: number): string {
   return `${kind === GatherKind.Treasure ? 'Chest' : 'Spot'} ${spot}`;
 }
 
+/** One item of a chest or gather spot with its rate. */
+export interface RareSpotItem {
+  itemId: string;
+  rate: number;
+}
+
 /** One chest or gather spot with its items. */
 export interface RareSpot {
   caption: string;
-  items: { itemId: string; rate: number }[];
+  items: RareSpotItem[];
 }
 
 /** One column of the rare finds: a kind with its spots. */

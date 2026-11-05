@@ -41,7 +41,7 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/areas/index.astro` | The Areas page: 1 `ZonePanel` for each zone. |
 | `src/pages/areas/[slug].astro` | The page of each area (`AreaDetail`). |
 | `src/pages/zones/[slug].astro` | The page of each zone (`ZoneDetail`). |
-| `src/rare-finds.ts` | `groupRareFinds(zone)`: the special items of a zone by kind and by chest or spot, with the captions "Chest N" and "Spot N". |
+| `src/rare-finds.ts` | `groupRareFinds(specialItems)`: the special items of a zone by kind and by chest or spot, with the captions "Chest N" and "Spot N". |
 | `src/elements.ts` | `elementItem(element)`: the element item, which gives the icon and the page of an element. |
 | `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page (items, areas and zones have one), or null for a kind with no page. |
 | `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |

@@ -39,7 +39,7 @@ const areaSchema = z.object({
 });
 
 const collectSchema = z.object({ AREA_TAG: z.string(), ITEM_TAG: z.string(), RATE: z.string() });
-const uniqueCollectSchema = z.object({ COLLECT_ITEM_TAG: z.string(), AREA_TAG: z.string(), ITEM_TAG: z.string(), RATE_03: z.string() });
+const uniqueCollectSchema = z.object({ COLLECT_ITEM_TAG: z.string(), ITEM_TAG: z.string(), RATE_03: z.string() });
 
 // A gimmick is a chest or a gather point of a zone. It names the table (table_01) of the items that it gives.
 const gimmickSchema = z.object({ type: z.enum(GimmickType), table_01: z.string() });
@@ -140,6 +140,12 @@ export interface Zones {
   isBossGroup: (g: EncounterGroup) => boolean;
 }
 
+/** One item of an item table of the unique collect file with its rate. */
+interface TableItem {
+  ITEM_TAG: string;
+  rate: number;
+}
+
 /**
  * Loads the rare finds of the zones from the gimmicks and their item tables.
  * @param read - the table reader of the saves folder
@@ -150,7 +156,7 @@ export interface Zones {
  * @sideEffects reads the gimmick table and the unique collect table through the table reader
  */
 function loadSpecial(read: ReadTable, zoneByPrefix: Map<string, ZoneRow>, droppedPrefixes: Set<string>): Map<string, SpecialFind[]> {
-  const itemsByTable = new Map<string, { ITEM_TAG: string; rate: number }[]>();
+  const itemsByTable = new Map<string, TableItem[]>();
   for (const c of read('expl_collect/unique_collect.xml', uniqueCollectSchema)) {
     listFor(itemsByTable, c.COLLECT_ITEM_TAG).push({ ITEM_TAG: c.ITEM_TAG, rate: Number(c.RATE_03) });
   }
