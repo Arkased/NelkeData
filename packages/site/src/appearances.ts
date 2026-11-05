@@ -1,3 +1,9 @@
+/** A row with levels. */
+export interface LeveledRow {
+  /** The levels of the row. */
+  levels: readonly number[];
+}
+
 /** An entity with the levels of all its rows. */
 export interface LeveledEntry {
   /** The ID of the entity. */
@@ -13,7 +19,7 @@ export interface LeveledEntry {
  * @returns 1 entry for each entity, in the order of its first row, with the levels of all its rows (the lowest to the highest give the range)
  * @sideEffects none
  */
-export function mergeLevels<T extends { levels: readonly number[] }>(rows: readonly T[], idOf: (row: T) => string): LeveledEntry[] {
+export function mergeLevels<T extends LeveledRow>(rows: readonly T[], idOf: (row: T) => string): LeveledEntry[] {
   const merged = new Map<string, number[]>();
   for (const row of rows) {
     const id = idOf(row);
