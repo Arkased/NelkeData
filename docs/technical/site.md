@@ -28,6 +28,10 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/components/Footer.astro` | The legal notice and the link "About" to `pageUrl('about/')`. A prop of the layout leaves both out on the About page. |
 | `src/pages/index.astro` | The root page. |
 | `src/pages/about.astro` | The About page at `/NelkeData/about/`, with the title `About · Westwald Archive`. 1 panel with the sections Contact, Source and Legal. The legal notice text is 1 constant, which the footer and this page share. |
+| `src/data.ts` | `readData()` of `@nelke/model` on the `data/` folder of the repo, 1 time for each build, and the lookups by ID. |
+| `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
+| `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `Tile`, `Section`, `Stat`) and `ItemDetail`. |
+| `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |
 | `scripts/check-links.ts` | The link check of `dist/`. |
 | `../../__tests__/site.spec.ts` | The UI test (Playwright). |
 | `../../.github/workflows/site.yml` | The deploy workflow. |

@@ -104,11 +104,13 @@ Each part is 1 component. A page composes parts and has no markup of its own.
 | --- | --- | --- |
 | Header | The site name "Westwald Archive" in Lora 700, the tagline "Unofficial fansite for _Nelke & the Legendary Alchemists_" in the small label size after it, and the links to the 5 categories with their game icons. Monsters and Characters use the quest category icons of the game (`20th_main_quest.g1t`, `gen_20th_m_q01_icon02` LIST01, a demon head, and LIST02, a person bust), from the same set as the Research chart icon. | Below 600 px, the tagline goes to a second line under the name, and the links go into a menu button. |
 | Footer | The legal notice of the requirements and a link "About" to the About page, in the small label size, centered. | It shows on each page, below the content. On the About page, the footer has no legal notice and no About link, because the section "Legal" shows the notice and a fact shows 1 time on a page. |
-| Filters | 1 group of toggle buttons for each filter: the item category, and the shop. | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
+| Filters | 1 group of toggle buttons for each filter of the page, for example on the Items page the item category, the shop and "Craftable". | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
 | Icon grid | The game icons in the order of the game. The number of columns follows the width. | The name shows on hover and on focus. A click opens the modal. Each icon is a real link, so Ctrl+click opens the page of the entity in a new tab. |
 | Modal | A panel with the detail of the entity, and a close button. | 1. The URL changes to the URL of the entity. Back closes the modal. 2. A link inside the modal replaces its content. Back shows the content before it. 3. Esc, the close button and a click outside close it. The focus goes back to the icon. 4. On a narrow window, the modal fills the screen. |
 | Entity page | The same detail panel as the modal, on a full page. | The page for a direct visit, a search engine and a new tab. |
-| Entity link | The icon of the entity, and its name. | It opens the entity in the modal. An entity with no page is plain text. |
+| Entity link | The icon of the entity, and its name. | It opens the entity in the modal. An entity with no page is plain text with its icon. 1 constant lists the kinds that have pages. Each page item adds its kind, so the link check passes after each change. |
+
+The modal gets its content from the entity page: a click fetches the HTML of the entity page and shows its detail panel. So the markup of a detail exists 1 time, and the list page does not hold the detail of each entity. Without JavaScript, each icon is a plain link to the entity page.
 
 ## Build and deploy
 
@@ -136,6 +138,32 @@ The site has no landing page. The root URL shows the Items page.
 
 - **Blocks, in order:** Header. Filters. Icon grid.
 - **Empty state:** The panel says "Nothing matches the filters." It has a button that clears the filters.
+
+### Items page
+
+- **URLs:** the Items page is the root URL `/NelkeData/`. The page of an item is `/NelkeData/items/<slug>/`, with the `slug` of the model. The filters are query parameters of the root URL: `cat` (the category names, comma-separated), `shop` (the shop names of the model, comma-separated) and `craft=1`. A link from the grid to an item keeps no query: the modal closes back to the URL with the filters.
+- **Filters, in order:** "Category" (the item categories of the game in the order of the game; the element items are in Material), "Sold at" (only the shops that sell 1 or more items), and "Synthesis" with 1 toggle "Craftable" (an item with a recipe). Each toggle of Category has the icon of the game category, and each toggle of Sold at has the icon of the shop.
+- **Grid:** each item that is not a placeholder, in the order of `data/items.json`. Each tile has the icon and the name. No badge.
+- **Header:** this item adds the category links of the header with the menu button, with only Items in the list.
+
+### Item detail
+
+The blocks, in order. A block or a line with no data does not show.
+
+1. **Head:** the name of the item as the title, and the close button in the modal.
+2. **Top:** the icon at 112 px, and next to it these lines: the category with its icon (the text is the sub-category, or "category · sub-category" when the sub-category does not hold the category name); the price in money format, when it is above 0; "Sold at" with the icon and the name of each shop; "Reduces into" with the icon of each element and its value, for each element above 0. Each element links to its element item.
+3. **Description**, as 1 paragraph.
+4. **Synthesis**, only for an item with a recipe:
+   - The materials as item tiles, with the quantity badge for 2 or more.
+   - 1 row of stats: "Synth. Lv." (the level format), "Synthesis cost", "Selling price", "Material cost", "Added value" (green when above 0, red when below 0) and "Value per cost" (money per synthesis cost). When the added value is `null`, the row shows only "Synth. Lv.", "Synthesis cost" and "Material cost".
+   - "Counted as 0 (no price)": the links to the materials with no price.
+   - The unlock lines: "Recipe set" (only when its name is not the name of the item), "Taught by" (the face of the teacher, the name and the friendship heart when the level is above 0), "Research" (the name of the research, with the name of the researcher), and "Event" (the label of the story event; the ID never shows).
+5. **How to get**, with these groups in order: "Gather" (each area with its zone name under it and the rate, the highest rate first, and no rate for 100%), "Monster drops" (monster tiles, no badge), "Special spots" (each zone whose special spot items hold the item), and "Farm" (the growing area).
+6. **Used in:** the tiles of each item whose recipe uses the item as a material, with no badge.
+
+The area, zone, monster, character and research of these blocks are plain text with their icon until their own page item adds their kind to the entity link.
+
+The synthesis level is `Recipe.synthesisLevel` of the model: the rule of `README.md`, section "Synthesis level" ([decision 0012](../decisions/0012-synthesis-level.md)).
 
 ### Areas page
 

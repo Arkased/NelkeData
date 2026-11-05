@@ -66,6 +66,7 @@ The fields of each kind are the facts that the workbook shows now, as typed valu
 - A fixed set of names (a shop, an element, a stat) is a string enum of `packages/model/src/enums.ts`.
 - A missing value is `null`, never `0` or `""`, when the game has no value. A value of `0` in the game stays `0`.
 - The recipe value fields of a recipe: `inputCost`, `addedValue` (`null` when the price of the result is 0), `addedValuePerCost` (`null` when `addedValue` is `null`) and `unpricedItemIds`. They have the values that the workbook shows now.
+- `Recipe.synthesisLevel` is the minimum alchemy level: `Math.max(1, Math.floor(rank / 4))`, with the `rank` of the result item. The rule is in `README.md`, section "Synthesis level". The workbook does not show it.
 - A story event is `{ id, label }`. The label follows the rule of `README.md`, section "Recipe unlock".
 - The task that opens a zone is `{ number, name }`, or `null` when the zone is open from the start.
 
