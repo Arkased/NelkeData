@@ -32,7 +32,7 @@ The site has its own plain look in the colors of the game: cream, warm brown and
 
 | Site part | Look |
 | --- | --- |
-| Typeface | 2 open fonts (SIL Open Font License), not fonts of the game: Lora (a warm serif) for the titles and the entity names, and Source Sans 3 for all other text. The site serves the WOFF2 files itself (from the Fontsource packages `@fontsource/lora` and `@fontsource/source-sans-3`), with no font CDN. The CSS has no other `@font-face`. |
+| Typeface | 2 open fonts (SIL Open Font License), not fonts of the game: Lora (a warm serif) for the titles and the entity names, and Source Sans 3 for all other text. The site serves the WOFF2 files itself from `prototype/fonts/`, with no font CDN. The CSS has no other `@font-face`. |
 | Page background | 1 flat warm color. No image. |
 | Header | A flat brown bar with the site name in cream text. No ornaments. |
 | Panel, modal | A cream box with a thin brown border and a small radius. No ornaments. |
@@ -48,7 +48,7 @@ The page always keeps the space of the vertical scroll bar (`scrollbar-gutter: s
 
 ## UI standard
 
-Each page follows these rules. The UI test checks each rule that a script can check. The orchestrator checks the screenshots against the other rules before the owner sees a page.
+Each page follows these rules. The prototype test `prototype/scripts/test.mjs` checks each rule that a script can check. The orchestrator checks the screenshots against the other rules before the owner sees a page.
 
 ### Values and units
 
@@ -71,16 +71,16 @@ A value never shows with no unit or no role word. A missing value does not show:
 
 ### Icons
 
-- Each entity mention has its game icon: an item, a monster, a character, a shop. A research has no icon in the game, so it shows the icon of its output, in this order: the first prize item, the first item of the prize recipe set, the bonus item. A research with no output in the game files shows the research icon of the game. The researchers show only on the research detail.
+- Each entity mention has its game icon: an item, a monster, a character, a shop. A research has no icon in the game, so it shows the icon of its output, in this order: the first prize item, the first item of the prize recipe set, the bonus item. A research with no output in the game files shows the Research icon of the header (`img/ui/cat-10.png`). The researchers show only on the research detail.
 - A shop has the icon of its building. A category filter has the icon of the game category.
 - A unit with a game icon (money, synthesis cost, friendship) shows the icon each time.
 
 ### Components
 
-- 1 tile component shows each entity on each page: the icon, the name under it, and at most 1 value line under the name. The tile has the same size in each grid of a page.
-- 1 section component: the section title, then the content. A section with no content does not show.
-- 1 stat component: a small label above a value with its unit.
-- The text of the page has 3 sizes only: the title, the body and the small label.
+- 1 tile function of `app.js` shows each entity on each page: the icon, the name under it, and at most 1 badge. The tile has the same size in each grid of a page.
+- 1 section function: the section title, then the content. A section with no content does not show.
+- 1 stat function: a small label above a value with its unit.
+- The text of the page has only the sizes 12, 14, 16, 20, 22 and 28 px.
 
 ### Content
 
@@ -100,7 +100,7 @@ A value never shows with no unit or no role word. A missing value does not show:
 - The level of an area uses the term of the game: "Investigation Lv". It rises from 1 to 5 as the player sends teams to the area. Some monster groups appear only from Investigation Lv 2 or 3 (`REQ_LV` in `expl_encount/area_encount.xml`).
 - The treasure chests and the tool gathers (Bug Net, Digging, Fishing) are 1 row of columns, in the same order on each area and zone detail.
 - The friendship level uses the heart icon of the game, never an emoji or a font glyph.
-- "Joins the town" on a character shows the conditions of `character/character_app_con.xml`: the town population and the turn. A character whose join event is not the game start (`EVENT_MS01_010`) joins in a story event. The event has no name in the game files, so the section says "Joins in a story event" and shows the tiles of the other characters with the same event, under "Joins with". 100 characters join this way, for example Gino with Melvia, Mimi, Marc, Gerard, the 2 Chims and Piana.
+- "Joins the town" on a character shows the conditions of `character/character_app_con.xml`: the town population and the turn. A character whose join event is not the game start (`EVENT_MS01_010`) joins in a story event. The event has no name in the game files, so the section says "Joins in a story event" and shows the tiles of the other characters with the same event, under "Joins with". 100 characters join this way, for example Gino.
 - A short list of values is 1 line in the top block of the detail, not a section. For example the element DEF of a monster is 1 line of element icons, each with its value.
 - The related parts of a detail are in 1 panel: on an area, the gather items and the monsters of the area; on a zone, its areas and its treasure.
 - The parts of 1 row align on 1 baseline. A header row of a detail (for example the researchers and the stats of a research) stays on 1 row at 768 px and wider.
@@ -112,33 +112,31 @@ A value never shows with no unit or no role word. A missing value does not show:
 
 Before the owner sees a round, the orchestrator does these steps:
 
-1. Make sure that each page, filter, section and fact traces to a row of `docs/requirements/site.md`. A part that no row asks for is removed, or goes to the owner as a requirement change before it is built.
-2. Run the UI test. It must pass with no audit failure.
+1. Make sure that each page, filter, section and fact traces to an owner requirement of `docs/requirements/site.md` or to a design requirement of this doc.
+2. Run the prototype test. It must pass with no audit failure.
 3. Open each screenshot at 360, 768, 1280 and 1920 px. Write 1 line for each screenshot: its name and the defects found, or "no defect".
 4. Check each screenshot against each rule of this section, and against the spacing and the alignment rules of "Visual style".
 5. Fix each failure, and do steps 1 to 4 again.
 
 ## Shared parts
 
-Each part is 1 component. A page composes parts and has no markup of its own.
+Each part is 1 function of `prototype/app.js`. A page composes parts.
 
 | Part | Holds | Behavior |
 | --- | --- | --- |
 | Header | The site name "Westwald Archive" in Lora 700, the tagline "Unofficial fansite for _Nelke & the Legendary Alchemists_" in the small label size after it, and the links to the 5 categories with their game icons. Monsters and Characters use the quest category icons of the game (`20th_main_quest.g1t`, `gen_20th_m_q01_icon02` LIST01, a demon head, and LIST02, a person bust), from the same set as the Research chart icon. | Below 600 px, the tagline goes to a second line under the name, and the links go into a menu button. |
 | Footer | The legal notice of the requirements and a link "About" to the About page, in the small label size, centered. | It shows on each page, below the content. On the About page, the footer has no legal notice and no About link, because the section "Legal" shows the notice and a fact shows 1 time on a page. |
-| Filters | 1 group of toggle buttons for each filter of the page, for example on the Items page the item category, the shop and "Craftable". | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. The selection is in the URL. |
-| Icon grid | The game icons in the order of the game. The number of columns follows the width. | The name shows on hover and on focus. A click opens the modal. Each icon is a real link, so Ctrl+click opens the page of the entity in a new tab. |
-| Modal | A panel with the detail of the entity, and a close button. | 1. The URL changes to the URL of the entity. Back closes the modal. 2. A link inside the modal replaces its content. Back shows the content before it. 3. Esc, the close button and a click outside close it. The focus goes back to the icon. 4. On a narrow window, the modal fills the screen. |
-| Entity page | The same detail panel as the modal, on a full page. | The page for a direct visit, a search engine and a new tab. |
-| Entity link | The icon of the entity, and its name. | It opens the entity in the modal. An entity with no page is plain text with its icon. 1 constant lists the kinds that have pages. Each page item adds its kind, so the link check passes after each change. |
+| Filters | 1 group of toggle buttons for each filter of the page, for example on the Items page the item category, the shop and "Craftable". | Each group combines its selected values with OR. The groups combine with AND. No selection in a group shows all. Below 600 px, the filters are behind 1 button with a badge of the selected count. |
+| Icon grid | The game icons in the order of the game, with the name under each icon. The number of columns follows the width. | A click opens the modal. Each icon is a link to the `#/` route of the entity. |
+| Modal | A panel with the detail of the entity, and a close button. | 1. The route changes to the route of the entity, for example `#/items/<game ID>`. Back closes the modal. 2. A link inside the modal replaces its content. Back shows the content before it. 3. Esc, the close button and a click outside (600 px and wider) close it. The focus goes back to the icon. 4. On a narrow window, the modal fills the screen. |
+| Entity link | The icon of the entity, and its name. | It opens the entity in the modal. |
+| Area entry | An area in a list (the Gather group of an item, "Found in" of a monster): the area name as a link, the zone name under it in the small label size, and 1 badge (a rate or a level range). | It opens the area in the modal. |
 
-The modal gets its content from the entity page: a click fetches the HTML of the entity page and shows its detail panel. So the markup of a detail exists 1 time, and the list page does not hold the detail of each entity. Without JavaScript, each icon is a plain link to the entity page.
+The modal builds the detail from `data.js` in the page. The site needs JavaScript.
 
-Only the latest load of the modal acts. Esc, Back or a newer click cancels the load before it. When a load fails:
-
-1. The modal logs the error with `console.error`, for each load.
-2. When the load is the latest, a click opens the entity page (`location.href`), and Back or Forward reloads the page.
-3. When the load is cancelled, the modal does nothing more.
+- **Routes.** Each page and each entity is a `#/` route of `index.html`, with the game ID of the entity, for example `#/areas/<area ID>` or `#/research/main/<research ID>`. The filters of a page are a query in the route, for example `#/items?cat=…&shop=…&craft=1`. The Monster type filter is not in the route.
+- **Filter icons.** A filter option has an icon only when the game has 1 for it. The monster type and the character group have no game icon, so their toggles show the name only.
+- **Header icons.** Areas uses the category icon `cat-16`. Monsters and Characters use `nav-monsters` and `nav-characters`. Research uses `cat-10`. The files are in `prototype/img/ui/`.
 
 ## Build and deploy
 
@@ -160,10 +158,9 @@ The site has no landing page. The root URL shows the Items page.
 
 ### Items page
 
-- **URLs:** the Items page is the root URL `/NelkeData/`. The page of an item is `/NelkeData/items/<slug>/`, with the `slug` of the model. The filters are query parameters of the root URL: `cat` (the category names, comma-separated), `shop` (the shop names of the model, comma-separated) and `craft=1`. A link from the grid to an item keeps no query: the modal closes back to the URL with the filters.
+- **Route:** `#/items`, and the root URL shows it. The filters are the query `cat`, `shop` and `craft=1`. A link from the grid to an item keeps the query, so the modal closes back to the filtered grid.
 - **Filters, in order:** "Category" (the item categories of the game in the order of the game; the element items are in Material), "Sold at" (only the shops that sell 1 or more items), and "Synthesis" with 1 toggle "Craftable" (an item with a recipe). Each toggle of Category has the icon of the game category, and each toggle of Sold at has the icon of the shop.
 - **Grid:** each item that is not a placeholder, in the order of `data/items.json`. Each tile has the icon and the name. No badge.
-- **Header:** this item adds the category links of the header with the menu button, with only Items in the list.
 
 ### Item detail
 
@@ -176,24 +173,15 @@ The blocks, in order. A block or a line with no data does not show.
    - The materials as item tiles, with the quantity badge for 2 or more.
    - 1 row of stats: "Synth. Lv." (the level format), "Synthesis cost", "Selling price", "Material cost", "Added value" (green when above 0, red when below 0) and "Value per cost" (money per synthesis cost). When the added value is `null`, the row shows only "Synth. Lv.", "Synthesis cost" and "Material cost".
    - "Counted as 0 (no price)": the links to the materials with no price.
-   - The unlock lines: "Recipe set" (only when its name is not the name of the item), "Taught by" (the face of the teacher, the name and the friendship heart when the level is above 0), "Research" (the research, with its icon by the rule of "Icons"; the researchers show only on the research detail), and "Event" (the label of the story event; the ID never shows).
-5. **How to get**, with these groups in order: "Gather" (each area with its zone name under it and the rate, the highest rate first, and no rate for 100%), "Monster drops" (monster tiles, no badge), "Special spots" (each zone whose special spot items hold the item), and "Farm" (the growing area).
+   - The unlock lines: "Recipe set" (only when its name is not the name of the item), "Taught by" (the face of the teacher, the name and the friendship heart when the level is above 0), "Research" (the research, with its icon by the rule of "Icons"; the researchers show only on the research detail), and "Event" (the label of the story event, or "An event" when the game has only an internal ID).
+5. **How to get**, with these groups in order: "Gather" (each area with its zone name under it and the rate, the highest rate first, and no rate for 100%), "Monster drops" (monster tiles, no badge), 1 group for each special kind with the item (Treasure, Bug Net, Digging, Fishing: the zone links with the rate), and "Farm" (the growing area).
 6. **Used in:** the tiles of each item whose recipe uses the item as a material, with no badge.
 
-The area, zone, monster, character and research of these blocks are plain text with their icon until their own page item adds their kind to the entity link.
-
-The synthesis level is `Recipe.synthesisLevel` of the model: the rule of `README.md`, section "Synthesis level" ([decision 0012](../decisions/0012-synthesis-level.md)).
-
-### Rules for the next pages
-
-- **Kinds with pages.** Each page item adds its kind to the constant of the kinds with pages (`PAGE_FOLDERS`), its row to the category links of the header, its UI icon and its UI tests. The folders: `areas/`, `zones/`, `monsters/`, `characters/`, `research/`.
-- **Filter icons.** A filter option has an icon only when the game has 1 for it. The monster type and the character group have no game icon, so their toggles show the name only.
-- **Header icons.** Areas uses the category icon `cat-16` of the prototype. Monsters and Characters use `nav-monsters` and `nav-characters`. Research uses `cat-10`. The files come from `prototype/img/ui/`.
-- **Area entry.** An area in a list (the Gather group of an item, "Found in" of a monster) is 1 entry: the area name as a link, the zone name under it in the small label size, and 1 badge (a rate or a level range).
+The synthesis level is the rule of `README.md`, section "Synthesis level" ([decision 0012](../decisions/0012-synthesis-level.md)).
 
 ### Areas page
 
-- **URLs:** the Areas page is `/NelkeData/areas/`. The page of an area is `/NelkeData/areas/<slug>/`, and the page of a zone is `/NelkeData/zones/<slug>/`.
+- **Route:** `#/areas`. An area and a zone are `#/areas/<game ID>`.
 - **Blocks, in order:** Header. 1 panel for each zone, in the order of `data/zones.json`. The page has no filters.
 - **Zone panel:** the name of the zone as a section title. The title is a link to the zone, so a click opens the zone in the modal. Under it, the names of its areas as plain buttons, in the order of `Zone.areaIds`. A click on an area opens its detail in the modal.
 
@@ -203,9 +191,9 @@ The synthesis level is `Recipe.synthesisLevel` of the model: the rule of `README
 2. **Top:** 1 row of stats: "Zone" (link to the zone), "Opens" ("From the start", or "After task N: <name>" from `Zone.task`), "Difficulty by Investigation Lv" (5 cells, each the letter of `Zone.difficulties` with the level 1 to 5 under it), and "Area element" (the icon and the name of each element of `Zone.elements`).
 3. **1 panel** with these groups in order:
    - "Gather": the item tiles of `Area.gather`, with the rate badge, the highest rate first.
-   - "Monsters": the monster tiles with `boss` false and `areaLevel` 1 or less, with the level badge.
-   - "Monsters from Investigation Lv N": 1 group for each `areaLevel` above 1, in the order of the level.
-   - "Bosses": the monster tiles with `boss` true, with the level badge.
+   - "Monsters": the monster tiles that are not bosses and need no Investigation Lv, with the level badge.
+   - "Monsters from Investigation Lv N": 1 group for each Investigation Lv that a monster group needs, in the order of the level.
+   - "Bosses": the boss tiles, with the level badge, and "Bosses from Investigation Lv N" by the same rule.
 4. **Rare finds** of the zone of the area: the same row as on the zone detail.
 
 ### Zone detail
@@ -213,12 +201,13 @@ The synthesis level is `Recipe.synthesisLevel` of the model: the rule of `README
 1. **Head:** the name of the zone.
 2. **Top:** the stats "Opens" and "Area element", with the formats of the area detail.
 3. **Areas:** the links to the areas of the zone.
-4. **Rare finds:** 1 row of columns in the order Treasure, Bug Net, Digging, Fishing, from `Zone.specialItems`. A column with no item does not show. In a column, each spot is 1 group with the caption "Chest N" (Treasure) or "Spot N" (the tools), and the item tiles with the rate badge.
+4. **Bosses:** the monster tiles of the zone encounters that no area lists (for example Master Puni at Ferien Plains, Lv 98), with the level badge. The group does not show when the zone has no such encounter.
+5. **Rare finds:** 1 row of columns in the order Treasure, Bug Net, Digging, Fishing, from `Zone.specialItems`. A column with no item does not show. In a column, each spot is 1 group of item tiles with the rate badge. When a kind has 2 or more spots, each group has the caption "Chest N" (Treasure) or "Spot N" (the tools).
 
 ### Monsters page
 
-- **URLs:** `/NelkeData/monsters/` and `/NelkeData/monsters/<slug>/`.
-- **Filters:** "Type" with the toggles "Monsters" and "Bosses" (`Monster.type`), in the query parameter `type`.
+- **Route:** `#/monsters`, and `#/monsters/<game ID>` for a monster.
+- **Filters:** "Type" with the toggles "Monsters" and "Bosses".
 - **Grid:** each monster in the order of `data/monsters.json`, with the icon and the name. No badge.
 
 ### Monster detail
@@ -227,13 +216,13 @@ The synthesis level is `Recipe.synthesisLevel` of the model: the rule of `README
 2. **Top:** the icon at 112 px, and next to it these lines: the type ("Monster" or "Boss"), and "Element DEF" as 1 line of element icons, each with its value.
 3. **Description**, as 1 paragraph.
 4. **Drops:** the item tiles of `Monster.drops`, with the quantity badge for 2 or more. A drop rate of 100% does not show.
-5. **Found in:** 1 area entry for each `Monster.areas`, with the level range badge, and 1 zone entry for each `Monster.zoneEncounters` (the zone name as a link, with the level range badge).
+5. **Found in:** 1 area entry for each area of the monster, with the level range badge, and 1 entry for each zone encounter that no area lists (the zone name as a link, with the level badge).
 
 ### Characters page
 
-- **URLs:** `/NelkeData/characters/` and `/NelkeData/characters/<slug>/`, with the `slug` of the model. The slug rule of the model makes the URL of a shared name unique.
-- **Grid:** each character with a join event (`Character.join.event` is not `null`), in the order of `data/characters.json`, with the face icon and the name. A character with no join event has no page.
-- **Filters:** "Group" with the toggles "Alchemist" and "Townsfolk", in the query parameter `group`. The group of a character is Alchemist when `Character.type` is `Alchemist`, and Townsfolk for each other type.
+- **Route:** `#/characters`, and `#/characters/<game ID>` for a character.
+- **Grid:** each character that can join the town (a join event, an icon and a description), in the order of `data/characters.json`, with the face icon and the name.
+- **Filters:** "Group" with the toggles "Alchemist" and "Townsfolk", in the query `group`. The group of a character is Alchemist when `Character.type` is `Alchemist`, and Townsfolk for each other type.
 
 ### Character detail
 
@@ -245,7 +234,7 @@ The synthesis level is `Recipe.synthesisLevel` of the model: the rule of `README
    - When the join event is not the game start (`EVENT_MS01_010`), the line "Joins in a story event", and the sub-title "Joins with" with the face tiles of the other characters with the same join event.
    - The stats "Town population" ("N people") and "Turn (not confirmed)" ("Turn N"). The rule "A condition that each player meets does not show" applies to both.
    - The section does not show when it has no line.
-6. **Teaches:** 1 group for each recipe set of `Character.recipeSetIds`: the item tiles of the results of its recipes. The sub-title of the group shows when the set has 2 or more recipes, or a name that is not the name of its item, or a friendship level above 0. It holds the set name and the friendship heart.
+6. **Teaches:** 1 group for each recipe set of `Character.recipeSetIds`: the item tiles of the results of its recipes. The sub-title of the group is the set name. It shows when the set has 2 or more recipes, or a name that is not the name of its item.
 
 ### Research detail
 
@@ -272,9 +261,8 @@ Each detail is 1 panel. The prototype composes each panel from the parts of "Vis
 ### Research tree page
 
 - **Purpose:** Browse the research as the game shows it: a grid of nodes with lines from left to right.
-- **URLs:** the tree page is `/NelkeData/research/`, and the page of a research is `/NelkeData/research/<slug>/`. The selected tab is the query parameter `tree` (`main`, `attack`, `support`, `emergency`). No parameter selects Main.
+- **Route:** `#/research/<tree>` (`main`, `attack`, `support`, `emergency`), and `#/research/<tree>/<game ID>` for a research. `#/research` selects Main.
 - **Blocks, in order:** Header. 1 tab for each of the 4 trees: "Main", "Attack", "Town Building" and "Emergency". The game message files do not hold the names of the trees, so the names are the names of the approved prototype. Tree box.
 - **Tree box:** The game stores each tree as a grid of 20 columns. Each node has its icon and its name, in the column and the row of the game. The icon is on a beige square with round corners, in the same color as the background of the character face icons. The game uses the even rows for the nodes and the odd rows for the lines only. Each line is 1 prerequisite of `study/stdy_conditions.xml`: it leaves the right side of the prerequisite and enters the left side of the research that needs it. The lines that enter 1 node join before the node, so 3 prerequisites show as 3 lines that meet. No line shows that is not a prerequisite. The link types of the tree files only confirm the drawing. The box has the full width of the content column, the same as the tab panel above it. It scrolls horizontally inside the page. The page itself does not scroll horizontally.
 - **Research detail, "Gives":** the prize items, and the items that the recipes of the prize recipe set make. The bonus item of `study/stdy_prize.xml` (`STDY_PRIZE_BONUS_ITEM`) is a tile with its quantity under the sub-title "Bonus". When `STDY_BONUS_FRIEND_POINT` is above 0, the sub-title also shows that friendship value. A bonus with no item (cost down, construction expenses up) shows the name of its type in the game when the game has 1, else it does not show. A sub-title never shows with nothing under it.
 - **Interactions:** A click on a node opens the research in the modal.
-- **States:** A node that the game has with no name shows its ID.
