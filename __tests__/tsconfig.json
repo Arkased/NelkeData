@@ -8,8 +8,7 @@
     "../packages/site/src/format.ts",
     "../packages/site/src/nav.ts",
     "../packages/site/src/stat-tone.ts",
-    "../packages/site/src/ui-icon.ts",
-    "../packages/site/src/url.ts"
+    "../packages/site/src/ui-icon.ts"
   ],
   "references": [{ "path": "../packages/model" }]
 }

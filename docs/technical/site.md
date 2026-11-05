@@ -21,7 +21,7 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | --- | --- |
 | `src/base.ts` | The site origin and the base path. The only place that holds them. |
 | `astro.config.ts` | `site` and `base` (both from `src/base.ts`), `trailingSlash` and the static output. |
-| `src/url.ts` | `pageUrl(path)`: the URL of a page under the base path (`BASE_PATH`, so the UI test can import it). The only place that adds the base path. |
+| `src/url.ts` | `pageUrl(path)`: the URL of a page under the base path (`BASE_PATH` from `src/base.ts`, which the UI test imports). The only place that adds the base path. |
 | `src/styles/global.css` | The CSS custom properties (colors, spacing, text sizes, radii), `scrollbar-gutter: stable` on the root element, and the base rules. |
 | `src/styles/detail.css` | The CSS of the entity detail panel (top block, stats, groups), which the entity page and the modal share. |
 | `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS and `detail.css`, the header, the `<main>` slot, the footer and the modal. |
