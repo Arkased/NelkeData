@@ -28,7 +28,7 @@ function difficultyOf(tag: string): Difficulty {
  * @sideEffects none
  */
 export function buildZones(game: Game): DirectData['zones'] {
-  const { zones, areas, uniqueByZone } = game.zones;
+  const { zones, areas, specialByZone } = game.zones;
   const { placeholderIds } = game.items;
   return withSlugs(
     zones.map((z) => ({
@@ -37,7 +37,13 @@ export function buildZones(game: Game): DirectData['zones'] {
       task: z.task ? { number: z.task, name: z.taskName } : null,
       difficulties: z.difficulties.map(difficultyOf),
       areaIds: areas.filter((a) => a.zone.expl_area === z.expl_area).map((a) => a.expl_research),
-      specialItemIds: [...new Set(withoutPlaceholders(uniqueByZone.get(z.expl_area) ?? [], (id) => id, placeholderIds))],
+      elements: z.elements,
+      specialItems: withoutPlaceholders(specialByZone.get(z.expl_area) ?? [], (s) => s.ITEM_TAG, placeholderIds).map((s) => ({
+        itemId: s.ITEM_TAG,
+        kind: s.kind,
+        spot: s.spot,
+        rate: s.rate,
+      })),
     })),
   );
 }

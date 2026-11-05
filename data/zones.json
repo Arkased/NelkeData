@@ -19,12 +19,53 @@
       "EXPL_RESEARCH_PLAIN_05",
       "EXPL_RESEARCH_PLAIN_06"
     ],
-    "specialItemIds": [
-      "ITEM_MAT_CHAIN_SPIDERWEB",
-      "ITEM_MAT_VINTAGE_POT",
-      "ITEM_MAT_PHLOGISTON",
-      "ITEM_MAT_SPIRIT_STONE",
-      "ITEM_MAT_FEST"
+    "elements": [
+      "Water",
+      "Wind"
+    ],
+    "specialItems": [
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 100
+      },
+      {
+        "itemId": "ITEM_MAT_VINTAGE_POT",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 100
+      },
+      {
+        "itemId": "ITEM_MAT_PHLOGISTON",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 100
+      },
+      {
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_FEST",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_SPIRIT_STONE",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_FEST",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      }
     ],
     "slug": "ferien-plains",
     "encounters": [
@@ -81,16 +122,65 @@
       "EXPL_RESEARCH_FOREST_05",
       "EXPL_RESEARCH_FOREST_06"
     ],
-    "specialItemIds": [
-      "ITEM_MAT_BEEHIVE",
-      "ITEM_MAT_SOFT_RIME_STONE",
-      "ITEM_MAT_DEEP_RED_SOIL",
-      "ITEM_MAT_ETERNAL_CRYSTAL",
-      "ITEM_MAT_RAIDEN_ORE",
-      "ITEM_MAT_KIMBER_ORE",
-      "ITEM_MAT_STEEL_ORE",
-      "ITEM_MAT_RIPPLE_ROCK",
-      "ITEM_MAT_SHINE_DISK"
+    "elements": [
+      "Fire",
+      "Wind"
+    ],
+    "specialItems": [
+      {
+        "itemId": "ITEM_MAT_BEEHIVE",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 100
+      },
+      {
+        "itemId": "ITEM_MAT_SOFT_RIME_STONE",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_DEEP_RED_SOIL",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_RAIDEN_ORE",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_KIMBER_ORE",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_STEEL_ORE",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_RIPPLE_ROCK",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_DISK",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      }
     ],
     "slug": "nearby-forest",
     "encounters": []
@@ -118,17 +208,71 @@
       "EXPL_RESEARCH_OLDROAD_05",
       "EXPL_RESEARCH_OLDROAD_06"
     ],
-    "specialItemIds": [
-      "ITEM_MAT_CHAIN_SPIDERWEB",
-      "ITEM_MAT_GOLDEN_TREE_LEAF",
-      "ITEM_MAT_DARK_GERRN_SOIL",
-      "ITEM_MAT_ULTRAMARINE_SOIL",
-      "ITEM_MAT_PERMANENT_RIME",
-      "ITEM_MAT_MAGNETIC_METAL_ROCK",
-      "ITEM_MAT_SHINE_CRYSTAL",
-      "ITEM_MAT_LAKE_BED_PERCIPITATE",
-      "ITEM_MAT_ELTONA_CRYSTAL",
-      "ITEM_MAT_SILVER_LIQUID"
+    "elements": [
+      "Wind",
+      "Earth"
+    ],
+    "specialItems": [
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_TREE_LEAF",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_DARK_GERRN_SOIL",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_ULTRAMARINE_SOIL",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_CRYSTAL",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      }
     ],
     "slug": "stille-path",
     "encounters": []
@@ -156,15 +300,71 @@
       "EXPL_RESEARCH_MOUNTAIN_05",
       "EXPL_RESEARCH_MOUNTAIN_06"
     ],
-    "specialItemIds": [
-      "ITEM_MAT_DEVIL_BIRD_FEATHER",
-      "ITEM_MAT_BEEHIVE",
-      "ITEM_MAT_BLACK__SAND",
-      "ITEM_MAT_SHINE_SAND",
-      "ITEM_MAT_FADENRITE",
-      "ITEM_MAT_MERMAID_TEAR",
-      "ITEM_MAT_ELTONA_CRYSTAL",
-      "ITEM_MAT_SILVER_LIQUID"
+    "elements": [
+      "Fire",
+      "Earth"
+    ],
+    "specialItems": [
+      {
+        "itemId": "ITEM_MAT_DEVIL_BIRD_FEATHER",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_BEEHIVE",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_BLACK__SAND",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_SHINE_SAND",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_MERMAID_TEAR",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      }
     ],
     "slug": "grand-pass",
     "encounters": []
@@ -192,16 +392,71 @@
       "EXPL_RESEARCH_HIGHLAND_05",
       "EXPL_RESEARCH_HIGHLAND_06"
     ],
-    "specialItemIds": [
-      "ITEM_MAT_CHAIN_SPIDERWEB",
-      "ITEM_MAT_DEVIL_BIRD_FEATHER",
-      "ITEM_MAT_WHITE_SAND",
-      "ITEM_MAT_BLACK__SAND",
-      "ITEM_MAT_RESTER_METEORITIC_IRON",
-      "ITEM_MAT_WICKED_FANG",
-      "ITEM_MAT_FADENRITE",
-      "ITEM_MAT_LAKE_BED_PERCIPITATE",
-      "ITEM_MAT_MAGNETIC_METAL_ROCK"
+    "elements": [
+      "Wind",
+      "Earth"
+    ],
+    "specialItems": [
+      {
+        "itemId": "ITEM_MAT_CHAIN_SPIDERWEB",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_DEVIL_BIRD_FEATHER",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_WHITE_SAND",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_BLACK__SAND",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_WICKED_FANG",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_LAKE_BED_PERCIPITATE",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_MAGNETIC_METAL_ROCK",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      }
     ],
     "slug": "nebel-highlands",
     "encounters": []
@@ -229,21 +484,94 @@
       "EXPL_RESEARCH_SPRING_05",
       "EXPL_RESEARCH_SPRING_06"
     ],
-    "specialItemIds": [
-      "ITEM_MAT_BABY_WYRM",
-      "ITEM_MAT_RAIDEN_DRAGOON",
-      "ITEM_MAT_BITTER_EARTHWORM",
-      "ITEM_MAT_ULTRAMARINE_SOIL",
-      "ITEM_MAT_BALLOON_FISH",
-      "ITEM_MAT_WASHER",
-      "ITEM_MAT_BUTTERFLY_FISH",
-      "ITEM_MAT_BOSS",
-      "ITEM_MAT_GOLDEN_SILK_THREAD",
-      "ITEM_MAT_ETERNAL_CRYSTAL",
-      "ITEM_MAT_KIMBER_ORE",
-      "ITEM_MAT_ELEMENTAL_STONE",
-      "ITEM_MAT_GRAVISTONE",
-      "ITEM_MAT_FADENRITE"
+    "elements": [
+      "Water"
+    ],
+    "specialItems": [
+      {
+        "itemId": "ITEM_MAT_BABY_WYRM",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_RAIDEN_DRAGOON",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_BITTER_EARTHWORM",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_ULTRAMARINE_SOIL",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_BALLOON_FISH",
+        "kind": "Fishing",
+        "spot": 1,
+        "rate": 25
+      },
+      {
+        "itemId": "ITEM_MAT_WASHER",
+        "kind": "Fishing",
+        "spot": 1,
+        "rate": 25
+      },
+      {
+        "itemId": "ITEM_MAT_BUTTERFLY_FISH",
+        "kind": "Fishing",
+        "spot": 1,
+        "rate": 25
+      },
+      {
+        "itemId": "ITEM_MAT_BOSS",
+        "kind": "Fishing",
+        "spot": 1,
+        "rate": 25
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SILK_THREAD",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_ETERNAL_CRYSTAL",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_KIMBER_ORE",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_ELEMENTAL_STONE",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_GRAVISTONE",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      }
     ],
     "slug": "harvest-spring",
     "encounters": []
@@ -272,18 +600,82 @@
       "EXPL_RESEARCH_RUINS_06",
       "EXPL_RESEARCH_RUINS_07"
     ],
-    "specialItemIds": [
-      "ITEM_MAT_WORLD_SOUL",
-      "ITEM_MAT_STERN_BUG",
-      "ITEM_MAT_GOLDEN_SCARAB",
-      "ITEM_MAT_DEEP_RED_SOIL",
-      "ITEM_MAT_DARK_GERRN_SOIL",
-      "ITEM_MAT_ULTRAMARINE_SOIL",
-      "ITEM_MAT_DRAGON_HORN",
-      "ITEM_MAT_STAR_FRAGMENT",
-      "ITEM_MAT_DUNKELHEIT",
-      "ITEM_MAT_ELTONA_CRYSTAL",
-      "ITEM_MAT_RESTER_METEORITIC_IRON"
+    "elements": [
+      "Earth"
+    ],
+    "specialItems": [
+      {
+        "itemId": "ITEM_MAT_WORLD_SOUL",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 34
+      },
+      {
+        "itemId": "ITEM_MAT_STERN_BUG",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_GOLDEN_SCARAB",
+        "kind": "Bug Net",
+        "spot": 1,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_DEEP_RED_SOIL",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 34
+      },
+      {
+        "itemId": "ITEM_MAT_DARK_GERRN_SOIL",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_ULTRAMARINE_SOIL",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_DRAGON_HORN",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_STAR_FRAGMENT",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      },
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 50
+      }
     ],
     "slug": "neumont-ruins",
     "encounters": []
@@ -311,17 +703,84 @@
       "EXPL_RESEARCH_SNOW_05",
       "EXPL_RESEARCH_SNOW_06"
     ],
-    "specialItemIds": [
-      "ITEM_MAT_PERMANENT_RIME",
-      "ITEM_MAT_DUNKELHEIT",
-      "ITEM_MAT_RESTER_METEORITIC_IRON",
-      "ITEM_MAT_KIMBER_ORE",
-      "ITEM_MAT_GRAVISTONE",
-      "ITEM_MAT_FADENRITE",
-      "ITEM_MAT_STAR_FRAGMENT",
-      "ITEM_MAT_SILVER_LIQUID",
-      "ITEM_MAT_ELTONA_CRYSTAL",
-      "ITEM_MAT_TWIN_COLOR_CORUNDUM"
+    "elements": [
+      "Water",
+      "Wind",
+      "Earth"
+    ],
+    "specialItems": [
+      {
+        "itemId": "ITEM_MAT_PERMANENT_RIME",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 34
+      },
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "kind": "Digging",
+        "spot": 1,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_KIMBER_ORE",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 34
+      },
+      {
+        "itemId": "ITEM_MAT_GRAVISTONE",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_FADENRITE",
+        "kind": "Treasure",
+        "spot": 1,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_STAR_FRAGMENT",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 34
+      },
+      {
+        "itemId": "ITEM_MAT_SILVER_LIQUID",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_ELTONA_CRYSTAL",
+        "kind": "Treasure",
+        "spot": 2,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_TWIN_COLOR_CORUNDUM",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 34
+      },
+      {
+        "itemId": "ITEM_MAT_RESTER_METEORITIC_IRON",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 33
+      },
+      {
+        "itemId": "ITEM_MAT_DUNKELHEIT",
+        "kind": "Treasure",
+        "spot": 3,
+        "rate": 33
+      }
     ],
     "slug": "lernenberg",
     "encounters": []

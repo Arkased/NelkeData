@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { Difficulty } from '../enums.js';
+import { Difficulty, Element, GatherKind } from '../enums.js';
 import { appearanceShape, idSchema, slugSchema } from './common.js';
 
 /** The schema of a zone: a top-level exploration area. */
@@ -12,8 +12,10 @@ export const zoneSchema = z.strictObject({
   /** The difficulty rank at the area level 1 to 5. */
   difficulties: z.array(z.enum(Difficulty)),
   areaIds: z.array(idSchema),
-  /** The items of the special spots. */
-  specialItemIds: z.array(idSchema),
+  /** The elements of the zone. */
+  elements: z.array(z.enum(Element)),
+  /** The rare finds: an item of the table of a chest or a gather point, with the number of the chest or the spot in the zone (from 1) and the percent rate. */
+  specialItems: z.array(z.strictObject({ itemId: idSchema, kind: z.enum(GatherKind), spot: z.int(), rate: z.number() })),
   /** The monsters that appear in the zone through an encounter that no area lists (the inverse of Monster.zoneEncounters). */
   encounters: z.array(z.strictObject({ monsterId: idSchema, levels: z.array(z.int()), boss: z.boolean() })),
 });

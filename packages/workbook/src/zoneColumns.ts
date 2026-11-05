@@ -53,10 +53,7 @@ export function zoneColumns(lookup: Lookup): Column<Area>[] {
     {
       header: 'Special Spot Items',
       width: 40,
-      get: (a) =>
-        zoneOf(a)
-          .specialItemIds.map((id) => required(lookup.items, id).name)
-          .join(', '),
+      get: (a) => [...new Set(zoneOf(a).specialItems.map((s) => s.itemId))].map((id) => required(lookup.items, id).name).join(', '),
     },
     { header: 'Monsters', width: 70, get: (a) => monstersText(a, false, lookup) },
     { header: 'Bosses', width: 30, get: (a) => monstersText(a, true, lookup) },

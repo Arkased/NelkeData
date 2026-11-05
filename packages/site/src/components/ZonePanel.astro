@@ -1,0 +1,48 @@
+---
+import type { Zone } from '@nelke/model';
+import { areaById } from '../data';
+import { EntityKind, entityUrl } from '../entity';
+import Section from './Section.astro';
+
+/** The props of the panel of a zone on the Areas page. */
+interface Props {
+  zone: Zone;
+}
+
+const { zone } = Astro.props;
+const areas = zone.areaIds.map((id) => {
+  const area = areaById.get(id);
+  if (area === undefined) throw new Error(`${zone.id}: missing area ${id}`);
+  return { name: area.name, href: entityUrl(EntityKind.Area, area.slug) };
+});
+---
+
+<div class="zone-panel" data-zone-panel>
+  <Section title={zone.name} href={entityUrl(EntityKind.Zone, zone.slug)}>
+    <div class="area-buttons">
+      {areas.map((area) => (
+        <a class="btn area-btn" href={area.href} data-modal>
+          {area.name}
+        </a>
+      ))}
+    </div>
+  </Section>
+</div>
+
+<style>
+  .zone-panel {
+    padding: var(--g);
+    background: var(--cream);
+    border: 1px solid var(--brown);
+    border-radius: var(--radius);
+  }
+  .area-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s2);
+  }
+  .area-btn {
+    display: inline-flex;
+    align-items: center;
+  }
+</style>

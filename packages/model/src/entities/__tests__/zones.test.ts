@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { GatherKind } from '../../enums.js';
 import type { Game } from '../../parse/game.js';
 import { buildAreas, buildZones } from '../zones.js';
 
@@ -11,9 +12,21 @@ describe('links to a placeholder item', () => {
     const zone = { expl_area: 'z1', name: 'Zone', task: 0, taskName: '', difficulties: [] as string[] };
     const game = {
       items,
-      zones: { zones: [zone], areas: [], uniqueByZone: new Map([['z1', ['i1', PLACEHOLDER_ITEM]]]) },
+      zones: {
+        zones: [zone],
+        areas: [],
+        specialByZone: new Map([
+          [
+            'z1',
+            [
+              { ITEM_TAG: 'i1', kind: GatherKind.Treasure, spot: 1, rate: 50 },
+              { ITEM_TAG: PLACEHOLDER_ITEM, kind: GatherKind.Treasure, spot: 1, rate: 50 },
+            ],
+          ],
+        ]),
+      },
     } as unknown as Game;
-    expect(buildZones(game)[0]?.specialItemIds).toEqual(['i1']);
+    expect(buildZones(game)[0]?.specialItems).toEqual([{ itemId: 'i1', kind: GatherKind.Treasure, spot: 1, rate: 50 }]);
   });
 
   it('drops a gather link', () => {

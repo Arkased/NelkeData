@@ -32,25 +32,33 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/about.astro` | The About page at `/NelkeData/about/`, with the title `About · Westwald Archive`. 1 panel with the sections Contact, Source and Legal. The legal notice text is 1 constant, which the footer and this page share. |
 | `src/data.ts` | `readData()` of `@nelke/model` on the `data/` folder of the repo, 1 time for each build, and the lookups by ID. |
 | `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
+| `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`), `ItemDetail`, `AreaDetail` and `ZoneDetail`. |
+| `src/components/AreaEntry.astro` | 1 area entry (design "Area entry"): the name as an entity link, under it the zone name in the small label size, and 1 badge. Without the prop `zone` it is a zone entry with no zone line. The Gather and Special spots groups of the item detail and "Found in" of the monster detail use it. |
+| `src/components/RareFinds.astro` | The "Rare finds" section of a zone: a group for each `GatherKind`, a column for each chest or spot, its items with the rate. `AreaDetail` and `ZoneDetail` use it. |
+| `src/components/OpensStat.astro` | The stat "Opens" of an area or a zone. |
+| `src/components/ElementStat.astro` | The stat "Area element": a link to the element item for each element. |
+| `src/components/ZonePanel.astro` | 1 zone on the Areas page: the zone name as a link and the buttons of its areas. |
+| `src/pages/areas/index.astro` | The Areas page: 1 `ZonePanel` for each zone. |
+| `src/pages/areas/[slug].astro` | The page of each area (`AreaDetail`). |
+| `src/pages/zones/[slug].astro` | The page of each zone (`ZoneDetail`). |
+| `src/rare-finds.ts` | `groupRareFinds(specialItems)`: the special items of a zone by kind and by chest or spot, with the captions "Chest N" and "Spot N". |
+| `src/elements.ts` | `elementItem(element)`: the element item (looked up by the private table `ELEMENT_ITEM_IDS`), which gives the icon and the page of an element (the item detail and the monster detail share it). |
 | `src/pages/monsters/index.astro` | The Monsters page at `/NelkeData/monsters/`, with the title `Monsters · Westwald Archive`, and the filter "Type" (`type` in the query; the toggles have no icon). |
 | `src/pages/monsters/[slug].astro` | The page of each monster (`getStaticPaths` from the monsters of `data/`), with the title `<monster name> · Westwald Archive`. |
 | `src/components/MonsterDetail.astro` | The monster detail: the type, the element DEF line, the description, the drops and "Found in". |
-| `src/components/AreaEntry.astro` | 1 area entry (design "Area entry"): the name as an entity link, under it the zone name in the small label size, and 1 badge. Without the prop `zone` it is a zone entry with no zone line. The Gather and Special spots groups of the item detail and "Found in" of the monster detail use it. |
 | `src/appearances.ts` | `mergeLevels(rows, idOf)`: merges the rows of the same area or zone (1 row for each boss flag) into 1 entry with all levels. |
-| `src/element-items.ts` | `ELEMENT_ITEM_IDS`: the item of each element, whose icon is the element icon (the item detail and the monster detail share it). |
-| `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`) and `ItemDetail`. |
-| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page and for an entity with no page (a character with no join event, by the rule of `hasCharacterPage`). The tile and the link need no extra argument. |
+| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page (items, areas, zones, monsters and characters have one), or null for a kind with no page and for an entity with no page (a character with no join event, by the rule of `hasCharacterPage`). The tile and the link need no extra argument. |
 | `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |
 | `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |
 | `src/ui-icon.ts` | `UiIcon`: the names of the UI icons of the game that carry data. |
-| `src/format.ts` | `formatNumber` and `formatRate`: the number and percent text of the site. |
+| `src/format.ts` | `formatNumber`, `formatRate` and `formatLevelRange`: the number, percent and level range text of the site (null for no level). |
 | `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. It uses `ItemCategoryName` of `@nelke/model` directly, with no lookup from a name back to an ID. |
 | `src/characters.ts` | `CharacterGroup` (Alchemist, Townsfolk), `groupOf`, `hasCharacterPage` (a join event is not null), and the constants of the join rules: `GAME_START_EVENT_ID`, `START_POPULATION` (`OC_INITIAL_POPULATION`, 30) and `START_TURN`. |
 | `src/pages/characters/index.astro` | The Characters page at `/NelkeData/characters/`: the Group filter and the grid of the characters with a page. |
 | `src/pages/characters/[slug].astro` | The page of each character with a join event, with the title `<character name> · Westwald Archive`. |
 | `src/components/CharacterDetail.astro` | The detail of a character: top block, description, Skills, Joins the town and Teaches. |
 | `src/stat-tone.ts` | `StatTone`: the tones (good, bad) of the value of a stat. |
-| `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) and the header icons (`nav-characters.png`) as PNG files. |
+| `src/assets/ui/` | The UI icons of the game (category incl. `cat-16` Areas, shop, coin, cost, friendship) and the header icons (`nav-monsters.png`, `nav-characters.png`) as PNG files. |
 | `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |
 | `scripts/check-links.ts` | The link check of `dist/`. |
 | `../../__tests__/site.spec.ts` | The UI test (Playwright). |

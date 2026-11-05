@@ -98,7 +98,8 @@ export function fakeZone(o: Overrides<DirectData['zones'][number]>): DirectData[
     task: null,
     difficulties: [Difficulty.S, Difficulty.A, Difficulty.B, Difficulty.C, Difficulty.D],
     areaIds: [],
-    specialItemIds: [],
+    elements: [],
+    specialItems: [],
     ...o,
   };
 }

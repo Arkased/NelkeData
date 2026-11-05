@@ -121,10 +121,18 @@ describe('data/', () => {
       );
     });
 
-    it('Zone.specialItemIds and Item.specialZoneIds', () => {
-      expect(links(data.zones, (z) => z.specialItemIds.map((id) => key(z.id, id)))).toEqual(
+    it('Zone.specialItems and Item.specialZoneIds', () => {
+      expect(links(data.zones, (z) => [...new Set(z.specialItems.map((s) => key(z.id, s.itemId)))])).toEqual(
         links(data.items, (i) => i.specialZoneIds.map((id) => key(id, i.id))),
       );
+    });
+
+    it('Zone.specialItems has a table of 100% for each kind and spot', () => {
+      for (const zone of data.zones) {
+        const totals = new Map<string, number>();
+        for (const s of zone.specialItems) totals.set(key(s.kind, s.spot), (totals.get(key(s.kind, s.spot)) ?? 0) + s.rate);
+        for (const total of totals.values()) expect(total, zone.id).toBe(100);
+      }
     });
 
     it('Area.monsters and Monster.areas', () => {

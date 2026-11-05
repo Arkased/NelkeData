@@ -7,6 +7,7 @@
     "../packages/site/src/characters.ts",
     "../packages/site/src/format.ts",
     "../packages/site/src/nav.ts",
+    "../packages/site/src/rare-finds.ts",
     "../packages/site/src/stat-tone.ts",
     "../packages/site/src/ui-icon.ts"
   ],

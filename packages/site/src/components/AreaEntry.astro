@@ -17,7 +17,7 @@ interface Props {
 const { kind, slug, name, zone = null, badge = null } = Astro.props;
 ---
 
-<div class="link">
+<div class="link" data-area-entry>
   <span class="lt">
     <b>
       <EntityLink kind={kind} slug={slug} name={name} />

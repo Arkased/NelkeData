@@ -1,7 +1,7 @@
 ---
 import { Element, type Item, type Research } from '@nelke/model';
 import { areaById, characterById, itemById, monsterById, recipeById, recipeSetById, researchById, zoneById } from '../data';
-import { ELEMENT_ITEM_IDS } from '../element-items';
+import { elementItem } from '../elements';
 import { EntityKind, entityUrl } from '../entity';
 import { formatNumber, formatRate } from '../format';
 import { entityIconUrl, uiIconUrl } from '../icons';
@@ -41,7 +41,7 @@ const categoryText =
 const elements = Object.values(Element)
   .map((element) => ({
     value: item.reduce[element] ?? 0,
-    target: required(itemById.get(ELEMENT_ITEM_IDS[element]), `${element} element item`),
+    target: elementItem(element),
   }))
   .filter((e) => e.value > 0);
 
@@ -134,14 +134,14 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
 
 {recipe !== null && (
   <Section title="Synthesis">
-    <div class="syn" data-section="synthesis">
+    <div class="panel" data-section="synthesis">
       <div class="minis">
         {recipe.materials.map((m) => {
           const material = required(itemById.get(m.itemId), 'material');
           return <Tile kind={EntityKind.Item} slug={material.slug} name={material.name} icon={material.icon} qty={m.quantity} />;
         })}
       </div>
-      <div class="syn-stats">
+      <div class="stats">
         <Stat label="Synth. Lv." id="synth-level">
           Lv {recipe.synthesisLevel}
         </Stat>

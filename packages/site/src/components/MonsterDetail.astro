@@ -2,7 +2,7 @@
 import { CharacterType, Element, type Monster } from '@nelke/model';
 import { mergeLevels } from '../appearances';
 import { areaById, itemById, zoneById } from '../data';
-import { ELEMENT_ITEM_IDS } from '../element-items';
+import { elementItem } from '../elements';
 import { EntityKind } from '../entity';
 import { formatLevelRange, formatNumber } from '../format';
 import { entityIconUrl } from '../icons';
@@ -26,7 +26,7 @@ function required<T>(row: T | undefined, what: string): T {
 const defense = Object.values(Element).flatMap((element) => {
   const value = monster.elementDef?.[element];
   if (value === undefined) return [];
-  const item = required(itemById.get(ELEMENT_ITEM_IDS[element]), `${element} element item`);
+  const item = elementItem(element);
   return [{ value, name: item.name, icon: required(item.icon, 'element icon') }];
 });
 const drops = monster.drops.map((drop) => ({ drop, item: required(itemById.get(drop.itemId), 'drop item') }));

@@ -161,7 +161,7 @@ The Zones sheet has 1 row for each spot of an area.
 
 - `Difficulty by Area Lv` shows the difficulty rank (S to F) at area level 1 to 5 (`diff_00` to `diff_04`).
 - `Monsters` and `Bosses` show each monster with its levels. "(area Lv N+)" shows that the monster appears only from area level N (`REQ_LV`).
-- `Special Spot Items` are the items of `unique_collect.xml`. They belong to the area, so each spot of the area shows the same list.
+- `Special Spot Items` are the items of `unique_collect.xml` that the gimmicks of `expl_gimmick.xml` use (`Zone.specialItems` of the model). They belong to the area, so each spot of the area shows the same list.
 
 ## Monsters and characters
 

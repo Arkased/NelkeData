@@ -77,7 +77,7 @@ export function addInverseLinks(direct: DirectData): ModelData {
   const specialZones = new Map<string, string[]>();
   for (const zone of direct.zones) {
     for (const areaId of zone.areaIds) setOnce(zoneOfArea, areaId, zone.id, 'area');
-    for (const itemId of zone.specialItemIds) {
+    for (const { itemId } of zone.specialItems) {
       const list = listFor(specialZones, itemId);
       if (!list.includes(zone.id)) list.push(zone.id);
     }
@@ -162,7 +162,10 @@ function assertLinksExist(model: ModelData): void {
   }
   for (const zone of model.zones) {
     check('areas', zone.areaIds);
-    check('items', zone.specialItemIds);
+    check(
+      'items',
+      zone.specialItems.map((s) => s.itemId),
+    );
     check(
       'monsters',
       zone.encounters.map((e) => e.monsterId),
