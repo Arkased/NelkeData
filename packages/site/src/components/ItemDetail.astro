@@ -8,6 +8,7 @@ import { entityIconUrl, uiIconUrl } from '../icons';
 import { categoryIconOf, SHOPS } from '../item-filters';
 import { StatTone } from '../stat-tone';
 import { UiIcon } from '../ui-icon';
+import AreaEntry from './AreaEntry.astro';
 import EntityLink from './EntityLink.astro';
 import Friendship from './Friendship.astro';
 import Group from './Group.astro';
@@ -238,17 +239,7 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
         <Group title="Gather">
           <div class="cols">
             {gathers.map((g) => (
-              <div class="link">
-                <span class="lt">
-                  <b>
-                    <EntityLink kind={EntityKind.Area} slug={g.area.slug} name={g.area.name} />
-                  </b>
-                  <small>
-                    <EntityLink kind={EntityKind.Zone} slug={g.zone.slug} name={g.zone.name} />
-                  </small>
-                </span>
-                {g.rate !== null && <span class="pct">{g.rate}</span>}
-              </div>
+              <AreaEntry kind={EntityKind.Area} slug={g.area.slug} name={g.area.name} zone={g.zone} badge={g.rate} />
             ))}
           </div>
         </Group>
@@ -266,13 +257,7 @@ const hasHowToGet = gathers.length > 0 || drops.length > 0 || specialZones.lengt
         <Group title="Special spots">
           <div class="cols">
             {specialZones.map((zone) => (
-              <div class="link">
-                <span class="lt">
-                  <b>
-                    <EntityLink kind={EntityKind.Zone} slug={zone.slug} name={zone.name} />
-                  </b>
-                </span>
-              </div>
+              <AreaEntry kind={EntityKind.Zone} slug={zone.slug} name={zone.name} />
             ))}
           </div>
         </Group>

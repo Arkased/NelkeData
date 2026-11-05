@@ -1,3 +1,5 @@
+import { BASE_PATH } from './base.js';
+
 /**
  * Returns the URL of a page under the base path of the site.
  * @param path - the path of the page below the base, for example `items/`, or an empty string for the root page
@@ -5,5 +7,5 @@
  * @sideEffects none
  */
 export function pageUrl(path: string): string {
-  return import.meta.env.BASE_URL.replace(/\/?$/, '/') + path.replace(/^\/+/, '');
+  return BASE_PATH + path.replace(/^\/+/, '');
 }

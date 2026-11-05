@@ -3,6 +3,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { CharacterType, isPlaceholder, ItemCategoryName, readData, Shop } from '@nelke/model';
 import { BASE_PATH } from '../packages/site/src/base.js';
 import { formatNumber as format } from '../packages/site/src/format.js';
+import { EntityKind, entityUrl } from '../packages/site/src/entity.js';
 import { NAV_BREAKPOINT } from '../packages/site/src/nav.js';
 import { StatTone } from '../packages/site/src/stat-tone.js';
 
@@ -437,6 +438,7 @@ test.describe('names and links', () => {
 const detailMonster = data.monsters
   .filter((m) => m.elementDef !== null && m.drops.length > 0 && m.areas.length > 0)
   .toSorted((a, b) => b.areas.length - a.areas.length)[0];
+const fourElementMonster = data.monsters.find((m) => Object.values(m.elementDef ?? {}).length === 4);
 const monsterPath = (slug: string) => `monsters/${slug}/`;
 
 for (const width of WIDTHS) {
@@ -469,7 +471,23 @@ for (const width of WIDTHS) {
       const area = data.areas.find((a) => a.id === detailMonster.areas[0]?.areaId);
       await expect(page.getByRole('heading', { name: 'Found in', level: 2 })).toBeVisible();
       await expect(page.locator('[data-section="found-in"] .link').first()).toContainText(area?.name ?? '');
-      await expect(page.locator('[data-section="found-in"] .link a')).toHaveCount(0);
+      // An area is a link exactly when its kind has a page (the area pages come in another item).
+      const areaHref = entityUrl(EntityKind.Area, area?.slug ?? '');
+      await expect(page.locator('[data-section="found-in"] .link').first().locator('b a')).toHaveCount(areaHref === null ? 0 : 1);
+      await noHorizontalScroll(page);
+    });
+
+    test('the 4 chips of the element DEF line are on 1 row and a found-in area shows once', async ({ page }) => {
+      if (!fourElementMonster) throw new Error('No monster with 4 element DEF values');
+      await page.goto(monsterPath(fourElementMonster.slug));
+      const chips = page.locator('[data-fact="element-def"] .el');
+      await expect(chips).toHaveCount(4);
+      const tops = await chips.evaluateAll((els) => els.map((el) => el.getBoundingClientRect().top));
+      expect(new Set(tops).size).toBe(1);
+      const areaIds = fourElementMonster.areas.map((a) => a.areaId);
+      await expect(page.locator('[data-section="found-in"] .link')).toHaveCount(
+        new Set(areaIds).size + new Set(fourElementMonster.zoneEncounters.map((z) => z.zoneId)).size,
+      );
       await noHorizontalScroll(page);
     });
 
