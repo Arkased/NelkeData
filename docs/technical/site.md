@@ -1,97 +1,63 @@
 # Website
 
-The files, the commands and the limits of the website. The design is in [docs/design/site.md](../design/site.md), section "Build and deploy".
+The files, the scripts and the deploy workflow of the website. The website is the folder `prototype/`. It is a static site. It has no build step.
 
-## Package
+## Files of `prototype/`
 
-| Item | Value |
+| File or folder | Holds |
 | --- | --- |
-| Name | `@nelke/site` |
-| Folder | `packages/site/` |
-| Framework | Astro, static output (`output: 'static'`), 1 exact version |
-| `site` | `https://arkased.github.io` |
-| `base` | `/NelkeData/` |
-| `trailingSlash` | `'always'` |
-| Output | `packages/site/dist/` (ignored by git) |
-| Fonts | `@fontsource/lora` (weight 700) and `@fontsource/source-sans-3` (weights 400 and 700), latin subset, WOFF2 only |
+| `index.html` | The page shell. It loads `style.css`, `data.js` and `app.js` with relative URLs. |
+| `app.js` | All the code of the site, in 1 function that runs at once. It has the 5 views (Items, Areas, Monsters, Characters, Research) and the About page. It has the hash router, the filters, and the modal. |
+| `data.js` | The game data. It sets `window.DATA` with the keys `items`, `zones`, `monsters`, `chars`, `research` and `trees`. |
+| `style.css` | All the styles. It has 4 `@font-face` rules and the media queries at 600, 640, 768 and 1200 px. |
+| `fonts/` | The WOFF2 files of Lora (400 and 700) and Source Sans 3 (400 and 700), and the 2 LICENSE files. |
+| `img/ui/` | The images of the interface (50 files): navigation, shop, category, friendship, coin and cost icons. |
+| `img/icons/` | The icons of the game entities (491 files). |
+| `package.json`, `package-lock.json` | The dependencies of the scripts. They are not part of the site. |
+| `scripts/` | The scripts for the UI test and the screenshots. |
+| `shots/` | The output of `shots.mjs`. Git ignores it. |
 
-## Files
+The site uses only relative URLs. The route of a page is in the hash: `#/items`, `#/items/<game ID>`, `#/areas/<ID>`, `#/monsters`, `#/characters/<ID>`, `#/research/<tree>` and `#/research/<tree>/<ID>`. A filter is in the query of the hash, for example `#/items?cat=...`.
 
-| File | Holds |
+## Contents of `data.js`
+
+| Key | Value |
 | --- | --- |
-| `src/base.ts` | The site origin and the base path. The only place that holds them. |
-| `astro.config.ts` | `site` and `base` (both from `src/base.ts`), `trailingSlash` and the static output. |
-| `src/url.ts` | `pageUrl(path)`: the URL of a page under the base path (`BASE_PATH` from `src/base.ts`, which the UI test imports). The only place that adds the base path. |
-| `src/styles/global.css` | The CSS custom properties (colors, spacing, text sizes, radii), `scrollbar-gutter: stable` on the root element, and the base rules. |
-| `src/styles/detail.css` | The CSS of the entity detail panel (top block, stats, groups), which the entity page and the modal share. |
-| `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS and `detail.css`, the header, the `<main>` slot, the footer and the modal. |
-| `src/components/Header.astro` | The site name, the tagline, the links to the category pages (current one marked) and the menu button below 600 px. |
-| `src/components/Footer.astro` | The legal notice and the link "About" to `pageUrl('about/')`. A prop of the layout leaves both out on the About page. |
-| `src/components/Section.astro` | 1 section: the prop `title` as a section title (`h2.section-title`), then the default slot for the content. |
-| `src/pages/index.astro` | The root page. |
-| `src/pages/about.astro` | The About page at `/NelkeData/about/`, with the title `About · Westwald Archive`. 1 panel with the sections Contact, Source and Legal. The legal notice text is 1 constant, which the footer and this page share. |
-| `src/data.ts` | `readData()` of `@nelke/model` on the `data/` folder of the repo, 1 time for each build, and the lookups by ID. |
-| `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
-| `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`), `ItemDetail`, `AreaDetail` and `ZoneDetail`. |
-| `src/components/AreaEntry.astro` | 1 area entry (design "Area entry"): the name as an entity link, under it the zone name in the small label size, and 1 badge. Without the prop `zone` it is a zone entry with no zone line. The Gather and Special spots groups of the item detail and "Found in" of the monster detail use it. |
-| `src/components/RareFinds.astro` | The "Rare finds" section of a zone: a group for each `GatherKind`, a column for each chest or spot, its items with the rate. `AreaDetail` and `ZoneDetail` use it. |
-| `src/components/OpensStat.astro` | The stat "Opens" of an area or a zone. |
-| `src/components/ElementStat.astro` | The stat "Area element": a link to the element item for each element. |
-| `src/components/ZonePanel.astro` | 1 zone on the Areas page: the zone name as a link and the buttons of its areas. |
-| `src/pages/areas/index.astro` | The Areas page: 1 `ZonePanel` for each zone. |
-| `src/pages/areas/[slug].astro` | The page of each area (`AreaDetail`). |
-| `src/pages/zones/[slug].astro` | The page of each zone (`ZoneDetail`). |
-| `src/rare-finds.ts` | `groupRareFinds(specialItems)`: the special items of a zone by kind and by chest or spot, with the captions "Chest N" and "Spot N". |
-| `src/elements.ts` | `elementItem(element)`: the element item (looked up by the private table `ELEMENT_ITEM_IDS`), which gives the icon and the page of an element (the item detail, the monster detail and `ElementStat` of the area and zone details use it). |
-| `src/pages/monsters/index.astro` | The Monsters page at `/NelkeData/monsters/`, with the title `Monsters · Westwald Archive`, and the filter "Type" (`type` in the query; the toggles have no icon). |
-| `src/pages/monsters/[slug].astro` | The page of each monster (`getStaticPaths` from the monsters of `data/`), with the title `<monster name> · Westwald Archive`. |
-| `src/components/MonsterDetail.astro` | The monster detail: the type, the element DEF line, the description, the drops and "Found in". |
-| `src/appearances.ts` | `mergeLevels(rows, idOf)`: merges the rows of the same area or zone (1 row for each boss flag) into 1 entry with all levels. |
-| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page (items, areas, zones, monsters and characters have one), or null for a kind with no page and for an entity with no page (a character with no join event, by the rule of `hasCharacterPage`). The tile and the link need no extra argument. |
-| `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |
-| `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |
-| `src/ui-icon.ts` | `UiIcon`: the names of the UI icons of the game that carry data. |
-| `src/format.ts` | `formatNumber`, `formatRate` and `formatLevelRange`: the number, percent and level range text of the site (null for no level). |
-| `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. It uses `ItemCategoryName` of `@nelke/model` directly, with no lookup from a name back to an ID. |
-| `src/characters.ts` | `CharacterGroup` (Alchemist, Townsfolk), `groupOf`, `hasCharacterPage` (a join event is not null), and the constants of the join rules: `GAME_START_EVENT_ID`, `START_POPULATION` (`OC_INITIAL_POPULATION`, 30) and `START_TURN`. |
-| `src/pages/characters/index.astro` | The Characters page at `/NelkeData/characters/`: the Group filter and the grid of the characters with a page. |
-| `src/pages/characters/[slug].astro` | The page of each character with a join event, with the title `<character name> · Westwald Archive`. |
-| `src/components/CharacterDetail.astro` | The detail of a character: top block, description, Skills, Joins the town and Teaches. |
-| `src/stat-tone.ts` | `StatTone`: the tones (good, bad) of the value of a stat. |
-| `src/assets/ui/` | The UI icons of the game (category incl. `cat-16` Areas, shop, coin, cost, friendship) and the header icons (`nav-monsters.png`, `nav-characters.png`) as PNG files. |
-| `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |
-| `scripts/check-links.ts` | The link check of `dist/`. |
-| `../../__tests__/site.spec.ts` | The UI test (Playwright). |
-| `../../.github/workflows/site.yml` | The deploy workflow. |
+| `items` | An array of 296 items. |
+| `zones` | An array of 8 zones. Each zone holds its areas. |
+| `monsters` | An object of 43 monsters. |
+| `chars` | An array of 130 characters. |
+| `research` | An object of 82 researches. |
+| `trees` | 4 trees: `main`, `attack`, `support` and `emergency`. Each tree has the grids `res` and `con` of 20 columns. |
 
-The merge of the level rows of a monster is `mergeLevels<T extends LeveledRow>(rows: readonly T[], idOf: (row: T) => string): LeveledEntry[]` in `src/appearances.ts`. `LeveledRow` (`levels`) and `LeveledEntry` (`id`, `levels`) are named interfaces with JSDoc. No type in the file is an inline object type.
+No script makes `data.js` now. The script `prototype/scripts/build-data.ts` made it. Commit `fda0f57` deleted that script. The file `data.js` is edited as is. It can be different from `data/*.json`.
 
-The `.ts` files of the package are in `tsc -b`. `astro check` checks the `.astro` files as part of `npm run site:build`. ESLint checks the `.astro` files with `eslint-plugin-astro`. Prettier formats them with `prettier-plugin-astro`.
+## Scripts of `prototype/scripts/`
 
-## Scripts
+| Script | Command | Does |
+| --- | --- | --- |
+| `lib.mjs` | none | Code that the other scripts share: it starts Chromium, opens a page, waits until the page is stable, and runs the DOM audit. |
+| `test.mjs` | `node test.mjs [widths]` | The UI test. It opens `prototype/index.html` as a `file://` URL. `widths` is a list that is separated by commas. The default is `360,768,1280,1920`. It runs each width in its own browser context at the same time. It fails on a failed check, on an audit finding or on a console message. |
+| `shots.mjs` | `node shots.mjs [widths] [states]` | It writes screenshots to `prototype/shots/`. |
 
-| Script | Does |
-| --- | --- |
-| `npm run site:dev` | Starts the Astro dev server. |
-| `npm run site:build` | `astro check`, then `astro build`, then the link check. Exits with 1 when a step fails. |
-| `npm run site:test` | Runs the UI test against `astro preview` of the built `dist/`. Needs `site:build` first. |
-
-## Link check
-
-- Input: each `.html` file under `dist/`.
-- It reads each `href` of `<a>` and `<link>`, and each `src` of `<img>` and `<script>`, that starts with `/NelkeData/`.
-- The target of a URL that ends with `/` is `<path>index.html`. The target of any other URL is the file at its path. The check removes the base path, the query and the fragment first.
-- Output: 1 line `<page file>: <url>` for each URL with no target, and exit code 1. Exit code 0 when each URL has a target.
+To set up, run `npm install` in `prototype/`. The root `@playwright/test` also gives `playwright` to the scripts. `lib.mjs` has the path of the Chromium file of 1 machine (`chromium-1232`). Change that path on other machines. The tests are not part of `npm run check` and not part of the CI.
 
 ## Deploy workflow
 
+The file is `.github/workflows/site.yml`.
+
 | Item | Value |
 | --- | --- |
-| File | `.github/workflows/site.yml` |
-| Triggers | `push` to `main` with the paths `data/**`, `packages/site/**` and `.github/workflows/site.yml`; `workflow_dispatch` |
+| Triggers | A push to `main` that changes `prototype/**` or `.github/workflows/site.yml`. A manual run (`workflow_dispatch`). |
 | Permissions | `contents: read`, `pages: write`, `id-token: write` |
-| Concurrency | group `pages`, `cancel-in-progress: false` |
-| Steps | `actions/checkout`, `actions/setup-node` (Node 24, npm cache), `npm ci`, `npx playwright install --with-deps chromium`, `npm run site:build`, `npm run site:test`, `actions/upload-pages-artifact` (path `packages/site/dist`), `actions/deploy-pages` |
-| Action versions | Each action is pinned to 1 exact release tag, for example `v7.0.1`, not a major tag. |
-| Pages source | GitHub Actions (`build_type: workflow`) |
+| Concurrency | Group `pages`. `cancel-in-progress` is `false`. |
+| Runner | `ubuntu-latest` |
+| Environment | `github-pages` |
+| Step 1 | `actions/checkout@v7.0.1` |
+| Step 2 | Copy `index.html`, `app.js`, `data.js`, `style.css`, `fonts/` and `img/` to `_site/`. |
+| Step 3 | `actions/upload-pages-artifact@v5.0.0` with the path `_site` |
+| Step 4 | `actions/deploy-pages@v5.0.1` |
+| Pages source | GitHub Actions |
 | Live URL | `https://arkased.github.io/NelkeData/` |
+
+The workflow does not install Node, does not build and does not test. A new file that `index.html` or `style.css` loads must be added to the copy step.
