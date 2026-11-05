@@ -39,14 +39,18 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/appearances.ts` | `mergeLevels(rows, idOf)`: merges the rows of the same area or zone (1 row for each boss flag) into 1 entry with all levels. |
 | `src/element-items.ts` | `ELEMENT_ITEM_IDS`: the item of each element, whose icon is the element icon (the item detail and the monster detail share it). |
 | `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`) and `ItemDetail`. |
-| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page. |
+| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page and for an entity with no page (a character with no join event, by the rule of `hasCharacterPage`). The tile and the link need no extra argument. |
 | `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |
 | `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |
 | `src/ui-icon.ts` | `UiIcon`: the names of the UI icons of the game that carry data. |
 | `src/format.ts` | `formatNumber` and `formatRate`: the number and percent text of the site. |
 | `src/item-filters.ts` | The item categories and shops of the filter with their icons, and the category of an item for the filter and for its icon. It uses `ItemCategoryName` of `@nelke/model` directly, with no lookup from a name back to an ID. |
+| `src/characters.ts` | `CharacterGroup` (Alchemist, Townsfolk), `groupOf`, `hasCharacterPage` (a join event is not null), and the constants of the join rules: `GAME_START_EVENT_ID`, `START_POPULATION` (`OC_INITIAL_POPULATION`, 30) and `START_TURN`. |
+| `src/pages/characters/index.astro` | The Characters page at `/NelkeData/characters/`: the Group filter and the grid of the characters with a page. |
+| `src/pages/characters/[slug].astro` | The page of each character with a join event, with the title `<character name> · Westwald Archive`. |
+| `src/components/CharacterDetail.astro` | The detail of a character: top block, description, Skills, Joins the town and Teaches. |
 | `src/stat-tone.ts` | `StatTone`: the tones (good, bad) of the value of a stat. |
-| `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) as PNG files. |
+| `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) and the header icons (`nav-characters.png`) as PNG files. |
 | `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |
 | `scripts/check-links.ts` | The link check of `dist/`. |
 | `../../__tests__/site.spec.ts` | The UI test (Playwright). |
