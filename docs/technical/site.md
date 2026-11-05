@@ -52,6 +52,8 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `../../__tests__/site.spec.ts` | The UI test (Playwright). |
 | `../../.github/workflows/site.yml` | The deploy workflow. |
 
+The merge of the level rows of a monster is `mergeLevels<T extends LeveledRow>(rows: readonly T[], idOf: (row: T) => string): LeveledEntry[]` in `src/appearances.ts`. `LeveledRow` (`levels`) and `LeveledEntry` (`id`, `levels`) are named interfaces with JSDoc. No type in the file is an inline object type.
+
 The `.ts` files of the package are in `tsc -b`. `astro check` checks the `.astro` files as part of `npm run site:build`. ESLint checks the `.astro` files with `eslint-plugin-astro`. Prettier formats them with `prettier-plugin-astro`.
 
 ## Scripts
