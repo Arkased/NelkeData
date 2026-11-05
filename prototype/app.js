@@ -21,6 +21,8 @@
   const HABITAT = new Map();
   for (const z of D.zones) {
     for (const a of z.areas) for (const m of a.mons) (HABITAT.get(m.m) || HABITAT.set(m.m, []).get(m.m)).push({ area: a.id, lo: m.lo, hi: m.hi });
+    // A monster that the zone itself meets (no area of the zone): the habitat is the zone.
+    for (const m of z.mons || []) (HABITAT.get(m.m) || HABITAT.set(m.m, []).get(m.m)).push({ area: z.id, lo: m.lo, hi: m.hi });
   }
   /** Monster id -> the items it drops. */
   const DROPS = new Map();
@@ -423,6 +425,7 @@
     let h = bar('Synthesis') + '<div class="syn">';
     h += `<div class="minis mats">${s.mats.map((m) => itemEnt(m.id, { qty: m.q })).join('')}</div>`;
     const stats = [stat('Synthesis cost', costU(s.cost))];
+    if (s.lv) stats.push(stat('Synth. Lv.', `Lv ${s.lv}`));
     if (s.added === null) {
       // No selling price: the value is not calculated, and the only known value is the material cost.
       stats.push(stat('Material cost', money(s.input)));
@@ -543,7 +546,8 @@
     if (!z) return null;
     return head(z.n) + panel(
       [statBox('Opens', `<span>${esc(opens(z))}</span>`), elementStat(z)],
-      col(grp('Areas', `<div class="cols">${z.areas.map((x) => `<a class="link" href="#/areas/${x.id}"><span class="lt"><b>${esc(x.n)}</b></span></a>`).join('')}</div>`)),
+      col(grp('Areas', `<div class="cols">${z.areas.map((x) => `<a class="link" href="#/areas/${x.id}"><span class="lt"><b>${esc(x.n)}</b></span></a>`).join('')}</div>`)
+        + (z.mons?.length ? grp('Bosses', `<div class="minis boss">${z.mons.map((m) => monEnt(m.m, { badge: lvRange(m.lo, m.hi) })).join('')}</div>`) : '')),
       rareGroups(z) && { h: rareGroups(z), row: true },
     );
   }
@@ -560,7 +564,7 @@
     if (drops.length) h += bar('Drops') + `<div class="minis">${drops.map((d) => itemEnt(d.id, dropOpts(d))).join('')}</div>`;
     const hab = HABITAT.get(id) || [];
     if (hab.length) {
-      h += bar('Found in') + `<div class="cols">${hab.map((x) => { const a = AREA.get(x.area); return `<a class="link" href="#/areas/${a.id}"><span class="lt"><b>${esc(a.n)}</b><small>${esc(a.zone.n)}</small></span><span class="pct">${lvRange(x.lo, x.hi)}</span></a>`; }).join('')}</div>`;
+      h += bar('Found in') + `<div class="cols">${hab.map((x) => { const a = AREA.get(x.area); if (!a) { const z = ZONE.get(x.area); return `<a class="link" href="#/areas/${z.id}"><span class="lt"><b>${esc(z.n)}</b></span><span class="pct">${lvRange(x.lo, x.hi)}</span></a>`; } return `<a class="link" href="#/areas/${a.id}"><span class="lt"><b>${esc(a.n)}</b><small>${esc(a.zone.n)}</small></span><span class="pct">${lvRange(x.lo, x.hi)}</span></a>`; }).join('')}</div>`;
     }
     return h;
   }
