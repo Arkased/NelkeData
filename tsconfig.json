@@ -4,7 +4,6 @@
     { "path": "packages/extract" },
     { "path": "packages/model" },
     { "path": "packages/workbook" },
-    { "path": "packages/site" },
     { "path": "scripts" },
     { "path": "__tests__" }
   ]
