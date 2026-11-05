@@ -1,6 +1,6 @@
 ---
 import type { Character } from '@nelke/model';
-import { GAME_START_EVENT_ID, groupOf, hasCharacterPage, START_POPULATION, START_TURN } from '../characters';
+import { GAME_START_EVENT_ID, groupOf, START_POPULATION, START_TURN } from '../characters';
 import { data, itemById, recipeById, recipeSetById } from '../data';
 import { EntityKind } from '../entity';
 import { formatNumber } from '../format';
@@ -88,7 +88,7 @@ const teaches = character.recipeSetIds.map((id) => {
         <Group title="Joins with">
           <div class="minis" data-section="joins-with">
             {joinsWith.map((other) => (
-              <Tile kind={EntityKind.Character} slug={other.slug} name={other.name} icon={other.icon} linked={hasCharacterPage(other)} />
+              <Tile kind={EntityKind.Character} slug={other.slug} name={other.name} icon={other.icon} />
             ))}
           </div>
         </Group>

@@ -33,7 +33,7 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/data.ts` | `readData()` of `@nelke/model` on the `data/` folder of the repo, 1 time for each build, and the lookups by ID. |
 | `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
 | `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`) and `ItemDetail`. |
-| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page. |
+| `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page and for an entity with no page (a character with no join event, by the rule of `hasCharacterPage`). The tile and the link need no extra argument. |
 | `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |
 | `src/icons.ts` | The URL of a game icon of an entity (`data/icons/128/`) or of a UI icon (`assets/ui/`), and the crop class of a face icon. |
 | `src/ui-icon.ts` | `UiIcon`: the names of the UI icons of the game that carry data. |
@@ -44,7 +44,7 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/characters/[slug].astro` | The page of each character with a join event, with the title `<character name> · Westwald Archive`. |
 | `src/components/CharacterDetail.astro` | The detail of a character: top block, description, Skills, Joins the town and Teaches. |
 | `src/stat-tone.ts` | `StatTone`: the tones (good, bad) of the value of a stat. |
-| `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) as PNG files. |
+| `src/assets/ui/` | The UI icons of the game (category, shop, coin, cost, friendship) and the header icons (`nav-characters.png`) as PNG files. |
 | `src/scripts/` | The client scripts: the filters (the state in the query of the URL) and the modal (fetch of the entity page, `history.pushState`, Back, Esc, focus). |
 | `scripts/check-links.ts` | The link check of `dist/`. |
 | `../../__tests__/site.spec.ts` | The UI test (Playwright). |

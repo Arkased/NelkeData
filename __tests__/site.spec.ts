@@ -2,7 +2,14 @@ import path from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
 import { isPlaceholder, ItemCategoryName, readData, Shop } from '@nelke/model';
 import { BASE_PATH } from '../packages/site/src/base.js';
-import { CharacterGroup, GAME_START_EVENT_ID, groupOf, hasCharacterPage, START_TURN } from '../packages/site/src/characters.js';
+import {
+  CharacterGroup,
+  GAME_START_EVENT_ID,
+  groupOf,
+  hasCharacterPage,
+  START_POPULATION,
+  START_TURN,
+} from '../packages/site/src/characters.js';
 import { formatNumber as format } from '../packages/site/src/format.js';
 import { NAV_BREAKPOINT } from '../packages/site/src/nav.js';
 import { StatTone } from '../packages/site/src/stat-tone.js';
@@ -486,6 +493,40 @@ for (const width of WIDTHS) {
       await page.goto(characterPath(character.slug));
       await expect(page.locator('[data-stat="turn"] .cap')).toContainText('(not confirmed)');
       await expect(page.locator('[data-stat="turn"] .val')).toHaveText(`Turn ${character.join?.turn}`);
+    });
+
+    test('the detail shows the description and the source game in italics', async ({ page }) => {
+      const character = pagedCharacters.find((c) => c.description !== null && c.sourceGame !== null);
+      if (!character) throw new Error('No character with a description and a source game');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('p.desc')).toHaveText(character.description ?? '');
+      const game = page.locator('[data-fact="source-game"]');
+      await expect(game).toHaveText(character.sourceGame ?? '');
+      expect(await game.evaluate((el) => el.tagName)).toBe('I');
+      await noHorizontalScroll(page);
+    });
+
+    test('the skills show their level, and an event skill shows Learned at an event', async ({ page }) => {
+      const leveled = pagedCharacters.find((c) => c.skills.length > 0);
+      const skill = leveled?.skills[0];
+      if (!leveled || !skill) throw new Error('No character with a skill');
+      await page.goto(characterPath(leveled.slug));
+      const lines = page.locator('[data-section="skills"] .link');
+      await expect(lines.first()).toContainText(skill.name);
+      await expect(lines.first()).toContainText(`Lv ${skill.level}`);
+      const eventful = pagedCharacters.find((c) => c.eventSkill !== null);
+      if (!eventful) throw new Error('No character with an event skill');
+      await page.goto(characterPath(eventful.slug));
+      await expect(page.locator('[data-section="skills"]')).toContainText(eventful.eventSkill?.name ?? '');
+      await expect(page.locator('[data-section="skills"]')).toContainText('Learned at an event');
+    });
+
+    test('the Town population stat shows for a population above the start', async ({ page }) => {
+      const character = pagedCharacters.find((c) => (c.join?.population ?? 0) > START_POPULATION);
+      if (!character) throw new Error('No character with a population above the start');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('[data-stat="population"] .cap')).toHaveText('Town population');
+      await expect(page.locator('[data-stat="population"] .val')).toHaveText(`${format(character.join?.population ?? 0)} people`);
     });
 
     test('each character has its own URL', async ({ page }) => {
