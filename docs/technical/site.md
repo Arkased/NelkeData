@@ -21,7 +21,7 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | --- | --- |
 | `src/base.ts` | The site origin and the base path. The only place that holds them. |
 | `astro.config.ts` | `site` and `base` (both from `src/base.ts`), `trailingSlash` and the static output. |
-| `src/url.ts` | `pageUrl(path)`: the URL of a page under the base path. The only place that adds the base path. |
+| `src/url.ts` | `pageUrl(path)`: the URL of a page under the base path (`BASE_PATH` from `src/base.ts`, which the UI test imports). The only place that adds the base path. |
 | `src/styles/global.css` | The CSS custom properties (colors, spacing, text sizes, radii), `scrollbar-gutter: stable` on the root element, and the base rules. |
 | `src/styles/detail.css` | The CSS of the entity detail panel (top block, stats, groups), which the entity page and the modal share. |
 | `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS and `detail.css`, the header, the `<main>` slot, the footer and the modal. |
@@ -32,6 +32,12 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/pages/about.astro` | The About page at `/NelkeData/about/`, with the title `About · Westwald Archive`. 1 panel with the sections Contact, Source and Legal. The legal notice text is 1 constant, which the footer and this page share. |
 | `src/data.ts` | `readData()` of `@nelke/model` on the `data/` folder of the repo, 1 time for each build, and the lookups by ID. |
 | `src/pages/items/[slug].astro` | The page of each item (`getStaticPaths` from the items of `data/`), with the title `<item name> · Westwald Archive`. |
+| `src/pages/monsters/index.astro` | The Monsters page at `/NelkeData/monsters/`, with the title `Monsters · Westwald Archive`, and the filter "Type" (`type` in the query; the toggles have no icon). |
+| `src/pages/monsters/[slug].astro` | The page of each monster (`getStaticPaths` from the monsters of `data/`), with the title `<monster name> · Westwald Archive`. |
+| `src/components/MonsterDetail.astro` | The monster detail: the type, the element DEF line, the description, the drops and "Found in". |
+| `src/components/AreaEntry.astro` | 1 area entry (design "Area entry"): the name as an entity link, under it the zone name in the small label size, and 1 badge. Without the prop `zone` it is a zone entry with no zone line. The Gather and Special spots groups of the item detail and "Found in" of the monster detail use it. |
+| `src/appearances.ts` | `mergeLevels(rows, idOf)`: merges the rows of the same area or zone (1 row for each boss flag) into 1 entry with all levels. |
+| `src/element-items.ts` | `ELEMENT_ITEM_IDS`: the item of each element, whose icon is the element icon (the item detail and the monster detail share it). |
 | `src/components/` | 1 component for each shared part (`Filters`, `IconGrid`, `Modal`, `EntityLink`, `EntityPage`, `Tile`, `Section`, `Group`, `Icon`, `Money`, `SynthesisCost`, `Friendship`, `Stat`) and `ItemDetail`. |
 | `src/entity.ts` | `EntityKind` and `entityUrl(kind, slug)`: the URL of an entity page, or null for a kind with no page and for an entity with no page (a character with no join event, by the rule of `hasCharacterPage`). The tile and the link need no extra argument. |
 | `src/nav.ts` | `CategoryKey` and `CATEGORY_LINKS`: the category pages of the header, with label, path and icon. `NAV_BREAKPOINT`: the width from which the header shows the links (`Header.astro` has the same value in its media query; the UI test uses the constant). |

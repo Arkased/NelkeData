@@ -226,6 +226,14 @@ a.el:focus-visible {
   .top > .slot {
     width: 88px;
   }
+  .els {
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+  .el {
+    gap: 2px;
+    padding: 0 var(--s1) 0 2px;
+  }
   .syn {
     padding: var(--s3);
   }

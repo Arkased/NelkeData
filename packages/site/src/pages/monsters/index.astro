@@ -1,0 +1,36 @@
+---
+import { CharacterType } from '@nelke/model';
+import Filters from '../../components/Filters.astro';
+import IconGrid from '../../components/IconGrid.astro';
+import Tile from '../../components/Tile.astro';
+import { data } from '../../data';
+import { EntityKind } from '../../entity';
+import Base from '../../layouts/Base.astro';
+import { CategoryKey } from '../../nav';
+
+const groups = [
+  {
+    param: 'type',
+    label: 'Type',
+    options: [
+      { value: CharacterType.Monster, label: 'Monsters' },
+      { value: CharacterType.Boss, label: 'Bosses' },
+    ],
+  },
+];
+---
+
+<Base name="Monsters" category={CategoryKey.Monsters}>
+  <Filters groups={groups} />
+  <IconGrid>
+    {data.monsters.map((monster) => (
+      <Tile
+        kind={EntityKind.Monster}
+        slug={monster.slug}
+        name={monster.name}
+        icon={monster.icon}
+        attrs={{ 'data-filterable': '', 'data-type': monster.type }}
+      />
+    ))}
+  </IconGrid>
+</Base>

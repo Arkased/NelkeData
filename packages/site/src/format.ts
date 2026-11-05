@@ -15,6 +15,19 @@ export function formatNumber(value: number): string {
 }
 
 /**
+ * Formats the levels of an appearance as the badge text of a tile or an entry.
+ * @param levels - the levels at which the monster appears
+ * @returns `Lv 5` for 1 level, `Lv 3–8` for a range, or null when there is no level
+ * @sideEffects none
+ */
+export function formatLevelRange(levels: readonly number[]): string | null {
+  if (levels.length === 0) return null;
+  const low = Math.min(...levels);
+  const high = Math.max(...levels);
+  return low === high ? `Lv ${low}` : `Lv ${low}–${high}`;
+}
+
+/**
  * Formats a rate in percent, or returns null for a rate of 100%, which tells nothing.
  * @param rate - the rate as a percent number
  * @returns the text, for example `12.5%`, or null for a certain rate

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatNumber, formatRate } from '../format.js';
+import { formatLevelRange, formatNumber, formatRate } from '../format.js';
 
 describe('formatNumber', () => {
   it('shows at most 1 decimal and no floating-point error', () => {
@@ -14,6 +14,18 @@ describe('formatNumber', () => {
 
   it('never shows a negative zero', () => {
     expect(formatNumber(-0.04)).toBe('0');
+  });
+});
+
+describe('formatLevelRange', () => {
+  it('shows 1 level, or the lowest and the highest level of a range', () => {
+    expect(formatLevelRange([5])).toBe('Lv 5');
+    expect(formatLevelRange([8, 3, 5])).toBe('Lv 3–8');
+    expect(formatLevelRange([4, 4])).toBe('Lv 4');
+  });
+
+  it('returns null for no level', () => {
+    expect(formatLevelRange([])).toBeNull();
   });
 });
 
