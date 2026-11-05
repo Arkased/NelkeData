@@ -529,6 +529,20 @@ for (const width of WIDTHS) {
       await expect(page.locator('[data-stat="population"] .val')).toHaveText(`${format(character.join?.population ?? 0)} people`);
     });
 
+    test('the Town population stat is absent for a population at or below the start', async ({ page }) => {
+      const character = pagedCharacters.find((c) => c.join !== null && c.join.population <= START_POPULATION);
+      if (!character) throw new Error('No character with a population at or below the start');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('[data-stat="population"]')).toHaveCount(0);
+    });
+
+    test('the Turn stat is absent for a turn at or below the start', async ({ page }) => {
+      const character = pagedCharacters.find((c) => c.join !== null && c.join.turn <= START_TURN);
+      if (!character) throw new Error('No character with a turn at or below the start');
+      await page.goto(characterPath(character.slug));
+      await expect(page.locator('[data-stat="turn"]')).toHaveCount(0);
+    });
+
     test('each character has its own URL', async ({ page }) => {
       await page.goto('characters/');
       const hrefs = await page.locator('[data-grid] a.mini').evaluateAll((tiles) => tiles.map((tile) => tile.getAttribute('href')));
