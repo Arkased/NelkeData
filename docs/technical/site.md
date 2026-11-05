@@ -25,8 +25,9 @@ The files, the commands and the limits of the website. The design is in [docs/de
 | `src/styles/global.css` | The CSS custom properties (colors, spacing, text sizes, radii), `scrollbar-gutter: stable` on the root element, and the base rules. |
 | `src/layouts/Base.astro` | The `<html>` element, the fonts, the global CSS, the header, the `<main>` slot and the footer. |
 | `src/components/Header.astro` | The site name and the tagline. |
-| `src/components/Footer.astro` | The legal notice. |
+| `src/components/Footer.astro` | The legal notice and the link "About" to `pageUrl('about/')`. A prop of the layout leaves both out on the About page. |
 | `src/pages/index.astro` | The root page. |
+| `src/pages/about.astro` | The About page at `/NelkeData/about/`, with the title `About · Westwald Archive`. 1 panel with the sections Contact, Source and Legal. The legal notice text is 1 constant, which the footer and this page share. |
 | `scripts/check-links.ts` | The link check of `dist/`. |
 | `../../__tests__/site.spec.ts` | The UI test (Playwright). |
 | `../../.github/workflows/site.yml` | The deploy workflow. |
