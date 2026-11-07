@@ -149,7 +149,7 @@ function assertLinksExist(model: ModelData): void {
     }
   };
   for (const recipe of model.recipes) {
-    check('items', [recipe.resultItemId, ...recipe.materials.map((m) => m.itemId), ...recipe.unpricedItemIds]);
+    check('items', [recipe.resultItemId, ...recipe.materials.map((m) => m.itemId)]);
   }
   for (const set of model.recipeSets) {
     check('recipes', set.recipeIds);

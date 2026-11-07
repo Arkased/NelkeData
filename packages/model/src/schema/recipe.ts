@@ -9,14 +9,10 @@ export const recipeSchema = z.strictObject({
   synthesisCost: z.number(),
   /** The minimum alchemy level: the rank of the result item divided by 4, rounded down, at least 1. */
   synthesisLevel: z.int().min(1),
-  /** The price of the materials. */
-  inputCost: z.number(),
-  /** The price of the result minus the input cost; null when the result has no price. */
-  addedValue: z.number().nullable(),
-  /** The added value for each point of synthesis cost; null when there is no added value or the synthesis cost is 0. */
-  addedValuePerCost: z.number().nullable(),
-  /** The materials that have no price and are not elements. */
-  unpricedItemIds: z.array(idSchema),
+  /** The synthesis cost plus, for each material that a recipe makes, its quantity times its cumulative synthesis cost. */
+  cumulativeSynthesisCost: z.int(),
+  /** The price of the result divided by the cumulative synthesis cost, not rounded; null when the price is 0. */
+  valuePerCumulativeSynthesisCost: z.number().nullable(),
   /** The recipe sets that hold the recipe (the inverse of RecipeSet.recipeIds), the first one first. */
   recipeSetIds: z.array(idSchema),
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { RANKS_PER_SYNTHESIS_LEVEL, synthesisLevelOf } from '../recipes.js';
+import { cumulativeSynthesisCosts, RANKS_PER_SYNTHESIS_LEVEL, synthesisLevelOf } from '../recipes.js';
 
 describe('synthesisLevelOf', () => {
   it('rounds down to a whole level', () => {
@@ -14,5 +14,36 @@ describe('synthesisLevelOf', () => {
     expect(synthesisLevelOf(RANKS_PER_SYNTHESIS_LEVEL)).toBe(1);
     expect(synthesisLevelOf(RANKS_PER_SYNTHESIS_LEVEL * 2 - 1)).toBe(1);
     expect(synthesisLevelOf(RANKS_PER_SYNTHESIS_LEVEL * 2)).toBe(2);
+  });
+});
+
+describe('cumulativeSynthesisCosts', () => {
+  const recipe = (resultItemId: string, synthesisCost: number, materials: [string, number][] = []) => ({
+    resultItemId,
+    synthesisCost,
+    materials: materials.map(([itemId, quantity]) => ({ itemId, quantity })),
+  });
+
+  it('adds 0 for a material that no recipe makes', () => {
+    expect(cumulativeSynthesisCosts([recipe('a', 5, [['herb', 3]])]).get('a')).toBe(5);
+  });
+
+  it('adds quantity times the cumulative cost of a material that a recipe makes, over several levels', () => {
+    const costs = cumulativeSynthesisCosts([
+      recipe('c', 1, [['b', 2]]),
+      recipe('b', 3, [
+        ['a', 4],
+        ['herb', 9],
+      ]),
+      recipe('a', 5),
+    ]);
+    expect(costs.get('a')).toBe(5);
+    expect(costs.get('b')).toBe(3 + 4 * 5);
+    expect(costs.get('c')).toBe(1 + 2 * 23);
+  });
+
+  it('throws an error that names the items of a loop', () => {
+    const loop = [recipe('a', 1, [['b', 1]]), recipe('b', 1, [['c', 1]]), recipe('c', 1, [['a', 1]])];
+    expect(() => cumulativeSynthesisCosts(loop)).toThrow(/a to b to c to a/);
   });
 });
