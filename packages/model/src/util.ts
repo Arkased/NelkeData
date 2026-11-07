@@ -1,14 +1,4 @@
 /**
- * Rounds a number to 2 decimals.
- * @param n - the number to round
- * @returns the rounded number
- * @sideEffects none
- */
-export function round(n: number): number {
-  return Math.round(n * 100) / 100;
-}
-
-/**
  * Turns an empty text into null, the value of the model for a missing text.
  * @param text - the text
  * @returns the text, or null when it is empty

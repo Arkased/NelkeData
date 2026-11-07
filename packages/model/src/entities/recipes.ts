@@ -1,9 +1,7 @@
-import { ItemCategory } from '../enums.js';
 import type { DirectData } from '../inverse.js';
 import type { Game } from '../parse/game.js';
 import { isEmptySlot } from '../parse/recipes.js';
 import { withSlugs } from '../slug.js';
-import { round } from '../util.js';
 import { idSet, type IdSet } from './ids.js';
 import { storyEventOf } from './story.js';
 
@@ -25,34 +23,69 @@ export function synthesisLevelOf(rank: number): number {
   return Math.max(1, Math.floor(rank / RANKS_PER_SYNTHESIS_LEVEL));
 }
 
+/** The part of a recipe that the cumulative synthesis cost needs. */
+interface CostRecipe {
+  resultItemId: string;
+  synthesisCost: number;
+  materials: readonly { itemId: string; quantity: number }[];
+}
+
+/**
+ * Attaches the cumulative synthesis cost to each recipe: the synthesis cost of the recipe plus,
+ * for each material that a recipe makes, its quantity times its cumulative synthesis cost. A material that no recipe makes adds 0.
+ * @param recipes - the recipes; each item is the result of at most 1 recipe
+ * @returns the recipes in the same order, each with its cumulative synthesis cost
+ * @throws {Error} when 2 recipes make the same item, or when the recipes make a loop; the message names the items
+ * @sideEffects none
+ */
+export function withCumulativeSynthesisCosts<R extends CostRecipe>(recipes: readonly R[]): (R & { cumulativeSynthesisCost: number })[] {
+  const byResult = new Map<string, CostRecipe>();
+  for (const r of recipes) {
+    if (byResult.has(r.resultItemId)) throw new Error(`2 recipes make the item ${r.resultItemId}`);
+    byResult.set(r.resultItemId, r);
+  }
+  const costs = new Map<string, number>();
+  const costOf = (itemId: string, chain: readonly string[]): number => {
+    const recipe = byResult.get(itemId);
+    if (recipe === undefined) return 0;
+    const known = costs.get(itemId);
+    if (known !== undefined) return known;
+    if (chain.includes(itemId)) throw new Error(`recipe loop: ${[...chain.slice(chain.indexOf(itemId)), itemId].join(' to ')}`);
+    const next = [...chain, itemId];
+    const cost = recipe.materials.reduce((sum, m) => sum + m.quantity * costOf(m.itemId, next), recipe.synthesisCost);
+    costs.set(itemId, cost);
+    return cost;
+  };
+  return recipes.map((r) => ({ ...r, cumulativeSynthesisCost: costOf(r.resultItemId, []) }));
+}
+
 /**
  * Makes the recipes from the game tables. The recipe value fields follow README.md, section "Recipe value".
  * @param game - the game data
  * @returns the recipes, in the order of the game table
+ * @throws {Error} when 2 recipes make the same item, or when the recipes make a loop
  * @sideEffects none
  */
 export function buildRecipes(game: Game): DirectData['recipes'] {
   const { itemById } = game.items;
-  // Elements have no price, so they cost 0. Every recipe gives 1 item, so the output value is the price of the result.
-  const priceOf = (tag: string): number => Number(itemById.get(tag)?.ITEM_SELLING_PRICE ?? 0);
-  return game.recipes.recipes.map((r) => {
-    const materials = r.slots.filter((m) => !isEmptySlot(m));
-    const synthesisCost = Number(r.ITEM_COMP_MH);
-    const inputCost = round(materials.reduce((sum, m) => sum + priceOf(m.id) * m.num, 0));
-    // The added value is null when the result has no price (construction and battle items): the item is not sold.
-    const addedValue = priceOf(r.ITEM_COMPLETION_ID) > 0 ? round(priceOf(r.ITEM_COMPLETION_ID) - inputCost) : null;
+  const recipes = game.recipes.recipes.map((r) => ({
+    id: r.RECIPE_ID,
+    resultItemId: r.ITEM_COMPLETION_ID,
+    materials: r.slots.filter((m) => !isEmptySlot(m)).map((m) => ({ itemId: m.id, quantity: m.num })),
+    synthesisCost: Number(r.ITEM_COMP_MH),
+  }));
+  return withCumulativeSynthesisCosts(recipes).map((r) => {
+    const { cumulativeSynthesisCost } = r;
+    // Every recipe gives 1 item, so the output value is the price of the result. A price of 0 (construction and battle items) means no value.
+    const price = Number(itemById.get(r.resultItemId)?.ITEM_SELLING_PRICE ?? 0);
     return {
-      id: r.RECIPE_ID,
-      resultItemId: r.ITEM_COMPLETION_ID,
-      materials: materials.map((m) => ({ itemId: m.id, quantity: m.num })),
-      synthesisCost,
-      synthesisLevel: synthesisLevelOf(Number(itemById.get(r.ITEM_COMPLETION_ID)?.ITEM_RANK ?? 0)),
-      inputCost,
-      addedValue,
-      addedValuePerCost: addedValue !== null && synthesisCost > 0 ? round(addedValue / synthesisCost) : null,
-      unpricedItemIds: materials
-        .filter((m) => priceOf(m.id) === 0 && itemById.get(m.id)?.ITEM_CATEGORY_ID !== ItemCategory.Element)
-        .map((m) => m.id),
+      id: r.id,
+      resultItemId: r.resultItemId,
+      materials: r.materials,
+      synthesisCost: r.synthesisCost,
+      synthesisLevel: synthesisLevelOf(Number(itemById.get(r.resultItemId)?.ITEM_RANK ?? 0)),
+      cumulativeSynthesisCost,
+      valuePerCumulativeSynthesisCost: price > 0 && cumulativeSynthesisCost > 0 ? price / cumulativeSynthesisCost : null,
     };
   });
 }
