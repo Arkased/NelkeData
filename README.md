@@ -123,16 +123,14 @@ The icons are G1T textures (DXT5) in `PACK00_01.PAK`. `tools/g1t.js` decodes the
 
 ## Recipe value
 
-The value columns of the Recipes sheet use the selling price (`ITEM_SELLING_PRICE`) of each item. Each recipe gives 1 item.
+The value columns of the Recipes sheet and the synthesis section of the site use the synthesis cost of each recipe and the selling price (`ITEM_SELLING_PRICE`) of each item. Each recipe gives 1 item, and each item has at most 1 recipe.
 
-| Column                     | Formula                                    |
-| -------------------------- | ------------------------------------------ |
-| `Input Cost`               | Sum of material price × quantity           |
-| `Added Value`              | Price − Input Cost                         |
-| `Added Value / Synth Cost` | Added Value ÷ Synthesis Cost               |
-| `Unpriced Inputs`          | Materials (not elements) that have price 0 |
+| Column                           | Formula                                                                                            |
+| -------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `Cumulative Synth Cost`          | Synthesis cost + the sum of (quantity × `Cumulative Synth Cost`) of each material that a recipe makes |
+| `Value / Cumulative Synth Cost`  | Price ÷ `Cumulative Synth Cost`                                                                     |
 
-Elements have price 0, so they add 0 to the input cost. When the result has price 0 (construction and battle items), the added value columns are empty.
+A material that no recipe makes (a gathered item, an element) adds 0. When the result has price 0 (construction and battle items), `Value / Cumulative Synth Cost` is empty.
 
 The `Reduce:` columns of the Items sheet are the `ITEM_DI_ACQ_*ELEMENT` values: the elements that the Reduce command gives for the item. The tutorial text `REDUCTION_TUTORIAL_TEXT_003` states that the kind and amount of elements change with the material.
 

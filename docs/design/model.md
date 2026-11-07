@@ -23,7 +23,7 @@ The model step reads `extracted/` and writes `data/`: 1 JSON file for each kind 
 The model holds the facts of the game as typed fields, and the values that more than 1 consumer shows. The consumers format the text.
 
 - **A link is an ID.** For example an item holds the IDs of the areas where it is gathered, with the rate, and not the text "Area - Spot (12%)". The workbook builds that text from the area and its zone.
-- **A computed value is in the model when a consumer shows it.** The recipe value (input cost, added value, added value per synthesis cost, unpriced materials) is in the model. So the site and the workbook show the same numbers. The formulas are in `README.md`, section "Recipe value".
+- **A computed value is in the model when a consumer shows it.** The recipe value (the cumulative synthesis cost and the value per cumulative synthesis cost) is in the model. So the site and the workbook show the same numbers. The formulas are in `README.md`, section "Recipe value".
 - **A name of a thing with no page is resolved text.** The category of an item, the name of a district or the label of a story event is English text in the entity. Such a thing is not an entity, so it has no ID to link to.
 - **A text that only 1 consumer shows is in that consumer.** The joined text cells, the sort of the rows and the aggregates of a column (for example "First Gather Task", the lowest task of all gather places) are in the workbook.
 - **The model keeps every entity that the game uses.** It drops only the placeholders (section "Placeholders"). Each consumer selects the entities that it shows: for example the workbook drops the generic NPCs, and the site shows only the characters that can join the town.

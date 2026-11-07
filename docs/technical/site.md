@@ -40,7 +40,7 @@ The model has entities that `data.js` leaves out on purpose: 4 placeholder items
 | --- | --- | --- |
 | `lib.mjs` | none | Code that the other scripts share: it starts Chromium, opens a page, waits until the page is stable, and runs the DOM audit. |
 | `test.mjs` | `node test.mjs [widths]` | The UI test. It opens `prototype/index.html` as a `file://` URL. `widths` is a list that is separated by commas. The default is `360,768,1280,1920`. It runs each width in its own browser context at the same time. It fails on a failed check, on an audit finding or on a console message. |
-| `fill-data.mjs` | `node fill-data.mjs` | It adds `syn.lv` and `syn.cum` to each synthesis and `mons` to a zone, from `data/*.json`. It changes nothing else, and a second run gives the same file. It stops when the level of the rule differs from the level of the recipe, and when the recipes have a loop. |
+| `fill-data.mjs` | `node fill-data.mjs` | It adds `syn.lv` and `syn.cum` to each synthesis and `mons` to a zone, from `data/*.json`. It changes nothing else, and a second run gives the same file. `syn.cum` is `cumulativeSynthesisCost` of the recipe. It stops when the level of the rule differs from the level of the recipe. |
 | `shots.mjs` | `node shots.mjs [widths] [states]` | It writes screenshots to `prototype/shots/`. |
 
 To set up, run `npm install` in `prototype/`. The root `@playwright/test` also gives `playwright` to the scripts. `lib.mjs` starts the full Chromium of the installed Playwright (`chromium.executablePath()`). The tests are not part of `npm run check` and not part of the CI.
