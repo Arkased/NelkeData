@@ -48,7 +48,11 @@ export function recipeColumns(lookup: Lookup): Column<Recipe>[] {
     { header: 'Price', width: 9, get: (r) => resultOf(r).price },
     { header: 'Synthesis Cost', width: 10, get: (r) => r.synthesisCost },
     { header: 'Cumulative Synth Cost', width: 12, get: (r) => r.cumulativeSynthesisCost },
-    { header: 'Value / Cumulative Synth Cost', width: 14, get: (r) => r.valuePerCumulativeSynthesisCost ?? '' },
+    {
+      header: 'Value / Cumulative Synth Cost',
+      width: 14,
+      get: (r) => (r.valuePerCumulativeSynthesisCost === null ? '' : Math.round(r.valuePerCumulativeSynthesisCost * 10) / 10),
+    },
     ...materialColumns,
     { header: 'Recipe Set', width: 24, get: (r) => unlockOf(r)?.set.name ?? '' },
     {
