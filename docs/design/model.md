@@ -37,7 +37,7 @@ The row "Bad data" of [the site requirements](../requirements/site.md) asks that
 3. The English name is `Item` and a number, for example "Item 015".
 4. The Japanese name is `アイテムの名前` and a number.
 
-The model drops a placeholder row before the joins. So no link can point to it, and no consumer needs its own filter. A recipe whose result or whose material is a placeholder is a placeholder too: without the material, its input cost would be wrong. A description that starts with `*` is placeholder text: the model writes `null` for it, and the entity stays.
+The model drops a placeholder row before the joins. So no link can point to it, and no consumer needs its own filter. A recipe whose result or whose material is a placeholder is a placeholder too: without the material, its cumulative synthesis cost would be wrong. A description that starts with `*` is placeholder text: the model writes `null` for it, and the entity stays.
 
 ## Kinds of entity
 

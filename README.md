@@ -44,7 +44,7 @@ It runs the typecheck (`tsc -b`), the lint (ESLint), the format check (Prettier)
 To prove that a change leaves the workbook as it was, build a baseline workbook before the change and a new one after it. Then compare them:
 
 ```
-npx tsx scripts/compare-workbooks.ts baseline/nelke_data.xlsx new/nelke_data.xlsx
+npm run compare -- baseline/nelke_data.xlsx new/nelke_data.xlsx
 ```
 
 The script compares the cell values sheet by sheet and the icon file names. It exits with 1 on a difference.
@@ -130,7 +130,7 @@ The value columns of the Recipes sheet and the synthesis section of the site use
 | `Cumulative Synth Cost`          | Synthesis cost + the sum of (quantity × `Cumulative Synth Cost`) of each material that a recipe makes |
 | `Value / Cumulative Synth Cost`  | Price ÷ `Cumulative Synth Cost`                                                                     |
 
-A material that no recipe makes (a gathered item, an element) adds 0. When the result has price 0 (construction and battle items), `Value / Cumulative Synth Cost` is empty.
+A material that no recipe makes (a gathered item, an element) adds 0. The sheet rounds `Value / Cumulative Synth Cost` to 1 decimal, the same as the site. When the result has price 0 (construction and battle items), the cell is empty.
 
 The `Reduce:` columns of the Items sheet are the `ITEM_DI_ACQ_*ELEMENT` values: the elements that the Reduce command gives for the item. The tutorial text `REDUCTION_TUTORIAL_TEXT_003` states that the kind and amount of elements change with the material.
 
