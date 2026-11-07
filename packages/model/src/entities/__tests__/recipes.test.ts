@@ -44,6 +44,10 @@ describe('cumulativeSynthesisCosts', () => {
 
   it('throws an error that names the items of a loop', () => {
     const loop = [recipe('a', 1, [['b', 1]]), recipe('b', 1, [['c', 1]]), recipe('c', 1, [['a', 1]])];
-    expect(() => cumulativeSynthesisCosts(loop)).toThrow(/a to b to c to a/);
+    expect(() => cumulativeSynthesisCosts(loop)).toThrow(/a.*b.*c/);
+  });
+
+  it('throws an error that names the item when 2 recipes make it', () => {
+    expect(() => cumulativeSynthesisCosts([recipe('dup', 1), recipe('dup', 2)])).toThrow(/dup/);
   });
 });

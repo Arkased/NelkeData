@@ -35,11 +35,15 @@ interface CostRecipe {
  * for each material that a recipe makes, its quantity times its cumulative synthesis cost. A material that no recipe makes adds 0.
  * @param recipes - the recipes; each item is the result of at most 1 recipe
  * @returns the cumulative synthesis cost by result item ID
- * @throws {Error} when the recipes make a loop; the message names the items of the loop
+ * @throws {Error} when 2 recipes make the same item, or when the recipes make a loop; the message names the items
  * @sideEffects none
  */
 export function cumulativeSynthesisCosts(recipes: readonly CostRecipe[]): Map<string, number> {
-  const byResult = new Map(recipes.map((r) => [r.resultItemId, r]));
+  const byResult = new Map<string, CostRecipe>();
+  for (const r of recipes) {
+    if (byResult.has(r.resultItemId)) throw new Error(`2 recipes make the item ${r.resultItemId}`);
+    byResult.set(r.resultItemId, r);
+  }
   const costs = new Map<string, number>();
   const costOf = (itemId: string, chain: readonly string[]): number => {
     const recipe = byResult.get(itemId);
@@ -60,7 +64,7 @@ export function cumulativeSynthesisCosts(recipes: readonly CostRecipe[]): Map<st
  * Makes the recipes from the game tables. The recipe value fields follow README.md, section "Recipe value".
  * @param game - the game data
  * @returns the recipes, in the order of the game table
- * @throws {Error} when the recipes make a loop
+ * @throws {Error} when 2 recipes make the same item, or when the recipes make a loop
  * @sideEffects none
  */
 export function buildRecipes(game: Game): DirectData['recipes'] {
@@ -73,7 +77,8 @@ export function buildRecipes(game: Game): DirectData['recipes'] {
   }));
   const costs = cumulativeSynthesisCosts(recipes);
   return recipes.map((r) => {
-    const cumulativeSynthesisCost = costs.get(r.resultItemId) ?? r.synthesisCost;
+    const cumulativeSynthesisCost = costs.get(r.resultItemId);
+    if (cumulativeSynthesisCost === undefined) throw new Error(`no cumulative synthesis cost for the item ${r.resultItemId}`);
     // Every recipe gives 1 item, so the output value is the price of the result. A price of 0 (construction and battle items) means no value.
     const price = Number(itemById.get(r.resultItemId)?.ITEM_SELLING_PRICE ?? 0);
     return {
