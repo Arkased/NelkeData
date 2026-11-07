@@ -3,9 +3,11 @@
 // A width shares no state with another width. The run fails when 1 width fails.
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { tsImport } from 'tsx/esm/api';
 import { launch, newPage, settle, audit, pick, url } from './lib.mjs';
 
 const model = (name) => JSON.parse(fs.readFileSync(fileURLToPath(new URL(`../../data/${name}.json`, import.meta.url)), 'utf8'));
+const { synthesisLevelOf } = await tsImport('../../packages/model/src/entities/recipes.ts', import.meta.url);
 const recipeOf = new Map(model('recipes').map((r) => [r.resultItemId, r]));
 /** The cumulative synthesis cost of an item, from data/recipes.json: the own cost plus the quantity times the cumulative cost of each material that a recipe makes. */
 const cumOf = (id) => {
@@ -371,12 +373,9 @@ await step('synthesis level of a craftable item', async () => {
     ok((await stat.count()) === 1, `${name}: 1 "Synth. Lv." stat in the synthesis section`);
     ok(((await stat.locator('.val').innerText().catch(() => '')) || '').trim() === `Lv ${lv}`, `${name}: synthesis level Lv ${lv}`);
   }
-  // The level of each craftable item in data.js (syn.lv) equals Math.max(1, Math.floor(rank / 4)) (the rule of the README). The items of data.js carry
-  // no rank, so the test takes the rank of each item with a recipe from data/items.json, matched by item id. It fails when an item has no rank,
-  // when there are no craftable items, or when a level differs.
   const rankOf = new Map(model('items').map((i) => [i.id, i.rank]));
   const crafts = await page.evaluate(() => window.DATA.items.filter((i) => i.syn).map((i) => ({ id: i.id, lv: i.syn.lv })));
-  const wrong = crafts.filter((c) => !Number.isInteger(rankOf.get(c.id)) || c.lv !== Math.max(1, Math.floor(rankOf.get(c.id) / 4)));
+  const wrong = crafts.filter((c) => !Number.isInteger(rankOf.get(c.id)) || c.lv !== synthesisLevelOf(rankOf.get(c.id)));
   ok(crafts.length > 0 && wrong.length === 0, `each of the ${crafts.length} craftable items has the level of its rank${wrong.length ? ': ' + wrong.slice(0, 4).map((c) => `${c.id} lv ${c.lv} rank ${rankOf.get(c.id)}`).join('; ') : ''}`);
 });
 
