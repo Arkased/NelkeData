@@ -34,7 +34,7 @@ async function shootWidth(w) {
     ['item-rare', item('rare')],
     ['item-craft', item('craftPriced')],
     ['item-craft-noprice', item('craftNoPrice')],
-    ['item-craft-unpriced', item('unpriced')],
+    ['item-craft-chain', item('craftChain')],
     ['item-longname', item('longName')],
     ['areas', '#/areas'],
     ['area-interior', `#/areas/${first.interior}`],

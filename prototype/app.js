@@ -109,12 +109,12 @@
     const m = D.monsters[id];
     return ent({ href: `#/monsters/${id}`, icon: m.icon, name: m.n, ...o });
   };
-  const itemLink = (id) => icoLink(`#/items/${id}`, IT.get(id).icon, IT.get(id).n);
   const bar = (text) => `<div class="bar bi p-brown">${esc(text)}</div>`;
   // units
   const coin = '<img class="ico" src="img/ui/coin.png" alt="Cole">';
   const money = (n, cls = '') => `<span class="money ${cls}">${coin}${fmt(n)}</span>`;
-  const costU = (n, cls = '') => `<span class="cost ${cls}"><img class="ico" src="img/ui/cost.png" alt="Synthesis cost">${fmt(n)}</span>`;
+  const costIcon = '<img class="ico" src="img/ui/cost.png" alt="Synthesis cost">';
+  const costU = (n, cls = '') => `<span class="cost ${cls}">${costIcon}${fmt(n)}</span>`;
   /** A rate of 100% never shows: the item is certain, so these return an empty string. */
   const certain = (n) => fmt(n) === '100';
   const pct = (n) => (certain(n) ? '' : `<span class="rate">${fmt(n)}%</span>`);
@@ -420,21 +420,13 @@
   function synthesis(it) {
     const s = it.syn;
     const u = s.unlock;
-    const pos = (n) => (n > 0 ? 'pos' : n < 0 ? 'neg' : '');
-    const stat = (label, v, cls = '') => `<div class="stat ${cls}">${cap(label)}<b class="val">${v}</b></div>`;
+    const stat = (label, v) => `<div class="stat">${cap(label)}<b class="val">${v}</b></div>`;
     let h = bar('Synthesis') + '<div class="syn">';
     h += `<div class="minis mats">${s.mats.map((m) => itemEnt(m.id, { qty: m.q })).join('')}</div>`;
-    const stats = [stat('Synthesis cost', costU(s.cost))];
-    if (s.lv) stats.push(stat('Synth. Lv.', `Lv ${s.lv}`));
-    if (s.added === null) {
-      // No selling price: the value is not calculated, and the only known value is the material cost.
-      stats.push(stat('Material cost', money(s.input)));
-    } else {
-      stats.push(stat('Selling price', money(s.price)), stat('Material cost', money(s.input)), stat('Added value', money(s.added), pos(s.added)));
-      if (s.per !== null) stats.push(stat('Value per cost', `${money(s.per)}<span class="per">per</span><img class="ico" src="img/ui/cost.png" alt="Synthesis cost">`, pos(s.per)));
-    }
+    const stats = [stat('Synth. Lv.', `Lv ${s.lv}`), stat('Synthesis cost', costU(s.cost)), stat('Cumulative synthesis cost', costU(s.cum))];
+    // A price of 0 means no selling price: the value is not shown.
+    if (s.price > 0) stats.push(stat('Selling price', money(s.price)), stat('Value per cumulative synthesis cost', `${money(s.price / s.cum)}<span class="per">/</span>${costIcon}`));
     h += `<div class="syn-stats">${stats.join('')}</div>`;
-    if (s.unpriced.length) h += `<div class="ul">${cap('Counted as 0 (no price)')}<span class="uv wrap">${s.unpriced.map(itemLink).join('')}</span></div>`;
     const bits = [];
     const ul = (c, body) => `<div class="ul">${cap(c)}${body}</div>`;
     if (u) {
