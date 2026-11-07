@@ -7,7 +7,7 @@ import { tsImport } from 'tsx/esm/api';
 import { launch, newPage, settle, audit, pick, url } from './lib.mjs';
 
 const model = (name) => JSON.parse(fs.readFileSync(fileURLToPath(new URL(`../../data/${name}.json`, import.meta.url)), 'utf8'));
-const { synthesisLevelOf } = await tsImport('../../packages/model/src/entities/recipes.ts', import.meta.url);
+const { synthesisLevelOf } = await tsImport('../../packages/model/src/index.ts', import.meta.url);
 const recipeOf = new Map(model('recipes').map((r) => [r.resultItemId, r]));
 /** The cumulative synthesis cost of an item, from data/recipes.json: the own cost plus the quantity times the cumulative cost of each material that a recipe makes. */
 const cumOf = (id) => {
