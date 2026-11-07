@@ -32,7 +32,7 @@ The orchestrator made these rules for the workbook. They are not owner requireme
 | Format | The build writes an xlsx file that the owner imports into Google Sheets. Each sheet has a frozen header row and a filter on all columns. | The compare script against the baseline workbook. |
 | No change of output | A change of the code that does not change a requirement keeps each cell value of each sheet the same. | The section "Proof of no change". |
 | Placeholder data | The workbook has no row for an entity with placeholder data, by the same rule as the site. | A test makes sure that no name in the workbook matches the placeholder patterns. |
-| Icons | The build writes 1 PNG of 64 × 64 px to `output/icons/` for each icon that a row names. A script of `README.md` puts them into the cells in Google Sheets. | The compare script also compares the icon file names. |
+| Icons | The build writes 1 PNG of 64 × 64 px to `output/icons/` for each icon that a row names. A script of [the workbook technical doc](../technical/workbook.md) puts them into the cells in Google Sheets. | The compare script also compares the icon file names. |
 | Warnings | The build prints a warning for each column with 1 value only, and for each column that is the same as another column. | A unit test. |
 
 ## Proof of no change

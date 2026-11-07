@@ -66,12 +66,59 @@ The fields of each kind are the facts that the workbook shows now, as typed valu
 - A fixed set of names (a shop, an element, a stat) is a string enum of `packages/model/src/enums.ts`.
 - `Item.category` is a value of the string enum `ItemCategoryName` of `enums.ts`, with the English names as values. `CATEGORY_NAMES: Record<ItemCategory, ItemCategoryName>` in `enums.ts` maps the game ID to the name, and the index of the package exports both. The item schema accepts only the values of `ItemCategoryName`, so the inferred type of `Item.category` is `ItemCategoryName`. The export throws when the game has a category that is not a key of `CATEGORY_NAMES`, so it never writes a category that the schema rejects. The site uses `ItemCategoryName` directly, with no lookup from a name back to an ID.
 - A missing value is `null`, never `0` or `""`, when the game has no value. A value of `0` in the game stays `0`.
-- The recipe value fields of a recipe: `cumulativeSynthesisCost` (an integer) and `valuePerCumulativeSynthesisCost` (the price of the result divided by `cumulativeSynthesisCost`, not rounded; `null` when the price of the result is 0). The formulas are in `README.md`, section "Recipe value". The export throws an error that names the items when the recipes have a loop.
-- `Recipe.synthesisLevel` is the minimum alchemy level: `Math.max(1, Math.floor(rank / 4))`, with the `rank` of the result item. The rule is in `README.md`, section "Synthesis level". The workbook does not show it.
+- The recipe value fields of a recipe: `cumulativeSynthesisCost` (an integer) and `valuePerCumulativeSynthesisCost` (the price of the result divided by `cumulativeSynthesisCost`, not rounded; `null` when the price of the result is 0). The formulas are in the section "Recipe value". The export throws an error that names the items when the recipes have a loop, and when 2 recipes make the same item.
+- `Recipe.synthesisLevel` is the minimum alchemy level: `Math.max(1, Math.floor(rank / 4))`, with the `rank` of the result item. The rule is in the section "Synthesis level". The workbook does not show it.
 - `Zone.elements` is the list of the elements of the zone (`ele_00` to `ele_03` of `expl_area/expl_area.xml`), as `Element` values.
 - `Zone.specialItems` is the list of the rare finds: `{ itemId, kind, spot, rate }`. `kind` is the enum `GatherKind` (`Treasure`, `Bug Net`, `Digging`, `Fishing`), from the `type` of `expl_gimmick/expl_gimmick.xml`. `spot` is the number of the chest or the spot in the zone, from 1. `rate` is the percent rate of the item in its gimmick table (`table_01`). The inverse link `Item.specialZoneIds` comes from it. The workbook shows the same values as before.
-- A story event is `{ id, label }`. The label follows the rule of `README.md`, section "Recipe unlock".
+- A story event is `{ id, label }`. The label follows the rule of the section "Event label".
 - The task that opens a zone is `{ number, name }`, or `null` when the zone is open from the start.
+
+## Game files
+
+The model reads these files of `extracted/saves/`:
+
+| File | Data |
+| --- | --- |
+| `item/item.xml` | Items: category, rank, price, shops, farms |
+| `recipe/recipe.xml` | Recipes: materials, synthesis cost |
+| `recipe/recipe_collection.xml` | Recipe sets and the alchemist that teaches each set |
+| `study/stdy_research.xml`, `stdy_prize.xml` | Research that gives a recipe set |
+| `expl_area/*.xml`, `expl_research/*.xml` | Areas, spots, difficulty |
+| `expl_collect/*.xml` | Gather items and rates of each spot |
+| `expl_encount/*.xml` | Monster groups and levels of each spot |
+| `character/*.xml` | Characters and monsters: stats, skills, join data |
+| `battle/btl_chara.xml` | Battle data: element DEF, EXP, drops |
+| `ui/etc/uis_20th_*.xml` | Icon texture of each image number |
+| `message_en/*.xml`, `message/message.xml` | English and Japanese names and descriptions |
+
+The model drops the rows that the game marks as not used (name `*Unneccesary`).
+
+The icons are G1T textures (DXT5) in `PACK00_01.PAK`. `tools/g1t.js` decodes them to PNG. The image number of each row selects the texture:
+
+| Kind | Image number | Texture list |
+| --- | --- | --- |
+| Item | `ITEM_IMAGE_NUM` | `uis_20th_item_l.xml` |
+| Character | `CHARACTER_ANILLUSTRATION_NUM` | `uis_20th_npc_faceicon.xml` |
+| Monster | `CHARACTER_ANILLUSTRATION_NUM` − 200 | `uis_20th_monster_faceicon.xml` |
+
+## Recipe value
+
+The recipe value uses the synthesis cost of each recipe and the selling price (`ITEM_SELLING_PRICE`) of each item. Each recipe gives 1 item, and each item has at most 1 recipe.
+
+| Field | Formula |
+| --- | --- |
+| `cumulativeSynthesisCost` | Synthesis cost + the sum of (quantity × `cumulativeSynthesisCost`) of each material that a recipe makes |
+| `valuePerCumulativeSynthesisCost` | Price ÷ `cumulativeSynthesisCost` |
+
+A material that no recipe makes (a gathered item, an element) adds 0. When the result has price 0 (construction and battle items), `valuePerCumulativeSynthesisCost` is `null`. The workbook and the site round the value to 1 decimal.
+
+## Synthesis level
+
+The minimum alchemy level of an item ("Synth. Lv." in the game) is `ITEM_RANK` of `item/item.xml` ÷ 4, rounded down, and minimum 1. No game file stores the level. The divisor fits `OC_ITEM_RANK_ADJUSTMENT_COEFFICIENT` = 400 in `out_constant/out_constant.xml`. 7 items in the game confirm the rule ([the research note](../research/2026-11-04-alchemy-level.md)).
+
+## Event label
+
+The data has no names for events. The model names `EVENT_MM01_0<N+1>0` as "After Task N". This rule comes from the English dialog of the events `event_message_mm01_*.ebm`: each one is the review where Lotos approves a main task. Other events get their ID as the label.
 
 ## Read
 

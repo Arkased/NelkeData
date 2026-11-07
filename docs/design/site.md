@@ -179,7 +179,7 @@ The blocks, in order. A block or a line with no data does not show.
 5. **How to get**, with these groups in order: "Gather" (each area with its zone name under it and the rate, the highest rate first, and no rate for 100%), "Monster drops" (monster tiles, no badge), 1 group for each special kind with the item (Treasure, Bug Net, Digging, Fishing: the zone links with the rate), and "Farm" (the growing area).
 6. **Used in:** the tiles of each item whose recipe uses the item as a material, with no badge.
 
-The synthesis level is the rule of `README.md`, section "Synthesis level" ([decision 0012](../decisions/0012-synthesis-level.md)).
+The synthesis level is the rule of [the model technical doc](../technical/model.md), section "Synthesis level" ([decision 0012](../decisions/0012-synthesis-level.md)).
 
 ### Areas page
 

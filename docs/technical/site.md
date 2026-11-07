@@ -30,7 +30,7 @@ The site uses only relative URLs. The route of a page is in the hash: `#/items`,
 | `research` | An object of 82 researches. |
 | `trees` | 4 trees: `main`, `attack`, `support` and `emergency`. Each tree has the grids `res` and `con` of 20 columns. |
 
-The script `prototype/scripts/fill-data.mjs` fills the gaps of `data.js` with the values of `data/*.json`. The other values of `data.js` are edited as is, and can differ from `data/*.json`: the old generator `build-data.ts` is gone (commit `fda0f57`). Each synthesis of an item has `lv`, the synthesis level (README, section "Synthesis level"), and `cum`, the cumulative synthesis cost (the site design, section "Item detail").
+The script `prototype/scripts/fill-data.mjs` fills the gaps of `data.js` with the values of `data/*.json`. The other values of `data.js` are edited as is, and can differ from `data/*.json`: the old generator `build-data.ts` is gone (commit `fda0f57`). Each synthesis of an item has `lv`, the synthesis level ([the model doc](model.md), section "Synthesis level"), and `cum`, the cumulative synthesis cost (the site design, section "Item detail").
 
 The model has entities that `data.js` leaves out on purpose: 4 placeholder items (Blackberry, Flour, Uni Pouch, Apcol: no description and the icon of the fire element), the area Dimension Gate (no gather and no monster), 41 characters that do not join the town (no join event, or a fairy with no icon), and 16 researches that no tree holds (`STDY_RES_032` to `046` and `050`: no researcher, no prerequisite). The Bountiful areas have no monsters and the Bestial areas have no gather items (owner requirement). A monster with a normal and a boss level in 1 area is 1 tile with 1 level range.
 

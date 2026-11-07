@@ -1,6 +1,6 @@
 # Workbook
 
-A spreadsheet of the game data, for players who sort and filter. The source of each row is the owner's words in the chat (dates in UTC). The rules that the orchestrator made, and the proof of each row, are in [the tooling design](../design/tooling.md), section "Design requirements". The columns and their sources are in `README.md`.
+A spreadsheet of the game data, for players who sort and filter. The source of each row is the owner's words in the chat (dates in UTC). The rules that the orchestrator made, and the proof of each row, are in [the tooling design](../design/tooling.md), section "Design requirements". The columns and their sources are in [the workbook technical doc](../technical/workbook.md).
 
 | Name | Requirement | Source |
 | --- | --- | --- |
