@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cumulativeSynthesisCosts, RANKS_PER_SYNTHESIS_LEVEL, synthesisLevelOf } from '../recipes.js';
+import { withCumulativeSynthesisCosts, RANKS_PER_SYNTHESIS_LEVEL, synthesisLevelOf } from '../recipes.js';
 
 describe('synthesisLevelOf', () => {
   it('rounds down to a whole level', () => {
@@ -17,7 +17,10 @@ describe('synthesisLevelOf', () => {
   });
 });
 
-describe('cumulativeSynthesisCosts', () => {
+describe('withCumulativeSynthesisCosts', () => {
+  const costsOf = (recipes: Parameters<typeof withCumulativeSynthesisCosts>[0]) =>
+    withCumulativeSynthesisCosts(recipes).map((r) => r.cumulativeSynthesisCost);
+
   const recipe = (resultItemId: string, synthesisCost: number, materials: [string, number][] = []) => ({
     resultItemId,
     synthesisCost,
@@ -25,11 +28,11 @@ describe('cumulativeSynthesisCosts', () => {
   });
 
   it('adds 0 for a material that no recipe makes', () => {
-    expect(cumulativeSynthesisCosts([recipe('a', 5, [['herb', 3]])]).get('a')).toBe(5);
+    expect(costsOf([recipe('a', 5, [['herb', 3]])])).toEqual([5]);
   });
 
   it('adds quantity times the cumulative cost of a material that a recipe makes, over several levels', () => {
-    const costs = cumulativeSynthesisCosts([
+    const costs = costsOf([
       recipe('c', 1, [['b', 2]]),
       recipe('b', 3, [
         ['a', 4],
@@ -37,17 +40,15 @@ describe('cumulativeSynthesisCosts', () => {
       ]),
       recipe('a', 5),
     ]);
-    expect(costs.get('a')).toBe(5);
-    expect(costs.get('b')).toBe(3 + 4 * 5);
-    expect(costs.get('c')).toBe(1 + 2 * 23);
+    expect(costs).toEqual([1 + 2 * 23, 3 + 4 * 5, 5]);
   });
 
   it('throws an error that names the items of a loop', () => {
     const loop = [recipe('a', 1, [['b', 1]]), recipe('b', 1, [['c', 1]]), recipe('c', 1, [['a', 1]])];
-    expect(() => cumulativeSynthesisCosts(loop)).toThrow(/a.*b.*c/);
+    expect(() => costsOf(loop)).toThrow(/a.*b.*c/);
   });
 
   it('throws an error that names the item when 2 recipes make it', () => {
-    expect(() => cumulativeSynthesisCosts([recipe('dup', 1), recipe('dup', 2)])).toThrow(/dup/);
+    expect(() => costsOf([recipe('dup', 1), recipe('dup', 2)])).toThrow(/dup/);
   });
 });

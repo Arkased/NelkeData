@@ -31,14 +31,14 @@ interface CostRecipe {
 }
 
 /**
- * Computes the cumulative synthesis cost of each item that a recipe makes: the synthesis cost of the recipe plus,
+ * Attaches the cumulative synthesis cost to each recipe: the synthesis cost of the recipe plus,
  * for each material that a recipe makes, its quantity times its cumulative synthesis cost. A material that no recipe makes adds 0.
  * @param recipes - the recipes; each item is the result of at most 1 recipe
- * @returns the cumulative synthesis cost by result item ID
+ * @returns the recipes in the same order, each with its cumulative synthesis cost
  * @throws {Error} when 2 recipes make the same item, or when the recipes make a loop; the message names the items
  * @sideEffects none
  */
-export function cumulativeSynthesisCosts(recipes: readonly CostRecipe[]): Map<string, number> {
+export function withCumulativeSynthesisCosts<R extends CostRecipe>(recipes: readonly R[]): (R & { cumulativeSynthesisCost: number })[] {
   const byResult = new Map<string, CostRecipe>();
   for (const r of recipes) {
     if (byResult.has(r.resultItemId)) throw new Error(`2 recipes make the item ${r.resultItemId}`);
@@ -56,8 +56,7 @@ export function cumulativeSynthesisCosts(recipes: readonly CostRecipe[]): Map<st
     costs.set(itemId, cost);
     return cost;
   };
-  for (const r of recipes) costOf(r.resultItemId, []);
-  return costs;
+  return recipes.map((r) => ({ ...r, cumulativeSynthesisCost: costOf(r.resultItemId, []) }));
 }
 
 /**
@@ -75,14 +74,15 @@ export function buildRecipes(game: Game): DirectData['recipes'] {
     materials: r.slots.filter((m) => !isEmptySlot(m)).map((m) => ({ itemId: m.id, quantity: m.num })),
     synthesisCost: Number(r.ITEM_COMP_MH),
   }));
-  const costs = cumulativeSynthesisCosts(recipes);
-  return recipes.map((r) => {
-    const cumulativeSynthesisCost = costs.get(r.resultItemId);
-    if (cumulativeSynthesisCost === undefined) throw new Error(`no cumulative synthesis cost for the item ${r.resultItemId}`);
+  return withCumulativeSynthesisCosts(recipes).map((r) => {
+    const { cumulativeSynthesisCost } = r;
     // Every recipe gives 1 item, so the output value is the price of the result. A price of 0 (construction and battle items) means no value.
     const price = Number(itemById.get(r.resultItemId)?.ITEM_SELLING_PRICE ?? 0);
     return {
-      ...r,
+      id: r.id,
+      resultItemId: r.resultItemId,
+      materials: r.materials,
+      synthesisCost: r.synthesisCost,
       synthesisLevel: synthesisLevelOf(Number(itemById.get(r.resultItemId)?.ITEM_RANK ?? 0)),
       cumulativeSynthesisCost,
       valuePerCumulativeSynthesisCost: price > 0 && cumulativeSynthesisCost > 0 ? price / cumulativeSynthesisCost : null,
