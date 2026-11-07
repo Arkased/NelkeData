@@ -1,3 +1,6 @@
 {
+  "enabledPlugins": {
+    "github-pm@claude-setup": true
+  },
   "autoMemoryEnabled": false
 }
