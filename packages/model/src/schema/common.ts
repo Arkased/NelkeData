@@ -7,7 +7,7 @@ export const idSchema = z.string().min(1);
 /** The URL slug of an entity. */
 export const slugSchema = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 
-/** A story event of the game. The event has no name in the game files, so the label is made by the rule of README.md, section "Recipe unlock". */
+/** A story event of the game. The event has no name in the game files, so the label is made by the rule of docs/technical/model.md, section "Event label". */
 export const storyEventSchema = z.strictObject({ id: z.string(), label: z.string() });
 
 /** A story event. */

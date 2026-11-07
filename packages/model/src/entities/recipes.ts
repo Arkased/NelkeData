@@ -10,7 +10,7 @@ export interface RecipeLinks {
   characterIds: IdSet;
 }
 
-/** The number of item ranks for each level of synthesis (README.md, section "Synthesis level"). */
+/** The number of item ranks for each level of synthesis (docs/technical/model.md, section "Synthesis level"). */
 export const RANKS_PER_SYNTHESIS_LEVEL = 4;
 
 /**
@@ -60,7 +60,7 @@ export function withCumulativeSynthesisCosts<R extends CostRecipe>(recipes: read
 }
 
 /**
- * Makes the recipes from the game tables. The recipe value fields follow README.md, section "Recipe value".
+ * Makes the recipes from the game tables. The recipe value fields follow docs/technical/model.md, section "Recipe value".
  * @param game - the game data
  * @returns the recipes, in the order of the game table
  * @throws {Error} when 2 recipes make the same item, or when the recipes make a loop
