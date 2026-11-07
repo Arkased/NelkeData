@@ -58,6 +58,7 @@ Each kind of value has 1 format on all pages.
 | --- | --- | --- |
 | Money (a price, a cost, a research fee) | The coin icon of the game, then the number. | 🪙 1,200 |
 | Synthesis cost | The synthesis cost icon of the game, then the number. | ⚗ 4 |
+| Value per synthesis cost | The money format with at most 1 decimal, then `/` and the synthesis cost icon. | 🪙 21.5 / ⚗ |
 | Rate | The number, then `%`. At most 1 decimal. | 12.5% |
 | Quantity of an item | `×` and the number, in a badge on the bottom right corner of the item icon, as in the material slots of the game. Only for 2 or more, and only on an item icon. A monster tile in "How to get" of an item has no quantity badge, because the badge would read as a count of monsters. The section title gives the role (Materials, Drops, Gives). | ×3 |
 | Rate or level on a tile | A badge on the bottom right corner of the icon, the same as the quantity badge. No tile has a quantity and a rate or a level together. A tile has no value line. A level range is 1 badge. | 25%, Lv 34, Lv 3–8 |
@@ -171,8 +172,9 @@ The blocks, in order. A block or a line with no data does not show.
 3. **Description**, as 1 paragraph.
 4. **Synthesis**, only for an item with a recipe:
    - The materials as item tiles, with the quantity badge for 2 or more.
-   - 1 row of stats: "Synth. Lv." (the level format), "Synthesis cost", "Selling price", "Material cost", "Added value" (green when above 0, red when below 0) and "Value per cost" (money per synthesis cost). When the added value is `null`, the row shows only "Synth. Lv.", "Synthesis cost" and "Material cost".
-   - "Counted as 0 (no price)": the links to the materials with no price.
+   - 1 row of stats: "Synth. Lv." (the level format), "Synthesis cost", "Cumulative synthesis cost", "Selling price" and "Value per cumulative synthesis cost". An item with a price of 0 shows no selling price and no value per cumulative synthesis cost.
+   - The cumulative synthesis cost of an item is its synthesis cost, plus the cumulative synthesis cost of each material that a recipe makes, times the quantity of that material. A material that no recipe makes adds 0. Each item has at most 1 recipe, and a recipe makes 1 item. The data has no recipe loop: `fill-data.mjs` stops with an error that names the items when it finds one.
+   - The value per cumulative synthesis cost is the selling price divided by the cumulative synthesis cost, in the format "Value per synthesis cost".
    - The unlock lines: "Recipe set" (only when its name is not the name of the item), "Taught by" (the face of the teacher, the name and the friendship heart when the level is above 0), "Research" (the research, with its icon by the rule of "Icons"; the researchers show only on the research detail), and "Event" (the label of the story event, or "An event" when the game has only an internal ID).
 5. **How to get**, with these groups in order: "Gather" (each area with its zone name under it and the rate, the highest rate first, and no rate for 100%), "Monster drops" (monster tiles, no badge), 1 group for each special kind with the item (Treasure, Bug Net, Digging, Fishing: the zone links with the rate), and "Farm" (the growing area).
 6. **Used in:** the tiles of each item whose recipe uses the item as a material, with no badge.
