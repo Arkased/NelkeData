@@ -14,7 +14,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const dataJs = path.resolve(here, '..', 'data.js');
 const model = (name) => JSON.parse(fs.readFileSync(path.resolve(here, '..', '..', 'data', `${name}.json`), 'utf8'));
 
-const { synthesisLevelOf } = await tsImport('../../packages/model/src/entities/recipes.ts', import.meta.url);
+const { synthesisLevelOf } = await tsImport('../../packages/model/src/index.ts', import.meta.url);
 
 const sandbox = { window: {} };
 vm.runInNewContext(fs.readFileSync(dataJs, 'utf8'), sandbox);
@@ -35,12 +35,12 @@ for (const it of D.items) {
 // Cumulative synthesis cost.
 const byResult = new Map(model('recipes').map((r) => [r.resultItemId, r]));
 const cums = new Map();
-const cumOf = (itemId, path) => {
+const cumOf = (itemId, chain) => {
   const r = byResult.get(itemId);
   if (!r) return 0;
   if (cums.has(itemId)) return cums.get(itemId);
-  if (path.includes(itemId)) throw new Error(`recipe loop: ${[...path.slice(path.indexOf(itemId)), itemId].join(' -> ')}`);
-  const cum = r.synthesisCost + r.materials.reduce((sum, m) => sum + m.quantity * cumOf(m.itemId, [...path, itemId]), 0);
+  if (chain.includes(itemId)) throw new Error(`recipe loop: ${[...chain.slice(chain.indexOf(itemId)), itemId].join(' -> ')}`);
+  const cum = r.synthesisCost + r.materials.reduce((sum, m) => sum + m.quantity * cumOf(m.itemId, [...chain, itemId]), 0);
   cums.set(itemId, cum);
   return cum;
 };
