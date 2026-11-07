@@ -1,8 +1,17 @@
 // Interactive test in a real browser, with the DOM audit and the mechanical UI rules (see auditFn in lib.mjs).
 // Usage: node test.mjs [widthsCsv]. Default 360,768,1280,1920. One browser, 1 context for each width, all widths at the same time.
 // A width shares no state with another width. The run fails when 1 width fails.
+import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { launch, newPage, settle, audit, pick, url } from './lib.mjs';
+
+const model = (name) => JSON.parse(fs.readFileSync(fileURLToPath(new URL(`../../data/${name}.json`, import.meta.url)), 'utf8'));
+const recipeOf = new Map(model('recipes').map((r) => [r.resultItemId, r]));
+/** The cumulative synthesis cost of an item, from data/recipes.json: the own cost plus the quantity times the cumulative cost of each material that a recipe makes. */
+const cumOf = (id) => {
+  const r = recipeOf.get(id);
+  return r ? r.synthesisCost + r.materials.reduce((sum, m) => sum + m.quantity * cumOf(m.itemId), 0) : 0;
+};
 
 const widths = (process.argv[2] || '360,768,1280,1920').split(',').map(Number);
 
@@ -165,7 +174,7 @@ await step('empty state and its clear button', async () => {
   ok((await page.locator('.empty').count()) === 0, 'no empty state on Areas');
 });
 
-for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'monster drop item'], ['dropQty', 'monster drop item with a quantity of 2 or more'],['shop', 'shop item'], ['farm', 'farm item'], ['craftPriced', 'craftable with price'], ['craftNoPrice', 'craftable without price'], ['unpriced', 'craftable with unpriced materials'], ['rare', 'rare find item'], ['longName', 'longest name']]) {
+for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'monster drop item'], ['dropQty', 'monster drop item with a quantity of 2 or more'],['shop', 'shop item'], ['farm', 'farm item'], ['craftPriced', 'craftable with price'], ['craftNoPrice', 'craftable without price'], ['craftChain', 'craftable with a craftable material'], ['rare', 'rare find item'], ['longName', 'longest name']]) {
   await step(`item modal: ${label} (${P[k]?.n})`, async () => {
     await openItem(P[k].n);
     ok((await hash()).startsWith(`#/items/${P[k].id}`), `url ${await hash()}`);
@@ -182,8 +191,9 @@ for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'mo
     if (k === 'shop') ok(/sold at/i.test(topT) && (await page.locator('.modal .top .sold img').count()) > 0, 'top block has "Sold at" with shop icons');
     ok(!/Shops|Medicine Shop|General Store|Grocery Store|Clothing Store|Weapon\/Armor Shop/.test(howT), 'no shop in How to get');
     if (k === 'farm') ok(/Farm/.test(t) && !/Grown in/.test(t), 'has Farm group');
-    if (k.startsWith('craft') || k === 'unpriced') ok(/Synthesis cost/i.test(t) && !/\d needed/.test(synT) && !/\bx\d/i.test(synT), 'synthesis block: no "N needed", no "x3"');
-    if (k.startsWith('craft') || k === 'unpriced') {
+    if (k.startsWith('craft')) ok(/Synthesis cost/i.test(t) && !/\d needed/.test(synT) && !/\bx\d/i.test(synT), 'synthesis block: no "N needed", no "x3"');
+    if (k.startsWith('craft')) {
+      ok(!/Material cost|Added value|Value per cost|Counted as 0/i.test(synT), 'the old stats (material cost, added value, value per cost, counted as 0) are gone');
       const want = await page.evaluate((id) => window.DATA.items.find((i) => i.id === id).syn.mats.filter((m) => m.q >= 2).map((m) => '×' + m.q), P[k].id);
       const got = await page.locator('.modal .syn .mats .qty').allInnerTexts();
       ok(got.join(',') === want.join(','), `material badges ${got.join(',') || '(none)'} = the quantities of 2 or more`);
@@ -192,10 +202,20 @@ for (const [k, label] of [['gather', 'material with gather spots'], ['drop', 'mo
       ok(gaps.every((g) => parseFloat(g) % 4 === 0), `synthesis stat gaps ${gaps.join(' / ')} on the 4 px scale`);
       ok(await page.evaluate(() => { const rs = {}; document.querySelectorAll('.modal .syn-stats .val').forEach((e) => { const t = Math.round(e.getBoundingClientRect().top / 2); const k = Math.round(e.closest('.stat').getBoundingClientRect().top / 2); (rs[k] ||= new Set()).add(t); }); return Object.values(rs).every((v) => v.size === 1); }), 'the stat values of a row share 1 baseline');
     }
-    if (k === 'craftNoPrice') ok(!/Selling price/i.test(synT) && /Material cost/i.test(synT), 'no selling price: only the material cost row shows');
+    if (k === 'craftNoPrice') ok(!/Selling price|Value per cumulative synthesis cost/i.test(synT) && /Cumulative synthesis cost/i.test(synT), 'a price of 0: no selling price and no value per cumulative synthesis cost');
+    if (k === 'craftChain') {
+      const cum = cumOf(P[k].id);
+      const price = model('items').find((i) => i.id === P[k].id).price;
+      const valueOf = (label) => page.locator('.modal .syn-stats .stat', { has: page.locator('.cap', { hasText: new RegExp(`^${label}$`, 'i') }) }).locator('.val').innerText().then((s) => s.replace(/\s+/g, ' ').trim());
+      ok(cum > recipeOf.get(P[k].id).synthesisCost, `${P[k].n}: the cumulative cost counts the craftable material`);
+      ok((await valueOf('Cumulative synthesis cost')) === cum.toLocaleString('en-US'), `${P[k].n}: cumulative synthesis cost ${cum}`);
+      const per = (Math.round((price / cum) * 10) / 10).toLocaleString('en-US', { maximumFractionDigits: 1 });
+      ok((await valueOf('Value per cumulative synthesis cost')) === `${per} /`, `${P[k].n}: value per cumulative synthesis cost ${per} /`);
+      ok((await page.locator('.modal .syn-stats .stat', { hasText: 'Value per cumulative synthesis cost' }).locator('img[src$="coin.png"]').count()) === 1 && (await page.locator('.modal .syn-stats .stat', { hasText: 'Value per cumulative synthesis cost' }).locator('img[src$="cost.png"]').count()) === 1, 'the value has the coin icon and the synthesis cost icon');
+    }
     if (k === 'drop') ok((await page.locator('.modal .mini .tbadge').count()) === 0 && (await page.locator('.modal .mini small').count()) === 0, 'drop tiles show no rate (each drop rate is 100%)');
     if (k === 'rare') ok(/(Treasure|Bug Net|Digging|Fishing)/.test(t), 'rare group');
-    if (k === 'craftPriced') ok((await page.locator('.modal .syn img[src$="cost.png"]').count()) >= 2 && (await page.locator('.modal .syn .money img[src$="coin.png"]').count()) >= 3, 'synthesis cost and money have their icons');
+    if (k === 'craftPriced') ok((await page.locator('.modal .syn img[src$="cost.png"]').count()) >= 3 && (await page.locator('.modal .syn .money img[src$="coin.png"]').count()) >= 2, 'synthesis cost and money have their icons');
     ok((await page.locator('.modal .top').innerText()).match(/Reduces into|Material|Merchandise|Battle|Construction/) !== null, 'top has category');
   });
   await closeEsc();
@@ -354,8 +374,7 @@ await step('synthesis level of a craftable item', async () => {
   // The level of each craftable item in data.js (syn.lv) equals Math.max(1, Math.floor(rank / 4)) (the rule of the README). The items of data.js carry
   // no rank, so the test takes the rank of each item with a recipe from data/items.json, matched by item id. It fails when an item has no rank,
   // when there are no craftable items, or when a level differs.
-  const fs = await import('node:fs');
-  const rankOf = new Map(JSON.parse(fs.readFileSync(fileURLToPath(new URL('../../data/items.json', import.meta.url)), 'utf8')).map((i) => [i.id, i.rank]));
+  const rankOf = new Map(model('items').map((i) => [i.id, i.rank]));
   const crafts = await page.evaluate(() => window.DATA.items.filter((i) => i.syn).map((i) => ({ id: i.id, lv: i.syn.lv })));
   const wrong = crafts.filter((c) => !Number.isInteger(rankOf.get(c.id)) || c.lv !== Math.max(1, Math.floor(rankOf.get(c.id) / 4)));
   ok(crafts.length > 0 && wrong.length === 0, `each of the ${crafts.length} craftable items has the level of its rank${wrong.length ? ': ' + wrong.slice(0, 4).map((c) => `${c.id} lv ${c.lv} rank ${rankOf.get(c.id)}`).join('; ') : ''}`);

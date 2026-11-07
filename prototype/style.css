@@ -22,8 +22,6 @@
   --warm: #a0561b;
   --page: #f1e4c0;
   --cream-3: #f7ebc7;
-  --good: #2f7d2f;
-  --bad: #b32d1a;
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s8: 32px;
   --g: var(--s4);
   --font: "Source Sans 3", sans-serif;
@@ -211,9 +209,9 @@ a.el:hover, a.el:focus-visible { background: rgba(243, 182, 31, 0.28); }
 /* The stats are in 1 grid: the label above, the value under it; the values of a row share 1 baseline because every cell has the same label and value line height. */
 .syn-stats { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s4); align-items: flex-end; }
 .syn-stats .stat { flex: 1 1 auto; align-content: end; }
+/* From 768 px the 5 stats are 1 row: a long label wraps to 2 lines, the values stay on 1 baseline. */
+@media (min-width: 768px) { .syn-stats { flex-wrap: nowrap; } }
 .syn-stats .val { display: flex; align-items: center; gap: var(--s1); font-size: 16px; line-height: 24px; height: 24px; font-weight: 900; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.syn-stats .pos .val { color: var(--good); }
-.syn-stats .neg .val { color: var(--bad); }
 .note { font-size: 12px; color: var(--ink-soft); font-weight: 700; line-height: 1.4; }
 /* The unlock: the entries side by side in 1 box, equal gaps. */
 .unlock { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s3) var(--s4); padding: var(--s3); background: var(--cream); border: 2px solid var(--line); border-radius: 12px; }

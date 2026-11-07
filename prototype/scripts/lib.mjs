@@ -313,10 +313,10 @@ export const pick = (page) =>
       dropQty: first((i) => i.drops.some((d) => d.num >= 2)),
       shop: first((i) => i.shops.length && !i.syn && !i.gather.length) || first((i) => i.shops.length),
       farm: first((i) => i.farm),
-      craftPriced: first((i) => i.syn && i.syn.added !== null && i.syn.unlock && i.syn.unlock.friendship > 0 && i.syn.researchId) || first((i) => i.syn && i.syn.added !== null && i.syn.unlock && i.syn.unlock.friendship > 0) || first((i) => i.syn && i.syn.added !== null),
-      craftNoPrice: first((i) => i.syn && i.syn.added === null),
+      craftPriced: first((i) => i.syn && i.syn.price > 0 && i.syn.unlock && i.syn.unlock.friendship > 0 && i.syn.researchId) || first((i) => i.syn && i.syn.price > 0 && i.syn.unlock && i.syn.unlock.friendship > 0) || first((i) => i.syn && i.syn.price > 0),
+      craftNoPrice: first((i) => i.syn && i.syn.price === 0),
       rare: first((i) => i.special.length > 1),
-      unpriced: first((i) => i.syn && i.syn.unpriced.length),
+      craftChain: first((i) => i.syn && i.syn.price > 0 && i.syn.mats.some((m) => D.items.find((x) => x.id === m.id).syn)),
       jpItem: first((i) => i.jp && i.shops.length),
       longName: D.items.reduce((a, b) => (b.n.length > a.n.length ? b : a)),
     };
