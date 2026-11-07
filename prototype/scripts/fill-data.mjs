@@ -1,6 +1,6 @@
 // Fills the data gaps of prototype/data.js with the values of data/*.json (issue 25). It can run again: the result does not change.
 // It keeps each other value of data.js (the display rules are in it): it adds only
-//  - syn.lv, the synthesis level of a craftable item: synthesisLevelOf(rank), the rule of README.md "Synthesis level";
+//  - syn.lv, the synthesis level of a craftable item: synthesisLevelOf(rank), the rule of docs/technical/model.md, section "Synthesis level";
 //  - syn.cum, the cumulative synthesis cost: cumulativeSynthesisCost of the recipe in data/recipes.json (the model checks the recipe loops);
 //  - zone.mons, the monsters that a zone meets itself (data/zones.json "encounters") and that live in no area (Master Puni).
 // Usage: node fill-data.mjs
